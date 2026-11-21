@@ -171,22 +171,14 @@
             <label for="d">1 · Design</label>
             <select id="d" style="color-scheme:dark;background-color:#14141A;color:#F7F3EC"></select>
           </div>
-          <div class="field full">
-            <label for="l">2 · Language (لغة الدعوة)</label>
-            <select id="l" style="color-scheme:dark;background-color:#14141A;color:#F7F3EC">
-              <option value="ar" selected>العربية (Arabic)</option>
-              <option value="en">English</option>
-              <option value="bi">العربية &amp; English (Both)</option>
-            </select>
-          </div>
-          <div class="field"><label for="cg">3 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Mahmoud / محمود"></div>
-          <div class="field"><label for="cb">4 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Merna / ميرنا"></div>
-          <div class="field"><label for="dt">5 · Date (التاريخ)</label><input id="dt" type="date"></div>
-          <div class="field"><label for="v">6 · Venue / city (مكان الحفل)</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
-          <div class="field full"><label for="g">7 · Guest greeting (اسم الضيف)</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذ أحمد"></div>
+          <div class="field"><label for="cg">2 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Mahmoud / محمود"></div>
+          <div class="field"><label for="cb">3 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Merna / ميرنا"></div>
+          <div class="field"><label for="dt">4 · Date (التاريخ)</label><input id="dt" type="date"></div>
+          <div class="field"><label for="v">5 · Venue / city (مكان الحفل)</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
+          <div class="field full"><label for="g">6 · Guest greeting (اسم الضيف)</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذ أحمد"></div>
 
           <div class="field full">
-            <label for="ph">8 · Couple photo (optional — works on every design)</label>
+            <label for="ph">7 · Couple photo (optional — works on every design)</label>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
               <input id="ph" type="file" accept="image/*" style="flex:1;min-width:210px;padding:9px 12px">
               <img id="phThumb" alt="" style="display:none;width:44px;height:44px;border-radius:10px;object-fit:cover;border:1px solid var(--gold)">
@@ -207,6 +199,9 @@
 
         <div class="color-note">
           🎨 <b>Custom Colors Available:</b> All colors in any design can be changed and tailored to match your wedding theme, flowers, or dress code upon order.
+        </div>
+        <div class="color-note" style="margin-top:10px;">
+          🌐 <b>Available in Any Language:</b> Any design can be ordered in 100% Arabic, 100% English, or Bilingual (Arabic &amp; English) upon request.
         </div>
 
         <div class="steps-note">
@@ -269,23 +264,15 @@
   const tryData = () => {
     const groom = $('cg').value.trim();
     const bride = $('cb').value.trim();
-    const lang = $('l').value;
     let couple = '';
     if (groom && bride) {
       const hasAr = /[\u0600-\u06FF]/.test(groom + bride);
-      if (lang === 'en') {
-        couple = `${groom} & ${bride}`;
-      } else if (lang === 'bi') {
-        couple = hasAr ? `${groom} و ${bride}` : `${groom} & ${bride}`;
-      } else {
-        couple = `${groom} و ${bride}`;
-      }
+      couple = hasAr ? `${groom} و ${bride}` : `${groom} & ${bride}`;
     } else {
       couple = groom || bride;
     }
     return {
       num: $('d').value,
-      lang: lang,
       groom: groom,
       bride: bride,
       couple: couple,
@@ -299,8 +286,7 @@
     const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
     $('frame').src = Shell.buildUrl(s.file, x, true);
     $('full').href = Shell.buildUrl(s.file, x);
-    const langLabel = x.lang === 'en' ? 'English' : x.lang === 'bi' ? 'Arabic & English' : 'Arabic';
-    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title}) in ${langLabel}${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
+    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
   }
   let customPhotoData = '';
   try {
