@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Designs — MEEM • ميم</title>
-<link rel="icon" type="image/svg+xml" href="assets/logos/meem-mark.svg">
+<link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png">
+<link rel="apple-touch-icon" href="assets/logos/meem-logo-320.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
@@ -23,7 +24,7 @@
   .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
   .tab { border: 1px solid var(--line); background: #FFFFFF; }
   .tab:hover { color: var(--text); border-color: var(--gold-dim); }
-  .tab.active { background: linear-gradient(135deg, #D4A754, #AA7D2A); color: #FFFFFF; border-color: transparent; }
+  .tab.active { background: linear-gradient(135deg, #0D3B2E 0%, #164E3D 100%); color: #FFFFFF; border-color: #C5A059; box-shadow: 0 4px 14px rgba(13,59,46,0.22); font-weight: 700; }
   .count { font-size: 12px; color: var(--muted); margin-left: auto; }
   .cat-section { margin-top: 46px; }
   .cat-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 8px; padding-bottom: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
@@ -31,12 +32,28 @@
   .cat-head .ar { color: var(--gold); font-family: 'Amiri',serif; font-size: 20px; margin-left: 8px; }
   .reel { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
   .reel input { accent-color: var(--gold); }
-  @media (max-width: 680px) {
+  @media (max-width: 768px) {
     .controls { top: 62px; padding: 12px; border-radius: 14px; }
     .search { width: 100%; min-width: 0; }
-    .tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tabs {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      flex-wrap: nowrap;
+      gap: 8px;
+      padding: 4px 12px 10px 12px;
+      margin: 0 -12px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
     .tabs::-webkit-scrollbar { display: none; }
-    .tab { flex-shrink: 0; white-space: nowrap; }
+    .tab {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      padding: 10px 16px;
+      font-size: 13px;
+      min-height: 42px;
+    }
     .count { width: 100%; text-align: right; }
     .cat-head h2 { font-size: 26px; }
   }
@@ -73,8 +90,8 @@
   q.value = st.q;
 
   document.getElementById('tabs').innerHTML =
-    `<button class="tab" data-c="all">All (${S.SAMPLES.length})</button>` +
-    S.CATEGORIES.map(c => `<button class="tab" data-c="${c.id}">${c.title.split(' & ')[0]} (${S.SAMPLES.filter(s=>s.cat===c.id).length})</button>`).join('');
+    `<button class="tab" data-c="all">✨ All (${S.SAMPLES.length})</button>` +
+    S.CATEGORIES.map(c => `<button class="tab" data-c="${c.id}">${c.icon ? c.icon + ' ' : ''}${c.short || c.title.split(' & ')[0]} (${S.SAMPLES.filter(s=>s.cat===c.id).length})</button>`).join('');
 
   function ok(s) {
     if (st.cat !== 'all' && s.cat !== st.cat) return false;

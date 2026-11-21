@@ -71,8 +71,7 @@
       ['try-it-live', `${prefix}#try-it-live`, 'Try it live']
     ];
 
-    const savedStyle = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_logo_style')) || '1';
-    const logoSrc = `assets/logos/meem-style-${savedStyle}.svg?v=4`;
+    const logoSrc = (B && B.logo) ? B.logo : 'assets/logos/meem-logo-320.png';
 
     const header = document.createElement('header');
     header.className = 'topbar';

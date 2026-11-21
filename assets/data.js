@@ -6,19 +6,19 @@ window.SITE = {
     name: 'MEEM',
     ar: 'ميم',
     full: 'MEEM • ميم',
-    sub: 'Digital Invitations',
+    sub: 'Digital Invitations • دعوات زفاف رقمية',
     tagline: 'Two names, one letter, one unforgettable invitation.',
-    logo: 'assets/logos/meem-mark.svg?v=2',
-    icon: 'assets/logos/meem-mark.svg?v=2',
+    logo: 'assets/logos/meem-logo-320.png',
+    icon: 'assets/logos/meem-logo-128.png',
     handle: '@meem.invitations'
   },
 
   CATEGORIES: [
-    { id: 'weddings', title: 'Luxury Weddings & Palaces', ar: 'الأفراح والقصور', blurb: 'Grand ballrooms, palaces and 5-star Nile venues.' },
-    { id: 'katb', title: 'Katb Ketab & Islamic Elegance', ar: 'عقد القران وكتب الكتاب', blurb: 'Calm, respectful designs for mosque ceremonies.' },
-    { id: 'engagement', title: 'Engagement & Henna Nights', ar: 'الخطوبة وليلة الحنة', blurb: 'Ring boxes, lanterns and ladies-only celebrations.' },
-    { id: 'editorial', title: 'Coastal, Destination & Modern', ar: 'الساحل والتصاميم العصرية', blurb: 'Sahel, El Gouna and magazine-style concepts.' },
-    { id: 'cards', title: 'Tactile Opening & Classic Cards (No Sound)', ar: 'كروت تفتح باللمس وكروت كلاسيكية (بدون صوت)', blurb: 'Tactile opening cards and silent luxury stationery with zero sound or voice.' }
+    { id: 'cards', title: 'Tactile Opening & Silent Cards', short: 'Silent Cards', ar: 'كروت هادئة (بدون صوت)', icon: '✉️', blurb: 'Tactile opening cards and silent luxury stationery with zero sound or voice.' },
+    { id: 'weddings', title: 'Luxury Weddings & Palaces', short: 'Weddings', ar: 'الأفراح والقصور', icon: '👑', blurb: 'Grand ballrooms, palaces and 5-star Nile venues.' },
+    { id: 'katb', title: 'Katb Ketab & Islamic Elegance', short: 'Katb Ketab', ar: 'عقد القران', icon: '🕌', blurb: 'Calm, respectful designs for mosque ceremonies.' },
+    { id: 'engagement', title: 'Engagement & Henna Nights', short: 'Engagement', ar: 'الخطوبة وليلة الحنة', icon: '💍', blurb: 'Ring boxes, lanterns and ladies-only celebrations.' },
+    { id: 'editorial', title: 'Coastal, Destination & Modern', short: 'Coastal & Modern', ar: 'الساحل والتصاميم العصرية', icon: '🌊', blurb: 'Sahel, El Gouna and magazine-style concepts.' }
   ],
 
   SAMPLES: [
