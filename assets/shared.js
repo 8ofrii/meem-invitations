@@ -1582,16 +1582,16 @@
       // If couple title is still in Arabic calligraphy, switch to English
       if (!customCouple) {
         document.querySelectorAll('h1, [data-couple-title], .couple-names').forEach((el) => {
-          if (/[\u0600-\u06FF]/.test(el.textContent)) {
-            el.textContent = 'Omar & Salma';
+          if (/[\u0600-\u06FF]/.test(el.textContent) && el.dataset.coupleEn) {
+            el.textContent = el.dataset.coupleEn;
             el.style.fontFamily = "'Cormorant Garamond', 'Cinzel', serif";
           }
         });
       }
     } else if (isAr) {
       document.querySelectorAll('[data-monogram]').forEach((el) => {
-        if (el.textContent.includes('M') || el.textContent.includes('O')) {
-          el.textContent = 'ع & س';
+        if (el.dataset.monogramAr) {
+          el.textContent = el.dataset.monogramAr;
         }
       });
     }

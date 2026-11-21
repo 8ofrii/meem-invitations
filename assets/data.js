@@ -24,7 +24,7 @@ window.SITE = {
   SAMPLES: [
     {
       num: '01', cat: 'weddings', file: 'samples/01-royal-emerald-gold.html',
-      title: 'Royal Emerald & Gold', subtitle: 'عمر و سلمى',
+      title: 'Royal Emerald & Gold', subtitle: 'أحمد و فريدة',
       venue: 'New Administrative Capital, Cairo', lang: 'العربية', langKey: 'ar',
       bg: 'linear-gradient(145deg,#0A3C30,#041D17)', accent: '#F3DCAA',
       desc: 'Swinging emerald palace doors with knock reveal, floating gold dust and an Arabic tear-off calendar.',
@@ -32,7 +32,7 @@ window.SITE = {
     },
     {
       num: '02', cat: 'weddings', file: 'samples/02-wax-seal-editorial.html',
-      title: 'Ivory Wax-Seal Editorial', subtitle: 'Omar & Salma',
+      title: 'Ivory Wax-Seal Editorial', subtitle: 'Youssef & Zeina',
       venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#EFE5D5,#D9C7AE)', accent: '#6D1D2A',
       desc: 'Wax-seal envelope opening, gold-foil date reveal medallions and a framed venue map.',
@@ -163,7 +163,7 @@ window.SITE = {
     },
     {
       num: '18', cat: 'cards', file: 'samples/18-classic-ivory-gold.html',
-      title: 'Classic Ivory & Gold Crest', subtitle: 'عمر و سلمى',
+      title: 'Classic Ivory & Gold Crest', subtitle: 'طارق و نور',
       venue: 'Al Masa Hotel, New Capital', lang: 'العربية', langKey: 'ar', textDark: true,
       bg: 'linear-gradient(145deg,#FDFBF7,#F4EFE6)', accent: '#C5A059',
       desc: 'Quiet luxury stationery card on warm ivory paper with embossed gold crest and instant RSVP. Zero motion, zero audio.',
@@ -171,7 +171,7 @@ window.SITE = {
     },
     {
       num: '19', cat: 'cards', file: 'samples/19-minimalist-noir.html',
-      title: 'Minimalist Noir Monoline', subtitle: 'Omar & Salma',
+      title: 'Minimalist Noir Monoline', subtitle: 'Karim & Laila',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en',
       bg: 'linear-gradient(145deg,#1E1E1E,#0F0F0F)', accent: '#9A7B4F',
       desc: 'Sleek dark-aesthetic typography card on textured natural parchment with monogram crest. Zero motion, zero audio.',
@@ -211,7 +211,7 @@ window.SITE = {
     },
     {
       num: '24', cat: 'weddings', file: 'samples/24-liquid-chromium-pearl.html',
-      title: 'Liquid Chromium & Pearl', subtitle: 'Omar & Salma',
+      title: 'Liquid Chromium & Pearl', subtitle: 'Sherif & Amina',
       venue: 'Four Seasons Nile Plaza, Cairo', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#F8FAFC,#E2E8F0)', accent: '#0F172A',
       desc: 'Interactive molten platinum seal reveal, liquid chromium specular reflections, and alabaster pearl card.',
@@ -219,7 +219,7 @@ window.SITE = {
     },
     {
       num: '25', cat: 'cards', file: 'samples/25-molten-chrome-card.html',
-      title: 'Molten Chrome Minimalist Card', subtitle: 'Omar & Salma',
+      title: 'Molten Chrome Minimalist Card', subtitle: 'Ziad & Malak',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#FFFFFF,#EEF2F6)', accent: '#1E293B',
       desc: 'Silent luxury stationery on heavy pearl stock with beveled liquid chromium borders and embossed platinum monogram.',
@@ -227,7 +227,7 @@ window.SITE = {
     },
     {
       num: '26', cat: 'cards', file: 'samples/26-bifold-folding-card.html',
-      title: 'Bi-Fold Luxury Folding Card', subtitle: 'Omar & Salma',
+      title: 'Bi-Fold Luxury Folding Card', subtitle: 'Hassan & Mariam',
       venue: 'Sofitel Cairo Nile El Gezirah', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#FAF8F5,#EDE6DC)', accent: '#A8813A',
       desc: 'Tactile 3D bi-fold card that smoothly unfolds on tap to reveal event details, live countdown, and RSVP pass. Strictly silent with 0 sound.',
@@ -235,7 +235,7 @@ window.SITE = {
     },
     {
       num: '27', cat: 'cards', file: 'samples/27-pocket-sleeve-card.html',
-      title: 'Pocket Sleeve Slide-Out Card', subtitle: 'Omar & Salma',
+      title: 'Pocket Sleeve Slide-Out Card', subtitle: 'Mostafa & Nadine',
       venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#F7F5F0,#DFD5C4)', accent: '#A8813A',
       desc: 'Alabaster die-cut pocket sleeve with pull ribbon tab. The gilded invitation card smoothly slides out into full view. Strictly silent with 0 sound.',
@@ -243,7 +243,7 @@ window.SITE = {
     },
     {
       num: '28', cat: 'cards', file: 'samples/28-gatefold-ribbon-card.html',
-      title: 'French Gatefold Double-Flap Card', subtitle: 'عمر و سلمى',
+      title: 'French Gatefold Double-Flap Card', subtitle: 'ياسين و جومانا',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'العربية', langKey: 'ar', textDark: true,
       bg: 'linear-gradient(145deg,#FAF7F2,#EDE5D8)', accent: '#A8813A',
       desc: 'Two symmetrical French gatefold panels with royal monogram ribbon seal. Tap to swing flaps open in 3D to reveal inner gold card. Zero sound.',
@@ -251,7 +251,7 @@ window.SITE = {
     },
     {
       num: '29', cat: 'cards', file: 'samples/29-envelope-slide-card.html',
-      title: 'Translucent Vellum Envelope Slide Card', subtitle: 'Omar & Salma',
+      title: 'Translucent Vellum Envelope Slide Card', subtitle: 'Adam & Kenzy',
       venue: 'Kempinski Nile Hotel, Garden City', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#FDFCF9,#ECE4D6)', accent: '#A8813A',
       desc: 'Pearlescent vellum stationery envelope with a wax seal flap. On tap, the flap lifts open and the inner card slides out gracefully. Zero sound.',
