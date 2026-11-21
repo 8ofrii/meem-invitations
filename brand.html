@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand — MEEM STUDIO</title>
+<link rel="icon" href="assets/logos/meem-logo-96.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .logo-hero { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: center; background: linear-gradient(155deg,#17151C,#111116); border: 1px solid var(--gold-dim); border-radius: 26px; padding: 34px; }
+  .logo-hero img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 22px; border: 1px solid var(--gold-dim); box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+  .names-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0 20px; }
+  .name-pill { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; font-size: 14px; }
+  .name-pill b { font-family: 'Amiri',serif; font-size: 26px; color: var(--gold); margin-right: 8px; vertical-align: middle; }
+  .block { margin-top: 64px; scroll-margin-top: 130px; }
+  .subnav { position: sticky; top: 69px; z-index: 40; display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; padding: 8px; background: rgba(11,11,14,.92); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 999px; margin: 0 auto; width: fit-content; max-width: 100%; }
+  .subnav a { font-size: 12px; font-weight: 600; text-decoration: none; color: var(--muted); padding: 7px 14px; border-radius: 999px; }
+  .subnav a:hover { color: var(--gold); background: var(--surface-2); }
+  h3.t { font-family: 'Cormorant Garamond',serif; font-size: 26px; font-weight: 500; color: var(--gold); margin-bottom: 14px; }
+
+  .applications { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; align-items: end; }
+  .app { text-align: center; font-size: 12px; color: var(--muted); }
+  .app img { margin: 0 auto 10px; object-fit: cover; border: 1px solid var(--line); }
+  .a-circle img { width: 110px; height: 110px; border-radius: 50%; }
+  .a-round img { width: 110px; height: 110px; border-radius: 26px; }
+  .a-wide img { width: 100%; height: 110px; border-radius: 14px; }
+  .a-fav img { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 52px; }
+
+  .palette { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  .swatch { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); cursor: pointer; transition: transform .2s; background: var(--surface); }
+  .swatch:hover { transform: translateY(-3px); }
+  .swatch .c { height: 96px; }
+  .swatch .tx { padding: 10px 12px; font-size: 12px; }
+  .swatch b { display: block; font-size: 13px; }
+  .swatch span { color: var(--muted); font-family: ui-monospace, monospace; }
+
+  .spec .lab { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .spec .big { font-size: 36px; line-height: 1.15; }
+
+  .list { display: grid; gap: 10px; }
+  .list div, .chip-btn { padding: 12px 14px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); font-size: 13px; }
+  .do b { color: #7BD79B; } .dont b { color: #F08A8A; }
+  .chip-btn { cursor: pointer; text-align: left; color: var(--text); font: inherit; font-family: 'Cormorant Garamond',serif; font-size: 19px; font-style: italic; width: 100%; }
+  .chip-btn:hover, .copy:hover { border-color: var(--gold); }
+  .copy { cursor: pointer; white-space: pre-line; }
+
+  .ig { max-width: 380px; margin: 0 auto; background: #000; border: 1px solid var(--line); border-radius: 26px; padding: 20px; }
+  .ig-top { display: flex; align-items: center; gap: 18px; }
+  .ig-top img { width: 82px; height: 82px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+  .ig-stats { display: flex; gap: 18px; text-align: center; font-size: 11px; color: var(--muted); }
+  .ig-stats b { display: block; color: #fff; font-size: 16px; }
+  .ig-bio { font-size: 13px; margin-top: 14px; line-height: 1.5; }
+  .ig-bio b { display: block; }
+  .hl { display: flex; gap: 14px; margin-top: 16px; overflow-x: auto; }
+  .hl div { text-align: center; font-size: 10px; color: var(--muted); flex-shrink: 0; }
+  .hl i { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--gold-dim); background: var(--surface); margin: 0 auto 4px; font-style: normal; font-size: 20px; }
+
+  .bcard { aspect-ratio: 1.75; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 18px 40px rgba(0,0,0,.45); }
+  .bc-front { background: #0D0D10; border: 1px solid var(--gold-dim); align-items: center; justify-content: center; text-align: center; gap: 6px; }
+  .bc-front img { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; }
+  .bc-back { background: #F7F1E6; color: #1B1714; }
+  .bc-back .nm { font-family: 'Cormorant Garamond',serif; font-size: 22px; }
+  .bc-back small { color: #6c6258; display: block; }
+
+  .rules { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .rule { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 18px; font-size: 13px; color: #D5D0C8; }
+  .rule b { display: block; color: var(--gold); margin-bottom: 4px; }
+
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: #111; border: 1px solid var(--gold-dim); padding: 10px 18px; border-radius: 999px; font-size: 13px; opacity: 0; pointer-events: none; transition: .3s; z-index: 9999; }
+  #toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+  @media (max-width: 900px) { .logo-hero { grid-template-columns: 1fr; padding: 22px; } .logo-hero img { max-width: 320px; margin: 0 auto; } .applications, .palette { grid-template-columns: repeat(2,1fr); } .rules { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main class="container">
+  <div class="page-head" style="padding-bottom:18px">
+    <div class="crumbs"><a href="index.html">Home</a> / Brand</div>
+    <h1 class="h1">MEEM <em>STUDIO</em></h1>
+    <p class="lead">Logo, colours, typography and voice — everything that makes the brand look and sound like one.</p>
+  </div>
+  <nav class="subnav"><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#voice">Voice</a><a href="#social">Social kit</a><a href="#rules">Usage</a></nav>
+
+  <section class="block" id="logo" style="margin-top:34px">
+    <div class="logo-hero">
+      <img src="assets/logos/meem-logo.jpg" width="700" height="700" alt="MEEM STUDIO logo">
+      <div>
+        <div class="pill-tag">The idea</div>
+        <h2 class="h2">Two names, one <em>letter</em></h2>
+        <p class="lead" style="margin-top:12px">محمود and ميرنا both begin with <b class="gold">م — Meem</b>. The logo turns that shared letter into an arch with a small heart inside its loop: a doorway, and a couple, in one mark.</p>
+        <div class="names-row"><div class="name-pill"><b>م</b>Mahmoud · محمود</div><div class="name-pill"><b>م</b>Merna · ميرنا</div></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-gold" href="assets/logos/meem-logo.jpg" download="MEEM-STUDIO-logo.jpg">Download logo</a><a class="btn btn-ghost" href="assets/logos/meem-logo-96.jpg" download="MEEM-STUDIO-icon.jpg">Download icon (96px)</a></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:22px"><h3 class="t">Where the logo goes</h3>
+      <div class="applications">
+        <div class="app a-circle"><img src="assets/logos/meem-logo.jpg" loading="lazy" alt="">Profile picture</div>
+        <div class="app a-round"><img src="assets/logos/meem-logo.jpg" loading="lazy" alt="">App icon</div>
+        <div class="app a-wide"><img src="assets/logos/meem-logo.jpg" loading="lazy" alt="">Cover crop</div>
+        <div class="app a-fav"><img src="assets/logos/meem-logo-96.jpg" alt="">Browser tab icon</div>
+      </div></div>
+  </section>
+
+  <section class="block" id="colour">
+    <h2 class="h2" style="margin-bottom:18px">Colour <em>palette</em></h2>
+    <div class="palette" id="palette"></div>
+    <p class="muted" style="font-size:12px;margin-top:10px">Click a swatch to copy its code.</p>
+  </section>
+
+  <section class="block" id="type">
+    <h2 class="h2" style="margin-bottom:18px">Typography</h2>
+    <div class="grid g3">
+      <div class="card spec"><div class="lab">English headings</div><div class="big serif">Cormorant Garamond</div><div class="serif muted" style="font-style:italic;font-size:19px">Elegant and timeless.</div></div>
+      <div class="card spec"><div class="lab">Arabic headings</div><div class="big" style="font-family:'Aref Ruqaa',serif">ميم ستوديو</div><div class="arabic muted" style="font-size:21px">أميري للنصوص الطويلة</div></div>
+      <div class="card spec"><div class="lab">Body &amp; buttons</div><div class="big" style="font-weight:600;font-size:30px">Plus Jakarta Sans</div><div class="muted" style="font-size:14px">Clear on every phone.</div></div>
+    </div>
+  </section>
+
+  <section class="block" id="voice">
+    <div class="grid g2">
+      <div class="card"><h3 class="t">Voice</h3>
+        <p class="gold" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px">Personal • Modern • Bilingual</p>
+        <div class="list">
+          <div class="do"><b>Do</b> sound like a friend helping plan the wedding.</div>
+          <div class="do"><b>Do</b> mix simple Arabic with clear English.</div>
+          <div class="do"><b>Do</b> be specific: “ready in 48 hours”, “opens with a knock”.</div>
+          <div class="dont"><b>Don’t</b> use pushy sales language or over-promise.</div>
+          <div class="dont"><b>Don’t</b> mix many colours or fonts in one post.</div>
+        </div></div>
+      <div class="card"><h3 class="t">Taglines <span class="muted" style="font:12px 'Plus Jakarta Sans'">(click to copy)</span></h3>
+        <div class="list" id="taglines"></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="social">
+    <h2 class="h2" style="margin-bottom:18px">Social <em>kit</em></h2>
+    <div class="grid g2" style="align-items:start">
+      <div><div class="ig" id="ig"></div><p class="muted center" style="font-size:12px;margin-top:10px">Instagram profile</p></div>
+      <div class="grid" style="gap:18px"><div class="bcard bc-front" id="bcFront"></div><div class="bcard bc-back" id="bcBack"></div><p class="muted center" style="font-size:12px">Business card</p></div>
+    </div>
+    <div class="card" style="margin-top:22px"><h3 class="t">Bio &amp; first-post copy <span class="muted" style="font:12px 'Plus Jakarta Sans'">(click to copy)</span></h3><div class="list" id="bios"></div></div>
+  </section>
+
+  <section class="block" id="rules" style="margin-bottom:50px">
+    <h2 class="h2" style="margin-bottom:18px">Using the <em>logo</em></h2>
+    <div class="rules">
+      <div class="rule"><b>Give it space</b>Keep clear space around the logo equal to the height of the heart.</div>
+      <div class="rule"><b>Keep it dark</b>The logo is designed for dark backgrounds. On light, place it inside its black square.</div>
+      <div class="rule"><b>Don’t alter it</b>No stretching, recolouring, outlines or shadows.</div>
+    </div>
+  </section>
+</main>
+<div id="toast"></div>
+<script src="assets/data.js"></script><script src="assets/site.js"></script>
+<script>
+  Shell.init('brand.html');
+  const B = SITE.BRAND, $ = id => document.getElementById(id);
+  function toast(t) { const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('on'), 1600); }
+  window.copyText = async t => { try { await navigator.clipboard.writeText(t); } catch (_) {} toast('Copied ✓'); };
+
+  $('palette').innerHTML = [['Ink', '#0B0B0E'], ['Antique Gold', '#DFBE7F'], ['Ivory', '#F7F1E6'], ['Rose Clay', '#B97A6A']]
+    .map(([n, c]) => `<div class="swatch" onclick="copyText('${c}')"><div class="c" style="background:${c}"></div><div class="tx"><b>${n}</b><span>${c}</span></div></div>`).join('');
+  $('taglines').innerHTML = [B.tagline, 'دعوتك… أول ما يفتحها الضيف يحس بالفرحة.', 'Open the door to your wedding.', 'Your story, one tap away.']
+    .map(t => `<button class="chip-btn" onclick="copyText(this.textContent)">${t}</button>`).join('');
+  $('ig').innerHTML = `<div class="ig-top"><img src="${B.icon}" width="82" height="82" alt=""><div class="ig-stats"><div><b>16</b>posts</div><div><b>—</b>followers</div><div><b>—</b>following</div></div></div>
+    <div class="ig-bio"><b>${B.name} • ${B.ar}</b><span class="muted">Wedding service</span><br>${B.tagline}<br>📍 Cairo, Egypt 🇪🇬<br>💌 Wedding, katb ketab &amp; henna invitations<br><span class="gold">👇 Preview the designs</span></div>
+    <div class="hl"><div><i>💍</i>Designs</div><div><i>🕌</i>Katb Ketab</div><div><i>🏮</i>Henna</div><div><i>🎬</i>Reels</div><div><i>💬</i>Reviews</div><div><i>📦</i>Packages</div></div>`;
+  $('bcFront').innerHTML = `<img src="${B.icon}" width="64" height="64" alt=""><div class="serif" style="font-size:22px;letter-spacing:.14em">${B.name}</div><div class="arabic gold" style="font-size:18px">${B.ar}</div>`;
+  $('bcBack').innerHTML = `<div><div class="nm">Mahmoud &amp; Merna</div><small>Founders • مؤسسا العلامة</small></div><div style="font-size:12px;line-height:1.7"><small>WhatsApp: +20 10 2419 0741</small><small>${B.handle}</small><small>Cairo, Egypt</small></div>`;
+  $('bios').innerHTML = [
+    `${B.name} • ${B.ar}\n${B.tagline}\n💌 Wedding, katb ketab & henna invitations\n📍 Cairo, Egypt\n👇 Preview the designs`,
+    `Meet ${B.name} ✨ Invitations that open with a knock, a seal or a lantern — designed and handcrafted by Mahmoud & Merna. Preview the designs through the link in our bio.`,
+    `اتعرفوا على ${B.name} ${B.ar} 💌 دعوات رقمية للفرح وكتب الكتاب والخطوبة والحنة… بحركة وصوت وموسيقى. الرابط في البايو.`
+  ].map(t => `<div class="copy" onclick="copyText(this.textContent)">${t}</div>`).join('');
+</script>
+</body></html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دعوة زفاف ملكية — عمر و سلمى | القاهرة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --emerald-deep: #041D17;
+      --emerald: #072D24;
+      --emerald-card: #0A372C;
+      --gold: #D8B46C;
+      --gold-light: #F3DCAA;
+      --gold-line: rgba(216, 180, 108, 0.32);
+      --ivory: #FAF4E8;
+      --muted: #B9C8C0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at top center, #0D4235 0%, var(--emerald-deep) 68%);
+      color: var(--ivory);
+      font-family: 'Tajawal', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+
+    /* ================= ROYAL DOUBLE DOORS REVEAL ================= */
+    #gates-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      perspective: 1400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: visibility 1.25s ease;
+    }
+    #gates-overlay.is-open {
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .gate-door {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50.5%;
+      background:
+        radial-gradient(circle at center, rgba(216, 180, 108, 0.08) 0%, transparent 65%),
+        linear-gradient(180deg, #06281F 0%, #041B15 55%, #072F25 100%);
+      border-top: 3px solid var(--gold);
+      border-bottom: 3px solid var(--gold);
+      transition: transform 1.25s cubic-bezier(0.76, 0, 0.24, 1);
+      backface-visibility: hidden;
+    }
+    .gate-door::after {
+      content: '';
+      position: absolute;
+      inset: 18px;
+      border: 1px solid var(--gold-line);
+      pointer-events: none;
+    }
+    .gate-right {
+      right: 0;
+      border-left: 1.5px solid var(--gold);
+      transform-origin: right center;
+    }
+    .gate-left {
+      left: 0;
+      border-right: 1.5px solid var(--gold);
+      transform-origin: left center;
+    }
+
+    #gates-overlay.is-open .gate-right { transform: rotateY(-108deg); }
+    #gates-overlay.is-open .gate-left { transform: rotateY(108deg); }
+
+    .gate-crest-wrap {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 0.5s ease, transform 0.6s ease;
+    }
+    #gates-overlay.is-open .gate-crest-wrap {
+      opacity: 0;
+      transform: scale(0.86);
+    }
+
+    .royal-seal {
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle at 35% 30%, #10493B 0%, #05221B 75%);
+      box-shadow: 0 0 0 8px rgba(216, 180, 108, 0.12), 0 18px 48px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--gold-light);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .royal-seal:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 12px rgba(216, 180, 108, 0.2), 0 22px 55px rgba(0, 0, 0, 0.65);
+    }
+
+    .open-btn {
+      margin-top: 18px;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #E8C986 0%, #B88D3E 100%);
+      color: #052019;
+      border: none;
+      border-radius: 999px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(216, 180, 108, 0.28);
+      transition: transform 0.25s ease;
+    }
+    .open-btn:hover { transform: translateY(-2px); }
+
+    .knock-dots {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .knock-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: transparent;
+      transition: all 0.35s ease;
+    }
+    .knock-dot.is-lit {
+      background: var(--gold-light);
+      box-shadow: 0 0 16px rgba(243, 220, 170, 0.9);
+      transform: scale(1.22);
+    }
+
+    /* ================= INVITATION BODY ================= */
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 18px 88px;
+    }
+
+    .royal-frame {
+      background: linear-gradient(180deg, rgba(10, 55, 44, 0.88) 0%, rgba(5, 30, 24, 0.96) 100%);
+      border: 1.5px solid var(--gold-line);
+      border-radius: 24px 24px 16px 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+    }
+    .royal-frame::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(216, 180, 108, 0.22);
+      border-radius: 18px 18px 10px 10px;
+      pointer-events: none;
+    }
+
+    .arch-header {
+      padding: 58px 32px 48px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-svg {
+      width: min(320px, 85%);
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .verse {
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      color: var(--gold-light);
+      max-width: 520px;
+      margin: 0 auto 18px;
+      line-height: 2;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .couple-names {
+      font-family: 'Aref Ruqaa', serif;
+      font-size: clamp(46px, 11vw, 70px);
+      line-height: 1.25;
+      background: linear-gradient(180deg, #FFF5DB 0%, #D8B46C 60%, #B48A3E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 8px 0 16px;
+    }
+
+    .guest-badge {
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-line);
+      background: rgba(216, 180, 108, 0.1);
+      color: var(--gold-light);
+      font-family: 'Amiri', serif;
+      font-size: 21px;
+      margin: 10px 0 18px;
+    }
+
+    .date-strip {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 28px;
+      border-top: 1px solid var(--gold-line);
+      border-bottom: 1px solid var(--gold-line);
+      margin-top: 22px;
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      color: var(--ivory);
+    }
+
+    .section-block {
+      padding: 46px 32px;
+      text-align: center;
+      border-top: 1px solid rgba(216, 180, 108, 0.18);
+    }
+
+    .sec-tag {
+      font-size: 12px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .sec-title {
+      font-family: 'Amiri', serif;
+      font-size: 30px;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+
+    /* Countdown */
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 460px;
+      margin: 22px auto 28px;
+    }
+    .cd-item {
+      background: rgba(4, 29, 23, 0.7);
+      border: 1px solid var(--gold-line);
+      border-radius: 14px;
+      padding: 16px 8px;
+    }
+    .cd-num {
+      font-family: 'Amiri', serif;
+      font-size: 34px;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .cd-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #E8C986 0%, #B88D3E 100%);
+      color: #041D17;
+      border: none;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(216, 180, 108, 0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold-line);
+    }
+    .btn-outline:hover { background: rgba(216, 180, 108, 0.14); border-color: var(--gold); }
+
+    /* Program Timeline */
+    .program-list {
+      max-width: 480px;
+      margin: 22px auto 0;
+      display: grid;
+      gap: 12px;
+      text-align: right;
+    }
+    .prog-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 15px 18px;
+      background: rgba(4, 29, 23, 0.55);
+      border: 1px solid rgba(216, 180, 108, 0.2);
+      border-radius: 14px;
+    }
+    .prog-time {
+      min-width: 82px;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(216, 180, 108, 0.14);
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .prog-name { font-family: 'Amiri', serif; font-size: 21px; color: var(--ivory); line-height: 1.3; }
+    .prog-desc { font-size: 13px; color: var(--muted); }
+
+    /* Dress code */
+    .colors { display: flex; justify-content: center; gap: 14px; margin: 18px 0 14px; }
+    .swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-line);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Venue */
+    .venue-card {
+      max-width: 480px;
+      margin: 18px auto 0;
+      padding: 26px 22px;
+      border-radius: 16px;
+      background: rgba(4, 29, 23, 0.62);
+      border: 1px solid var(--gold-line);
+    }
+
+    /* RSVP */
+    .rsvp-form {
+      max-width: 460px;
+      margin: 22px auto 0;
+      display: grid;
+      gap: 15px;
+      text-align: right;
+    }
+    .rsvp-form label.lbl {
+      display: block;
+      font-size: 13px;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+    .rsvp-form input,
+    .rsvp-form select,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--gold-line);
+      background: rgba(4, 24, 19, 0.85);
+      color: var(--ivory);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 14px;
+      outline: none;
+    }
+    .rsvp-form input:focus,
+    .rsvp-form select:focus,
+    .rsvp-form textarea:focus { border-color: var(--gold-light); }
+
+    .att-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .att-opt {
+      position: relative;
+      padding: 12px;
+      text-align: center;
+      border-radius: 12px;
+      border: 1px solid var(--gold-line);
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .att-opt input { position: absolute; opacity: 0; }
+    .att-opt:has(input:checked) {
+      background: rgba(216, 180, 108, 0.16);
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 560px) {
+      .arch-header, .section-block { padding: 38px 20px; }
+      .cd-num { font-size: 26px; }
+    }
+  </style>
+</head>
+<body data-particles="gold-dust" data-music-mood="oriental">
+
+  <!-- 3-Knock Royal Double-Doors Reveal -->
+  <div id="gates-overlay" role="dialog" aria-label="فتح الدعوة الملكية" style="cursor:pointer;">
+    <div class="gate-door gate-right"></div>
+    <div class="gate-door gate-left"></div>
+    <div class="gate-crest-wrap" id="gateCrestWrap">
+      <div class="royal-seal" id="openGateSeal" aria-label="دق على الباب ثلاث مرات">
+        <span class="ruqaa" style="font-size:36px; line-height:1.1;">ع &amp; س</span>
+        <span style="font-size:11px; color:var(--gold); margin-top:4px;">دعوة ملكية</span>
+      </div>
+      <div class="amiri" style="font-size:24px; color:var(--gold-light);" data-guest-name data-guest-prefix="إلى ضيفنا الكريم: ">
+        عمر و سلمى — القاهرة
+      </div>
+      <div id="knockHint" style="font-size:15px; color:var(--ivory); margin-top:8px;">
+        ثلاث طرقات تفتح لك أبواب الأمسية ✨
+      </div>
+      <div class="knock-dots" id="knockDots" aria-hidden="true">
+        <span class="knock-dot"></span>
+        <span class="knock-dot"></span>
+        <span class="knock-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invitation Content -->
+  <main class="page-wrap">
+    <article class="royal-frame">
+
+      <section class="arch-header reveal">
+        <svg class="arch-svg" viewBox="0 0 360 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M18 106C18 52 98 34 180 8C262 34 342 52 342 106" stroke="#D8B46C" stroke-width="1.4"/>
+          <path d="M36 106C36 60 108 44 180 22C252 44 324 60 324 106" stroke="#D8B46C" stroke-width="0.7" stroke-dasharray="4 4"/>
+          <polygon points="180,34 190,48 180,62 170,48" stroke="#F3DCAA" stroke-width="1.2" fill="rgba(216,180,108,0.18)"/>
+          <circle cx="180" cy="48" r="3" fill="#F3DCAA"/>
+        </svg>
+
+        <p class="verse">
+          ﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾
+        </p>
+        <div class="subtitle">تتشرف عائلتا الحاج محمود الشريف والمهندس طارق المنياوي بدعوتكم لحضور حفل زفاف</div>
+
+        <h1 class="couple-names" data-couple-title>عمر &amp; سلمى</h1>
+
+        <div class="guest-badge" data-guest-name data-guest-prefix="يسعدنا حضوركم، " style="display:none;"></div>
+
+        <p style="font-size:15px; color:var(--muted); max-width:460px; margin:0 auto;">
+          لتكتمل فرحتنا بحضوركم وتشريفكم، وتزدان ليلتنا بدعواتكم الطيبة ومشاركتكم أسعد لحظات العمر.
+        </p>
+
+        <div class="date-strip">
+          <span data-event-date>الخميس ٢٢ مايو ٢٠٢٧</span>
+          <span style="color:var(--gold);">✦</span>
+          <span>الساعة ٨:٠٠ مساءً</span>
+          <span style="color:var(--gold);">✦</span>
+          <span data-venue-name>العاصمة الإدارية، القاهرة</span>
+        </div>
+      </section>
+
+      <!-- COUNTDOWN -->
+      <section class="section-block reveal">
+        <div class="sec-tag">العد التنازلي لليلة العمر</div>
+        <h2 class="sec-title">موعد الفرحة الكبرى</h2>
+        <div class="wi-tear-cal" style="--cal-accent:#0A372C;">
+          <div class="wi-tear-top">مايو ٢٠٢٧</div>
+          <div class="wi-tear-body">
+            <div class="wi-tear-meta">الخميس</div>
+            <div class="wi-tear-day amiri" style="color:#072D24;">٢٢</div>
+            <div class="wi-tear-meta">الساعة ٨:٠٠ مساءً</div>
+          </div>
+        </div>
+        <div class="cd-grid" data-countdown="2027-05-22T20:00:00+03:00" data-ar-digits>
+          <div class="cd-item"><div class="cd-num" data-cd="days">٠٠</div><div class="cd-label">يوم</div></div>
+          <div class="cd-item"><div class="cd-num" data-cd="hours">٠٠</div><div class="cd-label">ساعة</div></div>
+          <div class="cd-item"><div class="cd-num" data-cd="minutes">٠٠</div><div class="cd-label">دقيقة</div></div>
+          <div class="cd-item"><div class="cd-num" data-cd="seconds">٠٠</div><div class="cd-label">ثانية</div></div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-gold wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة إلى تقويم جوجل</button>
+          <button type="button" class="btn btn-outline" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">حفظ في تقويم الهاتف (.ICS)</button>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="section-block reveal">
+        <div class="sec-tag">برنامج الحفل</div>
+        <h2 class="sec-title">تفاصيل الأمسية الملكية</h2>
+        <div class="program-list">
+          <div class="prog-card">
+            <div class="prog-time">٨:٠٠ م</div>
+            <div>
+              <div class="prog-name">استقبال الضيوف والضيافة المصرية الراقية</div>
+              <div class="prog-desc">مشروبات الترحيب الفاخرة، الضيافة الشرقية، وترحيب العائلتين.</div>
+            </div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-time">٩:٠٠ م</div>
+            <div>
+              <div class="prog-name">مراسم التهاني والصور التذكارية</div>
+              <div class="prog-desc">لقاء الأحبة وتوثيق أجمل اللحظات في بهو القاعة.</div>
+            </div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-time">١٠:١٥ م</div>
+            <div>
+              <div class="prog-name">الزفة الملكية</div>
+              <div class="prog-desc">دخول العروسين وسط أنغام هادئة وإضاءة ساحرة.</div>
+            </div>
+          </div>
+          <div class="prog-card">
+            <div class="prog-time">١١:٠٠ م</div>
+            <div>
+              <div class="prog-name">مأدبة العشاء</div>
+              <div class="prog-desc">تقديم مأدبة العشاء الفاخرة والحلويات الشرقية والعالمية.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DRESS CODE & VENUE -->
+      <section class="section-block reveal">
+        <div class="sec-tag">ألوان الحفل والموقع</div>
+        <h2 class="sec-title">إطلالة الأمسية وقاعة الاحتفال</h2>
+        <div class="colors">
+          <span class="swatch" style="background:#06281F;" title="زمردي ملكي"></span>
+          <span class="swatch" style="background:#D8B46C;" title="ذهبي عتيق"></span>
+          <span class="swatch" style="background:#F3E6CE;" title="عاجي"></span>
+          <span class="swatch" style="background:#141414;" title="أسود رسمي"></span>
+        </div>
+        <p style="font-size:14px; color:var(--muted); max-width:440px; margin:0 auto;">
+          يسعدنا حضوركم بالزي الرسمي أو الفساتين المسائية الراقية — ونعتذر بلطف عن اصطحاب الأطفال لراحتكم.
+        </p>
+
+        <div class="venue-card">
+          <div class="amiri" style="font-size:26px; color:var(--gold-light); margin-bottom:4px;" data-venue-name>قاعة القصر الملكي — فندق الماسة كابيتال</div>
+          <div style="font-size:14px; color:var(--muted); margin-bottom:20px;">العاصمة الإدارية الجديدة، القاهرة، جمهورية مصر العربية</div>
+          <div class="btn-group">
+            <a class="btn btn-gold" href="https://maps.google.com/?q=Al+Masa+Hotel+Capital+New+Administrative+Capital+Egypt" target="_blank" rel="noopener noreferrer">الاتجاهات عبر خرائط جوجل</a>
+            <button type="button" class="btn btn-outline" data-copy-text="فندق الماسة كابيتال، العاصمة الإدارية الجديدة، القاهرة، مصر">نسخ العنوان</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section class="section-block reveal">
+        <div class="sec-tag">تأكيد الحضور</div>
+        <h2 class="sec-title">بطاقة الدخول الرقمية</h2>
+        <p style="font-size:14px; color:var(--muted); max-width:430px; margin:0 auto;">
+          يرجى تأكيد حضوركم للحصول على بطاقة الدخول الرقمية (QR) وإرسال التهنئة مباشرة عبر واتساب.
+        </p>
+        <form class="rsvp-form" data-rsvp-form data-lang="ar" data-couple="عمر و سلمى" data-result-target="rsvp-result" data-qr-fg="#041D17" data-qr-bg="#FAF4E8">
+          <div>
+            <label class="lbl" for="gname">الاسم الكريم</label>
+            <input id="gname" name="guestName" type="text" required placeholder="مثال: الأستاذ أحمد عبد الرحمن" />
+          </div>
+          <div>
+            <label class="lbl">حالة الحضور</label>
+            <div class="att-grid">
+              <label class="att-opt"><input type="radio" name="attendance" value="yes" checked />سأحضر بكل سرور</label>
+              <label class="att-opt"><input type="radio" name="attendance" value="no" />أعتذر عن الحضور</label>
+            </div>
+          </div>
+          <div>
+            <label class="lbl" for="gcount">عدد الضيوف</label>
+            <select id="gcount" name="guestsCount">
+              <option value="1">شخص واحد</option>
+              <option value="2" selected>شخصان</option>
+              <option value="3">٣ أشخاص</option>
+              <option value="4">٤ أشخاص</option>
+            </select>
+          </div>
+          <div>
+            <label class="lbl" for="gnote">كلمة تهنئة للعروسين</label>
+            <textarea id="gnote" name="note" rows="3" placeholder="بارك الله لكما وبارك عليكما وجمع بينكما في خير..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%;">تأكيد الحضور وإصدار بطاقة الدخول</button>
+        </form>
+        <div id="rsvp-result" style="display:none; max-width:460px; margin:0 auto;"></div>
+      </section>
+
+      <section class="section-block" style="padding:32px 20px;">
+        <div class="ruqaa" style="font-size:34px; color:var(--gold-light);" data-couple-title>عمر &amp; سلمى</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px;">دامت أفراحكم عامرة بالمسرات</div>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'حفل زفاف عمر و سلمى',
+      start: '2027-05-22T18:00:00Z',
+      end: '2027-05-22T23:00:00Z',
+      location: 'فندق الماسة كابيتال، العاصمة الإدارية الجديدة، القاهرة، مصر',
+      description: 'نتشرف بدعوتكم لحضور حفل زفاف عمر و سلمى في القاهرة.',
+      filename: 'omar-salma-cairo-wedding'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      WeddingMotion.initThreeKnockDoor({
+        overlayId: 'gates-overlay',
+        triggerId: 'gates-overlay',
+        dotsId: 'knockDots',
+        hintId: 'knockHint',
+        shakeTargetId: 'gateCrestWrap',
+        musicMood: 'oriental'
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دعوة خطوبة — أحمد و رنا | الإسكندرية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sapphire: #0B1933;
+      --card: rgba(19, 40, 79, 0.78);
+      --gold: #E6C57F;
+      --ivory: #FAF7F0;
+      --muted: #B6C5DE;
+      --line: rgba(230, 197, 127, 0.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(ellipse at top, #1A376A 0%, var(--sapphire) 68%);
+      color: var(--ivory);
+      font-family: 'Tajawal', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+
+    #ringbox-overlay {
+      position: fixed; inset: 0; z-index: 5000;
+      background: radial-gradient(circle at center, #183260 0%, #071022 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px; text-align: center; transition: opacity 0.9s ease, visibility 0.9s ease;
+    }
+    #ringbox-overlay.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .ring-box-scene { width: 210px; height: 195px; perspective: 900px; cursor: pointer; position: relative; margin-bottom: 24px; }
+    .box-base {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 108px;
+      border-radius: 16px 16px 26px 26px;
+      background: linear-gradient(160deg, #1A3B73 0%, #0C1E3F 100%);
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55), inset 0 8px 18px rgba(0, 0, 0, 0.45);
+      display: flex; align-items: center; justify-content: center; z-index: 2;
+    }
+    .ring-cushion { width: 146px; height: 54px; border-radius: 12px; background: linear-gradient(180deg, #F4ECE0 0%, #DFD0BA 100%); display: flex; align-items: center; justify-content: center; }
+    .ring-svg { position: relative; top: -22px; filter: drop-shadow(0 6px 14px rgba(235, 245, 255, 0.55)); transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .ring-box-scene.is-opened .ring-svg { transform: translateY(-18px) scale(1.18); }
+
+    .box-lid {
+      position: absolute; top: 12px; left: 0; right: 0; height: 102px;
+      border-radius: 26px 26px 10px 10px;
+      background: linear-gradient(145deg, #21488A 0%, #0F244A 100%);
+      border: 1.5px solid var(--gold); transform-origin: top center;
+      transition: transform 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
+      z-index: 4; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+    .box-lid::after { content: 'أ & ر'; font-family: 'Aref Ruqaa', serif; font-size: 30px; color: var(--gold); }
+    .ring-box-scene.is-opened .box-lid { transform: rotateX(132deg); }
+
+    .tap-cta { margin-top: 14px; padding: 12px 30px; border-radius: 999px; border: none; background: linear-gradient(135deg, #F3D999, #C49644); color: #09152B; font-family: 'Tajawal', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; }
+
+    .wrap { max-width: 720px; margin: 0 auto; padding: 72px 18px 88px; }
+    .card { background: var(--card); border: 1px solid var(--line); backdrop-filter: blur(14px); border-radius: 24px; padding: 48px 30px; text-align: center; margin-bottom: 22px; box-shadow: 0 22px 58px rgba(0, 0, 0, 0.35); }
+    .tag { font-size: 12px; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+    .couple-title { font-family: 'Aref Ruqaa', serif; font-size: clamp(48px, 11vw, 72px); line-height: 1.25; background: linear-gradient(180deg, #FFFFFF 0%, #E6C57F 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 8px 0 12px; }
+    .guest-chip { display: inline-block; margin: 8px 0 14px; padding: 6px 22px; border-radius: 999px; border: 1px solid var(--line); background: rgba(230, 197, 127, 0.12); color: var(--gold); font-family: 'Amiri', serif; font-size: 21px; }
+    .date-line { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 14px; padding: 12px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 20px; font-family: 'Amiri', serif; font-size: 20px; }
+    .sec-title { font-family: 'Amiri', serif; font-size: 32px; color: var(--gold); margin-bottom: 12px; }
+
+    .cd-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 450px; margin: 20px auto 26px; }
+    .cd-box { padding: 16px 8px; border-radius: 14px; background: rgba(8, 20, 42, 0.7); border: 1px solid var(--line); }
+    .cd-val { font-family: 'Amiri', serif; font-size: 34px; color: var(--gold); line-height: 1; }
+    .cd-lbl { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 12px 24px; border-radius: 999px; font-family: 'Tajawal', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; }
+    .btn-gold { background: linear-gradient(135deg, #F3D999, #C49644); color: #09152B; border: none; }
+    .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--line); }
+
+    .prog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; text-align: right; }
+    .prog { padding: 18px; border-radius: 16px; background: rgba(8, 20, 42, 0.58); border: 1px solid rgba(230, 197, 127, 0.18); }
+    .prog-time { font-size: 12px; color: var(--gold); font-weight: 700; }
+    .prog-name { font-family: 'Amiri', serif; font-size: 22px; margin: 4px 0; }
+    .prog-desc { font-size: 13px; color: var(--muted); }
+
+    .rsvp-form { max-width: 450px; margin: 22px auto 0; text-align: right; display: grid; gap: 14px; }
+    .rsvp-form label.lbl { display: block; font-size: 13px; color: var(--gold); margin-bottom: 5px; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(7, 16, 34, 0.85); color: var(--ivory); font-family: inherit; font-size: 14px; outline: none; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pair-opt { position: relative; padding: 12px; border-radius: 12px; border: 1px solid var(--line); text-align: center; cursor: pointer; font-size: 13px; color: var(--muted); }
+    .pair-opt input { position: absolute; opacity: 0; }
+    .pair-opt:has(input:checked) { background: rgba(230, 197, 127, 0.16); border-color: var(--gold); color: var(--gold); font-weight: 700; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 600px) { .prog-grid { grid-template-columns: 1fr; } .card { padding: 36px 20px; } }
+  </style>
+</head>
+<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="oriental">
+  <div id="ringbox-overlay" role="dialog" aria-label="فتح علبة خاتم الخطوبة">
+    <div class="ring-box-scene" id="ringBoxScene">
+      <div class="box-lid"></div>
+      <div class="box-base">
+        <div class="ring-cushion">
+          <svg class="ring-svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,6 42,16 32,26 22,16" fill="#EBF5FF" stroke="#FFFFFF" stroke-width="1.5"/>
+            <path d="M22 16H42" stroke="#B7D7F7" stroke-width="1"/>
+            <circle cx="32" cy="40" r="16" stroke="#E6C57F" stroke-width="4.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="tag" style="margin-bottom:4px;">دعوة حفل خطوبة</div>
+    <div class="ruqaa" style="font-size:44px; color:var(--gold); line-height:1.2;" data-couple-title>أحمد &amp; رنا</div>
+    <div class="amiri" style="font-size:20px; color:var(--muted); margin-top:4px;" data-guest-name data-guest-prefix="يسعدنا مشاركة ">
+      الإسكندرية • ١٨ يونيو ٢٠٢٧
+    </div>
+    <button type="button" class="tap-cta wi-shimmer" id="openBoxBtn">افتح علبة الخطوبة 💍</button>
+  </div>
+
+  <main class="wrap">
+    <section class="card reveal">
+      <div class="tag">بداية قصة جديدة على بحر الإسكندرية</div>
+      <h1 class="couple-title" data-couple-title>أحمد &amp; رنا</h1>
+      <div class="guest-chip" data-guest-name data-guest-prefix="ضيفنا الغالي: " style="display:none;"></div>
+      <p style="font-size:15px; color:var(--muted); max-width:450px; margin:0 auto;">
+        تتشرف العائلتان بدعوتكم لحضور حفل خطوبتنا ومشاركتنا أجمل لحظات البداية وسط نسيم البحر المتوسط.
+      </p>
+      <div class="date-line">
+        <span data-event-date>الجمعة ١٨ يونيو ٢٠٢٧</span>
+        <span style="color:var(--gold);">✦</span>
+        <span>٧:٣٠ مساءً</span>
+      </div>
+      <div style="font-size:13px; color:var(--gold); margin-top:12px; font-weight:600;" data-venue-name>
+        فندق هيلتون كورنيش الإسكندرية • سيدي بشر، الإسكندرية
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">موعد الخطوبة</div>
+      <h2 class="sec-title">العد التنازلي للفرحة</h2>
+      <div class="wi-tear-cal" style="--cal-accent:#13284F;">
+        <div class="wi-tear-top">يونيو ٢٠٢٧</div>
+        <div class="wi-tear-body">
+          <div class="wi-tear-meta">الجمعة</div>
+          <div class="wi-tear-day amiri" style="color:#0B1933;">١٨</div>
+          <div class="wi-tear-meta">الساعة ٧:٣٠ مساءً</div>
+        </div>
+      </div>
+      <div class="cd-row" data-countdown="2027-06-18T19:30:00+03:00" data-ar-digits>
+        <div class="cd-box"><div class="cd-val" data-cd="days">٠٠</div><div class="cd-lbl">يوم</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="hours">٠٠</div><div class="cd-lbl">ساعة</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="minutes">٠٠</div><div class="cd-lbl">دقيقة</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="seconds">٠٠</div><div class="cd-lbl">ثانية</div></div>
+      </div>
+      <div class="btns">
+        <button type="button" class="btn btn-gold wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة لتقويم جوجل</button>
+        <button type="button" class="btn btn-outline" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">حفظ في الهاتف (.ICS)</button>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">أمسية على البحر</div>
+      <h2 class="sec-title">برنامج حفل الخطوبة</h2>
+      <div class="prog-grid">
+        <div class="prog"><div class="prog-time">٧:٣٠ مساءً</div><div class="prog-name">استقبال الأهل والأصدقاء</div><div class="prog-desc">التصوير التذكاري المطل على بحر الإسكندرية والمشروبات الترحيبية.</div></div>
+        <div class="prog"><div class="prog-time">٨:٣٠ مساءً</div><div class="prog-name">تلبيس الدبل والشبكة</div><div class="prog-desc">دخول العروسين وتبادل الخواتم وسط تهاني الأحبة.</div></div>
+        <div class="prog"><div class="prog-time">٩:٣٠ مساءً</div><div class="prog-name">تقطيع تورتة الخطوبة</div><div class="prog-desc">الرقصة الأولى وبوفيه العشاء والحلويات الفاخرة.</div></div>
+        <div class="prog"><div class="prog-time">١٠:٣٠ مساءً</div><div class="prog-name">سهرة الاحتفال</div><div class="prog-desc">أجواء غنائية مبهجة حتى منتصف الليل.</div></div>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">الموقع</div>
+      <h2 class="sec-title" data-venue-name>فندق هيلتون كورنيش الإسكندرية</h2>
+      <p style="font-size:14px; color:var(--muted); margin-bottom:20px;">٥٤٤ طريق الجيش، سيدي بشر، الإسكندرية، مصر</p>
+      <div class="btns">
+        <a class="btn btn-gold wi-shimmer" href="https://maps.google.com/?q=Hilton+Alexandria+Corniche+Egypt" target="_blank" rel="noopener noreferrer">الاتجاهات على الخريطة</a>
+        <button type="button" class="btn btn-outline" data-copy-text="فندق هيلتون كورنيش الإسكندرية، 544 طريق الجيش، سيدي بشر، الإسكندرية">نسخ العنوان</button>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">تأكيد الحضور</div>
+      <h2 class="sec-title">يسعدنا تأكيد حضوركم</h2>
+      <form class="rsvp-form" data-rsvp-form data-lang="ar" data-couple="خطوبة أحمد و رنا" data-result-target="rsvp-result" data-qr-fg="#0B1933" data-qr-bg="#FAF7F0">
+        <div><label class="lbl" for="gname">الاسم الكريم</label><input id="gname" name="guestName" type="text" required placeholder="اكتب اسمك هنا" /></div>
+        <div>
+          <label class="lbl">حالة الحضور</label>
+          <div class="pair">
+            <label class="pair-opt"><input type="radio" name="attendance" value="yes" checked />سأحضر بكل سرور</label>
+            <label class="pair-opt"><input type="radio" name="attendance" value="no" />أعتذر عن الحضور</label>
+          </div>
+        </div>
+        <div><label class="lbl" for="gcount">عدد الضيوف</label><select id="gcount" name="guestsCount"><option value="1">شخص واحد</option><option value="2" selected>شخصان</option><option value="3">٣ أشخاص</option></select></div>
+        <div><label class="lbl" for="gnote">تهنئة للعروسين</label><textarea id="gnote" name="note" rows="3" placeholder="ألف مبروك الخطوبة..."></textarea></div>
+        <button type="submit" class="btn btn-gold wi-shimmer" style="width:100%;">تأكيد الحضور وإصدار البطاقة</button>
+      </form>
+      <div id="rsvp-result" style="display:none; max-width:450px; margin:0 auto;"></div>
+    </section>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'حفل خطوبة أحمد و رنا — الإسكندرية',
+      start: '2027-06-18T16:30:00Z',
+      end: '2027-06-18T22:00:00Z',
+      location: 'فندق هيلتون كورنيش الإسكندرية، 544 طريق الجيش، الإسكندرية، مصر',
+      description: 'دعوة لحضور حفل خطوبة أحمد و رنا في الإسكندرية.',
+      filename: 'ahmed-rana-alexandria-engagement'
+    };
+    const scene = document.getElementById('ringBoxScene');
+    const overlay = document.getElementById('ringbox-overlay');
+    function openRingBox(e) {
+      if (scene.classList.contains('is-opened')) return;
+      scene.classList.add('is-opened');
+      WeddingSound.playSparkle();
+      WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth / 2, (e && e.clientY) || window.innerHeight / 2);
+      WeddingSound.startMusic('oriental');
+      setTimeout(() => { overlay.classList.add('is-open'); document.body.classList.remove('wi-scroll-locked'); }, 950);
+    }
+    scene.addEventListener('click', openRingBox);
+    document.getElementById('openBoxBtn').addEventListener('click', openRingBox);
+  </script>
+</body>
+</html>

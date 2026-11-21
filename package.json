@@ -1,0 +1,12 @@
+{
+  "name": "meem-digital-invitations",
+  "version": "1.0.0",
+  "description": "MEEM (ميم) — Interactive Digital Wedding, Katb Ketab, Engagement & Henna Invitations",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

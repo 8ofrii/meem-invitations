@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="ميم">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6E2B3"/>
+      <stop offset="100%" stop-color="#C89E52"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#0E0E12"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="url(#g)" stroke-width="2" stroke-opacity="0.6"/>
+  <text x="64" y="79" text-anchor="middle" direction="rtl" font-family="'Segoe UI', 'Tahoma', 'Arial', sans-serif" font-weight="700" font-size="46" fill="url(#g)">ميم</text>
+</svg>

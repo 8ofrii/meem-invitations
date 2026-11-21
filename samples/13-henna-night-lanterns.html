@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ليلة حنة سارة — فوانيس المعادي، القاهرة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ruby: #3B0B18;
+      --ruby-deep: #22050D;
+      --card: rgba(65, 14, 29, 0.84);
+      --saffron: #F0B85A;
+      --teal: #1D6E6B;
+      --cream: #FFF6E8;
+      --muted: #E0C5BC;
+      --line: rgba(240, 184, 90, 0.34);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at top, #5C1227 0%, var(--ruby-deep) 68%);
+      color: var(--cream);
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+
+    /* ================= INTERACTIVE LIGHT-THE-LANTERNS COVER ================= */
+    #lantern-cover {
+      position: fixed; inset: 0; z-index: 5000;
+      background: radial-gradient(circle at center, #4A0D1F 0%, #170309 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px; text-align: center;
+      transition: opacity 0.95s ease, visibility 0.95s ease;
+    }
+    #lantern-cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .lanterns-row { display: flex; gap: 24px; justify-content: center; margin-bottom: 24px; }
+    .lantern-btn {
+      background: transparent; border: none; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .lantern-btn:hover { transform: translateY(-4px); }
+    .lantern-svg { width: 68px; height: 108px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5)); transition: filter 0.4s ease, transform 0.4s ease; }
+    .lantern-core { fill: rgba(240, 184, 90, 0.14); transition: fill 0.4s ease; }
+    .lantern-btn.is-lit .lantern-core { fill: #FFE28A; }
+    .lantern-btn.is-lit .lantern-svg {
+      filter: drop-shadow(0 0 28px rgba(255, 209, 102, 0.92));
+      transform: scale(1.08);
+    }
+
+    /* ================= MAIN ================= */
+    .shell { max-width: 720px; margin: 0 auto; padding: 72px 18px 88px; }
+    .henna-card {
+      background: var(--card); border: 1.5px solid var(--line);
+      border-radius: 26px; padding: 48px 30px; text-align: center;
+      margin-bottom: 22px; box-shadow: 0 22px 58px rgba(0,0,0,0.45);
+      position: relative;
+    }
+    .kicker { font-size: 12px; color: var(--saffron); font-weight: 700; margin-bottom: 10px; }
+    .hero-name {
+      font-family: 'Aref Ruqaa', serif; font-size: clamp(48px, 11vw, 72px);
+      line-height: 1.2; color: var(--saffron); margin: 8px 0 12px;
+    }
+    .guest-pill { display: inline-block; margin: 8px 0 14px; padding: 6px 22px; border-radius: 999px; background: rgba(240,184,90,0.14); border: 1px solid var(--line); color: var(--saffron); font-family: 'Amiri', serif; font-size: 21px; }
+    .date-strip { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 14px; padding: 12px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 18px; font-family: 'Amiri', serif; font-size: 20px; }
+
+    .sec-title { font-family: 'Amiri', serif; font-size: 32px; color: var(--saffron); margin-bottom: 12px; }
+    .cd-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 450px; margin: 20px auto 24px; }
+    .cd-box { padding: 14px 6px; border-radius: 14px; background: rgba(34,5,13,0.72); border: 1px solid var(--line); }
+    .cd-val { font-family: 'Amiri', serif; font-size: 34px; color: var(--saffron); line-height: 1; }
+    .cd-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 11px 24px; border-radius: 999px; font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer; }
+    .btn-gold { background: linear-gradient(135deg, #F6CB77, #C9882B); color: #22050D; border: none; }
+    .btn-ghost { background: transparent; color: var(--saffron); border: 1px solid var(--line); }
+
+    .slots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; text-align: right; }
+    .slot { padding: 18px; border-radius: 16px; background: rgba(34,5,13,0.58); border: 1px solid rgba(240,184,90,0.22); }
+    .slot-t { font-size: 12px; color: var(--saffron); font-weight: 700; }
+    .slot-h { font-family: 'Amiri', serif; font-size: 22px; margin: 4px 0; }
+    .slot-p { font-size: 13px; color: var(--muted); }
+
+    .swatches { display: flex; justify-content: center; gap: 14px; margin: 16px 0 14px; }
+    .sw { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--line); }
+
+    .rsvp-form { max-width: 450px; margin: 22px auto 0; text-align: right; display: grid; gap: 14px; }
+    .rsvp-form label.lbl { display: block; font-size: 13px; color: var(--saffron); margin-bottom: 5px; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(34,5,13,0.85); color: var(--cream); font-family: inherit; font-size: 14px; outline: none; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pair-opt { position: relative; padding: 11px; border-radius: 12px; border: 1px solid var(--line); text-align: center; cursor: pointer; font-size: 13px; color: var(--muted); }
+    .pair-opt input { position: absolute; opacity: 0; }
+    .pair-opt:has(input:checked) { background: rgba(240,184,90,0.18); border-color: var(--saffron); color: var(--saffron); font-weight: 700; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 600px) { .slots { grid-template-columns: 1fr; } .henna-card { padding: 34px 18px; } }
+  </style>
+</head>
+<body class="wi-scroll-locked" data-particles="embers" data-music-mood="oriental">
+  <div id="lantern-cover" role="dialog" aria-label="أضيئي الفوانيس لفتح دعوة ليلة الحنة">
+    <div class="lanterns-row" id="lanternsRow">
+      <button type="button" class="lantern-btn" aria-label="إضاءة الفانوس الأول">
+        <svg class="lantern-svg" viewBox="0 0 70 110" fill="none">
+          <line x1="35" y1="0" x2="35" y2="18" stroke="#F0B85A" stroke-width="2"/>
+          <path d="M22 28L35 16L48 28H22Z" stroke="#F0B85A" stroke-width="2" fill="#4A0D1F"/>
+          <path class="lantern-core" d="M18 30H52L46 82H24L18 30Z" stroke="#F0B85A" stroke-width="2"/>
+          <path d="M24 82L35 96L46 82H24Z" stroke="#F0B85A" stroke-width="2" fill="#4A0D1F"/>
+        </svg>
+      </button>
+      <button type="button" class="lantern-btn" aria-label="إضاءة الفانوس الثاني" style="margin-top:16px;">
+        <svg class="lantern-svg" viewBox="0 0 70 110" fill="none">
+          <line x1="35" y1="0" x2="35" y2="18" stroke="#F0B85A" stroke-width="2"/>
+          <path d="M22 28L35 16L48 28H22Z" stroke="#F0B85A" stroke-width="2" fill="#4A0D1F"/>
+          <path class="lantern-core" d="M18 30H52L46 82H24L18 30Z" stroke="#F0B85A" stroke-width="2"/>
+          <path d="M24 82L35 96L46 82H24Z" stroke="#F0B85A" stroke-width="2" fill="#4A0D1F"/>
+        </svg>
+      </button>
+      <button type="button" class="lantern-btn" aria-label="إضاءة الفانوس الثالث">
+        <svg class="lantern-svg" viewBox="0 0 70 110" fill="none">
+          <line x1="35" y1="0" x2="35" y2="18" stroke="#F0B85A" stroke-width="2"/>
+          <path d="M22 28L35 16L48 28H22Z" stroke="#F0B85A" stroke-width="2" fill="#4A0D1F"/>
+          <path class="lantern-core" d="M18 30H52L46 82H24L18 30Z" stroke="#F0B85A" stroke-width="2"/>
+          <path d="M24 82L35 96L46 82H24Z" stroke="#F0B85A" stroke-width="2" fill="#4A0D1F"/>
+        </svg>
+      </button>
+    </div>
+    <div class="kicker">ليلة للبنات وبس ✨</div>
+    <div class="ruqaa" style="font-size:48px; color:var(--saffron); line-height:1.2;" data-couple-title>ليلة حنة سارة</div>
+    <div id="lanternHint" style="font-size:15px; color:var(--cream); margin-top:10px;">
+      اضغطي على الفوانيس الثلاثة لإضاءة ليلة الحنة 🏮
+    </div>
+  </div>
+
+  <main class="shell">
+    <section class="henna-card reveal">
+      <div class="kicker">أهلاً بكل الغاليين في ليلة الفرح والبهجة</div>
+      <h1 class="hero-name" data-couple-title>ليلة حنة سارة</h1>
+      <div class="guest-pill" data-guest-name data-guest-prefix="نورتي الليلة يا " style="display:none;"></div>
+      <p style="font-size:15px; color:var(--muted); max-width:450px; margin:0 auto;">
+        الدف، الزغاريد، رسم الحنة، والضحك من القلب! مستنياكم تشاركوني أحلى ليلة حنة مصرية في المعادي.
+      </p>
+      <div class="date-strip">
+        <span data-event-date>الأربعاء ٦ أكتوبر ٢٠٢٧</span>
+        <span style="color:var(--saffron);">✦</span>
+        <span>٧:٠٠ مساءً</span>
+      </div>
+      <div style="font-size:13px; color:var(--saffron); margin-top:12px; font-weight:700;" data-venue-name>
+        فيلا دار الفنون • دجلة المعادي، القاهرة
+      </div>
+    </section>
+
+    <section class="henna-card reveal">
+      <div class="kicker">العد التنازلي لأحلى سهرة</div>
+      <h2 class="sec-title">فاضل قد إيه على الحنة؟</h2>
+      <div class="cd-row" data-countdown="2027-10-06T19:00:00+03:00" data-ar-digits>
+        <div class="cd-box"><div class="cd-val" data-cd="days">٠٠</div><div class="cd-lbl">يوم</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="hours">٠٠</div><div class="cd-lbl">ساعة</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="minutes">٠٠</div><div class="cd-lbl">دقيقة</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="seconds">٠٠</div><div class="cd-lbl">ثانية</div></div>
+      </div>
+      <div class="btns">
+        <button type="button" class="btn btn-gold wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة لتقويم جوجل</button>
+        <button type="button" class="btn btn-ghost" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">حفظ الموعد (.ICS)</button>
+      </div>
+    </section>
+
+    <section class="henna-card reveal">
+      <div class="kicker">فقرات الليلة</div>
+      <h2 class="sec-title">برنامج ليلة الحنة</h2>
+      <div class="slots">
+        <div class="slot"><div class="slot-t">٧:٠٠ م</div><div class="slot-h">استقبال وصور الفوانيس</div><div class="slot-p">مشروبات كركديه وتمر هندي وركن تصوير شرقي.</div></div>
+        <div class="slot"><div class="slot-t">٨:٠٠ م</div><div class="slot-h">ركن رسم الحنة</div><div class="slot-p">نقوش حنة ناعمة وعصرية لكل الصديقات.</div></div>
+        <div class="slot"><div class="slot-t">٩:٠٠ م</div><div class="slot-h">الزفة بالدف والرقص</div><div class="slot-p">إطلالات الحنة المصرية والنوبية والزغاريد.</div></div>
+        <div class="slot"><div class="slot-t">١٠:٣٠ م</div><div class="slot-h">العشاء والحلويات</div><div class="slot-p">أشهى الأكلات الشرقية والشاي بالنعناع.</div></div>
+      </div>
+    </section>
+
+    <section class="henna-card reveal">
+      <div class="kicker">الألوان واللوك • للسيدات فقط</div>
+      <h2 class="sec-title">ألوان الفرحة والبهجة</h2>
+      <div class="swatches">
+        <span class="sw" style="background:#7A1631;"></span>
+        <span class="sw" style="background:#F0B85A;"></span>
+        <span class="sw" style="background:#1D6E6B;"></span>
+        <span class="sw" style="background:#D96B43;"></span>
+      </div>
+      <p style="font-size:14px; color:var(--muted); max-width:440px; margin:0 auto 22px;">
+        اللبس المبهج، القفطان، الجلابية الشيك أو فساتين الألوان الدافئة — الحفل للسيدات فقط.
+      </p>
+      <div style="border-top:1px solid var(--line); padding-top:20px;">
+        <div class="amiri" style="font-size:26px; color:var(--saffron);" data-venue-name>فيلا دار الفنون — دجلة المعادي</div>
+        <div style="font-size:13px; color:var(--muted); margin:4px 0 18px;">شارع ٢١٣، دجلة المعادي، القاهرة، مصر</div>
+        <div class="btns">
+          <a class="btn btn-gold wi-shimmer" href="https://maps.google.com/?q=Degla+Maadi+Cairo+Egypt" target="_blank" rel="noopener noreferrer">الموقع على الخريطة</a>
+          <button type="button" class="btn btn-ghost" data-copy-text="فيلا دار الفنون، شارع 213، دجلة المعادي، القاهرة">نسخ العنوان</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="henna-card reveal">
+      <div class="kicker">مستنياكم تنوروني</div>
+      <h2 class="sec-title">تأكيد الحضور</h2>
+      <form class="rsvp-form" data-rsvp-form data-lang="ar" data-couple="ليلة حنة سارة" data-result-target="rsvp-result" data-qr-fg="#3B0B18" data-qr-bg="#FFF6E8">
+        <div><label class="lbl" for="gname">الاسم</label><input id="gname" name="guestName" type="text" required placeholder="مثال: ياسمين طارق" /></div>
+        <div>
+          <label class="lbl">الحضور</label>
+          <div class="pair">
+            <label class="pair-opt"><input type="radio" name="attendance" value="yes" checked />أكيد جاية!</label>
+            <label class="pair-opt"><input type="radio" name="attendance" value="no" />أعتذر للأسف</label>
+          </div>
+        </div>
+        <div><label class="lbl" for="gcount">العدد</label><select id="gcount" name="guestsCount"><option value="1" selected>فرد واحد</option><option value="2">فردان</option><option value="3">٣ أفراد</option></select></div>
+        <div><label class="lbl" for="gnote">أغنية تحبي نرقص عليها أو تهنئة</label><textarea id="gnote" name="note" rows="3" placeholder="ألف مبروك يا أحلى عروسة..."></textarea></div>
+        <button type="submit" class="btn btn-gold wi-shimmer" style="width:100%;">تأكيد الحضور وإصدار البطاقة</button>
+      </form>
+      <div id="rsvp-result" style="display:none; max-width:450px; margin:0 auto;"></div>
+    </section>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'ليلة حنة سارة — المعادي، القاهرة',
+      start: '2027-10-06T16:00:00Z',
+      end: '2027-10-06T22:00:00Z',
+      location: 'فيلا دار الفنون، دجلة المعادي، القاهرة، مصر',
+      description: 'دعوة لحضور ليلة حنة سارة في المعادي، القاهرة.',
+      filename: 'sara-henna-night-maadi'
+    };
+    const btns = Array.from(document.querySelectorAll('#lanternsRow .lantern-btn'));
+    const hint = document.getElementById('lanternHint');
+    let litCount = 0;
+    btns.forEach((b) => {
+      b.addEventListener('click', (e) => {
+        if (b.classList.contains('is-lit')) return;
+        b.classList.add('is-lit');
+        litCount++;
+        WeddingSound.playSparkle();
+        WeddingMotion.spawnRipple(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
+        if (litCount < 3) {
+          hint.textContent = litCount === 1 ? 'رائع! أضيئي الفانوسين المتبقيين ✨' : 'فانوس أخير وتبدأ ليلة الحنة 🏮';
+        } else {
+          hint.textContent = 'أهلاً بيكِ في ليلة الحنة ✨';
+          setTimeout(() => {
+            WeddingSound.playDoorOpen();
+            WeddingMotion.burstGoldenLight();
+            WeddingSound.startMusic('oriental');
+            document.getElementById('lantern-cover').classList.add('is-open');
+            document.body.classList.remove('wi-scroll-locked');
+          }, 380);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

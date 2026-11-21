@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEEM • ميم — Digital Wedding &amp; Katb Ketab Invitations, Egypt</title>
+<meta name="description" content="Interactive digital wedding, katb ketab, engagement and henna invitations designed in Egypt.">
+<link rel="icon" type="image/svg+xml" href="assets/logos/meem-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .hero { padding: 84px 0 56px; text-align: center; }
+  .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px; text-align: center; }
+  .stat b { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
+  .stat span { font-size: 12px; color: var(--muted); }
+  .step { position: relative; }
+  .step .n { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font-weight: 700; margin-bottom: 14px; }
+  .step h3 { font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 500; margin-bottom: 6px; }
+  .step p { font-size: 13px; color: var(--muted); }
+  .cat-tile { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; transition: .25s; }
+  .cat-tile:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .cat-tile h3 { font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 500; }
+  .cat-tile .ar { color: var(--gold); font-family: 'Amiri',serif; font-size: 18px; }
+  .cat-tile p { font-size: 13px; color: var(--muted); margin: 8px 0 14px; }
+  .cat-tile .count { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+  .brand-teaser { display: grid; grid-template-columns: 1fr 1.1fr; gap: 34px; align-items: center; background: linear-gradient(155deg,#17151C,#111116); border: 1px solid var(--gold-dim); border-radius: 26px; padding: 36px; }
+  .logo-strip { display: flex; justify-content: center; }
+  .logo-strip img { width: 100%; max-width: 340px; border-radius: 22px; border: 1px solid var(--gold-dim); aspect-ratio: 1; object-fit: cover; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+  .cta { text-align: center; background: var(--surface); border: 1px solid var(--gold-dim); border-radius: 26px; padding: 48px 24px; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2,1fr); } .brand-teaser { grid-template-columns: 1fr; padding: 24px; } }
+</style>
+</head>
+<body>
+<main>
+  <section class="hero"><div class="container">
+    <div class="pill-tag">Digital Invitations · Motion · Sound</div>
+    <h1 class="h1">Invitations your guests will <em>open twice</em></h1>
+    <p class="lead" style="margin:18px auto 0">Interactive digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both. One link on WhatsApp, RSVPs and a QR pass for every guest.</p>
+    <div class="actions">
+      <a class="btn btn-gold btn-lg btn-pill" href="collection.html">See the designs</a>
+      <a class="btn btn-ghost btn-lg btn-pill" href="personalise.html">Try it with your names</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>17</b><span>Ready designs</span></div>
+      <div class="stat"><b>4</b><span>Categories</span></div>
+      <div class="stat"><b>Arabic &amp; English</b><span>Every style</span></div>
+      <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
+    </div>
+  </div></section>
+
+  <section class="section tight"><div class="container">
+    <div class="center" style="margin-bottom:30px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
+    <div class="grid g4">
+      <div class="card step"><div class="n">1</div><h3>Pick a design</h3><p>Browse by occasion and language, preview each one inside a phone.</p></div>
+      <div class="card step"><div class="n">2</div><h3>Personalise</h3><p>Try your names, date, venue and a guest greeting live — before ordering.</p></div>
+      <div class="card step"><div class="n">3</div><h3>We build it</h3><p>Colors, music and details matched to your wedding. Edits included.</p></div>
+      <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One link per guest. RSVPs come back to you with a QR pass.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section tight"><div class="container">
+    <div class="center" style="margin-bottom:30px"><div class="pill-tag">Collections</div><h2 class="h2">Designs for every <em>occasion</em></h2></div>
+    <div class="grid g4" id="catTiles"></div>
+  </div></section>
+
+  <section class="section tight"><div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+      <div><div class="pill-tag">Featured</div><h2 class="h2">Most loved <em>openings</em></h2></div>
+      <a class="btn btn-ghost" href="collection.html">All designs →</a>
+    </div>
+    <div class="gallery-grid" id="featured"></div>
+  </div></section>
+
+  <section class="section tight" id="logo-showcase"><div class="container">
+    <div class="card" style="background:linear-gradient(155deg,#16151D,#0E0E13);border:1px solid var(--gold-dim);border-radius:26px;padding:36px 24px;text-align:center">
+      <div class="pill-tag">MEEM · ميم</div>
+      <h2 class="h2">3 Simple Styles for Word <em>ميم</em></h2>
+      <p class="lead" style="margin:12px auto 26px">Click any style below to apply it instantly to the header, footer and icons across the site.</p>
+      
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:880px;margin:0 auto" id="logoGridHome">
+        <div class="card" style="padding:22px 16px;text-align:center;border-radius:18px;cursor:pointer;transition:.25s" onclick="Shell.setLogo(1)">
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Style 1 · Geometric Kufic</div>
+          <img src="assets/logos/meem-style-1.svg?v=3" style="width:78px;height:78px;margin:0 auto 12px;border-radius:18px" alt="Style 1">
+          <h3 class="serif" style="font-size:19px;margin-bottom:4px">كوفي هندسي (ميم)</h3>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Pure geometric loops and clean architectural baseline with diamond dots.</p>
+          <button class="btn btn-gold btn-pill" style="font-size:11px;padding:6px 16px">Apply Style 1</button>
+        </div>
+
+        <div class="card" style="padding:22px 16px;text-align:center;border-radius:18px;cursor:pointer;transition:.25s" onclick="Shell.setLogo(2)">
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Style 2 · Flowing Cursive</div>
+          <img src="assets/logos/meem-style-2.svg?v=3" style="width:78px;height:78px;margin:0 auto 12px;border-radius:18px" alt="Style 2">
+          <h3 class="serif" style="font-size:19px;margin-bottom:4px">نسخي انسيابي (ميم)</h3>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Smooth calligraphic curves and organic connecting strokes with round dots.</p>
+          <button class="btn btn-gold btn-pill" style="font-size:11px;padding:6px 16px">Apply Style 2</button>
+        </div>
+
+        <div class="card" style="padding:22px 16px;text-align:center;border-radius:18px;cursor:pointer;transition:.25s" onclick="Shell.setLogo(3)">
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Style 3 · Modern Minimalist</div>
+          <img src="assets/logos/meem-style-3.svg?v=3" style="width:78px;height:78px;margin:0 auto 12px;border-radius:18px" alt="Style 3">
+          <h3 class="serif" style="font-size:19px;margin-bottom:4px">عصري ناعم (ميم)</h3>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:12px">Contemporary rounded squircle heads and razor-sharp monoline baseline.</p>
+          <button class="btn btn-gold btn-pill" style="font-size:11px;padding:6px 16px">Apply Style 3</button>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <a href="logo-preview.html" class="btn btn-ghost" style="font-size:12px">Open Full Logo Comparison Page →</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section tight"><div class="container">
+    <div class="cta"><h2 class="h2">Ready to send your <em>invitation</em>?</h2>
+      <p class="lead" style="margin:12px auto 22px">Packages start from 950 EGP — preview your live invitation before final payment.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn btn-gold btn-lg btn-pill" href="pricing.html">See packages</a><a id="ctaWa" class="btn btn-ghost btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp</a></div></div>
+  </div></section>
+</main>
+<script src="assets/data.js"></script><script src="assets/site.js"></script>
+<script>
+  Shell.init('index.html');
+  const S = SITE;
+  document.getElementById('catTiles').innerHTML = S.CATEGORIES.map(c => {
+    const n = S.SAMPLES.filter(s => s.cat === c.id).length;
+    return `<a class="cat-tile" href="collection.html?cat=${c.id}"><div class="ar">${c.ar}</div><h3>${c.title}</h3><p>${c.blurb}</p><div class="count">${n} designs →</div></a>`;
+  }).join('');
+  document.getElementById('featured').innerHTML = ['17','01','02','12','13','16'].map(n => Shell.cardMarkup(S.SAMPLES.find(s => s.num === n))).join('');
+  document.getElementById('ctaWa').href = Shell.wa('Hello! I would like to order a digital invitation.');
+</script>
+</body></html>

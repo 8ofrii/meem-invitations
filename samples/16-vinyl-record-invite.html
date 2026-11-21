@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rami &amp; Zeina — Golden Vinyl Spin Wedding | The Nile Ritz-Carlton, Cairo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --obsidian: #0E0D0C;
+      --surface: #191715;
+      --gold: #E4BD73;
+      --cream: #F6F0E4;
+      --muted: #A69D8E;
+      --line: rgba(228, 189, 115, 0.24);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at top, #211C16 0%, var(--obsidian) 62%);
+      color: var(--cream);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    /* ================= INTERACTIVE VINYL TURNTABLE COVER ================= */
+    #vinyl-cover {
+      position: fixed; inset: 0; z-index: 5000;
+      background: radial-gradient(circle at center, #221D18 0%, #090807 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px; text-align: center;
+      transition: opacity 0.9s ease, visibility 0.9s ease;
+    }
+    #vinyl-cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .turntable {
+      position: relative; width: 255px; height: 255px; margin-bottom: 24px; cursor: pointer;
+    }
+    .vinyl-disc {
+      width: 240px; height: 240px; border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, #141414 0px, #141414 3px, #1F1E1C 4px, #111 6px);
+      border: 2px solid rgba(228, 189, 115, 0.38);
+      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.72), inset 0 0 36px rgba(255, 255, 255, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .turntable.is-spinning .vinyl-disc {
+      animation: spinDisc 3.2s linear infinite;
+    }
+    @keyframes spinDisc { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .vinyl-label {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #F5DB9E 0%, #C49543 100%);
+      color: #14110E; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 8px; box-shadow: inset 0 0 0 3px rgba(20, 17, 14, 0.16);
+    }
+    .vinyl-hole { width: 10px; height: 10px; border-radius: 50%; background: #14110E; margin-top: 4px; }
+
+    .tonearm {
+      position: absolute; top: 10px; right: -8px; width: 82px; height: 130px;
+      transform-origin: 66px 18px;
+      transform: rotate(-18deg);
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+    }
+    .turntable.is-spinning .tonearm { transform: rotate(10deg); }
+
+    .spin-btn {
+      margin-top: 16px; padding: 13px 32px; border-radius: 999px; border: none;
+      background: linear-gradient(135deg, #F3D79B, #C19242); color: #12100D;
+      font-family: inherit; font-weight: 700; font-size: 13px; letter-spacing: 0.14em;
+      text-transform: uppercase; cursor: pointer;
+    }
+
+    /* ================= CONTENT ================= */
+    .wrap { max-width: 740px; margin: 0 auto; padding: 72px 18px 90px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+      padding: 46px 30px; text-align: center; margin-bottom: 22px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
+    }
+    .kicker { font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+    .hero-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(46px, 10vw, 72px); font-weight: 500; line-height: 1.05; color: var(--cream); }
+    .hero-names span { color: var(--gold); font-style: italic; }
+    .guest-badge { display: inline-block; margin: 12px 0; padding: 6px 20px; border-radius: 999px; background: rgba(228,189,115,0.12); border: 1px solid var(--line); color: var(--gold); font-size: 14px; }
+
+    .tracklist { max-width: 480px; margin: 22px auto 0; text-align: left; }
+    .track {
+      display: grid; grid-template-columns: 42px 1fr auto; gap: 12px; align-items: center;
+      padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .track:last-child { border-bottom: none; }
+    .track-num { color: var(--gold); font-size: 12px; font-weight: 700; }
+    .track-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; }
+    .track-time { font-size: 12px; color: var(--muted); }
+
+    .cd-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 450px; margin: 20px auto 26px; }
+    .cd-box { padding: 16px 8px; border-radius: 14px; background: rgba(0,0,0,0.45); border: 1px solid var(--line); }
+    .cd-val { font-size: 30px; color: var(--gold); font-weight: 700; line-height: 1; }
+    .cd-lbl { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 12px 24px; border-radius: 999px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; text-decoration: none; cursor: pointer; }
+    .btn-gold { background: linear-gradient(135deg, #F3D79B, #C19242); color: #12100D; border: none; }
+    .btn-out { background: transparent; color: var(--gold); border: 1px solid var(--line); }
+
+    .rsvp-form { max-width: 440px; margin: 22px auto 0; text-align: left; display: grid; gap: 14px; }
+    .rsvp-form label.lbl { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(0,0,0,0.5); color: var(--cream); font-family: inherit; font-size: 14px; outline: none; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pair-opt { position: relative; padding: 11px; border-radius: 12px; border: 1px solid var(--line); text-align: center; cursor: pointer; font-size: 13px; color: var(--muted); }
+    .pair-opt input { position: absolute; opacity: 0; }
+    .pair-opt:has(input:checked) { background: rgba(228,189,115,0.16); border-color: var(--gold); color: var(--gold); font-weight: 700; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 600px) { .card { padding: 34px 18px; } }
+  </style>
+</head>
+<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="celestial">
+
+  <div id="vinyl-cover" role="dialog" aria-label="Spin Vinyl Record to Open Invitation">
+    <div class="turntable" id="turntable">
+      <div class="vinyl-disc">
+        <div class="vinyl-label">
+          <div style="font-size:8px; letter-spacing:0.18em; font-weight:700;">SIDE A • CAIRO</div>
+          <div class="serif" style="font-size:17px; font-weight:600; line-height:1.1; margin-top:2px;">R &amp; Z</div>
+          <div class="vinyl-hole"></div>
+        </div>
+      </div>
+      <svg class="tonearm" viewBox="0 0 90 140" fill="none">
+        <circle cx="66" cy="18" r="14" fill="#322C25" stroke="#E4BD73" stroke-width="2"/>
+        <path d="M66 18L42 104L26 116" stroke="#E4BD73" stroke-width="4" stroke-linecap="round"/>
+        <rect x="18" y="110" width="16" height="10" rx="2" transform="rotate(35 18 110)" fill="#F5DB9E"/>
+      </svg>
+    </div>
+    <div class="kicker" style="margin-bottom:4px;">Now Playing • Limited Wedding Vinyl</div>
+    <div class="serif" style="font-size:40px; color:#fff;" data-couple-title>Rami &amp; Zeina</div>
+    <div style="font-size:14px; color:var(--muted); margin-top:4px;" data-guest-name data-guest-prefix="VIP Track Dedicated To ">
+      The Nile Ritz-Carlton • Downtown Cairo
+    </div>
+    <button type="button" class="spin-btn wi-shimmer" id="spinBtn">Drop the Needle &amp; Play ▶</button>
+  </div>
+
+  <main class="wrap">
+    <section class="card reveal">
+      <div class="kicker">Side A • Track 01 — Forever</div>
+      <h1 class="hero-names" data-couple-title>Rami <span>&amp;</span> Zeina</h1>
+      <div class="guest-badge" data-guest-name data-guest-prefix="VIP Guest Pass: " style="display:none;"></div>
+      <p style="font-size:14px; color:var(--muted); max-width:460px; margin:10px auto 18px;">
+        One iconic Cairo night, timeless music, candlelit dining, and our favorite people under the chandelier lights of Downtown.
+      </p>
+      <div style="font-size:15px; color:var(--gold); font-weight:600;">
+        <span data-event-date>Saturday, December 18, 2027</span> • 8:00 PM
+      </div>
+      <div style="font-size:13px; color:var(--muted); margin-top:4px;" data-venue-name>
+        The Nile Ritz-Carlton • Al Qahira Ballroom, Downtown Cairo
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="kicker">Next Track Starts In</div>
+      <div class="cd-row" data-countdown="2027-12-18T20:00:00+02:00">
+        <div class="cd-box"><div class="cd-val" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+      </div>
+      <div class="btns">
+        <button type="button" class="btn btn-gold wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Google Calendar</button>
+        <button type="button" class="btn btn-out" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">Download .ICS</button>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="kicker">The Evening Tracklist</div>
+      <h2 class="serif" style="font-size:34px; font-weight:500;">Setlist for the Night</h2>
+      <div class="tracklist">
+        <div class="track"><div class="track-num">01</div><div class="track-title">Red Carpet &amp; Jazz Prelude</div><div class="track-time">8:00 PM</div></div>
+        <div class="track"><div class="track-num">02</div><div class="track-title">Grand Entrance &amp; First Dance</div><div class="track-time">9:00 PM</div></div>
+        <div class="track"><div class="track-num">03</div><div class="track-title">Al Qahira Gala Dinner</div><div class="track-time">10:00 PM</div></div>
+        <div class="track"><div class="track-num">04</div><div class="track-title">Vinyl House &amp; Cairo Classics</div><div class="track-time">11:30 PM</div></div>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="kicker">Concert Hall / Venue</div>
+      <h2 class="serif" style="font-size:32px; font-weight:500;" data-venue-name>The Nile Ritz-Carlton, Cairo</h2>
+      <p style="font-size:14px; color:var(--muted); margin:6px 0 20px;">1113 Corniche El Nil, Downtown Cairo, Egypt</p>
+      <div class="btns">
+        <a class="btn btn-gold wi-shimmer" href="https://maps.google.com/?q=The+Nile+Ritz-Carlton+Cairo" target="_blank" rel="noopener noreferrer">Open Google Maps</a>
+        <button type="button" class="btn btn-out" data-copy-text="The Nile Ritz-Carlton, 1113 Corniche El Nil, Downtown Cairo, Egypt">Copy Address</button>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="kicker">Backstage Guest List</div>
+      <h2 class="serif" style="font-size:34px; font-weight:500;">R.S.V.P. &amp; Song Request</h2>
+      <form class="rsvp-form" data-rsvp-form data-couple="Rami & Zeina" data-result-target="rsvp-result" data-qr-fg="#0E0D0C" data-qr-bg="#F6F0E4">
+        <div><label class="lbl" for="gname">Guest Name</label><input id="gname" name="guestName" type="text" required placeholder="e.g. Karim Abdelaziz" /></div>
+        <div>
+          <label class="lbl">Guest List Status</label>
+          <div class="pair">
+            <label class="pair-opt"><input type="radio" name="attendance" value="yes" checked />On the Guest List!</label>
+            <label class="pair-opt"><input type="radio" name="attendance" value="no" />Unable to Join</label>
+          </div>
+        </div>
+        <div><label class="lbl" for="gcount">Party Size</label><select id="gcount" name="guestsCount"><option value="1">1 Guest</option><option value="2" selected>2 Guests</option><option value="3">3 Guests</option></select></div>
+        <div><label class="lbl" for="gnote">Add a Song to Our Wedding Vinyl</label><textarea id="gnote" name="note" rows="3" placeholder="Amr Diab, Fairuz, Frank Sinatra... drop your track!"></textarea></div>
+        <button type="submit" class="btn btn-gold wi-shimmer" style="width:100%;">Confirm RSVP &amp; Generate Backstage QR</button>
+      </form>
+      <div id="rsvp-result" style="display:none; max-width:440px; margin:0 auto;"></div>
+    </section>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Rami & Zeina — The Nile Ritz-Carlton, Cairo',
+      start: '2027-12-18T18:00:00Z',
+      end: '2027-12-19T01:00:00Z',
+      location: 'The Nile Ritz-Carlton, 1113 Corniche El Nil, Downtown Cairo, Egypt',
+      description: 'Golden Vinyl Wedding Night for Rami & Zeina in Downtown Cairo.',
+      filename: 'rami-zeina-nile-ritz-cairo'
+    };
+    const tt = document.getElementById('turntable');
+    const cover = document.getElementById('vinyl-cover');
+    function spinAndOpen(e) {
+      if (tt.classList.contains('is-spinning')) return;
+      tt.classList.add('is-spinning');
+      WeddingSound.playSparkle();
+      WeddingSound.startMusic('celestial');
+      WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth / 2, (e && e.clientY) || window.innerHeight / 2);
+      setTimeout(() => { cover.classList.add('is-open'); document.body.classList.remove('wi-scroll-locked'); }, 1050);
+    }
+    tt.addEventListener('click', spinAndOpen);
+    document.getElementById('spinBtn').addEventListener('click', spinAndOpen);
+  </script>
+</body>
+</html>

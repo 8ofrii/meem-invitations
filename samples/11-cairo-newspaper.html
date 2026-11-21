@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE CAIRO CHRONICLE — Hassan &amp; Laila Wedding Newspaper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --newsprint: #F3EDE0;
+      --paper: #F9F5EB;
+      --ink: #1A1815;
+      --muted: #5A5348;
+      --accent: #8B2626;
+      --rule: #23201C;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--newsprint);
+      color: var(--ink);
+      font-family: 'Newsreader', Georgia, serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    .masthead-font { font-family: 'Playfair Display', Georgia, serif; }
+    .sans { font-family: 'Inter', sans-serif; }
+
+    #paper-cover {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: #E8DFCE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      perspective: 1200px;
+      transition: opacity 0.85s ease, visibility 0.85s ease;
+    }
+    #paper-cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .folded-edition {
+      width: min(440px, 94vw);
+      background: var(--paper);
+      border: 2px solid var(--rule);
+      padding: 28px 24px 32px;
+      text-align: center;
+      box-shadow: 0 28px 65px rgba(26, 24, 21, 0.25), 0 4px 0 #DDD3BE, 0 8px 0 #CFC3AA;
+      transform-origin: left center;
+      transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    #paper-cover.is-open .folded-edition { transform: rotateY(-75deg) scale(1.05); }
+
+    .extra-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      padding: 4px 12px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 8vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      border-top: 3px double var(--rule);
+      border-bottom: 3px double var(--rule);
+      padding: 10px 0;
+      margin-bottom: 14px;
+    }
+    .unfold-btn {
+      margin-top: 20px;
+      padding: 13px 28px;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .unfold-btn:hover { background: var(--accent); }
+
+    .broadsheet { max-width: 860px; margin: 0 auto; padding: 72px 18px 90px; }
+    .edition-sheet {
+      background: var(--paper);
+      border: 1.5px solid var(--rule);
+      padding: 34px 30px;
+      box-shadow: 0 20px 55px rgba(26, 24, 21, 0.1);
+    }
+    .top-meta {
+      display: flex; justify-content: space-between; font-family: 'Inter', sans-serif;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      border-bottom: 1px solid var(--rule); padding-bottom: 8px; color: var(--muted); flex-wrap: wrap; gap: 6px;
+    }
+    .paper-masthead { text-align: center; padding: 18px 0 14px; border-bottom: 4px double var(--rule); }
+    .paper-masthead h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 8vw, 64px); font-weight: 900; line-height: 1; }
+    .sub-strip {
+      display: flex; justify-content: space-between; border-bottom: 1.5px solid var(--rule);
+      padding: 7px 0; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; flex-wrap: wrap; gap: 8px;
+    }
+    .headline-block { text-align: center; padding: 32px 10px 26px; border-bottom: 1px solid rgba(26, 24, 21, 0.25); }
+    .headline-block h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 7.5vw, 58px); font-weight: 900; line-height: 1.05; margin: 8px 0 12px; }
+    .guest-stamp {
+      display: inline-block; margin: 6px 0 12px; padding: 5px 16px; border: 1.5px solid var(--accent);
+      color: var(--accent); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .columns-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; padding: 28px 0; border-bottom: 2px solid var(--rule); }
+    .col-right { border-left: 1px solid rgba(26, 24, 21, 0.22); padding-left: 24px; }
+    .dropcap::first-letter { float: left; font-family: 'Playfair Display', serif; font-size: 54px; line-height: 0.85; padding-right: 10px; padding-top: 4px; font-weight: 700; }
+    .fact-box { border: 1.5px solid var(--rule); padding: 18px; background: var(--newsprint); }
+    .fact-box h3 { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 12px; }
+    .fact-item { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px dotted rgba(26,24,21,0.28); }
+    .fact-item:last-child { border-bottom: none; }
+
+    .section-rule { padding: 36px 0; border-bottom: 1.5px solid var(--rule); text-align: center; }
+    .section-rule:last-child { border-bottom: none; }
+    .sec-kicker { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+    .cd-bar { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 480px; margin: 20px auto 24px; border: 1.5px solid var(--rule); }
+    .cd-cell { padding: 16px 8px; border-right: 1px solid var(--rule); background: var(--newsprint); }
+    .cd-cell:last-child { border-right: none; }
+    .cd-num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; line-height: 1; }
+    .cd-lbl { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+    .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 12px 24px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; cursor: pointer; }
+    .btn-ink { background: var(--ink); color: var(--paper); border: 1.5px solid var(--ink); }
+    .btn-ink:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-line { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+    .btn-line:hover { background: var(--ink); color: var(--paper); }
+
+    .sched-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 22px; text-align: left; }
+    .sched-card { padding: 16px; border: 1px solid rgba(26, 24, 21, 0.28); background: var(--newsprint); }
+    .sched-time { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); }
+    .sched-head { font-family: 'Playfair Display', serif; font-size: 19px; margin: 5px 0; }
+    .sched-p { font-size: 13px; color: var(--muted); }
+
+    .rsvp-form { max-width: 460px; margin: 22px auto 0; text-align: left; display: grid; gap: 14px; border: 2px dashed var(--rule); padding: 24px; background: var(--newsprint); }
+    .rsvp-form label.lbl { display: block; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 5px; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--rule); background: var(--paper); font-family: 'Inter', sans-serif; font-size: 14px; outline: none; }
+    .opt-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .opt-btn { position: relative; padding: 10px; border: 1px solid var(--rule); text-align: center; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; background: var(--paper); }
+    .opt-btn input { position: absolute; opacity: 0; }
+    .opt-btn:has(input:checked) { background: var(--ink); color: var(--paper); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .columns-2 { grid-template-columns: 1fr; }
+      .col-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(26,24,21,0.22); padding-top: 20px; }
+      .sched-cols { grid-template-columns: repeat(2, 1fr); }
+      .edition-sheet { padding: 24px 18px; }
+    }
+    @media (max-width: 480px) { .sched-cols { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="wi-scroll-locked" data-music-mood="classic">
+  <div id="paper-cover" role="dialog" aria-label="Unfold Wedding Newspaper">
+    <div class="folded-edition">
+      <div class="extra-badge">Special Zamalek Edition • Extra!</div>
+      <div class="cover-title">THE CAIRO CHRONICLE</div>
+      <div class="sans" style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">
+        ESTABLISHED IN LOVE • VOL. XXVII • FREE FOR VIP GUESTS
+      </div>
+      <div class="masthead-font" style="font-size:32px; font-weight:700; line-height:1.15;" data-couple-title>
+        Hassan &amp; Laila<br />Are Tying the Knot!
+      </div>
+      <p style="font-style:italic; font-size:16px; color:var(--muted); margin-top:10px;" data-guest-name data-guest-prefix="Delivered exclusively to ">
+        Read all the details inside today’s special wedding edition.
+      </p>
+      <button type="button" class="unfold-btn wi-shimmer" id="unfoldPaperBtn">Unfold Today’s Paper →</button>
+    </div>
+  </div>
+
+  <main class="broadsheet">
+    <article class="edition-sheet">
+      <div class="top-meta">
+        <span>ZAMALEK, CAIRO, EGYPT</span>
+        <span data-event-date>SATURDAY, NOVEMBER 20, 2027</span>
+        <span>PRICE: YOUR PRESENCE</span>
+      </div>
+      <header class="paper-masthead"><h2>THE CAIRO CHRONICLE</h2></header>
+      <div class="sub-strip">
+        <span>SPECIAL WEDDING ISSUE</span>
+        <span data-venue-name>GEZIRA SPORTING CLUB • ZAMALEK</span>
+        <span>EDITION NO. 01</span>
+      </div>
+      <section class="headline-block reveal">
+        <div class="sec-kicker">Breaking News Across Cairo</div>
+        <h1 data-couple-title>HASSAN &amp; LAILA SAY “I DO”</h1>
+        <div class="guest-stamp" data-guest-name data-guest-prefix="VIP READER: " style="display:none;"></div>
+        <p style="font-style:italic; font-size:19px; color:var(--muted); max-width:560px; margin:0 auto;">
+          Families, friends, and coffee lovers gather in the heart of Zamalek for an unforgettable autumn celebration.
+        </p>
+      </section>
+      <section class="columns-2 reveal">
+        <div>
+          <h3 class="masthead-font" style="font-size:24px; margin-bottom:10px;">From a Zamalek Café to Forever</h3>
+          <p class="dropcap" style="font-size:16px; margin-bottom:12px;">
+            It started on a sunny Friday morning over two iced lattes in Zamalek, when a chance conversation turned into five years of laughter, Nile walks, and endless adventures from Cairo to Alexandria.
+          </p>
+          <p style="font-size:16px; color:var(--muted);">
+            Now, surrounded by the people who know our story best, we invite you to witness the next chapter under the old banyan trees of Gezira Club.
+          </p>
+        </div>
+        <div class="col-right">
+          <div class="fact-box">
+            <h3>Wedding Edition Facts</h3>
+            <div class="fact-item"><span>Date</span><strong data-event-date>Nov 20, 2027</strong></div>
+            <div class="fact-item"><span>Doors Open</span><strong>6:30 PM</strong></div>
+            <div class="fact-item"><span>Venue</span><strong data-venue-name>Gezira Club, Zamalek</strong></div>
+            <div class="fact-item"><span>Dress Code</span><strong>Classic Cocktail</strong></div>
+            <div class="fact-item"><span>Vibe</span><strong>Live Jazz &amp; Joy</strong></div>
+          </div>
+        </div>
+      </section>
+      <section class="section-rule reveal">
+        <div class="sec-kicker">Stop the Presses</div>
+        <h2 class="masthead-font" style="font-size:32px;">Countdown to the Headline Event</h2>
+        <div class="cd-bar" data-countdown="2027-11-20T18:30:00+02:00">
+          <div class="cd-cell"><div class="cd-num" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-cell"><div class="cd-num" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-cell"><div class="cd-num" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+          <div class="cd-cell"><div class="cd-num" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn btn-ink wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Google Calendar</button>
+          <button type="button" class="btn btn-line" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">Download .ICS</button>
+        </div>
+      </section>
+      <section class="section-rule reveal">
+        <div class="sec-kicker">Page Two Schedule</div>
+        <h2 class="masthead-font" style="font-size:32px;">Today’s Program</h2>
+        <div class="sched-cols">
+          <div class="sched-card"><div class="sched-time">6:30 PM</div><div class="sched-head">Garden Arrival</div><div class="sched-p">Welcome drinks, live saxophone &amp; newspaper photo booth.</div></div>
+          <div class="sched-card"><div class="sched-time">7:30 PM</div><div class="sched-head">Katb El-Kitab</div><div class="sched-p">Signing of vows beneath the illuminated pavilion.</div></div>
+          <div class="sched-card"><div class="sched-time">9:00 PM</div><div class="sched-head">Dinner &amp; Toasts</div><div class="sched-p">Seated Zamalek feast and speeches from family.</div></div>
+          <div class="sched-card"><div class="sched-time">10:30 PM</div><div class="sched-head">Dance Floor</div><div class="sched-p">Egyptian classics, vintage soul &amp; late-night bites.</div></div>
+        </div>
+      </section>
+      <section class="section-rule reveal">
+        <div class="sec-kicker">Location Dispatch</div>
+        <h2 class="masthead-font" style="font-size:30px;" data-venue-name>Gezira Sporting Club — Main Lawn</h2>
+        <p style="font-size:15px; color:var(--muted); margin:6px 0 18px;">15 Saray El-Gezira Street, Zamalek, Cairo, Egypt</p>
+        <div class="btn-row">
+          <a class="btn btn-ink" href="https://maps.google.com/?q=Gezira+Sporting+Club+Zamalek+Cairo" target="_blank" rel="noopener noreferrer">Open Google Maps</a>
+          <button type="button" class="btn btn-line" data-copy-text="Gezira Sporting Club, 15 Saray El-Gezira Street, Zamalek, Cairo, Egypt">Copy Address</button>
+        </div>
+      </section>
+      <section class="section-rule reveal">
+        <div class="sec-kicker">Classifieds • Clip &amp; Reply</div>
+        <h2 class="masthead-font" style="font-size:32px;">Confirm Your Attendance</h2>
+        <form class="rsvp-form" data-rsvp-form data-couple="Hassan & Laila" data-result-target="rsvp-result" data-qr-fg="#1A1815" data-qr-bg="#F9F5EB">
+          <div><label class="lbl" for="gname">Reader / Guest Name</label><input id="gname" name="guestName" type="text" required placeholder="e.g. Mariam El-Shazly" /></div>
+          <div>
+            <label class="lbl">Response</label>
+            <div class="opt-pair">
+              <label class="opt-btn"><input type="radio" name="attendance" value="yes" checked />Will Be There!</label>
+              <label class="opt-btn"><input type="radio" name="attendance" value="no" />Sending Love</label>
+            </div>
+          </div>
+          <div>
+            <label class="lbl" for="gcount">Guests in Party</label>
+            <select id="gcount" name="guestsCount"><option value="1">1 Guest</option><option value="2" selected>2 Guests</option><option value="3">3 Guests</option><option value="4">4 Guests</option></select>
+          </div>
+          <div><label class="lbl" for="gnote">Letter to the Editor (Wishes)</label><textarea id="gnote" name="note" rows="3" placeholder="Leave a headline wish for Hassan & Laila..."></textarea></div>
+          <button type="submit" class="btn btn-ink wi-shimmer" style="width:100%;">Submit RSVP &amp; Print Press Pass</button>
+        </form>
+        <div id="rsvp-result" style="display:none; max-width:460px; margin:0 auto;"></div>
+      </section>
+    </article>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Hassan & Laila — Gezira Club, Zamalek',
+      start: '2027-11-20T16:30:00Z',
+      end: '2027-11-20T23:00:00Z',
+      location: 'Gezira Sporting Club, Zamalek, Cairo, Egypt',
+      description: 'Special Wedding Newspaper Edition: Hassan & Laila celebrate in Zamalek, Cairo.',
+      filename: 'hassan-laila-zamalek-wedding'
+    };
+    document.getElementById('unfoldPaperBtn').addEventListener('click', (e) => {
+      WeddingSound.playPageTurn();
+      WeddingMotion.spawnRipple(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
+      WeddingSound.startMusic('classic');
+      document.getElementById('paper-cover').classList.add('is-open');
+      document.body.classList.remove('wi-scroll-locked');
+    });
+  </script>
+</body>
+</html>

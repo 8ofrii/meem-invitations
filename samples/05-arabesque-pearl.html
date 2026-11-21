@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لؤلؤة الشرق — دعوة زفاف يوسف و نور</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pearl: #FDF8F6;
+      --blush: #F5E6E1;
+      --rosegold: #B97A6A;
+      --rosegold-light: #DFB0A3;
+      --plum: #3A2329;
+      --muted: #7C6268;
+      --line: rgba(185, 122, 106, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(180deg, #FBF2EE 0%, #F4E4DF 50%, #FBF4F1 100%);
+      color: var(--plum);
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+
+    /* ================= MASHRABIYA LACE DOORS ================= */
+    #lace-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: visibility 1.2s ease;
+    }
+    #lace-overlay.is-open { pointer-events: none; visibility: hidden; }
+
+    .lace-wing {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50.5%;
+      background-color: #FDF7F4;
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(185, 122, 106, 0.14) 2px, transparent 2.5px),
+        linear-gradient(45deg, rgba(185, 122, 106, 0.06) 25%, transparent 25%, transparent 75%, rgba(185, 122, 106, 0.06) 75%);
+      background-size: 40px 40px;
+      transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+      box-shadow: inset 0 0 60px rgba(185, 122, 106, 0.16);
+    }
+    .lace-right { right: 0; border-left: 2px solid var(--rosegold-light); }
+    .lace-left { left: 0; border-right: 2px solid var(--rosegold-light); }
+    #lace-overlay.is-open .lace-right { transform: translateX(102%); }
+    #lace-overlay.is-open .lace-left { transform: translateX(-102%); }
+
+    .pearl-medallion-card {
+      position: relative;
+      z-index: 3;
+      background: #FFFDFC;
+      border: 1.5px solid var(--rosegold-light);
+      border-radius: 220px 220px 26px 26px;
+      padding: 42px 30px 32px;
+      width: min(330px, 88vw);
+      text-align: center;
+      box-shadow: 0 26px 65px rgba(58, 35, 41, 0.14);
+      transition: opacity 0.5s ease, transform 0.6s ease;
+    }
+    #lace-overlay.is-open .pearl-medallion-card { opacity: 0; transform: scale(0.9); }
+
+    .pearl-btn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #C78A7B 0%, #9E6052 100%);
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(158, 96, 82, 0.3);
+      transition: transform 0.25s ease;
+    }
+    .pearl-btn:hover { transform: translateY(-2px); }
+
+    .knock-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .knock-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rosegold);
+      background: transparent;
+      transition: all 0.35s ease;
+    }
+    .knock-dot.is-lit {
+      background: var(--rosegold);
+      box-shadow: 0 0 14px rgba(185, 122, 106, 0.75);
+      transform: scale(1.22);
+    }
+
+    /* ================= CONTENT ================= */
+    .shell {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 18px 88px;
+    }
+
+    .arch-card {
+      background: #FFFDFC;
+      border: 1px solid var(--line);
+      border-radius: 260px 260px 28px 28px;
+      padding: 78px 34px 52px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 24px 70px rgba(58, 35, 41, 0.08);
+      margin-bottom: 24px;
+    }
+    .arch-card::before {
+      content: '';
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(185, 122, 106, 0.22);
+      border-radius: 248px 248px 20px 20px;
+      pointer-events: none;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--rosegold);
+      margin-bottom: 10px;
+    }
+    .couple-names {
+      font-family: 'Aref Ruqaa', serif;
+      font-size: clamp(48px, 11vw, 74px);
+      line-height: 1.2;
+      color: var(--plum);
+      margin: 10px 0;
+    }
+    .couple-names span { color: var(--rosegold); }
+
+    .guest-banner {
+      display: inline-block;
+      margin: 10px 0 16px;
+      padding: 6px 22px;
+      border-radius: 999px;
+      background: var(--blush);
+      color: var(--plum);
+      font-family: 'Amiri', serif;
+      font-size: 21px;
+    }
+
+    .date-row {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 22px;
+      padding: 12px 24px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-family: 'Amiri', serif;
+      font-size: 21px;
+    }
+
+    .panel {
+      background: #FFFDFC;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 44px 30px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 14px 40px rgba(58, 35, 41, 0.05);
+    }
+
+    .panel-title {
+      font-family: 'Amiri', serif;
+      font-size: 32px;
+      color: var(--plum);
+      margin-bottom: 12px;
+    }
+
+    .cd-boxes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 440px;
+      margin: 22px auto 26px;
+    }
+    .cd-box {
+      background: var(--pearl);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 6px;
+    }
+    .cd-num { font-family: 'Amiri', serif; font-size: 34px; color: var(--rosegold); line-height: 1; }
+    .cd-lbl { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 11px 24px;
+      border-radius: 999px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .btn-rose { background: var(--rosegold); color: #fff; border: 1px solid var(--rosegold); }
+    .btn-rose:hover { background: var(--plum); border-color: var(--plum); }
+    .btn-ghost { background: transparent; color: var(--plum); border: 1px solid var(--line); }
+    .btn-ghost:hover { background: var(--blush); }
+
+    /* Timeline */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+      text-align: right;
+    }
+    .ev-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--pearl);
+      border: 1px solid rgba(185, 122, 106, 0.16);
+    }
+    .ev-time { font-size: 12px; font-weight: 700; color: var(--rosegold); }
+    .ev-name { font-family: 'Amiri', serif; font-size: 22px; color: var(--plum); margin: 4px 0; }
+    .ev-desc { font-size: 13px; color: var(--muted); }
+
+    /* Palette */
+    .palette { display: flex; justify-content: center; gap: 14px; margin: 18px 0 14px; }
+    .circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 12px rgba(58, 35, 41, 0.14);
+    }
+
+    /* RSVP */
+    .form-area {
+      max-width: 450px;
+      margin: 22px auto 0;
+      text-align: right;
+      display: grid;
+      gap: 14px;
+    }
+    .form-area label.lbl { display: block; font-size: 13px; font-weight: 600; color: var(--plum); margin-bottom: 5px; }
+    .form-area input,
+    .form-area select,
+    .form-area textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--pearl);
+      color: var(--plum);
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      outline: none;
+    }
+    .form-area input:focus,
+    .form-area select:focus,
+    .form-area textarea:focus { border-color: var(--rosegold); background: #fff; }
+
+    .opt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .opt-btn {
+      position: relative;
+      padding: 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      text-align: center;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .opt-btn input { position: absolute; opacity: 0; }
+    .opt-btn:has(input:checked) { background: var(--blush); border-color: var(--rosegold); font-weight: 700; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .arch-card { border-radius: 180px 180px 24px 24px; padding: 62px 20px 42px; }
+      .events-grid { grid-template-columns: 1fr; }
+      .panel { padding: 34px 18px; }
+    }
+  </style>
+</head>
+<body data-particles="petals-rose" data-music-mood="oriental">
+
+  <!-- 3-Knock Mashrabiya Rose-Gold Lace Overlay -->
+  <div id="lace-overlay" role="dialog" aria-label="فتح دعوة زفاف يوسف و نور" style="cursor:pointer;">
+    <div class="lace-wing lace-right"></div>
+    <div class="lace-wing lace-left"></div>
+    <div class="pearl-medallion-card" id="laceMedallion">
+      <div class="tag">دعوة زفاف وكتب كتاب</div>
+      <div class="ruqaa" style="font-size:48px; color:var(--plum); line-height:1.2;">يوسف <span style="color:var(--rosegold);">&amp;</span> نور</div>
+      <div class="amiri" style="font-size:20px; color:var(--muted); margin-top:8px;" data-guest-name data-guest-prefix="يسعدنا تشريف ">
+        الجمعة ١٤ أغسطس ٢٠٢٧ • الشيخ زايد
+      </div>
+      <div id="laceHint" style="font-size:14px; color:var(--rosegold); font-weight:600; margin-top:14px;">
+        انقر ثلاث نقرات لفتح بطاقة الليلة ✿
+      </div>
+      <div class="knock-dots" id="laceDots" aria-hidden="true">
+        <span class="knock-dot"></span>
+        <span class="knock-dot"></span>
+        <span class="knock-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <main class="shell">
+
+    <section class="arch-card reveal">
+      <svg width="86" height="44" viewBox="0 0 86 44" fill="none" style="margin-bottom:14px;" aria-hidden="true">
+        <path d="M43 4C49 16 62 20 82 22C62 24 49 28 43 40C37 28 24 24 4 22C24 20 37 16 43 4Z" stroke="#B97A6A" stroke-width="1.2" fill="rgba(185,122,106,0.1)"/>
+        <circle cx="43" cy="22" r="4" fill="#B97A6A"/>
+      </svg>
+
+      <div class="tag">بكل الحب والفرح نتشرف بدعوتكم</div>
+      <h1 class="couple-names" data-couple-title>يوسف <span>&amp;</span> نور</h1>
+      <div class="guest-banner" data-guest-name data-guest-prefix="أهلاً بك يا " style="display:none;"></div>
+      <p style="font-size:15px; color:var(--muted); max-width:440px; margin:0 auto;">
+        تغمرنا السعادة بمشاركتكم فرحة عقد القران والاحتفال في أمسية مصرية دافئة تجمع الأهل والأحباب.
+      </p>
+      <div class="date-row">
+        <span data-event-date>الجمعة ١٤ أغسطس ٢٠٢٧</span>
+        <span style="color:var(--rosegold);">✦</span>
+        <span>٥:٠٠ عصراً</span>
+      </div>
+      <div style="font-size:13px; color:var(--rosegold); margin-top:12px; font-weight:600;" data-venue-name>
+        مسجد الشرطة — قاعة الروضة • الشيخ زايد، الجيزة
+      </div>
+    </section>
+
+    <section class="panel reveal">
+      <div class="tag">✿ اكتشف موعد الفرحة بلمسة ذهبية ✿</div>
+      <h2 class="panel-title">موعد فرحتنا</h2>
+      <div class="wi-scratch-grid">
+        <div class="wi-scratch-card" data-scratch-card data-foil-1="#E5BBAE" data-foil-2="#B97A6A" data-foil-label="اليوم">
+          <div class="wi-scratch-under"><div class="wi-scratch-val amiri">١٤</div><div class="wi-scratch-sub">الجمعة</div></div>
+          <canvas class="wi-scratch-canvas"></canvas>
+        </div>
+        <div class="wi-scratch-card" data-scratch-card data-foil-1="#E5BBAE" data-foil-2="#B97A6A" data-foil-label="الشهر">
+          <div class="wi-scratch-under"><div class="wi-scratch-val amiri">أغسطس</div><div class="wi-scratch-sub">الصيف</div></div>
+          <canvas class="wi-scratch-canvas"></canvas>
+        </div>
+        <div class="wi-scratch-card" data-scratch-card data-foil-1="#E5BBAE" data-foil-2="#B97A6A" data-foil-label="السنة">
+          <div class="wi-scratch-under"><div class="wi-scratch-val amiri">٢٠٢٧</div><div class="wi-scratch-sub">القاهرة</div></div>
+          <canvas class="wi-scratch-canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="wi-tear-cal" style="--cal-accent:#B97A6A; margin-top:26px;">
+        <div class="wi-tear-top">أغسطس ٢٠٢٧</div>
+        <div class="wi-tear-body">
+          <div class="wi-tear-meta">الجمعة</div>
+          <div class="wi-tear-day amiri" style="color:#3A2329;">١٤</div>
+          <div class="wi-tear-meta">الساعة ٧:٠٠ مساءً</div>
+        </div>
+      </div>
+
+      <div class="cd-boxes" data-countdown="2027-08-14T19:00:00+03:00" data-ar-digits>
+        <div class="cd-box"><div class="cd-num" data-cd="days">٠٠</div><div class="cd-lbl">يوم</div></div>
+        <div class="cd-box"><div class="cd-num" data-cd="hours">٠٠</div><div class="cd-lbl">ساعة</div></div>
+        <div class="cd-box"><div class="cd-num" data-cd="minutes">٠٠</div><div class="cd-lbl">دقيقة</div></div>
+        <div class="cd-box"><div class="cd-num" data-cd="seconds">٠٠</div><div class="cd-lbl">ثانية</div></div>
+      </div>
+      <div class="btns">
+        <button type="button" class="btn btn-rose wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة لتقويم جوجل</button>
+        <button type="button" class="btn btn-ghost" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">تنزيل ملف التقويم (.ICS)</button>
+      </div>
+    </section>
+
+    <section class="panel reveal">
+      <div class="tag">تفاصيل الليلة</div>
+      <h2 class="panel-title">برنامج حفل الزفاف</h2>
+      <div class="events-grid">
+        <div class="ev-item">
+          <div class="ev-time">٧:٠٠ مساءً</div>
+          <div class="ev-name">كتب الكتاب</div>
+          <div class="ev-desc">عقد القران في القاعة الزجاجية المطلة على النيل وسط الأهل والأحبة.</div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-time">٨:١٥ مساءً</div>
+          <div class="ev-name">الزفة والرقصة الأولى</div>
+          <div class="ev-desc">دخول العروسين وسط أنغام الموسيقى الحية والورود البيضاء.</div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-time">٩:٣٠ مساءً</div>
+          <div class="ev-name">بوفيه العشاء الفاخر</div>
+          <div class="ev-desc">أشهى الأطباق الشرقية والعالمية وركن الحلويات.</div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-time">١١:٠٠ مساءً</div>
+          <div class="ev-name">الاحتفال وتقطيع التورتة</div>
+          <div class="ev-desc">سهرة غنائية مبهجة وتصوير تذكاري مع الأصدقاء.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel reveal">
+      <div class="tag">الألوان المقترحة والموقع</div>
+      <h2 class="panel-title">إطلالة الحفل والمكان</h2>
+      <div class="palette">
+        <span class="circle" style="background:#DFB0A3;" title="وردي ذهبي"></span>
+        <span class="circle" style="background:#F2E4DC;" title="لؤلؤي"></span>
+        <span class="circle" style="background:#8D5852;" title="عنابي ناعم"></span>
+        <span class="circle" style="background:#3A2329;" title="برقوقي داكن"></span>
+      </div>
+      <p style="font-size:14px; color:var(--muted); max-width:440px; margin:0 auto 24px;">
+        يسعدنا تنسيق إطلالاتكم المسائية بدرجات اللؤلؤي، الوردي الذهبي، والبيج الدافئ.
+      </p>
+      <div style="border-top:1px solid var(--line); padding-top:22px;">
+        <div class="amiri" style="font-size:26px; color:var(--plum);" data-venue-name>مسجد الشرطة — قاعة الروضة</div>
+        <div style="font-size:13px; color:var(--muted); margin:4px 0 18px;">محور ٢٦ يوليو، مدينة الشيخ زايد، الجيزة، مصر</div>
+        <div style="display:grid; gap:8px; max-width:420px; margin:0 auto 20px; padding:16px 18px; border-radius:16px; background:var(--pearl); border:1px dashed var(--line); font-size:13px; color:var(--plum);">
+          <div>✿ يسعدنا استقبالكم في تمام الساعة الخامسة عصراً لبداية مراسم عقد القران.</div>
+          <div>✿ الدعوة مخصصة لحاملها ولأفراد الأسرة الكريمة.</div>
+        </div>
+        <div class="btns">
+          <a class="btn btn-rose wi-shimmer" href="https://maps.google.com/?q=El+Shorta+Mosque+Sheikh+Zayed+Egypt" target="_blank" rel="noopener noreferrer">فتح الموقع على الخريطة</a>
+          <button type="button" class="btn btn-ghost" data-copy-text="مسجد الشرطة، قاعة الروضة، مدينة الشيخ زايد، الجيزة، مصر">نسخ العنوان</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel reveal">
+      <div class="tag">ننتظر تأكيدكم بكل حب</div>
+      <h2 class="panel-title">تأكيد الحضور وبطاقة الدخول</h2>
+      <form class="form-area" data-rsvp-form data-lang="ar" data-couple="يوسف و نور" data-result-target="rsvp-result" data-qr-fg="#3A2329" data-qr-bg="#FFFDFC">
+        <div>
+          <label class="lbl" for="gname">الاسم الكامل</label>
+          <input id="gname" name="guestName" type="text" required placeholder="اكتب اسمك الكريم هنا" />
+        </div>
+        <div>
+          <label class="lbl">هل ستشرفنا بالحضور؟</label>
+          <div class="opt-row">
+            <label class="opt-btn"><input type="radio" name="attendance" value="yes" checked />نعم، سأحضر</label>
+            <label class="opt-btn"><input type="radio" name="attendance" value="no" />أعتذر للأسف</label>
+          </div>
+        </div>
+        <div>
+          <label class="lbl" for="gcount">عدد الحضور</label>
+          <select id="gcount" name="guestsCount">
+            <option value="1">فرد واحد</option>
+            <option value="2" selected>فردان</option>
+            <option value="3">٣ أفراد</option>
+            <option value="4">٤ أفراد</option>
+          </select>
+        </div>
+        <div>
+          <label class="lbl" for="gnote">رسالة تهنئة أو أغنية مفضلة</label>
+          <textarea id="gnote" name="note" rows="3" placeholder="ألف مبروك للعروسين..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-rose" style="width:100%;">إصدار بطاقة الدخول والتأكيد</button>
+      </form>
+      <div id="rsvp-result" style="display:none; max-width:450px; margin:0 auto;"></div>
+    </section>
+
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'عقد قران يوسف و نور — مسجد الشرطة الشيخ زايد',
+      start: '2027-08-14T14:00:00Z',
+      end: '2027-08-14T18:00:00Z',
+      location: 'مسجد الشرطة، قاعة الروضة، الشيخ زايد، الجيزة، مصر',
+      description: 'يسعدنا حضوركم عقد قران يوسف و نور في الشيخ زايد.',
+      filename: 'youssef-nour-katb-ketab-zayed'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      WeddingMotion.initThreeKnockDoor({
+        overlayId: 'lace-overlay',
+        triggerId: 'lace-overlay',
+        dotsId: 'laceDots',
+        hintId: 'laceHint',
+        shakeTargetId: 'laceMedallion',
+        musicMood: 'oriental'
+      });
+    });
+  </script>
+</body>
+</html>

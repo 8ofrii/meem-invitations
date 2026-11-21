@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="MEEM Style 3 - Clean Modern Minimalist ميم">
+  <defs>
+    <linearGradient id="gold3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="35%" stop-color="#EED59B"/>
+      <stop offset="100%" stop-color="#B2843A"/>
+    </linearGradient>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18171E"/>
+      <stop offset="100%" stop-color="#0B0B0E"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect width="160" height="160" rx="34" fill="url(#bg3)"/>
+  <rect x="7" y="7" width="146" height="146" rx="27" fill="none" stroke="url(#gold3)" stroke-width="1.2" stroke-opacity="0.35"/>
+
+  <!-- Style 3: Ultra Minimalist Modern Sans "ميم" -->
+  <g fill="none" stroke="url(#gold3)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Initial Meem (right): sleek rounded modern square head -->
+    <rect x="99" y="66" width="22" height="20" rx="8" stroke-width="5"/>
+    
+    <!-- Minimalist flat baseline -->
+    <path d="M 99 86 L 56 86" stroke-width="5"/>
+    
+    <!-- Vertical Yaa indicator -->
+    <path d="M 78 86 L 78 78" stroke-width="5"/>
+    
+    <!-- Final Meem (left): matching rounded head with sleek straight drop tail -->
+    <rect x="39" y="66" width="22" height="20" rx="8" stroke-width="5"/>
+    <path d="M 39 86 L 39 116" stroke-width="5"/>
+  </g>
+
+  <!-- Two modern horizontal pill/square dots under Yaa -->
+  <g fill="url(#gold3)">
+    <rect x="72" y="98" width="5" height="5" rx="1.5"/>
+    <rect x="80" y="98" width="5" height="5" rx="1.5"/>
+  </g>
+</svg>

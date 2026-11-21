@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: meem-invitations
+    runtime: static
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800

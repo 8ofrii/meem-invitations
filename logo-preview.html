@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEEM (ميم) — 3 Logo Styles Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=Alexandria:wght@400;600;700&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .logo-hero { text-align: center; padding: 60px 20px 40px; }
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .logo-card { background: var(--surface); border: 2px solid var(--line); border-radius: 24px; padding: 32px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; transition: all .3s; position: relative; }
+  .logo-card:hover, .logo-card.active { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+  .active-badge { display: none; position: absolute; top: -12px; background: linear-gradient(135deg,#E8CA8C,var(--gold-2)); color: #111; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 999px; }
+  .logo-card.active .active-badge { display: block; }
+  .logo-display { width: 140px; height: 140px; margin: 16px 0 24px; display: flex; align-items: center; justify-content: center; }
+  .logo-display img, .logo-display svg { width: 100%; height: 100%; }
+  .style-tag { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .style-title { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+  .style-ar { font-size: 18px; color: var(--gold); margin-bottom: 12px; }
+  .style-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 22px; flex: 1; }
+  .select-btn { width: 100%; }
+  .preview-section { margin-top: 50px; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 36px; text-align: center; }
+  .header-sim { background: rgba(11,11,14,.95); border: 1px solid var(--line); border-radius: 16px; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; max-width: 600px; margin: 20px auto 0; }
+  @media (max-width: 900px) { .logo-grid { grid-template-columns: 1fr; max-width: 420px; } }
+</style>
+</head>
+<body>
+<main class="container">
+  <div class="logo-hero">
+    <div class="pill-tag">MEEM · ميم</div>
+    <h1 class="h1">Choose Your <em>ميم</em> Logo Style</h1>
+    <p class="lead" style="margin: 14px auto 0">Three simple luxury concepts designed for the Arabic word <b>ميم</b>. Click any style to apply it across the website instantly.</p>
+  </div>
+
+  <div class="logo-grid">
+    <!-- Style 1 -->
+    <div class="logo-card" id="card-1">
+      <div class="active-badge">CURRENTLY ACTIVE</div>
+      <div class="style-tag">Style 01 · Geometric Kufic</div>
+      <h2 class="style-title">Modern Kufic</h2>
+      <div class="style-ar">كوفي هندسي ناعم (ميم)</div>
+      <div class="logo-display" id="disp-1">
+        <img src="assets/logos/meem-style-1.svg?v=3" alt="Style 1">
+      </div>
+      <p class="style-desc">Clean geometric circular loops and a straight architectural baseline with clean diamond dots. Modern quiet luxury.</p>
+      <button class="btn btn-gold select-btn" onclick="applyLogo(1)">Select Style 1</button>
+    </div>
+
+    <!-- Style 2 -->
+    <div class="logo-card" id="card-2">
+      <div class="active-badge">CURRENTLY ACTIVE</div>
+      <div class="style-tag">Style 02 · Flowing Cursive</div>
+      <h2 class="style-title">Elegant Cursive</h2>
+      <div class="style-ar">نسخي انسيابي ناعم (ميم)</div>
+      <div class="logo-display" id="disp-2">
+        <img src="assets/logos/meem-style-2.svg?v=3" alt="Style 2">
+      </div>
+      <p class="style-desc">A graceful, flowing cursive script with organic curves and round dots. Warm, romantic and bridal.</p>
+      <button class="btn btn-gold select-btn" onclick="applyLogo(2)">Select Style 2</button>
+    </div>
+
+    <!-- Style 3 -->
+    <div class="logo-card" id="card-3">
+      <div class="active-badge">CURRENTLY ACTIVE</div>
+      <div class="style-tag">Style 03 · Modern Minimalist</div>
+      <h2 class="style-title">Contemporary Sans</h2>
+      <div class="style-ar">عصري ناعم (ميم)</div>
+      <div class="logo-display" id="disp-3">
+        <img src="assets/logos/meem-style-3.svg?v=3" alt="Style 3">
+      </div>
+      <p class="style-desc">Modern rounded squircle heads and a razor-sharp monoline baseline. High-fashion minimalist look.</p>
+      <button class="btn btn-gold select-btn" onclick="applyLogo(3)">Select Style 3</button>
+    </div>
+  </div>
+
+  <!-- Live Topbar Simulator -->
+  <div class="preview-section">
+    <div class="pill-tag">Live Topbar Preview</div>
+    <h2 class="serif" style="font-size: 26px; font-weight: 500;">How it appears in the website header</h2>
+    <div class="header-sim">
+      <div class="brand">
+        <img id="simLogo" src="assets/logos/meem-style-1.svg" style="width:44px;height:44px;border-radius:12px;" alt="">
+        <div>
+          <div class="brand-name" style="font-size:22px;letter-spacing:0.18em;font-family:'Cormorant Garamond',serif;font-weight:600">MEEM</div>
+          <div class="brand-sub" style="font-size:11px;color:var(--muted)">Digital Invitations</div>
+        </div>
+      </div>
+      <a class="btn btn-gold btn-pill" style="padding:8px 18px;font-size:12px;" href="https://wa.me/201024190741" target="_blank">WhatsApp</a>
+    </div>
+    <div style="margin-top:24px">
+      <a class="btn btn-ghost" href="index.html">← Back to Home Page</a>
+    </div>
+  </div>
+</main>
+
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  Shell.init('logo-preview.html');
+  function applyLogo(styleNum) {
+    localStorage.setItem('meem_logo_style', styleNum);
+    updateActive(styleNum);
+  }
+  function updateActive(num) {
+    [1,2,3].forEach(i => {
+      document.getElementById('card-' + i).classList.toggle('active', i == num);
+    });
+    const path = 'assets/logos/meem-style-' + num + '.svg?v=3';
+    document.getElementById('simLogo').src = path;
+    const emblem = document.querySelector('.topbar .brand img, .topbar .brand .meem-emblem');
+    if (emblem) {
+      if (emblem.tagName === 'IMG') emblem.src = path;
+    }
+  }
+  const saved = localStorage.getItem('meem_logo_style') || '1';
+  updateActive(saved);
+</script>
+</body>
+</html>

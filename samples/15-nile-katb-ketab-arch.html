@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دعوة عقد قران — عبدالرحمن و آية | مسجد المشير طنطاوي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --parchment: #FAF5E9;
+      --paper: #FFFDF8;
+      --plum: #663E76;
+      --plum-dark: #4A2A57;
+      --lavender: #EDE4F2;
+      --gold: #C8A15A;
+      --ink: #2E2320;
+      --muted: #766762;
+      --line: rgba(102, 62, 118, 0.2);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: 'Tajawal', sans-serif;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+
+    /* ================= 3-TAP CARVED ARCH GATE ================= */
+    #mosque-gate {
+      position: fixed; inset: 0; z-index: 5000;
+      display: flex; align-items: center; justify-content: center;
+      perspective: 1400px; overflow: hidden; cursor: pointer;
+      transition: visibility 1.2s ease;
+    }
+    #mosque-gate.is-open { pointer-events: none; visibility: hidden; }
+
+    .carved-panel {
+      position: absolute; top: 0; bottom: 0; width: 50.5%;
+      background:
+        repeating-linear-gradient(180deg, rgba(200,161,90,0.06) 0 18px, transparent 18px 36px),
+        linear-gradient(160deg, #4B2B59 0%, #2D1836 100%);
+      transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.45);
+    }
+    .carved-panel::after {
+      content: ''; position: absolute; inset: 16px;
+      border: 1px solid rgba(200, 161, 90, 0.35); pointer-events: none;
+    }
+    .carved-right { right: 0; border-left: 1.5px solid var(--gold); transform-origin: right center; }
+    .carved-left { left: 0; border-right: 1.5px solid var(--gold); transform-origin: left center; }
+    #mosque-gate.is-open .carved-right { transform: rotateY(-108deg); }
+    #mosque-gate.is-open .carved-left { transform: rotateY(108deg); }
+
+    .gate-center {
+      position: relative; z-index: 3; text-align: center; padding: 34px 26px;
+      background: rgba(45, 24, 54, 0.88);
+      border: 1px solid rgba(200, 161, 90, 0.55);
+      border-radius: 190px 190px 20px 20px;
+      width: min(335px, 88vw);
+      color: #FAF5E9;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55);
+      transition: opacity 0.55s ease, transform 0.6s ease;
+    }
+    #mosque-gate.is-open .gate-center { opacity: 0; transform: scale(0.88); }
+
+    .knock-dots { display: flex; justify-content: center; gap: 14px; margin-top: 18px; }
+    .knock-dot { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid var(--gold); transition: all 0.35s ease; }
+    .knock-dot.is-lit { background: #F5E1B5; box-shadow: 0 0 16px rgba(245, 225, 181, 0.9); transform: scale(1.22); }
+
+    /* ================= STATIONERY BODY ================= */
+    .paper-shell {
+      max-width: 680px; margin: 0 auto; padding: 72px 18px 88px;
+    }
+    .card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 24px; padding: 48px 30px; text-align: center;
+      margin-bottom: 22px; box-shadow: 0 16px 44px rgba(74, 42, 87, 0.07);
+    }
+    .floral-div { color: var(--plum); font-size: 18px; margin: 14px 0; opacity: 0.75; }
+    .tag { font-size: 13px; color: var(--plum); font-weight: 700; margin-bottom: 8px; }
+    .couple-title {
+      font-family: 'Aref Ruqaa', serif; font-size: clamp(46px, 11vw, 70px);
+      line-height: 1.25; color: var(--plum); margin: 6px 0 10px;
+    }
+    .couple-title span { color: var(--gold); }
+    .guest-pill { display: inline-block; margin: 8px 0 14px; padding: 6px 22px; border-radius: 999px; background: var(--lavender); color: var(--plum-dark); font-family: 'Amiri', serif; font-size: 21px; }
+
+    .sec-title { font-family: 'Amiri', serif; font-size: 32px; color: var(--plum); margin-bottom: 12px; }
+    .verse-box { font-family: 'Amiri', serif; font-size: 21px; color: var(--ink); line-height: 2; max-width: 500px; margin: 0 auto; }
+
+    .families-grid {
+      display: grid; gap: 12px; max-width: 440px; margin: 20px auto 0;
+      padding: 20px; border-radius: 18px;
+      background: linear-gradient(180deg, #FBF8FE 0%, var(--lavender) 100%);
+      border: 1px solid var(--line);
+    }
+
+    .cd-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 440px; margin: 20px auto 24px; }
+    .cd-box { padding: 14px 6px; border-radius: 14px; background: var(--parchment); border: 1px solid var(--line); }
+    .cd-val { font-family: 'Amiri', serif; font-size: 34px; color: var(--plum); line-height: 1; }
+    .cd-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 11px 24px; border-radius: 999px; font-family: 'Tajawal', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; }
+    .btn-plum { background: var(--plum); color: #fff; border: 1px solid var(--plum); }
+    .btn-plum:hover { background: var(--plum-dark); }
+    .btn-ghost { background: transparent; color: var(--plum); border: 1px solid var(--line); }
+
+    .tl { max-width: 430px; margin: 20px auto 0; text-align: right; display: grid; gap: 12px; }
+    .tl-item { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 14px; background: var(--parchment); border-right: 3px solid var(--gold); }
+    .tl-time { min-width: 78px; font-weight: 700; color: var(--plum); font-size: 13px; }
+    .tl-name { font-family: 'Amiri', serif; font-size: 21px; }
+
+    .notice-card { max-width: 460px; margin: 16px auto 0; padding: 18px 20px; border-radius: 16px; background: var(--lavender); border: 1px solid var(--line); font-size: 14px; color: var(--plum-dark); display: grid; gap: 8px; }
+
+    .rsvp-form { max-width: 440px; margin: 20px auto 0; text-align: right; display: grid; gap: 14px; }
+    .rsvp-form label.lbl { display: block; font-size: 13px; color: var(--plum); font-weight: 600; margin-bottom: 5px; }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 11px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--parchment); font-family: inherit; font-size: 14px; outline: none; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pair-opt { position: relative; padding: 11px; border-radius: 14px; border: 1px solid var(--line); text-align: center; cursor: pointer; font-size: 13px; }
+    .pair-opt input { position: absolute; opacity: 0; }
+    .pair-opt:has(input:checked) { background: var(--plum); color: #fff; border-color: var(--plum); font-weight: 700; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 560px) { .card { padding: 34px 18px; } }
+  </style>
+</head>
+<body data-particles="petals-lavender" data-music-mood="oriental">
+
+  <!-- 3-Tap Carved Gate Reveal -->
+  <div id="mosque-gate" role="dialog" aria-label="فتح دعوة عقد القران">
+    <div class="carved-panel carved-right"></div>
+    <div class="carved-panel carved-left"></div>
+    <div class="gate-center" id="mosqueCenter">
+      <div style="font-size:12px; color:#E8CA8C; margin-bottom:8px;">دعوة عقد قران مبارك</div>
+      <div class="ruqaa" style="font-size:48px; color:#FFF7E4; line-height:1.2;" data-couple-title>عبدالرحمن <span style="color:#E8CA8C;">&amp;</span> آية</div>
+      <div class="amiri" style="font-size:20px; color:#E5D5EE; margin-top:6px;" data-guest-name data-guest-prefix="تشرفنا دعوتكم، ">
+        مسجد المشير طنطاوي • التجمع الخامس
+      </div>
+      <div id="mosqueHint" style="font-size:14px; color:#F5E1B5; margin-top:14px;">
+        اضغط ثلاث مرات لفتح بوابة السعادة ✿
+      </div>
+      <div class="knock-dots" id="mosqueDots" aria-hidden="true">
+        <span class="knock-dot"></span>
+        <span class="knock-dot"></span>
+        <span class="knock-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <main class="paper-shell">
+    <section class="card reveal">
+      <div class="tag">عقد قران</div>
+      <div class="floral-div">✿</div>
+      <h1 class="couple-title" data-couple-title>عبدالرحمن <span>&amp;</span> آية</h1>
+      <div class="guest-pill" data-guest-name data-guest-prefix="أهلاً بك يا " style="display:none;"></div>
+      <div class="amiri" style="font-size:22px; color:var(--ink);" data-event-date>السبت ١٣ نوفمبر ٢٠٢٧ • الساعة ٣:٠٠ عصراً</div>
+      <div style="font-size:14px; color:var(--plum); font-weight:600; margin-top:6px;" data-venue-name>مسجد المشير طنطاوي • قاعة السلام، القاهرة الجديدة</div>
+      <div class="floral-div">✿</div>
+      <div class="amiri" style="font-size:18px; color:var(--plum); margin-bottom:6px;">بسم الله الرحمن الرحيم</div>
+      <p class="verse-box">
+        ﴿ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا ﴾
+      </p>
+      <div class="families-grid">
+        <div><strong>العريس:</strong> المهندس عبدالرحمن — نجل الأستاذ خالد المنصوري</div>
+        <div style="color:var(--gold);">♥</div>
+        <div><strong>العروس:</strong> الدكتورة آية — كريمة الأستاذ حسام الدين فؤاد</div>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">احفظ الموعد</div>
+      <h2 class="sec-title">موعد عقد القران</h2>
+      <div class="wi-tear-cal" style="--cal-accent:#663E76;">
+        <div class="wi-tear-top">نوفمبر ٢٠٢٧</div>
+        <div class="wi-tear-body">
+          <div class="wi-tear-meta">السبت</div>
+          <div class="wi-tear-day amiri" style="color:#4A2A57;">١٣</div>
+          <div class="wi-tear-meta">الساعة ٣:٠٠ عصراً</div>
+        </div>
+      </div>
+      <div class="cd-row" data-countdown="2027-11-13T15:00:00+02:00" data-ar-digits>
+        <div class="cd-box"><div class="cd-val" data-cd="days">٠٠</div><div class="cd-lbl">يوم</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="hours">٠٠</div><div class="cd-lbl">ساعة</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="minutes">٠٠</div><div class="cd-lbl">دقيقة</div></div>
+        <div class="cd-box"><div class="cd-val" data-cd="seconds">٠٠</div><div class="cd-lbl">ثانية</div></div>
+      </div>
+      <div class="btns">
+        <button type="button" class="btn btn-plum wi-shimmer" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">تقويم جوجل</button>
+        <button type="button" class="btn btn-ghost" onclick="WeddingCalendar.downloadICS(EVENT_INFO)">تقويم آيفون / ملف ICS</button>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">تفاصيل اليوم</div>
+      <h2 class="sec-title">برنامج عقد القران والموقع</h2>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-time">٣:٠٠ عصراً</div><div class="tl-name">استقبال الأهل والأحباب</div></div>
+        <div class="tl-item"><div class="tl-time">٣:٣٠ عصراً</div><div class="tl-name">مراسم عقد القران والدعاء</div></div>
+        <div class="tl-item"><div class="tl-time">٤:٤٥ عصراً</div><div class="tl-name">التهاني والتصوير التذكاري</div></div>
+      </div>
+      <div class="notice-card">
+        <div>✿ نحتفي معكم بمراسم عقد القران فقط وسط أجواء أسرية هادئة ومباركة.</div>
+        <div>✿ الالتزام بالموعد يتيح لنا مشاركة اللحظة المباركة سوياً.</div>
+      </div>
+      <div style="margin-top:22px;">
+        <div class="amiri" style="font-size:25px; color:var(--plum);" data-venue-name>مسجد المشير طنطاوي — قاعة السلام</div>
+        <div style="font-size:13px; color:var(--muted); margin:4px 0 16px;">محور المشير طنطاوي، التجمع الخامس، القاهرة الجديدة، مصر</div>
+        <div class="btns">
+          <a class="btn btn-plum wi-shimmer" href="https://maps.google.com/?q=Al+Mushir+Tantawy+Mosque+New+Cairo" target="_blank" rel="noopener noreferrer">الموقع على الخريطة</a>
+          <button type="button" class="btn btn-ghost" data-copy-text="مسجد المشير طنطاوي، التجمع الخامس، القاهرة الجديدة، مصر">نسخ العنوان</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card reveal">
+      <div class="tag">كلماتكم تسعد قلوبنا</div>
+      <h2 class="sec-title">أرسل تهنئتك وتأكيد الحضور</h2>
+      <form class="rsvp-form" data-rsvp-form data-lang="ar" data-couple="عقد قران عبدالرحمن و آية" data-result-target="rsvp-result" data-qr-fg="#4A2A57" data-qr-bg="#FFFDF8">
+        <div><label class="lbl" for="gname">الاسم الكريم</label><input id="gname" name="guestName" type="text" required placeholder="اكتب اسمك الكريم" /></div>
+        <div>
+          <label class="lbl">الحضور</label>
+          <div class="pair">
+            <label class="pair-opt"><input type="radio" name="attendance" value="yes" checked />سأحضر بإذن الله</label>
+            <label class="pair-opt"><input type="radio" name="attendance" value="no" />أرسل دعواتي الطيبة</label>
+          </div>
+        </div>
+        <div><label class="lbl" for="gcount">عدد الحضور</label><select id="gcount" name="guestsCount"><option value="1">فرد واحد</option><option value="2" selected>فردان</option><option value="3">٣ أفراد</option><option value="4">٤ أفراد</option></select></div>
+        <div><label class="lbl" for="gnote">دعوة وتهنئة للعروسين</label><textarea id="gnote" name="note" rows="3" placeholder="بارك الله لكما وجمع بينكما على خير..."></textarea></div>
+        <button type="submit" class="btn btn-plum wi-shimmer" style="width:100%;">إرسال التهنئة وإصدار بطاقة الحضور</button>
+      </form>
+      <div id="rsvp-result" style="display:none; max-width:440px; margin:0 auto;"></div>
+    </section>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'عقد قران عبدالرحمن و آية — مسجد المشير طنطاوي',
+      start: '2027-11-13T13:00:00Z',
+      end: '2027-11-13T16:00:00Z',
+      location: 'مسجد المشير طنطاوي، التجمع الخامس، القاهرة الجديدة، مصر',
+      description: 'دعوة مباركة لحضور عقد قران عبدالرحمن و آية.',
+      filename: 'abdelrahman-aya-katb-ketab'
+    };
+    document.addEventListener('DOMContentLoaded', () => {
+      WeddingMotion.initThreeKnockDoor({
+        overlayId: 'mosque-gate',
+        triggerId: 'mosque-gate',
+        dotsId: 'mosqueDots',
+        hintId: 'mosqueHint',
+        shakeTargetId: 'mosqueCenter',
+        musicMood: 'oriental'
+      });
+    });
+  </script>
+</body>
+</html>
