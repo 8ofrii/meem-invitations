@@ -28,9 +28,11 @@ a { color: inherit; }
 .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: .16em; line-height: 1.1; display: flex; align-items: baseline; gap: 6px; }
 .brand-ar { font-family: 'Reem Kufi', 'Amiri', serif; font-size: 15px; font-weight: 600; color: var(--gold); letter-spacing: 0; line-height: 1; }
 .brand-sub { font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: .04em; }
-.nav-links { display: flex; align-items: center; gap: 22px; }
-.nav-links a.link { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 0; border-bottom: 2px solid transparent; transition: .2s; }
-.nav-links a.link:hover, .nav-links a.link.active { color: var(--gold); border-color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 14px; }
+.nav-links a.link { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 999px; border: 1px solid transparent; transition: all .22s ease; }
+.nav-links a.link:hover { color: var(--gold); }
+.nav-links a.link.active { color: #FFF3D1; background: rgba(223,190,127,.14); border-color: rgba(223,190,127,.55); box-shadow: 0 0 18px rgba(223,190,127,.22); font-weight: 600; }
+section[id] { scroll-margin-top: 82px; }
 .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--text); width: 40px; height: 40px; border-radius: 10px; font-size: 18px; cursor: pointer; }
 
 /* Buttons */

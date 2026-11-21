@@ -1,10 +1,17 @@
-﻿/* Shared shell: nav, footer, sample cards, phone preview */
+﻿/* Shared shell: nav, footer, sample cards, phone preview, clean URLs & scroll-spy */
 (function () {
   const S = window.SITE, B = S.BRAND;
-  const NAV = [
-    ['index.html', 'Home'], ['collection.html', 'Designs'], ['personalise.html', 'Try it live'],
-    ['pricing.html', 'Packages']
-  ];
+
+  // Strip .html from the browser address bar cleanly (e.g. /index.html -> /, /pricing.html -> /pricing)
+  try {
+    const p = location.pathname;
+    if (p.endsWith('/index.html')) {
+      history.replaceState(null, '', p.slice(0, -10) + location.search + location.hash);
+    } else if (p.endsWith('.html') && !p.includes('/samples/')) {
+      history.replaceState(null, '', p.slice(0, -5) + location.search + location.hash);
+    }
+  } catch (_) {}
+
   const wa = (msg) => `https://wa.me/${S.WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
   function buildUrl(file, extra, clean) {
@@ -35,26 +42,41 @@
         <div class="chips">${s.features.map((f) => `<span class="chip">${f}</span>`).join('')}</div>
         <div class="card-actions">
           <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">📱 Preview</button>
-          <a class="btn btn-ghost" href="${buildUrl(s.file)}" target="_blank">Full screen ↗</a>
+          <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Try live →</button>
         </div>
       </div>
     </article>`;
   }
 
   function injectShell(active) {
+    const isHome = active === 'index.html' || active === 'home';
+    const prefix = isHome ? '' : '/';
+    const NAV = [
+      ['home', isHome ? '#home' : '/', 'Home'],
+      ['designs', `${prefix}#designs`, 'Designs'],
+      ['try-it-live', `${prefix}#try-it-live`, 'Try it live'],
+      ['packages', `${prefix}#packages`, 'Packages']
+    ];
+
     const savedStyle = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_logo_style')) || '1';
     const logoSrc = `assets/logos/meem-style-${savedStyle}.svg?v=4`;
 
     const header = document.createElement('header');
     header.className = 'topbar';
     header.innerHTML = `<div class="topbar-inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="${isHome ? '#home' : '/'}">
         <img class="brand-logo-img" src="${logoSrc}" width="44" height="44" alt="MEEM ميم">
         <div><div class="brand-name">${B.name} <span class="brand-ar">${B.ar}</span></div><div class="brand-sub">${B.sub}</div></div>
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
       <nav class="nav-links" id="navLinks">
-        ${NAV.map(([h, t]) => `<a class="link${h === active ? ' active' : ''}" href="${h}">${t}</a>`).join('')}
+        ${NAV.map(([id, h, t]) => {
+          const isActive = (isHome && id === 'home') ||
+            (active === 'collection.html' && id === 'designs') ||
+            (active === 'personalise.html' && id === 'try-it-live') ||
+            (active === 'pricing.html' && id === 'packages');
+          return `<a class="link${isActive ? ' active' : ''}" data-section="${id}" href="${h}">${t}</a>`;
+        }).join('')}
         <a class="btn btn-gold btn-pill" href="${wa('Hello MEEM! I would like to order a digital invitation.')}" target="_blank" rel="noopener">WhatsApp</a>
       </nav></div>`;
     document.body.prepend(header);
@@ -69,7 +91,7 @@
         </div>
         <p class="muted" style="font-size:13px;max-width:300px">${B.tagline}</p>
       </div>
-      <div><h4>Explore</h4><a href="collection.html">Designs</a><a href="personalise.html">Try it live</a><a href="pricing.html">Packages</a></div>
+      <div><h4>Explore</h4><a href="${prefix}#designs">Designs</a><a href="${prefix}#try-it-live">Try it live</a><a href="${prefix}#packages">Packages</a></div>
       <div><h4>Contact</h4><a href="${wa('Hello!')}" target="_blank" rel="noopener">WhatsApp: 01024190741</a><a href="#">Instagram ${B.handle}</a><a href="#">TikTok</a></div>
     </div><div class="foot-bottom"><span>© ${new Date().getFullYear()} ${B.name} — Cairo, Egypt</span><span>Digital Wedding &amp; Katb Ketab Invitations</span></div></div>`;
     document.body.appendChild(footer);
@@ -88,6 +110,57 @@
     document.getElementById('closeModalBtn').addEventListener('click', close);
     document.addEventListener('keydown', (e) => e.key === 'Escape' && close());
     document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+
+    // Close mobile menu when clicking a nav link
+    header.querySelectorAll('.nav-links a.link').forEach((a) => {
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
+
+    if (isHome) initScrollSpy();
+  }
+
+  function initScrollSpy() {
+    const ids = ['home', 'designs', 'try-it-live', 'packages'];
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!sections.length) return;
+
+    const links = {};
+    document.querySelectorAll('.nav-links a.link[data-section]').forEach((a) => {
+      links[a.dataset.section] = a;
+    });
+
+    function setActive(id) {
+      Object.keys(links).forEach((k) => {
+        links[k].classList.toggle('active', k === id);
+      });
+    }
+
+    function onScroll() {
+      const y = window.scrollY + 180;
+      let current = sections[0].id;
+      for (const sec of sections) {
+        if (sec.offsetTop <= y) current = sec.id;
+      }
+      if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 40)) {
+        current = sections[sections.length - 1].id;
+      }
+      setActive(current);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  function tryDesign(num) {
+    const select = document.getElementById('d');
+    const target = document.getElementById('try-it-live');
+    if (select && target) {
+      select.value = num;
+      select.dispatchEvent(new Event('change'));
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      location.href = `/#try-it-live`;
+    }
   }
 
   function preview(num, extra) {
@@ -107,5 +180,5 @@
     document.querySelectorAll('.brand-logo-img').forEach((el) => { el.src = path; });
   }
 
-  window.Shell = { init: injectShell, cardMarkup, preview, buildUrl, wa, setLogo };
+  window.Shell = { init: injectShell, cardMarkup, preview, buildUrl, wa, setLogo, tryDesign };
 })();

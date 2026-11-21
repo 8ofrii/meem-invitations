@@ -3,44 +3,107 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MEEM • ميم — Digital Wedding &amp; Katb Ketab Invitations, Egypt</title>
-<meta name="description" content="Interactive digital wedding, katb ketab, engagement and henna invitations designed in Egypt.">
-<link rel="icon" type="image/svg+xml" href="assets/logos/meem-mark.svg">
+<meta name="description" content="Interactive digital wedding, katb ketab, engagement and henna invitations in Arabic and English.">
+<link rel="icon" type="image/svg+xml" href="assets/logos/meem-style-1.svg?v=4">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-  .hero { padding: 84px 0 56px; text-align: center; }
+  /* Hero & Stats */
+  .hero { padding: 84px 0 48px; text-align: center; }
   .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
   .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px; }
   .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px; text-align: center; }
   .stat b { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
   .stat span { font-size: 12px; color: var(--muted); }
-  .step { position: relative; }
   .step .n { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font-weight: 700; margin-bottom: 14px; }
   .step h3 { font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 500; margin-bottom: 6px; }
   .step p { font-size: 13px; color: var(--muted); }
-  .cat-tile { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; transition: .25s; }
-  .cat-tile:hover { border-color: var(--gold); transform: translateY(-4px); }
-  .cat-tile h3 { font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 500; }
-  .cat-tile .ar { color: var(--gold); font-family: 'Amiri',serif; font-size: 18px; }
-  .cat-tile p { font-size: 13px; color: var(--muted); margin: 8px 0 14px; }
-  .cat-tile .count { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
-  .brand-teaser { display: grid; grid-template-columns: 1fr 1.1fr; gap: 34px; align-items: center; background: linear-gradient(155deg,#17151C,#111116); border: 1px solid var(--gold-dim); border-radius: 26px; padding: 36px; }
-  .logo-strip { display: flex; justify-content: center; }
-  .logo-strip img { width: 100%; max-width: 340px; border-radius: 22px; border: 1px solid var(--gold-dim); aspect-ratio: 1; object-fit: cover; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
-  .cta { text-align: center; background: var(--surface); border: 1px solid var(--gold-dim); border-radius: 26px; padding: 48px 24px; }
-  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2,1fr); } .brand-teaser { grid-template-columns: 1fr; padding: 24px; } }
+
+  /* Designs filter bar */
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
+  .fpill { padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font: 500 12px inherit; font-family: inherit; cursor: pointer; transition: .2s; }
+  .fpill:hover { border-color: var(--gold-dim); color: var(--text); }
+  .fpill.active { background: linear-gradient(135deg,#E8CA8C,var(--gold-2)); color: #111; border-color: transparent; font-weight: 700; }
+  .search-box { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; font-size: 13px; min-width: 220px; outline: none; }
+  .search-box:focus { border-color: var(--gold); }
+
+  /* Try it live studio */
+  .studio { display: grid; grid-template-columns: 1fr 410px; gap: 34px; align-items: start; }
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .full { grid-column: 1 / -1; }
+  .steps-note { display: grid; gap: 8px; font-size: 13px; color: #D5D0C8; margin-top: 16px; }
+  .color-note { margin-top: 16px; padding: 12px 14px; border-radius: 12px; background: rgba(223,190,127,.08); border: 1px solid var(--gold-dim); font-size: 13px; color: var(--gold); line-height: 1.55; }
+  .phone-wrap { position: sticky; top: 92px; display: flex; justify-content: center; }
+  .phone-frame { width: 380px; height: min(740px, 80vh); border-radius: 44px; border: 10px solid #22222A; background: #000; box-shadow: 0 32px 90px rgba(0,0,0,.7), 0 0 0 1px var(--gold-dim); overflow: hidden; position: relative; }
+  .phone-frame iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+  .phone-frame .phone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 112px; height: 24px; border-radius: 999px; background: #0D0D11; z-index: 5; }
+  .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .quick button { font: 600 11px inherit; font-family: inherit; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+  .quick button:hover { border-color: var(--gold); color: var(--gold); }
+  .hint { font-size: 12px; color: var(--muted); }
+
+  /* Packages & Order Calculator */
+  .pkg { display: flex; flex-direction: column; position: relative; padding: 28px 24px; }
+  .pkg.featured { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 26px 60px rgba(0,0,0,.45); }
+  .ribbon { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,#E8CA8C,var(--gold-2)); color: #111; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 14px; border-radius: 999px; white-space: nowrap; }
+  .pkg-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .pkg h3 { font-family: 'Cormorant Garamond',serif; font-size: 30px; font-weight: 500; }
+  .pkg .ar { font-family: 'Amiri',serif; color: var(--gold); font-size: 18px; }
+  .price { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); margin: 14px 0 4px; line-height: 1.05; }
+  .price small { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); }
+  .meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 12px; }
+  .meta-pill { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: #D8D3CA; }
+  .pkg ul { list-style: none; display: grid; gap: 9px; margin: 16px 0 24px; flex: 1; }
+  .pkg li { font-size: 13px; color: #D5D0C8; padding-left: 22px; position: relative; }
+  .pkg li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+  .trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 28px; }
+  .trust-item { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 18px; }
+  .trust-item b { display: block; color: var(--gold); font-size: 14px; margin-bottom: 5px; }
+  .trust-item span { font-size: 12px; color: var(--muted); display: block; line-height: 1.55; }
+
+  .order-layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 24px; align-items: start; margin-top: 32px; }
+  .orderform { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .addon-list { display: grid; gap: 8px; margin-top: 6px; }
+  .addon-opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; font-size: 13px; transition: border-color .2s; }
+  .addon-opt:hover { border-color: var(--gold-dim); }
+  .addon-opt:has(input:checked) { border-color: var(--gold); background: rgba(223,190,127,.07); }
+  .addon-left { display: flex; align-items: center; gap: 10px; }
+  .addon-opt input { accent-color: var(--gold); width: 16px; height: 16px; }
+  .addon-price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+
+  .summary-box { position: sticky; top: 92px; background: linear-gradient(155deg,#17151C,#111116); border: 1px solid var(--gold-dim); border-radius: 22px; padding: 26px 22px; }
+  .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; color: #D5D0C8; }
+  .sum-total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 6px; font-size: 14px; font-weight: 600; }
+  .sum-total b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1; }
+  .deposit-note { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+  .pay-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .pay-badge { font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+  .section-divider { border: 0; border-top: 1px solid var(--line); margin: 10px 0; }
+
+  @media (max-width: 980px) {
+    .studio, .order-layout { grid-template-columns: 1fr; }
+    .phone-wrap, .summary-box { position: static; }
+    .stats, .trust-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 600px) {
+    .form, .orderform, .trust-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <section class="hero"><div class="container">
+  <!-- 1. HOME SECTION -->
+  <section id="home" class="hero"><div class="container">
     <div class="pill-tag">Digital Invitations · Motion · Sound</div>
     <h1 class="h1">Invitations your guests will <em>open twice</em></h1>
     <p class="lead" style="margin:18px auto 0">Interactive digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both. One link on WhatsApp, RSVPs and a QR pass for every guest.</p>
     <div class="actions">
-      <a class="btn btn-gold btn-lg btn-pill" href="collection.html">See the designs</a>
-      <a class="btn btn-ghost btn-lg btn-pill" href="personalise.html">Try it with your names</a>
+      <a class="btn btn-gold btn-lg btn-pill" href="#designs">See the designs</a>
+      <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try it with your names</a>
     </div>
     <div class="stats">
       <div class="stat"><b>17</b><span>Ready designs</span></div>
@@ -48,46 +111,300 @@
       <div class="stat"><b>Arabic &amp; English</b><span>Every style</span></div>
       <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
     </div>
-  </div></section>
 
-  <section class="section tight"><div class="container">
-    <div class="center" style="margin-bottom:30px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
-    <div class="grid g4">
-      <div class="card step"><div class="n">1</div><h3>Pick a design</h3><p>Browse by occasion and language, preview each one inside a phone.</p></div>
-      <div class="card step"><div class="n">2</div><h3>Personalise</h3><p>Try your names, date, venue and a guest greeting live — before ordering.</p></div>
-      <div class="card step"><div class="n">3</div><h3>We build it</h3><p>Colors, music and details matched to your wedding. Edits included.</p></div>
-      <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One link per guest. RSVPs come back to you with a QR pass.</p></div>
+    <div style="margin-top:64px">
+      <div class="center" style="margin-bottom:28px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
+      <div class="grid g4" style="text-align:left">
+        <div class="card step"><div class="n">1</div><h3>Pick a design</h3><p>Browse by occasion and language, preview each one inside a phone.</p></div>
+        <div class="card step"><div class="n">2</div><h3>Personalise</h3><p>Try your names, date, venue and a guest greeting live — before ordering.</p></div>
+        <div class="card step"><div class="n">3</div><h3>We build it</h3><p>Colors, music and details matched to your wedding. Edits included.</p></div>
+        <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One link per guest. RSVPs come back to you with a QR pass.</p></div>
+      </div>
     </div>
   </div></section>
 
-  <section class="section tight"><div class="container">
-    <div class="center" style="margin-bottom:30px"><div class="pill-tag">Collections</div><h2 class="h2">Designs for every <em>occasion</em></h2></div>
-    <div class="grid g4" id="catTiles"></div>
-  </div></section>
+  <hr class="section-divider">
 
-  <section class="section tight"><div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px;margin-bottom:24px">
-      <div><div class="pill-tag">Featured</div><h2 class="h2">Most loved <em>openings</em></h2></div>
-      <a class="btn btn-ghost" href="collection.html">All designs →</a>
+  <!-- 2. DESIGNS SECTION -->
+  <section id="designs" class="section"><div class="container">
+    <div class="center" style="margin-bottom:30px">
+      <div class="pill-tag">Collections</div>
+      <h2 class="h2">Interactive <em>Designs</em></h2>
+      <p class="lead" style="margin:10px auto 0">Browse all 17 ready-made wedding, katb ketab, engagement and henna concepts. Preview any design live inside a phone.</p>
     </div>
-    <div class="gallery-grid" id="featured"></div>
+
+    <div class="filter-bar">
+      <div class="pill-group" id="catPills"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <div class="pill-group" id="langPills">
+          <button type="button" class="fpill active" data-lang="all">All</button>
+          <button type="button" class="fpill" data-lang="ar">العربية</button>
+          <button type="button" class="fpill" data-lang="en">English</button>
+          <button type="button" class="fpill" data-lang="bi">Both</button>
+        </div>
+        <input class="search-box" id="searchBox" placeholder="Search designs or venues…">
+      </div>
+    </div>
+
+    <div class="gallery-grid" id="designGrid"></div>
   </div></section>
 
-  <section class="section tight"><div class="container">
-    <div class="cta"><h2 class="h2">Ready to send your <em>invitation</em>?</h2>
-      <p class="lead" style="margin:12px auto 22px">Packages start from 950 EGP — preview your live invitation before final payment.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn btn-gold btn-lg btn-pill" href="pricing.html">See packages</a><a id="ctaWa" class="btn btn-ghost btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp</a></div></div>
+  <hr class="section-divider">
+
+  <!-- 3. TRY IT LIVE SECTION -->
+  <section id="try-it-live" class="section"><div class="container">
+    <div class="center" style="margin-bottom:32px">
+      <div class="pill-tag">Live Preview</div>
+      <h2 class="h2">Try it with <em>your names</em></h2>
+      <p class="lead" style="margin:10px auto 0">Pick any design, enter your details or upload a couple photo and see your invitation update inside the phone immediately.</p>
+    </div>
+
+    <div class="studio">
+      <div class="card">
+        <form class="form" id="f" onsubmit="return false">
+          <div class="field full"><label for="d">1 · Design</label><select id="d"></select></div>
+          <div class="field"><label for="c">2 · Couple names</label><input id="c" autocomplete="off" placeholder="Mahmoud & Merna / محمود و ميرنا"></div>
+          <div class="field"><label for="dt">3 · Date</label><input id="dt" type="date"></div>
+          <div class="field"><label for="v">4 · Venue / city</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
+          <div class="field"><label for="g">5 · Guest greeting</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذة سارة"></div>
+
+          <div class="field full">
+            <label for="ph">6 · Couple photo (optional — works on every design)</label>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <input id="ph" type="file" accept="image/*" style="flex:1;min-width:210px;padding:9px 12px">
+              <img id="phThumb" alt="" style="display:none;width:44px;height:44px;border-radius:10px;object-fit:cover;border:1px solid var(--gold)">
+              <button type="button" class="btn btn-ghost" id="phClear" style="display:none;padding:9px 14px;font-size:12px">Remove photo</button>
+            </div>
+          </div>
+
+          <div class="full"><div class="hint">Quick examples:</div>
+            <div class="quick"><button type="button" data-ex="1">Mahmoud &amp; Merna · Giza</button><button type="button" data-ex="2">محمود و ميرنا · القاهرة</button><button type="button" data-ex="3">Clear all</button></div></div>
+
+          <div class="full" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+            <button class="btn btn-gold" id="apply" style="flex:1;min-width:160px">↻ Update preview</button>
+            <a class="btn btn-ghost" id="full" target="_blank">Full screen ↗</a>
+            <button class="btn btn-ghost" id="copy">Copy link</button>
+            <a class="btn btn-ghost" id="order" target="_blank" rel="noopener">Order on WhatsApp</a>
+          </div>
+        </form>
+
+        <div class="color-note">
+          🎨 <b>Custom Colors Available:</b> All colors in any design can be changed and tailored to match your wedding theme, flowers, or dress code upon order.
+        </div>
+
+        <div class="steps-note">
+          <div>✓ Names, venue, date and countdown update instantly</div>
+          <div>✓ Arabic and English both supported</div>
+          <div>✓ Tap the cover inside the phone to hear audio &amp; motion</div>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <iframe id="frame" title="Live preview" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <hr class="section-divider">
+
+  <!-- 4. PACKAGES SECTION -->
+  <section id="packages" class="section"><div class="container">
+    <div class="center" style="margin-bottom:32px">
+      <div class="pill-tag">Pricing in EGP</div>
+      <h2 class="h2">Clear, Honest <em>Packages</em></h2>
+      <p class="lead" style="margin:10px auto 0">Transparent pricing in Egyptian Pounds with no hidden fees. Preview your live invitation on your phone before paying the remaining balance.</p>
+    </div>
+
+    <div class="grid g3" id="pkgs"></div>
+
+    <div class="trust-grid">
+      <div class="trust-item"><b>50% Deposit Only</b><span>Pay 50% to begin and the remaining 50% only after you review and approve your live invitation link.</span></div>
+      <div class="trust-item"><b>Easy Egyptian Payments</b><span>We accept InstaPay, Vodafone Cash, and local Egyptian bank transfers with instant confirmation.</span></div>
+      <div class="trust-item"><b>Works on Every Phone</b><span>Opens smoothly right from WhatsApp on iPhone and Android — no app download required for your guests.</span></div>
+      <div class="trust-item"><b>Free Schedule Updates</b><span>If your venue, hall or start time changes before your celebration, we update your live link free of charge.</span></div>
+    </div>
+
+    <div class="order-layout" id="order-section">
+      <div class="card">
+        <h3 class="serif gold" style="font-size:30px;font-weight:500;margin-bottom:6px">Build Your Order</h3>
+        <p class="muted" style="font-size:13px;margin-bottom:20px">Choose your package, design and any optional add-ons to see your instant estimate and send your request directly on WhatsApp.</p>
+
+        <form class="orderform" id="of" onsubmit="return false">
+          <div class="field"><label for="n">Your Name</label><input id="n" placeholder="e.g. Mahmoud & Merna" autocomplete="off"></div>
+          <div class="field"><label for="evType">Occasion</label>
+            <select id="evType">
+              <option value="Wedding">Wedding • فرح</option>
+              <option value="Katb Ketab">Katb Ketab • كتب كتاب</option>
+              <option value="Engagement">Engagement • خطوبة</option>
+              <option value="Henna Night">Henna Night • ليلة حنة</option>
+            </select>
+          </div>
+          <div class="field"><label for="pk">Package</label><select id="pk"></select></div>
+          <div class="field"><label for="ds">Preferred Design</label><select id="ds"></select></div>
+          <div class="field"><label for="ev">Event Date</label><input id="ev" type="date"></div>
+          <div class="field"><label for="langPref">Language</label>
+            <select id="langPref">
+              <option value="Arabic">Arabic • العربية</option>
+              <option value="English">English</option>
+              <option value="Arabic & English">Arabic &amp; English</option>
+            </select>
+          </div>
+          <div class="field full"><label>Optional Add-Ons</label><div class="addon-list" id="addonList"></div></div>
+          <div class="field full"><label for="nt">Venue, Preferred Colors &amp; Notes</label><textarea id="nt" rows="3" placeholder="Venue name, city, theme colors, favourite song or any special request…"></textarea></div>
+        </form>
+      </div>
+
+      <aside class="summary-box">
+        <div class="pill-tag" style="margin-bottom:10px">Order Summary</div>
+        <div id="sumLines"></div>
+        <div class="sum-total"><span>Estimated Total</span><b id="sumTotal">1,850 EGP</b></div>
+        <div class="deposit-note" id="sumDeposit">50% deposit to start: 925 EGP • Remaining 925 EGP after preview.</div>
+        <a class="btn btn-gold btn-lg btn-pill" id="send" style="width:100%" target="_blank" rel="noopener">Confirm via WhatsApp</a>
+        <div class="pay-badges"><span class="pay-badge">InstaPay</span><span class="pay-badge">Vodafone Cash</span><span class="pay-badge">Bank Transfer</span></div>
+      </aside>
+    </div>
   </div></section>
 </main>
+
 <script src="assets/data.js"></script><script src="assets/site.js"></script>
 <script>
-  Shell.init('index.html');
-  const S = SITE;
-  document.getElementById('catTiles').innerHTML = S.CATEGORIES.map(c => {
-    const n = S.SAMPLES.filter(s => s.cat === c.id).length;
-    return `<a class="cat-tile" href="collection.html?cat=${c.id}"><div class="ar">${c.ar}</div><h3>${c.title}</h3><p>${c.blurb}</p><div class="count">${n} designs →</div></a>`;
-  }).join('');
-  document.getElementById('featured').innerHTML = ['17','01','02','12','13','16'].map(n => Shell.cardMarkup(S.SAMPLES.find(s => s.num === n))).join('');
-  document.getElementById('ctaWa').href = Shell.wa('Hello! I would like to order a digital invitation.');
+  Shell.init('home');
+  const S = SITE, $ = id => document.getElementById(id), fmt = n => n.toLocaleString('en-US');
+
+  /* ===== 1. DESIGNS FILTER & GALLERY ===== */
+  let curCat = 'all', curLang = 'all';
+  $('catPills').innerHTML = `<button type="button" class="fpill active" data-cat="all">All (${S.SAMPLES.length})</button>` +
+    S.CATEGORIES.map(c => `<button type="button" class="fpill" data-cat="${c.id}">${c.title}</button>`).join('');
+
+  function renderDesigns() {
+    const q = $('searchBox').value.trim().toLowerCase();
+    const list = S.SAMPLES.filter(s => {
+      if (curCat !== 'all' && s.cat !== curCat) return false;
+      if (curLang !== 'all' && s.langKey !== curLang) return false;
+      if (q && !(s.title + ' ' + s.subtitle + ' ' + s.venue + ' ' + s.desc).toLowerCase().includes(q)) return false;
+      return true;
+    });
+    $('designGrid').innerHTML = list.length
+      ? list.map(Shell.cardMarkup).join('')
+      : `<div class="empty-state full" style="grid-column:1/-1"><p class="muted">No designs match your search. Try another filter.</p></div>`;
+  }
+  $('catPills').addEventListener('click', e => {
+    const b = e.target.closest('button[data-cat]'); if (!b) return;
+    $('catPills').querySelectorAll('.fpill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); curCat = b.dataset.cat; renderDesigns();
+  });
+  $('langPills').addEventListener('click', e => {
+    const b = e.target.closest('button[data-lang]'); if (!b) return;
+    $('langPills').querySelectorAll('.fpill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); curLang = b.dataset.lang; renderDesigns();
+  });
+  $('searchBox').addEventListener('input', renderDesigns);
+  renderDesigns();
+
+  /* ===== 2. TRY IT LIVE STUDIO ===== */
+  $('d').innerHTML = S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title} (${s.lang})</option>`).join('');
+  let hasPhoto = false;
+  const tryData = () => ({
+    num: $('d').value,
+    couple: $('c').value.trim(),
+    date: $('dt').value,
+    venue: $('v').value.trim(),
+    guest: $('g').value.trim(),
+    photo: hasPhoto ? '1' : ''
+  });
+  function updateTry() {
+    const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
+    $('frame').src = Shell.buildUrl(s.file, x, true);
+    $('full').href = Shell.buildUrl(s.file, x);
+    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
+  }
+  $('ph').addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const max = 900, scale = Math.min(1, max / Math.max(img.width, img.height));
+        const cv = document.createElement('canvas');
+        cv.width = Math.round(img.width * scale); cv.height = Math.round(img.height * scale);
+        cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+        const compressed = cv.toDataURL('image/jpeg', 0.82);
+        try { sessionStorage.setItem('meem_custom_photo', compressed); } catch (_) {}
+        hasPhoto = true; $('phThumb').src = compressed; $('phThumb').style.display = 'block'; $('phClear').style.display = 'inline-flex';
+        updateTry();
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+  $('phClear').addEventListener('click', () => {
+    hasPhoto = false; $('ph').value = ''; $('phThumb').style.display = 'none'; $('phClear').style.display = 'none';
+    try { sessionStorage.removeItem('meem_custom_photo'); } catch (_) {}
+    updateTry();
+  });
+  $('d').addEventListener('change', updateTry);
+  $('apply').addEventListener('click', updateTry);
+  ['c','dt','v','g'].forEach(id => $(id).addEventListener('keydown', e => e.key === 'Enter' && updateTry()));
+  $('copy').addEventListener('click', async () => {
+    const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
+    try { await navigator.clipboard.writeText(new URL(Shell.buildUrl(s.file, x), location.href).href); $('copy').textContent = '✓ Copied'; setTimeout(() => $('copy').textContent = 'Copy link', 2000); } catch (_) {}
+  });
+  document.querySelector('.quick').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const k = b.dataset.ex;
+    if (k === '1') { $('c').value = 'Mahmoud & Merna'; $('v').value = 'Marriott Mena House, Giza'; $('g').value = 'Dear Ahmed'; }
+    if (k === '2') { $('c').value = 'محمود و ميرنا'; $('v').value = 'فندق الماسة كابيتال، القاهرة'; $('g').value = 'أستاذ أحمد'; }
+    if (k === '3') { ['c','dt','v','g'].forEach(id => $(id).value = ''); }
+    updateTry();
+  });
+  updateTry();
+
+  /* ===== 3. PACKAGES & ORDER CALCULATOR ===== */
+  $('pkgs').innerHTML = S.PACKAGES.map(p => `
+    <article class="card pkg${p.featured ? ' featured' : ''}">
+      ${p.featured ? '<div class="ribbon">Most Popular</div>' : ''}
+      <div class="pkg-top"><h3>${p.name}</h3><span class="ar">${p.ar}</span></div>
+      <div class="price">${fmt(p.price)} <small>EGP</small></div>
+      <div class="meta-row"><span class="meta-pill">⏱ ${p.delivery}</span><span class="meta-pill">${p.bestFor}</span></div>
+      <p class="muted" style="font-size:13px">${p.blurb}</p>
+      <ul>${p.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      <a class="btn ${p.featured ? 'btn-gold' : 'btn-ghost'} btn-pill" href="#order-section" onclick="selectPkg('${p.id}')">Select ${p.name}</a>
+    </article>
+  `).join('');
+
+  $('pk').innerHTML = S.PACKAGES.map(p => `<option value="${p.id}"${p.featured ? ' selected' : ''}>${p.name} — ${fmt(p.price)} EGP</option>`).join('');
+  $('ds').innerHTML = `<option value="custom">Custom / Help me choose</option>` + S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
+  $('addonList').innerHTML = S.ADDONS.map(a => `
+    <label class="addon-opt">
+      <span class="addon-left"><input type="checkbox" value="${a.id}" data-price="${a.price}" data-label="${a.label}"><span>${a.label}</span></span>
+      <span class="addon-price">+ ${fmt(a.price)} EGP</span>
+    </label>
+  `).join('');
+
+  window.selectPkg = function (id) { $('pk').value = id; updateSummary(); };
+  function updateSummary() {
+    const pkg = S.PACKAGES.find(x => x.id === $('pk').value) || S.PACKAGES[1];
+    const checked = Array.from(document.querySelectorAll('#addonList input:checked')).map(el => ({ label: el.dataset.label, price: Number(el.dataset.price) }));
+    const total = pkg.price + checked.reduce((a, b) => a + b.price, 0);
+    const deposit = Math.round(total / 2);
+    $('sumLines').innerHTML = [
+      `<div class="sum-line"><span>${pkg.name} Package (${pkg.delivery})</span><strong>${fmt(pkg.price)} EGP</strong></div>`,
+      ...checked.map(c => `<div class="sum-line"><span>+ ${c.label}</span><strong>${fmt(c.price)} EGP</strong></div>`)
+    ].join('');
+    $('sumTotal').textContent = `${fmt(total)} EGP`;
+    $('sumDeposit').textContent = `50% deposit to start: ${fmt(deposit)} EGP • Remaining ${fmt(total - deposit)} EGP after preview.`;
+
+    const dVal = $('ds').value;
+    const designName = dVal === 'custom' ? 'Custom / Help me choose' : `#${dVal} (${S.SAMPLES.find(s => s.num === dVal).title})`;
+    const addonsText = checked.length ? `\nAdd-ons: ${checked.map(c => c.label).join(', ')}` : '';
+    const msg = `Hello MEEM! I'd like to order a digital invitation:\nName: ${$('n').value.trim() || '—'}\nOccasion: ${$('evType').value}\nPackage: ${pkg.name} (${fmt(pkg.price)} EGP)\nDesign: ${designName}\nLanguage: ${$('langPref').value}\nEvent Date: ${$('ev').value || 'To be confirmed'}${addonsText}\nEstimated Total: ${fmt(total)} EGP\nNotes: ${$('nt').value.trim() || '—'}`;
+    $('send').href = Shell.wa(msg);
+  }
+  ['n', 'evType', 'pk', 'ds', 'ev', 'langPref', 'nt'].forEach(id => $(id).addEventListener('input', updateSummary));
+  $('addonList').addEventListener('change', updateSummary);
+  updateSummary();
 </script>
 </body></html>

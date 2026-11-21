@@ -27,8 +27,25 @@ function load(filePath, ext) {
 }
 
 http.createServer((req, res) => {
-  const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+  const rawUrl = req.url || '/';
+  const qIndex = rawUrl.indexOf('?');
+  const urlPath = decodeURIComponent(qIndex >= 0 ? rawUrl.slice(0, qIndex) : rawUrl);
+  const query = qIndex >= 0 ? rawUrl.slice(qIndex) : '';
+
+  // Clean URLs: redirect /index.html -> / and /page.html -> /page (except /samples/)
+  if (urlPath === '/index.html') {
+    res.writeHead(301, { Location: '/' + query });
+    return res.end();
+  }
+  if (urlPath.endsWith('.html') && !urlPath.startsWith('/samples/')) {
+    res.writeHead(301, { Location: urlPath.slice(0, -5) + query });
+    return res.end();
+  }
+
   let filePath = path.join(ROOT, path.normalize(urlPath === '/' ? '/index.html' : urlPath));
+  if (!fs.existsSync(filePath) && !path.extname(filePath) && fs.existsSync(filePath + '.html')) {
+    filePath = filePath + '.html';
+  }
   if (!filePath.startsWith(ROOT) || !fs.existsSync(filePath)) {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     return res.end('404 Not Found');
