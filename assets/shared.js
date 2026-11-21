@@ -53,7 +53,14 @@
 
   if (!customCouple && (customGroom || customBride)) {
     if (customGroom && customBride) {
-      customCouple = (customLang === 'en') ? `${customGroom} & ${customBride}` : `${customGroom} و ${customBride}`;
+      const hasAr = /[\u0600-\u06FF]/.test(customGroom + customBride);
+      if (customLang === 'en') {
+        customCouple = `${customGroom} & ${customBride}`;
+      } else if (customLang === 'bi') {
+        customCouple = hasAr ? `${customGroom} و ${customBride}` : `${customGroom} & ${customBride}`;
+      } else {
+        customCouple = `${customGroom} و ${customBride}`;
+      }
     } else {
       customCouple = customGroom || customBride;
     }
@@ -69,8 +76,8 @@
     if (parts[1]) brideInitial = parts[1].trim()[0];
   }
   if (customLang === 'en') {
-    groomInitial = groomInitial.toUpperCase();
-    brideInitial = brideInitial.toUpperCase();
+    groomInitial = groomInitial ? groomInitial.toUpperCase() : 'M';
+    brideInitial = brideInitial ? brideInitial.toUpperCase() : 'M';
   }
 
   /* ========================================================================
@@ -806,7 +813,6 @@
           burstGoldenLight(x, y);
           overlay.classList.add('is-open');
           document.body.classList.remove('wi-scroll-locked');
-          startMusic(opts.musicMood || 'oriental');
           if (typeof opts.onOpen === 'function') opts.onOpen();
         }, 220);
       }
@@ -1083,12 +1089,16 @@
     const isEn = (l === 'en');
     const isBi = (l === 'bi');
 
+    // Update html dir/lang
     if (isAr) {
       document.documentElement.dir = 'rtl';
       document.documentElement.lang = 'ar';
     } else if (isEn) {
       document.documentElement.dir = 'ltr';
       document.documentElement.lang = 'en';
+    } else if (isBi) {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
     }
 
     // Trigger existing language buttons in templates that have them (e.g. #07 Nile Palace)
@@ -1099,13 +1109,193 @@
       if (isEn && (txt.includes('english') || attr === 'en')) b.click();
     });
 
-    // Translate countdown labels
+    // 1. Process explicit [data-en] and [data-ar] attributes first
+    document.querySelectorAll('[data-en], [data-ar]').forEach((el) => {
+      if (isEn && el.dataset.en) {
+        el.textContent = el.dataset.en;
+        if (el.hasAttribute('data-en-dir')) el.dir = el.dataset.enDir;
+        else el.removeAttribute('dir');
+      } else if (isAr && el.dataset.ar) {
+        el.textContent = el.dataset.ar;
+      } else if (isBi && el.dataset.ar && el.dataset.en) {
+        el.textContent = el.dataset.ar + ' • ' + el.dataset.en;
+      }
+    });
+
+    // 2. Comprehensive wedding dictionary for leaf text nodes
+    const WEDDING_DICT = [
+      // Seals & Cover hints
+      ['دعوة ملكية', 'Royal Wedding Invitation', 'دعوة ملكية • Royal Wedding'],
+      ['ثلاث طرقات تفتح لك أبواب الأمسية ✨', 'Tap 3 times to open the royal gates ✨', 'ثلاث طرقات تفتح لك أبواب الأمسية • Tap 3 times to open ✨'],
+      ['ثلاث طرقات تفتح لك أبواب الأمسية', 'Tap 3 times to open the royal gates', 'ثلاث طرقات • Tap 3 times to open'],
+      ['طرقتان متبقيتان لفتح القصر...', 'Two more taps to enter...', 'طرقتان متبقيتان • Two more taps'],
+      ['طرقة أخيرة لتنفتح لك الأمسية...', 'One final tap to enter...', 'طرقة أخيرة • One final tap'],
+      ['المس ختم الشمع لفتح الدعوة ✨', 'Tap the wax seal to open ✨', 'المس ختم الشمع • Tap wax seal ✨'],
+      ['المس لفتح الدعوة ✨', 'Tap to open invitation ✨', 'المس لفتح الدعوة • Tap to open ✨'],
+      ['اضغط لفتح الدعوة', 'Tap to open invitation', 'اضغط لفتح الدعوة • Tap to open'],
+      ['فتح الدعوة', 'Open Invitation', 'فتح الدعوة • Open Invitation'],
+      ['Tap the wax seal to open', 'المس ختم الشمع لفتح الدعوة', 'المس ختم الشمع • Tap wax seal'],
+      ['Tap to open invitation', 'المس لفتح الدعوة', 'المس لفتح الدعوة • Tap to open'],
+      ['Tap to open', 'المس لفتح الدعوة', 'المس لفتح الدعوة • Tap to open'],
+      ['You are cordially invited', 'يسعدنا ويشرفنا دعوتكم لحضور حفلنا', 'دعوة زفاف • Cordially Invited'],
+
+      // Verses & Invocations
+      ['﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾',
+       '"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them; and He placed between you love and mercy."',
+       '﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا ﴾'],
+      ['بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', 'In the Name of Allah, the Most Gracious, the Most Merciful', 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ'],
+      ['بارك الله لهما وبارك عليهما وجمع بينهما في خير', '"May Allah bless their union with eternal love, harmony and happiness."', 'بارك الله لهما وبارك عليهما • May Allah bless their union'],
+
+      // Invitation Text & Family
+      ['تتشرف عائلتا العروسين بدعوتكم لحضور حفل زفاف', 'Together with their families, you are warmly invited to celebrate the wedding of', 'تتشرف عائلتا العروسين بدعوتكم • Together with their families'],
+      ['تتشرف عائلتا الحاج محمود الشريف والمهندس طارق المنياوي بدعوتكم لحضور حفل زفاف', 'Together with their families, you are warmly invited to celebrate the wedding of', 'تتشرف عائلتا العروسين بدعوتكم • Together with their families'],
+      ['تتشرف عائلتا العروسين بدعوتكم لحضور عقد قران', 'Together with their families, you are warmly invited to celebrate the Katb Ketab of', 'عقد قران مبارك • Katb Ketab Ceremony'],
+      ['تتشرف عائلتا العروسين بدعوتكم لحضور حفل خطوبة', 'Together with their families, you are warmly invited to celebrate the engagement of', 'حفل خطوبة مبارك • Engagement Party'],
+      ['تتشرف عائلتا العروسين بدعوتكم لحضور ليلة الحنة', 'You are warmly invited to celebrate the Henna Night of', 'ليلة الحنة السعيدة • Henna Night Celebration'],
+      ['Together with their families', 'تتشرف عائلتا العروسين بدعوتكم لمشاركتنا فرحة العمر', 'تتشرف عائلتا العروسين • Together with their families'],
+      ['Request the honor of your presence', 'يسرنا ويسعدنا دعوتكم لمشاركتنا ليلة العمر', 'يسرنا دعوتكم • Request the honor of your presence'],
+      ['Request the honour of your presence', 'يسرنا ويسعدنا دعوتكم لمشاركتنا ليلة العمر', 'يسرنا دعوتكم • Request the honour of your presence'],
+      ['لتكتمل فرحتنا بحضوركم وتشريفكم، وتزدان ليلتنا بدعواتكم الطيبة ومشاركتكم أسعد لحظات العمر.',
+       'Your presence honors us and completes our joy as we begin this new chapter together.',
+       'لتكتمل فرحتنا بحضوركم • Your presence completes our joy'],
+      ['فرحتنا مش هتكمل غير بوجودكم ومشاركتكم لينا', 'Our joy is complete with your presence and warm wishes', 'فرحتنا بوجودكم • Complete with your presence'],
+      ['يسعدنا حضوركم،', 'We are honored to have you,', 'يسعدنا حضوركم • Honored to have you,'],
+      ['إلى ضيفنا العزيز:', 'To our honored guest:', 'إلى ضيفنا العزيز • To our honored guest:'],
+      ['دامت أفراحكم عامرة بالمسرات', 'May your days be filled with love and joy', 'دامت أفراحكم عامرة • Always in celebration'],
+
+      // Occasions
+      ['Wedding Invitation', 'دعوة زفاف', 'دعوة زفاف • Wedding Invitation'],
+      ['Royal Wedding', 'حفل زفاف ملكي', 'دعوة ملكية • Royal Wedding'],
+      ['Katb Ketab Invitation', 'دعوة عقد قران', 'دعوة عقد قران • Katb Ketab'],
+      ['Engagement Party', 'حفل خطوبة', 'حفل خطوبة • Engagement Party'],
+      ['Henna Night', 'ليلة الحنة', 'ليلة الحنة • Henna Night'],
+      ['Save the Date', 'احفظوا التاريخ', 'احفظوا التاريخ • Save the Date'],
+
+      // Section Headings & Tags
+      ['العد التنازلي لليلة العمر', 'Countdown to the Big Day', 'العد التنازلي • Countdown'],
+      ['العد التنازلي', 'Countdown', 'العد التنازلي • Countdown'],
+      ['موعد الفرحة الكبرى', 'The Grand Celebration', 'موعد الفرحة الكبرى • The Celebration'],
+      ['موعدنا المنتظر', 'The Wedding Date', 'موعدنا • Wedding Date'],
+      ['تفاصيل الحفل', 'Celebration Details', 'تفاصيل الحفل • Event Details'],
+      ['تفاصيل الأمسية الملكية', 'Royal Evening Program', 'تفاصيل الأمسية • Evening Program'],
+      ['برنامج الحفل', 'Evening Program', 'برنامج الحفل • Evening Program'],
+      ['برنامج الأمسية', 'Evening Program', 'برنامج الأمسية • Evening Program'],
+      ['ألوان الحفل والموقع', 'Dress Code & Venue', 'ألوان الحفل والموقع • Dress Code & Venue'],
+      ['إطلالة الأمسية وقاعة الاحتفال', 'Evening Attire & Ballroom', 'إطلالة الأمسية • Evening Attire'],
+      ['موقع الحفل', 'Venue Location', 'موقع الحفل • Venue Location'],
+      ['خريطة الوصول', 'Location Map', 'خريطة الوصول • Location Map'],
+      ['تأكيد الحضور', 'RSVP & Confirmation', 'تأكيد الحضور • RSVP'],
+      ['بطاقة الدخول الرقمية', 'Digital VIP Pass (QR)', 'بطاقة الدخول • Digital Pass'],
+      ['يرجى تأكيد حضوركم للحصول على بطاقة الدخول الرقمية (QR) وإرسال التهنئة مباشرة عبر واتساب.',
+       'Kindly confirm your attendance to receive your personal digital QR pass and send your warm wishes via WhatsApp.',
+       'يرجى تأكيد حضوركم • Kindly confirm your attendance'],
+
+      // Timeline entries
+      ['استقبال الضيوف والضيافة المصرية الراقية', 'Guest Reception & Welcome Hospitality', 'استقبال الضيوف • Guest Reception'],
+      ['مشروبات الترحيب الفاخرة، الضيافة الشرقية، وترحيب العائلتين.', 'Welcome drinks, oriental refreshments, and family greetings.', 'مشروبات وترحيب • Welcome drinks'],
+      ['مراسم التهاني والصور التذكارية', 'Ceremony & Commemorative Photos', 'مراسم التهاني • Photos & Greetings'],
+      ['لقاء الأحبة وتوثيق أجمل اللحظات في بهو القاعة.', 'Gathering of loved ones and capturing precious moments.', 'توثيق اللحظات • Capturing memories'],
+      ['الزفة الملكية', 'Grand Couple Entrance', 'الزفة الملكية • Grand Entrance'],
+      ['دخول العروسين وسط أنغام هادئة وإضاءة ساحرة.', 'The grand couple entrance amidst enchanting ambiance.', 'دخول العروسين • Couple entrance'],
+      ['مأدبة العشاء', 'Royal Dinner Banquet', 'مأدبة العشاء • Dinner Banquet'],
+      ['مأدبة العشاء الملكي والحلويات', 'Royal Dinner Banquet & Desserts', 'العشاء والحلويات • Dinner Banquet'],
+      ['تقديم مأدبة العشاء الفاخرة والحلويات الشرقية والعالمية.', 'Exquisite dinner buffet and curated dessert selection.', 'مأدبة العشاء • Dinner buffet'],
+
+      // Dress Code & Notes
+      ['يسعدنا حضوركم بالزي الرسمي أو الفساتين المسائية الراقية — ونعتذر بلطف عن اصطحاب الأطفال لراحتكم.',
+       'Dress Code: Black Tie / Formal Evening Attire. To ensure everyone enjoys the evening, this is an adult-only celebration.',
+       'الزي الرسمي • Black Tie / Formal Attire'],
+      ['الزي الرسمي', 'Formal Attire / Black Tie', 'الزي الرسمي • Formal Attire'],
+      ['أسود رسمي', 'Black Tie', 'أسود رسمي • Black Tie'],
+      ['زمردي ملكي', 'Royal Emerald', 'زمردي ملكي • Emerald'],
+      ['ذهبي عتيق', 'Antique Gold', 'ذهبي عتيق • Antique Gold'],
+      ['عاجي', 'Ivory', 'عاجي • Ivory'],
+
+      // Buttons & CTAs
+      ['إضافة إلى تقويم جوجل', 'Add to Google Calendar', 'إضافة لتقويم جوجل • Google Calendar'],
+      ['إضافة لتقويم جوجل', 'Add to Google Calendar', 'إضافة لتقويم جوجل • Google Calendar'],
+      ['حفظ في تقويم الهاتف (.ICS)', 'Save to Calendar (.ICS)', 'حفظ في الهاتف • Save to Calendar'],
+      ['تحميل ملف التقويم (.ICS)', 'Download Calendar (.ICS)', 'تحميل التقويم • Download .ICS'],
+      ['الاتجاهات عبر خرائط جوجل', 'Directions on Google Maps', 'الاتجاهات • Google Maps'],
+      ['فتح الموقع على خرائط جوجل', 'Open in Google Maps', 'خرائط جوجل • Google Maps'],
+      ['عرض الموقع على خرائط جوجل', 'View on Google Maps', 'عرض الموقع • Google Maps'],
+      ['الموقع على الخريطة', 'View on Map', 'الموقع على الخريطة • View on Map'],
+      ['نسخ العنوان', 'Copy Venue Address', 'نسخ العنوان • Copy Address'],
+      ['نسخ عنوان القاعة', 'Copy Venue Address', 'نسخ العنوان • Copy Address'],
+      ['تأكيد الحضور وإصدار بطاقة الدخول', 'Confirm Attendance & Get Pass', 'تأكيد الحضور • Confirm RSVP'],
+      ['إرسال التأكيد عبر واتساب', 'Confirm via WhatsApp', 'تأكيد عبر واتساب • Confirm via WhatsApp'],
+      ['تأكيد الحضور الآن', 'Confirm Attendance Now', 'تأكيد الحضور • RSVP Now'],
+      ['RSVP Now', 'تأكيد الحضور', 'تأكيد الحضور • RSVP Now'],
+      ['View Location', 'موقع الحفل', 'موقع الحفل • View Location'],
+
+      // RSVP Form Labels & Options
+      ['الاسم الكريم', 'Your Full Name', 'الاسم الكريم • Full Name'],
+      ['حالة الحضور', 'Attendance Status', 'حالة الحضور • Attendance'],
+      ['سأحضر بكل سرور', 'Joyfully Accept', 'سأحضر بكل سرور • Joyfully Accept'],
+      ['نعم، بكل سرور سأحضر', 'Joyfully Accept', 'بكل سرور • Joyfully Accept'],
+      ['نعم، يشرفني الحضور بكل سرور', 'Joyfully Accept', 'يشرفني الحضور • Joyfully Accept'],
+      ['أعتذر عن الحضور', 'Regretfully Decline', 'أعتذر عن الحضور • Regretfully Decline'],
+      ['للأسف أعتذر عن الحضور', 'Regretfully Decline', 'أعتذر عن الحضور • Regretfully Decline'],
+      ['عدد الضيوف', 'Number of Guests', 'عدد الضيوف • Number of Guests'],
+      ['عدد المرافقين', 'Number of Guests', 'عدد المرافقين • Number of Guests'],
+      ['شخص واحد', '1 Guest', 'شخص واحد • 1 Guest'],
+      ['شخصان', '2 Guests', 'شخصان • 2 Guests'],
+      ['٣ أشخاص', '3 Guests', '٣ أشخاص • 3 Guests'],
+      ['٤ أشخاص', '4 Guests', '٤ أشخاص • 4 Guests'],
+      ['كلمة تهنئة للعروسين', 'A wish for the couple', 'تهنئة للعروسين • Warm wishes'],
+      ['كلمة تهنئة للعروسين (اختياري)', 'A wish for the couple (optional)', 'تهنئة للعروسين • Warm wishes'],
+
+      // Date, time & calendar
+      ['يوم', 'Day', 'Day • يوم'],
+      ['ساعة', 'Hour', 'Hour • ساعة'],
+      ['دقيقة', 'Min', 'Min • دقيقة'],
+      ['ثانية', 'Sec', 'Sec • ثانية'],
+      ['مايو ٢٠٢٧', 'May 2027', 'مايو 2027 • May 2027'],
+      ['الخميس', 'Thursday', 'Thursday • الخميس'],
+      ['الجمعة', 'Friday', 'Friday • الجمعة'],
+      ['السبت', 'Saturday', 'Saturday • السبت'],
+      ['الأحد', 'Sunday', 'Sunday • الأحد'],
+      ['الأربعاء', 'Wednesday', 'Wednesday • الأربعاء'],
+      ['الساعة ٨:٠٠ مساءً', '8:00 PM', '8:00 PM • ٨:٠٠ م'],
+      ['٨:٠٠ م', '8:00 PM', '8:00 PM'],
+      ['٩:٠٠ م', '9:00 PM', '9:00 PM'],
+      ['١٠:١٥ م', '10:15 PM', '10:15 PM'],
+      ['١١:٠٠ م', '11:00 PM', '11:00 PM'],
+      ['الخميس ٢٢ مايو ٢٠٢٧', 'Thursday, May 22, 2027', 'Thursday, May 22, 2027 • الخميس ٢٢ مايو ٢٠٢٧'],
+      ['العاصمة الإدارية، القاهرة', 'New Administrative Capital, Cairo', 'العاصمة الإدارية، القاهرة • Cairo']
+    ];
+
+    // Apply translations strictly to leaf elements (elements with no child HTML tags)
+    const candidates = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, button, a, label, option, .subtitle, .verse, .sec-tag, .sec-title, .prog-name, .prog-desc, .prog-time, #knockHint, .env-hint, .eyebrow');
+    candidates.forEach((el) => {
+      if (['SCRIPT', 'STYLE', 'IFRAME', 'SVG', 'PATH'].includes(el.tagName)) return;
+      if (el.hasAttribute('data-couple-title') || el.classList.contains('couple-names') || el.classList.contains('couple-title')) return;
+      if (el.children.length > 0) return; // STRICTLY leaf nodes only!
+
+      const raw = (el.textContent || '').trim();
+      if (!raw) return;
+
+      for (const [ar, en, bi] of WEDDING_DICT) {
+        if (isEn && (raw === ar || raw.toLowerCase() === ar.toLowerCase())) {
+          el.textContent = en;
+          break;
+        } else if (isAr && (raw === en || raw.toLowerCase() === en.toLowerCase())) {
+          el.textContent = ar;
+          break;
+        } else if (isBi && (raw === ar || raw === en)) {
+          el.textContent = bi;
+          break;
+        }
+      }
+    });
+
+    // Translate countdown units
     const cdMap = isAr
       ? { days: 'أيام', hours: 'ساعات', minutes: 'دقائق', seconds: 'ثواني' }
-      : (isBi ? { days: 'أيام • Days', hours: 'ساعات • Hours', minutes: 'دقائق • Mins', seconds: 'ثواني • Secs' }
+      : (isBi ? { days: 'Days • أيام', hours: 'Hours • ساعات', minutes: 'Mins • دقائق', seconds: 'Secs • ثواني' }
               : { days: 'Days', hours: 'Hours', minutes: 'Mins', seconds: 'Secs' });
 
-    document.querySelectorAll('.cd-unit span, .time-box span, .count-label').forEach((el) => {
+    document.querySelectorAll('.cd-unit span, .time-box span, .count-label, .cd-label').forEach((el) => {
       const t = (el.textContent || '').trim().toLowerCase();
       if (t.includes('day') || t.includes('أيام') || t.includes('يوم')) el.textContent = cdMap.days;
       else if (t.includes('hour') || t.includes('ساعات') || t.includes('ساعة')) el.textContent = cdMap.hours;
@@ -1113,112 +1303,20 @@
       else if (t.includes('sec') || t.includes('ثواني') || t.includes('ثانية')) el.textContent = cdMap.seconds;
     });
 
-    // Comprehensive Dictionary: Simple English & Warm Egyptian Arabic
-    const dictionary = [
-      // Gate & Cover hints
-      ['ثلاث طرقات تفتح لك أبواب الأمسية ✨', 'Tap 3 times to open the royal invitation ✨', 'ثلاث طرقات تفتح لك أبواب الأمسية • Tap 3 times to open ✨'],
-      ['دعوة ملكية', 'Royal Wedding Invitation', 'دعوة ملكية • Royal Wedding Invitation'],
-      ['Tap the wax seal to open the invitation', 'المس ختم الشمع لفتح الدعوة ✨', 'المس ختم الشمع • Tap the wax seal to open ✨'],
-      ['Tap the wax seal to open', 'المس ختم الشمع لفتح الدعوة ✨', 'المس ختم الشمع • Tap wax seal ✨'],
-      ['Tap to open invitation', 'المس لفتح الدعوة ✨', 'اضغط لفتح الدعوة • Tap to open ✨'],
-      ['Tap to open', 'المس لفتح الدعوة ✨', 'اضغط لفتح الدعوة • Tap to open ✨'],
-      ['Touch to open', 'المس لفتح الدعوة ✨', 'اضغط لفتح الدعوة • Tap to open ✨'],
-      ['Open Invitation', 'فتح الدعوة', 'فتح الدعوة • Open Invitation'],
-
-      // Verses & Blessings
-      ['﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾',
-       '"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them; and He placed between you love and mercy."',
-       '﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾'],
-      ['بارك الله لهما وبارك عليهما وجمع بينهما في خير',
-       '"May Allah bless their union with eternal happiness, love and harmony."',
-       'بارك الله لهما وبارك عليهما • May Allah bless their union'],
-
-      // Family & Invitation Intro
-      ['تتشرف عائلتا الحاج محمود الشريف والمهندس طارق المنياوي بدعوتكم لحضور حفل زفاف',
-       'Together with their families, you are warmly invited to celebrate the wedding of',
-       'تتشرف عائلتا العروسين بدعوتكم لحضور حفل زفاف • Together with their families'],
-      ['تتشرف عائلتا', 'Together with their families, we invite you to celebrate the wedding of', 'تتشرف عائلتا العروسين • Together with their families'],
-      ['يسرنا دعوتكم لحضور', 'Together with their families, you are invited to celebrate the wedding of', 'يسرنا دعوتكم • You are warmly invited'],
-      ['لتكتمل فرحتنا بحضوركم وتشريفكم، وتزدان ليلتنا بدعواتكم الطيبة ومشاركتكم أسعد لحظات العمر.',
-       'Our happiness is complete with your presence and warm blessings on the most memorable night of our lives.',
-       'لتكتمل فرحتنا بحضوركم • Our happiness is complete with your presence'],
-      ['Our joy is complete with your presence', 'فرحتنا مش هتكمل غير بوجودكم ومشاركتكم لينا', 'فرحتنا مش هتكمل غير بيكم • Our joy is complete with you'],
-      ['Together with their families', 'تتشرف عائلتا العروسين بدعوتكم لمشاركتنا فرحة العمر', 'تتشرف عائلتا العروسين • Together with their families'],
-      ['Request the honour of your presence', 'يسرنا ويسعدنا دعوتكم لمشاركتنا ليلة العمر', 'يسرنا دعوتكم • Request the honour of your presence'],
-      ['Request the honor of your presence', 'يسرنا ويسعدنا دعوتكم لمشاركتنا ليلة العمر', 'يسرنا دعوتكم • Request the honor of your presence'],
-
-      // Occasion Titles
-      ['Wedding Invitation', 'دعوة زفاف', 'دعوة زفاف • Wedding Invitation'],
-      ['Katb Ketab Invitation', 'دعوة عقد قران', 'دعوة عقد قران • Katb Ketab'],
-      ['Wedding Ceremony', 'حفل زفاف', 'حفل زفاف • Wedding Ceremony'],
-      ['Wedding Celebration', 'حفل زفاف مبارك', 'حفل زفاف • Wedding Celebration'],
-      ['Katb Ketab', 'عقد قران مبارك', 'عقد قران • Katb Ketab'],
-      ['Engagement Party', 'حفل خطوبة سعيد', 'حفل خطوبة • Engagement Party'],
-      ['Henna Night', 'ليلة الحنة', 'ليلة الحنة • Henna Night'],
-      ['Save the Date', 'احفظوا هذا التاريخ', 'احفظوا التاريخ • Save the Date'],
-
-      // Section Titles & Headings
-      ['العد التنازلي لليلة العمر', 'Countdown to the Big Day', 'العد التنازلي • Countdown'],
-      ['العد التنازلي', 'Countdown to the Big Day', 'العد التنازلي • Countdown'],
-      ['Countdown to the Big Day', 'العد التنازلي لليلة العمر', 'العد التنازلي • Countdown'],
-      ['Countdown', 'العد التنازلي', 'العد التنازلي • Countdown'],
-      ['موعد الفرحة الكبرى', 'The Grand Celebration', 'موعد الفرحة الكبرى • The Celebration'],
-      ['تفاصيل الحفل', 'Celebration Details', 'تفاصيل الحفل • Details'],
-      ['برنامج الحفل', 'Evening Program', 'برنامج الحفل • Program'],
-      ['موقع الحفل', 'Venue Location', 'موقع الحفل • Venue Location'],
-      ['خريطة الوصول', 'Location Map', 'خريطة الوصول • Directions'],
-      ['الموقع على الخريطة', 'Google Maps Location', 'الموقع على الخريطة • Location'],
-      ['View on Google Maps', 'الموقع على خرائط جوجل', 'الموقع على الخريطة • Google Maps'],
-      ['Get Directions', 'خريطة الوصول للموقع', 'خريطة الوصول • Get Directions'],
-
-      // Buttons & Interactive controls
-      ['تأكيد الحضور', 'RSVP Now', 'تأكيد الحضور • RSVP Now'],
-      ['RSVP Now', 'تأكيد الحضور', 'تأكيد الحضور • RSVP Now'],
-      ['RSVP', 'تأكيد الحضور', 'تأكيد الحضور • RSVP'],
-      ['View Location', 'موقع الحفل', 'موقع الحفل • View Location'],
-      ['Add to Calendar', 'إضافة للتقويم', 'إضافة للتقويم • Add to Calendar'],
-
-      // RSVP Form choices
-      ['هل ستشرفنا بالحضور؟', 'Will you attend?', 'هل ستشرفنا بالحضور؟ • Will you attend?'],
-      ['Will you attend?', 'هل ستشرفنا بالحضور؟', 'هل ستشرفنا بالحضور؟ • Will you attend?'],
-      ['نعم، بكل سرور سأحضر', 'Joyfully Accept', 'نعم، بكل سرور سأحضر • Joyfully Accept'],
-      ['Joyfully Accept', 'نعم، بكل سرور سأحضر', 'نعم، بكل سرور سأحضر • Joyfully Accept'],
-      ['للأسف أعتذر عن الحضور', 'Regretfully Decline', 'أعتذر عن الحضور • Regretfully Decline'],
-      ['Regretfully Decline', 'للأسف أعتذر عن الحضور', 'أعتذر عن الحضور • Regretfully Decline'],
-      ['عدد المرافقين', 'Number of Guests', 'عدد المرافقين • Number of Guests'],
-      ['Number of Guests', 'عدد المرافقين', 'عدد المرافقين • Number of Guests'],
-      ['إرسال التأكيد عبر واتساب', 'Confirm via WhatsApp', 'تأكيد عبر واتساب • Confirm via WhatsApp'],
-      ['Confirm via WhatsApp', 'إرسال التأكيد عبر واتساب', 'تأكيد عبر واتساب • Confirm via WhatsApp']
-    ];
-
-    // Select all relevant text containers across the document
-    const targets = document.querySelectorAll('h1, h2, h3, h4, h5, p, span, div, button, a, label, b, em, strong, .subtitle, .verse, #knockHint, .env-hint, .eyebrow');
-
-    targets.forEach((el) => {
-      // Skip iframe, script, style, and svg nodes
-      if (['SCRIPT', 'STYLE', 'IFRAME', 'SVG', 'PATH'].includes(el.tagName)) return;
-      // Do not alter couple names element
-      if (el.hasAttribute('data-couple-title') || el.classList.contains('couple-names') || el.classList.contains('couple-title')) return;
-
-      let text = el.textContent || '';
-      for (const row of dictionary) {
-        const ar = row[0];
-        const en = row[1];
-        const bi = row[2] || `${ar} • ${en}`;
-
-        if (isEn && text.includes(ar)) {
-          el.textContent = text.split(ar).join(en);
-          text = el.textContent;
-        } else if (isAr && text.includes(en)) {
-          el.textContent = text.split(en).join(ar);
-          text = el.textContent;
-        } else if (isBi && (text.includes(ar) || text.includes(en))) {
-          if (text.includes(ar)) el.textContent = text.split(ar).join(bi);
-          else if (text.includes(en)) el.textContent = text.split(en).join(bi);
-          text = el.textContent;
+    // In English mode, ensure monograms with Arabic letters switch to English letters
+    if (isEn) {
+      document.querySelectorAll('[data-monogram]').forEach((el) => {
+        if (el.textContent.includes('م')) {
+          el.textContent = 'M & M';
         }
-      }
-    });
+      });
+    } else if (isAr) {
+      document.querySelectorAll('[data-monogram]').forEach((el) => {
+        if (el.textContent.includes('M')) {
+          el.textContent = 'م & م';
+        }
+      });
+    }
   }
 
   function applyCustomPhoto(dataUrl) {
@@ -1490,26 +1588,7 @@
       document.body.appendChild(back);
     }
 
-    // Ambient background music is ONLY for celebratory designs that feature music, not all options
-    const musicTemplates = ['01', '02', '06', '07', '10', '12', '13', '16', '17'];
-    const p = location.pathname;
-    const isMusicDesign = musicTemplates.some(num => p.includes(num)) || document.body.getAttribute('data-music') === 'true';
-    const musicDisabled = params.get('music') === '0' || document.body.getAttribute('data-no-music') === 'true';
-
-    if (!isMusicDesign || musicDisabled) {
-      return; // Do NOT inject music fab on minimal, katb ketab, newspaper, or non-music designs
-    }
-
-    const mood = document.body.getAttribute('data-music-mood') || (isRTL ? 'oriental' : 'classic');
-    currentMood = mood;
-
-    const fab = document.createElement('button');
-    fab.id = 'wi-music-fab';
-    fab.type = 'button';
-    fab.title = isRTL ? 'تشغيل أو إيقاف الموسيقى' : 'Play / Pause Music';
-    fab.innerHTML = musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED;
-    fab.addEventListener('click', () => toggleMusic(mood));
-    document.body.appendChild(fab);
+    // Cards only concept — ambient background music FAB disabled per user preference
   }
 
   function initScrollReveal() {

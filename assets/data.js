@@ -23,19 +23,19 @@ window.SITE = {
   SAMPLES: [
     {
       num: '01', cat: 'weddings', file: 'samples/01-royal-emerald-gold.html',
-      title: 'Royal Emerald & Gold', subtitle: 'عمر و سلمى',
+      title: 'Royal Emerald & Gold', subtitle: 'محمود و ميرنا',
       venue: 'New Administrative Capital, Cairo', lang: 'العربية', langKey: 'ar',
       bg: 'linear-gradient(145deg,#0A3C30,#041D17)', accent: '#F3DCAA',
-      desc: 'Swinging emerald palace doors with knock sound, floating gold dust and an Arabic tear-off calendar.',
-      features: ['3-Tap Doors', 'Knock Sound', 'Oriental Music', 'Calendar Card']
+      desc: 'Swinging emerald palace doors with knock reveal, floating gold dust and an Arabic tear-off calendar.',
+      features: ['3-Tap Doors', 'Digital Card', 'Gold Dust', 'Calendar Card']
     },
     {
       num: '02', cat: 'weddings', file: 'samples/02-wax-seal-editorial.html',
-      title: 'Ivory Wax-Seal Editorial', subtitle: 'Adam & Farida',
+      title: 'Ivory Wax-Seal Editorial', subtitle: 'Mahmoud & Merna',
       venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#EFE5D5,#D9C7AE)', accent: '#6D1D2A',
       desc: 'Wax-seal envelope opening, gold-foil date reveal medallions and a framed venue map.',
-      features: ['Wax Seal', 'Gold Foil Reveal', 'Framed Map', 'Harp Music']
+      features: ['Wax Seal', 'Gold Foil Reveal', 'Framed Map', 'Editorial Card']
     },
     {
       num: '03', cat: 'weddings', file: 'samples/03-botanical-garden.html',
@@ -51,7 +51,7 @@ window.SITE = {
       venue: 'Royal Maxim Kempinski, New Cairo', lang: 'English', langKey: 'en',
       bg: 'linear-gradient(145deg,#15224B,#060914)', accent: '#E4C482',
       desc: 'Velvet curtains, glowing moon medallion and a twinkling starlight sky.',
-      features: ['Velvet Curtains', 'Starry Sky', 'Ambient Music']
+      features: ['Velvet Curtains', 'Starry Sky', 'Digital Card']
     },
     {
       num: '07', cat: 'weddings', file: 'samples/07-bilingual-palace.html',

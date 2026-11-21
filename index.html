@@ -272,7 +272,14 @@
     const lang = $('l').value;
     let couple = '';
     if (groom && bride) {
-      couple = (lang === 'en') ? `${groom} & ${bride}` : `${groom} و ${bride}`;
+      const hasAr = /[\u0600-\u06FF]/.test(groom + bride);
+      if (lang === 'en') {
+        couple = `${groom} & ${bride}`;
+      } else if (lang === 'bi') {
+        couple = hasAr ? `${groom} و ${bride}` : `${groom} & ${bride}`;
+      } else {
+        couple = `${groom} و ${bride}`;
+      }
     } else {
       couple = groom || bride;
     }
