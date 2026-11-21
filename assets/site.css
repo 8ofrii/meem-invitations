@@ -68,14 +68,15 @@ a { color: inherit; }
 }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand-logo-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 0;
   object-fit: contain;
   flex-shrink: 0;
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 160, 89, 0.35);
-  box-shadow: 0 4px 14px rgba(13, 59, 46, 0.08);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 5px rgba(13, 59, 46, 0.10));
 }
 .brand-name {
   font-family: 'Cormorant Garamond', serif;

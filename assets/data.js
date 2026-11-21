@@ -8,7 +8,7 @@ window.SITE = {
     full: 'MEEM • ميم',
     sub: 'Digital Invitations • دعوات زفاف رقمية',
     tagline: 'Two names, one letter, one unforgettable invitation.',
-    logo: 'assets/logos/meem-logo-320.png',
+    logo: 'assets/logos/meem-logo-320.png?v=2',
     icon: 'assets/logos/meem-logo-128.png',
     handle: '@meem.invitations'
   },
