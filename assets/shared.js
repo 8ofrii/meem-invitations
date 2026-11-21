@@ -1148,7 +1148,7 @@
 
       // Invitation Text & Family
       ['تتشرف عائلتا العروسين بدعوتكم لحضور حفل زفاف', 'Together with their families, you are warmly invited to celebrate the wedding of', 'تتشرف عائلتا العروسين بدعوتكم • Together with their families'],
-      ['تتشرف عائلتا الحاج محمود الشريف والمهندس طارق المنياوي بدعوتكم لحضور حفل زفاف', 'Together with their families, you are warmly invited to celebrate the wedding of', 'تتشرف عائلتا العروسين بدعوتكم • Together with their families'],
+      ['تتشرف عائلتا الحاج طارق الشريف والمهندس إبراهيم المنياوي بدعوتكم لحضور حفل زفاف', 'Together with their families, you are warmly invited to celebrate the wedding of', 'تتشرف عائلتا العروسين بدعوتكم • Together with their families'],
       ['تتشرف عائلتا العروسين بدعوتكم لحضور عقد قران', 'Together with their families, you are warmly invited to celebrate the Katb Ketab of', 'عقد قران مبارك • Katb Ketab Ceremony'],
       ['تتشرف عائلتا العروسين بدعوتكم لحضور حفل خطوبة', 'Together with their families, you are warmly invited to celebrate the engagement of', 'حفل خطوبة مبارك • Engagement Party'],
       ['تتشرف عائلتا العروسين بدعوتكم لحضور ليلة الحنة', 'You are warmly invited to celebrate the Henna Night of', 'ليلة الحنة السعيدة • Henna Night Celebration'],
@@ -1262,7 +1262,11 @@
       ['١٠:١٥ م', '10:15 PM', '10:15 PM'],
       ['١١:٠٠ م', '11:00 PM', '11:00 PM'],
       ['الخميس ٢٢ مايو ٢٠٢٧', 'Thursday, May 22, 2027', 'Thursday, May 22, 2027 • الخميس ٢٢ مايو ٢٠٢٧'],
-      ['العاصمة الإدارية، القاهرة', 'New Administrative Capital, Cairo', 'العاصمة الإدارية، القاهرة • Cairo']
+      ['العاصمة الإدارية، القاهرة', 'New Administrative Capital, Cairo', 'العاصمة الإدارية، القاهرة • Cairo'],
+      ['قاعة القصر الملكي — فندق الماسة كابيتال', 'The Royal Palace Hall — Al Masa Hotel Capital', 'قاعة القصر الملكي — Al Masa Hotel Capital'],
+      ['العاصمة الإدارية الجديدة، القاهرة، جمهورية مصر العربية', 'New Administrative Capital, Cairo, Egypt', 'العاصمة الإدارية الجديدة، القاهرة • Cairo, Egypt'],
+      ['فندق الماسة كابيتال، العاصمة الإدارية الجديدة، القاهرة، مصر', 'Al Masa Hotel Capital, New Administrative Capital, Cairo, Egypt', 'فندق الماسة كابيتال • Al Masa Hotel Capital'],
+      ['٢٢', '22', '22']
     ];
 
     // Apply translations strictly to leaf elements (elements with no child HTML tags)
@@ -1306,14 +1310,35 @@
     // In English mode, ensure monograms with Arabic letters switch to English letters
     if (isEn) {
       document.querySelectorAll('[data-monogram]').forEach((el) => {
-        if (el.textContent.includes('م')) {
-          el.textContent = 'M & M';
+        if (el.textContent.includes('م') || el.textContent.includes('ع')) {
+          el.textContent = 'O & S';
         }
       });
+      // Convert tear-off calendar day and other date elements to Latin numbers
+      document.querySelectorAll('.wi-tear-day, .date-strip span, time, .time, .prog-time').forEach((el) => {
+        el.textContent = toLatinDigits(el.textContent);
+      });
+      // Update RSVP placeholders to English
+      document.querySelectorAll('form[data-rsvp-form]').forEach((f) => {
+        f.setAttribute('data-lang', 'en');
+        const ni = f.querySelector('input[name="guestName"]');
+        if (ni) ni.placeholder = 'e.g. Mr. Ahmed Abdel Rahman';
+        const no = f.querySelector('textarea[name="note"]');
+        if (no) no.placeholder = 'May Allah bless your union with love and happiness...';
+      });
+      // If couple title is still in Arabic calligraphy, switch to English
+      if (!customCouple) {
+        document.querySelectorAll('h1, [data-couple-title], .couple-names').forEach((el) => {
+          if (/[\u0600-\u06FF]/.test(el.textContent)) {
+            el.textContent = 'Omar & Salma';
+            el.style.fontFamily = "'Cormorant Garamond', 'Cinzel', serif";
+          }
+        });
+      }
     } else if (isAr) {
       document.querySelectorAll('[data-monogram]').forEach((el) => {
-        if (el.textContent.includes('M')) {
-          el.textContent = 'م & م';
+        if (el.textContent.includes('M') || el.textContent.includes('O')) {
+          el.textContent = 'ع & س';
         }
       });
     }
@@ -1372,7 +1397,13 @@
   });
 
   function toArabicDigits(str) {
-    return str.replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+    if (!str) return '';
+    return String(str).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+  }
+
+  function toLatinDigits(str) {
+    if (!str) return '';
+    return String(str).replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
   }
 
   function initCountdowns() {
@@ -1384,7 +1415,7 @@
         const target = new Date(box.getAttribute('data-countdown')).getTime();
         const diff = Math.max(0, target - now);
         const pad = (n) => String(n).padStart(2, '0');
-        const useArDigits = box.hasAttribute('data-ar-digits');
+        const useArDigits = box.hasAttribute('data-ar-digits') && customLang !== 'en';
         const fmt = (n) => (useArDigits ? toArabicDigits(pad(n)) : pad(n));
 
         const dEl = box.querySelector('[data-cd="days"]');

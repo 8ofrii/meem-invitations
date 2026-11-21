@@ -25,4 +25,4 @@ assets/
 - Pick a brand on `brand.html` ("Use this identity") — nav, footer and brand kit update everywhere.
 
 ## Invitation URL parameters
-`?guest=Name` `?couple=Mahmoud+%26+Merna` `?venue=...` `?date=2027-06-19` `?clean=1`
+`?guest=Name` `?couple=Omar+%26+Salma` `?venue=...` `?date=2027-06-19` `?clean=1`

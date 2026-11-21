@@ -1,10 +1,11 @@
 /* ==========================================================================
-   MEEM — 5 Curated Luxury Website Styles
-   1. liquid-glass    (Default — Frosted Liquid Glass & Specular Highlights)
-   2. obsidian-gold   (Classic Royal Obsidian & Matte Gold)
-   3. ivory-editorial (Warm Bridal Ivory & Espresso Light Editorial)
-   4. emerald-palace  (Egyptian Palace Emerald Velvet & Champagne)
-   5. rose-pearl      (Soft Rose-Quartz & Pearl Light Glassmorphism)
+   MEEM — 6 Curated Luxury Website Styles
+   1. ivory-editorial (Default — Warm Bridal Ivory & Espresso Light Editorial)
+   2. liquid-chromium (Liquid Chromium in Light — Molten Platinum & Specular Pearl)
+   3. rose-pearl      (Soft Rose-Quartz & Pearl Light Glassmorphism)
+   4. liquid-glass    (Frosted Translucent Liquid Glass & Ambient Glow)
+   5. obsidian-gold   (Classic Royal Obsidian Velvet & Matte Gold)
+   6. emerald-palace  (Egyptian Palace Emerald Velvet & Champagne)
    ========================================================================== */
 
 /* Ambient liquid background layer (shown in glass themes) */
@@ -223,7 +224,130 @@ html[data-theme="rose-pearl"] .chip,
 html[data-theme="rose-pearl"] .steps-note { color: #5C474C; }
 html[data-theme="rose-pearl"] .btn-gold { color: #FFFFFF; }
 
-/* Native <select> dropdown & date picker readability across all 5 themes */
+/* ===== 6. LIQUID CHROMIUM (LIGHT) (Molten Platinum, Specular Chrome & Pearl) ===== */
+html[data-theme="liquid-chromium"] {
+  color-scheme: light;
+  --bg: #F4F6F9;
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-2: rgba(241, 245, 249, 0.94);
+  --gold: #334155;
+  --gold-2: #0F172A;
+  --gold-dim: rgba(100, 116, 139, 0.32);
+  --text: #0F172A;
+  --muted: #475569;
+  --line: rgba(148, 163, 184, 0.28);
+}
+html[data-theme="liquid-chromium"] .liquid-ambient { display: block; }
+html[data-theme="liquid-chromium"] .liquid-orb.o1 {
+  background: radial-gradient(circle, rgba(203, 213, 225, 0.75), transparent 70%);
+  opacity: 0.65;
+}
+html[data-theme="liquid-chromium"] .liquid-orb.o2 {
+  background: radial-gradient(circle, rgba(226, 232, 240, 0.85), transparent 70%);
+  opacity: 0.70;
+}
+html[data-theme="liquid-chromium"] .liquid-orb.o3 {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18), transparent 70%);
+  opacity: 0.45;
+}
+html[data-theme="liquid-chromium"] body {
+  background: linear-gradient(150deg, #F8FAFC 0%, #EDF2F7 45%, #E2E8F0 100%);
+}
+html[data-theme="liquid-chromium"] .topbar {
+  background: rgba(248, 250, 252, 0.82);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.85);
+}
+html[data-theme="liquid-chromium"] .card,
+html[data-theme="liquid-chromium"] .stat,
+html[data-theme="liquid-chromium"] .sample-card,
+html[data-theme="liquid-chromium"] .cta {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.94) 0%, rgba(241, 245, 249, 0.82) 100%);
+  backdrop-filter: blur(28px) saturate(175%);
+  -webkit-backdrop-filter: blur(28px) saturate(175%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 40px rgba(15, 23, 42, 0.06),
+    0 2px 8px rgba(148, 163, 184, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.98),
+    inset 0 -1px 1px rgba(148, 163, 184, 0.18);
+}
+html[data-theme="liquid-chromium"] .card:hover,
+html[data-theme="liquid-chromium"] .sample-card:hover {
+  border-color: rgba(148, 163, 184, 0.65);
+  box-shadow:
+    0 22px 50px rgba(15, 23, 42, 0.10),
+    0 4px 14px rgba(148, 163, 184, 0.18),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+html[data-theme="liquid-chromium"] .h1 em,
+html[data-theme="liquid-chromium"] .h2 em {
+  background: linear-gradient(135deg, #0F172A 0%, #334155 40%, #64748B 75%, #0F172A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html[data-theme="liquid-chromium"] .pill-tag {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(226, 232, 240, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #1E293B;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05), inset 0 1px 0 #FFF;
+}
+html[data-theme="liquid-chromium"] .btn-gold {
+  background: linear-gradient(135deg, #1E293B 0%, #334155 50%, #0F172A 100%);
+  color: #F8FAFC;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+html[data-theme="liquid-chromium"] .btn-gold:hover {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.24);
+}
+html[data-theme="liquid-chromium"] .btn-ghost {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #0F172A;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+html[data-theme="liquid-chromium"] .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #334155;
+  color: #0F172A;
+}
+html[data-theme="liquid-chromium"] .nav-links a.link.active {
+  color: #0F172A;
+  background: rgba(148, 163, 184, 0.20);
+  border-color: rgba(51, 65, 85, 0.35);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+html[data-theme="liquid-chromium"] .fpill,
+html[data-theme="liquid-chromium"] .search-box,
+html[data-theme="liquid-chromium"] .field input,
+html[data-theme="liquid-chromium"] .field select,
+html[data-theme="liquid-chromium"] .field textarea {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #0F172A;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+html[data-theme="liquid-chromium"] select option {
+  background-color: #FFFFFF;
+  color: #0F172A;
+}
+html[data-theme="liquid-chromium"] .chip,
+html[data-theme="liquid-chromium"] .steps-note {
+  color: #334155;
+}
+html[data-theme="liquid-chromium"] .color-note {
+  background: rgba(226, 232, 240, 0.55);
+  border-color: rgba(148, 163, 184, 0.45);
+  color: #1E293B;
+}
+
+/* Native <select> dropdown & date picker readability across all 6 themes */
 html, select, input { color-scheme: light; }
 html[data-theme="liquid-glass"] { color-scheme: dark; }
 html[data-theme="obsidian-gold"] { color-scheme: dark; }

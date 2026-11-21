@@ -24,7 +24,7 @@ window.SITE = {
   SAMPLES: [
     {
       num: '01', cat: 'weddings', file: 'samples/01-royal-emerald-gold.html',
-      title: 'Royal Emerald & Gold', subtitle: 'محمود و ميرنا',
+      title: 'Royal Emerald & Gold', subtitle: 'عمر و سلمى',
       venue: 'New Administrative Capital, Cairo', lang: 'العربية', langKey: 'ar',
       bg: 'linear-gradient(145deg,#0A3C30,#041D17)', accent: '#F3DCAA',
       desc: 'Swinging emerald palace doors with knock reveal, floating gold dust and an Arabic tear-off calendar.',
@@ -32,7 +32,7 @@ window.SITE = {
     },
     {
       num: '02', cat: 'weddings', file: 'samples/02-wax-seal-editorial.html',
-      title: 'Ivory Wax-Seal Editorial', subtitle: 'Mahmoud & Merna',
+      title: 'Ivory Wax-Seal Editorial', subtitle: 'Omar & Salma',
       venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
       bg: 'linear-gradient(145deg,#EFE5D5,#D9C7AE)', accent: '#6D1D2A',
       desc: 'Wax-seal envelope opening, gold-foil date reveal medallions and a framed venue map.',
@@ -123,7 +123,7 @@ window.SITE = {
     },
     {
       num: '10', cat: 'editorial', file: 'samples/10-golden-sunset-desert.html',
-      title: 'Marassi Golden Sunset', subtitle: 'محمود و ملك',
+      title: 'Marassi Golden Sunset', subtitle: 'كريم و ملك',
       venue: 'Marassi, North Coast', lang: 'العربية', langKey: 'ar',
       bg: 'linear-gradient(145deg,#4B281B,#1A100D)', img: 'assets/images/desert-sunset-palace.jpg', accent: '#F7D7AD',
       desc: 'Golden-hour North Coast sunset reveal with rising warm lantern sparks.',
@@ -163,7 +163,7 @@ window.SITE = {
     },
     {
       num: '18', cat: 'cards', file: 'samples/18-classic-ivory-gold.html',
-      title: 'Classic Ivory & Gold Crest', subtitle: 'محمود و ميرنا',
+      title: 'Classic Ivory & Gold Crest', subtitle: 'عمر و سلمى',
       venue: 'Al Masa Hotel, New Capital', lang: 'العربية', langKey: 'ar', textDark: true,
       bg: 'linear-gradient(145deg,#FDFBF7,#F4EFE6)', accent: '#C5A059',
       desc: 'Quiet luxury stationery card on warm ivory paper with embossed gold crest and instant RSVP. Zero motion, zero audio.',

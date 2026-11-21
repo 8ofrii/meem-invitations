@@ -80,8 +80,8 @@
     <div class="card">
       <form class="form" id="f" onsubmit="return false">
         <div class="field full"><label for="d">1 · Design</label><select id="d" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917"></select></div>
-        <div class="field"><label for="cg">2 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Mahmoud / محمود"></div>
-        <div class="field"><label for="cb">3 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Merna / ميرنا"></div>
+        <div class="field"><label for="cg">2 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Omar / عمر"></div>
+        <div class="field"><label for="cb">3 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Salma / سلمى"></div>
         <div class="field"><label for="dt">4 · Date (التاريخ)</label><input id="dt" type="date"></div>
         <div class="field"><label for="v">5 · Venue / city (مكان الحفل)</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
         <div class="field full"><label for="g">6 · Guest greeting (اسم الضيف)</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذ أحمد"></div>
@@ -96,7 +96,7 @@
         </div>
 
         <div class="full"><div class="hint">Quick examples:</div>
-          <div class="quick"><button type="button" data-ex="1">Mahmoud &amp; Merna · Giza</button><button type="button" data-ex="2">محمود و ميرنا · القاهرة</button><button type="button" data-ex="3">Clear all</button></div></div>
+          <div class="quick"><button type="button" data-ex="1">Omar &amp; Salma · Giza</button><button type="button" data-ex="2">عمر و سلمى · القاهرة</button><button type="button" data-ex="3">Clear all</button></div></div>
 
         <div class="full form-actions">
           <button class="btn btn-gold" id="apply">↻ Update preview</button>
@@ -248,8 +248,8 @@
   document.querySelector('.quick').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     const k = b.dataset.ex;
-    if (k === '1') { $('l').value = 'en'; $('cg').value = 'Mahmoud'; $('cb').value = 'Merna'; $('v').value = 'Marriott Mena House, Giza'; $('g').value = 'Dear Ahmed'; }
-    if (k === '2') { $('l').value = 'ar'; $('cg').value = 'محمود'; $('cb').value = 'ميرنا'; $('v').value = 'فندق الماسة كابيتال، القاهرة'; $('g').value = 'أستاذ أحمد'; }
+    if (k === '1') { $('l').value = 'en'; $('cg').value = 'Omar'; $('cb').value = 'Salma'; $('v').value = 'Marriott Mena House, Giza'; $('g').value = 'Dear Ahmed'; }
+    if (k === '2') { $('l').value = 'ar'; $('cg').value = 'عمر'; $('cb').value = 'سلمى'; $('v').value = 'فندق الماسة كابيتال، القاهرة'; $('g').value = 'أستاذ أحمد'; }
     if (k === '3') { ['cg','cb','dt','v','g'].forEach(id => $(id).value = ''); }
     update();
   });
