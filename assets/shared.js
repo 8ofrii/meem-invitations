@@ -2172,9 +2172,52 @@
   }
 
   
+  function initVenuePhoto() {
+    const imgSrc = document.body.getAttribute('data-venue-img');
+    if (!imgSrc || document.querySelector('.meem-venue-hero, .meem-venue-showcase')) return;
+    const label = document.body.getAttribute('data-venue-label') || '';
+
+    // Locate the venue/location section (anchor near maps link or venue-name element)
+    const mapLink = document.querySelector('a[href*="maps.google"], a[href*="goo.gl/maps"]');
+    let targetContainer = mapLink ? mapLink.closest('section, .card, .venue-card, .box, .panel, .details-card, .section') : null;
+    if (!targetContainer) {
+      const venueEl = document.querySelector('[data-venue-name]');
+      targetContainer = venueEl ? venueEl.closest('section, .card, .venue-card, .box, .panel, main') : null;
+    }
+    if (!targetContainer) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'meem-venue-showcase';
+    Object.assign(wrap.style, {
+      position: 'relative',
+      width: '100%',
+      maxWidth: '560px',
+      height: '200px',
+      margin: '16px auto 22px',
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: '1px solid rgba(197, 160, 89, 0.42)',
+      boxShadow: '0 14px 36px rgba(0, 0, 0, 0.22)'
+    });
+    wrap.innerHTML = `<img src="${imgSrc}" alt="${label || 'Venue'}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">` +
+      `<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.04) 42%,rgba(0,0,0,0.68) 100%);pointer-events:none;"></div>` +
+      (label ? `<div style="position:absolute;left:14px;right:14px;bottom:11px;color:#FFFDF8;font-size:12px;font-weight:600;letter-spacing:0.08em;text-shadow:0 1px 6px rgba(0,0,0,0.7);text-align:center;">${label}</div>` : '');
+
+    // Insert cleanly before the map buttons group or at the top of the venue card
+    const btnGroup = mapLink ? mapLink.closest('.btn-group, .actions, .cta-row') : null;
+    if (btnGroup && btnGroup.parentNode) {
+      btnGroup.parentNode.insertBefore(wrap, btnGroup);
+    } else if (mapLink && mapLink.parentNode) {
+      mapLink.parentNode.insertBefore(wrap, mapLink);
+    } else {
+      targetContainer.appendChild(wrap);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     injectEngineStyles();
     applyGuestPersonalization();
+    initVenuePhoto();
     initCountdowns();
     initRSVPForms();
     initCopyButtons();

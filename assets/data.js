@@ -26,7 +26,7 @@ window.SITE = {
       num: '01', cat: 'weddings', file: 'samples/01-royal-emerald-gold.html',
       title: 'Royal Emerald & Gold', subtitle: 'أحمد و فريدة',
       venue: 'New Administrative Capital, Cairo', lang: 'العربية', langKey: 'ar',
-      bg: 'linear-gradient(145deg,#0A3C30,#041D17)', accent: '#F3DCAA',
+      bg: 'linear-gradient(145deg,#0A3C30,#041D17)', img: 'assets/images/al-masa-capital.jpg', accent: '#F3DCAA',
       desc: 'Swinging emerald palace doors with knock reveal, floating gold dust and an Arabic tear-off calendar.',
       features: ['3-Tap Doors', 'Digital Card', 'Gold Dust', 'Calendar Card']
     },
@@ -34,7 +34,7 @@ window.SITE = {
       num: '02', cat: 'weddings', file: 'samples/02-wax-seal-editorial.html',
       title: 'Ivory Wax-Seal Editorial', subtitle: 'Youssef & Zeina',
       venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#EFE5D5,#D9C7AE)', accent: '#6D1D2A',
+      bg: 'linear-gradient(145deg,#EFE5D5,#D9C7AE)', img: 'assets/images/mena-house-giza.jpg', accent: '#6D1D2A',
       desc: 'Wax-seal envelope opening, gold-foil date reveal medallions and a framed venue map.',
       features: ['Wax Seal', 'Gold Foil Reveal', 'Framed Map', 'Editorial Card']
     },
@@ -42,7 +42,7 @@ window.SITE = {
       num: '03', cat: 'weddings', file: 'samples/03-botanical-garden.html',
       title: 'Sage Botanical Watercolor', subtitle: 'Tarek & Yasmine',
       venue: 'Mohamed Ali Palace, Manial', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#E8EFE6,#D4DFD0)', img: 'assets/images/botanical-watercolor.jpg', accent: '#3C4D3B',
+      bg: 'linear-gradient(145deg,#E8EFE6,#D4DFD0)', img: 'assets/images/mohamed-ali-palace.jpg', accent: '#3C4D3B',
       desc: 'Watercolor eucalyptus and roses behind soft ribbon gates with drifting petals.',
       features: ['Ribbon Gates', 'Drifting Petals', 'Watercolor Art']
     },
@@ -50,7 +50,7 @@ window.SITE = {
       num: '06', cat: 'weddings', file: 'samples/06-celestial-midnight.html',
       title: 'Celestial Midnight Velvet', subtitle: 'Sherif & Nadia',
       venue: 'Royal Maxim Kempinski, New Cairo', lang: 'English', langKey: 'en',
-      bg: 'linear-gradient(145deg,#15224B,#060914)', accent: '#E4C482',
+      bg: 'linear-gradient(145deg,#15224B,#060914)', img: 'assets/images/kempinski-palace.jpg', accent: '#E4C482',
       desc: 'Velvet curtains, glowing moon medallion and a twinkling starlight sky.',
       features: ['Velvet Curtains', 'Starry Sky', 'Digital Card']
     },
@@ -58,7 +58,7 @@ window.SITE = {
       num: '07', cat: 'weddings', file: 'samples/07-bilingual-palace.html',
       title: 'Nile Palace', subtitle: 'Karim & Mariam | كريم و مريم',
       venue: 'Four Seasons Nile Plaza, Cairo', lang: 'Arabic & English', langKey: 'bilingual',
-      bg: 'linear-gradient(145deg,#2D241C,#17120E)', accent: '#DFBE7F',
+      bg: 'linear-gradient(145deg,#2D241C,#17120E)', img: 'assets/images/four-seasons-nile.jpg', accent: '#DFBE7F',
       desc: 'One-tap Arabic and English language switcher with gold-foil date medallions.',
       features: ['Arabic & English', 'Gold Foil Reveal', 'Golden Glow']
     },
@@ -67,7 +67,7 @@ window.SITE = {
       num: '05', cat: 'katb', file: 'samples/05-arabesque-pearl.html',
       title: 'Arabesque Pearl Katb Ketab', subtitle: 'يوسف و نور',
       venue: 'مسجد الشرطة، الشيخ زايد', lang: 'العربية', langKey: 'ar', textDark: true,
-      bg: 'linear-gradient(145deg,#FBF0EC,#EBD4CC)', accent: '#8D5852',
+      bg: 'linear-gradient(145deg,#FBF0EC,#EBD4CC)', img: 'assets/images/el-shorta-mosque.jpg', accent: '#8D5852',
       desc: 'Rose-gold lace doors, falling rose petals and Arabic gold-foil date reveal.',
       features: ['3-Tap Lace Doors', 'Arabic Foil Reveal', 'Rose Petals']
     },
@@ -75,7 +75,7 @@ window.SITE = {
       num: '09', cat: 'katb', file: 'samples/09-minimal-andalus.html',
       title: 'Quiet-Luxury Minimalist', subtitle: 'مصطفى و حبيبة',
       venue: 'Dusit Thani, New Cairo', lang: 'العربية', langKey: 'ar', textDark: true,
-      bg: 'linear-gradient(145deg,#F6F1E8,#E5DDD0)', accent: '#6F583D',
+      bg: 'linear-gradient(145deg,#F6F1E8,#E5DDD0)', img: 'assets/images/dusit-thani-cairo.jpg', accent: '#6F583D',
       desc: 'Warm linen stationery with a classic Arabic monogram and crisp page-turn sound.',
       features: ['Arch Frame', 'Arabic Monogram', 'Page-Turn Sound']
     },
@@ -83,7 +83,7 @@ window.SITE = {
       num: '15', cat: 'katb', file: 'samples/15-nile-katb-ketab-arch.html',
       title: 'Royal Plum Mosque Arch', subtitle: 'عبدالرحمن و آية',
       venue: 'مسجد المشير طنطاوي، القاهرة الجديدة', lang: 'العربية', langKey: 'ar',
-      bg: 'linear-gradient(145deg,#563266,#2C1736)', accent: '#F5E1B5',
+      bg: 'linear-gradient(145deg,#563266,#2C1736)', img: 'assets/images/moshir-tantawi-mosque.jpg', accent: '#F5E1B5',
       desc: 'Carved plum and gold gate, lavender petals, families card and tear-off calendar.',
       features: ['Carved Gate', 'Lavender Petals', 'Families Card']
     },
@@ -92,7 +92,7 @@ window.SITE = {
       num: '12', cat: 'engagement', file: 'samples/12-velvet-ring-box.html',
       title: 'Velvet Engagement Ring Box', subtitle: 'أحمد و رنا',
       venue: 'Hilton Corniche, Alexandria', lang: 'العربية', langKey: 'ar',
-      bg: 'linear-gradient(145deg,#1E4280,#09162D)', accent: '#F3D999',
+      bg: 'linear-gradient(145deg,#1E4280,#09162D)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#F3D999',
       desc: 'A sapphire velvet ring box opens to reveal a sparkling ring with a soft chime.',
       features: ['Ring Box Reveal', 'Sparkle Chime', 'Alexandria']
     },
@@ -100,7 +100,7 @@ window.SITE = {
       num: '13', cat: 'engagement', file: 'samples/13-henna-night-lanterns.html',
       title: 'Glowing Lanterns Henna Night', subtitle: 'ليلة حنة سارة',
       venue: 'Degla Maadi, Cairo', lang: 'العربية', langKey: 'ar',
-      bg: 'linear-gradient(145deg,#6E1630,#24050E)', accent: '#F6CB77',
+      bg: 'linear-gradient(145deg,#6E1630,#24050E)', img: 'assets/images/baron-palace-cairo.jpg', accent: '#F6CB77',
       desc: 'Tap three brass lanterns to light them and open a festive ladies-only henna night.',
       features: ['Light 3 Lanterns', 'Warm Sparks', 'Ladies Henna']
     },
@@ -109,7 +109,7 @@ window.SITE = {
       num: '04', cat: 'editorial', file: 'samples/04-vogue-magazine.html',
       title: 'The Wedding Issue', subtitle: 'Ziad & Dina',
       venue: 'The St. Regis Cairo', lang: 'English', langKey: 'en',
-      bg: 'linear-gradient(145deg,#1E1E1E,#090909)', img: 'assets/images/editorial-couple.jpg', accent: '#E8D5B0',
+      bg: 'linear-gradient(145deg,#1E1E1E,#090909)', img: 'assets/images/st-regis-cairo.jpg', accent: '#E8D5B0',
       desc: 'Black-and-white magazine cover that flips open with a crisp page-turn sound.',
       features: ['Magazine Cover', 'Page-Turn Sound', 'Lookbook']
     },
@@ -133,7 +133,7 @@ window.SITE = {
       num: '11', cat: 'editorial', file: 'samples/11-cairo-newspaper.html',
       title: 'The Cairo Chronicle', subtitle: 'Hassan & Laila',
       venue: 'Gezira Club, Zamalek', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F3EDE0,#DDD2BD)', accent: '#8B2626',
+      bg: 'linear-gradient(145deg,#F3EDE0,#DDD2BD)', img: 'assets/images/sofitel-gezirah.jpg', accent: '#8B2626',
       desc: 'A folded vintage newspaper that opens into your wedding story and schedule.',
       features: ['Folded Newspaper', 'Page-Turn Sound', 'Story Columns']
     },
@@ -141,7 +141,7 @@ window.SITE = {
       num: '14', cat: 'editorial', file: 'samples/14-polaroid-scrapbook.html',
       title: 'Polaroid Story Scrapbook', subtitle: 'Seif & Maya',
       venue: 'Baron Palace, Heliopolis', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F5EFE6,#DFD3C3)', img: 'assets/images/polaroid-couple.jpg', accent: '#B86144',
+      bg: 'linear-gradient(145deg,#F5EFE6,#DFD3C3)', img: 'assets/images/baron-palace-cairo.jpg', accent: '#B86144',
       desc: 'Tap-to-flip Polaroid photo stack telling your story with handwritten notes.',
       features: ['Photo Deck', 'Handwritten Notes', 'Scrapbook']
     },
@@ -149,7 +149,7 @@ window.SITE = {
       num: '16', cat: 'editorial', file: 'samples/16-vinyl-record-invite.html',
       title: 'Golden Vinyl Record', subtitle: 'Rami & Zeina',
       venue: 'Nile Ritz-Carlton, Downtown', lang: 'English', langKey: 'en',
-      bg: 'linear-gradient(145deg,#27221B,#0D0C0A)', accent: '#E4BD73',
+      bg: 'linear-gradient(145deg,#27221B,#0D0C0A)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#E4BD73',
       desc: 'Drop the needle onto a spinning gold vinyl record to play music and open the setlist.',
       features: ['Spinning Vinyl', 'Evening Setlist', 'Song Request']
     },
@@ -157,7 +157,7 @@ window.SITE = {
       num: '17', cat: 'editorial', file: 'samples/17-love-story-journey.html',
       title: 'Our Love Story Journey', subtitle: 'Khaled & Farida',
       venue: 'Four Seasons First Residence, Giza', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F7EDE2,#E6D3C3)', img: 'assets/images/love-story-couple.jpg', accent: '#A96B5E',
+      bg: 'linear-gradient(145deg,#F7EDE2,#E6D3C3)', img: 'assets/images/four-seasons-nile.jpg', accent: '#A96B5E',
       desc: 'A keepsake storybook with your 4-chapter love timeline, arched couple portrait and clickable photo gallery.',
       features: ['4-Chapter Story', 'Photo Gallery', 'Custom Photo Slot', 'Keepsake Book']
     },
@@ -165,7 +165,7 @@ window.SITE = {
       num: '18', cat: 'cards', file: 'samples/18-classic-ivory-gold.html',
       title: 'Classic Ivory & Gold Crest', subtitle: 'طارق و نور',
       venue: 'Al Masa Hotel, New Capital', lang: 'العربية', langKey: 'ar', textDark: true,
-      bg: 'linear-gradient(145deg,#FDFBF7,#F4EFE6)', img: 'assets/images/classic-ivory-gold-crest.jpg', accent: '#C5A059',
+      bg: 'linear-gradient(145deg,#FDFBF7,#F4EFE6)', img: 'assets/images/al-masa-capital.jpg', accent: '#C5A059',
       desc: 'Quiet luxury stationery card on warm ivory paper with embossed gold crest and instant RSVP. Zero motion, zero audio.',
       features: ['Silent Stationery', 'No Motion', 'Embossed Crest', 'WhatsApp RSVP']
     },
@@ -173,7 +173,7 @@ window.SITE = {
       num: '19', cat: 'cards', file: 'samples/19-minimalist-noir.html',
       title: 'Minimalist Noir Monoline', subtitle: 'Karim & Laila',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en',
-      bg: 'linear-gradient(145deg,#1E1E1E,#0F0F0F)', img: 'assets/images/minimalist-noir-stationery.jpg', accent: '#9A7B4F',
+      bg: 'linear-gradient(145deg,#1E1E1E,#0F0F0F)', img: 'assets/images/st-regis-cairo.jpg', accent: '#9A7B4F',
       desc: 'Sleek dark-aesthetic typography card on textured natural parchment with monogram crest. Zero motion, zero audio.',
       features: ['Monoline Minimal', 'No Motion', 'Clean Typography', 'WhatsApp RSVP']
     },
@@ -197,7 +197,7 @@ window.SITE = {
       num: '22', cat: 'cards', file: 'samples/22-dusty-rose-pearl.html',
       title: 'Dusty Rose & Pearl Floral Card', subtitle: 'Kareem & Hania',
       venue: 'Kempinski Nile Hotel, Garden City', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#FDF2F0,#EACBC4)', img: 'assets/images/dusty-rose-floral.jpg', accent: '#843C47',
+      bg: 'linear-gradient(145deg,#FDF2F0,#EACBC4)', img: 'assets/images/kempinski-palace.jpg', accent: '#843C47',
       desc: 'Delicate blush and dusty rose romantic stationery card with clean schedule, directions, and WhatsApp confirmation.',
       features: ['Blush & Rose', 'No Motion', 'Romantic Stationery', 'WhatsApp RSVP']
     },
@@ -205,7 +205,7 @@ window.SITE = {
       num: '23', cat: 'cards', file: 'samples/23-midnight-gold-celestial.html',
       title: 'Midnight Gold Celestial Card', subtitle: 'Sherif & Nadia',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en', textDark: false,
-      bg: 'linear-gradient(145deg,#0E162B,#050914)', img: 'assets/images/midnight-gold-celestial.jpg', accent: '#F3D27F',
+      bg: 'linear-gradient(145deg,#0E162B,#050914)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#F3D27F',
       desc: 'Constellation starlight crest on deep midnight velvet paper with metallic gold typography and instant response.',
       features: ['Celestial Stars', 'No Motion', 'Deep Midnight Paper', 'Silent Luxury']
     },
@@ -213,7 +213,7 @@ window.SITE = {
       num: '24', cat: 'weddings', file: 'samples/24-liquid-chromium-pearl.html',
       title: 'Liquid Chromium & Pearl', subtitle: 'Sherif & Amina',
       venue: 'Four Seasons Nile Plaza, Cairo', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F1F5F9,#CBD5E1)', img: 'assets/images/liquid-chromium-pearl.jpg', accent: '#0F172A',
+      bg: 'linear-gradient(145deg,#F1F5F9,#CBD5E1)', img: 'assets/images/four-seasons-nile.jpg', accent: '#0F172A',
       desc: 'Interactive molten platinum seal reveal, liquid chromium specular reflections, and alabaster pearl card.',
       features: ['Liquid Chrome Seal', 'Molten Motion', 'Specular Sheen', 'VIP QR Pass']
     },
@@ -221,7 +221,7 @@ window.SITE = {
       num: '25', cat: 'cards', file: 'samples/25-molten-chrome-card.html',
       title: 'Molten Chrome Minimalist Card', subtitle: 'Ziad & Malak',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F8FAFC,#DDE5ED)', img: 'assets/images/molten-chrome-minimalist.jpg', accent: '#1E293B',
+      bg: 'linear-gradient(145deg,#F8FAFC,#DDE5ED)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#1E293B',
       desc: 'Silent luxury stationery on heavy pearl stock with beveled liquid chromium borders and embossed platinum monogram.',
       features: ['Liquid Chrome Border', 'No Motion', 'Embossed Monogram', 'Silent Luxury']
     },
@@ -229,7 +229,7 @@ window.SITE = {
       num: '26', cat: 'cards', file: 'samples/26-bifold-folding-card.html',
       title: 'Bi-Fold Luxury Folding Card', subtitle: 'Hassan & Mariam',
       venue: 'Sofitel Cairo Nile El Gezirah', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#FAF5EE,#DDD1BD)', img: 'assets/images/bifold-luxury-folding.jpg', accent: '#8C6721',
+      bg: 'linear-gradient(145deg,#FAF5EE,#DDD1BD)', img: 'assets/images/sofitel-gezirah.jpg', accent: '#8C6721',
       desc: 'Tactile 3D bi-fold card that smoothly unfolds on tap to reveal event details, live countdown, and RSVP pass. Strictly silent with 0 sound.',
       features: ['3D Bi-Fold Open', 'Unfolds on Tap', 'Zero Sound', 'VIP QR Pass']
     },
@@ -237,7 +237,7 @@ window.SITE = {
       num: '27', cat: 'cards', file: 'samples/27-pocket-sleeve-card.html',
       title: 'Pocket Sleeve Slide-Out Card', subtitle: 'Mostafa & Nadine',
       venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F3EDE1,#DAC9AF)', img: 'assets/images/pocket-sleeve-stationery.jpg', accent: '#7D5518',
+      bg: 'linear-gradient(145deg,#F3EDE1,#DAC9AF)', img: 'assets/images/mena-house-giza.jpg', accent: '#7D5518',
       desc: 'Alabaster die-cut pocket sleeve with pull ribbon tab. The gilded invitation card smoothly slides out into full view. Strictly silent with 0 sound.',
       features: ['Slide-Out Motion', 'Pull Tab Reveal', 'Zero Sound', 'Calendar & RSVP']
     },
@@ -245,7 +245,7 @@ window.SITE = {
       num: '28', cat: 'cards', file: 'samples/28-gatefold-ribbon-card.html',
       title: 'French Gatefold Double-Flap Card', subtitle: 'ياسين و جومانا',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'العربية', langKey: 'ar', textDark: false,
-      bg: 'linear-gradient(145deg,#13372B,#0A2019)', img: 'assets/images/french-gatefold-card.jpg', accent: '#E6C682',
+      bg: 'linear-gradient(145deg,#13372B,#0A2019)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#E6C682',
       desc: 'Two symmetrical French gatefold panels with royal monogram ribbon seal. Tap to swing flaps open in 3D to reveal inner gold card. Zero sound.',
       features: ['Gatefold Double-Flap', '3D Perspective Swing', 'Zero Sound', 'Bilingual RSVP']
     },
@@ -253,7 +253,7 @@ window.SITE = {
       num: '29', cat: 'cards', file: 'samples/29-envelope-slide-card.html',
       title: 'Translucent Vellum Envelope Slide Card', subtitle: 'Adam & Kenzy',
       venue: 'Kempinski Nile Hotel, Garden City', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#FAF6F0,#DFD3C0)', img: 'assets/images/translucent-vellum-envelope.jpg', accent: '#9A6B22',
+      bg: 'linear-gradient(145deg,#FAF6F0,#DFD3C0)', img: 'assets/images/kempinski-palace.jpg', accent: '#9A6B22',
       desc: 'Pearlescent vellum stationery envelope with a wax seal flap. On tap, the flap lifts open and the inner card slides out gracefully. Zero sound.',
       features: ['Envelope Flap Open', 'Smooth Slide Reveal', 'Zero Sound', 'Digital Pass']
     }
