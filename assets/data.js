@@ -92,7 +92,7 @@ window.SITE = {
       num: '12', cat: 'engagement', file: 'samples/12-velvet-ring-box.html',
       title: 'Velvet Engagement Ring Box', subtitle: 'أحمد و رنا',
       venue: 'Hilton Corniche, Alexandria', lang: 'العربية', langKey: 'ar',
-      bg: 'linear-gradient(145deg,#1E4280,#09162D)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#F3D999',
+      bg: 'linear-gradient(145deg,#1E4280,#09162D)', img: 'assets/images/alexandria-corniche.jpg', accent: '#F3D999',
       desc: 'A sapphire velvet ring box opens to reveal a sparkling ring with a soft chime.',
       features: ['Ring Box Reveal', 'Sparkle Chime', 'Alexandria']
     },
@@ -100,7 +100,7 @@ window.SITE = {
       num: '13', cat: 'engagement', file: 'samples/13-henna-night-lanterns.html',
       title: 'Glowing Lanterns Henna Night', subtitle: 'ليلة حنة سارة',
       venue: 'Degla Maadi, Cairo', lang: 'العربية', langKey: 'ar',
-      bg: 'linear-gradient(145deg,#6E1630,#24050E)', img: 'assets/images/baron-palace-cairo.jpg', accent: '#F6CB77',
+      bg: 'linear-gradient(145deg,#6E1630,#24050E)', img: 'assets/images/al-azhar-park.jpg', accent: '#F6CB77',
       desc: 'Tap three brass lanterns to light them and open a festive ladies-only henna night.',
       features: ['Light 3 Lanterns', 'Warm Sparks', 'Ladies Henna']
     },
@@ -117,7 +117,7 @@ window.SITE = {
       num: '08', cat: 'editorial', file: 'samples/08-destination-boarding-pass.html',
       title: 'El Gouna Boarding Pass', subtitle: 'Aly & Hana',
       venue: 'The Chedi, El Gouna', lang: 'English', langKey: 'en',
-      bg: 'linear-gradient(145deg,#144374,#0A233E)', img: 'assets/images/amalfi-coast.jpg', accent: '#F4D87F',
+      bg: 'linear-gradient(145deg,#144374,#0A233E)', img: 'assets/images/el-gouna-lagoon.jpg', accent: '#F4D87F',
       desc: 'Passport stamp opening and a first-class Cairo to El Gouna boarding pass.',
       features: ['Passport Stamp', 'Boarding Pass', '3-Day Itinerary']
     },
@@ -221,7 +221,7 @@ window.SITE = {
       num: '25', cat: 'cards', file: 'samples/25-molten-chrome-card.html',
       title: 'Molten Chrome Minimalist Card', subtitle: 'Ziad & Malak',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F8FAFC,#DDE5ED)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#1E293B',
+      bg: 'linear-gradient(145deg,#F8FAFC,#DDE5ED)', img: 'assets/images/abdeen-palace.jpg', accent: '#1E293B',
       desc: 'Silent luxury stationery on heavy pearl stock with beveled liquid chromium borders and embossed platinum monogram.',
       features: ['Liquid Chrome Border', 'No Motion', 'Embossed Monogram', 'Silent Luxury']
     },
@@ -245,7 +245,7 @@ window.SITE = {
       num: '28', cat: 'cards', file: 'samples/28-gatefold-ribbon-card.html',
       title: 'French Gatefold Double-Flap Card', subtitle: 'ياسين و جومانا',
       venue: 'The Nile Ritz-Carlton, Cairo', lang: 'العربية', langKey: 'ar', textDark: false,
-      bg: 'linear-gradient(145deg,#13372B,#0A2019)', img: 'assets/images/nile-ritz-carlton.jpg', accent: '#E6C682',
+      bg: 'linear-gradient(145deg,#13372B,#0A2019)', img: 'assets/images/citadel-mosque.jpg', accent: '#E6C682',
       desc: 'Two symmetrical French gatefold panels with royal monogram ribbon seal. Tap to swing flaps open in 3D to reveal inner gold card. Zero sound.',
       features: ['Gatefold Double-Flap', '3D Perspective Swing', 'Zero Sound', 'Bilingual RSVP']
     },
@@ -256,6 +256,38 @@ window.SITE = {
       bg: 'linear-gradient(145deg,#FAF6F0,#DFD3C0)', img: 'assets/images/kempinski-palace.jpg', accent: '#9A6B22',
       desc: 'Pearlescent vellum stationery envelope with a wax seal flap. On tap, the flap lifts open and the inner card slides out gracefully. Zero sound.',
       features: ['Envelope Flap Open', 'Smooth Slide Reveal', 'Zero Sound', 'Digital Pass']
+    },
+    {
+      num: '30', cat: 'weddings', file: 'samples/30-abdeen-palace-royal.html',
+      title: 'Abdeen Palace Crimson Velvet', subtitle: 'هشام و لينا',
+      venue: 'Abdeen Palace, Downtown Cairo', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#2D0B14,#140409)', img: 'assets/images/abdeen-palace.jpg', accent: '#E2BE78',
+      desc: 'Royal crimson velvet palace invitation with antique gold foil seal, Abdeen Palace photography and Umm Kulthum melody.',
+      features: ['Abdeen Palace', 'Crimson Velvet', 'Umm Kulthum Music', 'WhatsApp RSVP']
+    },
+    {
+      num: '31', cat: 'katb', file: 'samples/31-citadel-mosque-katb.html',
+      title: 'Citadel Alabaster Katb Ketab', subtitle: 'مازن و هاجر',
+      venue: 'Muhammad Ali Mosque, Cairo Citadel', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#0D3B2E,#062119)', img: 'assets/images/citadel-mosque.jpg', accent: '#F3DCAA',
+      desc: 'Ottoman alabaster & emerald Katb Ketab invitation showcasing Muhammad Ali Mosque at the Citadel with Farha melody.',
+      features: ['Cairo Citadel', 'Ottoman Alabaster', 'Farha Melody', 'Katb Ketab']
+    },
+    {
+      num: '32', cat: 'editorial', file: 'samples/32-aswan-cataract-sunset.html',
+      title: 'Old Cataract Aswan Sunset', subtitle: 'Adham & Farah',
+      venue: 'Sofitel Legend Old Cataract, Aswan', lang: 'English', langKey: 'en', textDark: false,
+      bg: 'linear-gradient(145deg,#4B2216,#26100A)', img: 'assets/images/old-cataract-aswan.jpg', accent: '#E8B88A',
+      desc: 'Warm terracotta & Nubian gold destination wedding invitation set on the golden Nile banks of Aswan.',
+      features: ['Old Cataract Aswan', 'Terracotta & Gold', 'Destination Theme', 'Live Countdown']
+    },
+    {
+      num: '33', cat: 'engagement', file: 'samples/33-san-stefano-alexandria.html',
+      title: 'San Stefano Sapphire Engagement', subtitle: 'باسل و مريم',
+      venue: 'Four Seasons San Stefano, Alexandria', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#0C2544,#051122)', img: 'assets/images/alexandria-san-stefano.jpg', accent: '#D8B979',
+      desc: 'Mediterranean sapphire blue & champagne gold engagement invitation overlooking the sea at San Stefano, Alexandria.',
+      features: ['Alexandria Seafront', 'Sapphire & Gold', 'Egyptian Zaffa', 'WhatsApp RSVP']
     }
   ],
 
@@ -269,7 +301,7 @@ window.SITE = {
       bestFor: 'Katb Ketab, Engagement & Henna',
       blurb: 'Any ready-made design from our collection personalised with your full event details.',
       items: [
-        'Any of our 29 interactive designs & stationery cards',
+        'Any of our 33 interactive designs & stationery cards',
         'Couple names, date, schedule & venue map',
         'Live countdown timer & Add-to-Calendar',
         'Opening animation, sound effects & music',

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adham & Farah — Old Cataract Aswan Destination Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F8EFE6;
+      --card: rgba(255, 251, 246, 0.94);
+      --ink: #2B1B14;
+      --muted: #6E5346;
+      --accent: #9E4B2E;
+      --accent-soft: rgba(158, 75, 46, 0.08);
+      --border: rgba(197, 146, 95, 0.45);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(rgba(248, 237, 224, 0.74), rgba(248, 237, 224, 0.74)), url('../assets/images/old-cataract-aswan.jpg') center/cover fixed;
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    /* Interactive Luxury Cover */
+    #cover-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: linear-gradient(155deg, #4B2216, #26100A);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 28px; text-align: center; cursor: pointer;
+      transition: opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), visibility 0.85s;
+    }
+    #cover-overlay.is-open { opacity: 0; transform: scale(1.06); visibility: hidden; pointer-events: none; }
+    .cover-frame {
+      width: min(330px, 90vw);
+      padding: 36px 24px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: rgba(72, 34, 22, 0.86);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+      position: relative;
+    }
+    .cover-seal {
+      width: 78px; height: 78px; border-radius: 50%; margin: 0 auto 18px;
+      border: 1.5px solid var(--accent);
+      background: radial-gradient(circle at 30% 30%, var(--accent-soft), transparent 72%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 26px; font-weight: 700;
+    }
+    .cover-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .cover-names { font-size: 36px; line-height: 1.15; color: #FFF6EB; margin-bottom: 12px; }
+    .cover-venue { font-size: 12.5px; color: #E6CBB9; margin-bottom: 22px; }
+    .cover-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 28px; border-radius: 999px;
+      background: var(--accent); color: #FFFDF8;
+      font-weight: 700; font-size: 13px; border: 0; cursor: pointer;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+    }
+
+    /* Main Invitation Card */
+    .shell {
+      max-width: 520px; margin: 28px auto 64px; padding: 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px 22px 34px;
+      text-align: center;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.18);
+      backdrop-filter: blur(10px);
+    }
+    .venue-hero {
+      position: relative; width: 100%; height: 210px; border-radius: 16px; overflow: hidden;
+      margin-bottom: 22px; border: 1px solid var(--border);
+    }
+    .venue-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .venue-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0.68) 100%);
+    }
+    .venue-cap {
+      position: absolute; left: 12px; right: 12px; bottom: 11px; z-index: 2;
+      color: #FFFDF8; font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+    }
+    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+    .guest-pill {
+      display: inline-block; padding: 5px 16px; border-radius: 999px;
+      background: var(--accent-soft); border: 1px solid var(--border);
+      color: var(--accent); font-size: 12.5px; margin-bottom: 14px;
+    }
+    .names { font-size: 40px; font-weight: 600; line-height: 1.15; margin-bottom: 12px; color: var(--ink); }
+    .intro { font-size: 13.5px; color: var(--muted); max-width: 390px; margin: 0 auto 22px; }
+    .details {
+      background: var(--accent-soft); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px; margin-bottom: 20px; text-align: left;
+      display: grid; gap: 10px;
+    }
+    .drow { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
+    .drow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .drow span:first-child { color: var(--accent); font-weight: 600; }
+    .cd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+    .cd-box { background: var(--accent-soft); border: 1px solid var(--border); border-radius: 12px; padding: 10px 4px; }
+    .cd-num { font-size: 22px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+    .cd-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; margin-top: 2px; }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 24px; }
+    .btn {
+      flex: 1; min-width: 130px; padding: 11px 16px; border-radius: 999px;
+      font: 600 12.5px inherit; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-pri { background: var(--accent); color: #FFFDF8; border: 0; }
+    .btn-out { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .rsvp-box { border-top: 1px solid var(--border); padding-top: 20px; text-align: left; }
+    .rsvp-box h3 { text-align: center; font-size: 20px; color: var(--accent); margin-bottom: 12px; }
+    .inp {
+      width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08); color: var(--ink); font: inherit; font-size: 13.5px; margin-bottom: 10px;
+    }
+    .rad { display: flex; gap: 14px; justify-content: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body data-music-mood="a_thousand_years">
+  <div id="cover-overlay" role="dialog">
+    <div class="cover-frame">
+      <div class="cover-seal serif" data-monogram>A & F</div>
+      <div class="cover-eyebrow">Nile Sunset Destination Wedding</div>
+      <div class="guest-pill" data-guest-name data-guest-prefix="Dear " style="display:none;"></div>
+      <h2 class="cover-names serif" data-couple-title>Adham & Farah</h2>
+      <div class="cover-venue" data-venue-name>Sofitel Legend Old Cataract • Aswan</div>
+      <button type="button" class="cover-btn" id="openCoverBtn">Open Invitation</button>
+    </div>
+  </div>
+
+  <main class="shell">
+    <div class="card">
+      <div class="venue-hero">
+        <img src="../assets/images/old-cataract-aswan.jpg" alt="Sofitel Legend Old Cataract • Aswan" loading="eager" />
+        <div class="venue-cap">Sofitel Legend Old Cataract • Aswan</div>
+      </div>
+
+      <div class="eyebrow">Nile Sunset Destination Wedding</div>
+      <div class="guest-pill" data-guest-name data-guest-prefix="Dear " style="display:none;"></div>
+      <h1 class="names serif" data-couple-title>Adham & Farah</h1>
+      <p class="intro">Join us on the golden granite shores of the Nile in Aswan for an intimate sunset ceremony and starlit dinner.</p>
+
+      <div class="details">
+        <div class="drow"><span>Date</span><span data-event-date>Saturday, December 18, 2027</span></div>
+        <div class="drow"><span>Time</span><span>Four-thirty in the afternoon</span></div>
+        <div class="drow"><span>Venue</span><span data-venue-name>Sofitel Legend Old Cataract • Aswan</span></div>
+      </div>
+
+      <div class="cd-grid" data-countdown="2027-12-18T16:30:00+02:00">
+        <div class="cd-box"><div class="cd-num" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-box"><div class="cd-num" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-box"><div class="cd-num" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-box"><div class="cd-num" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-pri" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+        <a class="btn btn-out" href="https://maps.google.com/?q=Sofitel+Legend+Old+Cataract+Aswan" target="_blank" rel="noopener">Venue Map</a>
+      </div>
+
+      <div class="rsvp-box">
+        <h3 class="serif">R.S.V.P</h3>
+        <form data-rsvp-form data-couple="Adham & Farah" data-lang="en" data-result-target="rsvp-res">
+          <input class="inp" name="guestName" type="text" required placeholder="Your Full Name" />
+          <div class="rad">
+            <label><input type="radio" name="attendance" value="yes" checked /> Joyfully Accepts</label>
+            <label><input type="radio" name="attendance" value="no" /> Regretfully Declines</label>
+          </div>
+          <button type="submit" class="btn btn-pri" style="width:100%;">Confirm via WhatsApp</button>
+        </form>
+        <div id="rsvp-res" style="display:none;margin-top:12px;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Adham & Farah — Old Cataract Aswan Destination Wedding',
+      start: '2027-12-18T14:30:00Z',
+      end: '2027-12-18T22:00:00Z',
+      location: 'Sofitel Legend Old Cataract • Aswan'
+    };
+    const cov = document.getElementById('cover-overlay');
+    function openInvite(e) {
+      if (cov.classList.contains('is-open')) return;
+      try { WeddingSound.playDoorOpen(); } catch (_) {}
+      try { WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth/2, (e && e.clientY) || window.innerHeight/2); } catch (_) {}
+      try { WeddingSound.startMusic('a_thousand_years'); } catch (_) {}
+      cov.classList.add('is-open');
+      document.body.classList.remove('wi-scroll-locked');
+    }
+    cov.addEventListener('click', openInvite);
+    document.getElementById('openCoverBtn').addEventListener('click', (e) => { e.stopPropagation(); openInvite(e); });
+  </script>
+</body>
+</html>

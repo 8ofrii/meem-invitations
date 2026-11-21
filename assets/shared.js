@@ -1104,8 +1104,8 @@
     else startMusic(mood || currentMood);
   }
 
-  const ICON_MUSIC_PLAYING = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
-  const ICON_MUSIC_PAUSED = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
+  const ICON_MUSIC_PLAYING = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+  const ICON_MUSIC_PAUSED = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
 
   function updateMusicFab() {
     const fab = document.getElementById('wi-music-fab');
@@ -1114,10 +1114,10 @@
       fab.classList.toggle('is-playing', musicPlaying);
       fab.setAttribute('aria-pressed', musicPlaying ? 'true' : 'false');
       const lbl = musicPlaying
-        ? (isRTL ? 'إيقاف الصوت' : 'Mute')
-        : (isRTL ? 'تشغيل الصوت' : 'Sound');
+        ? (isRTL ? 'إيقاف الصوت' : 'Mute music')
+        : (isRTL ? 'تشغيل الصوت' : 'Play music');
       fab.title = lbl;
-      fab.innerHTML = (musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED) + `<span>${lbl}</span>`;
+      fab.innerHTML = musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED;
     }
     try {
       if (window.parent && window.parent !== window) {
@@ -2116,23 +2116,22 @@
       fab.setAttribute('aria-pressed', musicPlaying ? 'true' : 'false');
       Object.assign(fab.style, {
         position: 'fixed',
-        bottom: '16px',
-        right: '16px',
+        bottom: '18px',
+        right: '18px',
         zIndex: '9998',
+        width: '36px',
+        height: '36px',
+        padding: '0',
         display: 'inline-flex',
         alignItems: 'center',
-        gap: '7px',
-        padding: '9px 14px',
-        borderRadius: '999px',
-        background: 'rgba(13, 59, 46, 0.90)',
+        justifyContent: 'center',
+        borderRadius: '50%',
+        background: 'rgba(13, 59, 46, 0.88)',
         color: '#F4E5C2',
         border: '1px solid rgba(197, 160, 89, 0.65)',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.28)',
+        boxShadow: '0 6px 18px rgba(0, 0, 0, 0.28)',
         backdropFilter: 'blur(10px)',
         cursor: 'pointer',
-        fontSize: '12px',
-        fontWeight: '600',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
         transition: 'transform 0.2s ease, opacity 0.2s ease'
       });
       fab.addEventListener('click', (e) => {
