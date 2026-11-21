@@ -7,6 +7,25 @@
 (function () {
   'use strict';
 
+  // Completely eliminate native scrollbar track & thumb inside mobile iframe across all models
+  try {
+    const noScrollStyle = document.createElement('style');
+    noScrollStyle.id = 'wi-no-scrollbar-style';
+    noScrollStyle.textContent = `
+      html, body, * {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+      }
+      ::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        background: transparent !important;
+      }
+    `;
+    (document.head || document.documentElement).appendChild(noScrollStyle);
+  } catch (_) {}
+
   const STUDIO_CONFIG = {
     studioName: 'ATELIER INVITE',
     studioNameAr: 'أتيليه دعوة',
@@ -96,34 +115,69 @@
         100% { opacity: 0; transform: scale(1.75); }
       }
 
+      html, body {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+      }
+      ::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        background: transparent !important;
+      }
+
       #wi-music-fab {
         position: fixed;
-        bottom: 22px;
-        right: 22px;
-        width: 48px;
-        height: 48px;
+        bottom: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
-        background: rgba(18, 18, 22, 0.78);
+        background: rgba(14, 14, 18, 0.72);
         color: #F3DCAA;
-        border: 1.5px solid rgba(243, 220, 170, 0.55);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-        backdrop-filter: blur(12px);
+        border: 1px solid rgba(243, 220, 170, 0.5);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(8px);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
         cursor: pointer;
         z-index: 9995;
-        transition: transform 0.25s ease, background 0.25s ease, opacity 0.4s ease;
+        padding: 0;
+        transition: transform 0.2s ease, background 0.2s ease, opacity 0.3s ease;
       }
-      html[dir="rtl"] #wi-music-fab { right: auto; left: 22px; }
-      #wi-music-fab:hover { transform: scale(1.08); }
+      html[dir="rtl"] #wi-music-fab { right: auto; left: 16px; }
+      #wi-music-fab:hover { transform: scale(1.1); }
       #wi-music-fab.is-playing {
-        animation: wiMusicPulse 2.4s ease-in-out infinite;
+        animation: wiMusicPulse 2s ease-in-out infinite;
       }
       @keyframes wiMusicPulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(216, 180, 108, 0.48), 0 10px 28px rgba(0,0,0,0.28); }
-        50% { box-shadow: 0 0 0 12px rgba(216, 180, 108, 0), 0 10px 28px rgba(0,0,0,0.28); }
+        0%, 100% { box-shadow: 0 0 0 0 rgba(216, 180, 108, 0.4), 0 4px 14px rgba(0,0,0,0.28); }
+        50% { box-shadow: 0 0 0 4px rgba(216, 180, 108, 0), 0 4px 14px rgba(0,0,0,0.28); }
+      }
+
+      /* Dynamic couple portrait photo slot */
+      #wi-injected-photo {
+        display: flex;
+        justify-content: center;
+        margin: 16px auto 14px;
+        position: relative;
+        z-index: 5;
+      }
+      .wi-photo-frame {
+        width: min(200px, 60vw);
+        aspect-ratio: 3 / 4;
+        border-radius: 110px 110px 14px 14px;
+        overflow: hidden;
+        border: 2px solid rgba(216, 180, 108, 0.85);
+        box-shadow: 0 14px 32px rgba(0,0,0,0.38), 0 0 18px rgba(216, 180, 108, 0.22);
+        background: #000;
+      }
+      .wi-photo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
 
       /* Interactive Scratch-Off Date Cards */
@@ -551,12 +605,18 @@
     else startMusic(mood || currentMood);
   }
 
+  const ICON_MUSIC_PLAYING = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`;
+  const ICON_MUSIC_PAUSED = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+
   function updateMusicFab() {
     const fab = document.getElementById('wi-music-fab');
     if (!fab) return;
     fab.classList.toggle('is-playing', musicPlaying);
     fab.setAttribute('aria-pressed', musicPlaying ? 'true' : 'false');
-    fab.textContent = musicPlaying ? '♫' : '♪';
+    fab.title = musicPlaying
+      ? (document.documentElement.dir === 'rtl' ? 'إيقاف الموسيقى مؤقتاً' : 'Pause Music')
+      : (document.documentElement.dir === 'rtl' ? 'تشغيل الموسيقى' : 'Play Music');
+    fab.innerHTML = musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED;
   }
 
   window.WeddingSound = {
@@ -927,10 +987,16 @@
       }
     }
 
-    // Apply custom couple photo if uploaded in personalise.html
+    // Apply custom couple photo if uploaded in preview studio
     try {
-      const savedPhoto = sessionStorage.getItem('meem_custom_photo');
-      if (savedPhoto && params.get('photo') === '1') {
+      let savedPhoto = sessionStorage.getItem('meem_custom_photo') || localStorage.getItem('meem_custom_photo');
+      if (!savedPhoto && window.parent && window.parent !== window) {
+        try {
+          savedPhoto = (window.parent.sessionStorage && window.parent.sessionStorage.getItem('meem_custom_photo')) ||
+                       (window.parent.localStorage && window.parent.localStorage.getItem('meem_custom_photo'));
+        } catch (_) {}
+      }
+      if (savedPhoto && (params.get('photo') === '1' || params.has('photo'))) {
         applyCustomPhoto(savedPhoto);
       }
     } catch (_) {}
@@ -1024,34 +1090,48 @@
 
   function applyCustomPhoto(dataUrl) {
     if (!dataUrl) return;
-    const targets = document.querySelectorAll('img[data-couple-photo]');
-    if (targets.length) {
-      targets.forEach((img) => { img.src = dataUrl; });
+
+    // 1. Any existing image elements designated for couple photo
+    const explicit = document.querySelectorAll('img[data-couple-photo], .cover-photo, img.cover-photo, img[src*="editorial-couple"]');
+    if (explicit.length) {
+      explicit.forEach((img) => {
+        img.src = dataUrl;
+        if (img.srcset) img.removeAttribute('srcset');
+      });
       return;
     }
-    // For templates without a built-in photo slot, inject a refined arched portrait frame under h1
+
+    // 2. For templates without a dedicated slot, inject an arched portrait frame after the couple title
     let slot = document.getElementById('wi-injected-photo');
     if (!slot) {
-      const h1 = document.querySelector('main h1') || document.querySelector('h1');
-      if (!h1) return;
+      const anchor = document.querySelector('[data-couple-title]') ||
+                     document.querySelector('.couple-names') ||
+                     document.querySelector('.couple-title') ||
+                     document.querySelector('.hero-names') ||
+                     document.querySelector('main h1') ||
+                     document.querySelector('h1');
+      if (!anchor) return;
+
       slot = document.createElement('div');
       slot.id = 'wi-injected-photo';
-      Object.assign(slot.style, {
-        width: 'min(220px, 68vw)',
-        aspectRatio: '3 / 4',
-        margin: '18px auto 14px',
-        borderRadius: '130px 130px 14px 14px',
-        overflow: 'hidden',
-        border: '2px solid rgba(216, 180, 108, 0.72)',
-        padding: '5px',
-        boxShadow: '0 16px 36px rgba(0,0,0,0.18)'
-      });
-      slot.innerHTML = `<img alt="Couple portrait" style="width:100%;height:100%;object-fit:cover;border-radius:124px 124px 10px 10px;display:block;">`;
-      h1.insertAdjacentElement('afterend', slot);
+      slot.innerHTML = `
+        <div class="wi-photo-frame">
+          <img alt="Couple portrait" class="wi-photo-img" src="${dataUrl}">
+        </div>
+      `;
+      anchor.insertAdjacentElement('afterend', slot);
+    } else {
+      const img = slot.querySelector('img');
+      if (img) img.src = dataUrl;
     }
-    const img = slot.querySelector('img');
-    if (img) img.src = dataUrl;
   }
+
+  // Real-time photo reception via postMessage from preview studio
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'meem_photo' && e.data.dataUrl) {
+      applyCustomPhoto(e.data.dataUrl);
+    }
+  });
 
   function toArabicDigits(str) {
     return str.replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
@@ -1277,6 +1357,16 @@
       document.body.appendChild(back);
     }
 
+    // Ambient background music is ONLY for celebratory designs that feature music, not all options
+    const musicTemplates = ['01', '02', '06', '07', '10', '12', '13', '16', '17'];
+    const p = location.pathname;
+    const isMusicDesign = musicTemplates.some(num => p.includes(num)) || document.body.getAttribute('data-music') === 'true';
+    const musicDisabled = params.get('music') === '0' || document.body.getAttribute('data-no-music') === 'true';
+
+    if (!isMusicDesign || musicDisabled) {
+      return; // Do NOT inject music fab on minimal, katb ketab, newspaper, or non-music designs
+    }
+
     const mood = document.body.getAttribute('data-music-mood') || (isRTL ? 'oriental' : 'classic');
     currentMood = mood;
 
@@ -1284,7 +1374,7 @@
     fab.id = 'wi-music-fab';
     fab.type = 'button';
     fab.title = isRTL ? 'تشغيل أو إيقاف الموسيقى' : 'Play / Pause Music';
-    fab.textContent = '♪';
+    fab.innerHTML = musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED;
     fab.addEventListener('click', () => toggleMusic(mood));
     document.body.appendChild(fab);
   }
