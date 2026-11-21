@@ -22,9 +22,46 @@
   .seg button, .tab { border: 0; background: transparent; color: var(--muted); font: 600 12px inherit; font-family: inherit; padding: 8px 14px; border-radius: 999px; cursor: pointer; }
   .seg button.active { background: var(--surface-2); color: var(--gold-2); }
   .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tab { border: 1px solid var(--line); background: #FFFFFF; }
-  .tab:hover { color: var(--text); border-color: var(--gold-dim); }
-  .tab.active { background: linear-gradient(135deg, #0D3B2E 0%, #164E3D 100%); color: #FFFFFF; border-color: #C5A059; box-shadow: 0 4px 14px rgba(13,59,46,0.22); font-weight: 700; }
+  .tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    background: #FFFFFF;
+    color: var(--muted);
+    font: 600 13px inherit;
+    font-family: inherit;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    user-select: none;
+  }
+  .tab-ic { font-size: 15px; line-height: 1; flex-shrink: 0; }
+  .tab-txt { display: inline-flex; align-items: center; gap: 7px; }
+  .tab-name { font-size: 13px; font-weight: 600; }
+  .tab-count {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(197, 160, 89, 0.16);
+    color: #8C6721;
+    transition: all 0.2s ease;
+  }
+  .tab:hover { color: var(--text); border-color: var(--gold-dim); transform: translateY(-1px); }
+  .tab.active {
+    background: linear-gradient(135deg, #0D3B2E 0%, #164E3D 100%);
+    color: #FFFFFF;
+    border-color: #C5A059;
+    box-shadow: 0 4px 14px rgba(13,59,46,0.22);
+    font-weight: 700;
+  }
+  .tab.active .tab-name { color: #FFFFFF; }
+  .tab.active .tab-count {
+    background: rgba(255, 255, 255, 0.26);
+    color: #FFFFFF;
+  }
   .count { font-size: 12px; color: var(--muted); margin-left: auto; }
   .cat-section { margin-top: 46px; }
   .cat-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 8px; padding-bottom: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
@@ -36,26 +73,87 @@
     .controls { top: 62px; padding: 12px; border-radius: 14px; }
     .search { width: 100%; min-width: 0; }
     .tabs {
-      display: flex;
-      overflow-x: auto;
-      overflow-y: hidden;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-      padding: 4px 12px 10px 12px;
-      margin: 0 -12px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      width: 100%;
+      overflow: visible;
+      padding: 0;
+      margin: 0;
     }
-    .tabs::-webkit-scrollbar { display: none; }
     .tab {
-      flex: 0 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10px 12px;
+      min-height: 52px;
+      border-radius: 14px;
+      gap: 8px;
       white-space: nowrap;
-      padding: 10px 16px;
-      font-size: 13px;
-      min-height: 42px;
+      box-shadow: 0 2px 6px rgba(13, 59, 46, 0.05);
+      border: 1px solid rgba(13, 59, 46, 0.12);
+      background: #FFFFFF;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .count { width: 100%; text-align: right; }
+    .tab-ic {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .tab-txt {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      min-width: 0;
+    }
+    .tab-name {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #332C23;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tab-count {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 1px 6px;
+      line-height: 1.2;
+      border-radius: 999px;
+      background: rgba(197, 160, 89, 0.16);
+      color: #8C6721;
+      flex-shrink: 0;
+    }
+    .tab.active {
+      background: linear-gradient(135deg, #0D3B2E 0%, #165241 100%);
+      border-color: #C5A059;
+      box-shadow: 0 4px 14px rgba(13, 59, 46, 0.28);
+      transform: translateY(-1px);
+    }
+    .tab.active .tab-name {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+    .tab.active .tab-count {
+      background: rgba(255, 255, 255, 0.28);
+      color: #FFFFFF;
+    }
+    .count { width: 100%; text-align: center; margin-top: 4px; }
     .cat-head h2 { font-size: 26px; }
+  }
+  @media (max-width: 360px) {
+    .tab {
+      padding: 8px 10px;
+      gap: 6px;
+    }
+    .tab-name {
+      font-size: 11px;
+    }
   }
 </style>
 </head>
@@ -89,9 +187,19 @@
   const st = { q: params.get('q') || '', cat: params.get('cat') || 'all' };
   q.value = st.q;
 
+  function countFor(catId) {
+    return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
+  }
   document.getElementById('tabs').innerHTML =
-    `<button class="tab" data-c="all">✨ All (${S.SAMPLES.length})</button>` +
-    S.CATEGORIES.map(c => `<button class="tab" data-c="${c.id}">${c.icon ? c.icon + ' ' : ''}${c.short || c.title.split(' & ')[0]} (${S.SAMPLES.filter(s=>s.cat===c.id).length})</button>`).join('');
+    `<button class="tab" data-c="all">
+      <span class="tab-ic">✨</span>
+      <span class="tab-txt"><span class="tab-name">All Designs</span><span class="tab-count">${countFor('all')}</span></span>
+    </button>` +
+    S.CATEGORIES.map(c => `
+      <button class="tab" data-c="${c.id}">
+        <span class="tab-ic">${c.icon || '✦'}</span>
+        <span class="tab-txt"><span class="tab-name">${c.short || c.title.split(' & ')[0]}</span><span class="tab-count">${countFor(c.id)}</span></span>
+      </button>`).join('');
 
   function ok(s) {
     if (st.cat !== 'all' && s.cat !== st.cat) return false;

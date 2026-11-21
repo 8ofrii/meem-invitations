@@ -26,7 +26,7 @@
   .filter-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 28px;
@@ -41,10 +41,10 @@
   .fpill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 9px 18px;
+    gap: 8px;
+    padding: 8px 16px;
     border-radius: 999px;
-    border: 1px solid rgba(13, 59, 46, 0.12);
+    border: 1px solid rgba(13, 59, 46, 0.14);
     background: #FFFFFF;
     color: var(--muted);
     font-size: 13px;
@@ -52,10 +52,22 @@
     font-family: inherit;
     cursor: pointer;
     transition: all 0.22s ease;
-    box-shadow: 0 2px 8px rgba(13, 59, 46, 0.04);
+    box-shadow: 0 2px 6px rgba(13, 59, 46, 0.04);
     white-space: nowrap;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+  }
+  .fpill-ic { font-size: 15px; line-height: 1; flex-shrink: 0; }
+  .fpill-txt { display: inline-flex; align-items: center; gap: 7px; }
+  .fpill-name { font-size: 13px; font-weight: 600; }
+  .fpill-count {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(197, 160, 89, 0.16);
+    color: #8C6721;
+    transition: all 0.2s ease;
   }
   .fpill:hover {
     border-color: var(--gold);
@@ -67,8 +79,12 @@
     background: linear-gradient(135deg, #0D3B2E 0%, #165241 100%);
     color: #FFFFFF;
     border-color: #C5A059;
-    box-shadow: 0 6px 18px rgba(13, 59, 46, 0.24);
-    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(13, 59, 46, 0.22);
+  }
+  .fpill.active .fpill-name { color: #FFFFFF; }
+  .fpill.active .fpill-count {
+    background: rgba(255, 255, 255, 0.26);
+    color: #FFFFFF;
   }
   .search-box {
     padding: 11px 18px;
@@ -174,28 +190,88 @@
     .stats, .trust-grid { grid-template-columns: repeat(2,1fr); }
   }
   @media (max-width: 768px) {
-    .filter-bar { flex-direction: column; align-items: stretch; gap: 14px; margin-bottom: 24px; }
+    .filter-bar { flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 22px; }
     .pill-group {
-      display: flex;
-      overflow-x: auto;
-      overflow-y: hidden;
-      flex-wrap: nowrap;
-      gap: 9px;
-      padding: 6px 16px 14px 16px;
-      margin: 0 -16px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      scroll-snap-type: x proximity;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      width: 100%;
+      overflow: visible;
+      padding: 0;
+      margin: 0;
     }
-    .pill-group::-webkit-scrollbar { display: none; }
     .fpill {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      padding: 11px 18px;
-      font-size: 13.5px;
-      min-height: 44px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10px 12px;
+      min-height: 52px;
+      border-radius: 14px;
+      gap: 8px;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(13, 59, 46, 0.05);
+      border: 1px solid rgba(13, 59, 46, 0.12);
+      background: #FFFFFF;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .search-box { width: 100%; min-width: 0; padding: 13px 18px; font-size: 14px; }
+    .fpill-ic {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .fpill-txt {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      min-width: 0;
+    }
+    .fpill-name {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #332C23;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .fpill-count {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 1px 6px;
+      line-height: 1.2;
+      border-radius: 999px;
+      background: rgba(197, 160, 89, 0.16);
+      color: #8C6721;
+      flex-shrink: 0;
+    }
+    .fpill.active {
+      background: linear-gradient(135deg, #0D3B2E 0%, #165241 100%);
+      border-color: #C5A059;
+      box-shadow: 0 4px 14px rgba(13, 59, 46, 0.28);
+      transform: translateY(-1px);
+    }
+    .fpill.active .fpill-name {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+    .fpill.active .fpill-count {
+      background: rgba(255, 255, 255, 0.28);
+      color: #FFFFFF;
+    }
+    .search-box { width: 100%; min-width: 0; padding: 12px 18px; font-size: 14px; border-radius: 12px; }
+  }
+  @media (max-width: 360px) {
+    .fpill {
+      padding: 8px 10px;
+      gap: 6px;
+    }
+    .fpill-name {
+      font-size: 11px;
+    }
   }
   @media (max-width: 600px) {
     .form, .orderform, .trust-grid { grid-template-columns: 1fr; }
@@ -359,8 +435,19 @@
 
   /* ===== 1. DESIGNS FILTER & GALLERY ===== */
   let curCat = 'all';
-  $('catPills').innerHTML = `<button type="button" class="fpill active" data-cat="all">✨ All (${S.SAMPLES.length})</button>` +
-    S.CATEGORIES.map(c => `<button type="button" class="fpill" data-cat="${c.id}">${c.icon ? c.icon + ' ' : ''}${c.short || c.title}</button>`).join('');
+  function countFor(catId) {
+    return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
+  }
+  $('catPills').innerHTML = `
+    <button type="button" class="fpill active" data-cat="all">
+      <span class="fpill-ic">✨</span>
+      <span class="fpill-txt"><span class="fpill-name">All Designs</span><span class="fpill-count">${countFor('all')}</span></span>
+    </button>` +
+    S.CATEGORIES.map(c => `
+    <button type="button" class="fpill" data-cat="${c.id}">
+      <span class="fpill-ic">${c.icon || '✦'}</span>
+      <span class="fpill-txt"><span class="fpill-name">${c.short || c.title}</span><span class="fpill-count">${countFor(c.id)}</span></span>
+    </button>`).join('');
 
   function renderDesigns() {
     const q = $('searchBox').value.trim().toLowerCase();

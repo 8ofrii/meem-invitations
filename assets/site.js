@@ -30,15 +30,17 @@
   }
 
   function cardMarkup(s) {
-    const tc = s.textDark ? '#1D1B18' : '#FAF6EE';
-    const sc = s.textDark ? 'rgba(29,27,24,.72)' : 'rgba(255,255,255,.78)';
+    const hasImg = !!s.img;
+    const tc = hasImg ? '#FFFFFF' : (s.textDark ? '#1D1B18' : '#FAF6EE');
+    const sc = hasImg ? '#F4E5C2' : (s.textDark ? 'rgba(29,27,24,.72)' : 'rgba(255,255,255,.78)');
+    const ac = hasImg ? '#FFFFFF' : s.accent;
     return `<article class="sample-card">
-      <div class="card-thumb" style="background:${s.bg};color:${tc}">
-        ${s.img ? `<img class="bg-art" src="${s.img}" alt="" loading="lazy" decoding="async">` : ''}
+      <div class="card-thumb ${hasImg ? 'has-art' : ''}" style="background:${s.bg};color:${tc}">
+        ${hasImg ? `<img class="bg-art" src="${s.img}" alt="${s.title}" loading="lazy" decoding="async">` : ''}
         <div class="badge-row"><span class="badge plain">#${s.num}</span></div>
         <div class="thumb-inner">
-          <div class="serif" style="font-size:27px;line-height:1.12;color:${s.accent}">${s.title}</div>
-          <div class="arabic" style="font-size:16px;color:${sc};margin-top:6px">${s.subtitle}</div>
+          <div class="serif" style="font-size:26px;line-height:1.15;color:${ac};text-shadow:${hasImg ? '0 2px 10px rgba(0,0,0,0.65)' : 'none'}">${s.title}</div>
+          <div class="arabic" style="font-size:16px;color:${sc};margin-top:6px;text-shadow:${hasImg ? '0 1px 6px rgba(0,0,0,0.65)' : 'none'}">${s.subtitle}</div>
         </div>
       </div>
       <div class="card-body">
