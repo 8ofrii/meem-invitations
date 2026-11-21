@@ -128,7 +128,7 @@
     .rad { display: flex; gap: 14px; justify-content: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
   </style>
 </head>
-<body data-music-mood="om_kalthoum">
+<body data-music-mood="om_kalthoum_inst">
   <div id="cover-overlay" role="dialog">
     <div class="cover-frame">
       <div class="cover-seal serif" data-monogram>هـ & ل</div>
@@ -198,7 +198,7 @@
       if (cov.classList.contains('is-open')) return;
       try { WeddingSound.playDoorOpen(); } catch (_) {}
       try { WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth/2, (e && e.clientY) || window.innerHeight/2); } catch (_) {}
-      try { WeddingSound.startMusic('om_kalthoum'); } catch (_) {}
+      try { WeddingSound.startMusic('om_kalthoum_inst'); } catch (_) {}
       cov.classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     }

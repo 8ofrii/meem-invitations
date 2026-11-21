@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    ATELIER INVITE — Cinematic Motion, Sound FX & Interactive Wedding Engine
    Inspired by viral luxury digital invitations (3-Knock Doors, Gold-Foil
    Scratch Cards, Wax-Seal Golden Light Bursts, Auto-Start Soundtrack & FX)
@@ -1008,45 +1008,60 @@
   MOODS.celestial = MOODS.bridgerton;
   MOODS.mediterranean = MOODS.perfect;
 
-  // Real Egyptian & Wedding MP3 tracks (served locally from assets/audio/)
+  // Real Egyptian & Wedding MP3 tracks (all trimmed to start immediately on the words or main melody)
   const AUDIO_TRACKS = {
+    // 1. Instrumental Music Only (موسيقى الأغاني بدون غناء)
+    om_kalthoum_inst: '../assets/audio/om-kalthoum-instrumental.mp3',
+    farha_inst: '../assets/audio/farha-instrumental.mp3',
+    egyptian_zaffa: '../assets/audio/egyptian-zaffa.mp3',
+    sammoo_besm_allah: '../assets/audio/egyptian-zaffa.mp3',
+    thousand_years_inst: '../assets/audio/thousand-years-instrumental.mp3',
+    bridgerton: '../assets/audio/thousand-years-instrumental.mp3',
+    canon_in_d: '../assets/audio/thousand-years-instrumental.mp3',
+    classic: '../assets/audio/thousand-years-instrumental.mp3',
+    romantic_piano: '../assets/audio/thousand-years-instrumental.mp3',
+    liquid_chromium: '../assets/audio/om-kalthoum-instrumental.mp3',
+    celestial: '../assets/audio/thousand-years-instrumental.mp3',
+
+    // 2. Original Vocal Marriage Songs (تبدأ بالكلمات مباشرة)
     om_kalthoum: '../assets/audio/om-kalthoum-alf-leila.mp3',
+    farha_katb: '../assets/audio/farha-katb.mp3',
+    katb_ketab: '../assets/audio/farha-instrumental.mp3',
+    esseily_einy: '../assets/audio/esseily-einy-shayfa.mp3',
+    esseily_wakheeran: '../assets/audio/esseily-wakheeran.mp3',
     jassmi_zaffa: '../assets/audio/jassmi-zaffa.mp3',
     jassmi_seta: '../assets/audio/jassmi-seta-el-sobah.mp3',
-    farha_katb: '../assets/audio/farha-katb.mp3',
-    katb_ketab: '../assets/audio/farha-katb.mp3',
-    esseily_einy: '../assets/audio/esseily-einy-shayfa.mp3',
     tamer_helm: '../assets/audio/tamer-helm-seneen.mp3',
+    ramy_mabrook: '../assets/audio/ramy-sabry-mabrook.mp3',
     amr_nour: '../assets/audio/amr-diab-nour-el-ein.mp3',
-    sammoo_besm_allah: '../assets/audio/egyptian-zaffa.mp3',
-    egyptian_zaffa: '../assets/audio/egyptian-zaffa.mp3',
-    oriental: '../assets/audio/dina-zaffa.mp3',
     dina_zaffa: '../assets/audio/dina-zaffa.mp3',
+    oriental: '../assets/audio/dina-zaffa.mp3',
     a_thousand_years: '../assets/audio/a-thousand-years.mp3',
-    classic: '../assets/audio/a-thousand-years.mp3',
-    canon_in_d: '../assets/audio/a-thousand-years.mp3',
-    perfect: '../assets/audio/tamer-helm-seneen.mp3',
-    bridgerton: '../assets/audio/om-kalthoum-alf-leila.mp3',
-    romantic_piano: '../assets/audio/tamer-helm-seneen.mp3',
-    sahel_sunset: '../assets/audio/amr-diab-nour-el-ein.mp3',
-    mediterranean: '../assets/audio/amr-diab-nour-el-ein.mp3',
-    liquid_chromium: '../assets/audio/om-kalthoum-alf-leila.mp3',
-    celestial: '../assets/audio/a-thousand-years.mp3'
+    perfect: '../assets/audio/thousand-years-instrumental.mp3',
+    sahel_sunset: '../assets/audio/farha-katb.mp3',
+    mediterranean: '../assets/audio/amr-diab-nour-el-ein.mp3'
   };
 
-  // Curated Egyptian Wedding Song Mixes (auto-play seamlessly from song to song)
+  // Curated Egyptian Wedding Song & Instrumental Mixes
   const AUDIO_MIXES = {
+    instrumental_mix: [
+      '../assets/audio/om-kalthoum-instrumental.mp3',
+      '../assets/audio/farha-instrumental.mp3',
+      '../assets/audio/egyptian-zaffa.mp3',
+      '../assets/audio/thousand-years-instrumental.mp3'
+    ],
     egyptian_mix: [
-      '../assets/audio/om-kalthoum-alf-leila.mp3',
       '../assets/audio/jassmi-zaffa.mp3',
       '../assets/audio/farha-katb.mp3',
-      '../assets/audio/egyptian-zaffa.mp3',
       '../assets/audio/tamer-helm-seneen.mp3',
-      '../assets/audio/amr-diab-nour-el-ein.mp3'
+      '../assets/audio/ramy-sabry-mabrook.mp3',
+      '../assets/audio/esseily-einy-shayfa.mp3',
+      '../assets/audio/om-kalthoum-alf-leila.mp3'
     ],
     esseily_mix: [
       '../assets/audio/farha-katb.mp3',
-      '../assets/audio/esseily-einy-shayfa.mp3'
+      '../assets/audio/esseily-einy-shayfa.mp3',
+      '../assets/audio/esseily-wakheeran.mp3'
     ],
     jassmi_mix: [
       '../assets/audio/jassmi-zaffa.mp3',
@@ -1107,19 +1122,10 @@
       if (!bgAudioEl.src || !bgAudioEl.src.endsWith(trackSrc.replace(/^\.\.\//, ''))) {
         bgAudioEl.src = trackSrc;
       }
-      bgAudioEl.volume = 0.05;
+      bgAudioEl.volume = 0.72;
       const p = bgAudioEl.play();
       if (p && typeof p.then === 'function') {
-        p.then(() => {
-          clearInterval(fadeTimer);
-          let v = 0.08;
-          fadeTimer = setInterval(() => {
-            if (!musicPlaying || !bgAudioEl) { clearInterval(fadeTimer); return; }
-            v = Math.min(0.68, v + 0.06);
-            bgAudioEl.volume = v;
-            if (v >= 0.68) clearInterval(fadeTimer);
-          }, 90);
-        }).catch(() => {
+        p.catch(() => {
           if (musicPlaying) startSynthFallback(currentMood);
         });
       }
