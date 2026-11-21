@@ -12,6 +12,9 @@
     }
   } catch (_) {}
 
+  const savedTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_site_theme')) || 'liquid-glass';
+  document.documentElement.dataset.theme = savedTheme;
+
   const wa = (msg) => `https://wa.me/${S.WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
   function buildUrl(file, extra, clean) {
@@ -49,13 +52,20 @@
   }
 
   function injectShell(active) {
+    if (!document.querySelector('.liquid-ambient')) {
+      const amb = document.createElement('div');
+      amb.className = 'liquid-ambient';
+      amb.setAttribute('aria-hidden', 'true');
+      amb.innerHTML = '<div class="liquid-orb o1"></div><div class="liquid-orb o2"></div><div class="liquid-orb o3"></div>';
+      document.body.prepend(amb);
+    }
+
     const isHome = active === 'index.html' || active === 'home';
     const prefix = isHome ? '' : '/';
     const NAV = [
       ['home', isHome ? '#home' : '/', 'Home'],
       ['designs', `${prefix}#designs`, 'Designs'],
-      ['try-it-live', `${prefix}#try-it-live`, 'Try it live'],
-      ['packages', `${prefix}#packages`, 'Packages']
+      ['try-it-live', `${prefix}#try-it-live`, 'Try it live']
     ];
 
     const savedStyle = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_logo_style')) || '1';
@@ -73,8 +83,7 @@
         ${NAV.map(([id, h, t]) => {
           const isActive = (isHome && id === 'home') ||
             (active === 'collection.html' && id === 'designs') ||
-            (active === 'personalise.html' && id === 'try-it-live') ||
-            (active === 'pricing.html' && id === 'packages');
+            (active === 'personalise.html' && id === 'try-it-live');
           return `<a class="link${isActive ? ' active' : ''}" data-section="${id}" href="${h}">${t}</a>`;
         }).join('')}
         <a class="btn btn-gold btn-pill" href="${wa('Hello MEEM! I would like to order a digital invitation.')}" target="_blank" rel="noopener">WhatsApp</a>
@@ -91,7 +100,7 @@
         </div>
         <p class="muted" style="font-size:13px;max-width:300px">${B.tagline}</p>
       </div>
-      <div><h4>Explore</h4><a href="${prefix}#designs">Designs</a><a href="${prefix}#try-it-live">Try it live</a><a href="${prefix}#packages">Packages</a></div>
+      <div><h4>Explore</h4><a href="${prefix}#designs">Designs</a><a href="${prefix}#try-it-live">Try it live</a></div>
       <div><h4>Contact</h4><a href="${wa('Hello!')}" target="_blank" rel="noopener">WhatsApp: 01024190741</a><a href="#">Instagram ${B.handle}</a><a href="#">TikTok</a></div>
     </div><div class="foot-bottom"><span>© ${new Date().getFullYear()} ${B.name} — Cairo, Egypt</span><span>Digital Wedding &amp; Katb Ketab Invitations</span></div></div>`;
     document.body.appendChild(footer);
@@ -120,7 +129,7 @@
   }
 
   function initScrollSpy() {
-    const ids = ['home', 'designs', 'try-it-live', 'packages'];
+    const ids = ['home', 'designs', 'try-it-live'];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
 
@@ -180,5 +189,10 @@
     document.querySelectorAll('.brand-logo-img').forEach((el) => { el.src = path; });
   }
 
-  window.Shell = { init: injectShell, cardMarkup, preview, buildUrl, wa, setLogo, tryDesign };
+  function setTheme(themeId) {
+    if (typeof localStorage !== 'undefined') localStorage.setItem('meem_site_theme', themeId);
+    document.documentElement.dataset.theme = themeId;
+  }
+
+  window.Shell = { init: injectShell, cardMarkup, preview, buildUrl, wa, setLogo, setTheme, tryDesign };
 })();

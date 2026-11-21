@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEEM — 5 Website Styles Preview</title>
+<link rel="icon" type="image/svg+xml" href="assets/logos/meem-style-1.svg?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/themes.css">
+<style>
+  .styles-head { text-align: center; padding: 64px 0 36px; }
+  .style-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-bottom: 48px; }
+  .style-card { display: flex; flex-direction: column; position: relative; transition: transform .25s, border-color .25s; }
+  .style-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+  .style-card.active { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 22px 50px rgba(0,0,0,.35); }
+  .active-tag { display: none; position: absolute; top: -11px; right: 20px; background: linear-gradient(135deg,#E8CA8C,var(--gold-2)); color: #111; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; }
+  .style-card.active .active-tag { display: block; }
+  .mini-preview { height: 128px; border-radius: 14px; margin-bottom: 18px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(255,255,255,.15); position: relative; overflow: hidden; }
+  .mini-bar { height: 18px; border-radius: 999px; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; font-size: 9px; letter-spacing: .12em; font-weight: 700; }
+  .mini-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .mini-box { height: 42px; border-radius: 10px; }
+  .s-num { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .s-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; line-height: 1.15; }
+  .s-ar { font-family: 'Amiri', serif; font-size: 17px; color: var(--gold); margin-bottom: 8px; }
+  .s-desc { font-size: 13px; color: var(--muted); flex: 1; margin-bottom: 18px; }
+  .s-actions { display: flex; gap: 10px; }
+</style>
+</head>
+<body>
+<main class="container">
+  <div class="styles-head">
+    <div class="pill-tag">5 Website Styles</div>
+    <h1 class="h1">Choose Your <em>Website Style</em></h1>
+    <p class="lead" style="margin:12px auto 0">Click <b>Preview live</b> on any style below to see the page transform immediately, or click <b>Open Home →</b> to view the full website in that style.</p>
+  </div>
+
+  <div class="style-grid" id="styleGrid"></div>
+</main>
+
+<script src="assets/data.js"></script><script src="assets/site.js"></script>
+<script>
+  Shell.init('styles');
+  const STYLES = [
+    {
+      id: 'liquid-glass', num: 'Style 01 · Default', title: 'Liquid Glass', ar: 'الزجاج السائل العصري',
+      desc: 'Frosted translucent glass panels, specular liquid edges, and floating ambient gold & indigo light orbs.',
+      bg: 'radial-gradient(circle at 20% 10%, #24213A, #090A0F 75%)',
+      bar: 'rgba(255,255,255,.12)', barText: '#F0D290',
+      box: 'rgba(255,255,255,.10)', boxBorder: '1px solid rgba(255,255,255,.22)'
+    },
+    {
+      id: 'obsidian-gold', num: 'Style 02', title: 'Royal Obsidian & Gold', ar: 'الفخامة الملكية السوداء',
+      desc: 'Deep matte onyx velvet surfaces with clean antique gold hairlines and quiet luxury contrast.',
+      bg: 'radial-gradient(circle at 50% 0%, #1F1B15, #0B0B0E 70%)',
+      bar: '#16161C', barText: '#DFBE7F',
+      box: '#14141A', boxBorder: '1px solid rgba(223,190,127,.28)'
+    },
+    {
+      id: 'ivory-editorial', num: 'Style 03 · Light', title: 'Ivory Bridal Editorial', ar: 'الأبيض العاجي الفاخر',
+      desc: 'Warm pearl-ivory & alabaster light aesthetic inspired by luxury bridal magazines with brushed gold accents.',
+      bg: 'linear-gradient(145deg, #FFFDF9, #EAE0CF)',
+      bar: 'rgba(255,253,249,.9)', barText: '#8A6525',
+      box: '#FFFFFF', boxBorder: '1px solid rgba(158,120,53,.28)'
+    },
+    {
+      id: 'emerald-palace', num: 'Style 04', title: 'Palace Emerald & Champagne', ar: 'الزمرد الملكي والذهبي',
+      desc: 'Deep Egyptian palace emerald velvet backdrop with frosted jade cards and warm champagne gold foil.',
+      bg: 'radial-gradient(circle at 30% 0%, #0E4A3B, #041914 75%)',
+      bar: 'rgba(10,48,39,.85)', barText: '#E6C783',
+      box: 'rgba(13,60,49,.75)', boxBorder: '1px solid rgba(230,199,131,.30)'
+    },
+    {
+      id: 'rose-pearl', num: 'Style 05 · Light Glass', title: 'Rose Pearl Glass', ar: 'لؤلؤي وردي زجاجي',
+      desc: 'Romantic soft rose-quartz & pearl light glassmorphism with frosted translucent white cards and rose-gold tones.',
+      bg: 'linear-gradient(145deg, #FDF6F7, #F3DDE0)',
+      bar: 'rgba(255,255,255,.72)', barText: '#8A5045',
+      box: 'rgba(255,255,255,.76)', boxBorder: '1px solid rgba(255,255,255,.95)'
+    }
+  ];
+
+  function render() {
+    const active = document.documentElement.dataset.theme || 'liquid-glass';
+    document.getElementById('styleGrid').innerHTML = STYLES.map(s => `
+      <article class="card style-card${s.id === active ? ' active' : ''}" data-id="${s.id}">
+        <div class="active-tag">Active</div>
+        <div class="mini-preview" style="background:${s.bg}">
+          <div class="mini-bar" style="background:${s.bar};color:${s.barText}"><span>MEEM • ميم</span><span>● ● ●</span></div>
+          <div class="mini-cards">
+            <div class="mini-box" style="background:${s.box};border:${s.boxBorder}"></div>
+            <div class="mini-box" style="background:${s.box};border:${s.boxBorder}"></div>
+            <div class="mini-box" style="background:${s.box};border:${s.boxBorder}"></div>
+          </div>
+        </div>
+        <div class="s-num">${s.num}</div>
+        <h2 class="s-title">${s.title}</h2>
+        <div class="s-ar">${s.ar}</div>
+        <p class="s-desc">${s.desc}</p>
+        <div class="s-actions">
+          <button type="button" class="btn btn-gold" style="flex:1" onclick="pick('${s.id}')">Preview live</button>
+          <a class="btn btn-ghost" href="/" onclick="Shell.setTheme('${s.id}')">Open Home →</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  window.pick = function (id) {
+    Shell.setTheme(id);
+    render();
+  };
+  render();
+</script>
+</body></html>

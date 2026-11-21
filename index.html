@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/themes.css">
 <style>
   /* Hero & Stats */
   .hero { padding: 84px 0 48px; text-align: center; }
@@ -208,63 +209,11 @@
     </div>
   </div></section>
 
-  <hr class="section-divider">
-
-  <!-- 4. PACKAGES SECTION -->
-  <section id="packages" class="section"><div class="container">
-    <div class="center" style="margin-bottom:32px">
-      <div class="pill-tag">Pricing in EGP</div>
-      <h2 class="h2">Clear, Honest <em>Packages</em></h2>
-      <p class="lead" style="margin:10px auto 0">Transparent pricing in Egyptian Pounds with no hidden fees. Preview your live invitation on your phone before paying the remaining balance.</p>
-    </div>
-
-    <div class="grid g3" id="pkgs"></div>
-
-    <div class="trust-grid">
-      <div class="trust-item"><b>50% Deposit Only</b><span>Pay 50% to begin and the remaining 50% only after you review and approve your live invitation link.</span></div>
-      <div class="trust-item"><b>Easy Egyptian Payments</b><span>We accept InstaPay, Vodafone Cash, and local Egyptian bank transfers with instant confirmation.</span></div>
-      <div class="trust-item"><b>Works on Every Phone</b><span>Opens smoothly right from WhatsApp on iPhone and Android — no app download required for your guests.</span></div>
-      <div class="trust-item"><b>Free Schedule Updates</b><span>If your venue, hall or start time changes before your celebration, we update your live link free of charge.</span></div>
-    </div>
-
-    <div class="order-layout" id="order-section">
-      <div class="card">
-        <h3 class="serif gold" style="font-size:30px;font-weight:500;margin-bottom:6px">Build Your Order</h3>
-        <p class="muted" style="font-size:13px;margin-bottom:20px">Choose your package, design and any optional add-ons to see your instant estimate and send your request directly on WhatsApp.</p>
-
-        <form class="orderform" id="of" onsubmit="return false">
-          <div class="field"><label for="n">Your Name</label><input id="n" placeholder="e.g. Mahmoud & Merna" autocomplete="off"></div>
-          <div class="field"><label for="evType">Occasion</label>
-            <select id="evType">
-              <option value="Wedding">Wedding • فرح</option>
-              <option value="Katb Ketab">Katb Ketab • كتب كتاب</option>
-              <option value="Engagement">Engagement • خطوبة</option>
-              <option value="Henna Night">Henna Night • ليلة حنة</option>
-            </select>
-          </div>
-          <div class="field"><label for="pk">Package</label><select id="pk"></select></div>
-          <div class="field"><label for="ds">Preferred Design</label><select id="ds"></select></div>
-          <div class="field"><label for="ev">Event Date</label><input id="ev" type="date"></div>
-          <div class="field"><label for="langPref">Language</label>
-            <select id="langPref">
-              <option value="Arabic">Arabic • العربية</option>
-              <option value="English">English</option>
-              <option value="Arabic & English">Arabic &amp; English</option>
-            </select>
-          </div>
-          <div class="field full"><label>Optional Add-Ons</label><div class="addon-list" id="addonList"></div></div>
-          <div class="field full"><label for="nt">Venue, Preferred Colors &amp; Notes</label><textarea id="nt" rows="3" placeholder="Venue name, city, theme colors, favourite song or any special request…"></textarea></div>
-        </form>
-      </div>
-
-      <aside class="summary-box">
-        <div class="pill-tag" style="margin-bottom:10px">Order Summary</div>
-        <div id="sumLines"></div>
-        <div class="sum-total"><span>Estimated Total</span><b id="sumTotal">1,850 EGP</b></div>
-        <div class="deposit-note" id="sumDeposit">50% deposit to start: 925 EGP • Remaining 925 EGP after preview.</div>
-        <a class="btn btn-gold btn-lg btn-pill" id="send" style="width:100%" target="_blank" rel="noopener">Confirm via WhatsApp</a>
-        <div class="pay-badges"><span class="pay-badge">InstaPay</span><span class="pay-badge">Vodafone Cash</span><span class="pay-badge">Bank Transfer</span></div>
-      </aside>
+  <section class="section tight"><div class="container">
+    <div class="cta" style="text-align:center;border-radius:26px;padding:44px 24px">
+      <h2 class="h2">Ready to send your <em>invitation</em>?</h2>
+      <p class="lead" style="margin:12px auto 22px">Tell us your occasion, date and favourite design — we will personalise colors, music and every detail for you.</p>
+      <a id="ctaWa" class="btn btn-gold btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
   </div></section>
 </main>
@@ -361,50 +310,6 @@
     updateTry();
   });
   updateTry();
-
-  /* ===== 3. PACKAGES & ORDER CALCULATOR ===== */
-  $('pkgs').innerHTML = S.PACKAGES.map(p => `
-    <article class="card pkg${p.featured ? ' featured' : ''}">
-      ${p.featured ? '<div class="ribbon">Most Popular</div>' : ''}
-      <div class="pkg-top"><h3>${p.name}</h3><span class="ar">${p.ar}</span></div>
-      <div class="price">${fmt(p.price)} <small>EGP</small></div>
-      <div class="meta-row"><span class="meta-pill">⏱ ${p.delivery}</span><span class="meta-pill">${p.bestFor}</span></div>
-      <p class="muted" style="font-size:13px">${p.blurb}</p>
-      <ul>${p.items.map(i => `<li>${i}</li>`).join('')}</ul>
-      <a class="btn ${p.featured ? 'btn-gold' : 'btn-ghost'} btn-pill" href="#order-section" onclick="selectPkg('${p.id}')">Select ${p.name}</a>
-    </article>
-  `).join('');
-
-  $('pk').innerHTML = S.PACKAGES.map(p => `<option value="${p.id}"${p.featured ? ' selected' : ''}>${p.name} — ${fmt(p.price)} EGP</option>`).join('');
-  $('ds').innerHTML = `<option value="custom">Custom / Help me choose</option>` + S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
-  $('addonList').innerHTML = S.ADDONS.map(a => `
-    <label class="addon-opt">
-      <span class="addon-left"><input type="checkbox" value="${a.id}" data-price="${a.price}" data-label="${a.label}"><span>${a.label}</span></span>
-      <span class="addon-price">+ ${fmt(a.price)} EGP</span>
-    </label>
-  `).join('');
-
-  window.selectPkg = function (id) { $('pk').value = id; updateSummary(); };
-  function updateSummary() {
-    const pkg = S.PACKAGES.find(x => x.id === $('pk').value) || S.PACKAGES[1];
-    const checked = Array.from(document.querySelectorAll('#addonList input:checked')).map(el => ({ label: el.dataset.label, price: Number(el.dataset.price) }));
-    const total = pkg.price + checked.reduce((a, b) => a + b.price, 0);
-    const deposit = Math.round(total / 2);
-    $('sumLines').innerHTML = [
-      `<div class="sum-line"><span>${pkg.name} Package (${pkg.delivery})</span><strong>${fmt(pkg.price)} EGP</strong></div>`,
-      ...checked.map(c => `<div class="sum-line"><span>+ ${c.label}</span><strong>${fmt(c.price)} EGP</strong></div>`)
-    ].join('');
-    $('sumTotal').textContent = `${fmt(total)} EGP`;
-    $('sumDeposit').textContent = `50% deposit to start: ${fmt(deposit)} EGP • Remaining ${fmt(total - deposit)} EGP after preview.`;
-
-    const dVal = $('ds').value;
-    const designName = dVal === 'custom' ? 'Custom / Help me choose' : `#${dVal} (${S.SAMPLES.find(s => s.num === dVal).title})`;
-    const addonsText = checked.length ? `\nAdd-ons: ${checked.map(c => c.label).join(', ')}` : '';
-    const msg = `Hello MEEM! I'd like to order a digital invitation:\nName: ${$('n').value.trim() || '—'}\nOccasion: ${$('evType').value}\nPackage: ${pkg.name} (${fmt(pkg.price)} EGP)\nDesign: ${designName}\nLanguage: ${$('langPref').value}\nEvent Date: ${$('ev').value || 'To be confirmed'}${addonsText}\nEstimated Total: ${fmt(total)} EGP\nNotes: ${$('nt').value.trim() || '—'}`;
-    $('send').href = Shell.wa(msg);
-  }
-  ['n', 'evType', 'pk', 'ds', 'ev', 'langPref', 'nt'].forEach(id => $(id).addEventListener('input', updateSummary));
-  $('addonList').addEventListener('change', updateSummary);
-  updateSummary();
+  $('ctaWa').href = Shell.wa('Hello MEEM! I would like to order a digital invitation.');
 </script>
 </body></html>
