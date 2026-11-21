@@ -128,7 +128,7 @@
     .rad { display: flex; gap: 14px; justify-content: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
   </style>
 </head>
-<body data-music-mood="a_thousand_years">
+<body data-music-mood="esseily_mix">
   <div id="cover-overlay" role="dialog">
     <div class="cover-frame">
       <div class="cover-seal serif" data-monogram>A & F</div>
@@ -198,7 +198,7 @@
       if (cov.classList.contains('is-open')) return;
       try { WeddingSound.playDoorOpen(); } catch (_) {}
       try { WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth/2, (e && e.clientY) || window.innerHeight/2); } catch (_) {}
-      try { WeddingSound.startMusic('a_thousand_years'); } catch (_) {}
+      try { WeddingSound.startMusic('esseily_mix'); } catch (_) {}
       cov.classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     }

@@ -1011,8 +1011,13 @@
   // Real Egyptian & Wedding MP3 tracks (served locally from assets/audio/)
   const AUDIO_TRACKS = {
     om_kalthoum: '../assets/audio/om-kalthoum-alf-leila.mp3',
+    jassmi_zaffa: '../assets/audio/jassmi-zaffa.mp3',
+    jassmi_seta: '../assets/audio/jassmi-seta-el-sobah.mp3',
     farha_katb: '../assets/audio/farha-katb.mp3',
     katb_ketab: '../assets/audio/farha-katb.mp3',
+    esseily_einy: '../assets/audio/esseily-einy-shayfa.mp3',
+    tamer_helm: '../assets/audio/tamer-helm-seneen.mp3',
+    amr_nour: '../assets/audio/amr-diab-nour-el-ein.mp3',
     sammoo_besm_allah: '../assets/audio/egyptian-zaffa.mp3',
     egyptian_zaffa: '../assets/audio/egyptian-zaffa.mp3',
     oriental: '../assets/audio/dina-zaffa.mp3',
@@ -1020,17 +1025,39 @@
     a_thousand_years: '../assets/audio/a-thousand-years.mp3',
     classic: '../assets/audio/a-thousand-years.mp3',
     canon_in_d: '../assets/audio/a-thousand-years.mp3',
-    perfect: '../assets/audio/a-thousand-years.mp3',
+    perfect: '../assets/audio/tamer-helm-seneen.mp3',
     bridgerton: '../assets/audio/om-kalthoum-alf-leila.mp3',
-    romantic_piano: '../assets/audio/a-thousand-years.mp3',
-    sahel_sunset: '../assets/audio/farha-katb.mp3',
-    mediterranean: '../assets/audio/farha-katb.mp3',
+    romantic_piano: '../assets/audio/tamer-helm-seneen.mp3',
+    sahel_sunset: '../assets/audio/amr-diab-nour-el-ein.mp3',
+    mediterranean: '../assets/audio/amr-diab-nour-el-ein.mp3',
     liquid_chromium: '../assets/audio/om-kalthoum-alf-leila.mp3',
     celestial: '../assets/audio/a-thousand-years.mp3'
   };
 
+  // Curated Egyptian Wedding Song Mixes (auto-play seamlessly from song to song)
+  const AUDIO_MIXES = {
+    egyptian_mix: [
+      '../assets/audio/om-kalthoum-alf-leila.mp3',
+      '../assets/audio/jassmi-zaffa.mp3',
+      '../assets/audio/farha-katb.mp3',
+      '../assets/audio/egyptian-zaffa.mp3',
+      '../assets/audio/tamer-helm-seneen.mp3',
+      '../assets/audio/amr-diab-nour-el-ein.mp3'
+    ],
+    esseily_mix: [
+      '../assets/audio/farha-katb.mp3',
+      '../assets/audio/esseily-einy-shayfa.mp3'
+    ],
+    jassmi_mix: [
+      '../assets/audio/jassmi-zaffa.mp3',
+      '../assets/audio/jassmi-seta-el-sobah.mp3'
+    ]
+  };
+
   let bgAudioEl = null;
   let fadeTimer = null;
+  let activeMixList = null;
+  let activeMixIdx = 0;
 
   function startSynthFallback(moodKey) {
     const ctx = ensureAudio();
@@ -1048,22 +1075,35 @@
 
   function startMusic(mood) {
     if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
-    const chosenMood = customSong && (AUDIO_TRACKS[customSong] || MOODS[customSong])
+    const chosenMood = customSong && (AUDIO_MIXES[customSong] || AUDIO_TRACKS[customSong] || MOODS[customSong])
       ? customSong
-      : (mood || currentMood || 'egyptian_zaffa');
+      : (mood || currentMood || 'egyptian_mix');
     currentMood = chosenMood;
     if (musicPlaying) return;
 
-    const trackSrc = AUDIO_TRACKS[currentMood] || AUDIO_TRACKS.egyptian_zaffa;
+    activeMixList = AUDIO_MIXES[currentMood] || null;
+    activeMixIdx = 0;
+    const trackSrc = activeMixList ? activeMixList[0] : (AUDIO_TRACKS[currentMood] || AUDIO_TRACKS.om_kalthoum);
     musicPlaying = true;
     updateMusicFab();
 
     try {
       if (!bgAudioEl) {
         bgAudioEl = new Audio();
-        bgAudioEl.loop = true;
         bgAudioEl.preload = 'auto';
+        bgAudioEl.addEventListener('ended', () => {
+          if (!musicPlaying) return;
+          if (activeMixList && activeMixList.length > 1) {
+            activeMixIdx = (activeMixIdx + 1) % activeMixList.length;
+            bgAudioEl.src = activeMixList[activeMixIdx];
+            bgAudioEl.play().catch(() => {});
+          } else {
+            bgAudioEl.currentTime = 0;
+            bgAudioEl.play().catch(() => {});
+          }
+        });
       }
+      bgAudioEl.loop = !(activeMixList && activeMixList.length > 1);
       if (!bgAudioEl.src || !bgAudioEl.src.endsWith(trackSrc.replace(/^\.\.\//, ''))) {
         bgAudioEl.src = trackSrc;
       }
@@ -1080,7 +1120,6 @@
             if (v >= 0.68) clearInterval(fadeTimer);
           }, 90);
         }).catch(() => {
-          // Fallback to synth if browser blocked or file unavailable
           if (musicPlaying) startSynthFallback(currentMood);
         });
       }

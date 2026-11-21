@@ -20,16 +20,19 @@
   --maxw: 1200px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; color-scheme: light; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; color-scheme: light; overflow-x: clip; max-width: 100%; }
 body {
   background: radial-gradient(ellipse at 50% 0%, #FFFFFF 0%, #FAF7F2 50%, #EFE8DC 100%);
   color: var(--text);
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.65;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
+  max-width: 100%;
 }
+main, section, .topbar, .site-footer { max-width: 100%; overflow-x: clip; }
+.grid > *, .gallery-grid > *, .card, .field, .field input, .field select { min-width: 0; max-width: 100%; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
