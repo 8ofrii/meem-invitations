@@ -1104,18 +1104,26 @@
     else startMusic(mood || currentMood);
   }
 
-  const ICON_MUSIC_PLAYING = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`;
-  const ICON_MUSIC_PAUSED = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+  const ICON_MUSIC_PLAYING = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+  const ICON_MUSIC_PAUSED = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
 
   function updateMusicFab() {
     const fab = document.getElementById('wi-music-fab');
-    if (!fab) return;
-    fab.classList.toggle('is-playing', musicPlaying);
-    fab.setAttribute('aria-pressed', musicPlaying ? 'true' : 'false');
-    fab.title = musicPlaying
-      ? (document.documentElement.dir === 'rtl' ? 'إيقاف الموسيقى مؤقتاً' : 'Pause Music')
-      : (document.documentElement.dir === 'rtl' ? 'تشغيل الموسيقى' : 'Play Music');
-    fab.innerHTML = musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED;
+    const isRTL = document.documentElement.dir === 'rtl';
+    if (fab) {
+      fab.classList.toggle('is-playing', musicPlaying);
+      fab.setAttribute('aria-pressed', musicPlaying ? 'true' : 'false');
+      const lbl = musicPlaying
+        ? (isRTL ? 'إيقاف الصوت' : 'Mute')
+        : (isRTL ? 'تشغيل الصوت' : 'Sound');
+      fab.title = lbl;
+      fab.innerHTML = (musicPlaying ? ICON_MUSIC_PLAYING : ICON_MUSIC_PAUSED) + `<span>${lbl}</span>`;
+    }
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'meem_music_state', playing: musicPlaying }, '*');
+      }
+    } catch (_) {}
   }
 
   window.WeddingSound = {
@@ -2099,7 +2107,48 @@
       document.body.appendChild(back);
     }
 
-    // Cards only concept — ambient background music FAB disabled per user preference
+    // Floating Music Mute / Unmute button (shown on all musical invitations, hidden on silent cards)
+    if (customSong !== 'silent' && customSong !== 'none' && customSong !== 'mute') {
+      const fab = document.createElement('button');
+      fab.id = 'wi-music-fab';
+      fab.type = 'button';
+      fab.setAttribute('aria-label', isRTL ? 'تشغيل أو إيقاف الموسيقى' : 'Toggle Music');
+      fab.setAttribute('aria-pressed', musicPlaying ? 'true' : 'false');
+      Object.assign(fab.style, {
+        position: 'fixed',
+        bottom: '16px',
+        right: '16px',
+        zIndex: '9998',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '7px',
+        padding: '9px 14px',
+        borderRadius: '999px',
+        background: 'rgba(13, 59, 46, 0.90)',
+        color: '#F4E5C2',
+        border: '1px solid rgba(197, 160, 89, 0.65)',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.28)',
+        backdropFilter: 'blur(10px)',
+        cursor: 'pointer',
+        fontSize: '12px',
+        fontWeight: '600',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+        transition: 'transform 0.2s ease, opacity 0.2s ease'
+      });
+      fab.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMusic();
+      });
+      document.body.appendChild(fab);
+      updateMusicFab();
+    }
+
+    // Allow parent page (Try It Live / Preview Modal) to mute or toggle music cleanly
+    window.addEventListener('message', (ev) => {
+      if (!ev || !ev.data) return;
+      if (ev.data.type === 'meem_music_stop') stopMusic();
+      else if (ev.data.type === 'meem_music_toggle') toggleMusic();
+    });
   }
 
   function initScrollReveal() {

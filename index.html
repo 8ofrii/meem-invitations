@@ -499,6 +499,13 @@
       </div>
 
       <div class="phone-wrap">
+        <div style="display:flex;align-items:center;justify-content:space-between;width:min(380px,100%);margin-bottom:10px;padding:0 4px;">
+          <span style="font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;">Live Phone Preview</span>
+          <button type="button" id="tryMuteBtn" class="btn btn-ghost" style="padding:7px 14px;font-size:12px;border-radius:999px;gap:6px;display:inline-flex;align-items:center;" aria-pressed="false">
+            <svg id="tryMuteIcon" class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            <span id="tryMuteLabel">Turn off music</span>
+          </button>
+        </div>
         <div class="phone-frame">
           <iframe id="frame" title="Live preview"></iframe>
         </div>
@@ -668,6 +675,30 @@
       try {
         $('frame').contentWindow.postMessage({ type: 'meem_photo', dataUrl: customPhotoData }, '*');
       } catch (_) {}
+    }
+  });
+  let tryMusicPlaying = false;
+  function syncTryMuteBtn(isPlaying) {
+    tryMusicPlaying = !!isPlaying;
+    const btn = $('tryMuteBtn'), lbl = $('tryMuteLabel'), ic = $('tryMuteIcon');
+    if (!btn || !lbl || !ic) return;
+    btn.setAttribute('aria-pressed', tryMusicPlaying ? 'true' : 'false');
+    lbl.textContent = tryMusicPlaying ? 'Turn off music' : 'Turn on music';
+    ic.innerHTML = tryMusicPlaying
+      ? '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>'
+      : '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+  }
+  syncTryMuteBtn(false);
+  $('tryMuteBtn').addEventListener('click', () => {
+    try {
+      if ($('frame') && $('frame').contentWindow) {
+        $('frame').contentWindow.postMessage({ type: tryMusicPlaying ? 'meem_music_stop' : 'meem_music_toggle' }, '*');
+      }
+    } catch (_) {}
+  });
+  window.addEventListener('message', (ev) => {
+    if (ev && ev.data && ev.data.type === 'meem_music_state') {
+      syncTryMuteBtn(ev.data.playing);
     }
   });
   $('d').addEventListener('change', updateTry);
