@@ -108,10 +108,10 @@
 
     const modal = document.createElement('div');
     modal.id = 'preview-modal';
-    modal.innerHTML = `<div class="modal-layout"><div class="phone-frame"><div class="phone-notch"></div><iframe id="previewFrame" title="Live preview"></iframe></div>
+    modal.innerHTML = `<div class="modal-layout"><div class="phone-frame"><iframe id="previewFrame" title="Live preview"></iframe></div>
       <div class="modal-side"><button type="button" class="close-modal" id="closeModalBtn">✕ Close</button>
       <h3 id="modalTitle" class="serif gold" style="font-size:30px;line-height:1.15"></h3><p id="modalDesc" class="muted" style="font-size:13px"></p>
-      <div class="tip">🔊 Tap the cover inside the phone to hear the sounds and music.</div>
+      <div class="tip">✨ Tap the cover inside the phone to experience the interactive motion.</div>
       <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
       <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a></div></div>`;
     document.body.appendChild(modal);

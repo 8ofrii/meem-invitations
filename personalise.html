@@ -28,7 +28,7 @@
     width: 0 !important;
     height: 0 !important;
   }
-  .phone-frame .phone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 112px; height: 24px; border-radius: 999px; background: #0D0D11; z-index: 5; }
+  .phone-frame .phone-notch { display: none !important; }
   .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
   .quick button { font: 600 11px inherit; font-family: inherit; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
   .quick button:hover { border-color: var(--gold); color: var(--gold); }
@@ -91,7 +91,6 @@
 
     <div class="phone-wrap">
       <div class="phone-frame">
-        <div class="phone-notch"></div>
         <iframe id="frame" title="Live preview"></iframe>
       </div>
     </div>
