@@ -1008,33 +1008,94 @@
   MOODS.celestial = MOODS.bridgerton;
   MOODS.mediterranean = MOODS.perfect;
 
-  function startMusic(mood) {
-    if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
+  // Real Egyptian & Wedding MP3 tracks (served locally from assets/audio/)
+  const AUDIO_TRACKS = {
+    om_kalthoum: '../assets/audio/om-kalthoum-alf-leila.mp3',
+    farha_katb: '../assets/audio/farha-katb.mp3',
+    katb_ketab: '../assets/audio/farha-katb.mp3',
+    sammoo_besm_allah: '../assets/audio/egyptian-zaffa.mp3',
+    egyptian_zaffa: '../assets/audio/egyptian-zaffa.mp3',
+    oriental: '../assets/audio/dina-zaffa.mp3',
+    dina_zaffa: '../assets/audio/dina-zaffa.mp3',
+    a_thousand_years: '../assets/audio/a-thousand-years.mp3',
+    classic: '../assets/audio/a-thousand-years.mp3',
+    canon_in_d: '../assets/audio/a-thousand-years.mp3',
+    perfect: '../assets/audio/a-thousand-years.mp3',
+    bridgerton: '../assets/audio/om-kalthoum-alf-leila.mp3',
+    romantic_piano: '../assets/audio/a-thousand-years.mp3',
+    sahel_sunset: '../assets/audio/farha-katb.mp3',
+    mediterranean: '../assets/audio/farha-katb.mp3',
+    liquid_chromium: '../assets/audio/om-kalthoum-alf-leila.mp3',
+    celestial: '../assets/audio/a-thousand-years.mp3'
+  };
+
+  let bgAudioEl = null;
+  let fadeTimer = null;
+
+  function startSynthFallback(moodKey) {
     const ctx = ensureAudio();
     if (!ctx) return;
-
-    const chosenMood = customSong && MOODS[customSong] ? customSong : (mood || currentMood);
-    if (chosenMood && MOODS[chosenMood]) currentMood = chosenMood;
-    if (musicPlaying) return;
-
-    const cfg = MOODS[currentMood] || MOODS.canon_in_d;
-    musicPlaying = true;
+    const cfg = MOODS[moodKey] || MOODS.egyptian_zaffa;
     const tick = () => {
       if (!musicPlaying || !audioCtx) return;
       const now = audioCtx.currentTime;
-      if (typeof cfg.render === 'function') {
-        cfg.render(stepIdx, now);
-      }
+      if (typeof cfg.render === 'function') cfg.render(stepIdx, now);
       stepIdx++;
     };
     tick();
     musicTimer = setInterval(tick, cfg.tempo);
+  }
+
+  function startMusic(mood) {
+    if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
+    const chosenMood = customSong && (AUDIO_TRACKS[customSong] || MOODS[customSong])
+      ? customSong
+      : (mood || currentMood || 'egyptian_zaffa');
+    currentMood = chosenMood;
+    if (musicPlaying) return;
+
+    const trackSrc = AUDIO_TRACKS[currentMood] || AUDIO_TRACKS.egyptian_zaffa;
+    musicPlaying = true;
     updateMusicFab();
+
+    try {
+      if (!bgAudioEl) {
+        bgAudioEl = new Audio();
+        bgAudioEl.loop = true;
+        bgAudioEl.preload = 'auto';
+      }
+      if (!bgAudioEl.src || !bgAudioEl.src.endsWith(trackSrc.replace(/^\.\.\//, ''))) {
+        bgAudioEl.src = trackSrc;
+      }
+      bgAudioEl.volume = 0.05;
+      const p = bgAudioEl.play();
+      if (p && typeof p.then === 'function') {
+        p.then(() => {
+          clearInterval(fadeTimer);
+          let v = 0.08;
+          fadeTimer = setInterval(() => {
+            if (!musicPlaying || !bgAudioEl) { clearInterval(fadeTimer); return; }
+            v = Math.min(0.68, v + 0.06);
+            bgAudioEl.volume = v;
+            if (v >= 0.68) clearInterval(fadeTimer);
+          }, 90);
+        }).catch(() => {
+          // Fallback to synth if browser blocked or file unavailable
+          if (musicPlaying) startSynthFallback(currentMood);
+        });
+      }
+    } catch (_) {
+      startSynthFallback(currentMood);
+    }
   }
 
   function stopMusic() {
     clearInterval(musicTimer);
+    clearInterval(fadeTimer);
     musicPlaying = false;
+    if (bgAudioEl) {
+      try { bgAudioEl.pause(); } catch (_) {}
+    }
     updateMusicFab();
   }
 
