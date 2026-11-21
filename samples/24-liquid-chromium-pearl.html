@@ -430,6 +430,50 @@
       gap: 6px;
       cursor: pointer;
     }
+  /* MEEM-BG-START */
+    body {
+      background-image: linear-gradient(rgba(244, 247, 251, 0.78), rgba(244, 247, 251, 0.78)), url('../assets/images/liquid-chromium-pearl.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+    .meem-venue-hero {
+      position: relative;
+      width: 100%;
+      height: 175px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    }
+    .meem-venue-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .meem-venue-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.58) 100%);
+      pointer-events: none;
+    }
+    .meem-venue-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      z-index: 2;
+      color: #FFFDF8;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.65);
+    }
+    /* MEEM-BG-END */
   </style>
 </head>
 <body>
@@ -453,6 +497,9 @@
 
   <!-- Main Card -->
   <main class="invite-shell">
+    <!-- MEEM-HERO-START -->
+    <div class="meem-venue-hero"><img src="../assets/images/liquid-chromium-pearl.jpg" alt="Four Seasons Nile Plaza • Cairo" loading="eager"><div class="meem-venue-cap">Four Seasons Nile Plaza • Cairo</div></div>
+    <!-- MEEM-HERO-END -->
     <div class="mono-badge" data-monogram>O&amp;S</div>
     <div class="eyebrow">Together With Their Families</div>
 
@@ -557,7 +604,7 @@
             seal.style.transform = 'scale(1.25)';
             gates.classList.add('is-open');
             if (window.WeddingSound) {
-              WeddingSound.startMusic('liquid_chromium');
+              WeddingSound.startMusic('bridgerton');
             }
           }, 180);
         });

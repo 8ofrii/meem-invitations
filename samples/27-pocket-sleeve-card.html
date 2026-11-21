@@ -330,6 +330,50 @@
       gap: 6px;
       cursor: pointer;
     }
+  /* MEEM-BG-START */
+    body {
+      background-image: linear-gradient(rgba(248, 243, 234, 0.76), rgba(248, 243, 234, 0.76)), url('../assets/images/pocket-sleeve-stationery.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+    .meem-venue-hero {
+      position: relative;
+      width: 100%;
+      height: 175px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid rgba(197, 160, 89, 0.40);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    }
+    .meem-venue-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .meem-venue-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.58) 100%);
+      pointer-events: none;
+    }
+    .meem-venue-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      z-index: 2;
+      color: #FFFDF8;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.65);
+    }
+    /* MEEM-BG-END */
   </style>
 </head>
 <body data-no-floating-bar>
@@ -343,6 +387,9 @@
 
       <!-- Main Slide-Out Card -->
       <main class="inner-card">
+    <!-- MEEM-HERO-START -->
+    <div class="meem-venue-hero"><img src="../assets/images/pocket-sleeve-stationery.jpg" alt="Marriott Mena House • Giza" loading="eager"><div class="meem-venue-cap">Marriott Mena House • Giza</div></div>
+    <!-- MEEM-HERO-END -->
         <div class="card-monogram" data-monogram>M &amp; N</div>
         <div class="eyebrow">Wedding Invitation</div>
 

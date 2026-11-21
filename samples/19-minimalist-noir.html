@@ -126,11 +126,58 @@
     .field input { width: 100%; padding: 10px 12px; border: 1px solid #D5D3CE; border-radius: 4px; font-family: inherit; font-size: 13px; background: #fff; }
     .att-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
     .att-opt { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px; border: 1px solid #D5D3CE; font-size: 11px; cursor: pointer; border-radius: 4px; }
+  /* MEEM-BG-START */
+    body {
+      background-image: linear-gradient(rgba(20, 20, 20, 0.80), rgba(20, 20, 20, 0.80)), url('../assets/images/minimalist-noir-stationery.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+    .meem-venue-hero {
+      position: relative;
+      width: 100%;
+      height: 175px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    }
+    .meem-venue-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .meem-venue-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.58) 100%);
+      pointer-events: none;
+    }
+    .meem-venue-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      z-index: 2;
+      color: #FFFDF8;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.65);
+    }
+    /* MEEM-BG-END */
   </style>
 </head>
 <body>
   <main class="card-shell">
     <div class="card-border"></div>
+    <!-- MEEM-HERO-START -->
+    <div class="meem-venue-hero"><img src="../assets/images/minimalist-noir-stationery.jpg" alt="The St. Regis Cairo • Grand Ballroom" loading="eager"><div class="meem-venue-cap">The St. Regis Cairo • Grand Ballroom</div></div>
+    <!-- MEEM-HERO-END -->
 
     <div class="monogram-badge serif" data-monogram>M · M</div>
     <div class="eyebrow">Wedding Invitation</div>

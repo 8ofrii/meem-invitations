@@ -358,7 +358,7 @@
     }
   </style>
 </head>
-<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="classic">
+<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="perfect">
 
   <!-- Interactive Magazine Cover -->
   <div id="mag-cover" role="dialog" aria-label="Open The Wedding Issue Magazine">
@@ -556,7 +556,7 @@
     document.getElementById('openIssueBtn').addEventListener('click', (e) => {
       WeddingSound.playPageTurn();
       WeddingMotion.spawnRipple(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
-      WeddingSound.startMusic('sahel_sunset');
+      WeddingSound.startMusic('perfect');
       document.getElementById('mag-cover').classList.add('is-flipped');
       document.body.classList.remove('wi-scroll-locked');
     });

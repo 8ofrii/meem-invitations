@@ -190,14 +190,15 @@
   function countFor(catId) {
     return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
   }
+  const ALL_ICON = '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>';
   document.getElementById('tabs').innerHTML =
     `<button class="tab" data-c="all">
-      <span class="tab-ic">✨</span>
+      <span class="tab-ic">${ALL_ICON}</span>
       <span class="tab-txt"><span class="tab-name">All Designs</span><span class="tab-count">${countFor('all')}</span></span>
     </button>` +
     S.CATEGORIES.map(c => `
       <button class="tab" data-c="${c.id}">
-        <span class="tab-ic">${c.icon || '✦'}</span>
+        <span class="tab-ic">${c.icon || ALL_ICON}</span>
         <span class="tab-txt"><span class="tab-name">${c.short || c.title.split(' & ')[0]}</span><span class="tab-count">${countFor(c.id)}</span></span>
       </button>`).join('');
 

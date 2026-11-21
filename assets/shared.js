@@ -350,6 +350,29 @@
     return buf;
   }
 
+  function playPluck(freq, startTime, duration = 1.6, volume = 0.055) {
+    if (!audioCtx) return;
+    try {
+      const osc = audioCtx.createOscillator();
+      const over = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      over.type = 'sine';
+      osc.frequency.setValueAtTime(freq, startTime);
+      over.frequency.setValueAtTime(freq * 2, startTime);
+      gain.gain.setValueAtTime(0.0001, startTime);
+      gain.gain.linearRampToValueAtTime(volume, startTime + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      osc.connect(gain);
+      over.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(startTime);
+      over.start(startTime);
+      osc.stop(startTime + duration + 0.05);
+      over.stop(startTime + duration + 0.05);
+    } catch (_) {}
+  }
+
   function playKnock() {
     const ctx = ensureAudio();
     if (!ctx) return;
@@ -845,14 +868,145 @@
           playChromeBell(bar.mel, now + 0.1, 1.6, 0.04);
         }
       }
+    },
+
+    // 7. Katb Ketab — موسيقى أغنية فرحة (Farha Katb Ketab Melody)
+    farha_katb: {
+      tempo: 520,
+      render: (step, now) => {
+        // Warm joyful Hijaz/Rast celebratory Katb Ketab progression
+        const mel = [
+          293.66, 329.63, 369.99, 392.00, 440.00, 392.00, 369.99, 329.63,
+          392.00, 440.00, 493.88, 587.33, 493.88, 440.00, 392.00, 369.99
+        ];
+        const note = mel[step % mel.length];
+        playNay(note, now, 1.5, 0.045);
+        if (step % 2 === 0) {
+          const oudNotes = [146.83, 196.00, 220.00, 146.83];
+          playOud(oudNotes[(step / 2) % oudNotes.length], now + 0.04, 1.8, 0.05);
+        }
+        if (step % 4 === 0) {
+          playStrings(note / 2, now, 2.6, 0.03);
+        }
+      }
+    },
+
+    // 8. Wedding — A Thousand Years (Christina Perri, 6/8 Bb Major)
+    a_thousand_years: {
+      tempo: 460,
+      render: (step, now) => {
+        // Iconic Bb - F - Gm - Eb romantic 6/8 piano & cello ballad
+        const bars = [
+          { bass: 116.54, arp: [233.08, 293.66, 349.23], mel: 466.16 }, // Bb
+          { bass: 87.31,  arp: [220.00, 261.63, 349.23], mel: 440.00 }, // F
+          { bass: 98.00,  arp: [196.00, 233.08, 293.66], mel: 392.00 }, // Gm
+          { bass: 77.78,  arp: [155.56, 233.08, 311.13], mel: 349.23 }  // Eb
+        ];
+        const bar = bars[Math.floor(step / 3) % bars.length];
+        const sub = step % 3;
+        if (sub === 0) {
+          playPiano(bar.bass, now, 2.4, 0.058);
+          playStrings(bar.mel, now + 0.08, 2.3, 0.042);
+        }
+        playPiano(bar.arp[sub], now + 0.03, 1.5, 0.042);
+      }
+    },
+
+    // 9. Wedding — Perfect (Ed Sheeran, 12/8 Ab Major)
+    perfect: {
+      tempo: 430,
+      render: (step, now) => {
+        // Ab - Fm - Db - Eb tender romantic sway
+        const bars = [
+          { bass: 103.83, arp: [207.65, 261.63, 311.13], mel: 415.30 }, // Ab
+          { bass: 87.31,  arp: [174.61, 207.65, 261.63], mel: 349.23 }, // Fm
+          { bass: 69.30,  arp: [138.59, 174.61, 207.65], mel: 277.18 }, // Db
+          { bass: 77.78,  arp: [155.56, 196.00, 233.08], mel: 311.13 }  // Eb
+        ];
+        const bar = bars[Math.floor(step / 3) % bars.length];
+        const sub = step % 3;
+        if (sub === 0) {
+          playPiano(bar.bass, now, 2.2, 0.056);
+          playStrings(bar.mel, now + 0.06, 2.1, 0.04);
+        }
+        playPluck(bar.arp[sub], now + 0.02, 1.3, 0.045);
+      }
+    },
+
+    // 10. Wedding — Bridgerton Strings (Regency Chamber Quartet Waltz)
+    bridgerton: {
+      tempo: 420,
+      render: (step, now) => {
+        // G - D - Em - C elegant classical string quartet waltz
+        const bars = [
+          { cello: 98.00,  pizz: [196.00, 246.94, 293.66], violin: [587.33, 659.25, 587.33] },
+          { cello: 73.42,  pizz: [146.83, 185.00, 220.00], violin: [554.37, 587.33, 440.00] },
+          { cello: 82.41,  pizz: [164.81, 196.00, 246.94], violin: [493.88, 587.33, 493.88] },
+          { cello: 65.41,  pizz: [130.81, 164.81, 196.00], violin: [523.25, 493.88, 392.00] }
+        ];
+        const bar = bars[Math.floor(step / 3) % bars.length];
+        const sub = step % 3;
+        if (sub === 0) {
+          playStrings(bar.cello, now, 2.0, 0.048);
+        } else {
+          playPluck(bar.pizz[sub], now, 0.9, 0.042);
+        }
+        playStrings(bar.violin[sub], now + 0.04, 1.4, 0.038);
+      }
+    },
+
+    // 11. Wedding — أم كلثوم: الليل وسماه (ألف ليلة وليلة)
+    om_kalthoum: {
+      tempo: 540,
+      render: (step, now) => {
+        // Classic Nahawand/Farahfaza orchestral Egyptian strings + Oud
+        const phrases = [
+          261.63, 293.66, 311.13, 349.23, 392.00, 415.30, 392.00, 349.23,
+          311.13, 349.23, 392.00, 493.88, 523.25, 493.88, 392.00, 311.13
+        ];
+        const note = phrases[step % phrases.length];
+        playStrings(note, now, 1.9, 0.046);
+        if (step % 2 === 0) {
+          playOud(note / 2, now + 0.05, 1.8, 0.052);
+        }
+        if (step % 4 === 0) {
+          playNay(note * 1.0, now + 0.14, 1.5, 0.028);
+        }
+      }
+    },
+
+    // 12. Wedding — سموا باسم الله عليها (Sammoo Besm Allah Aleiha)
+    sammoo_besm_allah: {
+      tempo: 420,
+      render: (step, now) => {
+        const drumPattern = [
+          { dum: true }, { rest: true }, { tak: true }, { rest: true },
+          { dum: true }, { tak: true }, { dum: true }, { tak: true }
+        ];
+        const beat = drumPattern[step % drumPattern.length];
+        if (beat.dum) playZaffaDrum(true, now, 0.34);
+        if (beat.tak) playZaffaDrum(false, now, 0.22);
+
+        // Joyful Egyptian Bayati bridal motif
+        const mel = [
+          293.66, 329.63, 349.23, 392.00, 349.23, 329.63, 293.66, 261.63,
+          293.66, 349.23, 392.00, 440.00, 392.00, 349.23, 329.63, 293.66
+        ];
+        const note = mel[step % mel.length];
+        playOud(note, now, 1.3, 0.054);
+        if (step % 2 === 0) {
+          playStrings(note, now + 0.03, 1.5, 0.042);
+        }
+      }
     }
   };
 
   // Backward compatibility aliases
-  MOODS.classic = MOODS.canon_in_d;
-  MOODS.oriental = MOODS.egyptian_zaffa;
-  MOODS.celestial = MOODS.liquid_chromium;
-  MOODS.mediterranean = MOODS.sahel_sunset;
+  MOODS.classic = MOODS.a_thousand_years;
+  MOODS.oriental = MOODS.sammoo_besm_allah;
+  MOODS.katb_ketab = MOODS.farha_katb;
+  MOODS.celestial = MOODS.bridgerton;
+  MOODS.mediterranean = MOODS.perfect;
 
   function startMusic(mood) {
     if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
@@ -1039,8 +1193,8 @@
       const rect = trigger.getBoundingClientRect();
       const x = e.clientX || rect.left + rect.width / 2;
       const y = e.clientY || rect.top + rect.height / 2;
-      spawnRipple(x, y);
-      playKnock();
+      try { spawnRipple(x, y); } catch (_) {}
+      try { playKnock(); } catch (_) {}
 
       // Subtle door shake feedback
       if (opts.shakeTargetId) {
@@ -1062,11 +1216,16 @@
 
       if (knocks === 3) {
         setTimeout(() => {
-          playDoorOpen();
-          burstGoldenLight(x, y);
+          try { playDoorOpen(); } catch (_) {}
+          try { burstGoldenLight(x, y); } catch (_) {}
           overlay.classList.add('is-open');
           document.body.classList.remove('wi-scroll-locked');
-          if (typeof opts.onOpen === 'function') opts.onOpen();
+          if (opts.musicMood) {
+            try { startMusic(opts.musicMood); } catch (_) {}
+          }
+          if (typeof opts.onOpen === 'function') {
+            try { opts.onOpen(); } catch (_) {}
+          }
         }, 220);
       }
     }

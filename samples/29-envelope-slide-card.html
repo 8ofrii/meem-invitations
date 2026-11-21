@@ -377,6 +377,50 @@
       .card-sheet { padding: 26px 14px 22px; }
       .couple-title { font-size: 30px; }
     }
+  /* MEEM-BG-START */
+    body {
+      background-image: linear-gradient(rgba(250, 246, 240, 0.78), rgba(250, 246, 240, 0.78)), url('../assets/images/translucent-vellum-envelope.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+    .meem-venue-hero {
+      position: relative;
+      width: 100%;
+      height: 175px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid rgba(197, 160, 89, 0.40);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    }
+    .meem-venue-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .meem-venue-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.58) 100%);
+      pointer-events: none;
+    }
+    .meem-venue-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      z-index: 2;
+      color: #FFFDF8;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.65);
+    }
+    /* MEEM-BG-END */
   </style>
 </head>
 <body data-no-floating-bar>
@@ -387,11 +431,14 @@
         <div class="seal-circle" data-monogram>A&amp;K</div>
         <div class="env-tag">Wedding Invitation</div>
         <div class="env-title" data-couple-title>Adam &amp; Kenzy</div>
-        <div class="env-hint" id="envHint">✨ Tap Wax Seal to Open Card</div>
+        <div class="env-hint" id="envHint">✦ Tap Wax Seal to Open Card</div>
       </div>
 
       <!-- Inner Revealed Card Sheet -->
       <div class="card-sheet" id="cardSheet">
+    <!-- MEEM-HERO-START -->
+    <div class="meem-venue-hero"><img src="../assets/images/translucent-vellum-envelope.jpg" alt="Kempinski Nile Hotel • Garden City" loading="eager"><div class="meem-venue-cap">Kempinski Nile Hotel • Garden City</div></div>
+    <!-- MEEM-HERO-END -->
         <button type="button" class="retract-btn" id="retractBtn">✕ Close Card</button>
 
         <div class="monogram" data-monogram>A &amp; K</div>
@@ -481,10 +528,10 @@
         const isClosed = box.classList.contains('is-closed');
         if (isClosed) {
           box.classList.remove('is-closed');
-          hint.textContent = '✨ Card Revealed Below';
+          hint.textContent = '✦ Card Revealed Below';
         } else {
           box.classList.add('is-closed');
-          hint.textContent = '✨ Tap Wax Seal to Open Card';
+          hint.textContent = '✦ Tap Wax Seal to Open Card';
         }
       }
 
@@ -493,7 +540,7 @@
       retractBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         box.classList.add('is-closed');
-        hint.textContent = '✨ Tap Wax Seal to Open Card';
+        hint.textContent = '✦ Tap Wax Seal to Open Card';
       });
     });
   </script>

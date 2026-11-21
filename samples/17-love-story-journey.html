@@ -256,7 +256,7 @@
     }
   </style>
 </head>
-<body class="wi-scroll-locked" data-particles="petals-rose" data-music-mood="classic">
+<body class="wi-scroll-locked" data-particles="petals-rose" data-music-mood="a_thousand_years">
 
   <!-- Keepsake Book Cover -->
   <div id="story-cover" role="dialog" aria-label="Open Love Story Wedding Invitation">
@@ -428,7 +428,7 @@
     document.getElementById('openStoryBtn').addEventListener('click', (e) => {
       WeddingSound.playWaxBreak();
       WeddingMotion.burstGoldenLight(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
-      WeddingSound.startMusic('classic');
+      WeddingSound.startMusic('a_thousand_years');
       document.getElementById('story-cover').classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     });

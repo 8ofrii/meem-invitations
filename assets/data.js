@@ -14,11 +14,11 @@ window.SITE = {
   },
 
   CATEGORIES: [
-    { id: 'cards', title: 'Tactile Opening & Silent Cards', short: 'Silent Cards', ar: 'كروت هادئة (بدون صوت)', icon: '✉️', blurb: 'Tactile opening cards and silent luxury stationery with zero sound or voice.' },
-    { id: 'weddings', title: 'Luxury Weddings & Palaces', short: 'Weddings', ar: 'الأفراح والقصور', icon: '👑', blurb: 'Grand ballrooms, palaces and 5-star Nile venues.' },
-    { id: 'katb', title: 'Katb Ketab & Islamic Elegance', short: 'Katb Ketab', ar: 'عقد القران', icon: '🕌', blurb: 'Calm, respectful designs for mosque ceremonies.' },
-    { id: 'engagement', title: 'Engagement & Henna Nights', short: 'Engagement', ar: 'الخطوبة وليلة الحنة', icon: '💍', blurb: 'Ring boxes, lanterns and ladies-only celebrations.' },
-    { id: 'editorial', title: 'Coastal, Destination & Modern', short: 'Coastal & Modern', ar: 'الساحل والتصاميم العصرية', icon: '🌊', blurb: 'Sahel, El Gouna and magazine-style concepts.' }
+    { id: 'cards', title: 'Tactile Opening & Silent Cards', short: 'Silent Cards', ar: 'كروت هادئة (بدون صوت)', icon: '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>', blurb: 'Tactile opening cards and silent luxury stationery with zero sound or voice.' },
+    { id: 'weddings', title: 'Luxury Weddings & Palaces', short: 'Weddings', ar: 'الأفراح والقصور', icon: '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l2-9 4.5 4L12 5l2.5 7L19 8l2 9H3z"/><path d="M4 20h16"/></svg>', blurb: 'Grand ballrooms, palaces and 5-star Nile venues.' },
+    { id: 'katb', title: 'Katb Ketab & Islamic Elegance', short: 'Katb Ketab', ar: 'عقد القران', icon: '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-2.5 2.5-6 4.5-6 9v8h12v-8c0-4.5-3.5-6.5-6-9z"/><path d="M9 20v-5a3 3 0 0 1 6 0v5"/><path d="M4 20h16"/></svg>', blurb: 'Calm, respectful designs for mosque ceremonies.' },
+    { id: 'engagement', title: 'Engagement & Henna Nights', short: 'Engagement', ar: 'الخطوبة وليلة الحنة', icon: '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M9 6l3-3 3 3-3 2-3-2z"/></svg>', blurb: 'Ring boxes, lanterns and ladies-only celebrations.' },
+    { id: 'editorial', title: 'Coastal, Destination & Modern', short: 'Coastal & Modern', ar: 'الساحل والتصاميم العصرية', icon: '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="M5.6 5.6l2.1 2.1"/><path d="M18.4 5.6l-2.1 2.1"/><path d="M7 14a5 5 0 0 1 10 0"/><path d="M3 17c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M3 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg>', blurb: 'Sahel, El Gouna and magazine-style concepts.' }
   ],
 
   SAMPLES: [
@@ -181,17 +181,17 @@ window.SITE = {
       num: '20', cat: 'cards', file: 'samples/20-sage-olive-botanical.html',
       title: 'Sage Olive Botanical Card', subtitle: 'Tarek & Yasmine',
       venue: 'Mohamed Ali Palace, Manial', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#E8EFE6,#CFDEC9)', img: 'assets/images/sage-olive-botanical.jpg', accent: '#264D31',
-      desc: 'Gentle olive wreath and garden greenery border on cotton paper with live countdown and calendar save.',
-      features: ['Botanical Frame', 'No Motion', 'Olive Wreath', 'Silent Luxury']
+      bg: 'linear-gradient(145deg,#E8EFE6,#CFDEC9)', img: 'assets/images/mohamed-ali-palace.jpg', accent: '#264D31',
+      desc: 'Gentle olive wreath and Mohamed Ali Palace garden backdrop on cotton paper with live countdown and calendar save.',
+      features: ['Mohamed Ali Palace', 'Botanical Frame', 'No Motion', 'Silent Luxury']
     },
     {
       num: '21', cat: 'cards', file: 'samples/21-andalus-katb-card.html',
       title: 'Andalusian Arabesque Katb Card', subtitle: 'أحمد و نور',
       venue: 'Mosque Field Marshal Tantawi, Cairo', lang: 'العربية', langKey: 'ar', textDark: false,
-      bg: 'linear-gradient(145deg,#0C3B2D,#051E16)', img: 'assets/images/andalusian-arabesque-katb.jpg', accent: '#F5DC9E',
-      desc: 'Traditional Islamic calligraphy and arabesque corner motifs on cream card stock for blessed mosque ceremonies.',
-      features: ['Arabesque Corners', 'Amiri Calligraphy', 'No Motion', 'Katb Ketab']
+      bg: 'linear-gradient(145deg,#0C3B2D,#051E16)', img: 'assets/images/moshir-tantawi-mosque.jpg', accent: '#F5DC9E',
+      desc: 'Traditional Islamic calligraphy with El-Moshir Tantawi Mosque backdrop and arabesque motifs for blessed ceremonies.',
+      features: ['El-Moshir Mosque', 'Amiri Calligraphy', 'No Motion', 'Katb Ketab']
     },
     {
       num: '22', cat: 'cards', file: 'samples/22-dusty-rose-pearl.html',

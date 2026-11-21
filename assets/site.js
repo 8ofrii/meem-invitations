@@ -45,11 +45,11 @@
       </div>
       <div class="card-body">
         <h3 class="card-title">${s.title}</h3>
-        <div class="card-venue">📍 ${s.venue}</div>
+        <div class="card-venue"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${s.venue}</div>
         <p class="card-desc">${s.desc}</p>
         <div class="chips">${s.features.map((f) => `<span class="chip">${f}</span>`).join('')}</div>
         <div class="card-actions">
-          <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">📱 Preview</button>
+          <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Preview</button>
           <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Try live →</button>
         </div>
       </div>
@@ -118,7 +118,7 @@
         <div class="modal-side">
           <h3 id="modalTitle" class="serif gold" style="font-size:30px;line-height:1.15"></h3>
           <p id="modalDesc" style="font-size:13.5px;color:rgba(255,255,255,0.85);line-height:1.6"></p>
-          <div class="tip">✨ Tap the cover inside the phone to experience the interactive motion.</div>
+          <div class="tip"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3z"/></svg> Tap the cover inside the phone to experience the interactive motion.</div>
           <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
           <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a>
         </div>

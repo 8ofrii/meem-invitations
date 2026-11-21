@@ -204,6 +204,50 @@
       background: #FFFFFF;
       cursor: pointer;
     }
+  /* MEEM-BG-START */
+    body {
+      background-image: linear-gradient(rgba(251, 247, 238, 0.72), rgba(251, 247, 238, 0.72)), url('../assets/images/moshir-tantawi-mosque.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+    .meem-venue-hero {
+      position: relative;
+      width: 100%;
+      height: 175px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid rgba(197, 160, 89, 0.45);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    }
+    .meem-venue-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .meem-venue-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.58) 100%);
+      pointer-events: none;
+    }
+    .meem-venue-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      z-index: 2;
+      color: #FFFDF8;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.65);
+    }
+    /* MEEM-BG-END */
   </style>
 </head>
 <body>
@@ -212,6 +256,9 @@
     <div class="corner-motif corner-tr"></div>
     <div class="corner-motif corner-bl"></div>
     <div class="corner-motif corner-br"></div>
+    <!-- MEEM-HERO-START -->
+    <div class="meem-venue-hero"><img src="../assets/images/moshir-tantawi-mosque.jpg" alt="مسجد المشير طنطاوي • التجمع الخامس" loading="eager"><div class="meem-venue-cap">مسجد المشير طنطاوي • التجمع الخامس</div></div>
+    <!-- MEEM-HERO-END -->
 
     <div class="bismillah amiri">﷽</div>
     <div class="hadith amiri">« بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ »</div>
@@ -262,7 +309,7 @@
           <label class="att-opt"><input type="radio" name="attendance" value="yes" checked /> يسعدني الحضور</label>
           <label class="att-opt"><input type="radio" name="attendance" value="no" /> أعتذر لظرف خاص</label>
         </div>
-        <button type="submit" class="btn btn-emerald" style="width:100%;">إرسال التأكيد عبر واتساب 💬</button>
+        <button type="submit" class="btn btn-emerald" style="width:100%;">إرسال التأكيد عبر واتساب </button>
       </form>
       <div id="rsvp-res" style="display:none;"></div>
     </div>

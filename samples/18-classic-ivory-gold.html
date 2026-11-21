@@ -142,10 +142,57 @@
     .att-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
     .att-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-radius: 10px; border: 1px solid #E5E0D8; font-size: 12px; cursor: pointer; }
     .att-btn input { margin: 0; }
+  /* MEEM-BG-START */
+    body {
+      background-image: linear-gradient(rgba(250, 246, 238, 0.78), rgba(250, 246, 238, 0.78)), url('../assets/images/classic-ivory-gold-crest.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+    .meem-venue-hero {
+      position: relative;
+      width: 100%;
+      height: 175px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid rgba(197, 160, 89, 0.45);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    }
+    .meem-venue-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .meem-venue-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.58) 100%);
+      pointer-events: none;
+    }
+    .meem-venue-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      z-index: 2;
+      color: #FFFDF8;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.65);
+    }
+    /* MEEM-BG-END */
   </style>
 </head>
 <body>
   <main class="card-shell">
+    <!-- MEEM-HERO-START -->
+    <div class="meem-venue-hero"><img src="../assets/images/classic-ivory-gold-crest.jpg" alt="فندق الماسة كابيتال • القاهرة" loading="eager"><div class="meem-venue-cap">فندق الماسة كابيتال • القاهرة</div></div>
+    <!-- MEEM-HERO-END -->
     <div class="crest ruqaa" data-monogram>م &amp; م</div>
     <div class="eyebrow">بطاقة دعوة زفاف كلاسيكية</div>
     <p class="verse amiri">
@@ -201,7 +248,7 @@
           <label class="att-btn"><input type="radio" name="attendance" value="no" /> أعتذر عن الحضور</label>
         </div>
 
-        <button type="submit" class="btn btn-gold" style="width:100%;">تأكيد الحضور عبر واتساب 💬</button>
+        <button type="submit" class="btn btn-gold" style="width:100%;">تأكيد الحضور عبر واتساب </button>
       </form>
       <div id="rsvp-res" style="display:none;"></div>
     </div>

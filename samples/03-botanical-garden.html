@@ -325,7 +325,7 @@
     }
   </style>
 </head>
-<body class="wi-scroll-locked" data-particles="botanical-leaves" data-music-mood="classic">
+<body class="wi-scroll-locked" data-particles="botanical-leaves" data-music-mood="bridgerton">
 
   <!-- Vellum Ribbon Reveal -->
   <div id="vellum-overlay" role="dialog" aria-label="Open Botanical Wedding Invitation">
@@ -484,7 +484,7 @@
     document.getElementById('openVellumBtn').addEventListener('click', (e) => {
       WeddingSound.playDoorOpen();
       WeddingMotion.burstGoldenLight(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
-      WeddingSound.startMusic('romantic_piano');
+      WeddingSound.startMusic('bridgerton');
       document.getElementById('vellum-overlay').classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     });

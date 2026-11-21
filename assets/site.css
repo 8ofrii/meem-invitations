@@ -41,6 +41,10 @@ a { color: inherit; }
 .gold { color: var(--gold); }
 .emerald { color: var(--emerald); }
 .muted { color: var(--muted); }
+.ic-svg { width: 17px; height: 17px; display: inline-block; vertical-align: -3px; flex-shrink: 0; color: var(--gold-2); }
+.ic-svg.ic-sm { width: 14px; height: 14px; vertical-align: -2px; }
+.fpill.active .ic-svg, .tab.active .ic-svg, .btn-gold .ic-svg { color: #F4E5C2; }
+.card-venue { display: flex; align-items: center; gap: 5px; }
 
 /* Nav */
 .topbar {
