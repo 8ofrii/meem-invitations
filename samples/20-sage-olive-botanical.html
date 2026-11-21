@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sage Olive Botanical Card — Quiet Stationery Wedding Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #EAEFE9;
+      --card-bg: #FCFDFB;
+      --ink: #1B2B20;
+      --sage: #5A7360;
+      --sage-light: #C9D6C7;
+      --muted: #6B7C70;
+      --gold: #A3824E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 30px 16px 50px;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .card-shell {
+      max-width: 500px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 44px 32px 48px;
+      text-align: center;
+      box-shadow: 0 16px 50px rgba(27, 43, 32, 0.08), 0 0 0 1px rgba(90, 115, 96, 0.2);
+      position: relative;
+    }
+    .card-border {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--sage-light);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+    .botanical-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: inline-block;
+      color: var(--sage);
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .guest-pill {
+      display: inline-block;
+      background: rgba(90, 115, 96, 0.08);
+      border: 1px solid rgba(90, 115, 96, 0.25);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--sage);
+      margin-bottom: 22px;
+    }
+    .names {
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .intro {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 380px;
+      margin: 0 auto 28px;
+    }
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--sage-light);
+      margin: 24px auto;
+    }
+    .details-grid {
+      background: rgba(90, 115, 96, 0.04);
+      border-radius: 12px;
+      border: 1px solid rgba(90, 115, 96, 0.12);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(90, 115, 96, 0.15);
+      font-size: 13.5px;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .label {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .val {
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+    }
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+    .cd-box {
+      background: #FFFFFF;
+      border: 1px solid var(--sage-light);
+      border-radius: 10px;
+      padding: 12px 6px;
+    }
+    .cd-num {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--sage);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .cd-lbl {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .btn-sage {
+      background: var(--sage);
+      color: #FFFFFF;
+    }
+    .btn-sage:hover { background: #475E4D; }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--sage-light);
+      color: var(--ink);
+    }
+    .btn-outline:hover { background: rgba(90, 115, 96, 0.06); }
+    .rsvp-sec {
+      text-align: left;
+      border-top: 1px solid var(--sage-light);
+      padding-top: 24px;
+    }
+    .rsvp-title {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .input-box {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--sage-light);
+      border-radius: 8px;
+      background: #FFFFFF;
+      font-size: 14px;
+      color: var(--ink);
+      font-family: inherit;
+      margin-bottom: 14px;
+    }
+    .input-box:focus {
+      outline: none;
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(90, 115, 96, 0.15);
+    }
+    .radio-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .radio-lbl {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12.5px;
+      border: 1px solid var(--sage-light);
+      border-radius: 8px;
+      padding: 10px 8px;
+      cursor: pointer;
+      background: #FFFFFF;
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+  <main class="card-shell">
+    <div class="card-border"></div>
+
+    <div class="botanical-icon">🌿</div>
+    <div class="eyebrow">The Wedding Celebration Of</div>
+
+    <div class="guest-pill" data-guest-name data-guest-prefix="Honoured Guest: " style="display:none;"></div>
+
+    <h1 class="names serif" data-couple-title>Tarek &amp; Yasmine</h1>
+
+    <p class="intro">
+      Together with their parents, joyfully invite you to celebrate their marriage under the olive trees and open sky.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="details-grid">
+      <div class="detail-row">
+        <span class="label">Date</span>
+        <span class="val" data-event-date>Friday, October 15, 2027</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Time</span>
+        <span class="val">Six o'clock in the evening</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Venue</span>
+        <span class="val" data-venue-name>Mohamed Ali Palace, Manial, Cairo</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Attire</span>
+        <span class="val">Garden Formal / Black Tie</span>
+      </div>
+    </div>
+
+    <!-- Live countdown -->
+    <div class="cd-grid" data-countdown="2027-10-15T18:00:00+03:00">
+      <div class="cd-box"><div class="cd-num" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-box"><div class="cd-num" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-box"><div class="cd-num" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+      <div class="cd-box"><div class="cd-num" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-sage" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+      <a class="btn btn-outline" href="https://maps.google.com/?q=Mohamed+Ali+Palace+Manial" target="_blank" rel="noopener">Directions</a>
+    </div>
+
+    <!-- RSVP via WhatsApp -->
+    <div class="rsvp-sec">
+      <div class="rsvp-title">Kindly Respond</div>
+      <form data-rsvp-form data-couple="Tarek & Yasmine" data-lang="en" data-result-target="rsvp-res">
+        <input class="input-box" name="guestName" type="text" required placeholder="Your full name" />
+        <div class="radio-row">
+          <label class="radio-lbl"><input type="radio" name="attendance" value="yes" checked /> Joyfully Accept</label>
+          <label class="radio-lbl"><input type="radio" name="attendance" value="no" /> Regretfully Decline</label>
+        </div>
+        <button type="submit" class="btn btn-sage" style="width:100%;">Confirm RSVP on WhatsApp 💬</button>
+      </form>
+      <div id="rsvp-res" style="display:none;"></div>
+    </div>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Tarek & Yasmine',
+      start: '2027-10-15T15:00:00Z',
+      end: '2027-10-15T22:00:00Z',
+      location: 'Mohamed Ali Palace, Manial, Cairo'
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimalist Noir Monoline — Modern Wedding Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #141414;
+      --card-bg: #FAF9F6;
+      --ink: #111111;
+      --line: #222222;
+      --muted: #666666;
+      --accent: #9A7B4F;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 30px 16px 50px;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .card-shell {
+      max-width: 480px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 44px 32px 48px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+    .card-border {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+    .monogram-badge {
+      font-size: 18px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .names {
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      margin: 8px 0 16px;
+      letter-spacing: -0.01em;
+    }
+    .guest-tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      margin-bottom: 18px;
+    }
+    .message {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 360px;
+      margin: 0 auto 24px;
+      font-style: italic;
+    }
+    .grid-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+      margin: 24px 0;
+      text-align: left;
+    }
+    .info-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .info-val { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      border: 1px solid var(--ink);
+    }
+    .btn-dark { background: var(--ink); color: #FAF9F6; }
+    .btn-dark:hover { background: #333; }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover { background: rgba(0,0,0,0.05); }
+    .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+    .cd-flex { display: flex; justify-content: center; gap: 14px; margin: 20px 0; }
+    .cd-box { text-align: center; }
+    .cd-val { font-size: 24px; font-weight: 400; line-height: 1; }
+    .cd-lbl { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    .rsvp-shell { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.08); }
+    .field { margin-bottom: 12px; text-align: left; }
+    .field label { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .field input { width: 100%; padding: 10px 12px; border: 1px solid #D5D3CE; border-radius: 4px; font-family: inherit; font-size: 13px; background: #fff; }
+    .att-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .att-opt { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px; border: 1px solid #D5D3CE; font-size: 11px; cursor: pointer; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main class="card-shell">
+    <div class="card-border"></div>
+
+    <div class="monogram-badge serif" data-monogram>M · M</div>
+    <div class="eyebrow">Wedding Invitation</div>
+
+    <div class="guest-tag" data-guest-name data-guest-prefix="Honoring "></div>
+
+    <h1 class="names serif" data-couple-title>Mahmoud &amp; Merna</h1>
+
+    <p class="message serif">
+      "Together with their families, request the honor of your presence as they exchange vows and celebrate their wedding."
+    </p>
+
+    <div class="grid-info">
+      <div>
+        <div class="info-label">Date</div>
+        <div class="info-val" data-event-date>Saturday, October 16, 2027</div>
+      </div>
+      <div>
+        <div class="info-label">Time</div>
+        <div class="info-val">7:00 PM Reception</div>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <div class="info-label">Location</div>
+        <div class="info-val" data-venue-name>The St. Regis Cairo — Grand Ballroom</div>
+      </div>
+    </div>
+
+    <!-- Minimalist Countdown -->
+    <div class="cd-flex" data-countdown="2027-10-16T19:00:00+02:00">
+      <div class="cd-box"><div class="cd-val serif" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-box"><div class="cd-val serif" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-box"><div class="cd-val serif" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+      <div class="cd-box"><div class="cd-val serif" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-dark" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+      <a class="btn btn-ghost" href="https://maps.google.com/?q=The+St+Regis+Cairo" target="_blank" rel="noopener">Directions</a>
+    </div>
+
+    <!-- RSVP -->
+    <div class="rsvp-shell">
+      <form data-rsvp-form data-couple="Mahmoud & Merna" data-lang="en" data-result-target="rsvp-res">
+        <div class="field">
+          <label for="gname">Your Full Name</label>
+          <input id="gname" name="guestName" type="text" required placeholder="Guest Name" />
+        </div>
+        <div class="att-row">
+          <label class="att-opt"><input type="radio" name="attendance" value="yes" checked /> Joyfully Accept</label>
+          <label class="att-opt"><input type="radio" name="attendance" value="no" /> Regretfully Decline</label>
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;">Confirm RSVP on WhatsApp</button>
+      </form>
+      <div id="rsvp-res" style="display:none;"></div>
+    </div>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Mahmoud & Merna',
+      start: '2027-10-16T17:00:00Z',
+      end: '2027-10-16T23:00:00Z',
+      location: 'The St. Regis Cairo, Nile Corniche, Cairo, Egypt'
+    };
+  </script>
+</body>
+</html>

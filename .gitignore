@@ -1,5 +1,6 @@
 node_modules/
 _archive-logos/
+.gemini/
 .DS_Store
 Thumbs.db
 *.log

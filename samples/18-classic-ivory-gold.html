@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دعوة زفاف كلاسيكية عاجية — بطاقة هادئة راقية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F9F6F0;
+      --card-bg: #FFFFFF;
+      --ink: #1C1917;
+      --gold: #C5A059;
+      --gold-light: #DFBE7F;
+      --gold-dim: rgba(197, 160, 89, 0.28);
+      --muted: #78716C;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Tajawal', sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px 48px;
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+    .card-shell {
+      max-width: 520px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 16px 50px rgba(28, 25, 23, 0.08), 0 0 0 1px rgba(197, 160, 89, 0.35);
+      position: relative;
+      padding: 38px 28px 44px;
+      text-align: center;
+    }
+    .card-shell::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+    .crest {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 26px;
+      box-shadow: 0 4px 14px rgba(197, 160, 89, 0.15);
+    }
+    .verse {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .names {
+      font-size: 38px;
+      color: var(--ink);
+      margin: 6px 0 12px;
+      line-height: 1.25;
+    }
+    .guest-pill {
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 999px;
+      background: rgba(197, 160, 89, 0.1);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto;
+    }
+    .details-box {
+      background: #FAF8F5;
+      border-radius: 14px;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      padding: 18px 16px;
+      margin: 20px 0;
+    }
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(197, 160, 89, 0.25);
+      font-size: 14px;
+    }
+    .details-row:last-child { border-bottom: none; }
+    .details-label { color: var(--muted); }
+    .details-val { font-weight: 600; color: var(--ink); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--gold);
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+    .btn-gold { background: linear-gradient(135deg, #DFBE7F, #C5A059); color: #fff; border: none; }
+    .btn-outline { background: transparent; color: var(--gold); }
+    .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+    .cd-grid { display: flex; justify-content: center; gap: 10px; margin: 18px 0; }
+    .cd-item { min-width: 64px; padding: 8px; border-radius: 10px; background: #FAF8F5; border: 1px solid var(--gold-dim); text-align: center; }
+    .cd-num { font-size: 20px; font-weight: 700; color: var(--gold); }
+    .cd-label { font-size: 11px; color: var(--muted); }
+    .rsvp-sec { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--gold-dim); }
+    .lbl { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 6px; text-align: right; }
+    .input-box { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid #E5E0D8; font-family: inherit; font-size: 13px; margin-bottom: 12px; }
+    .att-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .att-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-radius: 10px; border: 1px solid #E5E0D8; font-size: 12px; cursor: pointer; }
+    .att-btn input { margin: 0; }
+  </style>
+</head>
+<body>
+  <main class="card-shell">
+    <div class="crest ruqaa" data-monogram>م &amp; م</div>
+    <div class="eyebrow">بطاقة دعوة زفاف كلاسيكية</div>
+    <p class="verse amiri">
+      ﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾
+    </p>
+
+    <div class="guest-pill" data-guest-name data-guest-prefix="إلى ضيفنا العزيز: " style="display:none;"></div>
+
+    <h1 class="names amiri" data-couple-title>محمود &amp; ميرنا</h1>
+
+    <p style="font-size:14px; color:var(--muted); max-width:380px; margin:0 auto;">
+      تتشرف عائلتا العروسين بدعوتكم لحضور حفل الزفاف المبارك ومشاركتنا أسعد لحظات العمر.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="details-box">
+      <div class="details-row">
+        <span class="details-label">التاريخ</span>
+        <span class="details-val" data-event-date>الخميس، ٢٢ مايو ٢٠٢٧</span>
+      </div>
+      <div class="details-row">
+        <span class="details-label">التوقيت</span>
+        <span class="details-val">الساعة ٨:٠٠ مساءً</span>
+      </div>
+      <div class="details-row">
+        <span class="details-label">المكان</span>
+        <span class="details-val" data-venue-name>فندق الماسة كابيتال، القاهرة</span>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="cd-grid" data-countdown="2027-05-22T20:00:00+03:00" data-ar-digits>
+      <div class="cd-item"><div class="cd-num" data-cd="days">٠٠</div><div class="cd-label">أيام</div></div>
+      <div class="cd-item"><div class="cd-num" data-cd="hours">٠٠</div><div class="cd-label">ساعات</div></div>
+      <div class="cd-item"><div class="cd-num" data-cd="minutes">٠٠</div><div class="cd-label">دقائق</div></div>
+      <div class="cd-item"><div class="cd-num" data-cd="seconds">٠٠</div><div class="cd-label">ثواني</div></div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-gold" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة للتقويم</button>
+      <a class="btn btn-outline" href="https://maps.google.com/?q=Al+Masa+Hotel+Cairo" target="_blank" rel="noopener">موقع القاعة</a>
+    </div>
+
+    <!-- Clean WhatsApp RSVP -->
+    <div class="rsvp-sec">
+      <form data-rsvp-form data-couple="محمود و ميرنا" data-lang="ar" data-result-target="rsvp-res">
+        <label class="lbl" for="gname">اسم الضيف الكريم</label>
+        <input class="input-box" id="gname" name="guestName" type="text" required placeholder="أدخل اسمك الكريم" />
+
+        <div class="att-pair">
+          <label class="att-btn"><input type="radio" name="attendance" value="yes" checked /> يشرفني الحضور</label>
+          <label class="att-btn"><input type="radio" name="attendance" value="no" /> أعتذر عن الحضور</label>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width:100%;">تأكيد الحضور عبر واتساب 💬</button>
+      </form>
+      <div id="rsvp-res" style="display:none;"></div>
+    </div>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'حفل زفاف محمود و ميرنا',
+      start: '2027-05-22T18:00:00Z',
+      end: '2027-05-22T23:00:00Z',
+      location: 'فندق الماسة كابيتال، القاهرة'
+    };
+  </script>
+</body>
+</html>

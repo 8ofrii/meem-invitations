@@ -17,7 +17,8 @@ window.SITE = {
     { id: 'weddings', title: 'Luxury Weddings & Palaces', ar: 'الأفراح والقصور', blurb: 'Grand ballrooms, palaces and 5-star Nile venues.' },
     { id: 'katb', title: 'Katb Ketab & Islamic Elegance', ar: 'عقد القران وكتب الكتاب', blurb: 'Calm, respectful designs for mosque ceremonies.' },
     { id: 'engagement', title: 'Engagement & Henna Nights', ar: 'الخطوبة وليلة الحنة', blurb: 'Ring boxes, lanterns and ladies-only celebrations.' },
-    { id: 'editorial', title: 'Coastal, Destination & Modern', ar: 'الساحل والتصاميم العصرية', blurb: 'Sahel, El Gouna and magazine-style concepts.' }
+    { id: 'editorial', title: 'Coastal, Destination & Modern', ar: 'الساحل والتصاميم العصرية', blurb: 'Sahel, El Gouna and magazine-style concepts.' },
+    { id: 'cards', title: 'Classic Cards (No Motion)', ar: 'كروت كلاسيكية هادئة (بدون حركة أو صوت)', blurb: 'Instant, silent luxury stationery cards without motion or sound.' }
   ],
 
   SAMPLES: [
@@ -140,7 +141,7 @@ window.SITE = {
       num: '14', cat: 'editorial', file: 'samples/14-polaroid-scrapbook.html',
       title: 'Polaroid Story Scrapbook', subtitle: 'Seif & Maya',
       venue: 'Baron Palace, Heliopolis', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F5EFE6,#DFD3C3)', img: 'assets/images/editorial-couple.jpg', accent: '#B86144',
+      bg: 'linear-gradient(145deg,#F5EFE6,#DFD3C3)', img: 'assets/images/polaroid-couple.jpg', accent: '#B86144',
       desc: 'Tap-to-flip Polaroid photo stack telling your story with handwritten notes.',
       features: ['Photo Deck', 'Handwritten Notes', 'Scrapbook']
     },
@@ -156,9 +157,57 @@ window.SITE = {
       num: '17', cat: 'editorial', file: 'samples/17-love-story-journey.html',
       title: 'Our Love Story Journey', subtitle: 'Khaled & Farida',
       venue: 'Four Seasons First Residence, Giza', lang: 'English', langKey: 'en', textDark: true,
-      bg: 'linear-gradient(145deg,#F7EDE2,#E6D3C3)', img: 'assets/images/editorial-couple.jpg', accent: '#A96B5E',
+      bg: 'linear-gradient(145deg,#F7EDE2,#E6D3C3)', img: 'assets/images/love-story-couple.jpg', accent: '#A96B5E',
       desc: 'A keepsake storybook with your 4-chapter love timeline, arched couple portrait and clickable photo gallery.',
       features: ['4-Chapter Story', 'Photo Gallery', 'Custom Photo Slot', 'Keepsake Book']
+    },
+    {
+      num: '18', cat: 'cards', file: 'samples/18-classic-ivory-gold.html',
+      title: 'Classic Ivory & Gold Crest', subtitle: 'محمود و ميرنا',
+      venue: 'Al Masa Hotel, New Capital', lang: 'العربية', langKey: 'ar', textDark: true,
+      bg: 'linear-gradient(145deg,#FDFBF7,#F4EFE6)', accent: '#C5A059',
+      desc: 'Quiet luxury stationery card on warm ivory paper with embossed gold crest and instant RSVP. Zero motion, zero audio.',
+      features: ['Silent Stationery', 'No Motion', 'Embossed Crest', 'WhatsApp RSVP']
+    },
+    {
+      num: '19', cat: 'cards', file: 'samples/19-minimalist-noir.html',
+      title: 'Minimalist Noir Monoline', subtitle: 'Omar & Salma',
+      venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en',
+      bg: 'linear-gradient(145deg,#1E1E1E,#0F0F0F)', accent: '#9A7B4F',
+      desc: 'Sleek dark-aesthetic typography card on textured natural parchment with monogram crest. Zero motion, zero audio.',
+      features: ['Monoline Minimal', 'No Motion', 'Clean Typography', 'WhatsApp RSVP']
+    },
+    {
+      num: '20', cat: 'cards', file: 'samples/20-sage-olive-botanical.html',
+      title: 'Sage Olive Botanical Card', subtitle: 'Tarek & Yasmine',
+      venue: 'Mohamed Ali Palace, Manial', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#F2F6F1,#E2EBE0)', accent: '#5A7360',
+      desc: 'Gentle olive wreath and garden greenery border on cotton paper with live countdown and calendar save.',
+      features: ['Botanical Frame', 'No Motion', 'Olive Wreath', 'Silent Luxury']
+    },
+    {
+      num: '21', cat: 'cards', file: 'samples/21-andalus-katb-card.html',
+      title: 'Andalusian Arabesque Katb Card', subtitle: 'أحمد و نور',
+      venue: 'Mosque Field Marshal Tantawi, Cairo', lang: 'العربية', langKey: 'ar', textDark: true,
+      bg: 'linear-gradient(145deg,#FBF8F2,#EFE7D8)', accent: '#143D30',
+      desc: 'Traditional Islamic calligraphy and arabesque corner motifs on cream card stock for blessed mosque ceremonies.',
+      features: ['Arabesque Corners', 'Amiri Calligraphy', 'No Motion', 'Katb Ketab']
+    },
+    {
+      num: '22', cat: 'cards', file: 'samples/22-dusty-rose-pearl.html',
+      title: 'Dusty Rose & Pearl Floral Card', subtitle: 'Kareem & Salma',
+      venue: 'Kempinski Nile Hotel, Garden City', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FDF8F6,#F5E8E4)', accent: '#A36B6D',
+      desc: 'Delicate blush and dusty rose romantic stationery card with clean schedule, directions, and WhatsApp confirmation.',
+      features: ['Blush & Rose', 'No Motion', 'Romantic Stationery', 'WhatsApp RSVP']
+    },
+    {
+      num: '23', cat: 'cards', file: 'samples/23-midnight-gold-celestial.html',
+      title: 'Midnight Gold Celestial Card', subtitle: 'Sherif & Nadia',
+      venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en',
+      bg: 'linear-gradient(145deg,#131B33,#070B16)', accent: '#E5C378',
+      desc: 'Constellation starlight crest on deep midnight velvet paper with metallic gold typography and instant response.',
+      features: ['Celestial Stars', 'No Motion', 'Deep Midnight Paper', 'Silent Luxury']
     }
   ],
 
@@ -172,7 +221,7 @@ window.SITE = {
       bestFor: 'Katb Ketab, Engagement & Henna',
       blurb: 'Any ready-made design from our collection personalised with your full event details.',
       items: [
-        'Any of our 17 interactive designs',
+        'Any of our 23 interactive designs & classic cards',
         'Couple names, date, schedule & venue map',
         'Live countdown timer & Add-to-Calendar',
         'Opening animation, sound effects & music',
