@@ -420,7 +420,7 @@
       <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try it with your names</a>
     </div>
     <div class="stats">
-      <div class="stat"><b>33</b><span>Ready designs</span></div>
+      <div class="stat"><b>39</b><span>Ready designs</span></div>
       <div class="stat"><b>5</b><span>Categories</span></div>
       <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
       <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
@@ -430,9 +430,9 @@
       <div class="center" style="margin-bottom:28px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
       <div class="grid g4" style="text-align:left">
         <div class="card step"><div class="n">1</div><h3>Pick a design</h3><p>Browse by occasion and language, preview each one inside a phone.</p></div>
-        <div class="card step"><div class="n">2</div><h3>Personalise</h3><p>Try your names, date, venue and a guest greeting live — before ordering.</p></div>
-        <div class="card step"><div class="n">3</div><h3>We build it</h3><p>Colors, music and details matched to your wedding. Edits included.</p></div>
-        <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One link per guest. RSVPs come back to you with a QR pass.</p></div>
+        <div class="card step"><div class="n">2</div><h3>Personalise</h3><p>Try your names, date, venue, table seating and music live — before ordering.</p></div>
+        <div class="card step"><div class="n">3</div><h3>We build it</h3><p>Colors, music, table numbers and details matched to your wedding.</p></div>
+        <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One link per guest. Each guest gets their table number and QR pass on their phone.</p></div>
       </div>
     </div>
   </div></section>
@@ -444,7 +444,7 @@
     <div class="center" style="margin-bottom:30px">
       <div class="pill-tag">Collections</div>
       <h2 class="h2">Interactive <em>Designs</em></h2>
-      <p class="lead" style="margin:10px auto 0">Browse all 29 ready-made wedding, katb ketab, engagement, henna, liquid chromium, and tactile opening stationery card concepts. Preview any design live inside a phone.</p>
+      <p class="lead" style="margin:10px auto 0">Browse all 39 ready-made wedding, katb ketab, engagement, henna, table seating, liquid chromium, and tactile opening stationery card concepts across Egypt.</p>
     </div>
 
     <div class="filter-bar">
@@ -475,11 +475,24 @@
           <div class="field"><label for="cg">2 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Karim / كريم"></div>
           <div class="field"><label for="cb">3 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Nour / نور"></div>
           <div class="field"><label for="dt">4 · Date (التاريخ)</label><input id="dt" type="date"></div>
-          <div class="field"><label for="v">5 · Venue / city (مكان الحفل)</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
-          <div class="field full"><label for="g">6 · Guest greeting (اسم الضيف)</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذ أحمد"></div>
+          <div class="field"><label for="v">5 · Venue / city (مكان الحفل)</label><input id="v" autocomplete="off" placeholder="Madinet Nasr / Zamalek / Tagamoa / Obour"></div>
+          <div class="field"><label for="g">6 · Guest greeting (اسم الضيف)</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذ أحمد"></div>
+          <div class="field"><label for="tb">7 · Guest table on phone (رقم الطاولة)</label><input id="tb" autocomplete="off" placeholder="Table 7 · VIP / طاولة رقم ٧"></div>
 
-          <div class="field full">
-            <label for="song">7 · Wedding music or song (موسيقى بدون غناء أو أغنية بالكلمات)</label>
+          <div class="field">
+            <label for="th">8 · Color finish theme (تخصيص الألوان)</label>
+            <select id="th" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
+              <option value="">Original design palette (الألوان الأصلية)</option>
+              <option value="gold">Royal Champagne Gold (ذهبي ملكي)</option>
+              <option value="chromium">Liquid Chromium &amp; Platinum (كروم وبلاتين)</option>
+              <option value="emerald">Emerald Palace Green (زمردي ملكي)</option>
+              <option value="rose">Dusty Rose &amp; Pearl (وردي لؤلؤي)</option>
+              <option value="sapphire">Mediterranean Sapphire (أزرق ياقوتي)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="song">9 · Wedding music or song (الموسيقى أو الأغنية)</label>
             <select id="song" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
               <option value="">Default for this design (الافتراضي للتصميم)</option>
               <optgroup label="Instrumental Music of Songs — موسيقى الأغاني بدون غناء">
@@ -487,9 +500,10 @@
                 <option value="farha_inst">Mahmoud El Esseily — Farha Music (موسيقى أغنية فرحة — كتب كتاب بدون غناء)</option>
                 <option value="egyptian_zaffa">Royal Egyptian Zaffa Music (موسيقى زفة مصرية ملكية بدون غناء)</option>
                 <option value="thousand_years_inst">A Thousand Years — Piano &amp; Cello Music (موسيقى بيانو وتشيللو بدون غناء)</option>
+                <option value="classic_romance_inst">Classic Romance Orchestra (موسيقى أوركسترا رومانسية كلاسيكية)</option>
                 <option value="instrumental_mix">Instrumental Wedding Mix (ميكس موسيقى هادئة بدون غناء)</option>
               </optgroup>
-              <optgroup label="Original Marriage Songs (Start with Words) — أغاني الأفراح بالكلمات مباشرة">
+              <optgroup label="Egyptian Marriage Songs (Start with Words) — أغاني الأفراح المصرية بالكلمات">
                 <option value="farha_katb">Mahmoud El Esseily — Farha (محمود العسيلي — أغنية فرحة بالكلمات)</option>
                 <option value="esseily_einy">Mahmoud El Esseily — Einy Shayfa Feeky (محمود العسيلي — عيني شايفة فيكي)</option>
                 <option value="esseily_wakheeran">Mahmoud El Esseily — Wa Akheeran (محمود العسيلي — وأخيراً)</option>
@@ -500,7 +514,13 @@
                 <option value="ramy_mabrook">Ramy Sabry — Alf Mabrook (رامي صبري — ألف مبروك)</option>
                 <option value="amr_nour">Amr Diab — Nour El Ein (عمرو دياب — نور العين)</option>
                 <option value="dina_zaffa">Dina El Wedidi — Egyptian Zaffa Song (دينا الوديدي — أغنية زفة مصرية)</option>
-                <option value="a_thousand_years">Christina Perri — A Thousand Years (الأغنية الأصلية بالكلمات)</option>
+              </optgroup>
+              <optgroup label="English Romantic Wedding Songs — أغاني أفراح إنجليزية">
+                <option value="ed_perfect">Ed Sheeran — Perfect (الأغنية الأصلية)</option>
+                <option value="a_thousand_years">Christina Perri — A Thousand Years (الأغنية الأصلية)</option>
+                <option value="cant_help_falling">Beautiful In White &amp; Can't Help Falling In Love Medley</option>
+                <option value="until_i_found_you">Stephen Sanchez — Until I Found You (Romantic Violin)</option>
+                <option value="english_mix">English Romantic Wedding Mix (ميكس أغاني إنجليزية رومانسية)</option>
               </optgroup>
               <optgroup label="Egyptian Wedding Song Mixes &amp; Silent — ميكس وكوكتيل أفراح">
                 <option value="egyptian_mix">Egyptian Wedding Grand Mix (كوكتيل أفراح مصري: الجسمي · العسيلي · تامر · رامي)</option>
@@ -512,7 +532,7 @@
           </div>
 
           <div class="field full">
-            <label for="ph">8 · Couple portrait (صورة العروسين — اختياري)</label>
+            <label for="ph">10 · Couple portrait (صورة العروسين — اختياري)</label>
             <input id="ph" type="file" accept="image/*" style="display:none">
             <label for="ph" class="photo-dropzone" id="phDrop">
               <div class="photo-icon-wrap" id="phIconWrap">
@@ -636,6 +656,8 @@
       date: $('dt').value,
       venue: $('v').value.trim(),
       guest: $('g').value.trim(),
+      table: $('tb') ? $('tb').value.trim() : '',
+      theme: $('th') ? $('th').value : '',
       song: $('song') ? $('song').value : '',
       photo: hasPhoto ? '1' : ''
     };
@@ -644,7 +666,7 @@
     const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
     $('frame').src = Shell.buildUrl(s.file, x, true);
     $('full').href = Shell.buildUrl(s.file, x);
-    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
+    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${x.table ? ' (with table seating on phone)' : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
   }
   let customPhotoData = '';
   function syncPhotoUI(active, dataUrl) {
@@ -731,9 +753,10 @@
   });
   $('d').addEventListener('change', updateTry);
   if ($('song')) $('song').addEventListener('change', updateTry);
+  if ($('th')) $('th').addEventListener('change', updateTry);
   if ($('l')) $('l').addEventListener('change', updateTry);
   $('apply').addEventListener('click', updateTry);
-  ['cg','cb','dt','v','g'].forEach(id => $(id).addEventListener('keydown', e => e.key === 'Enter' && updateTry()));
+  ['cg','cb','dt','v','g','tb'].forEach(id => $(id) && $(id).addEventListener('keydown', e => e.key === 'Enter' && updateTry()));
   $('copy').addEventListener('click', async () => {
     const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
     try { await navigator.clipboard.writeText(new URL(Shell.buildUrl(s.file, x), location.href).href); $('copy').textContent = '✓ Copied'; setTimeout(() => $('copy').textContent = 'Copy link', 2000); } catch (_) {}
@@ -741,9 +764,9 @@
   document.querySelector('.quick').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     const k = b.dataset.ex;
-    if (k === '1') { $('cg').value = 'Karim'; $('cb').value = 'Nour'; $('v').value = 'Marriott Mena House, Giza'; $('g').value = 'Dear Ahmed'; }
-    if (k === '2') { $('cg').value = 'يوسف'; $('cb').value = 'زينة'; $('v').value = 'فندق الماسة كابيتال، القاهرة'; $('g').value = 'أستاذ أحمد'; }
-    if (k === '3') { ['cg','cb','dt','v','g'].forEach(id => $(id).value = ''); }
+    if (k === '1') { $('cg').value = 'Karim'; $('cb').value = 'Nour'; $('v').value = 'JW Marriott Mirage City, El Tagamoa'; $('g').value = 'Dear Ahmed'; if ($('tb')) $('tb').value = 'Table 7 · VIP'; }
+    if (k === '2') { $('cg').value = 'يوسف'; $('cb').value = 'زينة'; $('v').value = 'قاعة الماسة الملكية، مدينة نصر'; $('g').value = 'أستاذ أحمد'; if ($('tb')) $('tb').value = 'طاولة رقم ٥ • كبار الزوار'; }
+    if (k === '3') { ['cg','cb','dt','v','g','tb'].forEach(id => $(id) && ($(id).value = '')); if ($('th')) $('th').value = ''; }
     updateTry();
   });
   updateTry();

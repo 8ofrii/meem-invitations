@@ -1037,17 +1037,28 @@
     dina_zaffa: '../assets/audio/dina-zaffa.mp3',
     oriental: '../assets/audio/dina-zaffa.mp3',
     a_thousand_years: '../assets/audio/a-thousand-years.mp3',
-    perfect: '../assets/audio/thousand-years-instrumental.mp3',
+    ed_perfect: '../assets/audio/ed-sheeran-perfect.mp3',
+    cant_help_falling: '../assets/audio/cant-help-falling.mp3',
+    until_i_found_you: '../assets/audio/until-i-found-you.mp3',
+    classic_romance_inst: '../assets/audio/classic-romance-inst.mp3',
+    perfect: '../assets/audio/ed-sheeran-perfect.mp3',
     sahel_sunset: '../assets/audio/farha-katb.mp3',
     mediterranean: '../assets/audio/amr-diab-nour-el-ein.mp3'
   };
 
   // Curated Egyptian Wedding Song & Instrumental Mixes
   const AUDIO_MIXES = {
+    english_mix: [
+      '../assets/audio/ed-sheeran-perfect.mp3',
+      '../assets/audio/a-thousand-years.mp3',
+      '../assets/audio/cant-help-falling.mp3',
+      '../assets/audio/until-i-found-you.mp3',
+      '../assets/audio/classic-romance-inst.mp3'
+    ],
     instrumental_mix: [
       '../assets/audio/om-kalthoum-instrumental.mp3',
       '../assets/audio/farha-instrumental.mp3',
-      '../assets/audio/egyptian-zaffa.mp3',
+      '../assets/audio/classic-romance-inst.mp3',
       '../assets/audio/thousand-years-instrumental.mp3'
     ],
     egyptian_mix: [
@@ -1498,6 +1509,53 @@
   function applyGuestPersonalization() {
     const isEn = customLang === 'en';
     const isRTL = document.documentElement.dir === 'rtl';
+    const customTable = (params.get('table') || '').trim();
+    const customTheme = (params.get('theme') || '').trim();
+
+    if (customTheme) {
+      const palettes = {
+        gold:     { accent: '#C5A059', soft: 'rgba(197, 160, 89, 0.14)', border: 'rgba(197, 160, 89, 0.45)' },
+        chromium: { accent: '#64748B', soft: 'rgba(148, 163, 184, 0.16)', border: 'rgba(148, 163, 184, 0.50)' },
+        rose:     { accent: '#9E4B5A', soft: 'rgba(158, 75, 90, 0.13)', border: 'rgba(158, 75, 90, 0.42)' },
+        emerald:  { accent: '#0D3B2E', soft: 'rgba(13, 59, 46, 0.13)', border: 'rgba(13, 59, 46, 0.42)' },
+        sapphire: { accent: '#1D4ED8', soft: 'rgba(29, 78, 216, 0.13)', border: 'rgba(29, 78, 216, 0.42)' }
+      };
+      const pal = palettes[customTheme];
+      if (pal) {
+        const root = document.documentElement;
+        ['--accent', '--gold', '--gold-2', '--sage', '--rose', '--plum', '--terra', '--amber', '--saffron'].forEach((v) => root.style.setProperty(v, pal.accent));
+        root.style.setProperty('--accent-soft', pal.soft);
+        root.style.setProperty('--border', pal.border);
+      }
+    }
+
+    if (customTable) {
+      const seats = document.querySelectorAll('[data-table-seat]');
+      if (seats.length) {
+        seats.forEach((el) => { el.textContent = customTable; el.style.display = ''; });
+      } else {
+        const anchor = document.querySelector('h1, [data-couple-title]');
+        if (anchor && anchor.parentNode && !document.querySelector('.meem-auto-table-pill')) {
+          const pill = document.createElement('div');
+          pill.className = 'meem-auto-table-pill';
+          Object.assign(pill.style, {
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            margin: '8px auto 14px',
+            padding: '6px 16px',
+            borderRadius: '999px',
+            background: 'rgba(197, 160, 89, 0.16)',
+            border: '1px solid rgba(197, 160, 89, 0.55)',
+            color: '#C5A059',
+            fontSize: '12.5px',
+            fontWeight: '700'
+          });
+          pill.textContent = (isRTL ? 'رقم الطاولة المخصصة: ' : 'Reserved Table: ') + customTable;
+          anchor.parentNode.insertBefore(pill, anchor.nextSibling);
+        }
+      }
+    }
 
     if (guestName) {
       document.querySelectorAll('[data-guest-name]').forEach((el) => {

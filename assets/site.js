@@ -23,7 +23,7 @@
   function buildUrl(file, extra, clean) {
     extra = extra || {};
     const q = new URLSearchParams();
-    ['groom', 'bride', 'couple', 'venue', 'date', 'guest', 'photo', 'lang', 'song'].forEach((k) => extra[k] && q.set(k, extra[k]));
+    ['groom', 'bride', 'couple', 'venue', 'date', 'guest', 'table', 'theme', 'photo', 'lang', 'song'].forEach((k) => extra[k] && q.set(k, extra[k]));
     if (clean) q.set('clean', '1');
     const s = q.toString();
     return s ? `${file}?${s}` : file;

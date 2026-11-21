@@ -288,6 +288,54 @@ window.SITE = {
       bg: 'linear-gradient(145deg,#0C2544,#051122)', img: 'assets/images/alexandria-san-stefano.jpg', accent: '#D8B979',
       desc: 'Mediterranean sapphire blue & champagne gold engagement invitation overlooking the sea at San Stefano, Alexandria.',
       features: ['Alexandria Seafront', 'Sapphire & Gold', 'Egyptian Zaffa', 'WhatsApp RSVP']
+    },
+    {
+      num: '34', cat: 'weddings', file: 'samples/34-madinet-nasr-triumph.html',
+      title: 'Madinet Nasr Royal Hall & Table Pass', subtitle: 'سيف و مريم',
+      venue: 'Al Masa & Triumph Royal Hall, Madinet Nasr', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#123B2E,#071F17)', img: 'assets/images/madinet-nasr-venue.jpg', accent: '#E2BE78',
+      desc: 'Royal Madinet Nasr ballroom invitation featuring guest table seating on phone, evening programme timeline, and Hussain Al Jassmi Zaffa.',
+      features: ['Madinet Nasr', 'Table Seating on Phone', 'Day Timeline', 'Jassmi Zaffa']
+    },
+    {
+      num: '35', cat: 'editorial', file: 'samples/35-zamalek-nile-garden.html',
+      title: 'Zamalek Gezira Palace Classic Romance', subtitle: 'Yassin & Dalida',
+      venue: 'Cairo Marriott Gezira Palace, Zamalek', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FAF5EC,#E8DCC8)', img: 'assets/images/zamalek-marriott-palace.jpg', accent: '#7A5426',
+      desc: 'Classic Romance editorial invitation set on Zamalek Island with scripted calligraphy, dress code swatches, table seating badge, and string orchestra.',
+      features: ['Zamalek Palace', 'Table Seating Card', 'Dress Code Guide', 'Classic Romance']
+    },
+    {
+      num: '36', cat: 'weddings', file: 'samples/36-tagamoa-palace-grounds.html',
+      title: 'El Tagamoa Mirage Editorial & Timeline', subtitle: 'Nader & Tamara',
+      venue: 'JW Marriott Mirage City, El Tagamoa', lang: 'English', langKey: 'en', textDark: false,
+      bg: 'linear-gradient(145deg,#0D3B2E,#08231B)', img: 'assets/images/tagamoa-mirage-palace.jpg', accent: '#F3DCAA',
+      desc: 'Fifth Settlement luxury invitation with 4-step evening programme, personalized table number on phone, and Ed Sheeran Perfect.',
+      features: ['El Tagamoa', 'Table Number Pass', 'Evening Programme', 'Ed Sheeran Perfect']
+    },
+    {
+      num: '37', cat: 'weddings', file: 'samples/37-el-obour-garden-villa.html',
+      title: 'El Obour Golf Gardens Celebration', subtitle: 'مروان و جنى',
+      venue: 'Golf City Royal Gardens, El Obour', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#173F2C,#0B2217)', img: 'assets/images/el-obour-golf-gardens.jpg', accent: '#E5C687',
+      desc: 'Open-air emerald garden wedding in El Obour City with guest table number badge, timeline, and Mahmoud El Esseily song.',
+      features: ['El Obour Gardens', 'Table Seating Badge', 'Emerald Lawn', 'Esseily Song']
+    },
+    {
+      num: '38', cat: 'katb', file: 'samples/38-madinet-nasr-mosque-katb.html',
+      title: 'Madinet Nasr & Tagamoa Katb Ketab', subtitle: 'حمزة و ريم',
+      venue: 'Al-Moshir & Al-Shorta Axis, Madinet Nasr / Tagamoa', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#0D3B2E,#062119)', img: 'assets/images/moshir-tantawi-mosque.jpg', accent: '#F3DCAA',
+      desc: 'Blessed Katb Ketab invitation with VIP hall seating badge, evening schedule, and Farha melody.',
+      features: ['Madinet Nasr / Tagamoa', 'VIP Seating Badge', 'Farha Melody', 'Katb Ketab']
+    },
+    {
+      num: '39', cat: 'editorial', file: 'samples/39-table-seating-concierge.html',
+      title: 'Katameya Dunes VIP Table Concierge', subtitle: 'Zeyad & Lara',
+      venue: 'The Westin Katameya Dunes, El Tagamoa', lang: 'English', langKey: 'en', textDark: false,
+      bg: 'linear-gradient(145deg,#0F172A,#070B14)', img: 'assets/images/tagamoa-mirage-palace.jpg', accent: '#D8B979',
+      desc: 'Bespoke Table Seating Concierge concept where every guest sees their assigned table number on their phone pass with English Romantic Mix.',
+      features: ['El Tagamoa', 'Phone Table Seating', 'English Song Mix', 'VIP QR Pass']
     }
   ],
 
@@ -301,7 +349,7 @@ window.SITE = {
       bestFor: 'Katb Ketab, Engagement & Henna',
       blurb: 'Any ready-made design from our collection personalised with your full event details.',
       items: [
-        'Any of our 33 interactive designs & stationery cards',
+        'Any of our 39 interactive designs & stationery cards',
         'Couple names, date, schedule & venue map',
         'Live countdown timer & Add-to-Calendar',
         'Opening animation, sound effects & music',
