@@ -48,7 +48,6 @@
         <input id="q" type="search" autocomplete="off" placeholder="Search designs, city or venue…">
         <button class="x" id="x" aria-label="Clear">✕</button>
       </div>
-      <div class="seg" id="langSeg"><button class="active" data-l="all">All</button><button data-l="ar">العربية</button><button data-l="en">English</button><button data-l="bilingual">Bilingual</button></div>
       <label class="reel" title="Hide the back button for clean screen recordings"><input type="checkbox" id="clean"> Clean mode</label>
     </div>
     <div class="row"><div class="tabs" id="tabs"></div><div class="count" id="count"></div></div>
@@ -61,7 +60,7 @@
   Shell.init('collection.html');
   const S = SITE, root = document.getElementById('root'), q = document.getElementById('q'), x = document.getElementById('x');
   const params = new URLSearchParams(location.search);
-  const st = { q: params.get('q') || '', cat: params.get('cat') || 'all', lang: 'all' };
+  const st = { q: params.get('q') || '', cat: params.get('cat') || 'all' };
   q.value = st.q;
 
   document.getElementById('tabs').innerHTML =
@@ -70,12 +69,8 @@
 
   function ok(s) {
     if (st.cat !== 'all' && s.cat !== st.cat) return false;
-    if (st.lang !== 'all') {
-      if (st.lang === 'bilingual' && s.langKey !== 'bilingual') return false;
-      if ((st.lang === 'ar' || st.lang === 'en') && s.langKey !== st.lang && s.langKey !== 'bilingual') return false;
-    }
     if (st.q) {
-      const hay = [s.num, s.title, s.subtitle, s.venue, s.desc, s.lang, ...s.features].join(' ').toLowerCase();
+      const hay = [s.num, s.title, s.subtitle, s.venue, s.desc, ...s.features].join(' ').toLowerCase();
       return st.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
     }
     return true;
@@ -86,10 +81,9 @@
     document.getElementById('count').textContent = `Showing ${list.length} of ${S.SAMPLES.length}`;
     x.classList.toggle('on', !!st.q);
     document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.c === st.cat));
-    document.querySelectorAll('#langSeg button').forEach(b => b.classList.toggle('active', b.dataset.l === st.lang));
     if (!list.length) {
       root.innerHTML = `<div class="empty-state" style="margin-top:40px"><h3 class="serif gold" style="font-size:30px;margin-bottom:8px">No matching designs</h3><p class="muted" style="font-size:14px;margin-bottom:16px">Try “Cairo”, “Katb Ketab”, “henna” or clear the filters.</p><button class="btn btn-gold" id="reset">Reset filters</button></div>`;
-      document.getElementById('reset').onclick = () => { st.q = ''; st.cat = 'all'; st.lang = 'all'; q.value = ''; render(); };
+      document.getElementById('reset').onclick = () => { st.q = ''; st.cat = 'all'; q.value = ''; render(); };
       return;
     }
     root.innerHTML = S.CATEGORIES.filter(c => list.some(s => s.cat === c.id)).map(c => {

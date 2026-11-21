@@ -224,10 +224,14 @@ html[data-theme="rose-pearl"] .steps-note { color: #5C474C; }
 html[data-theme="rose-pearl"] .btn-gold { color: #FFFFFF; }
 
 /* Native <select> dropdown & date picker readability across all 5 themes */
+html, select, input { color-scheme: dark; }
+html[data-theme="liquid-glass"] { color-scheme: dark; }
 html[data-theme="obsidian-gold"] { color-scheme: dark; }
 html[data-theme="emerald-palace"] { color-scheme: dark; }
 html[data-theme="ivory-editorial"] { color-scheme: light; }
 html[data-theme="rose-pearl"] { color-scheme: light; }
+html[data-theme="ivory-editorial"] select, html[data-theme="ivory-editorial"] input { color-scheme: light; }
+html[data-theme="rose-pearl"] select, html[data-theme="rose-pearl"] input { color-scheme: light; }
 
 html[data-theme="liquid-glass"] select option,
 html[data-theme="obsidian-gold"] select option {

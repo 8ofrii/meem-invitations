@@ -55,7 +55,7 @@ window.SITE = {
     },
     {
       num: '07', cat: 'weddings', file: 'samples/07-bilingual-palace.html',
-      title: 'Nile Palace (Bilingual)', subtitle: 'Karim & Mariam | كريم و مريم',
+      title: 'Nile Palace', subtitle: 'Karim & Mariam | كريم و مريم',
       venue: 'Four Seasons Nile Plaza, Cairo', lang: 'Arabic & English', langKey: 'bilingual',
       bg: 'linear-gradient(145deg,#2D241C,#17120E)', accent: '#DFBE7F',
       desc: 'One-tap Arabic and English language switcher with gold-foil date medallions.',

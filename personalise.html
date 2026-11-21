@@ -36,14 +36,22 @@
   <div class="studio" style="margin-bottom:40px">
     <div class="card">
       <form class="form" id="f" onsubmit="return false">
-        <div class="field full"><label for="d">1 · Design</label><select id="d"></select></div>
-        <div class="field"><label for="c">2 · Couple names</label><input id="c" autocomplete="off" placeholder="Mahmoud & Merna / محمود و ميرنا"></div>
-        <div class="field"><label for="dt">3 · Date</label><input id="dt" type="date"></div>
-        <div class="field"><label for="v">4 · Venue / city</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
-        <div class="field"><label for="g">5 · Guest greeting</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذة سارة"></div>
+        <div class="field full"><label for="d">1 · Design</label><select id="d" style="color-scheme:dark;background-color:#14141A;color:#F7F3EC"></select></div>
+        <div class="field full">
+          <label for="l">2 · Language (لغة الدعوة)</label>
+          <select id="l" style="color-scheme:dark;background-color:#14141A;color:#F7F3EC">
+            <option value="ar" selected>العربية (Arabic)</option>
+            <option value="en">English</option>
+            <option value="bi">العربية &amp; English (Both)</option>
+          </select>
+        </div>
+        <div class="field"><label for="c">3 · Couple names</label><input id="c" autocomplete="off" placeholder="Mahmoud & Merna / محمود و ميرنا"></div>
+        <div class="field"><label for="dt">4 · Date</label><input id="dt" type="date"></div>
+        <div class="field"><label for="v">5 · Venue / city</label><input id="v" autocomplete="off" placeholder="Marriott Mena House, Giza"></div>
+        <div class="field"><label for="g">6 · Guest greeting</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذة سارة"></div>
 
         <div class="field full">
-          <label for="ph">6 · Couple photo (optional — works on every design)</label>
+          <label for="ph">7 · Couple photo (optional — works on every design)</label>
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <input id="ph" type="file" accept="image/*" style="flex:1;min-width:210px;padding:9px 12px">
             <img id="phThumb" alt="" style="display:none;width:44px;height:44px;border-radius:10px;object-fit:cover;border:1px solid var(--gold)">
@@ -85,12 +93,13 @@
 <script>
   Shell.init('personalise.html');
   const S = SITE, $ = id => document.getElementById(id);
-  $('d').innerHTML = S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title} (${s.lang})</option>`).join('');
+  $('d').innerHTML = S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
   const pre = new URLSearchParams(location.search).get('design'); if (pre) $('d').value = pre;
 
   let hasPhoto = false;
   const data = () => ({
     num: $('d').value,
+    lang: $('l').value,
     couple: $('c').value.trim(),
     date: $('dt').value,
     venue: $('v').value.trim(),
@@ -102,7 +111,8 @@
     const x = data(), s = S.SAMPLES.find(a => a.num === x.num);
     $('frame').src = Shell.buildUrl(s.file, x, true);
     $('full').href = Shell.buildUrl(s.file, x);
-    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
+    const langLabel = x.lang === 'en' ? 'English' : x.lang === 'bi' ? 'Arabic & English' : 'Arabic';
+    $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title}) in ${langLabel}${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
   }
 
   $('ph').addEventListener('change', (e) => {
@@ -141,6 +151,7 @@
   });
 
   $('d').addEventListener('change', update);
+  $('l').addEventListener('change', update);
   $('apply').addEventListener('click', update);
   ['c','dt','v','g'].forEach(id => $(id).addEventListener('keydown', e => e.key === 'Enter' && update()));
 
@@ -156,8 +167,8 @@
   document.querySelector('.quick').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     const k = b.dataset.ex;
-    if (k === '1') { $('c').value = 'Mahmoud & Merna'; $('v').value = 'Marriott Mena House, Giza'; $('g').value = 'Dear Ahmed'; }
-    if (k === '2') { $('c').value = 'محمود و ميرنا'; $('v').value = 'فندق الماسة كابيتال، القاهرة'; $('g').value = 'أستاذ أحمد'; }
+    if (k === '1') { $('l').value = 'en'; $('c').value = 'Mahmoud & Merna'; $('v').value = 'Marriott Mena House, Giza'; $('g').value = 'Dear Ahmed'; }
+    if (k === '2') { $('l').value = 'ar'; $('c').value = 'محمود و ميرنا'; $('v').value = 'فندق الماسة كابيتال، القاهرة'; $('g').value = 'أستاذ أحمد'; }
     if (k === '3') { ['c','dt','v','g'].forEach(id => $(id).value = ''); }
     update();
   });

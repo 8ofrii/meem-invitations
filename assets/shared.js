@@ -27,6 +27,7 @@
   const customCouple = readParam(['couple']);
   const customVenue = readParam(['venue']);
   const customDate = readParam(['date']);
+  const customLang = readParam(['lang', 'language']);
   const isCleanMode = params.get('clean') === '1';
 
   /* ========================================================================
@@ -933,6 +934,92 @@
         applyCustomPhoto(savedPhoto);
       }
     } catch (_) {}
+
+    if (customLang) {
+      applyCustomLanguage(customLang);
+    }
+  }
+
+  function applyCustomLanguage(l) {
+    if (!l) return;
+    const isAr = (l === 'ar');
+    const isEn = (l === 'en');
+
+    if (isAr) {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
+    } else if (isEn) {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = 'en';
+    }
+
+    // Trigger existing language buttons in templates that have them (e.g. #07 Nile Palace)
+    document.querySelectorAll('.lang-pill button, [data-lang-btn]').forEach((b) => {
+      const txt = (b.textContent || '').toLowerCase();
+      const attr = b.getAttribute('data-lang-btn') || '';
+      if (isAr && (txt.includes('عربي') || attr === 'ar')) b.click();
+      if (isEn && (txt.includes('english') || attr === 'en')) b.click();
+    });
+
+    // Translate countdown labels
+    const cdMap = isAr
+      ? { days: 'أيام', hours: 'ساعات', minutes: 'دقائق', seconds: 'ثواني' }
+      : { days: 'Days', hours: 'Hours', minutes: 'Mins', seconds: 'Secs' };
+
+    document.querySelectorAll('.cd-unit span, .time-box span, .count-label').forEach((el) => {
+      const t = (el.textContent || '').trim().toLowerCase();
+      if (t.includes('day') || t.includes('أيام') || t.includes('يوم')) el.textContent = cdMap.days;
+      else if (t.includes('hour') || t.includes('ساعات') || t.includes('ساعة')) el.textContent = cdMap.hours;
+      else if (t.includes('min') || t.includes('دقائق') || t.includes('دقيقة')) el.textContent = cdMap.minutes;
+      else if (t.includes('sec') || t.includes('ثواني') || t.includes('ثانية')) el.textContent = cdMap.seconds;
+    });
+
+    // Translate RSVP / Location / Add to calendar buttons and common labels
+    const phraseMapArToEn = [
+      ['دعوة زفاف', 'Wedding Invitation'],
+      ['دعوة عقد قران', 'Katb Ketab Invitation'],
+      ['حفل زفاف', 'Wedding Ceremony'],
+      ['عقد قران', 'Katb Ketab'],
+      ['حفل خطوبة', 'Engagement Party'],
+      ['ليلة الحنة', 'Henna Night'],
+      ['تأكيد الحضور', 'RSVP Now'],
+      ['موقع الحفل', 'View Location'],
+      ['إضافة للتقويم', 'Add to Calendar'],
+      ['الموقع على الخريطة', 'Google Maps Location'],
+      ['العد التنازلي', 'Countdown to the Big Day'],
+      ['يسرنا دعوتكم لحضور', 'Together with their families, you are invited to celebrate'],
+      ['بارك الله لهما وبارك عليهما', 'May Allah bless their union with endless joy'],
+      ['شاركونا فرحتنا', 'Join us in celebrating our wedding']
+    ];
+    const phraseMapEnToAr = [
+      ['Wedding Invitation', 'دعوة زفاف'],
+      ['Katb Ketab Invitation', 'دعوة عقد قران'],
+      ['Wedding Ceremony', 'حفل زفاف'],
+      ['Katb Ketab', 'عقد قران'],
+      ['Engagement Party', 'حفل خطوبة'],
+      ['Henna Night', 'ليلة الحنة'],
+      ['RSVP Now', 'تأكيد الحضور'],
+      ['RSVP', 'تأكيد الحضور'],
+      ['View Location', 'موقع الحفل'],
+      ['Add to Calendar', 'إضافة للتقويم'],
+      ['Google Maps Location', 'الموقع على الخريطة'],
+      ['Countdown to the Big Day', 'العد التنازلي لليوم المنتظر'],
+      ['Together with their families', 'يسرنا ويسعدنا دعوتكم لحضور'],
+      ['Join us in celebrating', 'شاركونا فرحتنا في حفل زفاف']
+    ];
+
+    const pairs = isEn ? phraseMapArToEn : (isAr ? phraseMapEnToAr : []);
+    if (pairs.length > 0) {
+      const targets = document.querySelectorAll('button, a, h1, h2, h3, .tag, .invite-title, .venue-line, .date-line, .rsvp-btn, .map-btn, .cal-btn, .ceremony-title');
+      targets.forEach(el => {
+        let text = el.textContent || '';
+        pairs.forEach(([from, to]) => {
+          if (text.includes(from)) {
+            el.textContent = text.replace(from, to);
+          }
+        });
+      });
+    }
   }
 
   function applyCustomPhoto(dataUrl) {

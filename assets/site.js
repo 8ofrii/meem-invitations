@@ -5,8 +5,9 @@
   // Strip .html from the browser address bar cleanly (e.g. /index.html -> /, /pricing.html -> /pricing)
   try {
     const p = location.pathname;
-    if (p.endsWith('/index.html')) {
-      history.replaceState(null, '', p.slice(0, -10) + location.search + location.hash);
+    if (p === '/index.html' || p.endsWith('/index.html')) {
+      const clean = p.slice(0, -10) || '/';
+      history.replaceState(null, '', clean + location.search + location.hash);
     } else if (p.endsWith('.html') && !p.includes('/samples/')) {
       history.replaceState(null, '', p.slice(0, -5) + location.search + location.hash);
     }
@@ -20,7 +21,7 @@
   function buildUrl(file, extra, clean) {
     extra = extra || {};
     const q = new URLSearchParams();
-    ['couple', 'venue', 'date', 'guest', 'photo'].forEach((k) => extra[k] && q.set(k, extra[k]));
+    ['couple', 'venue', 'date', 'guest', 'photo', 'lang'].forEach((k) => extra[k] && q.set(k, extra[k]));
     if (clean) q.set('clean', '1');
     const s = q.toString();
     return s ? `${file}?${s}` : file;
@@ -32,7 +33,7 @@
     return `<article class="sample-card">
       <div class="card-thumb" style="background:${s.bg};color:${tc}">
         ${s.img ? `<img class="bg-art" src="${s.img}" alt="" loading="lazy" decoding="async">` : ''}
-        <div class="badge-row"><span class="badge plain">#${s.num}</span><span class="badge">${s.lang}</span></div>
+        <div class="badge-row"><span class="badge plain">#${s.num}</span></div>
         <div class="thumb-inner">
           <div class="serif" style="font-size:27px;line-height:1.12;color:${s.accent}">${s.title}</div>
           <div class="arabic" style="font-size:16px;color:${sc};margin-top:6px">${s.subtitle}</div>
