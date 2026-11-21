@@ -33,6 +33,7 @@
 
 /* ===== 1. LIQUID GLASS (Apple iOS 26 / Frosted Specular Glass) ===== */
 html[data-theme="liquid-glass"] {
+  color-scheme: dark;
   --bg: #090A0F;
   --surface: rgba(255, 255, 255, 0.065);
   --surface-2: rgba(255, 255, 255, 0.10);
@@ -221,3 +222,24 @@ html[data-theme="rose-pearl"] .nav-links a.link.active {
 html[data-theme="rose-pearl"] .chip,
 html[data-theme="rose-pearl"] .steps-note { color: #5C474C; }
 html[data-theme="rose-pearl"] .btn-gold { color: #FFFFFF; }
+
+/* Native <select> dropdown & date picker readability across all 5 themes */
+html[data-theme="obsidian-gold"] { color-scheme: dark; }
+html[data-theme="emerald-palace"] { color-scheme: dark; }
+html[data-theme="ivory-editorial"] { color-scheme: light; }
+html[data-theme="rose-pearl"] { color-scheme: light; }
+
+html[data-theme="liquid-glass"] select option,
+html[data-theme="obsidian-gold"] select option {
+  background-color: #14151D;
+  color: #F8F6F2;
+}
+html[data-theme="emerald-palace"] select option {
+  background-color: #07261E;
+  color: #FAF5EA;
+}
+html[data-theme="ivory-editorial"] select option,
+html[data-theme="rose-pearl"] select option {
+  background-color: #FFFDF9;
+  color: #221E1A;
+}
