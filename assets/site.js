@@ -43,7 +43,7 @@
 
   function injectShell(active) {
     const savedStyle = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_logo_style')) || '1';
-    const logoSrc = `assets/logos/meem-style-${savedStyle}.svg?v=3`;
+    const logoSrc = `assets/logos/meem-style-${savedStyle}.svg?v=4`;
 
     const header = document.createElement('header');
     header.className = 'topbar';
@@ -69,7 +69,7 @@
         </div>
         <p class="muted" style="font-size:13px;max-width:300px">${B.tagline}</p>
       </div>
-      <div><h4>Explore</h4><a href="collection.html">Designs</a><a href="personalise.html">Try it live</a><a href="pricing.html">Packages</a><a href="logo-preview.html" style="color:var(--gold);margin-top:4px">🎨 Logo Styles</a></div>
+      <div><h4>Explore</h4><a href="collection.html">Designs</a><a href="personalise.html">Try it live</a><a href="pricing.html">Packages</a></div>
       <div><h4>Contact</h4><a href="${wa('Hello!')}" target="_blank" rel="noopener">WhatsApp: 01024190741</a><a href="#">Instagram ${B.handle}</a><a href="#">TikTok</a></div>
     </div><div class="foot-bottom"><span>© ${new Date().getFullYear()} ${B.name} — Cairo, Egypt</span><span>Digital Wedding &amp; Katb Ketab Invitations</span></div></div>`;
     document.body.appendChild(footer);
@@ -103,7 +103,7 @@
 
   function setLogo(styleNum) {
     if (typeof localStorage !== 'undefined') localStorage.setItem('meem_logo_style', styleNum);
-    const path = `assets/logos/meem-style-${styleNum}.svg?v=3`;
+    const path = `assets/logos/meem-style-${styleNum}.svg?v=4`;
     document.querySelectorAll('.brand-logo-img').forEach((el) => { el.src = path; });
   }
 

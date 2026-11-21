@@ -28,9 +28,9 @@
 <body>
 <main class="container">
   <div class="logo-hero">
-    <div class="pill-tag">MEEM · ميم</div>
-    <h1 class="h1">Choose Your <em>ميم</em> Logo Style</h1>
-    <p class="lead" style="margin: 14px auto 0">Three simple luxury concepts designed for the Arabic word <b>ميم</b>. Click any style to apply it across the website instantly.</p>
+    <div class="pill-tag">MEEM · م</div>
+    <h1 class="h1">3 Styles for Letter <em>م</em></h1>
+    <p class="lead" style="margin: 14px auto 0">Three clean, luxury logo styles built around the Arabic letter <b>م</b>. Click any style to preview and apply it to the header.</p>
   </div>
 
   <div class="logo-grid">
@@ -38,38 +38,38 @@
     <div class="logo-card" id="card-1">
       <div class="active-badge">CURRENTLY ACTIVE</div>
       <div class="style-tag">Style 01 · Geometric Kufic</div>
-      <h2 class="style-title">Modern Kufic</h2>
-      <div class="style-ar">كوفي هندسي ناعم (ميم)</div>
+      <h2 class="style-title">Architectural Kufic</h2>
+      <div class="style-ar">كوفي هندسي ناعم (م)</div>
       <div class="logo-display" id="disp-1">
-        <img src="assets/logos/meem-style-1.svg?v=3" alt="Style 1">
+        <img src="assets/logos/meem-style-1.svg?v=4" alt="Style 1">
       </div>
-      <p class="style-desc">Clean geometric circular loops and a straight architectural baseline with clean diamond dots. Modern quiet luxury.</p>
+      <p class="style-desc">Crisp circular head on top-right with a smooth horizontal shoulder and vertical architectural tail on the left.</p>
       <button class="btn btn-gold select-btn" onclick="applyLogo(1)">Select Style 1</button>
     </div>
 
     <!-- Style 2 -->
     <div class="logo-card" id="card-2">
       <div class="active-badge">CURRENTLY ACTIVE</div>
-      <div class="style-tag">Style 02 · Flowing Cursive</div>
-      <h2 class="style-title">Elegant Cursive</h2>
-      <div class="style-ar">نسخي انسيابي ناعم (ميم)</div>
+      <div class="style-tag">Style 02 · Royal Seal</div>
+      <h2 class="style-title">Flowing Calligraphic</h2>
+      <div class="style-ar">خط عربي انسيابي (م)</div>
       <div class="logo-display" id="disp-2">
-        <img src="assets/logos/meem-style-2.svg?v=3" alt="Style 2">
+        <img src="assets/logos/meem-style-2.svg?v=4" alt="Style 2">
       </div>
-      <p class="style-desc">A graceful, flowing cursive script with organic curves and round dots. Warm, romantic and bridal.</p>
+      <p class="style-desc">Organic flowing Arabic م inside a double-ring gold seal with a subtle diamond sparkle accent.</p>
       <button class="btn btn-gold select-btn" onclick="applyLogo(2)">Select Style 2</button>
     </div>
 
     <!-- Style 3 -->
     <div class="logo-card" id="card-3">
       <div class="active-badge">CURRENTLY ACTIVE</div>
-      <div class="style-tag">Style 03 · Modern Minimalist</div>
-      <h2 class="style-title">Contemporary Sans</h2>
-      <div class="style-ar">عصري ناعم (ميم)</div>
+      <div class="style-tag">Style 03 · Modern Signet</div>
+      <h2 class="style-title">Diamond Minimalist</h2>
+      <div class="style-ar">عصري مفرغ (م)</div>
       <div class="logo-display" id="disp-3">
-        <img src="assets/logos/meem-style-3.svg?v=3" alt="Style 3">
+        <img src="assets/logos/meem-style-3.svg?v=4" alt="Style 3">
       </div>
-      <p class="style-desc">Modern rounded squircle heads and a razor-sharp monoline baseline. High-fashion minimalist look.</p>
+      <p class="style-desc">Bold rounded-square geometric م with a sleek tapered drop, framed inside a subtle luxury diamond bevel.</p>
       <button class="btn btn-gold select-btn" onclick="applyLogo(3)">Select Style 3</button>
     </div>
   </div>
@@ -106,7 +106,7 @@
     [1,2,3].forEach(i => {
       document.getElementById('card-' + i).classList.toggle('active', i == num);
     });
-    const path = 'assets/logos/meem-style-' + num + '.svg?v=3';
+    const path = 'assets/logos/meem-style-' + num + '.svg?v=4';
     document.getElementById('simLogo').src = path;
     const emblem = document.querySelector('.topbar .brand img, .topbar .brand .meem-emblem');
     if (emblem) {

@@ -1,38 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="MEEM Style 1 - Geometric Kufic ميم">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="MEEM Style 1 - Geometric Kufic م">
   <defs>
-    <linearGradient id="gold1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFF0D0"/>
-      <stop offset="50%" stop-color="#DFBE7F"/>
+    <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="20" y1="20" x2="140" y2="140">
+      <stop offset="0%" stop-color="#FFF2D1"/>
+      <stop offset="48%" stop-color="#DFBE7F"/>
       <stop offset="100%" stop-color="#A6782E"/>
     </linearGradient>
-    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#18171E"/>
+    <linearGradient id="bg1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="160" y2="160">
+      <stop offset="0%" stop-color="#191820"/>
       <stop offset="100%" stop-color="#0B0B0E"/>
     </linearGradient>
   </defs>
-  <!-- Background Badge -->
   <rect width="160" height="160" rx="34" fill="url(#bg1)"/>
-  <rect x="7" y="7" width="146" height="146" rx="27" fill="none" stroke="url(#gold1)" stroke-width="1.2" stroke-opacity="0.38"/>
+  <rect x="8" y="8" width="144" height="144" rx="26" fill="none" stroke="url(#g1)" stroke-width="1.5" stroke-opacity="0.45"/>
 
-  <!-- Style 1: Modern Geometric Kufic "ميم" -->
-  <g fill="none" stroke="url(#gold1)" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Initial Meem (right side): circle head on baseline -->
-    <circle cx="112" cy="74" r="13" stroke-width="5"/>
-    
-    <!-- Connecting baseline flowing left through Yaa -->
-    <path d="M 112 87 L 44 87" stroke-width="5"/>
-    
-    <!-- Yaa tooth in center -->
-    <path d="M 80 87 L 80 77" stroke-width="5"/>
-    
-    <!-- Final Meem (left side): circle head + vertical tail -->
-    <circle cx="48" cy="74" r="13" stroke-width="5"/>
-    <path d="M 35 74 L 35 116" stroke-width="5"/>
-  </g>
-
-  <!-- Two clean diamond dots for the Yaa under baseline -->
-  <g fill="url(#gold1)">
-    <rect x="74" y="99" width="5.5" height="5.5" transform="rotate(45 76.75 101.75)"/>
-    <rect x="84" y="99" width="5.5" height="5.5" transform="rotate(45 86.75 101.75)"/>
+  <!-- Style 1: Geometric Kufic Arabic letter م (head on top-right, shoulder left, vertical tail dropping on left) -->
+  <g fill="none" stroke="url(#g1)" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Circular head of م on right -->
+    <circle cx="94" cy="60" r="20"/>
+    <!-- Smooth horizontal shoulder to the left & crisp vertical tail dropping down -->
+    <path d="M 94 80 L 58 80 Q 48 80 48 90 L 48 120"/>
   </g>
 </svg>
