@@ -56,9 +56,13 @@ http.createServer((req, res) => {
   const isAsset = ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.mp3'].includes(ext);
   const headers = {
     'Content-Type': MIME[ext] || 'application/octet-stream',
-    // images are cached for a week; code is always revalidated so edits show instantly
-    'Cache-Control': isAsset ? 'public, max-age=604800' : 'no-cache',
-    'Vary': 'Accept-Encoding'
+    'Cache-Control': isAsset ? 'public, max-age=604800, immutable' : 'no-cache',
+    'Vary': 'Accept-Encoding',
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'SAMEORIGIN',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+    'Content-Security-Policy': "default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com data: blob:;"
   };
   if (gz && /\bgzip\b/.test(req.headers['accept-encoding'] || '')) {
     headers['Content-Encoding'] = 'gzip';

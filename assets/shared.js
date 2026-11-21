@@ -1357,10 +1357,17 @@
     }
   }
 
-  // Real-time photo reception via postMessage from preview studio
+  // Real-time photo reception via postMessage from preview studio (origin-validated)
   window.addEventListener('message', (e) => {
+    // Validate message source: must come from same-origin or localhost
+    if (e.origin && e.origin !== window.location.origin && !e.origin.includes('localhost') && !e.origin.includes('127.0.0.1') && !e.origin.includes('onrender.com')) {
+      return;
+    }
     if (e.data && e.data.type === 'meem_photo' && e.data.dataUrl) {
-      applyCustomPhoto(e.data.dataUrl);
+      // Validate dataUrl starts with safe image data scheme
+      if (typeof e.data.dataUrl === 'string' && e.data.dataUrl.startsWith('data:image/')) {
+        applyCustomPhoto(e.data.dataUrl);
+      }
     }
   });
 
