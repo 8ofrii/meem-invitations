@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khaled &amp; Nourhan — Sahel 3-Day Coastal Wedding Weekend | North Coast</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--cobalt:#13427A;--linen:#FDFCF8;--sand:#F2E9DC;--ink:#142740}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--linen);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh}
+    .serif{font-family:'Cormorant Garamond',serif}
+    .banner{background:linear-gradient(160deg,#13427A,#1E5CA8);color:#fff;padding:30px 18px 66px;text-align:center;border-radius:0 0 36px 36px}
+    .arch-pic{width:min(320px,86vw);height:210px;margin:-48px auto 18px;border-radius:160px 160px 18px 18px;overflow:hidden;border:5px solid #fff;box-shadow:0 18px 40px rgba(19,66,122,.18)}
+    .arch-pic img{width:100%;height:100%;object-fit:cover}
+    .body{max-width:490px;margin:0 auto;padding:0 16px 60px;text-align:center}
+    .day-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 12px}
+    .dtab{border:1px solid rgba(19,66,122,.22);background:#fff;color:var(--cobalt);padding:10px 6px;border-radius:12px;font:700 11.5px inherit;cursor:pointer}
+    .dtab.active{background:var(--cobalt);color:#fff}
+    .dpanel{display:none;background:var(--sand);border-radius:14px;padding:16px;text-align:left;font-size:13px;margin-bottom:18px}
+    .dpanel.active{display:block}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+    .cd div{background:#fff;border:1px solid rgba(19,66,122,.16);border-radius:12px;padding:9px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--cobalt)} .cd span{font-size:9.5px;text-transform:uppercase;color:#5B708A}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:600 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-c{background:var(--cobalt);color:#fff} .btn-o{border:1px solid var(--cobalt);color:var(--cobalt);background:#fff}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(19,66,122,.2);margin-bottom:10px;font:inherit}
+  </style>
+</head>
+<body data-music-mood="cant_help_falling">
+  <header class="banner">
+    <div style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;opacity:.85;">SAHEL WEDDING WEEKEND · EGYPT</div>
+    <div data-guest-name data-guest-prefix="Welcome aboard, " style="display:none;font-size:12.5px;color:#CFE2FF;margin-top:6px;"></div>
+    <h1 class="serif" style="font-size:44px;font-weight:400;margin:6px 0;" data-couple-title>Khaled &amp; Nourhan</h1>
+    <div style="font-size:12.5px;opacity:.9;" data-venue-name>Hacienda White &amp; Marassi · North Coast</div>
+  </header>
+  <div class="arch-pic"><img src="../assets/images/el-gouna-lagoon.jpg" alt="Sahel North Coast" /></div>
+  <main class="body">
+    <div style="font-size:13px;font-weight:700;color:var(--cobalt);margin-bottom:12px;" data-event-date>August 19 – 21, 2027 · <span data-table-seat>Cabana Table 03</span></div>
+    <div class="day-tabs" id="dayTabs">
+      <button type="button" class="dtab active" data-d="d1">Day 1 · Fri</button>
+      <button type="button" class="dtab" data-d="d2">Day 2 · Sat</button>
+      <button type="button" class="dtab" data-d="d3">Day 3 · Sun</button>
+    </div>
+    <div class="dpanel active" id="d1"><strong>Friday Sunset Welcome</strong><p style="margin-top:4px;">5:30 PM — Beachfront cocktails &amp; acoustic sunset session. Attire: All-White Linen.</p></div>
+    <div class="dpanel" id="d2"><strong>Saturday Wedding Ceremony</strong><p style="margin-top:4px;">6:00 PM — Seaside vows followed by starlit Mediterranean gala dinner &amp; dancing.</p></div>
+    <div class="dpanel" id="d3"><strong>Sunday Farewell Brunch</strong><p style="margin-top:4px;">11:30 AM — Sea-breeze coffee, pastries &amp; poolside farewells.</p></div>
+    <div class="cd" data-countdown="2027-08-20T18:00:00+03:00">
+      <div><strong data-cd="days">00</strong><span>Days</span></div>
+      <div><strong data-cd="hours">00</strong><span>Hrs</span></div>
+      <div><strong data-cd="minutes">00</strong><span>Min</span></div>
+      <div><strong data-cd="seconds">00</strong><span>Sec</span></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:20px;">
+      <button type="button" class="btn btn-c" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Save Weekend</button>
+      <a class="btn btn-o" style="flex:1" href="https://maps.google.com/?q=Marassi+North+Coast+Egypt" target="_blank" rel="noopener">Resort Map</a>
+    </div>
+    <form data-rsvp-form data-couple="Khaled & Nourhan" data-lang="en" data-result-target="rsvp-res">
+      <input class="inp" name="guestName" type="text" required placeholder="Full Name" />
+      <button type="submit" class="btn btn-c" style="width:100%;">RSVP for Weekend via WhatsApp</button>
+    </form>
+    <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Khaled & Nourhan Sahel Wedding Weekend', start: '2027-08-20T15:00:00Z', end: '2027-08-20T23:00:00Z', location: 'Hacienda White & Marassi, North Coast, Egypt' };
+    document.getElementById('dayTabs').addEventListener('click', e => {
+      const b = e.target.closest('.dtab'); if (!b) return;
+      document.querySelectorAll('.dtab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.dpanel').forEach(x => x.classList.remove('active'));
+      b.classList.add('active'); document.getElementById(b.dataset.d).classList.add('active');
+      try { WeddingSound.startMusic('cant_help_falling'); } catch(_) {}
+    });
+  </script>
+</body></html>

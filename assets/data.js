@@ -336,6 +336,94 @@ window.SITE = {
       bg: 'linear-gradient(145deg,#0F172A,#070B14)', img: 'assets/images/tagamoa-mirage-palace.jpg', accent: '#D8B979',
       desc: 'Bespoke Table Seating Concierge concept where every guest sees their assigned table number on their phone pass with English Romantic Mix.',
       features: ['El Tagamoa', 'Phone Table Seating', 'English Song Mix', 'VIP QR Pass']
+    },
+    {
+      num: '40', cat: 'weddings', file: 'samples/40-handwritten-love-letter.html',
+      title: 'Handwritten Wax-Ribbon Love Letter', subtitle: 'Seif & Yasmin',
+      venue: 'Villa Belle Epoque, Maadi, Cairo', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FBF7F0,#E6D9C6)', img: 'assets/images/al-azhar-park.jpg', accent: '#6D1D2A',
+      desc: 'Burgundy satin ribbon & wax seal packet that unties and unfolds into a cursive handwritten lined love letter with airmail stamp.',
+      features: ['Wax-Ribbon Untie', 'Handwritten Lined Paper', 'Airmail Stamp', 'Ed Sheeran Perfect']
+    },
+    {
+      num: '41', cat: 'katb', file: 'samples/41-mashrabiya-sliding-katb.html',
+      title: 'Ottoman Mashrabiya Sliding Lattice', subtitle: 'عبدالله و سارة',
+      venue: 'Al-Azhar Mosque & Park, Historic Cairo', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#241911,#0E3A2C)', img: 'assets/images/citadel-mosque.jpg', accent: '#D7B067',
+      desc: 'Carved Islamic Mashrabiya lattice shutters slide open sideways to reveal a domed Ottoman manuscript with prayer timings.',
+      features: ['Sliding Mashrabiya', 'Ottoman Arch Card', 'Prayer Timings', 'Farha Music']
+    },
+    {
+      num: '42', cat: 'editorial', file: 'samples/42-cinema-premiere-ticket.html',
+      title: 'Cinema Premiere Tear-Off Golden Ticket', subtitle: 'Rami & Nadine',
+      venue: 'Royal Maxim Palace Kempinski, New Cairo', lang: 'English', langKey: 'en', textDark: false,
+      bg: 'linear-gradient(145deg,#1A160F,#09090B)', img: 'assets/images/kempinski-palace.jpg', accent: '#E5C168',
+      desc: 'Perforated golden VIP admission ticket that tears off to reveal a movie-premiere poster, cast credits, and horizontal filmstrip schedule.',
+      features: ['Tear-Off VIP Ticket', 'Movie Poster Hero', 'Filmstrip Timeline', 'A Thousand Years']
+    },
+    {
+      num: '43', cat: 'weddings', file: 'samples/43-pressed-glass-herbarium.html',
+      title: 'Pressed-Glass Herbarium & 3-Tab Guide', subtitle: 'Badr & Jana',
+      venue: 'Katameya Heights Club, El Tagamoa', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#ECF3ED,#D1E2D5)', img: 'assets/images/el-obour-golf-gardens.jpg', accent: '#2C4A3B',
+      desc: 'Frosted botanical glass card over sunlit garden photography with circular countdown orbs and an interactive 3-tab Details/Schedule/Dress switcher.',
+      features: ['Frosted Glass Card', '3-Tab Switcher', 'Countdown Orbs', 'Katameya Heights']
+    },
+    {
+      num: '44', cat: 'weddings', file: 'samples/44-haute-horology-dial.html',
+      title: 'Haute Horology Luxury Watch Dial', subtitle: 'طارق و داليا',
+      venue: 'St. Regis Almasa, New Capital, Cairo', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#1B222C,#080A0D)', img: 'assets/images/st-regis-cairo.jpg', accent: '#D9B777',
+      desc: 'Swiss watchmaking inspired obsidian & brushed gold guilloche bezel with Roman numerals and Umm Kulthum instrumental music.',
+      features: ['Swiss Watch Dial', 'Roman Numeral Bezel', 'Obsidian & Gold', 'Alf Leila Music']
+    },
+    {
+      num: '45', cat: 'editorial', file: 'samples/45-cairo-vintage-postcard.html',
+      title: 'Vintage Cairo 3D Flip Postcard', subtitle: 'Aly & Malak',
+      venue: 'Zamalek Gezira Riverfront, Cairo', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FAF4E8,#E2D5BE)', img: 'assets/images/zamalek-marriott-palace.jpg', accent: '#B45338',
+      desc: 'Interactive 180-degree 3D flipping vintage postcard from Zamalek with Egypt Post stamp, split address back, and romantic violin audio.',
+      features: ['180° 3D Card Flip', 'Vintage Egypt Stamp', 'Zamalek Nile', 'Until I Found You']
+    },
+    {
+      num: '46', cat: 'weddings', file: 'samples/46-velvet-curtain-gala.html',
+      title: 'Emerald Velvet Theatre Curtain & Guestbook', subtitle: 'شريف و يارا',
+      venue: 'Triumph Luxury Hotel, Madinet Nasr / Tagamoa', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#0B2E24,#071C16)', img: 'assets/images/madinet-nasr-venue.jpg', accent: '#DFBA6E',
+      desc: 'Pleated emerald theatre drapes part under a golden spotlight to reveal a live interactive Guestbook Wishes Wall where guests post blessings.',
+      features: ['Parting Velvet Curtains', 'Live Guestbook Wall', 'Triumph Hotel', 'Jassmi Zaffa']
+    },
+    {
+      num: '47', cat: 'cards', file: 'samples/47-origami-accordion-card.html',
+      title: 'Architectural Z-Fold Origami Accordion', subtitle: 'Ziad & Habiba',
+      venue: 'Lake House The Club, El Tagamoa', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#EFECE6,#DDD7CC)', img: 'assets/images/tagamoa-mirage-palace.jpg', accent: '#1D1D1B',
+      desc: 'Whisper-quiet architectural Z-fold stationery card that unfolds vertically panel-by-panel like a fine museum brochure. Strictly zero audio.',
+      features: ['Z-Fold Accordion', 'Minimal Stone Paper', 'Zero Sound', 'Lake House Tagamoa']
+    },
+    {
+      num: '48', cat: 'weddings', file: 'samples/48-interactive-table-finder.html',
+      title: 'Live Find-Your-Table Seating Concierge', subtitle: 'حازم و فريدة',
+      venue: 'JW Marriott Mirage City, El Tagamoa', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#0D3B2E,#07221A)', img: 'assets/images/tagamoa-mirage-palace.jpg', accent: '#C5A059',
+      desc: 'Interactive seating concierge where guests type their name on their phone to instantly look up their exact Table Number and hall zone.',
+      features: ['Live Table Search', 'Phone Seat Card', 'El Tagamoa', 'Egyptian Song Mix']
+    },
+    {
+      num: '49', cat: 'editorial', file: 'samples/49-mediterranean-coastal-linen.html',
+      title: 'Sahel 3-Day Coastal Weekend Linen', subtitle: 'Khaled & Nourhan',
+      venue: 'Hacienda White & Marassi, North Coast', lang: 'English', langKey: 'en', textDark: false,
+      bg: 'linear-gradient(145deg,#13427A,#1E5CA8)', img: 'assets/images/el-gouna-lagoon.jpg', accent: '#FFFFFF',
+      desc: 'Breezy cobalt-and-linen Mediterranean invitation with interactive 3-Day Wedding Weekend tabs (Friday Welcome · Saturday Ceremony · Sunday Brunch).',
+      features: ['3-Day Weekend Tabs', 'Cobalt & White Linen', 'North Coast Sahel', 'Wedding Medley']
+    },
+    {
+      num: '50', cat: 'engagement', file: 'samples/50-henna-night-mosaic.html',
+      title: 'Zellige Mosaic Henna & DJ Song Request', subtitle: 'آدم و رنا',
+      venue: 'Golf City Club & Villas, El Obour', lang: 'العربية', langKey: 'ar', textDark: false,
+      bg: 'linear-gradient(145deg,#0F4C5C,#B84A39)', img: 'assets/images/el-obour-golf-gardens.jpg', accent: '#E3A842',
+      desc: 'Vibrant teal, terracotta & saffron Zellige mosaic engagement & henna night card with color dress palette and a DJ Song Request box in RSVP.',
+      features: ['Zellige Mosaic Frame', 'DJ Song Request RSVP', 'El Obour City', 'Egyptian Zaffa']
     }
   ],
 
@@ -349,7 +437,7 @@ window.SITE = {
       bestFor: 'Katb Ketab, Engagement & Henna',
       blurb: 'Any ready-made design from our collection personalised with your full event details.',
       items: [
-        'Any of our 39 interactive designs & stationery cards',
+        'Any of our 50 interactive designs & stationery cards',
         'Couple names, date, schedule & venue map',
         'Live countdown timer & Add-to-Calendar',
         'Opening animation, sound effects & music',

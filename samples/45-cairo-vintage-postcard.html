@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aly &amp; Malak — Vintage Cairo 3D Flip Postcard | Zamalek</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--cream:#FAF4E8;--navy:#19324D;--terra:#B45338;--gold:#C59A4B}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#ECE3D3;color:var(--navy);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:20px 14px 56px;display:flex;flex-direction:column;align-items:center}
+    .play{font-family:'Playfair Display',serif}
+    .flip-wrap{width:min(460px,100%);perspective:1400px;margin-bottom:18px}
+    .flip-inner{position:relative;width:100%;transition:transform .85s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+    .flip-wrap.is-flipped .flip-inner{transform:rotateY(180deg)}
+    .face{backface-visibility:hidden;background:var(--cream);border-radius:14px;border:6px solid #fff;box-shadow:0 20px 50px rgba(25,50,77,.18);overflow:hidden}
+    .face-back{position:absolute;inset:0;transform:rotateY(180deg);padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+    .front-img{width:100%;height:260px;object-fit:cover;display:block}
+    .front-bar{padding:18px;text-align:center;background:var(--cream)}
+    .flip-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:999px;background:var(--navy);color:#fff;font:600 12px inherit;border:0;cursor:pointer;margin-top:10px}
+    .back-split{display:grid;grid-template-columns:1.1fr 0.9fr;gap:14px;border-top:1px solid rgba(25,50,77,.16);padding-top:14px;font-size:12px}
+    .stamp-box{border:2px dotted var(--terra);padding:6px;text-align:center;font-size:10px;font-weight:700;color:var(--terra);margin-bottom:10px}
+    .below{width:min(460px,100%);background:#fff;border-radius:16px;padding:20px;box-shadow:0 12px 30px rgba(25,50,77,.09)}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;text-align:center}
+    .cd div{background:var(--cream);border-radius:10px;padding:8px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--terra)} .cd span{font-size:9.5px;text-transform:uppercase}
+    .inp{width:100%;padding:10px 12px;border-radius:8px;border:1px solid rgba(25,50,77,.2);margin-bottom:10px;font:inherit}
+    .btn-t{width:100%;padding:11px;border-radius:999px;background:var(--terra);color:#fff;font:600 12.5px inherit;border:0;cursor:pointer}
+  </style>
+</head>
+<body data-music-mood="until_i_found_you">
+  <div class="flip-wrap" id="cardFlip">
+    <div class="flip-inner">
+      <div class="face face-front">
+        <img class="front-img" src="../assets/images/zamalek-marriott-palace.jpg" alt="Greetings from Zamalek Cairo" />
+        <div class="front-bar">
+          <div style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);font-weight:700;">GREETINGS FROM ZAMALEK, CAIRO</div>
+          <h1 class="play" style="font-size:34px;margin:4px 0;" data-couple-title>Aly &amp; Malak</h1>
+          <div style="font-size:12px;color:#5D6D7E;" data-event-date>Friday, October 8, 2027 · 7:00 PM</div>
+          <button type="button" class="flip-btn" id="toBack">Flip Postcard for Invitation ↻</button>
+        </div>
+      </div>
+      <div class="face face-back">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <strong class="play" style="font-size:18px;letter-spacing:.12em;">POST CARD</strong>
+            <button type="button" class="flip-btn" style="margin:0;padding:5px 12px;font-size:11px;" id="toFront">Front ↻</button>
+          </div>
+          <div class="back-split">
+            <div>
+              <div data-guest-name data-guest-prefix="Dear " style="display:none;font-weight:700;color:var(--terra);margin-bottom:6px;"></div>
+              <p style="line-height:1.6;">Pack your finest evening attire and join us by the Nile in Zamalek as we tie the knot!</p>
+              <p style="margin-top:8px;font-weight:700;" data-venue-name>Zamalek Gezira Riverfront, Cairo</p>
+            </div>
+            <div style="border-left:1px solid rgba(25,50,77,.16);padding-left:12px;">
+              <div class="stamp-box">EGYPT POST<br>2027 · VIP</div>
+              <div style="border-bottom:1px solid rgba(25,50,77,.2);padding:4px 0;font-size:11px;" data-table-seat>Table 09</div>
+              <div style="border-bottom:1px solid rgba(25,50,77,.2);padding:4px 0;font-size:11px;">Cairo, Egypt</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:14px;">
+          <button type="button" class="btn-t" style="background:var(--navy);" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Save Date</button>
+          <a class="btn-t" style="text-align:center;text-decoration:none;" href="https://maps.google.com/?q=Zamalek+Cairo+Nile" target="_blank" rel="noopener">Open Map</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="below">
+    <div class="cd" data-countdown="2027-10-08T19:00:00+03:00">
+      <div><strong data-cd="days">00</strong><span>Days</span></div>
+      <div><strong data-cd="hours">00</strong><span>Hours</span></div>
+      <div><strong data-cd="minutes">00</strong><span>Mins</span></div>
+      <div><strong data-cd="seconds">00</strong><span>Secs</span></div>
+    </div>
+    <form data-rsvp-form data-couple="Aly & Malak" data-lang="en" data-result-target="rsvp-res">
+      <input class="inp" name="guestName" type="text" required placeholder="Your Name" />
+      <button type="submit" class="btn-t">Send Postcard RSVP on WhatsApp</button>
+    </form>
+    <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+  </section>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Wedding of Aly & Malak — Zamalek', start: '2027-10-08T16:00:00Z', end: '2027-10-08T22:30:00Z', location: 'Zamalek, Cairo, Egypt' };
+    const flip = document.getElementById('cardFlip');
+    document.getElementById('toBack').addEventListener('click', () => { flip.classList.add('is-flipped'); try { WeddingSound.startMusic('until_i_found_you'); } catch(_) {} });
+    document.getElementById('toFront').addEventListener('click', () => flip.classList.remove('is-flipped'));
+  </script>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عقد قران — عبدالله و سارة | مسجد الأزهر وحديقة الأزهر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--wood:#241911;--gold:#D7B067;--cream:#FAF5EB;--emerald:#0E3A2C}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--cream);color:var(--emerald);font-family:'Cairo',sans-serif;min-height:100vh;overflow-x:hidden}
+    .amiri{font-family:'Amiri',serif}
+    #shutter-wrap{position:fixed;inset:0;z-index:600;display:flex;cursor:pointer;transition:visibility .9s}
+    #shutter-wrap.is-open{visibility:hidden;pointer-events:none}
+    .shutter{flex:1;background:var(--wood);position:relative;overflow:hidden;transition:transform 1s cubic-bezier(.76,0,.24,1);border-inline:2px solid var(--gold)}
+    .shutter::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20px 20px,rgba(215,176,103,.24) 2px,transparent 3px),linear-gradient(45deg,rgba(215,176,103,.12) 25%,transparent 25%,transparent 75%,rgba(215,176,103,.12) 75%);background-size:40px 40px}
+    #shutter-wrap.is-open .shutter-r{transform:translateX(102%)}
+    #shutter-wrap.is-open .shutter-l{transform:translateX(-102%)}
+    .medallion{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;background:rgba(14,58,44,.94);border:2px solid var(--gold);border-radius:18px;padding:28px 26px;text-align:center;color:#FFF8EA;width:min(300px,84vw);box-shadow:0 22px 55px rgba(0,0,0,.55);transition:opacity .5s}
+    #shutter-wrap.is-open .medallion{opacity:0}
+    .arch-wrap{max-width:490px;margin:20px auto 56px;padding:0 14px}
+    .arch-card{background:#FFFDF8;border:2px solid var(--gold);border-radius:220px 220px 20px 20px;padding:24px 20px 30px;text-align:center;box-shadow:0 20px 55px rgba(14,58,44,.12)}
+    .arch-photo{width:100%;height:210px;border-radius:200px 200px 14px 14px;object-fit:cover;border:2px solid rgba(215,176,103,.5);margin-bottom:18px}
+    .verse{font-size:17px;color:#7A5A22;margin-bottom:10px;line-height:1.8}
+    .names{font-size:42px;color:var(--emerald);margin-bottom:10px}
+    .prayer-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
+    .prayer-box{background:rgba(14,58,44,.06);border:1px solid rgba(215,176,103,.4);border-radius:12px;padding:10px 6px}
+    .prayer-box b{display:block;color:var(--emerald);font-size:13px} .prayer-box span{font-size:11px;color:#6E5A3A}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+    .cd div{background:var(--emerald);color:#FFF8EA;border-radius:12px;padding:10px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--gold)} .cd span{font-size:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:600 13px inherit;cursor:pointer;text-decoration:none;border:0}
+    .btn-em{background:var(--emerald);color:#FFF8EA} .btn-g{border:1px solid var(--gold);color:var(--emerald);background:#fff}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(215,176,103,.5);margin-bottom:10px;font:inherit}
+  </style>
+</head>
+<body data-music-mood="farha_inst">
+  <div id="shutter-wrap" role="dialog">
+    <div class="shutter shutter-r"></div>
+    <div class="shutter shutter-l"></div>
+    <div class="medallion">
+      <div class="amiri" style="font-size:22px;color:var(--gold);margin-bottom:6px;">﷽</div>
+      <div style="font-size:12px;letter-spacing:.08em;color:#E5D5B5;margin-bottom:8px;">دعوة عقد قران مبارك</div>
+      <div class="amiri" style="font-size:34px;margin-bottom:12px;" data-couple-title>عبدالله و سارة</div>
+      <div style="display:inline-block;padding:8px 22px;border-radius:999px;background:var(--gold);color:#1E140B;font-size:12.5px;font-weight:700;">اضغط لفتح المشربية</div>
+    </div>
+  </div>
+  <main class="arch-wrap">
+    <div class="arch-card">
+      <img class="arch-photo" src="../assets/images/al-azhar-park.jpg" alt="حديقة الأزهر والقاهرة التاريخية" />
+      <div class="verse amiri">« بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ »</div>
+      <div data-guest-name data-guest-prefix="تشرفنا بحضور: " style="display:none;color:#8D6725;font-weight:700;font-size:13px;margin-bottom:6px;"></div>
+      <h1 class="names amiri" data-couple-title>عبدالله و سارة</h1>
+      <p style="font-size:13px;color:#52635B;margin-bottom:14px;">يسعدنا دعوتكم لحضور مراسم عقد القران المبارك في رحاب القاهرة التاريخية — <span data-venue-name>مسجد الأزهر وحديقة الأزهر، القاهرة</span></p>
+      <div class="prayer-row">
+        <div class="prayer-box"><b>صلاة العصر</b><span>٣:٤٥ مساءً</span></div>
+        <div class="prayer-box"><b>عقد القران</b><span>٤:٣٠ مساءً</span></div>
+        <div class="prayer-box"><b>ضيافة وحديقة</b><span>٥:٣٠ مساءً</span></div>
+      </div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;" data-event-date>الجمعة، ١٢ نوفمبر ٢٠٢٧</div>
+      <div class="cd" data-countdown="2027-11-12T16:30:00+02:00">
+        <div><strong data-cd="days">00</strong><span>يوم</span></div>
+        <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
+        <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:18px;">
+        <button type="button" class="btn btn-em" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">حفظ الموعد</button>
+        <a class="btn btn-g" style="flex:1" href="https://maps.google.com/?q=Al-Azhar+Park+Cairo" target="_blank" rel="noopener">الخريطة</a>
+      </div>
+      <form data-rsvp-form data-couple="عبدالله و سارة" data-lang="ar" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="الاسم الكريم" />
+        <button type="submit" class="btn btn-em" style="width:100%;">تأكيد الحضور عبر واتساب</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'عقد قران عبدالله و سارة', start: '2027-11-12T14:30:00Z', end: '2027-11-12T18:30:00Z', location: 'Al-Azhar Park, Cairo' };
+    document.getElementById('shutter-wrap').addEventListener('click', () => {
+      document.getElementById('shutter-wrap').classList.add('is-open');
+      try { WeddingSound.startMusic('farha_inst'); } catch(_) {}
+    });
+  </script>
+</body></html>

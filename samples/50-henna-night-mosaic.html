@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>آدم و رنا — ليلة الخطوبة والحنة بالفسيفساء الشرقية | مدينة العبور</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--teal:#0F4C5C;--terra:#B84A39;--saffron:#E3A842;--cream:#FFF8EE}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:repeating-linear-gradient(45deg,rgba(15,76,92,.08) 0 12px,rgba(227,168,66,.08) 12px 24px),var(--cream);color:#261A16;font-family:'Cairo',sans-serif;min-height:100vh;padding:18px 14px 60px}
+    .amiri{font-family:'Amiri',serif}
+    .tile-frame{max-width:480px;margin:0 auto;padding:10px;border-radius:24px;background:linear-gradient(135deg,var(--teal),var(--terra),var(--saffron));box-shadow:0 22px 55px rgba(15,76,92,.22)}
+    .tile-inner{background:var(--cream);border-radius:16px;padding:22px 18px 28px;text-align:center}
+    .hero{width:100%;height:190px;border-radius:14px;object-fit:cover;border:2px solid var(--saffron);margin-bottom:16px}
+    .palette{display:flex;justify-content:center;gap:10px;margin:14px 0 18px;align-items:center;font-size:12px}
+    .dot{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+    .cd div{background:var(--teal);color:#fff;border-radius:12px;padding:9px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--saffron)} .cd span{font-size:10px}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid rgba(15,76,92,.2);margin-bottom:9px;font:inherit;font-size:13px;background:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:700 13px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-t{background:linear-gradient(135deg,var(--terra),var(--saffron));color:#fff}
+    .btn-o{border:1.5px solid var(--teal);color:var(--teal);background:#fff}
+  </style>
+</head>
+<body data-music-mood="dina_zaffa">
+  <div class="tile-frame">
+    <main class="tile-inner">
+      <img class="hero" id="playZaffa" src="../assets/images/el-obour-golf-gardens.jpg" alt="Golf City El Obour" style="cursor:pointer;" />
+      <div style="font-size:11px;font-weight:700;color:var(--terra);letter-spacing:.14em;">أمسية خطوبة وحنة شرقية — مدينة العبور</div>
+      <div data-guest-name data-guest-prefix="نورتِ الليلة يا " style="display:none;color:var(--teal);font-weight:700;font-size:13px;margin-top:6px;"></div>
+      <h1 class="amiri" style="font-size:44px;color:var(--teal);margin:4px 0;" data-couple-title>آدم و رنا</h1>
+      <p style="font-size:13px;color:#5E4B42;margin-bottom:10px;"><span data-venue-name>نادي جولف سيتي — مدينة العبور</span> • <span data-event-date>الخميس، ٢٨ أكتوبر ٢٠٢٧</span> • ٧:٣٠ مساءً</p>
+      <div class="palette">
+        <span>ألوان الليلة:</span>
+        <span class="dot" style="background:#0F4C5C"></span>
+        <span class="dot" style="background:#B84A39"></span>
+        <span class="dot" style="background:#E3A842"></span>
+        <span class="dot" style="background:#9D174D"></span>
+      </div>
+      <div class="cd" data-countdown="2027-10-28T19:30:00+02:00">
+        <div><strong data-cd="days">00</strong><span>يوم</span></div>
+        <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
+        <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:18px;">
+        <button type="button" class="btn btn-t" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">حفظ الموعد</button>
+        <a class="btn btn-o" style="flex:1" href="https://maps.google.com/?q=Golf+City+El+Obour+Egypt" target="_blank" rel="noopener">الخريطة</a>
+      </div>
+      <form data-rsvp-form data-couple="آدم و رنا" data-lang="ar" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="الاسم الكريم" />
+        <input class="inp" name="notes" type="text" placeholder="اقترح أغنية تحب ترقص عليها مع الـ DJ!" />
+        <button type="submit" class="btn btn-t" style="width:100%;">تأكيد الحضور وإرسال طلب الأغنية عبر واتساب</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </main>
+  </div>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'خطوبة وحنة آدم و رنا — العبور', start: '2027-10-28T17:30:00Z', end: '2027-10-28T23:00:00Z', location: 'Golf City, El Obour, Egypt' };
+    document.getElementById('playZaffa').addEventListener('click', () => { try { WeddingSound.startMusic('dina_zaffa'); } catch(_) {} });
+  </script>
+</body></html>

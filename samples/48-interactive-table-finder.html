@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حازم و فريدة — نظام البحث عن طاولتك على الموبايل | التجمع الخامس</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--em:#0D3B2E;--gold:#C5A059;--bg:#FAF7F1;--ink:#13241F}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;min-height:100vh;padding:20px 14px 60px}
+    .amiri{font-family:'Amiri',serif}
+    .wrap{max-width:480px;margin:0 auto}
+    .hero-card{background:linear-gradient(155deg,#0D3B2E,#07221A);color:#fff;border-radius:22px;padding:24px 20px;text-align:center;border:1px solid var(--gold);box-shadow:0 20px 50px rgba(13,59,46,.22);margin-bottom:16px}
+    .hero-card img{width:100%;height:165px;object-fit:cover;border-radius:14px;border:1px solid rgba(197,160,89,.45);margin-bottom:14px}
+    .finder{background:#fff;border:1.5px solid rgba(197,160,89,.45);border-radius:20px;padding:20px 18px;margin-bottom:16px;box-shadow:0 12px 32px rgba(13,59,46,.07)}
+    .search-inp{width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid rgba(13,59,46,.18);font:inherit;font-size:13.5px;margin:10px 0 12px;outline:none}
+    .search-inp:focus{border-color:var(--gold)}
+    .seat-result{background:linear-gradient(135deg,#0D3B2E,#164E3D);color:#fff;border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--gold)}
+    .seat-num{background:var(--gold);color:#111;font-weight:700;padding:8px 14px;border-radius:12px;font-size:14px;white-space:nowrap}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .chips button{border:1px solid rgba(13,59,46,.15);background:#FAF7F1;color:var(--em);padding:5px 10px;border-radius:999px;font:600 11px inherit;cursor:pointer}
+    .card{background:#fff;border:1px solid rgba(13,59,46,.12);border-radius:18px;padding:18px;margin-bottom:16px;text-align:center}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+    .cd div{background:#FAF7F1;border-radius:10px;padding:8px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--em)} .cd span{font-size:10px;color:#5A6862}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;font:700 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-em{background:var(--em);color:#fff} .btn-g{border:1px solid var(--gold);color:var(--em);background:#fff}
+  </style>
+</head>
+<body data-music-mood="egyptian_mix">
+  <main class="wrap">
+    <div class="hero-card" id="startMusicCard">
+      <img src="../assets/images/tagamoa-mirage-palace.jpg" alt="JW Marriott Mirage City" />
+      <div style="font-size:11px;color:var(--gold);letter-spacing:.14em;">دعوة زفاف + خدمة رقم الطاولة على الموبايل</div>
+      <div data-guest-name data-guest-prefix="أهلاً بك يا " style="display:none;color:#F3DCAA;font-size:13px;font-weight:700;margin-top:4px;"></div>
+      <h1 class="amiri" style="font-size:40px;margin:4px 0;" data-couple-title>حازم و فريدة</h1>
+      <div style="font-size:12.5px;color:#D6E2DC;" data-venue-name>فندق جي دبليو ماريوت ميراج سيتي — التجمع الخامس</div>
+      <div style="font-size:12px;color:var(--gold);margin-top:4px;" data-event-date>السبت، ١٨ ديسمبر ٢٠٢٧ • الثامنة مساءً</div>
+    </div>
+
+    <!-- Interactive Live Table Finder -->
+    <section class="finder">
+      <div style="font-weight:700;font-size:15px;color:var(--em);">ابحث عن رقم طاولتك (Table Seating)</div>
+      <div style="font-size:11.5px;color:#5A6862;">اكتب اسمك لمعرفة رقم الطاولة والمنطقة المخصصة لك في القاعة:</div>
+      <input class="search-inp" id="tableSearch" placeholder="مثال: أحمد، كريم، د. منى، سارة..." />
+      <div class="seat-result" id="seatResult">
+        <div>
+          <div style="font-size:11px;color:#F3DCAA;" id="seatGuest">ضيفنا العزيز</div>
+          <div style="font-size:13.5px;font-weight:700;" id="seatZone">القاعة الملكية — صف كبار الزوار</div>
+        </div>
+        <div class="seat-num" id="seatNum" data-table-seat>طاولة ٠٥</div>
+      </div>
+      <div class="chips" id="demoGuests">
+        <button type="button" data-q="أحمد">أستاذ أحمد</button>
+        <button type="button" data-q="كريم">م. كريم</button>
+        <button type="button" data-q="منى">د. منى</button>
+        <button type="button" data-q="سارة">آنسة سارة</button>
+      </div>
+    </section>
+
+    <div class="card">
+      <div class="cd" data-countdown="2027-12-18T20:00:00+02:00">
+        <div><strong data-cd="days">00</strong><span>يوم</span></div>
+        <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
+        <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <button type="button" class="btn btn-em" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة للتقويم</button>
+        <a class="btn btn-g" style="flex:1" href="https://maps.google.com/?q=JW+Marriott+Mirage+City+Cairo" target="_blank" rel="noopener">الخريطة</a>
+      </div>
+      <form data-rsvp-form data-couple="حازم و فريدة" data-lang="ar" data-result-target="rsvp-res">
+        <input class="search-inp" style="margin:0 0 10px" name="guestName" type="text" required placeholder="الاسم الكريم لتأكيد الحضور" />
+        <button type="submit" class="btn btn-em" style="width:100%;">تأكيد الحضور واستلام الكارت عبر واتساب</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'زفاف حازم و فريدة', start: '2027-12-18T18:00:00Z', end: '2027-12-18T23:30:00Z', location: 'JW Marriott Mirage City, El Tagamoa, Cairo' };
+    const GUEST_MAP = [
+      { k: 'أحمد', name: 'أستاذ أحمد عبد الرحمن', zone: 'المنطقة الملكية — بجوار الكوشة', table: 'طاولة ٠١ • VIP' },
+      { k: 'كريم', name: 'م. كريم وعائلته', zone: 'الجناح الشرقي — أصدقاء العريس', table: 'طاولة ٠٧' },
+      { k: 'منى', name: 'د. منى والأسرة', zone: 'الصف الأول — عائلة العروس', table: 'طاولة ٠٢ • VIP' },
+      { k: 'سارة', name: 'آنسة سارة وصديقاتها', zone: 'جناح الحديقة — أصدقاء العروس', table: 'طاولة ١١' }
+    ];
+    function lookup(q) {
+      const hit = GUEST_MAP.find(g => g.k.includes(q) || g.name.includes(q));
+      if (hit) {
+        document.getElementById('seatGuest').textContent = hit.name;
+        document.getElementById('seatZone').textContent = hit.zone;
+        document.getElementById('seatNum').textContent = hit.table;
+      } else if (q.trim()) {
+        document.getElementById('seatGuest').textContent = q.trim();
+        document.getElementById('seatZone').textContent = 'القاعة الكبرى — منطقة الضيوف المميزين';
+        document.getElementById('seatNum').textContent = 'طاولة ٠٨';
+      }
+      try { WeddingSound.startMusic('egyptian_mix'); } catch(_) {}
+    }
+    document.getElementById('tableSearch').addEventListener('input', e => lookup(e.target.value));
+    document.getElementById('demoGuests').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      document.getElementById('tableSearch').value = b.dataset.q; lookup(b.dataset.q);
+    });
+    document.getElementById('startMusicCard').addEventListener('click', () => { try { WeddingSound.startMusic('egyptian_mix'); } catch(_) {} });
+  </script>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badr &amp; Jana — Pressed-Glass Herbarium | Katameya Heights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--sage:#2C4A3B;--gold:#B8924C;--ink:#1A2C22}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:linear-gradient(rgba(236,243,237,.58),rgba(220,233,223,.72)),url('../assets/images/el-obour-golf-gardens.jpg') center/cover fixed;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:24px 14px 60px}
+    .serif{font-family:'Cormorant Garamond',serif}
+    .glass-shell{max-width:480px;margin:0 auto;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1.5px solid rgba(255,255,255,.9);border-radius:26px;padding:26px 20px 30px;box-shadow:0 24px 60px rgba(24,48,35,.16);text-align:center}
+    .arch-top{width:140px;height:170px;margin:0 auto 14px;border-radius:90px 90px 14px 14px;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 26px rgba(44,74,59,.18)}
+    .arch-top img{width:100%;height:100%;object-fit:cover}
+    .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:rgba(44,74,59,.08);padding:5px;border-radius:999px;margin:18px 0}
+    .tbtn{border:0;background:transparent;padding:8px 6px;border-radius:999px;font:600 11.5px inherit;color:var(--sage);cursor:pointer;transition:.2s}
+    .tbtn.active{background:var(--sage);color:#fff;box-shadow:0 4px 12px rgba(44,74,59,.25)}
+    .panel{display:none;text-align:left;background:rgba(255,255,255,.7);border:1px solid rgba(44,74,59,.12);border-radius:16px;padding:16px;margin-bottom:18px;font-size:13px}
+    .panel.active{display:block}
+    .orbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
+    .orb{background:rgba(255,255,255,.85);border:1px solid rgba(184,146,76,.35);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .orb b{font-size:19px;color:var(--sage)} .orb span{font-size:9px;text-transform:uppercase;color:#62756A}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:600 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-sage{background:var(--sage);color:#fff} .btn-out{border:1px solid var(--sage);color:var(--sage);background:#fff}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(44,74,59,.22);background:#fff;font:inherit;margin-bottom:9px}
+  </style>
+</head>
+<body data-music-mood="classic_romance_inst">
+  <main class="glass-shell">
+    <div class="arch-top"><img src="../assets/images/el-obour-golf-gardens.jpg" alt="Katameya Heights" /></div>
+    <div style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;">Botanical Garden Celebration</div>
+    <div data-guest-name data-guest-prefix="Welcome, " style="display:none;font-size:12.5px;color:var(--sage);font-weight:600;margin-top:6px;"></div>
+    <h1 class="serif" style="font-size:42px;margin:6px 0 4px;" data-couple-title>Badr &amp; Jana</h1>
+    <div style="font-size:12.5px;color:#52695D;" data-venue-name>Katameya Heights Club Gardens · El Tagamoa</div>
+    <div class="orbs" data-countdown="2027-10-16T18:30:00+03:00">
+      <div class="orb"><b data-cd="days">00</b><span>Days</span></div>
+      <div class="orb"><b data-cd="hours">00</b><span>Hrs</span></div>
+      <div class="orb"><b data-cd="minutes">00</b><span>Min</span></div>
+      <div class="orb"><b data-cd="seconds">00</b><span>Sec</span></div>
+    </div>
+    <div class="tabs" id="tabBar">
+      <button type="button" class="tbtn active" data-t="p1">Details</button>
+      <button type="button" class="tbtn" data-t="p2">Schedule</button>
+      <button type="button" class="tbtn" data-t="p3">Dress &amp; Map</button>
+    </div>
+    <div class="panel active" id="p1">
+      <p><strong>Date:</strong> <span data-event-date>Saturday, October 16, 2027</span></p>
+      <p style="margin-top:6px;"><strong>Time:</strong> 6:30 PM — Garden Sunset Reception</p>
+      <p style="margin-top:6px;"><strong>Table:</strong> <span data-table-seat>Garden Pavilion · Table 4</span></p>
+    </div>
+    <div class="panel" id="p2">
+      <p><strong>6:30 PM</strong> — Acoustic Violin Welcome</p>
+      <p style="margin-top:6px;"><strong>7:45 PM</strong> — Couple Entrance &amp; First Dance</p>
+      <p style="margin-top:6px;"><strong>9:00 PM</strong> — Open-Air Dinner under Olive Trees</p>
+    </div>
+    <div class="panel" id="p3">
+      <p><strong>Attire:</strong> Garden Formal — Sage, Cream, Champagne &amp; Soft Pastels.</p>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button type="button" class="btn btn-sage" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+        <a class="btn btn-out" style="flex:1" href="https://maps.google.com/?q=Katameya+Heights+New+Cairo" target="_blank" rel="noopener">Open Map</a>
+      </div>
+    </div>
+    <form data-rsvp-form data-couple="Badr & Jana" data-lang="en" data-result-target="rsvp-res">
+      <input class="inp" name="guestName" type="text" required placeholder="Your Full Name" />
+      <button type="submit" class="btn btn-sage" style="width:100%;">Confirm Attendance on WhatsApp</button>
+    </form>
+    <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Wedding of Badr & Jana — Katameya Heights', start: '2027-10-16T15:30:00Z', end: '2027-10-16T22:00:00Z', location: 'Katameya Heights, El Tagamoa, New Cairo' };
+    document.getElementById('tabBar').addEventListener('click', e => {
+      const b = e.target.closest('.tbtn'); if (!b) return;
+      document.querySelectorAll('.tbtn').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      b.classList.add('active'); document.getElementById(b.dataset.t).classList.add('active');
+      try { WeddingSound.startMusic('classic_romance_inst'); } catch(_) {}
+    });
+  </script>
+</body></html>

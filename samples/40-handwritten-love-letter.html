@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seif &amp; Yasmin — Handwritten Wax-Ribbon Letter | Maadi, Cairo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=La+Belle+Aurore&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --paper:#FBF7F0; --ink:#2E221D; --burgundy:#6D1D2A; --gold:#B38945; --muted:#78655B; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:linear-gradient(rgba(36,24,20,.65),rgba(36,24,20,.72)),url('../assets/images/al-azhar-park.jpg') center/cover fixed;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:24px 14px 60px;display:flex;align-items:center;justify-content:center}
+    .serif{font-family:'Cormorant Garamond',serif} .hand{font-family:'La Belle Aurore',cursive}
+    .letter-stage{width:min(460px,100%);perspective:1200px}
+    .folded-packet{background:var(--paper);border-radius:10px;padding:42px 26px;text-align:center;position:relative;box-shadow:0 26px 70px rgba(0,0,0,.45);border:1px solid rgba(179,137,69,.35);cursor:pointer;transition:all .7s cubic-bezier(.76,0,.24,1)}
+    .ribbon-h{position:absolute;left:0;right:0;top:50%;height:26px;transform:translateY(-50%);background:linear-gradient(180deg,#7E2434,#5A1522);box-shadow:0 4px 12px rgba(0,0,0,.22)}
+    .ribbon-v{position:absolute;top:0;bottom:0;left:50%;width:26px;transform:translateX(-50%);background:linear-gradient(90deg,#7E2434,#5A1522)}
+    .wax-btn{position:relative;z-index:3;width:86px;height:86px;border-radius:50%;margin:24px auto;background:radial-gradient(circle at 32% 30%,#9E2A3B,#5C121E);border:3px solid #D8B574;color:#FAF0DC;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 10px 26px rgba(0,0,0,.38);transition:transform .25s}
+    .folded-packet:hover .wax-btn{transform:scale(1.07)}
+    .packet-label{position:relative;z-index:3;display:inline-block;background:var(--paper);padding:8px 18px;border-radius:999px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--burgundy);font-weight:700;border:1px solid rgba(109,29,42,.22)}
+    .letter-open{display:none;animation:unfold .85s cubic-bezier(.22,1,.36,1) both}
+    .letter-stage.is-open .folded-packet{display:none}
+    .letter-stage.is-open .letter-open{display:block}
+    @keyframes unfold{0%{opacity:0;transform:rotateX(-28deg) translateY(20px)}100%{opacity:1;transform:rotateX(0) translateY(0)}}
+    .sheet{background:var(--paper);border-radius:8px;padding:34px 26px;box-shadow:0 24px 65px rgba(0,0,0,.42);border:1px solid rgba(179,137,69,.35);background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(179,137,69,.12) 32px)}
+    .postage{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(109,29,42,.18);padding-bottom:14px;margin-bottom:20px}
+    .stamp{border:2px dashed var(--burgundy);padding:6px 10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy);font-weight:700;transform:rotate(3deg)}
+    .guest-line{font-size:24px;color:var(--burgundy);margin-bottom:6px}
+    .title{font-size:42px;line-height:1.1;margin-bottom:14px;color:var(--ink)}
+    .body-note{font-size:21px;line-height:1.55;color:#46352E;margin-bottom:22px}
+    .venue-pic{width:100%;height:170px;border-radius:8px;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 22px rgba(0,0,0,.15);margin-bottom:16px}
+    .meta-strip{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:rgba(109,29,42,.05);padding:14px;border-radius:8px;margin-bottom:18px;font-size:12.5px}
+    .meta-strip b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy)}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px;text-align:center}
+    .cd div{background:#fff;border:1px solid rgba(179,137,69,.3);border-radius:8px;padding:8px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--burgundy)} .cd span{font-size:9.5px;text-transform:uppercase;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:600 12.5px inherit;text-decoration:none;cursor:pointer;border:0}
+    .btn-burg{background:var(--burgundy);color:#FAF0DC} .btn-out{background:transparent;border:1px solid var(--burgundy);color:var(--burgundy)}
+    .inp{width:100%;padding:10px 12px;border-radius:8px;border:1px solid rgba(109,29,42,.25);background:#fff;font:inherit;font-size:13px;margin-bottom:10px}
+  </style>
+</head>
+<body data-music-mood="ed_perfect">
+  <div class="letter-stage" id="stage">
+    <div class="folded-packet" id="openBtn">
+      <div class="ribbon-h"></div><div class="ribbon-v"></div>
+      <div class="packet-label">A Handwritten Letter For You</div>
+      <div class="wax-btn serif" data-monogram>S &amp; Y</div>
+      <div class="packet-label" style="margin-top:8px;">Tap Wax Seal to Untie Ribbon</div>
+    </div>
+    <div class="letter-open">
+      <div class="sheet">
+        <div class="postage">
+          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">Maadi · Cairo · 2027</div>
+          <div class="stamp">AIR MAIL · VIP</div>
+        </div>
+        <div class="guest-line hand" data-guest-name data-guest-prefix="Dearest " style="display:none;"></div>
+        <h1 class="title serif" data-couple-title>Seif &amp; Yasmin</h1>
+        <p class="body-note hand">With full hearts and joyful families, we invite you to celebrate the beginning of our forever beneath the garden lanterns of Maadi.</p>
+        <img class="venue-pic" src="../assets/images/al-azhar-park.jpg" alt="Villa Belle Epoque Maadi" />
+        <div class="meta-strip">
+          <div><b>Date &amp; Time</b><span data-event-date>Friday, Nov 12, 2027</span> · 7:30 PM</div>
+          <div><b>Venue</b><span data-venue-name>Villa Belle Époque, Maadi, Cairo</span></div>
+        </div>
+        <div class="cd" data-countdown="2027-11-12T19:30:00+02:00">
+          <div><strong data-cd="days">00</strong><span>Days</span></div>
+          <div><strong data-cd="hours">00</strong><span>Hours</span></div>
+          <div><strong data-cd="minutes">00</strong><span>Mins</span></div>
+          <div><strong data-cd="seconds">00</strong><span>Secs</span></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:20px;">
+          <button type="button" class="btn btn-burg" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Save Date</button>
+          <a class="btn btn-out" style="flex:1" href="https://maps.google.com/?q=Villa+Belle+Epoque+Maadi+Cairo" target="_blank" rel="noopener">Directions</a>
+        </div>
+        <form data-rsvp-form data-couple="Seif & Yasmin" data-lang="en" data-result-target="rsvp-res">
+          <input class="inp" name="guestName" type="text" required placeholder="Your Name" />
+          <div style="display:flex;gap:14px;font-size:12.5px;margin-bottom:10px;justify-content:center;">
+            <label><input type="radio" name="attendance" value="yes" checked /> Joyfully Attending</label>
+            <label><input type="radio" name="attendance" value="no" /> Regretfully Declining</label>
+          </div>
+          <button type="submit" class="btn btn-burg" style="width:100%;">Send Reply via WhatsApp</button>
+        </form>
+        <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Wedding of Seif & Yasmin — Maadi', start: '2027-11-12T17:30:00Z', end: '2027-11-12T23:00:00Z', location: 'Villa Belle Epoque, Maadi, Cairo' };
+    document.getElementById('openBtn').addEventListener('click', () => {
+      document.getElementById('stage').classList.add('is-open');
+      try { WeddingSound.startMusic('ed_perfect'); } catch(_) {}
+    });
+  </script>
+</body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ziad &amp; Habiba — Architectural Z-Fold Accordion Card (Silent) | El Tagamoa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--stone:#EFECE6;--paper:#FAF9F6;--ink:#1D1D1B;--muted:#6B6963;--line:rgba(29,29,27,.14)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--stone);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:24px 14px 60px;display:flex;justify-content:center}
+    .serif{font-family:'Cormorant Garamond',serif}
+    .accordion{width:min(440px,100%);perspective:1200px}
+    .panel{background:var(--paper);border:1px solid var(--line);padding:26px 22px;position:relative;box-shadow:0 10px 26px rgba(0,0,0,.05)}
+    .panel-cover{border-radius:12px;cursor:pointer;text-align:center}
+    .fold-group{max-height:0;overflow:hidden;opacity:0;transform-origin:top center;transform:rotateX(-35deg);transition:all .85s cubic-bezier(.22,1,.36,1)}
+    .accordion.is-open .panel-cover{border-radius:12px 12px 0 0}
+    .accordion.is-open .fold-group{max-height:1600px;opacity:1;transform:rotateX(0)}
+    .panel-mid{border-top:0;background:linear-gradient(180deg,#F3F1EC,#FAF9F6)}
+    .panel-end{border-top:0;border-radius:0 0 12px 12px}
+    .hero{width:100%;height:175px;object-fit:cover;border-radius:8px;margin-bottom:16px}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0;text-align:center}
+    .cd div{border:1px solid var(--line);padding:8px 4px;border-radius:6px;background:#fff}
+    .cd strong{display:block;font-size:19px} .cd span{font-size:9px;text-transform:uppercase;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:6px;font:600 12px inherit;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;border:0}
+    .btn-dark{background:var(--ink);color:#fff} .btn-l{border:1px solid var(--ink);color:var(--ink);background:transparent}
+    .inp{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;margin-bottom:10px;font:inherit;background:#fff}
+  </style>
+</head>
+<body data-no-floating-bar>
+  <div class="accordion" id="acc">
+    <div class="panel panel-cover" id="toggleAcc">
+      <div style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">SILENT Z-FOLD STATIONERY · ZERO AUDIO</div>
+      <h1 class="serif" style="font-size:44px;font-weight:400;line-height:1.1;margin-bottom:8px;" data-couple-title>Ziad &amp; Habiba</h1>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px;" data-venue-name>Lake House The Club · El Tagamoa, New Cairo</div>
+      <span class="btn btn-dark" id="accLbl">Unfold Invitation ↓</span>
+    </div>
+    <div class="fold-group">
+      <div class="panel panel-mid">
+        <img class="hero" src="../assets/images/tagamoa-mirage-palace.jpg" alt="Lake House Tagamoa" />
+        <div data-guest-name data-guest-prefix="Honored Guest: " style="display:none;font-size:12px;font-weight:600;margin-bottom:6px;"></div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">Quietly crafted for an intimate lakeside reception. Join us on <strong style="color:var(--ink);" data-event-date>Friday, October 15, 2027</strong> at 7:00 PM · <strong data-table-seat>Table 06</strong>.</p>
+        <div class="cd" data-countdown="2027-10-15T19:00:00+03:00">
+          <div><strong data-cd="days">00</strong><span>Days</span></div>
+          <div><strong data-cd="hours">00</strong><span>Hrs</span></div>
+          <div><strong data-cd="minutes">00</strong><span>Min</span></div>
+          <div><strong data-cd="seconds">00</strong><span>Sec</span></div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button type="button" class="btn btn-dark" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Calendar</button>
+          <a class="btn btn-l" style="flex:1" href="https://maps.google.com/?q=Lake+House+New+Cairo" target="_blank" rel="noopener">Location</a>
+        </div>
+      </div>
+      <div class="panel panel-end">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;text-align:center;">R.S.V.P</div>
+        <form data-rsvp-form data-couple="Ziad & Habiba" data-lang="en" data-result-target="rsvp-res">
+          <input class="inp" name="guestName" type="text" required placeholder="Full Name" />
+          <button type="submit" class="btn btn-dark" style="width:100%;">Confirm via WhatsApp</button>
+        </form>
+        <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Ziad & Habiba Wedding', start: '2027-10-15T16:00:00Z', end: '2027-10-15T22:30:00Z', location: 'Lake House The Club, El Tagamoa, New Cairo' };
+    document.getElementById('toggleAcc').addEventListener('click', () => {
+      const a = document.getElementById('acc'); a.classList.toggle('is-open');
+      document.getElementById('accLbl').textContent = a.classList.contains('is-open') ? 'Fold Card ↑' : 'Unfold Invitation ↓';
+    });
+  </script>
+</body></html>

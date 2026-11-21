@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شريف و يارا — ستارة المسرح الملكية ودفتر التهاني | تريومف</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--velvet:#0B2E24;--gold:#DFBA6E;--cream:#FAF5EB}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#071C16;color:var(--cream);font-family:'Cairo',sans-serif;min-height:100vh;overflow-x:hidden}
+    .amiri{font-family:'Amiri',serif}
+    #curtain-stage{position:fixed;inset:0;z-index:600;display:flex;cursor:pointer;transition:visibility 1s}
+    #curtain-stage.is-open{visibility:hidden;pointer-events:none}
+    .drape{flex:1;background:repeating-linear-gradient(90deg,#08251C 0px,#124334 18px,#071E17 36px);transition:transform 1.1s cubic-bezier(.76,0,.24,1);box-shadow:inset 0 0 60px rgba(0,0,0,.6)}
+    #curtain-stage.is-open .drape-r{transform:translateX(104%)}
+    #curtain-stage.is-open .drape-l{transform:translateX(-104%)}
+    .spot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;text-align:center;width:min(300px,86vw);padding:30px 22px;border-radius:20px;background:rgba(7,28,22,.88);border:1.5px solid var(--gold);box-shadow:0 0 80px rgba(223,186,110,.22);transition:opacity .5s}
+    #curtain-stage.is-open .spot{opacity:0}
+    .gala{max-width:500px;margin:0 auto;padding:24px 14px 64px;text-align:center}
+    .hero-img{width:100%;height:200px;border-radius:18px;object-fit:cover;border:1.5px solid rgba(223,186,110,.45);margin-bottom:18px}
+    .box{background:rgba(13,44,34,.85);border:1px solid rgba(223,186,110,.3);border-radius:18px;padding:18px;margin-bottom:16px}
+    .wishes-list{display:grid;gap:8px;text-align:right;margin-bottom:12px}
+    .wish{background:rgba(255,255,255,.05);border-right:3px solid var(--gold);padding:9px 12px;border-radius:8px;font-size:12.5px}
+    .wish b{display:block;color:var(--gold);font-size:11.5px}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+    .cd div{background:rgba(223,186,110,.1);border-radius:10px;padding:9px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--gold)} .cd span{font-size:10px}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(223,186,110,.35);background:rgba(0,0,0,.28);color:#fff;font:inherit;font-size:13px;margin-bottom:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:999px;font:700 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-g{background:var(--gold);color:#081C16} .btn-o{border:1px solid var(--gold);color:var(--gold);background:transparent}
+  </style>
+</head>
+<body data-music-mood="jassmi_zaffa">
+  <div id="curtain-stage" role="dialog">
+    <div class="drape drape-r"></div><div class="drape drape-l"></div>
+    <div class="spot">
+      <div style="font-size:11px;letter-spacing:.18em;color:var(--gold);margin-bottom:6px;">أمسية الزفاف الملكي</div>
+      <div class="amiri" style="font-size:38px;margin-bottom:10px;" data-couple-title>شريف و يارا</div>
+      <div style="font-size:12px;color:#C7D6D0;margin-bottom:16px;" data-venue-name>فندق تريومف — مدينة نصر / التجمع الخامس</div>
+      <span class="btn btn-g">اضغط لرفع الستار</span>
+    </div>
+  </div>
+  <main class="gala">
+    <img class="hero-img" src="../assets/images/madinet-nasr-venue.jpg" alt="Triumph Hotel" />
+    <div data-guest-name data-guest-prefix="ضيفنا الغالي: " style="display:none;color:var(--gold);font-weight:700;font-size:13px;margin-bottom:4px;"></div>
+    <h1 class="amiri" style="font-size:42px;color:var(--gold);" data-couple-title>شريف و يارا</h1>
+    <p style="font-size:13px;color:#C7D6D0;margin-bottom:14px;"><span data-event-date>السبت، ٤ ديسمبر ٢٠٢٧</span> • الثامنة مساءً • <span data-table-seat>طاولة VIP ١٠</span></p>
+    <div class="box">
+      <div class="cd" data-countdown="2027-12-04T20:00:00+02:00">
+        <div><strong data-cd="days">00</strong><span>يوم</span></div>
+        <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
+        <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button type="button" class="btn btn-g" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة للتقويم</button>
+        <a class="btn btn-o" style="flex:1" href="https://maps.google.com/?q=Triumph+Luxury+Hotel+Cairo" target="_blank" rel="noopener">الخريطة</a>
+      </div>
+    </div>
+    <div class="box">
+      <div class="amiri" style="font-size:22px;color:var(--gold);margin-bottom:10px;">دفتر التهاني المباشر</div>
+      <div class="wishes-list" id="wishesList">
+        <div class="wish"><b>أحمد وسارة</b>ألف مبروك يا أحلى عروسين، ربنا يسعدكم العمر كله!</div>
+        <div class="wish"><b>م. كريم طارق</b>ليلة العمر المنتظرة، منتظرينكم بكل فرحة.</div>
+      </div>
+      <input class="inp" id="wName" placeholder="اسمك" />
+      <input class="inp" id="wText" placeholder="اكتب تهنئة للعروسين..." />
+      <button type="button" class="btn btn-o" style="width:100%;" id="addWishBtn">إضافة تهنئتك الآن</button>
+    </div>
+    <div class="box">
+      <form data-rsvp-form data-couple="شريف و يارا" data-lang="ar" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="الاسم لتأكيد الحضور" />
+        <button type="submit" class="btn btn-g" style="width:100%;">تأكيد الحضور عبر واتساب</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'زفاف شريف و يارا', start: '2027-12-04T18:00:00Z', end: '2027-12-04T23:30:00Z', location: 'Triumph Luxury Hotel, Cairo' };
+    document.getElementById('curtain-stage').addEventListener('click', () => {
+      document.getElementById('curtain-stage').classList.add('is-open');
+      try { WeddingSound.startMusic('jassmi_zaffa'); } catch(_) {}
+    });
+    document.getElementById('addWishBtn').addEventListener('click', () => {
+      const n = document.getElementById('wName').value.trim(), t = document.getElementById('wText').value.trim();
+      if (!n || !t) return;
+      const d = document.createElement('div'); d.className = 'wish';
+      d.innerHTML = '<b></b><span></span>'; d.querySelector('b').textContent = n; d.querySelector('span').textContent = t;
+      document.getElementById('wishesList').prepend(d);
+      document.getElementById('wName').value = ''; document.getElementById('wText').value = '';
+    });
+  </script>
+</body></html>
