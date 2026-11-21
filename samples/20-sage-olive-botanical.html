@@ -99,25 +99,29 @@
       text-align: left;
     }
     .detail-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px dashed rgba(90, 115, 96, 0.15);
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px dashed rgba(90, 115, 96, 0.18);
       font-size: 13.5px;
     }
     .detail-row:last-child { border-bottom: none; }
     .label {
       color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
     }
     .val {
       color: var(--ink);
       font-weight: 500;
       text-align: right;
+      line-height: 1.45;
     }
     .cd-grid {
       display: grid;

@@ -208,6 +208,22 @@ window.SITE = {
       bg: 'linear-gradient(145deg,#131B33,#070B16)', accent: '#E5C378',
       desc: 'Constellation starlight crest on deep midnight velvet paper with metallic gold typography and instant response.',
       features: ['Celestial Stars', 'No Motion', 'Deep Midnight Paper', 'Silent Luxury']
+    },
+    {
+      num: '24', cat: 'weddings', file: 'samples/24-liquid-chromium-pearl.html',
+      title: 'Liquid Chromium & Pearl', subtitle: 'Omar & Salma',
+      venue: 'Four Seasons Nile Plaza, Cairo', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#F8FAFC,#E2E8F0)', accent: '#0F172A',
+      desc: 'Interactive molten platinum seal reveal, liquid chromium specular reflections, and alabaster pearl card.',
+      features: ['Liquid Chrome Seal', 'Molten Motion', 'Specular Sheen', 'VIP QR Pass']
+    },
+    {
+      num: '25', cat: 'cards', file: 'samples/25-molten-chrome-card.html',
+      title: 'Molten Chrome Minimalist Card', subtitle: 'Omar & Salma',
+      venue: 'The Nile Ritz-Carlton, Cairo', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FFFFFF,#EEF2F6)', accent: '#1E293B',
+      desc: 'Silent luxury stationery on heavy pearl stock with beveled liquid chromium borders and embossed platinum monogram.',
+      features: ['Liquid Chrome Border', 'No Motion', 'Embossed Monogram', 'Silent Luxury']
     }
   ],
 
@@ -221,7 +237,7 @@ window.SITE = {
       bestFor: 'Katb Ketab, Engagement & Henna',
       blurb: 'Any ready-made design from our collection personalised with your full event details.',
       items: [
-        'Any of our 23 interactive designs & classic cards',
+        'Any of our 25 interactive designs & classic cards',
         'Couple names, date, schedule & venue map',
         'Live countdown timer & Add-to-Calendar',
         'Opening animation, sound effects & music',

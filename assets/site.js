@@ -110,12 +110,18 @@
 
     const modal = document.createElement('div');
     modal.id = 'preview-modal';
-    modal.innerHTML = `<div class="modal-layout"><div class="phone-frame"><iframe id="previewFrame" title="Live preview"></iframe></div>
-      <div class="modal-side"><button type="button" class="close-modal" id="closeModalBtn">✕ Close</button>
-      <h3 id="modalTitle" class="serif gold" style="font-size:30px;line-height:1.15"></h3><p id="modalDesc" class="muted" style="font-size:13px"></p>
-      <div class="tip">✨ Tap the cover inside the phone to experience the interactive motion.</div>
-      <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
-      <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a></div></div>`;
+    modal.innerHTML = `
+      <button type="button" class="close-modal" id="closeModalBtn" aria-label="Close preview">✕ Close</button>
+      <div class="modal-layout">
+        <div class="phone-frame"><iframe id="previewFrame" title="Live preview"></iframe></div>
+        <div class="modal-side">
+          <h3 id="modalTitle" class="serif gold" style="font-size:30px;line-height:1.15"></h3>
+          <p id="modalDesc" style="font-size:13.5px;color:rgba(255,255,255,0.85);line-height:1.6"></p>
+          <div class="tip">✨ Tap the cover inside the phone to experience the interactive motion.</div>
+          <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
+          <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a>
+        </div>
+      </div>`;
     document.body.appendChild(modal);
     const close = () => { modal.classList.remove('is-open'); document.getElementById('previewFrame').src = 'about:blank'; };
     modal.addEventListener('click', (e) => e.target === modal && close());
