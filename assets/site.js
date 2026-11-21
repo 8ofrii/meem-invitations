@@ -13,8 +13,10 @@
     }
   } catch (_) {}
 
-  const savedTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_site_theme')) || 'liquid-glass';
-  document.documentElement.dataset.theme = savedTheme;
+  const savedTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_site_theme'));
+  const effectiveTheme = (savedTheme === 'rose-pearl' || savedTheme === 'ivory-editorial') ? savedTheme : 'ivory-editorial';
+  document.documentElement.dataset.theme = effectiveTheme;
+  if (typeof localStorage !== 'undefined') localStorage.setItem('meem_site_theme', effectiveTheme);
 
   const wa = (msg) => `https://wa.me/${S.WHATSAPP}?text=${encodeURIComponent(msg)}`;
 

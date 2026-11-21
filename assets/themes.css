@@ -224,7 +224,7 @@ html[data-theme="rose-pearl"] .steps-note { color: #5C474C; }
 html[data-theme="rose-pearl"] .btn-gold { color: #FFFFFF; }
 
 /* Native <select> dropdown & date picker readability across all 5 themes */
-html, select, input { color-scheme: dark; }
+html, select, input { color-scheme: light; }
 html[data-theme="liquid-glass"] { color-scheme: dark; }
 html[data-theme="obsidian-gold"] { color-scheme: dark; }
 html[data-theme="emerald-palace"] { color-scheme: dark; }

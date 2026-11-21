@@ -31,13 +31,26 @@
   .search-box:focus { border-color: var(--gold); }
 
   /* Try it live studio */
-  .studio { display: grid; grid-template-columns: 1fr 410px; gap: 34px; align-items: start; }
+  .studio { display: grid; grid-template-columns: 1fr 410px; gap: 34px; align-items: start; width: 100%; }
   .form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .full { grid-column: 1 / -1; }
+  .form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
   .steps-note { display: grid; gap: 8px; font-size: 13px; color: #D5D0C8; margin-top: 16px; }
   .color-note { margin-top: 16px; padding: 12px 14px; border-radius: 12px; background: rgba(223,190,127,.08); border: 1px solid var(--gold-dim); font-size: 13px; color: var(--gold); line-height: 1.55; }
   .phone-wrap { position: sticky; top: 92px; display: flex; justify-content: center; }
-  .phone-frame { width: 380px; height: min(740px, 80vh); border-radius: 44px; border: 10px solid #22222A; background: #000; box-shadow: 0 32px 90px rgba(0,0,0,.7), 0 0 0 1px var(--gold-dim); overflow: hidden; position: relative; }
+  .phone-frame {
+    width: min(380px, 100%);
+    max-width: calc(100vw - 32px);
+    height: min(740px, 80vh);
+    border-radius: 44px;
+    border: 10px solid #22222A;
+    background: #000;
+    box-shadow: 0 32px 90px rgba(0,0,0,.7), 0 0 0 1px var(--gold-dim);
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
   .phone-frame iframe {
     width: 100%;
     height: 100%;
@@ -80,17 +93,17 @@
   .order-layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 24px; align-items: start; margin-top: 32px; }
   .orderform { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .addon-list { display: grid; gap: 8px; margin-top: 6px; }
-  .addon-opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; font-size: 13px; transition: border-color .2s; }
+  .addon-opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: #FFFFFF; cursor: pointer; font-size: 13px; transition: border-color .2s; }
   .addon-opt:hover { border-color: var(--gold-dim); }
-  .addon-opt:has(input:checked) { border-color: var(--gold); background: rgba(223,190,127,.07); }
+  .addon-opt:has(input:checked) { border-color: var(--gold); background: rgba(168, 129, 58, 0.08); }
   .addon-left { display: flex; align-items: center; gap: 10px; }
   .addon-opt input { accent-color: var(--gold); width: 16px; height: 16px; }
-  .addon-price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .addon-price { color: var(--gold-2); font-weight: 700; white-space: nowrap; }
 
-  .summary-box { position: sticky; top: 92px; background: linear-gradient(155deg,#17151C,#111116); border: 1px solid var(--gold-dim); border-radius: 22px; padding: 26px 22px; }
-  .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; color: #D5D0C8; }
+  .summary-box { position: sticky; top: 92px; background: linear-gradient(155deg,#FFFFFF,#FAF5ED); border: 1px solid var(--gold-dim); border-radius: 22px; padding: 26px 22px; box-shadow: 0 16px 40px rgba(45, 35, 20, 0.06); }
+  .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; color: #4A423A; }
   .sum-total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 6px; font-size: 14px; font-weight: 600; }
-  .sum-total b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1; }
+  .sum-total b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold-2); line-height: 1; }
   .deposit-note { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
   .pay-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
   .pay-badge { font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
@@ -98,12 +111,35 @@
   .section-divider { border: 0; border-top: 1px solid var(--line); margin: 10px 0; }
 
   @media (max-width: 980px) {
-    .studio, .order-layout { grid-template-columns: 1fr; }
+    .studio, .order-layout { grid-template-columns: 1fr; gap: 24px; }
     .phone-wrap, .summary-box { position: static; }
     .stats, .trust-grid { grid-template-columns: repeat(2,1fr); }
   }
+  @media (max-width: 680px) {
+    .filter-bar { flex-direction: column; align-items: stretch; }
+    .search-box { width: 100%; min-width: 0; }
+    .pill-group { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .pill-group::-webkit-scrollbar { display: none; }
+    .fpill { flex-shrink: 0; white-space: nowrap; }
+  }
   @media (max-width: 600px) {
     .form, .orderform, .trust-grid { grid-template-columns: 1fr; }
+    .form-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .form-actions #apply { grid-column: 1 / -1; width: 100%; }
+    .stats { gap: 8px; }
+    .stat { padding: 10px 6px; }
+    .stat b { font-size: 15px; }
+    .hero .actions .btn { width: 100%; }
+    .phone-frame {
+      width: min(340px, calc(100vw - 32px));
+      height: min(650px, 74vh);
+      border-width: 7px;
+      border-radius: 32px;
+    }
+  }
+  @media (max-width: 360px) {
+    .form-actions { grid-template-columns: 1fr; }
+    .phone-frame { width: 100%; border-width: 5px; border-radius: 22px; }
   }
 </style>
 </head>
@@ -169,7 +205,7 @@
         <form class="form" id="f" onsubmit="return false">
           <div class="field full">
             <label for="d">1 · Design</label>
-            <select id="d" style="color-scheme:dark;background-color:#14141A;color:#F7F3EC"></select>
+            <select id="d" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917"></select>
           </div>
           <div class="field"><label for="cg">2 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Mahmoud / محمود"></div>
           <div class="field"><label for="cb">3 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Merna / ميرنا"></div>
@@ -189,8 +225,8 @@
           <div class="full"><div class="hint">Quick examples:</div>
             <div class="quick"><button type="button" data-ex="1">Mahmoud &amp; Merna · Giza</button><button type="button" data-ex="2">محمود و ميرنا · القاهرة</button><button type="button" data-ex="3">Clear all</button></div></div>
 
-          <div class="full" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
-            <button class="btn btn-gold" id="apply" style="flex:1;min-width:160px">↻ Update preview</button>
+          <div class="full form-actions">
+            <button class="btn btn-gold" id="apply">↻ Update preview</button>
             <a class="btn btn-ghost" id="full" target="_blank">Full screen ↗</a>
             <button class="btn btn-ghost" id="copy">Copy link</button>
             <a class="btn btn-ghost" id="order" target="_blank" rel="noopener">Order on WhatsApp</a>

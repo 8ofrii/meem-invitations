@@ -32,17 +32,17 @@
   .full { grid-column: 1 / -1; }
 
   .addon-list { display: grid; gap: 8px; margin-top: 6px; }
-  .addon-opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; font-size: 13px; transition: border-color .2s; }
+  .addon-opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: #FFFFFF; cursor: pointer; font-size: 13px; transition: border-color .2s; }
   .addon-opt:hover { border-color: var(--gold-dim); }
-  .addon-opt:has(input:checked) { border-color: var(--gold); background: rgba(223,190,127,.07); }
+  .addon-opt:has(input:checked) { border-color: var(--gold); background: rgba(168, 129, 58, 0.08); }
   .addon-left { display: flex; align-items: center; gap: 10px; }
   .addon-opt input { accent-color: var(--gold); width: 16px; height: 16px; }
-  .addon-price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .addon-price { color: var(--gold-2); font-weight: 700; white-space: nowrap; }
 
-  .summary-box { position: sticky; top: 92px; background: linear-gradient(155deg,#17151C,#111116); border: 1px solid var(--gold-dim); border-radius: 22px; padding: 26px 22px; }
-  .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; color: #D5D0C8; }
+  .summary-box { position: sticky; top: 92px; background: linear-gradient(155deg,#FFFFFF,#FAF5ED); border: 1px solid var(--gold-dim); border-radius: 22px; padding: 26px 22px; box-shadow: 0 16px 40px rgba(45, 35, 20, 0.06); }
+  .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; color: #4A423A; }
   .sum-total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 6px; font-size: 14px; font-weight: 600; }
-  .sum-total b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1; }
+  .sum-total b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold-2); line-height: 1; }
   .deposit-note { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
   .pay-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
   .pay-badge { font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
@@ -65,7 +65,8 @@
     .summary-box { position: static; }
   }
   @media (max-width: 600px) {
-    .trust-grid, .orderform { grid-template-columns: 1fr; }
+    .trust-grid, .orderform, .timeline { grid-template-columns: 1fr; }
+    .pkg { padding: 22px 18px; }
   }
 </style>
 </head>

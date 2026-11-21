@@ -25,6 +25,10 @@
   .s-ar { font-family: 'Amiri', serif; font-size: 17px; color: var(--gold); margin-bottom: 8px; }
   .s-desc { font-size: 13px; color: var(--muted); flex: 1; margin-bottom: 18px; }
   .s-actions { display: flex; gap: 10px; }
+  @media (max-width: 600px) {
+    .style-grid { grid-template-columns: 1fr; gap: 16px; }
+    .styles-head { padding: 48px 0 24px; }
+  }
 </style>
 </head>
 <body>
@@ -43,39 +47,39 @@
   Shell.init('styles');
   const STYLES = [
     {
-      id: 'liquid-glass', num: 'Style 01 · Default', title: 'Liquid Glass', ar: 'الزجاج السائل العصري',
+      id: 'ivory-editorial', num: 'Style 01 · Default (Light)', title: 'Ivory Bridal Editorial', ar: 'الأبيض العاجي الفاخر (الأساسي)',
+      desc: 'Warm pearl-ivory & alabaster light aesthetic inspired by luxury bridal stationery with burnished gold accents.',
+      bg: 'linear-gradient(145deg, #FFFDF9, #EAE0CF)',
+      bar: 'rgba(255,253,249,.9)', barText: '#8A6525',
+      box: '#FFFFFF', boxBorder: '1px solid rgba(158,120,53,.28)'
+    },
+    {
+      id: 'rose-pearl', num: 'Style 02 · Light Glass', title: 'Rose Pearl Glass', ar: 'لؤلؤي وردي زجاجي (فاتح)',
+      desc: 'Romantic soft rose-quartz & pearl light glassmorphism with frosted translucent white cards and rose-gold tones.',
+      bg: 'linear-gradient(145deg, #FDF6F7, #F3DDE0)',
+      bar: 'rgba(255,255,255,.72)', barText: '#8A5045',
+      box: 'rgba(255,255,255,.76)', boxBorder: '1px solid rgba(255,255,255,.95)'
+    },
+    {
+      id: 'liquid-glass', num: 'Style 03', title: 'Liquid Glass', ar: 'الزجاج السائل العصري',
       desc: 'Frosted translucent glass panels, specular liquid edges, and floating ambient gold & indigo light orbs.',
       bg: 'radial-gradient(circle at 20% 10%, #24213A, #090A0F 75%)',
       bar: 'rgba(255,255,255,.12)', barText: '#F0D290',
       box: 'rgba(255,255,255,.10)', boxBorder: '1px solid rgba(255,255,255,.22)'
     },
     {
-      id: 'obsidian-gold', num: 'Style 02', title: 'Royal Obsidian & Gold', ar: 'الفخامة الملكية السوداء',
+      id: 'obsidian-gold', num: 'Style 04', title: 'Royal Obsidian & Gold', ar: 'الفخامة الملكية السوداء',
       desc: 'Deep matte onyx velvet surfaces with clean antique gold hairlines and quiet luxury contrast.',
       bg: 'radial-gradient(circle at 50% 0%, #1F1B15, #0B0B0E 70%)',
       bar: '#16161C', barText: '#DFBE7F',
       box: '#14141A', boxBorder: '1px solid rgba(223,190,127,.28)'
     },
     {
-      id: 'ivory-editorial', num: 'Style 03 · Light', title: 'Ivory Bridal Editorial', ar: 'الأبيض العاجي الفاخر',
-      desc: 'Warm pearl-ivory & alabaster light aesthetic inspired by luxury bridal magazines with brushed gold accents.',
-      bg: 'linear-gradient(145deg, #FFFDF9, #EAE0CF)',
-      bar: 'rgba(255,253,249,.9)', barText: '#8A6525',
-      box: '#FFFFFF', boxBorder: '1px solid rgba(158,120,53,.28)'
-    },
-    {
-      id: 'emerald-palace', num: 'Style 04', title: 'Palace Emerald & Champagne', ar: 'الزمرد الملكي والذهبي',
+      id: 'emerald-palace', num: 'Style 05', title: 'Palace Emerald & Champagne', ar: 'الزمرد الملكي والذهبي',
       desc: 'Deep Egyptian palace emerald velvet backdrop with frosted jade cards and warm champagne gold foil.',
       bg: 'radial-gradient(circle at 30% 0%, #0E4A3B, #041914 75%)',
       bar: 'rgba(10,48,39,.85)', barText: '#E6C783',
       box: 'rgba(13,60,49,.75)', boxBorder: '1px solid rgba(230,199,131,.30)'
-    },
-    {
-      id: 'rose-pearl', num: 'Style 05 · Light Glass', title: 'Rose Pearl Glass', ar: 'لؤلؤي وردي زجاجي',
-      desc: 'Romantic soft rose-quartz & pearl light glassmorphism with frosted translucent white cards and rose-gold tones.',
-      bg: 'linear-gradient(145deg, #FDF6F7, #F3DDE0)',
-      bar: 'rgba(255,255,255,.72)', barText: '#8A5045',
-      box: 'rgba(255,255,255,.76)', boxBorder: '1px solid rgba(255,255,255,.95)'
     }
   ];
 
