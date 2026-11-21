@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pocket Sleeve Slide-Out Card — Omar &amp; Salma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F7F5F0;
+      --card-bg: #FFFFFF;
+      --sleeve-bg: linear-gradient(145deg, #EFE8DC, #DFD5C4);
+      --gold: #A8813A;
+      --ink: #1C1917;
+      --muted: #57534E;
+      --line: rgba(168, 129, 58, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(160deg, #FAF7F2 0%, #EDE6DC 100%);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 14px 60px;
+      overflow-x: hidden;
+    }
+
+    .stage {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+    }
+
+    /* Outer Die-Cut Sleeve Pocket */
+    .pocket-sleeve {
+      position: relative;
+      background: var(--sleeve-bg);
+      border-radius: 24px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px rgba(45, 35, 20, 0.15), inset 0 1px 0 #FFF;
+      transition: all 0.7s cubic-bezier(0.34, 1.25, 0.64, 1);
+    }
+
+    /* Pocket Front Flap with Arched Notch */
+    .pocket-front {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 52%;
+      background: linear-gradient(180deg, rgba(239, 232, 220, 0.98), rgba(223, 213, 196, 1));
+      border-radius: 0 0 24px 24px;
+      border-top: 1.5px solid var(--gold);
+      box-shadow: 0 -8px 24px rgba(45, 35, 20, 0.10);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.7s ease, opacity 0.5s ease;
+      cursor: pointer;
+    }
+
+    .stage.is-extracted .pocket-front {
+      transform: translateY(120%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pocket-seal {
+      width: 58px;
+      height: 58px;
+      line-height: 58px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 6px 18px rgba(168, 129, 58, 0.2);
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .slide-prompt {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      animation: floatUp 2.2s ease-in-out infinite alternate;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+
+    /* Inner Slide-Out Card */
+    .inner-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 38px 24px 42px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 12px 34px rgba(45, 35, 20, 0.08);
+      position: relative;
+      z-index: 2;
+      transform: translateY(0);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .stage.is-extracted .inner-card {
+      transform: translateY(0);
+    }
+
+    .card-monogram {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow {
+      font-size: 10.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .guest-pill {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: #F8F5EE;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .names {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(38px, 9vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      font-size: 13.5px;
+      color: var(--muted);
+      max-width: 330px;
+      margin: 0 auto 18px;
+      line-height: 1.65;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px 0;
+    }
+
+    /* Clean Fixed Details Grid */
+    .details-box {
+      background: #FAF8F4;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .detail-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px dashed rgba(168, 129, 58, 0.25);
+      font-size: 13.5px;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .label {
+      color: var(--muted);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
+    .val {
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    /* Countdown Grid */
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .cd-box {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 6px;
+      box-shadow: 0 2px 8px rgba(45, 35, 20, 0.03);
+    }
+    .cd-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    .cd-lbl {
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #B88D3E, #8C6221);
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px rgba(168, 129, 58, 0.25);
+    }
+    .btn-gold:hover { transform: translateY(-2px); }
+    .btn-outline {
+      background: #FFFFFF;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+    .btn-outline:hover { background: #FAF6F0; }
+
+    /* RSVP Form */
+    .rsvp-sec {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      text-align: left;
+    }
+    .rsvp-title {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .inp {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #FFFFFF;
+      font-size: 13.5px;
+      color: var(--ink);
+      font-family: inherit;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .inp:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(168, 129, 58, 0.15);
+    }
+    .att-grid {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .att-btn {
+      flex: 1;
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #FFFFFF;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body data-no-floating-bar>
+  <div class="stage" id="stage">
+    <div class="pocket-sleeve">
+      <!-- Front Pocket Flap (slides down silently) -->
+      <div class="pocket-front" id="pocketTrigger" role="button" aria-label="Slide card out">
+        <div class="pocket-seal" data-monogram>O&amp;S</div>
+        <div class="slide-prompt">▲ Slide Card Out</div>
+      </div>
+
+      <!-- Main Slide-Out Card -->
+      <main class="inner-card">
+        <div class="card-monogram" data-monogram>O &amp; S</div>
+        <div class="eyebrow">Wedding Invitation</div>
+
+        <div class="guest-pill" data-guest-name data-guest-prefix="Dear " style="display:none;"></div>
+
+        <h1 class="names" data-couple-title>Omar &amp; Salma</h1>
+
+        <p class="intro">
+          Warmly invite you to celebrate the joyous occasion of their wedding and share an evening of happiness and lifelong memories.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="details-box">
+          <div class="detail-row">
+            <span class="label">Date</span>
+            <span class="val" data-event-date>Thursday, November 11, 2027</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Time</span>
+            <span class="val">Seven o'clock in the evening</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Venue</span>
+            <span class="val" data-venue-name>Marriott Mena House, Giza</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Dress Code</span>
+            <span class="val">Black Tie / Evening Pastel</span>
+          </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="cd-grid" data-countdown="2027-11-11T19:00:00+02:00">
+          <div class="cd-box"><div class="cd-num" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-gold" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+          <a class="btn btn-outline" href="https://maps.google.com/?q=Marriott+Mena+House+Cairo" target="_blank" rel="noopener">Map &amp; Venue</a>
+        </div>
+
+        <!-- RSVP Form -->
+        <section class="rsvp-sec">
+          <div class="rsvp-title">Kindly Confirm Attendance</div>
+          <form data-rsvp-form data-couple="Omar & Salma" data-lang="en" data-result-target="rsvp-res" data-qr-fg="#1C1917" data-qr-bg="#FFFFFF">
+            <input class="inp" name="guestName" type="text" required placeholder="Your full name" />
+            <div class="att-grid">
+              <label class="att-btn"><input type="radio" name="attendance" value="yes" checked /> Joyfully Accept</label>
+              <label class="att-btn"><input type="radio" name="attendance" value="no" /> Regretfully Decline</label>
+            </div>
+            <select class="inp" name="guestsCount">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+            <button type="submit" class="btn btn-gold" style="width:100%;">Confirm Attendance</button>
+          </form>
+          <div id="rsvp-res" style="display:none;margin-top:14px;"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Omar & Salma',
+      start: '2027-11-11T17:00:00Z',
+      end: '2027-11-11T23:00:00Z',
+      location: 'Marriott Mena House, Giza, Egypt',
+      description: 'Wedding celebration of Omar & Salma.',
+      filename: 'omar-salma-pocket-sleeve-wedding'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const stage = document.getElementById('stage');
+      const trigger = document.getElementById('pocketTrigger');
+
+      // Silent slide-out motion (Strictly 0 sound)
+      trigger.addEventListener('click', () => {
+        stage.classList.add('is-extracted');
+      });
+    });
+  </script>
+</body>
+</html>

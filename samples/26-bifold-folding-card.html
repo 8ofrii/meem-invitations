@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bi-Fold Luxury Folding Card — Omar &amp; Salma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F1EA;
+      --paper: #FAF8F5;
+      --paper-inner: #FFFFFF;
+      --gold: #A8813A;
+      --gold-light: #C5A059;
+      --ink: #1C1917;
+      --muted: #57534E;
+      --line: rgba(168, 129, 58, 0.25);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top center, #FAF6F0 0%, #EDE6DC 100%);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 28px 14px 60px;
+      perspective: 1600px;
+      overflow-x: hidden;
+    }
+
+    /* Folding Card 3D Architecture */
+    .card-wrap {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+    }
+
+    /* Cover / Unfolded Card Container */
+    .bifold-card {
+      position: relative;
+      background: var(--paper);
+      border-radius: 20px;
+      box-shadow: 0 24px 64px rgba(45, 35, 20, 0.14), 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1);
+    }
+
+    /* Outer Closed Cover (Folded) */
+    .card-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      background: linear-gradient(145deg, #FAF8F5 0%, #F3EDE2 100%);
+      border-radius: 20px;
+      border: 1.5px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 44px 28px;
+      text-align: center;
+      box-shadow:
+        0 20px 50px rgba(45, 35, 20, 0.16),
+        inset 0 1px 0 #FFFFFF,
+        inset -3px 0 8px rgba(45, 35, 20, 0.06);
+      transform-origin: left center;
+      transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease 0.4s, visibility 0.9s;
+      backface-visibility: hidden;
+      cursor: pointer;
+    }
+
+    .card-wrap.is-unfolded .card-cover {
+      transform: rotateY(-130deg);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Cover Styling */
+    .cover-border {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .cover-seal {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      margin-bottom: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #FFFFFF, #EFE7DA);
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 8px 24px rgba(168, 129, 58, 0.22), inset 0 1px 0 #FFF;
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .cover-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .cover-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .tap-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      animation: gentlePulse 2.4s ease-in-out infinite;
+    }
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    /* Inner Card (Revealed upon unfolding) */
+    .card-inner {
+      padding: 44px 24px 40px;
+      text-align: center;
+      opacity: 0.2;
+      transform: scale(0.96);
+      transition: opacity 0.7s ease 0.3s, transform 0.7s cubic-bezier(0.34, 1.2, 0.64, 1) 0.3s;
+    }
+    .card-wrap.is-unfolded .card-inner {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .fold-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #F5EFE6;
+      border: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      display: none;
+      z-index: 5;
+    }
+    .card-wrap.is-unfolded .fold-btn { display: inline-flex; }
+
+    .inner-monogram {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .inner-eyebrow {
+      font-size: 10.5px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .guest-pill {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: #F3ECE1;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .couple-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(38px, 9vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 340px;
+      margin: 0 auto 16px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px 0;
+    }
+
+    /* Fixed Clean Grid Details */
+    .details-box {
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      text-align: left;
+      box-shadow: 0 4px 16px rgba(45, 35, 20, 0.04);
+    }
+    .detail-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px dashed rgba(168, 129, 58, 0.25);
+      font-size: 13.5px;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .label {
+      color: var(--muted);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
+    .val {
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    /* Countdown Grid */
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .cd-box {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 6px;
+      box-shadow: 0 2px 8px rgba(45, 35, 20, 0.03);
+    }
+    .cd-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    .cd-lbl {
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #B88D3E, #8C6221);
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px rgba(168, 129, 58, 0.25);
+    }
+    .btn-gold:hover { transform: translateY(-2px); }
+    .btn-outline {
+      background: #FFFFFF;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+    .btn-outline:hover { background: #FAF6F0; }
+
+    /* RSVP Section */
+    .rsvp-sec {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      text-align: left;
+    }
+    .rsvp-title {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .inp {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #FFFFFF;
+      font-size: 13.5px;
+      color: var(--ink);
+      font-family: inherit;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .inp:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(168, 129, 58, 0.15);
+    }
+    .att-grid {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .att-btn {
+      flex: 1;
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #FFFFFF;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body data-no-floating-bar>
+  <div class="card-wrap" id="cardWrap">
+    <div class="bifold-card">
+      <button type="button" class="fold-btn" id="foldBtn">✕ Fold Card</button>
+
+      <!-- Front Cover (Folds open silently) -->
+      <div class="card-cover" id="cover">
+        <div class="cover-border"></div>
+        <div class="cover-seal" data-monogram>O&amp;S</div>
+        <div class="cover-subtitle">Wedding Celebration</div>
+        <h2 class="cover-title" data-couple-title>Omar &amp; Salma</h2>
+        <div class="tap-hint">✨ Tap to Unfold Card</div>
+      </div>
+
+      <!-- Inner Revealed Content -->
+      <div class="card-inner">
+        <div class="inner-monogram" data-monogram>O &amp; S</div>
+        <div class="inner-eyebrow">Together With Their Families</div>
+
+        <div class="guest-pill" data-guest-name data-guest-prefix="Honored Guest: " style="display:none;"></div>
+
+        <h1 class="couple-title" data-couple-title>Omar &amp; Salma</h1>
+
+        <p class="verse">
+          "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them."
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="details-box">
+          <div class="detail-row">
+            <span class="label">Date</span>
+            <span class="val" data-event-date>Friday, October 15, 2027</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Time</span>
+            <span class="val">Seven o'clock in the evening</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Venue</span>
+            <span class="val" data-venue-name>Sofitel Cairo Nile El Gezirah</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Dress Code</span>
+            <span class="val">Formal Evening Attire</span>
+          </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="cd-grid" data-countdown="2027-10-15T19:00:00+02:00">
+          <div class="cd-box"><div class="cd-num" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-gold" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+          <a class="btn btn-outline" href="https://maps.google.com/?q=Sofitel+Cairo+Nile+El+Gezirah" target="_blank" rel="noopener">Location Map</a>
+        </div>
+
+        <!-- RSVP Form -->
+        <section class="rsvp-sec">
+          <div class="rsvp-title">RSVP &amp; Digital Entry Pass</div>
+          <form data-rsvp-form data-couple="Omar & Salma" data-lang="en" data-result-target="rsvp-res" data-qr-fg="#1C1917" data-qr-bg="#FFFFFF">
+            <input class="inp" name="guestName" type="text" required placeholder="Your full name" />
+            <div class="att-grid">
+              <label class="att-btn"><input type="radio" name="attendance" value="yes" checked /> Joyfully Accept</label>
+              <label class="att-btn"><input type="radio" name="attendance" value="no" /> Regretfully Decline</label>
+            </div>
+            <select class="inp" name="guestsCount">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+            <button type="submit" class="btn btn-gold" style="width:100%;">Confirm Attendance</button>
+          </form>
+          <div id="rsvp-res" style="display:none;margin-top:14px;"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Omar & Salma',
+      start: '2027-10-15T17:00:00Z',
+      end: '2027-10-15T23:00:00Z',
+      location: 'Sofitel Cairo Nile El Gezirah, Cairo, Egypt',
+      description: 'Wedding ceremony and celebration of Omar & Salma.',
+      filename: 'omar-salma-bifold-wedding'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrap = document.getElementById('cardWrap');
+      const cover = document.getElementById('cover');
+      const foldBtn = document.getElementById('foldBtn');
+
+      // Silent unfolding motion (Strictly 0 sound)
+      cover.addEventListener('click', () => {
+        wrap.classList.add('is-unfolded');
+      });
+
+      foldBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wrap.classList.remove('is-unfolded');
+      });
+    });
+  </script>
+</body>
+</html>

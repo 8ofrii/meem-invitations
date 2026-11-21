@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translucent Vellum Envelope Slide Card — Omar &amp; Salma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F2EB;
+      --env-bg: linear-gradient(145deg, #FDFCF9, #EFECE6);
+      --card-bg: #FFFFFF;
+      --gold: #A8813A;
+      --gold-light: #C5A059;
+      --ink: #1C1917;
+      --muted: #57534E;
+      --line: rgba(168, 129, 58, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 15%, #FAF7F2 0%, #ECE4D6 100%);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 14px 60px;
+      overflow-x: hidden;
+    }
+
+    .stage {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+    }
+
+    /* Envelope Shell */
+    .envelope-box {
+      position: relative;
+      background: #FBF9F5;
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(45, 35, 20, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      padding: 16px;
+      transition: all 0.6s cubic-bezier(0.34, 1.25, 0.64, 1);
+    }
+
+    /* Envelope Flap Header */
+    .env-header {
+      background: linear-gradient(135deg, #FAF7F0, #EDE4D3);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 18px 20px;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(45, 35, 20, 0.06);
+      transition: all 0.3s ease;
+    }
+    .env-header:hover {
+      box-shadow: 0 6px 20px rgba(45, 35, 20, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .seal-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #F4E8D1 0%, #D8BE8E 60%, #9F7A38 100%);
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #38240D;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 6px 16px rgba(45, 35, 20, 0.2), inset 0 2px 3px rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: transform 0.4s ease;
+    }
+
+    .env-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .env-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .env-hint {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }
+
+    /* Inner Card (Slides out smoothly) */
+    .card-sheet {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 40px rgba(45, 35, 20, 0.08);
+      padding: 32px 22px 26px;
+      text-align: center;
+      margin-top: 14px;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.34, 1.25, 0.64, 1);
+    }
+
+    .card-sheet::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(168, 129, 58, 0.25);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    /* Initial Collapsed State vs Extracted */
+    .envelope-box.is-closed .card-sheet {
+      max-height: 0;
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      transform: translateY(-20px) scale(0.96);
+      pointer-events: none;
+    }
+
+    .envelope-box:not(.is-closed) .seal-circle {
+      transform: scale(0.9);
+      opacity: 0.85;
+    }
+
+    /* Close / Retract button */
+    .retract-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #F8F5EE;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+      z-index: 5;
+    }
+    .retract-btn:hover {
+      background: #EEE7DA;
+      color: var(--ink);
+    }
+
+    /* Typography & Content */
+    .monogram {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 6px;
+    }
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .couple-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .verse {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 15.5px;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 320px;
+      margin: 0 auto 18px;
+      line-height: 1.6;
+    }
+
+    .divider {
+      width: 44px;
+      height: 1px;
+      background: var(--gold);
+      margin: 16px auto;
+      opacity: 0.5;
+    }
+
+    /* Details Grid Box (No line wrapping on labels) */
+    .details-box {
+      background: #FAF8F5;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      padding: 16px 20px;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+    .detail-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px dashed rgba(168, 129, 58, 0.22);
+      font-size: 13.5px;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .label {
+      color: var(--muted);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
+    .val {
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    /* Countdown Grid */
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .cd-box {
+      background: #FAF8F5;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 4px;
+      text-align: center;
+    }
+    .cd-num {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .cd-lbl {
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #A8813A 0%, #8E6B2C 100%);
+      color: #FFF;
+      box-shadow: 0 8px 20px rgba(168, 129, 58, 0.28);
+    }
+    .btn-gold:hover {
+      box-shadow: 0 10px 26px rgba(168, 129, 58, 0.4);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .btn-outline:hover {
+      background: #FAF7F2;
+      border-color: var(--gold);
+    }
+
+    /* RSVP Form */
+    .rsvp-sec {
+      background: #FAF8F5;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 18px 16px;
+      text-align: left;
+    }
+    .rsvp-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .inp {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #D6CEBE;
+      background: #FFF;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    .inp:focus { border-color: var(--gold); }
+    .att-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .att-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px;
+      border: 1px solid #D6CEBE;
+      border-radius: 8px;
+      background: #FFF;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 20px 10px 50px; }
+      .card-sheet { padding: 26px 14px 22px; }
+      .couple-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body data-no-floating-bar>
+  <div class="stage">
+    <div class="envelope-box is-closed" id="envelopeBox">
+      <!-- Envelope Flap Header (Tap to extract card) -->
+      <div class="env-header" id="envHeader" title="Tap to slide out the card">
+        <div class="seal-circle" data-monogram>O&amp;S</div>
+        <div class="env-tag">Wedding Invitation</div>
+        <div class="env-title" data-couple-title>Omar &amp; Salma</div>
+        <div class="env-hint" id="envHint">✨ Tap Wax Seal to Open Card</div>
+      </div>
+
+      <!-- Inner Revealed Card Sheet -->
+      <div class="card-sheet" id="cardSheet">
+        <button type="button" class="retract-btn" id="retractBtn">✕ Close Card</button>
+
+        <div class="monogram" data-monogram>O &amp; S</div>
+        <div class="eyebrow">Request The Pleasure of Your Company</div>
+
+        <h1 class="couple-title" data-couple-title>Omar &amp; Salma</h1>
+
+        <p class="verse">
+          at the celebration of their holy matrimony, joined together in faith, devotion, and everlasting joy.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="details-box">
+          <div class="detail-row">
+            <span class="label">Date</span>
+            <span class="val" data-event-date>Friday, November 26, 2027</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Time</span>
+            <span class="val">Seven o'clock in the evening</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Venue</span>
+            <span class="val" data-venue-name>Kempinski Nile Hotel, Garden City</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Dress Code</span>
+            <span class="val">Cocktail Attire / Formal Pastel</span>
+          </div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="cd-grid" data-countdown="2027-11-26T19:00:00+02:00">
+          <div class="cd-box"><div class="cd-num" data-cd="days">00</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="hours">00</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="minutes">00</div><div class="cd-lbl">Mins</div></div>
+          <div class="cd-box"><div class="cd-num" data-cd="seconds">00</div><div class="cd-lbl">Secs</div></div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-gold" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+          <a class="btn btn-outline" href="https://maps.google.com/?q=Kempinski+Nile+Hotel+Cairo" target="_blank" rel="noopener">Venue Map &amp; Directions</a>
+        </div>
+
+        <!-- RSVP Form with QR -->
+        <section class="rsvp-sec">
+          <div class="rsvp-title">RSVP &amp; Digital Entry Pass</div>
+          <form data-rsvp-form data-couple="Omar & Salma" data-lang="en" data-result-target="envelope-rsvp-res" data-qr-fg="#1C1917" data-qr-bg="#FFFFFF">
+            <input class="inp" name="guestName" type="text" required placeholder="Your full name" />
+            <div class="att-grid">
+              <label class="att-btn"><input type="radio" name="attendance" value="yes" checked /> Joyfully Accept</label>
+              <label class="att-btn"><input type="radio" name="attendance" value="no" /> Regretfully Decline</label>
+            </div>
+            <select class="inp" name="guestsCount">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+            <button type="submit" class="btn btn-gold" style="width:100%;">Confirm Attendance &amp; Get Pass</button>
+          </form>
+          <div id="envelope-rsvp-res" style="display:none;margin-top:14px;"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = {
+      title: 'Wedding of Omar & Salma',
+      start: '2027-11-26T17:00:00Z',
+      end: '2027-11-26T23:00:00Z',
+      location: 'Kempinski Nile Hotel, Garden City, Cairo, Egypt',
+      description: 'Wedding celebration of Omar & Salma.',
+      filename: 'omar-salma-envelope-card'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const box = document.getElementById('envelopeBox');
+      const header = document.getElementById('envHeader');
+      const hint = document.getElementById('envHint');
+      const retractBtn = document.getElementById('retractBtn');
+
+      function toggleEnvelope() {
+        const isClosed = box.classList.contains('is-closed');
+        if (isClosed) {
+          box.classList.remove('is-closed');
+          hint.textContent = '✨ Card Revealed Below';
+        } else {
+          box.classList.add('is-closed');
+          hint.textContent = '✨ Tap Wax Seal to Open Card';
+        }
+      }
+
+      // Silent slide reveal (Zero Sound)
+      header.addEventListener('click', toggleEnvelope);
+      retractBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        box.classList.add('is-closed');
+        hint.textContent = '✨ Tap Wax Seal to Open Card';
+      });
+    });
+  </script>
+</body>
+</html>

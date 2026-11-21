@@ -18,7 +18,7 @@ window.SITE = {
     { id: 'katb', title: 'Katb Ketab & Islamic Elegance', ar: 'عقد القران وكتب الكتاب', blurb: 'Calm, respectful designs for mosque ceremonies.' },
     { id: 'engagement', title: 'Engagement & Henna Nights', ar: 'الخطوبة وليلة الحنة', blurb: 'Ring boxes, lanterns and ladies-only celebrations.' },
     { id: 'editorial', title: 'Coastal, Destination & Modern', ar: 'الساحل والتصاميم العصرية', blurb: 'Sahel, El Gouna and magazine-style concepts.' },
-    { id: 'cards', title: 'Classic Cards (No Motion)', ar: 'كروت كلاسيكية هادئة (بدون حركة أو صوت)', blurb: 'Instant, silent luxury stationery cards without motion or sound.' }
+    { id: 'cards', title: 'Tactile Opening & Classic Cards (No Sound)', ar: 'كروت تفتح باللمس وكروت كلاسيكية (بدون صوت)', blurb: 'Tactile opening cards and silent luxury stationery with zero sound or voice.' }
   ],
 
   SAMPLES: [
@@ -224,6 +224,38 @@ window.SITE = {
       bg: 'linear-gradient(145deg,#FFFFFF,#EEF2F6)', accent: '#1E293B',
       desc: 'Silent luxury stationery on heavy pearl stock with beveled liquid chromium borders and embossed platinum monogram.',
       features: ['Liquid Chrome Border', 'No Motion', 'Embossed Monogram', 'Silent Luxury']
+    },
+    {
+      num: '26', cat: 'cards', file: 'samples/26-bifold-folding-card.html',
+      title: 'Bi-Fold Luxury Folding Card', subtitle: 'Omar & Salma',
+      venue: 'Sofitel Cairo Nile El Gezirah', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FAF8F5,#EDE6DC)', accent: '#A8813A',
+      desc: 'Tactile 3D bi-fold card that smoothly unfolds on tap to reveal event details, live countdown, and RSVP pass. Strictly silent with 0 sound.',
+      features: ['3D Bi-Fold Open', 'Unfolds on Tap', 'Zero Sound', 'VIP QR Pass']
+    },
+    {
+      num: '27', cat: 'cards', file: 'samples/27-pocket-sleeve-card.html',
+      title: 'Pocket Sleeve Slide-Out Card', subtitle: 'Omar & Salma',
+      venue: 'Marriott Mena House, Giza', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#F7F5F0,#DFD5C4)', accent: '#A8813A',
+      desc: 'Alabaster die-cut pocket sleeve with pull ribbon tab. The gilded invitation card smoothly slides out into full view. Strictly silent with 0 sound.',
+      features: ['Slide-Out Motion', 'Pull Tab Reveal', 'Zero Sound', 'Calendar & RSVP']
+    },
+    {
+      num: '28', cat: 'cards', file: 'samples/28-gatefold-ribbon-card.html',
+      title: 'French Gatefold Double-Flap Card', subtitle: 'عمر و سلمى',
+      venue: 'The Nile Ritz-Carlton, Cairo', lang: 'العربية', langKey: 'ar', textDark: true,
+      bg: 'linear-gradient(145deg,#FAF7F2,#EDE5D8)', accent: '#A8813A',
+      desc: 'Two symmetrical French gatefold panels with royal monogram ribbon seal. Tap to swing flaps open in 3D to reveal inner gold card. Zero sound.',
+      features: ['Gatefold Double-Flap', '3D Perspective Swing', 'Zero Sound', 'Bilingual RSVP']
+    },
+    {
+      num: '29', cat: 'cards', file: 'samples/29-envelope-slide-card.html',
+      title: 'Translucent Vellum Envelope Slide Card', subtitle: 'Omar & Salma',
+      venue: 'Kempinski Nile Hotel, Garden City', lang: 'English', langKey: 'en', textDark: true,
+      bg: 'linear-gradient(145deg,#FDFCF9,#ECE4D6)', accent: '#A8813A',
+      desc: 'Pearlescent vellum stationery envelope with a wax seal flap. On tap, the flap lifts open and the inner card slides out gracefully. Zero sound.',
+      features: ['Envelope Flap Open', 'Smooth Slide Reveal', 'Zero Sound', 'Digital Pass']
     }
   ],
 
@@ -237,7 +269,7 @@ window.SITE = {
       bestFor: 'Katb Ketab, Engagement & Henna',
       blurb: 'Any ready-made design from our collection personalised with your full event details.',
       items: [
-        'Any of our 25 interactive designs & classic cards',
+        'Any of our 29 interactive designs & stationery cards',
         'Couple names, date, schedule & venue map',
         'Live countdown timer & Add-to-Calendar',
         'Opening animation, sound effects & music',
