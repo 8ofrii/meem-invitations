@@ -43,11 +43,35 @@
     return '';
   };
   const guestName = readParam(['guest', 'name', 'to']);
-  const customCouple = readParam(['couple']);
-  const customVenue = readParam(['venue']);
-  const customDate = readParam(['date']);
-  const customLang = readParam(['lang', 'language']);
+  const customGroom = readParam(['groom', 'g']);
+  const customBride = readParam(['bride', 'b']);
+  let customCouple = readParam(['couple', 'c']);
+  const customVenue = readParam(['venue', 'v']);
+  const customDate = readParam(['date', 'dt']);
+  const customLang = readParam(['lang', 'language', 'l']);
   const isCleanMode = params.get('clean') === '1';
+
+  if (!customCouple && (customGroom || customBride)) {
+    if (customGroom && customBride) {
+      customCouple = (customLang === 'en') ? `${customGroom} & ${customBride}` : `${customGroom} و ${customBride}`;
+    } else {
+      customCouple = customGroom || customBride;
+    }
+  }
+
+  let groomInitial = '';
+  let brideInitial = '';
+  if (customGroom) groomInitial = customGroom.trim()[0];
+  if (customBride) brideInitial = customBride.trim()[0];
+  if (!groomInitial && !brideInitial && customCouple) {
+    const parts = customCouple.split(/\s*(?:&|and|و|\+)\s*/i);
+    if (parts[0]) groomInitial = parts[0].trim()[0];
+    if (parts[1]) brideInitial = parts[1].trim()[0];
+  }
+  if (customLang === 'en') {
+    groomInitial = groomInitial.toUpperCase();
+    brideInitial = brideInitial.toUpperCase();
+  }
 
   /* ========================================================================
      1. GLOBAL CINEMATIC STYLES (Shimmer, Ripples, Music Pulse, Scratch)
@@ -940,9 +964,19 @@
   window.showToast = showToast;
 
   function applyGuestPersonalization() {
+    const isEn = customLang === 'en';
+    const isRTL = document.documentElement.dir === 'rtl';
+
     if (guestName) {
       document.querySelectorAll('[data-guest-name]').forEach((el) => {
-        const prefix = el.getAttribute('data-guest-prefix') || '';
+        let prefix = el.getAttribute('data-guest-prefix');
+        if (prefix === null || prefix === undefined) {
+          prefix = isEn ? 'To our honored guest: ' : 'إلى ضيفنا العزيز: ';
+        } else if (isEn && prefix.includes('ضيف')) {
+          prefix = 'To our honored guest: ';
+        } else if (!isEn && prefix.toLowerCase().includes('dear')) {
+          prefix = 'إلى ضيفنا العزيز: ';
+        }
         const suffix = el.getAttribute('data-guest-suffix') || '';
         el.textContent = `${prefix}${guestName}${suffix}`;
         el.style.display = '';
@@ -950,14 +984,52 @@
       document.querySelectorAll('input[name="guestName"]').forEach((input) => {
         if (!input.value) input.value = guestName;
       });
+    } else if (customCouple) {
+      // If no specific guest is entered, personalize cover to show couple names and venue
+      document.querySelectorAll('.gate-crest-wrap [data-guest-name]').forEach((el) => {
+        el.textContent = `${customCouple} — ${customVenue || (isEn ? 'Cairo' : 'القاهرة')}`;
+        el.style.display = '';
+      });
     }
 
     if (customCouple) {
-      document.querySelectorAll('h1, [data-couple-title]').forEach((el) => {
+      const hasArabic = /[\u0600-\u06FF]/.test(customCouple);
+      document.querySelectorAll('h1, [data-couple-title], [data-couple-title-ar], .couple-names, .couple-title, .hero-names, .big-title, .cover-headline').forEach((el) => {
         el.textContent = customCouple;
+        if (hasArabic) {
+          el.style.fontFamily = "'Amiri', 'Reem Kufi', serif";
+          el.style.lineHeight = '1.35';
+          el.style.padding = '4px 0';
+        } else {
+          el.style.fontFamily = "'Cormorant Garamond', 'Cinzel', 'Playfair Display', Georgia, serif";
+          el.style.letterSpacing = '0.04em';
+        }
       });
       document.querySelectorAll('form[data-rsvp-form]').forEach((f) => {
         f.setAttribute('data-couple', customCouple);
+      });
+    }
+
+    if (customGroom) {
+      document.querySelectorAll('[data-groom-name], .groom-name').forEach((el) => {
+        el.textContent = customGroom;
+      });
+    }
+
+    if (customBride) {
+      document.querySelectorAll('[data-bride-name], .bride-name').forEach((el) => {
+        el.textContent = customBride;
+      });
+    }
+
+    // Monogram & Initial Seals on Cover & Gate
+    if (groomInitial || brideInitial) {
+      const mono = (groomInitial && brideInitial)
+        ? (isEn ? `${groomInitial}&${brideInitial}` : `${groomInitial} & ${brideInitial}`)
+        : (groomInitial || brideInitial);
+
+      document.querySelectorAll('.royal-seal .ruqaa, .royal-seal span:first-child, .monogram, .monogram-line, [data-monogram], [data-initials], .seal-initials, .wax-seal-btn').forEach((el) => {
+        el.textContent = mono;
       });
     }
 
@@ -970,8 +1042,7 @@
     if (customDate) {
       const parsed = new Date(customDate);
       if (!Number.isNaN(parsed.getTime())) {
-        const isRTL = document.documentElement.dir === 'rtl';
-        const formatted = parsed.toLocaleDateString(isRTL ? 'ar-EG' : 'en-US', {
+        const formatted = parsed.toLocaleDateString(isEn ? 'en-US' : 'ar-EG', {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
@@ -1010,6 +1081,7 @@
     if (!l) return;
     const isAr = (l === 'ar');
     const isEn = (l === 'en');
+    const isBi = (l === 'bi');
 
     if (isAr) {
       document.documentElement.dir = 'rtl';
@@ -1030,7 +1102,8 @@
     // Translate countdown labels
     const cdMap = isAr
       ? { days: 'أيام', hours: 'ساعات', minutes: 'دقائق', seconds: 'ثواني' }
-      : { days: 'Days', hours: 'Hours', minutes: 'Mins', seconds: 'Secs' };
+      : (isBi ? { days: 'أيام • Days', hours: 'ساعات • Hours', minutes: 'دقائق • Mins', seconds: 'ثواني • Secs' }
+              : { days: 'Days', hours: 'Hours', minutes: 'Mins', seconds: 'Secs' });
 
     document.querySelectorAll('.cd-unit span, .time-box span, .count-label').forEach((el) => {
       const t = (el.textContent || '').trim().toLowerCase();
@@ -1040,52 +1113,112 @@
       else if (t.includes('sec') || t.includes('ثواني') || t.includes('ثانية')) el.textContent = cdMap.seconds;
     });
 
-    // Translate RSVP / Location / Add to calendar buttons and common labels
-    const phraseMapArToEn = [
-      ['دعوة زفاف', 'Wedding Invitation'],
-      ['دعوة عقد قران', 'Katb Ketab Invitation'],
-      ['حفل زفاف', 'Wedding Ceremony'],
-      ['عقد قران', 'Katb Ketab'],
-      ['حفل خطوبة', 'Engagement Party'],
-      ['ليلة الحنة', 'Henna Night'],
-      ['تأكيد الحضور', 'RSVP Now'],
-      ['موقع الحفل', 'View Location'],
-      ['إضافة للتقويم', 'Add to Calendar'],
-      ['الموقع على الخريطة', 'Google Maps Location'],
-      ['العد التنازلي', 'Countdown to the Big Day'],
-      ['يسرنا دعوتكم لحضور', 'Together with their families, you are invited to celebrate'],
-      ['بارك الله لهما وبارك عليهما', 'May Allah bless their union with endless joy'],
-      ['شاركونا فرحتنا', 'Join us in celebrating our wedding']
-    ];
-    const phraseMapEnToAr = [
-      ['Wedding Invitation', 'دعوة زفاف'],
-      ['Katb Ketab Invitation', 'دعوة عقد قران'],
-      ['Wedding Ceremony', 'حفل زفاف'],
-      ['Katb Ketab', 'عقد قران'],
-      ['Engagement Party', 'حفل خطوبة'],
-      ['Henna Night', 'ليلة الحنة'],
-      ['RSVP Now', 'تأكيد الحضور'],
-      ['RSVP', 'تأكيد الحضور'],
-      ['View Location', 'موقع الحفل'],
-      ['Add to Calendar', 'إضافة للتقويم'],
-      ['Google Maps Location', 'الموقع على الخريطة'],
-      ['Countdown to the Big Day', 'العد التنازلي لليوم المنتظر'],
-      ['Together with their families', 'يسرنا ويسعدنا دعوتكم لحضور'],
-      ['Join us in celebrating', 'شاركونا فرحتنا في حفل زفاف']
+    // Comprehensive Dictionary: Simple English & Warm Egyptian Arabic
+    const dictionary = [
+      // Gate & Cover hints
+      ['ثلاث طرقات تفتح لك أبواب الأمسية ✨', 'Tap 3 times to open the royal invitation ✨', 'ثلاث طرقات تفتح لك أبواب الأمسية • Tap 3 times to open ✨'],
+      ['دعوة ملكية', 'Royal Wedding Invitation', 'دعوة ملكية • Royal Wedding Invitation'],
+      ['Tap the wax seal to open the invitation', 'المس ختم الشمع لفتح الدعوة ✨', 'المس ختم الشمع • Tap the wax seal to open ✨'],
+      ['Tap the wax seal to open', 'المس ختم الشمع لفتح الدعوة ✨', 'المس ختم الشمع • Tap wax seal ✨'],
+      ['Tap to open invitation', 'المس لفتح الدعوة ✨', 'اضغط لفتح الدعوة • Tap to open ✨'],
+      ['Tap to open', 'المس لفتح الدعوة ✨', 'اضغط لفتح الدعوة • Tap to open ✨'],
+      ['Touch to open', 'المس لفتح الدعوة ✨', 'اضغط لفتح الدعوة • Tap to open ✨'],
+      ['Open Invitation', 'فتح الدعوة', 'فتح الدعوة • Open Invitation'],
+
+      // Verses & Blessings
+      ['﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾',
+       '"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them; and He placed between you love and mercy."',
+       '﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾'],
+      ['بارك الله لهما وبارك عليهما وجمع بينهما في خير',
+       '"May Allah bless their union with eternal happiness, love and harmony."',
+       'بارك الله لهما وبارك عليهما • May Allah bless their union'],
+
+      // Family & Invitation Intro
+      ['تتشرف عائلتا الحاج محمود الشريف والمهندس طارق المنياوي بدعوتكم لحضور حفل زفاف',
+       'Together with their families, you are warmly invited to celebrate the wedding of',
+       'تتشرف عائلتا العروسين بدعوتكم لحضور حفل زفاف • Together with their families'],
+      ['تتشرف عائلتا', 'Together with their families, we invite you to celebrate the wedding of', 'تتشرف عائلتا العروسين • Together with their families'],
+      ['يسرنا دعوتكم لحضور', 'Together with their families, you are invited to celebrate the wedding of', 'يسرنا دعوتكم • You are warmly invited'],
+      ['لتكتمل فرحتنا بحضوركم وتشريفكم، وتزدان ليلتنا بدعواتكم الطيبة ومشاركتكم أسعد لحظات العمر.',
+       'Our happiness is complete with your presence and warm blessings on the most memorable night of our lives.',
+       'لتكتمل فرحتنا بحضوركم • Our happiness is complete with your presence'],
+      ['Our joy is complete with your presence', 'فرحتنا مش هتكمل غير بوجودكم ومشاركتكم لينا', 'فرحتنا مش هتكمل غير بيكم • Our joy is complete with you'],
+      ['Together with their families', 'تتشرف عائلتا العروسين بدعوتكم لمشاركتنا فرحة العمر', 'تتشرف عائلتا العروسين • Together with their families'],
+      ['Request the honour of your presence', 'يسرنا ويسعدنا دعوتكم لمشاركتنا ليلة العمر', 'يسرنا دعوتكم • Request the honour of your presence'],
+      ['Request the honor of your presence', 'يسرنا ويسعدنا دعوتكم لمشاركتنا ليلة العمر', 'يسرنا دعوتكم • Request the honor of your presence'],
+
+      // Occasion Titles
+      ['Wedding Invitation', 'دعوة زفاف', 'دعوة زفاف • Wedding Invitation'],
+      ['Katb Ketab Invitation', 'دعوة عقد قران', 'دعوة عقد قران • Katb Ketab'],
+      ['Wedding Ceremony', 'حفل زفاف', 'حفل زفاف • Wedding Ceremony'],
+      ['Wedding Celebration', 'حفل زفاف مبارك', 'حفل زفاف • Wedding Celebration'],
+      ['Katb Ketab', 'عقد قران مبارك', 'عقد قران • Katb Ketab'],
+      ['Engagement Party', 'حفل خطوبة سعيد', 'حفل خطوبة • Engagement Party'],
+      ['Henna Night', 'ليلة الحنة', 'ليلة الحنة • Henna Night'],
+      ['Save the Date', 'احفظوا هذا التاريخ', 'احفظوا التاريخ • Save the Date'],
+
+      // Section Titles & Headings
+      ['العد التنازلي لليلة العمر', 'Countdown to the Big Day', 'العد التنازلي • Countdown'],
+      ['العد التنازلي', 'Countdown to the Big Day', 'العد التنازلي • Countdown'],
+      ['Countdown to the Big Day', 'العد التنازلي لليلة العمر', 'العد التنازلي • Countdown'],
+      ['Countdown', 'العد التنازلي', 'العد التنازلي • Countdown'],
+      ['موعد الفرحة الكبرى', 'The Grand Celebration', 'موعد الفرحة الكبرى • The Celebration'],
+      ['تفاصيل الحفل', 'Celebration Details', 'تفاصيل الحفل • Details'],
+      ['برنامج الحفل', 'Evening Program', 'برنامج الحفل • Program'],
+      ['موقع الحفل', 'Venue Location', 'موقع الحفل • Venue Location'],
+      ['خريطة الوصول', 'Location Map', 'خريطة الوصول • Directions'],
+      ['الموقع على الخريطة', 'Google Maps Location', 'الموقع على الخريطة • Location'],
+      ['View on Google Maps', 'الموقع على خرائط جوجل', 'الموقع على الخريطة • Google Maps'],
+      ['Get Directions', 'خريطة الوصول للموقع', 'خريطة الوصول • Get Directions'],
+
+      // Buttons & Interactive controls
+      ['تأكيد الحضور', 'RSVP Now', 'تأكيد الحضور • RSVP Now'],
+      ['RSVP Now', 'تأكيد الحضور', 'تأكيد الحضور • RSVP Now'],
+      ['RSVP', 'تأكيد الحضور', 'تأكيد الحضور • RSVP'],
+      ['View Location', 'موقع الحفل', 'موقع الحفل • View Location'],
+      ['Add to Calendar', 'إضافة للتقويم', 'إضافة للتقويم • Add to Calendar'],
+
+      // RSVP Form choices
+      ['هل ستشرفنا بالحضور؟', 'Will you attend?', 'هل ستشرفنا بالحضور؟ • Will you attend?'],
+      ['Will you attend?', 'هل ستشرفنا بالحضور؟', 'هل ستشرفنا بالحضور؟ • Will you attend?'],
+      ['نعم، بكل سرور سأحضر', 'Joyfully Accept', 'نعم، بكل سرور سأحضر • Joyfully Accept'],
+      ['Joyfully Accept', 'نعم، بكل سرور سأحضر', 'نعم، بكل سرور سأحضر • Joyfully Accept'],
+      ['للأسف أعتذر عن الحضور', 'Regretfully Decline', 'أعتذر عن الحضور • Regretfully Decline'],
+      ['Regretfully Decline', 'للأسف أعتذر عن الحضور', 'أعتذر عن الحضور • Regretfully Decline'],
+      ['عدد المرافقين', 'Number of Guests', 'عدد المرافقين • Number of Guests'],
+      ['Number of Guests', 'عدد المرافقين', 'عدد المرافقين • Number of Guests'],
+      ['إرسال التأكيد عبر واتساب', 'Confirm via WhatsApp', 'تأكيد عبر واتساب • Confirm via WhatsApp'],
+      ['Confirm via WhatsApp', 'إرسال التأكيد عبر واتساب', 'تأكيد عبر واتساب • Confirm via WhatsApp']
     ];
 
-    const pairs = isEn ? phraseMapArToEn : (isAr ? phraseMapEnToAr : []);
-    if (pairs.length > 0) {
-      const targets = document.querySelectorAll('button, a, h1, h2, h3, .tag, .invite-title, .venue-line, .date-line, .rsvp-btn, .map-btn, .cal-btn, .ceremony-title');
-      targets.forEach(el => {
-        let text = el.textContent || '';
-        pairs.forEach(([from, to]) => {
-          if (text.includes(from)) {
-            el.textContent = text.replace(from, to);
-          }
-        });
-      });
-    }
+    // Select all relevant text containers across the document
+    const targets = document.querySelectorAll('h1, h2, h3, h4, h5, p, span, div, button, a, label, b, em, strong, .subtitle, .verse, #knockHint, .env-hint, .eyebrow');
+
+    targets.forEach((el) => {
+      // Skip iframe, script, style, and svg nodes
+      if (['SCRIPT', 'STYLE', 'IFRAME', 'SVG', 'PATH'].includes(el.tagName)) return;
+      // Do not alter couple names element
+      if (el.hasAttribute('data-couple-title') || el.classList.contains('couple-names') || el.classList.contains('couple-title')) return;
+
+      let text = el.textContent || '';
+      for (const row of dictionary) {
+        const ar = row[0];
+        const en = row[1];
+        const bi = row[2] || `${ar} • ${en}`;
+
+        if (isEn && text.includes(ar)) {
+          el.textContent = text.split(ar).join(en);
+          text = el.textContent;
+        } else if (isAr && text.includes(en)) {
+          el.textContent = text.split(en).join(ar);
+          text = el.textContent;
+        } else if (isBi && (text.includes(ar) || text.includes(en))) {
+          if (text.includes(ar)) el.textContent = text.split(ar).join(bi);
+          else if (text.includes(en)) el.textContent = text.split(en).join(bi);
+          text = el.textContent;
+        }
+      }
+    });
   }
 
   function applyCustomPhoto(dataUrl) {
