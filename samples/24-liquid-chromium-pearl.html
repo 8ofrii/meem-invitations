@@ -556,22 +556,9 @@
           setTimeout(() => {
             seal.style.transform = 'scale(1.25)';
             gates.classList.add('is-open');
-            try {
-              if (window.AudioContext || window.webkitAudioContext) {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(880, ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.35);
-                gain.gain.setValueAtTime(0.2, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start();
-                osc.stop(ctx.currentTime + 0.4);
-              }
-            } catch (_) {}
+            if (window.WeddingSound) {
+              WeddingSound.startMusic('liquid_chromium');
+            }
           }, 180);
         });
       }

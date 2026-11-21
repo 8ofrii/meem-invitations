@@ -484,7 +484,7 @@
     document.getElementById('openVellumBtn').addEventListener('click', (e) => {
       WeddingSound.playDoorOpen();
       WeddingMotion.burstGoldenLight(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
-      WeddingSound.startMusic('classic');
+      WeddingSound.startMusic('romantic_piano');
       document.getElementById('vellum-overlay').classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     });

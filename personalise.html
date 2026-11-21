@@ -87,7 +87,20 @@
         <div class="field full"><label for="g">6 · Guest greeting (اسم الضيف)</label><input id="g" autocomplete="off" placeholder="Eng. Ahmed / أستاذ أحمد"></div>
 
         <div class="field full">
-          <label for="ph">7 · Couple photo (optional — works on every design)</label>
+          <label for="song">7 · Wedding Song &amp; Music (موسيقى الدعوة)</label>
+          <select id="song" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
+            <option value="canon_in_d">🎻 Classical Bridal Romance — Canon in D (Pachelbel)</option>
+            <option value="egyptian_zaffa" selected>🥁 Royal Egyptian Zaffa &amp; Strings (زفة ملكية مصرية وأوتار)</option>
+            <option value="romantic_piano">🎹 Romantic Grand Piano &amp; Cello (بيانو وأوتار رومانسية)</option>
+            <option value="liquid_chromium">💧 Liquid Chromium &amp; Platinum Chimes (ألحان الكروم السائل)</option>
+            <option value="katb_ketab">🕊️ Katb Ketab Peaceful Nay &amp; Oud (ألحان كتب كتاب روحانية)</option>
+            <option value="sahel_sunset">🌅 Sahel Sunset &amp; Breezy Acoustic (أجواء الساحل والجونة)</option>
+            <option value="silent">🔇 Silent Card (بدون صوت — كروت هادئة)</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="ph">8 · Couple photo (optional — works on every design)</label>
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <input id="ph" type="file" accept="image/*" style="flex:1;min-width:210px;padding:9px 12px">
             <img id="phThumb" alt="" style="display:none;width:44px;height:44px;border-radius:10px;object-fit:cover;border:1px solid var(--gold)">
@@ -153,6 +166,7 @@
       date: $('dt').value,
       venue: $('v').value.trim(),
       guest: $('g').value.trim(),
+      song: $('song') ? $('song').value : '',
       photo: hasPhoto ? '1' : ''
     };
   };
@@ -232,7 +246,8 @@
   });
 
   $('d').addEventListener('change', update);
-  $('l').addEventListener('change', update);
+  if ($('song')) $('song').addEventListener('change', update);
+  if ($('l')) $('l').addEventListener('change', update);
   $('apply').addEventListener('click', update);
   ['cg','cb','dt','v','g'].forEach(id => $(id).addEventListener('keydown', e => e.key === 'Enter' && update()));
 

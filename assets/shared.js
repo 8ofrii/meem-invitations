@@ -49,6 +49,7 @@
   const customVenue = readParam(['venue', 'v']);
   const customDate = readParam(['date', 'dt']);
   const customLang = readParam(['lang', 'language', 'l']);
+  const customSong = readParam(['song', 'music', 'm', 'audio']);
   const isCleanMode = params.get('clean') === '1';
 
   if (!customCouple && (customGroom || customBride)) {
@@ -525,98 +526,350 @@
     });
   }
 
-  function playPluck(freq, startTime, duration = 2.4, peak = 0.045) {
+  // =========================================================================
+  // MULTI-GENRE WEDDING MUSIC & AUDIO SYNTHESIS ENGINE
+  // Real-time acoustic instruments: Grand Piano, Arabic Oud, Nay Flute,
+  // Violins String Ensemble, Liquid Chrome Bells & Egyptian Zaffa Percussion
+  // =========================================================================
+
+  function playPiano(freq, time, duration = 2.2, vel = 0.055) {
     if (!audioCtx) return;
-    const osc = audioCtx.createOscillator();
+    const osc1 = audioCtx.createOscillator();
     const osc2 = audioCtx.createOscillator();
+    const osc3 = audioCtx.createOscillator();
     const filter = audioCtx.createBiquadFilter();
     const gain = audioCtx.createGain();
 
-    osc.type = 'sine';
-    osc2.type = 'triangle';
-    osc.frequency.setValueAtTime(freq, startTime);
-    osc2.frequency.setValueAtTime(freq * 2, startTime);
+    osc1.type = 'triangle';
+    osc2.type = 'sine';
+    osc3.type = 'sine';
+    osc1.frequency.setValueAtTime(freq, time);
+    osc2.frequency.setValueAtTime(freq * 2.002, time);
+    osc3.frequency.setValueAtTime(freq * 3.004, time);
 
     filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(2200, startTime);
-    filter.frequency.exponentialRampToValueAtTime(650, startTime + duration);
+    filter.frequency.setValueAtTime(3400, time);
+    filter.frequency.exponentialRampToValueAtTime(420, time + duration);
 
-    const g2 = audioCtx.createGain();
-    g2.gain.setValueAtTime(0.18, startTime);
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.linearRampToValueAtTime(vel, time + 0.015);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
 
-    gain.gain.setValueAtTime(0.0001, startTime);
-    gain.gain.exponentialRampToValueAtTime(peak, startTime + 0.035);
-    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-
-    osc.connect(filter);
-    osc2.connect(g2);
-    g2.connect(filter);
+    osc1.connect(filter);
+    osc2.connect(filter);
+    osc3.connect(filter);
     filter.connect(gain);
     gain.connect(audioCtx.destination);
 
-    osc.start(startTime);
-    osc2.start(startTime);
-    osc.stop(startTime + duration + 0.06);
-    osc2.stop(startTime + duration + 0.06);
+    osc1.start(time);
+    osc2.start(time);
+    osc3.start(time);
+    osc1.stop(time + duration + 0.05);
+    osc2.stop(time + duration + 0.05);
+    osc3.stop(time + duration + 0.05);
   }
 
-  function playWarmPad(freqs, startTime, duration = 3.8, peak = 0.018) {
+  function playOud(freq, time, duration = 1.6, vel = 0.058) {
     if (!audioCtx) return;
-    freqs.forEach((f) => {
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+    const bp = audioCtx.createBiquadFilter();
+    const gain = audioCtx.createGain();
+
+    osc1.type = 'triangle';
+    osc2.type = 'sawtooth';
+    osc1.frequency.setValueAtTime(freq, time);
+    osc2.frequency.setValueAtTime(freq + 1.2, time); // Natural double string detune
+
+    bp.type = 'bandpass';
+    bp.frequency.setValueAtTime(1150, time);
+    bp.frequency.exponentialRampToValueAtTime(360, time + duration);
+    bp.Q.value = 1.9;
+
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.linearRampToValueAtTime(vel, time + 0.009);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+    osc1.connect(bp);
+    osc2.connect(bp);
+    bp.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc1.start(time);
+    osc2.start(time);
+    osc1.stop(time + duration + 0.05);
+    osc2.stop(time + duration + 0.05);
+  }
+
+  function playNay(freq, time, duration = 1.5, vel = 0.042) {
+    if (!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const lp = audioCtx.createBiquadFilter();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, time);
+    osc.frequency.setValueAtTime(freq, time + 0.12);
+    osc.frequency.linearRampToValueAtTime(freq * 1.012, time + 0.28);
+    osc.frequency.linearRampToValueAtTime(freq * 0.99, time + 0.48);
+    osc.frequency.linearRampToValueAtTime(freq, time + 0.7);
+
+    lp.type = 'lowpass';
+    lp.frequency.setValueAtTime(1500, time);
+
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.linearRampToValueAtTime(vel, time + 0.12);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+    osc.connect(lp);
+    lp.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(time);
+    osc.stop(time + duration + 0.05);
+  }
+
+  function playStrings(freq, time, duration = 2.4, vel = 0.038) {
+    if (!audioCtx) return;
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+    const lp = audioCtx.createBiquadFilter();
+    const gain = audioCtx.createGain();
+
+    osc1.type = 'sawtooth';
+    osc2.type = 'triangle';
+    osc1.frequency.setValueAtTime(freq, time);
+    osc2.frequency.setValueAtTime(freq * 1.0035, time);
+
+    lp.type = 'lowpass';
+    lp.frequency.setValueAtTime(1700, time);
+
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.linearRampToValueAtTime(vel, time + 0.18);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+    osc1.connect(lp);
+    osc2.connect(lp);
+    lp.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc1.start(time);
+    osc2.start(time);
+    osc1.stop(time + duration + 0.05);
+    osc2.stop(time + duration + 0.05);
+  }
+
+  function playChromeBell(freq, time, duration = 2.6, vel = 0.048) {
+    if (!audioCtx) return;
+    const carrier = audioCtx.createOscillator();
+    const mod = audioCtx.createOscillator();
+    const modGain = audioCtx.createGain();
+    const mainGain = audioCtx.createGain();
+
+    carrier.type = 'sine';
+    carrier.frequency.setValueAtTime(freq, time);
+    mod.type = 'sine';
+    mod.frequency.setValueAtTime(freq * 2.76, time);
+
+    modGain.gain.setValueAtTime(freq * 1.5, time);
+    modGain.gain.exponentialRampToValueAtTime(0.1, time + 0.55);
+
+    mod.connect(modGain);
+    modGain.connect(carrier.frequency);
+
+    mainGain.gain.setValueAtTime(0.0001, time);
+    mainGain.gain.linearRampToValueAtTime(vel, time + 0.015);
+    mainGain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+    carrier.connect(mainGain);
+    mainGain.connect(audioCtx.destination);
+
+    carrier.start(time);
+    mod.start(time);
+    carrier.stop(time + duration + 0.05);
+    mod.stop(time + duration + 0.05);
+  }
+
+  function playZaffaDrum(isDum, time, vel = 0.38) {
+    if (!audioCtx) return;
+    if (isDum) {
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(f, startTime);
-      gain.gain.setValueAtTime(0.0001, startTime);
-      gain.gain.linearRampToValueAtTime(peak, startTime + 0.8);
-      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      osc.frequency.setValueAtTime(135, time);
+      osc.frequency.exponentialRampToValueAtTime(46, time + 0.16);
+      gain.gain.setValueAtTime(vel, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.22);
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-      osc.start(startTime);
-      osc.stop(startTime + duration + 0.08);
-    });
+      osc.start(time);
+      osc.stop(time + 0.24);
+    } else {
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = makeNoiseBuffer(audioCtx, 0.08);
+      const bp = audioCtx.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.setValueAtTime(2600, time);
+      bp.Q.value = 2.5;
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(vel * 0.72, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.07);
+      noise.connect(bp);
+      bp.connect(gain);
+      gain.connect(audioCtx.destination);
+      noise.start(time);
+    }
   }
 
   const MOODS = {
-    classic: {
-      tempo: 820,
-      melody: [261.63, 329.63, 392.0, 493.88, 523.25, 493.88, 392.0, 329.63, 220.0, 261.63, 329.63, 392.0, 440.0, 392.0, 329.63, 293.66],
-      chords: [[130.81, 196.0, 261.63], [110.0, 164.81, 220.0], [174.61, 220.0, 261.63], [196.0, 246.94, 293.66]]
+    // 1. Classical Bridal Entrance — Pachelbel's Canon in D Major
+    canon_in_d: {
+      tempo: 680,
+      render: (step, now) => {
+        // Canon 8-chord cycle: D, A, Bm, F#m, G, D, G, A
+        const cycle = [
+          { bass: 73.42, chord: [293.66, 369.99, 440.0], melody: [587.33, 554.37], inst: 'strings' },
+          { bass: 55.00, chord: [220.00, 277.18, 329.63], melody: [440.00, 369.99], inst: 'piano' },
+          { bass: 61.74, chord: [246.94, 293.66, 369.99], melody: [493.88, 440.00], inst: 'strings' },
+          { bass: 46.25, chord: [185.00, 220.00, 277.18], melody: [369.99, 329.63], inst: 'piano' },
+          { bass: 49.00, chord: [196.00, 246.94, 293.66], melody: [392.00, 369.99], inst: 'strings' },
+          { bass: 73.42, chord: [293.66, 369.99, 440.00], melody: [293.66, 329.63], inst: 'piano' },
+          { bass: 49.00, chord: [196.00, 246.94, 293.66], melody: [392.00, 440.00], inst: 'strings' },
+          { bass: 55.00, chord: [220.00, 277.18, 329.63], melody: [440.00, 493.88], inst: 'piano' }
+        ];
+        const bar = cycle[step % cycle.length];
+        playPiano(bar.bass, now, 2.6, 0.05);
+        bar.chord.forEach((f, i) => playPiano(f, now + 0.08 + i * 0.09, 1.8, 0.038));
+        const melNote = bar.melody[(Math.floor(step / 2)) % bar.melody.length];
+        if (bar.inst === 'strings') playStrings(melNote, now + 0.12, 2.2, 0.045);
+        else playPiano(melNote, now + 0.12, 1.9, 0.05);
+      }
     },
-    oriental: {
-      // Romantic Arabic Hijaz / warm acoustic oud-harp cadence
+
+    // 2. Royal Egyptian Zaffa & Strings (زفة ملكية مصرية وأوتار)
+    egyptian_zaffa: {
+      tempo: 440,
+      render: (step, now) => {
+        // Classic Egyptian Zaffa cadence: Dum - - Tak, Tak - Dum - Tak
+        const drumPattern = [
+          { dum: true }, { dum: false }, { tak: true }, { rest: true },
+          { tak: true }, { dum: true }, { tak: true }, { rest: true }
+        ];
+        const beat = drumPattern[step % drumPattern.length];
+        if (beat.dum) playZaffaDrum(true, now, 0.42);
+        if (beat.tak) playZaffaDrum(false, now, 0.28);
+
+        // Maqam Bayati / Rast melody
+        const melody = [293.66, 311.13, 369.99, 440.0, 466.16, 440.0, 369.99, 311.13, 293.66, 369.99, 440.0, 587.33, 440.0, 369.99, 311.13, 293.66];
+        const note = melody[step % melody.length];
+        if (step % 2 === 0) {
+          playOud(note, now, 1.4, 0.055);
+        } else {
+          playStrings(note, now, 1.2, 0.04);
+        }
+      }
+    },
+
+    // 3. Romantic Grand Piano & Cello Waltz (بيانو وأوتار رومانسية)
+    romantic_piano: {
+      tempo: 520,
+      render: (step, now) => {
+        const chords = [
+          { bass: 130.81, arpm: [261.63, 329.63, 392.0, 523.25], cello: 523.25 },
+          { bass: 110.00, arpm: [220.00, 261.63, 329.63, 440.00], cello: 493.88 },
+          { bass: 87.31,  arpm: [174.61, 220.00, 261.63, 349.23], cello: 440.00 },
+          { bass: 98.00,  arpm: [196.00, 246.94, 293.66, 392.00], cello: 392.00 }
+        ];
+        const bar = chords[Math.floor(step / 3) % chords.length];
+        const sub = step % 3;
+        if (sub === 0) {
+          playPiano(bar.bass, now, 2.5, 0.06);
+          playStrings(bar.cello, now + 0.1, 2.4, 0.045);
+        } else {
+          bar.arpm.slice(0, 3).forEach((f, i) => playPiano(f, now + i * 0.07, 1.6, 0.038));
+        }
+      }
+    },
+
+    // 4. Liquid Chromium & Platinum Chimes (الكروم السائل والبريق البلاتيني)
+    liquid_chromium: {
       tempo: 780,
-      melody: [293.66, 311.13, 369.99, 392.0, 440.0, 392.0, 369.99, 311.13, 293.66, 369.99, 440.0, 466.16, 587.33, 466.16, 440.0, 369.99],
-      chords: [[146.83, 220.0, 293.66], [155.56, 233.08, 311.13], [146.83, 220.0, 293.66], [196.0, 293.66, 369.99]]
+      render: (step, now) => {
+        const bells = [587.33, 739.99, 880.0, 1174.66, 1318.51, 880.0, 739.99, 587.33];
+        const note = bells[step % bells.length];
+        playChromeBell(note, now, 2.8, 0.05);
+
+        if (step % 4 === 0) {
+          const pads = [
+            [146.83, 220.0, 293.66, 440.0],
+            [174.61, 220.0, 261.63, 392.0],
+            [196.0, 246.94, 293.66, 440.0],
+            [146.83, 220.0, 329.63, 440.0]
+          ];
+          const pad = pads[(step / 4) % pads.length];
+          pad.forEach((f) => playStrings(f, now, 3.8, 0.025));
+        }
+      }
     },
-    celestial: {
-      tempo: 950,
-      melody: [329.63, 392.0, 493.88, 659.25, 587.33, 493.88, 392.0, 329.63, 293.66, 369.99, 440.0, 587.33, 493.88, 440.0, 369.99, 329.63],
-      chords: [[164.81, 246.94, 329.63], [146.83, 220.0, 293.66], [130.81, 196.0, 261.63], [196.0, 246.94, 293.66]]
+
+    // 5. Katb Ketab Peaceful Nay & Oud (كتب كتاب وألحان روحانية هادئة)
+    katb_ketab: {
+      tempo: 740,
+      render: (step, now) => {
+        const nayScale = [329.63, 349.23, 392.0, 440.0, 392.0, 349.23, 329.63, 293.66, 329.63, 392.0, 440.0, 493.88, 440.0, 392.0, 349.23, 329.63];
+        const note = nayScale[step % nayScale.length];
+        playNay(note, now, 1.8, 0.048);
+
+        if (step % 2 === 0) {
+          const oudBass = [164.81, 146.83, 130.81, 146.83][(step / 2) % 4];
+          playOud(oudBass, now + 0.08, 2.2, 0.045);
+        }
+      }
     },
-    mediterranean: {
-      tempo: 700,
-      melody: [349.23, 440.0, 523.25, 659.25, 587.33, 523.25, 440.0, 392.0, 349.23, 440.0, 523.25, 587.33, 523.25, 440.0, 392.0, 329.63],
-      chords: [[174.61, 220.0, 261.63], [130.81, 196.0, 261.63], [146.83, 220.0, 293.66], [196.0, 246.94, 329.63]]
+
+    // 6. Sahel Sunset & Breezy Acoustic (أجواء الساحل والجونة الصيفية)
+    sahel_sunset: {
+      tempo: 560,
+      render: (step, now) => {
+        const chords = [
+          { bass: 174.61, strum: [220.0, 261.63, 349.23], mel: 523.25 },
+          { bass: 130.81, strum: [196.0, 261.63, 329.63], mel: 440.00 },
+          { bass: 146.83, strum: [220.0, 293.66, 369.99], mel: 587.33 },
+          { bass: 196.00, strum: [246.94, 329.63, 392.00], mel: 493.88 }
+        ];
+        const bar = chords[Math.floor(step / 2) % chords.length];
+        if (step % 2 === 0) {
+          playPiano(bar.bass, now, 1.8, 0.05);
+          bar.strum.forEach((f, i) => playPiano(f, now + 0.06 + i * 0.05, 1.4, 0.035));
+        } else {
+          playChromeBell(bar.mel, now + 0.1, 1.6, 0.04);
+        }
+      }
     }
   };
 
+  // Backward compatibility aliases
+  MOODS.classic = MOODS.canon_in_d;
+  MOODS.oriental = MOODS.egyptian_zaffa;
+  MOODS.celestial = MOODS.liquid_chromium;
+  MOODS.mediterranean = MOODS.sahel_sunset;
+
   function startMusic(mood) {
+    if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
     const ctx = ensureAudio();
     if (!ctx) return;
-    if (mood && MOODS[mood]) currentMood = mood;
+
+    const chosenMood = customSong && MOODS[customSong] ? customSong : (mood || currentMood);
+    if (chosenMood && MOODS[chosenMood]) currentMood = chosenMood;
     if (musicPlaying) return;
 
-    const cfg = MOODS[currentMood] || MOODS.classic;
+    const cfg = MOODS[currentMood] || MOODS.canon_in_d;
     musicPlaying = true;
     const tick = () => {
       if (!musicPlaying || !audioCtx) return;
       const now = audioCtx.currentTime;
-      const note = cfg.melody[stepIdx % cfg.melody.length];
-      playPluck(note, now, 2.5, 0.042);
-      if (stepIdx % 4 === 0) {
-        const chord = cfg.chords[Math.floor(stepIdx / 4) % cfg.chords.length];
-        playWarmPad(chord, now, 3.6, 0.017);
+      if (typeof cfg.render === 'function') {
+        cfg.render(stepIdx, now);
       }
       stepIdx++;
     };
