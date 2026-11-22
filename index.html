@@ -121,65 +121,11 @@
     border: 1px solid rgba(13, 59, 46, 0.1);
   }
 
-  /* Your Invitation, Your Soundtrack Lounge */
-  .track-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .track-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(13, 59, 46, 0.12);
-    border-radius: 16px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 4px 16px rgba(13, 59, 46, 0.04);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .track-card.is-playing {
-    border-color: var(--gold);
-    background: linear-gradient(155deg, #FFFFFF, #FAF4E8);
-    box-shadow: 0 10px 26px rgba(197, 160, 89, 0.18);
-  }
-  .track-top { display: flex; align-items: center; gap: 10px; }
-  .track-play {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: 1px solid #C5A059;
-    background: linear-gradient(135deg, #0D3B2E, #164E3D);
-    color: #F4E5C2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .track-meta { min-width: 0; flex: 1; }
-  .track-vibe { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-2); }
-  .track-title { font-size: 13px; font-weight: 700; color: var(--emerald); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .track-artist { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .track-use {
-    border: 1px solid rgba(13, 59, 46, 0.14);
-    background: #FAF7F2;
-    color: var(--emerald);
-    border-radius: 999px;
-    padding: 6px 10px;
-    font: 600 11px inherit;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-  }
-  .track-use:hover { background: var(--emerald); color: #FFFFFF; border-color: var(--gold); }
   @media (max-width: 1024px) {
     .feat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 600px) {
     .feat-grid { grid-template-columns: 1fr; }
-    .track-grid { grid-template-columns: 1fr; }
     .hero-emblem { width: 78px; height: 78px; }
   }
 
@@ -691,47 +637,7 @@
 
   <hr class="section-divider">
 
-  <!-- 2. CURATED COLLECTIONS SECTION (Bespoke Arched Venue-Thumbnail Filter) -->
-  <section id="designs" class="section has-bg-art">
-    <div class="bg-venue align-top" style="background-image:url('assets/images/mohamed-ali-palace.jpg')" aria-hidden="true"></div>
-    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="68" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3 5"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.85"/></svg>
-    <svg class="bg-shape bg-shape-bl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 212V112C36 66 74 30 120 30C166 30 204 66 204 112V212" stroke="currentColor" stroke-width="0.9"/><path d="M58 212V118C58 84 86 56 120 56C154 56 182 84 182 118V212" stroke="currentColor" stroke-width="0.7"/></svg>
-    <div class="container">
-    <div class="center" style="margin-bottom:26px">
-      <div class="pill-tag">Curated Collections</div>
-      <h2 class="h2">Find Your <em>Wedding Style</em></h2>
-      <p class="lead" style="margin:10px auto 0">Explore by celebration or style — every design opens with live interactive motion and its own tailored Wedding Moodboard.</p>
-    </div>
-
-    <div class="filter-bar">
-      <div class="pill-group" id="catPills"></div>
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="search-box" id="searchBox" placeholder="Search designs, moods or Egyptian venues…">
-      </div>
-    </div>
-
-    <div class="gallery-grid" id="designGrid"></div>
-  </div></section>
-
-  <hr class="section-divider">
-
-  <!-- 2.5. YOUR INVITATION, YOUR SOUNDTRACK LOUNGE -->
-  <section id="soundtrack" class="section tight has-bg-art">
-    <div class="bg-venue align-soft" style="background-image:url('assets/images/four-seasons-nile.jpg')" aria-hidden="true"></div>
-    <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="92" stroke="currentColor" stroke-width="0.7"/><circle cx="120" cy="120" r="64" stroke="currentColor" stroke-width="0.7" stroke-dasharray="5 5"/><circle cx="120" cy="120" r="36" stroke="currentColor" stroke-width="0.7"/></svg>
-    <div class="container">
-    <div class="center" style="margin-bottom:26px">
-      <div class="pill-tag">Audio Preview</div>
-      <h2 class="h2">Your Invitation, <em>Your Soundtrack</em></h2>
-      <p class="lead" style="margin:10px auto 0">Listen to curated Egyptian, Arabic &amp; international wedding soundtracks matched to each aesthetic — then apply any track straight into your live preview.</p>
-    </div>
-    <div class="track-grid" id="soundtrackGrid"></div>
-  </div></section>
-
-  <hr class="section-divider">
-
-  <!-- 2.75. SIGNATURE FEATURES & OCCASIONS -->
+  <!-- 1.5. SIGNATURE FEATURES & OCCASIONS (More Than a Card — Top Showcase) -->
   <section id="features" class="section tight has-bg-art">
     <div class="bg-venue align-soft" style="background-image:url('assets/images/baron-palace-cairo.jpg')" aria-hidden="true"></div>
     <svg class="bg-shape bg-shape-br" viewBox="0 0 240 240" fill="none" aria-hidden="true"><rect x="48" y="48" width="144" height="144" stroke="currentColor" stroke-width="0.8"/><rect x="48" y="48" width="144" height="144" transform="rotate(45 120 120)" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="46" stroke="currentColor" stroke-width="0.7"/></svg>
@@ -767,6 +673,31 @@
         <div class="feat-tags"><span>Save the Date</span><span>Katb Ketab</span><span>Bridal Shower</span><span>Thank You</span></div>
       </div>
     </div>
+  </div></section>
+
+  <hr class="section-divider">
+
+  <!-- 2. CURATED COLLECTIONS SECTION (Bespoke Arched Venue-Thumbnail Filter) -->
+  <section id="designs" class="section has-bg-art">
+    <div class="bg-venue align-top" style="background-image:url('assets/images/mohamed-ali-palace.jpg')" aria-hidden="true"></div>
+    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="68" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3 5"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.85"/></svg>
+    <svg class="bg-shape bg-shape-bl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 212V112C36 66 74 30 120 30C166 30 204 66 204 112V212" stroke="currentColor" stroke-width="0.9"/><path d="M58 212V118C58 84 86 56 120 56C154 56 182 84 182 118V212" stroke="currentColor" stroke-width="0.7"/></svg>
+    <div class="container">
+    <div class="center" style="margin-bottom:26px">
+      <div class="pill-tag">Curated Collections</div>
+      <h2 class="h2">Find Your <em>Wedding Style</em></h2>
+      <p class="lead" style="margin:10px auto 0">Explore by celebration or style — every design opens with live interactive motion and its own tailored Wedding Moodboard.</p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="pill-group" id="catPills"></div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-box" id="searchBox" placeholder="Search designs, moods or Egyptian venues…">
+      </div>
+    </div>
+
+    <div class="gallery-grid" id="designGrid"></div>
   </div></section>
 
   <hr class="section-divider">
@@ -989,86 +920,6 @@
   });
   $('searchBox').addEventListener('input', renderDesigns);
   renderDesigns();
-
-  /* ===== 1.5. YOUR INVITATION, YOUR SOUNDTRACK LOUNGE ===== */
-  const SOUNDTRACK_SAMPLES = [
-    { key: 'einaudi_experience', vibe: 'Luxury · Old Money', title: 'Experience', artist: 'Ludovico Einaudi', src: 'assets/audio/einaudi-experience.mp3' },
-    { key: 'taylor_enchanted', vibe: 'Romantic · Floral', title: 'Enchanted', artist: 'Taylor Swift', src: 'assets/audio/taylor-enchanted.mp3' },
-    { key: 'golden_hour', vibe: 'Modern Minimal', title: 'Golden Hour', artist: 'JVKE', src: 'assets/audio/golden-hour.mp3' },
-    { key: 'young_and_beautiful', vibe: 'Royal · Dramatic', title: 'Young and Beautiful', artist: 'Lana Del Rey', src: 'assets/audio/young-and-beautiful.mp3' },
-    { key: 'clair_de_lune', vibe: 'Classic Editorial', title: 'Clair de Lune', artist: 'Claude Debussy', src: 'assets/audio/clair-de-lune.mp3' },
-    { key: 'amr_tamally_maak', vibe: 'Arabic Classic', title: 'Tamally Maak · تملي معاك', artist: 'Amr Diab (Instrumental)', src: 'assets/audio/amr-tamally-maak.mp3' },
-    { key: 'elissa_men_awal', vibe: 'Modern Arabic', title: 'Men Awal Deqiqa · من أول دقيقة', artist: 'Elissa & Saad Lamjarred', src: 'assets/audio/elissa-men-awal-deqiqa.mp3' },
-    { key: 'farha_katb', vibe: 'Katb Ketab · Joyful', title: 'Farha · فرحة', artist: 'Mahmoud El Esseily', src: 'assets/audio/farha-katb.mp3' }
-  ];
-  const PLAY_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>';
-  const PAUSE_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
-
-  let loungeAudio = null;
-  let loungeKey = '';
-  window.addEventListener('meem:stop-lounge', stopLoungeAudio);
-  function stopLoungeAudio() {
-    if (loungeAudio) {
-      try { loungeAudio.pause(); } catch (_) {}
-      loungeAudio = null;
-    }
-    loungeKey = '';
-    if ($('soundtrackGrid')) {
-      $('soundtrackGrid').querySelectorAll('.track-card').forEach(c => {
-        c.classList.remove('is-playing');
-        const btn = c.querySelector('.track-play');
-        if (btn) btn.innerHTML = PLAY_SVG;
-      });
-    }
-  }
-  if ($('soundtrackGrid')) {
-    $('soundtrackGrid').innerHTML = SOUNDTRACK_SAMPLES.map(t => `
-      <div class="track-card" data-key="${t.key}">
-        <div class="track-top">
-          <button type="button" class="track-play" data-play="${t.key}" aria-label="Play ${t.title}">${PLAY_SVG}</button>
-          <div class="track-meta">
-            <div class="track-vibe">${t.vibe}</div>
-            <div class="track-title">${t.title}</div>
-            <div class="track-artist">${t.artist}</div>
-          </div>
-        </div>
-        <button type="button" class="track-use" data-use="${t.key}">Use in Live Preview →</button>
-      </div>`).join('');
-
-    $('soundtrackGrid').addEventListener('click', e => {
-      const playBtn = e.target.closest('button[data-play]');
-      if (playBtn) {
-        const key = playBtn.dataset.play;
-        const item = SOUNDTRACK_SAMPLES.find(x => x.key === key);
-        if (!item) return;
-        if (loungeKey === key && loungeAudio && !loungeAudio.paused) {
-          stopLoungeAudio();
-          return;
-        }
-        stopLoungeAudio();
-        loungeAudio = new Audio(item.src);
-        loungeAudio.volume = 0.72;
-        loungeKey = key;
-        const card = playBtn.closest('.track-card');
-        if (card) card.classList.add('is-playing');
-        playBtn.innerHTML = PAUSE_SVG;
-        loungeAudio.addEventListener('ended', stopLoungeAudio);
-        loungeAudio.play().catch(() => stopLoungeAudio());
-        return;
-      }
-      const useBtn = e.target.closest('button[data-use]');
-      if (useBtn) {
-        const key = useBtn.dataset.use;
-        stopLoungeAudio();
-        if ($('song')) {
-          $('song').value = key;
-          updateTry();
-        }
-        const el = $('try-it-live');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  }
 
   /* ===== 2. TRY IT LIVE STUDIO ===== */
   $('d').innerHTML = S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');

@@ -76,7 +76,6 @@
     const NAV = [
       ['home', isHome ? '#home' : '/', 'Home'],
       ['designs', `${prefix}#designs`, 'Collections'],
-      ['soundtrack', `${prefix}#soundtrack`, 'Soundtrack'],
       ['try-it-live', `${prefix}#try-it-live`, 'Try it live']
     ];
 
@@ -153,7 +152,7 @@
   }
 
   function initScrollSpy() {
-    const ids = ['home', 'designs', 'soundtrack', 'try-it-live'];
+    const ids = ['home', 'designs', 'try-it-live'];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
 
@@ -199,7 +198,6 @@
   function preview(num, extra) {
     const s = S.SAMPLES.find((x) => x.num === num);
     if (!s) return;
-    try { window.dispatchEvent(new CustomEvent('meem:stop-lounge')); } catch (_) {}
     document.getElementById('modalTitle').textContent = `#${s.num} — ${s.title}`;
     document.getElementById('modalDesc').textContent = `${s.venue} • ${s.desc}`;
     const mb = s.moodboard || {};
