@@ -183,85 +183,199 @@
     .hero-emblem { width: 78px; height: 78px; }
   }
 
-  /* Unified Editorial Filter Bar */
+  /* Translucent Egyptian Venues & Architectural Shape Backgrounds */
+  .has-bg-art {
+    position: relative;
+    overflow: hidden;
+  }
+  .has-bg-art > .container {
+    position: relative;
+    z-index: 2;
+  }
+  .bg-venue {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.11;
+    filter: saturate(0.55) sepia(0.2) contrast(0.95);
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse 88% 76% at 50% 48%, rgba(0,0,0,0.92) 15%, rgba(0,0,0,0.35) 62%, transparent 98%);
+    mask-image: radial-gradient(ellipse 88% 76% at 50% 48%, rgba(0,0,0,0.92) 15%, rgba(0,0,0,0.35) 62%, transparent 98%);
+  }
+  .bg-venue.align-top { background-position: center 22%; }
+  .bg-venue.align-soft { opacity: 0.095; }
+  .bg-shape {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    color: #C5A059;
+    opacity: 0.26;
+  }
+  .bg-shape-tl { top: -24px; left: -26px; width: 260px; height: 260px; }
+  .bg-shape-tr { top: -20px; right: -26px; width: 270px; height: 270px; }
+  .bg-shape-bl { bottom: -30px; left: -24px; width: 250px; height: 250px; }
+  .bg-shape-br { bottom: -26px; right: -24px; width: 260px; height: 260px; }
+  .cta.has-bg-art {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(155deg, rgba(255, 253, 249, 0.94), rgba(248, 241, 228, 0.92));
+    border: 1px solid rgba(197, 160, 89, 0.42);
+  }
+  .cta.has-bg-art .bg-venue {
+    opacity: 0.16;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+  }
+  .cta.has-bg-art > *:not(.bg-venue):not(.bg-shape) {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Bespoke Arched Venue-Thumbnail Category Filter */
   .filter-bar {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    gap: 16px;
+    margin-bottom: 34px;
     width: 100%;
-    padding: 12px 14px;
-    border-radius: 20px;
-    background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(250, 246, 238, 0.92));
-    border: 1px solid rgba(197, 160, 89, 0.3);
-    box-shadow: 0 10px 30px rgba(13, 59, 46, 0.05);
   }
   .pill-group {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
   }
   .fpill {
-    display: inline-flex;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 7px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(13, 59, 46, 0.11);
-    background: #FFFFFF;
-    color: #4B443B;
-    font-size: 12.5px;
-    font-weight: 600;
+    padding: 9px 8px 11px;
+    border-radius: 76px 76px 16px 16px;
+    border: 1px solid rgba(197, 160, 89, 0.32);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    color: var(--emerald);
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.22s ease;
-    white-space: nowrap;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 6px 20px rgba(13, 59, 46, 0.05);
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
-  .fpill-ic { display: inline-flex; align-items: center; color: var(--gold-2); flex-shrink: 0; }
-  .fpill-txt { display: inline-flex; align-items: center; gap: 6px; }
-  .fpill-name { font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em; }
+  .fpill-arch {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 66px 66px 10px 10px;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.42);
+    background: #EFE7D8;
+  }
+  .fpill-arch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.3s ease;
+    filter: brightness(0.95) saturate(0.92);
+  }
+  .fpill-arch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 59, 46, 0.04) 20%, rgba(13, 59, 46, 0.32) 100%);
+    pointer-events: none;
+  }
   .fpill-count {
-    font-size: 10.5px;
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    z-index: 2;
+    font-size: 10px;
     font-weight: 700;
-    padding: 1px 6px;
+    padding: 2px 7px;
     border-radius: 999px;
-    background: rgba(197, 160, 89, 0.16);
-    color: #8C6721;
+    background: rgba(255, 253, 249, 0.92);
+    color: var(--emerald);
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
     transition: all 0.2s ease;
+  }
+  .fpill-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    width: 100%;
+    min-width: 0;
+    padding: 0 2px;
+  }
+  .fpill-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--emerald);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .fpill-ar {
+    font-family: 'Amiri', serif;
+    font-size: 11px;
+    color: var(--gold-2);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
   .fpill:hover {
     border-color: var(--gold);
-    color: var(--emerald);
-    background: #FCF9F3;
-    transform: translateY(-1px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(13, 59, 46, 0.1);
+  }
+  .fpill:hover .fpill-arch img {
+    transform: scale(1.07);
+    filter: brightness(1) saturate(1.04);
   }
   .fpill.active {
-    background: linear-gradient(135deg, #0D3B2E 0%, #164F3E 100%);
-    color: #FAF6EE;
+    background: linear-gradient(160deg, #0D3B2E 0%, #16503F 100%);
     border-color: #C5A059;
-    box-shadow: 0 6px 16px rgba(13, 59, 46, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(13, 59, 46, 0.26), 0 0 0 1px rgba(197, 160, 89, 0.45);
   }
-  .fpill.active .fpill-ic { color: #F4E5C2; }
-  .fpill.active .fpill-name { color: #FFFFFF; }
+  .fpill.active .fpill-arch {
+    border-color: #E8CA8C;
+  }
+  .fpill.active .fpill-name {
+    color: #FAF6EE;
+  }
+  .fpill.active .fpill-ar {
+    color: #E8CA8C;
+  }
   .fpill.active .fpill-count {
-    background: rgba(244, 229, 194, 0.22);
-    color: #F4E5C2;
+    background: linear-gradient(135deg, #E8CA8C, #C5A059);
+    color: #0D3B2E;
+    border-color: #FAF6EE;
   }
   .search-wrap {
     position: relative;
     display: flex;
     align-items: center;
-    min-width: 230px;
-    flex: 0 1 260px;
+    width: 100%;
+    max-width: 440px;
   }
   .search-wrap svg {
     position: absolute;
-    left: 14px;
+    left: 16px;
     width: 15px;
     height: 15px;
     color: var(--gold-2);
@@ -269,19 +383,22 @@
   }
   .search-box {
     width: 100%;
-    padding: 9px 16px 9px 38px;
+    padding: 10px 18px 10px 42px;
     border-radius: 999px;
-    border: 1px solid rgba(13, 59, 46, 0.13);
-    background: #FFFFFF;
+    border: 1px solid rgba(197, 160, 89, 0.36);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
     color: var(--text);
     font: inherit;
-    font-size: 12.5px;
+    font-size: 13px;
     outline: none;
+    box-shadow: 0 4px 16px rgba(13, 59, 46, 0.04);
     transition: all 0.2s;
   }
   .search-box:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.14);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.16);
   }
 
   /* Try it live studio */
@@ -477,6 +594,9 @@
 
   .section-divider { border: 0; border-top: 1px solid var(--line); margin: 10px 0; }
 
+  @media (max-width: 1040px) {
+    .pill-group { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
   @media (max-width: 980px) {
     .studio, .order-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .studio > *, .form > * { min-width: 0; max-width: 100%; }
@@ -484,88 +604,29 @@
     .stats, .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 768px) {
-    .filter-bar { flex-direction: column; align-items: stretch; gap: 10px; margin-bottom: 22px; padding: 10px; border-radius: 16px; }
+    .filter-bar { gap: 12px; margin-bottom: 24px; }
     .pill-group {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 7px;
-      width: 100%;
-      overflow: visible;
-      padding: 0;
-      margin: 0;
-    }
-    .fpill {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 9px 11px;
-      min-height: 46px;
-      border-radius: 12px;
-      gap: 7px;
-      white-space: nowrap;
-      border: 1px solid rgba(13, 59, 46, 0.11);
-      background: #FFFFFF;
-      width: 100%;
-      box-sizing: border-box;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 9px;
+      padding: 4px 2px 10px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
-    .fpill-ic {
-      font-size: 16px;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .fpill-txt {
-      display: flex;
-      flex: 1;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      min-width: 0;
-    }
-    .fpill-name {
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.2;
-      color: #332C23;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .fpill-count {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 1px 6px;
-      line-height: 1.2;
-      border-radius: 999px;
-      background: rgba(197, 160, 89, 0.16);
-      color: #8C6721;
-      flex-shrink: 0;
-    }
-    .fpill.active {
-      background: linear-gradient(135deg, #0D3B2E 0%, #164F3E 100%);
-      border-color: #C5A059;
-      box-shadow: 0 4px 14px rgba(13, 59, 46, 0.24);
-      transform: translateY(-1px);
-    }
-    .fpill.active .fpill-name {
-      color: #FFFFFF;
-      font-weight: 700;
-    }
-    .fpill.active .fpill-count {
-      background: rgba(244, 229, 194, 0.24);
-      color: #F4E5C2;
-    }
-    .search-wrap { width: 100%; min-width: 0; flex: 1 1 auto; }
-    .search-box { width: 100%; min-width: 0; padding: 10px 14px 10px 38px; font-size: 13.5px; border-radius: 12px; }
-  }
-  @media (max-width: 360px) {
+    .pill-group::-webkit-scrollbar { display: none; }
     .fpill {
-      padding: 8px 10px;
-      gap: 6px;
+      flex: 0 0 118px;
+      scroll-snap-align: start;
+      padding: 7px 7px 9px;
+      border-radius: 56px 56px 14px 14px;
     }
-    .fpill-name {
-      font-size: 11px;
-    }
+    .fpill-arch { border-radius: 48px 48px 9px 9px; }
+    .fpill-name { font-size: 14px; }
+    .fpill-ar { font-size: 10px; }
+    .search-wrap { max-width: 100%; }
+    .bg-shape { width: 170px !important; height: 170px !important; opacity: 0.18; }
   }
   @media (max-width: 600px) {
     .form, .orderform, .trust-grid { grid-template-columns: 1fr; }
@@ -591,12 +652,14 @@
 <body>
 <main>
   <!-- 1. HOME SECTION (Cinematic Wedding Experience) -->
-  <section id="home" class="hero">
+  <section id="home" class="hero has-bg-art">
     <div class="hero-video-wrap" aria-hidden="true">
       <video autoplay muted loop playsinline poster="assets/images/al-masa-capital.jpg">
         <source src="assets/video/wedding-intro-loop.mp4" type="video/mp4">
       </video>
     </div>
+    <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M24 220V116C24 62 66 24 120 24C174 24 216 62 216 116V220" stroke="currentColor" stroke-width="1"/><path d="M40 220V120C40 74 75 40 120 40C165 40 200 74 200 120V220" stroke="currentColor" stroke-width="0.7" stroke-dasharray="4 4"/><polygon points="120,12 126,24 120,36 114,24" stroke="currentColor" stroke-width="0.9"/></svg>
+    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M196 28C164 62 150 112 158 176" stroke="currentColor" stroke-width="1"/><path d="M174 62C152 54 134 60 126 74C144 82 162 78 174 62Z" stroke="currentColor" stroke-width="0.85"/><path d="M164 102C140 94 120 102 114 118C134 126 154 120 164 102Z" stroke="currentColor" stroke-width="0.85"/><path d="M158 142C136 138 120 148 118 164C138 170 154 160 158 142Z" stroke="currentColor" stroke-width="0.85"/><path d="M180 82C200 76 216 84 220 98C202 104 186 98 180 82Z" stroke="currentColor" stroke-width="0.85"/><path d="M172 122C194 118 210 128 212 144C194 148 178 140 172 122Z" stroke="currentColor" stroke-width="0.85"/></svg>
     <div class="container">
       <img class="hero-emblem" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM Digital Invitations">
       <div class="pill-tag">Digital Wedding House · Cairo, Egypt</div>
@@ -628,19 +691,23 @@
 
   <hr class="section-divider">
 
-  <!-- 2. CURATED COLLECTIONS SECTION (Single Unified Editorial Filter) -->
-  <section id="designs" class="section"><div class="container">
+  <!-- 2. CURATED COLLECTIONS SECTION (Bespoke Arched Venue-Thumbnail Filter) -->
+  <section id="designs" class="section has-bg-art">
+    <div class="bg-venue align-top" style="background-image:url('assets/images/mohamed-ali-palace.jpg')" aria-hidden="true"></div>
+    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="68" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3 5"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.85"/></svg>
+    <svg class="bg-shape bg-shape-bl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 212V112C36 66 74 30 120 30C166 30 204 66 204 112V212" stroke="currentColor" stroke-width="0.9"/><path d="M58 212V118C58 84 86 56 120 56C154 56 182 84 182 118V212" stroke="currentColor" stroke-width="0.7"/></svg>
+    <div class="container">
     <div class="center" style="margin-bottom:26px">
       <div class="pill-tag">Curated Collections</div>
       <h2 class="h2">Find Your <em>Wedding Style</em></h2>
-      <p class="lead" style="margin:10px auto 0">Filter by occasion or style — every design opens with live interactive motion and its own tailored Wedding Moodboard.</p>
+      <p class="lead" style="margin:10px auto 0">Explore by celebration or style — every design opens with live interactive motion and its own tailored Wedding Moodboard.</p>
     </div>
 
     <div class="filter-bar">
       <div class="pill-group" id="catPills"></div>
       <div class="search-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="search-box" id="searchBox" placeholder="Search designs, moods or venues…">
+        <input class="search-box" id="searchBox" placeholder="Search designs, moods or Egyptian venues…">
       </div>
     </div>
 
@@ -650,7 +717,10 @@
   <hr class="section-divider">
 
   <!-- 2.5. YOUR INVITATION, YOUR SOUNDTRACK LOUNGE -->
-  <section id="soundtrack" class="section tight"><div class="container">
+  <section id="soundtrack" class="section tight has-bg-art">
+    <div class="bg-venue align-soft" style="background-image:url('assets/images/four-seasons-nile.jpg')" aria-hidden="true"></div>
+    <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="92" stroke="currentColor" stroke-width="0.7"/><circle cx="120" cy="120" r="64" stroke="currentColor" stroke-width="0.7" stroke-dasharray="5 5"/><circle cx="120" cy="120" r="36" stroke="currentColor" stroke-width="0.7"/></svg>
+    <div class="container">
     <div class="center" style="margin-bottom:26px">
       <div class="pill-tag">Audio Preview</div>
       <h2 class="h2">Your Invitation, <em>Your Soundtrack</em></h2>
@@ -662,7 +732,10 @@
   <hr class="section-divider">
 
   <!-- 2.75. SIGNATURE FEATURES & OCCASIONS -->
-  <section id="features" class="section tight"><div class="container">
+  <section id="features" class="section tight has-bg-art">
+    <div class="bg-venue align-soft" style="background-image:url('assets/images/baron-palace-cairo.jpg')" aria-hidden="true"></div>
+    <svg class="bg-shape bg-shape-br" viewBox="0 0 240 240" fill="none" aria-hidden="true"><rect x="48" y="48" width="144" height="144" stroke="currentColor" stroke-width="0.8"/><rect x="48" y="48" width="144" height="144" transform="rotate(45 120 120)" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="46" stroke="currentColor" stroke-width="0.7"/></svg>
+    <div class="container">
     <div class="center" style="margin-bottom:26px">
       <div class="pill-tag">Signature Experience</div>
       <h2 class="h2">More Than a Card — <em>Every Detail Included</em></h2>
@@ -699,7 +772,11 @@
   <hr class="section-divider">
 
   <!-- 3. TRY IT LIVE SECTION -->
-  <section id="try-it-live" class="section"><div class="container">
+  <section id="try-it-live" class="section has-bg-art">
+    <div class="bg-venue" style="background-image:url('assets/images/mena-house-giza.jpg')" aria-hidden="true"></div>
+    <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M54 216C74 156 96 106 144 48" stroke="currentColor" stroke-width="0.9"/><path d="M104 102C84 86 64 88 54 100C70 112 88 112 104 102Z" stroke="currentColor" stroke-width="0.8"/><path d="M84 146C60 132 42 136 34 150C52 162 72 158 84 146Z" stroke="currentColor" stroke-width="0.8"/><path d="M120 80C140 74 156 80 162 94C144 102 128 96 120 80Z" stroke="currentColor" stroke-width="0.8"/></svg>
+    <svg class="bg-shape bg-shape-br" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 220V116C36 68 74 30 120 30C166 30 204 68 204 116V220" stroke="currentColor" stroke-width="0.9"/><path d="M54 220V122C54 84 84 54 120 54C156 54 186 84 186 122V220" stroke="currentColor" stroke-width="0.7" stroke-dasharray="4 4"/></svg>
+    <div class="container">
     <div class="center" style="margin-bottom:32px">
       <div class="pill-tag">Live Preview</div>
       <h2 class="h2">Try it with <em>your names</em></h2>
@@ -835,7 +912,10 @@
   </div></section>
 
   <section class="section tight"><div class="container">
-    <div class="cta" style="text-align:center;border-radius:26px;padding:44px 24px">
+    <div class="cta has-bg-art" style="text-align:center;border-radius:26px;padding:48px 24px">
+      <div class="bg-venue" style="background-image:url('assets/images/al-masa-capital.jpg')" aria-hidden="true"></div>
+      <svg class="bg-shape bg-shape-tl" style="width:180px;height:180px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M24 220V116C24 62 66 24 120 24C174 24 216 62 216 116V220" stroke="currentColor" stroke-width="1"/></svg>
+      <svg class="bg-shape bg-shape-br" style="width:180px;height:180px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="82" stroke="currentColor" stroke-width="0.85"/><path d="M120 38L132 108L202 120L132 132L120 202L108 132L38 120L108 108Z" stroke="currentColor" stroke-width="0.85"/></svg>
       <h2 class="h2">Ready to send your <em>invitation</em>?</h2>
       <p class="lead" style="margin:12px auto 22px">Tell us your occasion, date and favourite design — we will personalise colors, music and every detail for you.</p>
       <a id="ctaWa" class="btn btn-gold btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp</a>
@@ -848,22 +928,42 @@
   Shell.init('home');
   const S = SITE, $ = id => document.getElementById(id), fmt = n => n.toLocaleString('en-US');
 
-  /* ===== 1. UNIFIED DESIGNS FILTER & GALLERY ===== */
+  /* ===== 1. BESPOKE ARCHED VENUE-THUMBNAIL FILTER & GALLERY ===== */
   let curCat = 'all';
   function countFor(catId) {
     return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
   }
-  const ALL_ICON = '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>';
+  const CAT_THUMBS = {
+    all: 'assets/images/al-masa-capital.jpg',
+    motion: 'assets/images/st-regis-cairo.jpg',
+    cards: 'assets/images/translucent-vellum-envelope.jpg',
+    weddings: 'assets/images/mena-house-giza.jpg',
+    katb: 'assets/images/moshir-tantawi-mosque.jpg',
+    engagement: 'assets/images/baron-palace-cairo.jpg',
+    editorial: 'assets/images/el-gouna-lagoon.jpg'
+  };
 
   $('catPills').innerHTML = `
     <button type="button" class="fpill active" data-cat="all">
-      <span class="fpill-ic">${ALL_ICON}</span>
-      <span class="fpill-txt"><span class="fpill-name">All Designs</span><span class="fpill-count">${countFor('all')}</span></span>
+      <div class="fpill-arch">
+        <img src="${CAT_THUMBS.all}" alt="All Designs" loading="lazy">
+        <span class="fpill-count">${countFor('all')}</span>
+      </div>
+      <div class="fpill-txt">
+        <span class="fpill-name">All Designs</span>
+        <span class="fpill-ar">كل التصاميم</span>
+      </div>
     </button>` +
     S.CATEGORIES.map(c => `
     <button type="button" class="fpill" data-cat="${c.id}">
-      <span class="fpill-ic">${c.icon || ALL_ICON}</span>
-      <span class="fpill-txt"><span class="fpill-name">${c.short || c.title}</span><span class="fpill-count">${countFor(c.id)}</span></span>
+      <div class="fpill-arch">
+        <img src="${CAT_THUMBS[c.id] || CAT_THUMBS.all}" alt="${c.short || c.title}" loading="lazy">
+        <span class="fpill-count">${countFor(c.id)}</span>
+      </div>
+      <div class="fpill-txt">
+        <span class="fpill-name">${c.short || c.title}</span>
+        <span class="fpill-ar">${c.ar || ''}</span>
+      </div>
     </button>`).join('');
 
   function renderDesigns() {
