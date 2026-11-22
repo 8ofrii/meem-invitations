@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مؤمن و دينا — ألبوم صور العروسين التفاعلي | مدينة نصر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#FAF6EF;--em:#0D3B2E;--gold:#C5A059;--ink:#1A2420}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;min-height:100vh;padding:20px 14px 60px;text-align:center}
+    .amiri{font-family:'Amiri',serif}
+    .wrap{max-width:480px;margin:0 auto}
+    .gallery-stage{position:relative;border-radius:22px;overflow:hidden;border:2px solid var(--gold);box-shadow:0 20px 50px rgba(13,59,46,.16);margin-bottom:14px;background:#0D3B2E}
+    .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+    .track::-webkit-scrollbar{display:none}
+    .g-item{flex:0 0 100%;scroll-snap-align:center;position:relative;height:330px}
+    .g-item img{width:100%;height:100%;object-fit:cover;display:block}
+    .g-cap{position:absolute;left:14px;right:14px;bottom:12px;background:rgba(13,59,46,.82);color:#FAF6EF;padding:6px 14px;border-radius:999px;font-size:11.5px;backdrop-filter:blur(8px);display:inline-block}
+    .nav-btns{display:flex;justify-content:center;gap:10px;margin-bottom:18px}
+    .nav-btns button{border:1px solid var(--gold);background:#fff;color:var(--em);padding:6px 14px;border-radius:999px;font:700 11.5px inherit;cursor:pointer}
+    .card{background:#fff;border:1px solid rgba(197,160,89,.38);border-radius:20px;padding:20px 18px;margin-bottom:16px;box-shadow:0 12px 30px rgba(13,59,46,.06)}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+    .cd div{background:var(--bg);border-radius:12px;padding:9px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--em)} .cd span{font-size:10px;color:#5D6B65}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:700 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-em{background:var(--em);color:#fff} .btn-g{border:1px solid var(--gold);color:var(--em);background:#fff}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(13,59,46,.2);margin-bottom:10px;font:inherit}
+  </style>
+</head>
+<body data-music-mood="tamer_helm">
+  <main class="wrap">
+    <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:6px;">ألبوم صور العروسين التفاعلي · اسحب لمشاهدة الصور</div>
+    <div class="gallery-stage">
+      <div class="track" id="gTrack">
+        <div class="g-item"><img data-couple-photo src="../assets/images/editorial-couple.jpg" alt="Photo 1" /><span class="g-cap">١ / ٣ • جلسة تصوير العروسين</span></div>
+        <div class="g-item"><img src="../assets/images/love-story-couple.jpg" alt="Photo 2" /><span class="g-cap">٢ / ٣ • أجمل لحظاتنا معاً</span></div>
+        <div class="g-item"><img src="../assets/images/madinet-nasr-venue.jpg" alt="Venue" /><span class="g-cap">٣ / ٣ • مكان الحفل — مدينة نصر</span></div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button type="button" id="prevPic">→ الصورة السابقة</button>
+      <button type="button" id="nextPic">الصورة التالية ←</button>
+    </div>
+    <div class="card">
+      <h1 class="amiri" style="font-size:42px;color:var(--em);" data-couple-title>مؤمن و دينا</h1>
+      <p style="font-size:13px;color:#54645D;margin:6px 0 12px;"><span data-event-date>السبت، ١٣ نوفمبر ٢٠٢٧</span> • الثامنة مساءً<br><strong style="color:var(--em);" data-venue-name>فندق الماسة — مدينة نصر، القاهرة</strong></p>
+      <div class="cd" data-countdown="2027-11-13T20:00:00+02:00">
+        <div><strong data-cd="days">00</strong><span>يوم</span></div>
+        <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
+        <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <button type="button" class="btn btn-em" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة للتقويم</button>
+        <a class="btn btn-g" style="flex:1" href="https://maps.google.com/?q=Al+Masa+Hotel+Nasr+City+Cairo" target="_blank" rel="noopener">الخريطة</a>
+      </div>
+      <form data-rsvp-form data-couple="مؤمن و دينا" data-lang="ar" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="الاسم الكريم" />
+        <button type="submit" class="btn btn-em" style="width:100%;">تأكيد الحضور عبر واتساب</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'زفاف مؤمن و دينا', start: '2027-11-13T18:00:00Z', end: '2027-11-13T23:30:00Z', location: 'Al Masa Hotel, Nasr City, Cairo' };
+    const tr = document.getElementById('gTrack');
+    const step = (dir) => { tr.scrollBy({ left: dir * tr.clientWidth, behavior: 'smooth' }); try { WeddingSound.startMusic('tamer_helm'); } catch(_) {} };
+    document.getElementById('nextPic').addEventListener('click', () => step(-1));
+    document.getElementById('prevPic').addEventListener('click', () => step(1));
+  </script>
+</body></html>

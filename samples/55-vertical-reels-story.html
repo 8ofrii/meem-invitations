@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hassan &amp; Maya — Interactive Reels Story Invitation | El Gouna &amp; Cairo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--gold:#E6C783;--ink:#fff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#090B0E;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .serif{font-family:'Cormorant Garamond',serif}
+    .story-frame{position:relative;width:min(440px,100vw);height:100vh;max-height:840px;overflow:hidden;background:#111}
+    .bars{position:absolute;top:12px;left:12px;right:12px;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+    .bar{height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden}
+    .bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .35s}
+    .bar.done i,.bar.active i{width:100%}
+    .s-slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-end;padding:32px 20px 76px;text-align:center}
+    .s-slide.active{display:flex;animation:fadeIn .45s ease}
+    @keyframes fadeIn{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+    .bg-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55);z-index:0}
+    .s-content{position:relative;z-index:5}
+    .tap-nav{position:absolute;bottom:18px;left:16px;right:16px;z-index:25;display:flex;justify-content:space-between;gap:10px}
+    .tbtn{flex:1;padding:10px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.45);color:#fff;font:600 12px inherit;backdrop-filter:blur(8px);cursor:pointer}
+    .tbtn.pri{background:var(--gold);color:#111;border-color:var(--gold)}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+    .cd div{background:rgba(0,0,0,.5);border:1px solid rgba(230,199,131,.4);border-radius:10px;padding:8px 4px}
+    .cd strong{display:block;font-size:20px;color:var(--gold)} .cd span{font-size:9px;text-transform:uppercase}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.55);color:#fff;font:inherit;margin-bottom:10px}
+  </style>
+</head>
+<body data-music-mood="english_mix">
+  <div class="story-frame">
+    <div class="bars" id="bars"><div class="bar active"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div></div>
+
+    <!-- Slide 1: Looping Video Intro -->
+    <section class="s-slide active">
+      <video class="bg-media" autoplay muted loop playsinline poster="../assets/images/nile-ritz-carlton.jpg">
+        <source src="../assets/video/wedding-intro-loop.mp4" type="video/mp4" />
+      </video>
+      <div class="s-content">
+        <div style="font-size:10.5px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">STORY 1 / 4 · SAVE THE DATE VIDEO</div>
+        <h1 class="serif" style="font-size:48px;line-height:1.1;" data-couple-title>Hassan &amp; Maya</h1>
+        <p style="font-size:13px;color:#E2E8F0;margin-top:8px;">Tap Next to explore our wedding story, couple portrait &amp; RSVP pass.</p>
+      </div>
+    </section>
+
+    <!-- Slide 2: Couple Portrait Showcase -->
+    <section class="s-slide">
+      <img class="bg-media" data-couple-photo src="../assets/images/editorial-couple.jpg" alt="Couple Portrait" />
+      <div class="s-content">
+        <div style="font-size:10.5px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">STORY 2 / 4 · OUR PORTRAIT</div>
+        <h2 class="serif" style="font-size:38px;" data-couple-title>Hassan &amp; Maya</h2>
+        <p style="font-size:13px;color:#F1F5F9;margin-top:8px;">Together with our families, we joyfully invite you to celebrate the start of our forever.</p>
+      </div>
+    </section>
+
+    <!-- Slide 3: Venue & Countdown -->
+    <section class="s-slide">
+      <img class="bg-media" src="../assets/images/nile-ritz-carlton.jpg" alt="Venue" />
+      <div class="s-content">
+        <div style="font-size:10.5px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">STORY 3 / 4 · VENUE &amp; TABLE</div>
+        <h2 class="serif" style="font-size:34px;" data-venue-name>The Nile Ritz-Carlton, Cairo</h2>
+        <div style="font-size:13px;color:var(--gold);margin-top:4px;"><span data-event-date>Saturday, Nov 27, 2027</span> · 8:00 PM · <span data-table-seat>Table 02</span></div>
+        <div class="cd" data-countdown="2027-11-27T20:00:00+02:00">
+          <div><strong data-cd="days">00</strong><span>Days</span></div>
+          <div><strong data-cd="hours">00</strong><span>Hrs</span></div>
+          <div><strong data-cd="minutes">00</strong><span>Min</span></div>
+          <div><strong data-cd="seconds">00</strong><span>Sec</span></div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button type="button" class="tbtn pri" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Save Date</button>
+          <a class="tbtn" style="text-decoration:none;text-align:center;" href="https://maps.google.com/?q=The+Nile+Ritz+Carlton+Cairo" target="_blank" rel="noopener">Open Map</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Instant RSVP -->
+    <section class="s-slide">
+      <img class="bg-media" src="../assets/images/love-story-couple.jpg" alt="RSVP" />
+      <div class="s-content">
+        <div style="font-size:10.5px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">STORY 4 / 4 · INSTANT RSVP</div>
+        <h2 class="serif" style="font-size:36px;margin-bottom:12px;">Will You Celebrate With Us?</h2>
+        <form data-rsvp-form data-couple="Hassan & Maya" data-lang="en" data-result-target="rsvp-res">
+          <input class="inp" name="guestName" type="text" required placeholder="Your Full Name" />
+          <button type="submit" class="tbtn pri" style="width:100%;">Send RSVP via WhatsApp</button>
+        </form>
+        <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+      </div>
+    </section>
+
+    <div class="tap-nav">
+      <button type="button" class="tbtn" id="prevS">← Back</button>
+      <button type="button" class="tbtn pri" id="nextS">Next Story →</button>
+    </div>
+  </div>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Hassan & Maya Wedding', start: '2027-11-27T18:00:00Z', end: '2027-11-27T23:30:00Z', location: 'The Nile Ritz-Carlton, Cairo' };
+    const slides = Array.from(document.querySelectorAll('.s-slide'));
+    const bars = Array.from(document.querySelectorAll('#bars .bar'));
+    let cur = 0;
+    function go(n) {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+      bars.forEach((b, i) => { b.classList.toggle('done', i < cur); b.classList.toggle('active', i === cur); });
+      try { WeddingSound.startMusic('english_mix'); } catch(_) {}
+    }
+    document.getElementById('nextS').addEventListener('click', () => go(cur + 1));
+    document.getElementById('prevS').addEventListener('click', () => go(cur - 1));
+  </script>
+</body></html>

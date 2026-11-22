@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamer &amp; Hana — 3D Floating Gold Locket Motion | Nile Plaza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#161014;--rose:#E6B8A2;--gold:#E5C278;--ivory:#FFF8F3}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:radial-gradient(circle at 50% 20%,#2E1C26,#0E090C 75%);color:var(--ivory);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:24px 14px 60px;text-align:center}
+    .serif{font-family:'Cormorant Garamond',serif}
+    .locket-stage{perspective:1100px;margin:12px auto 26px;width:230px;height:270px;cursor:pointer;position:relative}
+    .locket-body{width:100%;height:100%;border-radius:120px;border:5px solid var(--gold);overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 40px rgba(229,194,120,.2);animation:floatLocket 4s ease-in-out infinite}
+    @keyframes floatLocket{0%,100%{transform:translateY(0) rotateY(-4deg)}50%{transform:translateY(-8px) rotateY(4deg)}}
+    .locket-body img{width:100%;height:100%;object-fit:cover}
+    .locket-lid{position:absolute;inset:0;background:linear-gradient(145deg,#3A212C,#1C0E15);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;transform-origin:left center;transition:transform 1s cubic-bezier(.76,0,.24,1);border-radius:115px}
+    .locket-stage.is-open .locket-lid{transform:rotateY(-135deg);opacity:0;pointer-events:none}
+    .shell{max-width:480px;margin:0 auto}
+    .card{background:rgba(255,248,243,.06);border:1px solid rgba(229,194,120,.32);border-radius:22px;padding:22px 18px;backdrop-filter:blur(12px)}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
+    .cd div{background:rgba(229,194,120,.1);border-radius:12px;padding:9px 4px}
+    .cd strong{display:block;font-size:21px;color:var(--gold)} .cd span{font-size:9.5px;text-transform:uppercase;color:#D4BFC6}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:600 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-g{background:linear-gradient(135deg,var(--gold),var(--rose));color:#1A0D12} .btn-o{border:1px solid var(--gold);color:var(--gold);background:transparent}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(229,194,120,.32);background:rgba(255,255,255,.07);color:#fff;font:inherit;margin-bottom:10px}
+  </style>
+</head>
+<body data-music-mood="a_thousand_years" data-particles="gold-dust">
+  <main class="shell">
+    <div style="font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);">Tap the Golden Locket to Open</div>
+    <div class="locket-stage" id="locket">
+      <div class="locket-body">
+        <img data-couple-photo src="../assets/images/polaroid-couple.jpg" alt="Couple Inside Locket" />
+        <div class="locket-lid">
+          <div class="serif" style="font-size:34px;color:var(--gold);" data-monogram>T &amp; H</div>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-top:8px;">Open Locket</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h1 class="serif" style="font-size:44px;color:var(--gold);" data-couple-title>Tamer &amp; Hana</h1>
+      <div style="font-size:13px;color:#E2CDD4;margin:6px 0 4px;" data-event-date>Friday, December 17, 2027 · 8:00 PM</div>
+      <div style="font-size:12px;color:#C4ABB4;" data-venue-name>Four Seasons Hotel Cairo at Nile Plaza</div>
+      <div class="cd" data-countdown="2027-12-17T20:00:00+02:00">
+        <div><strong data-cd="days">00</strong><span>Days</span></div>
+        <div><strong data-cd="hours">00</strong><span>Hours</span></div>
+        <div><strong data-cd="minutes">00</strong><span>Mins</span></div>
+        <div><strong data-cd="seconds">00</strong><span>Secs</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:18px;">
+        <button type="button" class="btn btn-g" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Save Date</button>
+        <a class="btn btn-o" style="flex:1" href="https://maps.google.com/?q=Four+Seasons+Hotel+Cairo+at+Nile+Plaza" target="_blank" rel="noopener">Venue Map</a>
+      </div>
+      <form data-rsvp-form data-couple="Tamer & Hana" data-lang="en" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="Your Name" />
+        <button type="submit" class="btn btn-g" style="width:100%;">Confirm Attendance on WhatsApp</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Wedding of Tamer & Hana', start: '2027-12-17T18:00:00Z', end: '2027-12-17T23:30:00Z', location: 'Four Seasons Nile Plaza, Cairo' };
+    document.getElementById('locket').addEventListener('click', () => {
+      document.getElementById('locket').classList.toggle('is-open');
+      try { WeddingSound.startMusic('a_thousand_years'); } catch(_) {}
+    });
+  </script>
+</body></html>

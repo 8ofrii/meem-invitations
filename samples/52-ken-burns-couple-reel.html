@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karim &amp; Nour — Ken Burns Motion Couple Photo Reel | Zamalek</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#12100E;--gold:#DFBC74;--ivory:#FAF6EE}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--ivory);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh}
+    .serif{font-family:'Cormorant Garamond',serif}
+    .reel-box{position:relative;height:76vh;min-height:430px;overflow:hidden;cursor:pointer}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease;overflow:hidden}
+    .slide.active{opacity:1}
+    .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform 7s ease-out}
+    .slide.active img{transform:scale(1.13)}
+    .reel-box::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,16,14,.25),rgba(18,16,14,.35) 55%,rgba(18,16,14,1) 100%);z-index:2}
+    .caption-layer{position:absolute;left:0;right:0;bottom:26px;z-index:3;text-align:center;padding:0 18px}
+    .dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+    .dots span{width:24px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);transition:.3s}
+    .dots span.on{background:var(--gold);width:36px}
+    .wrap{max-width:490px;margin:0 auto;padding:10px 16px 60px;text-align:center}
+    .card{background:rgba(255,255,255,.04);border:1px solid rgba(223,188,116,.3);border-radius:20px;padding:20px;margin-bottom:16px}
+    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+    .cd div{background:rgba(223,188,116,.09);border-radius:12px;padding:10px 4px}
+    .cd strong{display:block;font-size:21px;color:var(--gold)} .cd span{font-size:9.5px;text-transform:uppercase;color:#B8B0A4}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;font:600 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
+    .btn-g{background:var(--gold);color:#12100E} .btn-o{border:1px solid var(--gold);color:var(--gold);background:transparent}
+    .inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(223,188,116,.3);background:#1C1916;color:#fff;font:inherit;margin-bottom:10px}
+  </style>
+</head>
+<body data-music-mood="ed_perfect">
+  <section class="reel-box" id="reelBox">
+    <div class="slide active"><img data-couple-photo src="../assets/images/love-story-couple.jpg" alt="Couple Frame 1" /></div>
+    <div class="slide"><img src="../assets/images/editorial-couple.jpg" alt="Couple Frame 2" /></div>
+    <div class="slide"><img src="../assets/images/polaroid-couple.jpg" alt="Couple Frame 3" /></div>
+    <div class="caption-layer">
+      <div style="font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">MOTION PHOTO REEL · TAP FOR MUSIC</div>
+      <h1 class="serif" style="font-size:46px;font-weight:400;line-height:1.1;" data-couple-title>Karim &amp; Nour</h1>
+      <div style="font-size:12.5px;color:#E5DFD5;margin-top:6px;"><span data-event-date>Friday, October 29, 2027</span> · <span data-venue-name>Cairo Marriott Palace, Zamalek</span></div>
+      <div class="dots" id="reelDots"><span class="on"></span><span></span><span></span></div>
+    </div>
+  </section>
+  <main class="wrap">
+    <div class="card">
+      <p style="font-size:13px;color:#C8C0B4;line-height:1.7;">Every chapter brought us here. Join us under the Zamalek stars as we celebrate our forever · <strong style="color:var(--gold);" data-table-seat>Table 09 · Nile Terrace</strong>.</p>
+      <div class="cd" data-countdown="2027-10-29T19:30:00+02:00">
+        <div><strong data-cd="days">00</strong><span>Days</span></div>
+        <div><strong data-cd="hours">00</strong><span>Hours</span></div>
+        <div><strong data-cd="minutes">00</strong><span>Mins</span></div>
+        <div><strong data-cd="seconds">00</strong><span>Secs</span></div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button type="button" class="btn btn-g" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Add to Calendar</button>
+        <a class="btn btn-o" style="flex:1" href="https://maps.google.com/?q=Cairo+Marriott+Hotel+Zamalek" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </div>
+    <div class="card">
+      <form data-rsvp-form data-couple="Karim & Nour" data-lang="en" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="Your Name" />
+        <button type="submit" class="btn btn-g" style="width:100%;">RSVP on WhatsApp</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </main>
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Karim & Nour Wedding Reel', start: '2027-10-29T17:30:00Z', end: '2027-10-29T23:00:00Z', location: 'Cairo Marriott Hotel, Zamalek' };
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dots = Array.from(document.querySelectorAll('#reelDots span'));
+    let idx = 0;
+    setInterval(() => {
+      slides[idx].classList.remove('active'); dots[idx].classList.remove('on');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active'); dots[idx].classList.add('on');
+    }, 4500);
+    document.getElementById('reelBox').addEventListener('click', () => { try { WeddingSound.startMusic('ed_perfect'); } catch(_) {} });
+  </script>
+</body></html>
