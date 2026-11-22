@@ -944,6 +944,12 @@
     musicTimer = setInterval(tick, cfg.tempo);
   }
 
+  function resolveAudioPath(p) {
+    if (!p) return p;
+    const isClient = (document.body && document.body.dataset.clientSite === 'true') || /\/clients\//i.test(location.pathname);
+    return isClient ? p.replace(/^\.\.\/assets\//, '../../assets/') : p;
+  }
+
   function startMusic(mood) {
     if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
     const chosenMood = customSong && (AUDIO_MIXES[customSong] || AUDIO_TRACKS[customSong] || MOODS[customSong])
@@ -952,9 +958,9 @@
     currentMood = chosenMood;
     if (musicPlaying) return;
 
-    activeMixList = AUDIO_MIXES[currentMood] || null;
+    activeMixList = AUDIO_MIXES[currentMood] ? AUDIO_MIXES[currentMood].map(resolveAudioPath) : null;
     activeMixIdx = 0;
-    const trackSrc = activeMixList ? activeMixList[0] : (AUDIO_TRACKS[currentMood] || AUDIO_TRACKS.om_kalthoum);
+    const trackSrc = activeMixList ? activeMixList[0] : resolveAudioPath(AUDIO_TRACKS[currentMood] || AUDIO_TRACKS.om_kalthoum);
     musicPlaying = true;
     updateMusicFab();
 
@@ -2033,7 +2039,8 @@
 
     const isRTL = document.documentElement.dir === 'rtl';
 
-    if (!isCleanMode) {
+    const isClientSite = document.body && document.body.dataset.clientSite === 'true';
+    if (!isCleanMode && !isClientSite) {
       const back = document.createElement('a');
       back.href = '../collection.html';
       back.textContent = isRTL ? '← كل التصاميم' : '← All Designs';

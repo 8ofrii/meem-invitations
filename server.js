@@ -10,7 +10,7 @@ const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'application/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
-  '.webp': 'image/webp', '.ico': 'image/x-icon', '.mp3': 'audio/mpeg'
+  '.webp': 'image/webp', '.ico': 'image/x-icon', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4'
 };
 const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg']);
 const cache = new Map(); // path -> { mtime, raw, gz }
@@ -53,7 +53,7 @@ http.createServer((req, res) => {
   if (fs.statSync(filePath).isDirectory()) filePath = path.join(filePath, 'index.html');
   const ext = path.extname(filePath).toLowerCase();
   const { raw, gz } = load(filePath, ext);
-  const isAsset = ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.mp3'].includes(ext);
+  const isAsset = ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.mp3', '.mp4'].includes(ext);
   const headers = {
     'Content-Type': MIME[ext] || 'application/octet-stream',
     'Cache-Control': isAsset ? 'public, max-age=604800, immutable' : 'no-cache',
