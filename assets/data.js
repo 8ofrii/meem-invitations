@@ -1,4 +1,4 @@
-/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 51 curated designs with Moodboards */
+/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 52 curated designs with Moodboards */
 window.SITE = {
   "WHATSAPP": "201024190741",
   "BRAND": {
@@ -1767,6 +1767,39 @@ window.SITE = {
         "typography": "Aref Ruqaa · Amiri · Cairo",
         "floral": "Guipure Floral Lace, Teardrop Pearls & Organza Bow",
         "soundtrack": "Hussain Al Jassmi — Seta El Sobah"
+      }
+    },
+    {
+      "num": "52",
+      "cat": "editorial",
+      "file": "samples/59-periwinkle-photobooth-polaroid.html",
+      "title": "Periwinkle Ribbon Bow & Photobooth Polaroid",
+      "subtitle": "Malek & Lina",
+      "venue": "Sofitel Nile El Gezirah, Zamalek",
+      "lang": "Bilingual",
+      "langKey": "bilingual",
+      "bg": "linear-gradient(145deg,#BDC9EA,#8E9FCA)",
+      "img": "assets/images/polaroid-couple.jpg",
+      "accent": "#F6D8E0",
+      "desc": "Full-screen matte periwinkle envelope sealed with a 3D blush satin bow opens with a soft glow to print your B&W couple Polaroid straight from a rose-gold photobooth slot.",
+      "features": [
+        "Blush Satin Bow Seal",
+        "Photobooth Polaroid Printer",
+        "AR / EN Toggle",
+        "Colon Countdown"
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#A9B8DF",
+          "#F6D8E0",
+          "#E7C8B5",
+          "#FFFFFF"
+        ],
+        "typography": "Cormorant Garamond · Courier Prime · Cairo",
+        "floral": "Ballet Blush Satin Bow, Matte Periwinkle & Rose Gold",
+        "soundtrack": "JVKE — Golden Hour"
       }
     }
   ],
