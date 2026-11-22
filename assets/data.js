@@ -92,7 +92,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar"
       }
     },
     {
@@ -126,7 +126,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+        "soundtrack": "Ludovico Einaudi — Experience"
       }
     },
     {
@@ -159,7 +159,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Great Vibes",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+        "soundtrack": "Taylor Swift — Enchanted"
       }
     },
     {
@@ -191,7 +191,7 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Lana Del Rey — Young and Beautiful"
       }
     },
     {
@@ -223,7 +223,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Umm Kulthum — Alf Leila w Leila"
       }
     },
     {
@@ -256,7 +256,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
       }
     },
     {
@@ -289,7 +289,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
       }
     },
     {
@@ -321,7 +321,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
       }
     },
     {
@@ -353,7 +353,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Elissa & Saad Lamjarred — Men Awal Deqiqa"
       }
     },
     {
@@ -385,7 +385,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+        "soundtrack": "Dina El Wedidi — Egyptian Henna Zaffa"
       }
     },
     {
@@ -417,7 +417,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Ludovico Einaudi — Experience"
       }
     },
     {
@@ -449,7 +449,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Amr Diab — Nour El Ein"
       }
     },
     {
@@ -481,7 +481,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Mahmoud El Esseily — Einy Shayfa Feeky"
       }
     },
     {
@@ -514,7 +514,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+        "soundtrack": "Claude Debussy — Clair de Lune"
       }
     },
     {
@@ -547,7 +547,7 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+        "soundtrack": "JVKE — Golden Hour"
       }
     },
     {
@@ -579,7 +579,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+        "soundtrack": "Stephen Sanchez — Until I Found You"
       }
     },
     {
@@ -613,7 +613,7 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+        "soundtrack": "Christina Perri — A Thousand Years"
       }
     },
     {
@@ -754,7 +754,7 @@ window.SITE = {
     },
     {
       "num": "22",
-      "cat": "motion",
+      "cat": "weddings",
       "file": "samples/24-liquid-chromium-pearl.html",
       "title": "Liquid Chromium & Pearl",
       "subtitle": "Sherif & Amina",
@@ -783,7 +783,7 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+        "soundtrack": "Ludovico Einaudi — Experience"
       }
     },
     {
@@ -987,7 +987,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Umm Kulthum — Alf Leila Instrumental"
       }
     },
     {
@@ -1021,7 +1021,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+        "soundtrack": "Mahmoud El Esseily — Farha (Katb Ketab)"
       }
     },
     {
@@ -1055,7 +1055,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)"
       }
     },
     {
@@ -1089,7 +1089,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar"
       }
     },
     {
@@ -1123,7 +1123,7 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)"
       }
     },
     {
@@ -1157,7 +1157,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+        "soundtrack": "Ed Sheeran — Perfect"
       }
     },
     {
@@ -1191,7 +1191,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
       }
     },
     {
@@ -1225,7 +1225,7 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Lana Del Rey — Young and Beautiful"
       }
     },
     {
@@ -1259,7 +1259,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Great Vibes",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+        "soundtrack": "Taylor Swift — Enchanted"
       }
     },
     {
@@ -1293,7 +1293,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)"
       }
     },
     {
@@ -1327,7 +1327,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+        "soundtrack": "Claude Debussy — Clair de Lune"
       }
     },
     {
@@ -1361,7 +1361,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Elissa & Saad Lamjarred — Men Awal Deqiqa"
       }
     },
     {
@@ -1429,7 +1429,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Egyptian Wedding Grand Mix"
       }
     },
     {
@@ -1463,7 +1463,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+        "soundtrack": "Can't Help Falling In Love Medley"
       }
     },
     {
@@ -1497,7 +1497,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+        "soundtrack": "Dina El Wedidi — Egyptian Henna Zaffa"
       }
     },
     {
@@ -1531,7 +1531,7 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Lana Del Rey — Young and Beautiful"
       }
     },
     {
@@ -1565,12 +1565,12 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Ed Sheeran — Perfect"
       }
     },
     {
       "num": "46",
-      "cat": "motion",
+      "cat": "engagement",
       "file": "samples/53-couple-photo-gallery-motion.html",
       "title": "Swipeable Couple Engagement Album",
       "subtitle": "مؤمن و دينا",
@@ -1599,7 +1599,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+        "soundtrack": "Tamer Hosny — Helm Seneen"
       }
     },
     {
@@ -1633,7 +1633,7 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+        "soundtrack": "Christina Perri — A Thousand Years"
       }
     },
     {
@@ -1667,7 +1667,7 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+        "soundtrack": "JVKE — Golden Hour"
       }
     }
   ],

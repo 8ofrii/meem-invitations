@@ -103,6 +103,25 @@
       margin-bottom: 10px;
     }
 
+    .hero-story-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-story-card .story-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.16;
+      filter: sepia(0.18) brightness(1.05);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-story-card > *:not(.story-bg-video) {
+      position: relative;
+      z-index: 1;
+    }
     .hero-arch-photo {
       width: min(290px, 78vw);
       aspect-ratio: 3 / 4;
@@ -120,6 +139,11 @@
       object-fit: cover;
       border-radius: 162px 162px 12px 12px;
       display: block;
+      animation: storyKenBurns 11s ease-in-out infinite alternate;
+    }
+    @keyframes storyKenBurns {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.09); }
     }
 
     .couple-title {
@@ -275,8 +299,11 @@
 
   <main class="wrap">
 
-    <!-- HERO WITH COUPLE PHOTO ARCH -->
-    <section class="card reveal">
+    <!-- HERO WITH COUPLE PHOTO ARCH & MOTION VIDEO VEIL -->
+    <section class="card hero-story-card reveal">
+      <video class="story-bg-video" autoplay muted loop playsinline poster="../assets/images/four-seasons-nile.jpg" aria-hidden="true">
+        <source src="../assets/video/wedding-intro-loop.mp4" type="video/mp4" />
+      </video>
       <div class="kicker">Every Love Story Is Beautiful — Ours Is Our Favourite</div>
       <div class="hero-arch-photo">
         <img data-couple-photo src="../assets/images/love-story-couple.jpg" alt="Khaled and Farida portrait" />

@@ -7,15 +7,18 @@
   <style>
     :root{--bg:#161014;--rose:#E6B8A2;--gold:#E5C278;--ivory:#FFF8F3}
     *{box-sizing:border-box;margin:0;padding:0}
-    body{background:radial-gradient(circle at 50% 20%,#2E1C26,#0E090C 75%);color:var(--ivory);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:24px 14px 60px;text-align:center}
+    body{background:radial-gradient(circle at 50% 20%,#2E1C26,#0E090C 75%);color:var(--ivory);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;padding:24px 14px 60px;text-align:center;position:relative;overflow-x:hidden}
+    .bg-vid{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:sepia(.25) brightness(.8);z-index:0;pointer-events:none}
+    .shell{max-width:480px;margin:0 auto;position:relative;z-index:2}
     .serif{font-family:'Cormorant Garamond',serif}
-    .locket-stage{perspective:1100px;margin:12px auto 26px;width:230px;height:270px;cursor:pointer;position:relative}
+    .locket-stage{perspective:1100px;margin:14px auto 26px;width:230px;height:270px;cursor:pointer;position:relative}
+    .locket-stage::before{content:'';position:absolute;inset:-14px;border-radius:134px;border:1px solid rgba(229,194,120,.38);animation:haloPulse 3.2s ease-in-out infinite;pointer-events:none}
+    @keyframes haloPulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.06);opacity:.9}}
     .locket-body{width:100%;height:100%;border-radius:120px;border:5px solid var(--gold);overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 40px rgba(229,194,120,.2);animation:floatLocket 4s ease-in-out infinite}
-    @keyframes floatLocket{0%,100%{transform:translateY(0) rotateY(-4deg)}50%{transform:translateY(-8px) rotateY(4deg)}}
+    @keyframes floatLocket{0%,100%{transform:translateY(0) rotateY(-6deg)}50%{transform:translateY(-10px) rotateY(6deg)}}
     .locket-body img{width:100%;height:100%;object-fit:cover}
     .locket-lid{position:absolute;inset:0;background:linear-gradient(145deg,#3A212C,#1C0E15);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;transform-origin:left center;transition:transform 1s cubic-bezier(.76,0,.24,1);border-radius:115px}
     .locket-stage.is-open .locket-lid{transform:rotateY(-135deg);opacity:0;pointer-events:none}
-    .shell{max-width:480px;margin:0 auto}
     .card{background:rgba(255,248,243,.06);border:1px solid rgba(229,194,120,.32);border-radius:22px;padding:22px 18px;backdrop-filter:blur(12px)}
     .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
     .cd div{background:rgba(229,194,120,.1);border-radius:12px;padding:9px 4px}
@@ -26,6 +29,9 @@
   </style>
 </head>
 <body data-music-mood="a_thousand_years" data-particles="gold-dust">
+  <video class="bg-vid" autoplay muted loop playsinline poster="../assets/images/four-seasons-nile.jpg" aria-hidden="true">
+    <source src="../assets/video/wedding-intro-loop.mp4" type="video/mp4" />
+  </video>
   <main class="shell">
     <div style="font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);">Tap the Golden Locket to Open</div>
     <div class="locket-stage" id="locket">

@@ -997,7 +997,7 @@
 
   function toggleMusic(mood) {
     if (musicPlaying) stopMusic();
-    else startMusic(mood || currentMood);
+    else startMusic(mood || (document.body && document.body.dataset.musicMood) || currentMood);
   }
 
   const ICON_MUSIC_PLAYING = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
@@ -2051,7 +2051,8 @@
     }
 
     // Floating Music Mute / Unmute button (shown on all musical invitations, hidden on silent cards)
-    if (customSong !== 'silent' && customSong !== 'none' && customSong !== 'mute') {
+    const isSilentCard = document.body && document.body.dataset.noMusic === 'true' && !customSong;
+    if (!isSilentCard && customSong !== 'silent' && customSong !== 'none' && customSong !== 'mute') {
       const fab = document.createElement('button');
       fab.id = 'wi-music-fab';
       fab.type = 'button';

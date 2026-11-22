@@ -27,7 +27,7 @@
     .btn-t{width:100%;padding:11px;border-radius:999px;background:var(--terra);color:#fff;font:600 12.5px inherit;border:0;cursor:pointer}
   </style>
 </head>
-<body data-music-mood="until_i_found_you">
+<body data-music-mood="clair_de_lune">
   <div class="flip-wrap" id="cardFlip">
     <div class="flip-inner">
       <div class="face face-front">
@@ -82,7 +82,7 @@
   <script>
     const EVENT_INFO = { title: 'Wedding of Aly & Malak — Zamalek', start: '2027-10-08T16:00:00Z', end: '2027-10-08T22:30:00Z', location: 'Zamalek, Cairo, Egypt' };
     const flip = document.getElementById('cardFlip');
-    document.getElementById('toBack').addEventListener('click', () => { flip.classList.add('is-flipped'); try { WeddingSound.startMusic('until_i_found_you'); } catch(_) {} });
+    document.getElementById('toBack').addEventListener('click', () => { flip.classList.add('is-flipped'); try { WeddingSound.startMusic('clair_de_lune'); } catch(_) {} });
     document.getElementById('toFront').addEventListener('click', () => flip.classList.remove('is-flipped'));
   </script>
 </body></html>

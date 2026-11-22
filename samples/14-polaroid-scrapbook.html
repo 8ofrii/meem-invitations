@@ -45,12 +45,40 @@
       padding: 16px 16px 32px;
       border-radius: 4px;
       box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55);
-      transform: rotate(-3deg);
-      transition: transform 0.6s ease;
+      animation: polaroidFloat 4.8s ease-in-out infinite;
       cursor: pointer;
+    }
+    @keyframes polaroidFloat {
+      0%, 100% { transform: rotate(-3deg) translateY(0); }
+      50% { transform: rotate(1.5deg) translateY(-8px); }
     }
     .cover-polaroid:hover { transform: rotate(0deg) scale(1.03); }
     .cover-polaroid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; filter: sepia(0.14) contrast(1.05); }
+    .motion-reel-frame {
+      position: relative;
+      width: min(340px, 100%);
+      aspect-ratio: 16 / 10;
+      margin: 0 auto 20px;
+      background: #FFFDF9;
+      padding: 10px 10px 26px;
+      border-radius: 6px;
+      border: 1px solid rgba(43, 33, 27, 0.12);
+      box-shadow: 0 16px 36px rgba(43, 33, 27, 0.14);
+      transform: rotate(-1.2deg);
+    }
+    .motion-reel-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+    }
+    .motion-reel-cap {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: var(--terracotta);
+      margin-top: 6px;
+    }
     .cover-cap { font-family: 'Caveat', cursive; font-size: 32px; color: var(--espresso); margin-top: 12px; line-height: 1.1; }
     .shutter-btn {
       margin-top: 24px; padding: 13px 30px; border-radius: 999px; border: none;
@@ -113,32 +141,38 @@
     @media (max-width: 600px) { .block-card { padding: 34px 20px; } }
   </style>
 </head>
-<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="esseily_wakheeran" data-venue-img="../assets/images/baron-palace-cairo.jpg" data-venue-label="Baron Empain Palace Gardens • Heliopolis">
+<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="golden_hour" data-venue-img="../assets/images/baron-palace-cairo.jpg" data-venue-label="Baron Empain Palace Gardens • Heliopolis">
 
   <div id="polaroid-cover" role="dialog" aria-label="Open Polaroid Scrapbook Invitation">
     <div class="cover-polaroid" id="coverPolaroid">
-      <img src="../assets/images/polaroid-couple.jpg" alt="Seif and Maya keepsake snapshot" />
+      <img data-couple-photo src="../assets/images/polaroid-couple.jpg" alt="Seif and Maya keepsake snapshot" />
       <div class="cover-cap" data-couple-title>Seif &amp; Maya</div>
       <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-top:4px;">BARON PALACE • HELIOPOLIS</div>
     </div>
     <p class="hand" style="font-size:26px; color:#E8C9A4; margin-top:16px;" data-guest-name data-guest-prefix="A keepsake snapshot for ">
       Our favorite moments, all leading to one unforgettable night
     </p>
-    <button type="button" class="shutter-btn wi-shimmer" id="openPolaroidBtn">Open Our Story Album 📸</button>
+    <button type="button" class="shutter-btn wi-shimmer" id="openPolaroidBtn">Open Our Story Album</button>
   </div>
 
   <main class="wrap">
     <section class="block-card reveal">
-      <div class="kicker">A Heliopolis Love Story</div>
+      <div class="kicker">A Heliopolis Motion Love Story</div>
       <h1 class="hero-title" data-couple-title>Seif &amp; Maya</h1>
       <div class="guest-note" data-guest-name data-guest-prefix="Specially for " style="display:none;"></div>
+      <div class="motion-reel-frame">
+        <video autoplay muted loop playsinline poster="../assets/images/polaroid-couple.jpg">
+          <source src="../assets/video/wedding-intro-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="motion-reel-cap">Our Live Keepsake Motion Reel</div>
+      </div>
       <p style="font-size:14px; color:var(--muted); max-width:460px; margin:0 auto 14px;">
         Tap the Polaroid stack below to flip through our journey before we celebrate together at Baron Empain Palace.
       </p>
 
       <!-- Interactive Polaroid Stack -->
       <div class="deck-stage" id="polaroidDeck" title="Tap to flip to next Polaroid memory"></div>
-      <div style="font-size:12px; color:var(--terracotta); font-weight:600;">👆 Tap the Polaroid to flip cards (1 / 4)</div>
+      <div style="font-size:12px; color:var(--terracotta); font-weight:600;">Tap the Polaroid to flip cards (1 / 4)</div>
     </section>
 
     <section class="block-card reveal">
@@ -240,7 +274,7 @@
     function enterAlbum(e) {
       WeddingSound.playPageTurn();
       WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth / 2, (e && e.clientY) || window.innerHeight / 2);
-      WeddingSound.startMusic('esseily_wakheeran');
+      WeddingSound.startMusic('golden_hour');
       document.getElementById('polaroid-cover').classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     }

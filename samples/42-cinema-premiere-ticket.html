@@ -16,10 +16,14 @@
     .ticket-perf{border-top:2px dashed var(--gold);background:#E5C168;color:#111;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:12px;letter-spacing:.14em;transition:transform .5s}
     .ticket.is-torn .ticket-perf{transform:translateY(40px) rotate(4deg);opacity:0}
     .poster{max-width:520px;margin:0 auto;padding:0 0 56px}
-    .hero-wide{position:relative;height:340px;overflow:hidden}
-    .hero-wide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.06) brightness(.78)}
-    .hero-wide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.2),rgba(9,9,11,1))}
+    .hero-wide{position:relative;height:360px;overflow:hidden}
+    .hero-wide video,.hero-wide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.06) brightness(.72);animation:cinemaPan 14s ease-in-out infinite alternate}
+    @keyframes cinemaPan{0%{transform:scale(1)}100%{transform:scale(1.09)}}
+    .hero-wide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.22),rgba(9,9,11,1));z-index:1}
     .hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;text-align:center;z-index:2}
+    .reel-pill{display:inline-flex;align-items:center;gap:6px;margin:0 auto 10px;padding:4px 12px;border-radius:999px;background:rgba(229,193,104,.16);border:1px solid rgba(229,193,104,.55);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+    .reel-dot{width:6px;height:6px;border-radius:50%;background:#E5C168;animation:pulseRec 1.4s ease-in-out infinite}
+    @keyframes pulseRec{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
     .credits{padding:18px 20px;text-align:center}
     .cast-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-block:1px solid rgba(229,193,104,.28);padding:14px 0;margin:18px 0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
     .cast-row b{display:block;color:var(--gold);font-size:13px;margin-top:4px;letter-spacing:.04em}
@@ -34,7 +38,7 @@
     .inp{width:100%;padding:11px 13px;border-radius:8px;border:1px solid rgba(229,193,104,.32);background:#141418;color:#fff;font:inherit;margin-bottom:10px}
   </style>
 </head>
-<body data-music-mood="a_thousand_years">
+<body data-music-mood="young_and_beautiful" data-particles="gold-dust">
   <div id="ticket-cover">
     <div class="ticket" id="tearTicket">
       <div class="ticket-top">
@@ -48,8 +52,11 @@
   </div>
   <main class="poster">
     <div class="hero-wide">
-      <img src="../assets/images/kempinski-palace.jpg" alt="Royal Maxim Kempinski" />
+      <video autoplay muted loop playsinline poster="../assets/images/kempinski-palace.jpg">
+        <source src="../assets/video/wedding-intro-loop.mp4" type="video/mp4" />
+      </video>
       <div class="hero-overlay">
+        <div class="reel-pill"><span class="reel-dot"></span>LIVE TRAILER PREMIERE</div>
         <div style="font-size:10px;letter-spacing:.28em;color:var(--gold);margin-bottom:6px;">NOW SHOWING · ONE NIGHT ONLY</div>
         <h1 class="cinzel" style="font-size:38px;letter-spacing:.06em;" data-couple-title>Rami &amp; Nadine</h1>
         <div style="font-size:13px;color:#D4D4D8;margin-top:6px;" data-event-date>SATURDAY · DECEMBER 11, 2027</div>
@@ -89,7 +96,7 @@
     const EVENT_INFO = { title: 'Rami & Nadine Wedding Premiere', start: '2027-12-11T18:00:00Z', end: '2027-12-11T23:59:00Z', location: 'Royal Maxim Palace Kempinski, New Cairo' };
     document.getElementById('tearTicket').addEventListener('click', () => {
       document.getElementById('tearTicket').classList.add('is-torn');
-      try { WeddingSound.startMusic('a_thousand_years'); } catch(_) {}
+      try { WeddingSound.startMusic('young_and_beautiful'); } catch(_) {}
       setTimeout(() => document.getElementById('ticket-cover').classList.add('is-open'), 420);
     });
   </script>
