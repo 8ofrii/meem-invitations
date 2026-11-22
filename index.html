@@ -223,13 +223,33 @@
     border: 1px solid rgba(197, 160, 89, 0.42);
     background: #EFE7D8;
   }
-  .fpill-arch img {
+  .fpill-arch img,
+  .fpill-arch video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease, filter 0.3s ease;
     filter: brightness(0.95) saturate(0.92);
+  }
+  .fpill-play-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(13, 59, 46, 0.72);
+    border: 1.5px solid rgba(244, 229, 194, 0.88);
+    color: #FAF6EE;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+    pointer-events: none;
   }
   .fpill-arch::after {
     content: '';
@@ -868,19 +888,20 @@
     return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
   }
   const CAT_THUMBS = {
-    all: 'assets/images/classic-ivory-gold-crest.jpg',
+    all: 'assets/images/mohamed-ali-palace.jpg',
     motion: 'assets/images/love-story-couple.jpg',
     cards: 'assets/images/french-gatefold-card.jpg',
-    interactive: 'assets/images/midnight-gold-celestial.jpg',
-    royal: 'assets/images/liquid-chromium-pearl.jpg',
+    interactive: 'assets/images/translucent-vellum-envelope.jpg',
+    royal: 'assets/images/classic-ivory-gold-crest.jpg',
     floral: 'assets/images/dusty-rose-floral.jpg',
-    editorial: 'assets/images/editorial-couple.jpg'
+    editorial: 'assets/images/polaroid-couple.jpg'
   };
+  const ARCH_PLAY_SVG = '<span class="fpill-play-badge" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>';
 
   $('catPills').innerHTML = `
     <button type="button" class="fpill active" data-cat="all">
       <div class="fpill-arch">
-        <img src="${CAT_THUMBS.all}" alt="All Styles" loading="lazy">
+        <img src="${CAT_THUMBS.all}" alt="All" loading="lazy">
         <span class="fpill-count">${countFor('all')}</span>
       </div>
       <div class="fpill-txt">
@@ -891,7 +912,9 @@
     S.CATEGORIES.map(c => `
     <button type="button" class="fpill" data-cat="${c.id}">
       <div class="fpill-arch">
-        <img src="${CAT_THUMBS[c.id] || CAT_THUMBS.all}" alt="${c.short || c.title}" loading="lazy">
+        ${c.id === 'motion'
+          ? `<video autoplay muted loop playsinline poster="${CAT_THUMBS.motion}"><source src="assets/video/wedding-intro-loop.mp4" type="video/mp4"></video>${ARCH_PLAY_SVG}`
+          : `<img src="${CAT_THUMBS[c.id] || CAT_THUMBS.all}" alt="${c.short || c.title}" loading="lazy">`}
         <span class="fpill-count">${countFor(c.id)}</span>
       </div>
       <div class="fpill-txt">

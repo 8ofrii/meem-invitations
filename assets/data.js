@@ -1714,7 +1714,7 @@ window.SITE = {
       "langKey": "bilingual",
       "bg": "linear-gradient(145deg,#F6F1E9,#D9CFC3)",
       "img": "assets/images/sage-olive-botanical.jpg",
-      "accent": "#7E8E74",
+      "accent": "#284234",
       "desc": "Curved cotton-paper scalloped folio wings bound by gold twine and a leaf-embossed wax seal peel apart to reveal an illustrated botanical ogee-arch card.",
       "features": [
         "Scalloped Wing Reveal",
@@ -1726,10 +1726,10 @@ window.SITE = {
       "moodboard": {
         "collection": "The Garden Story",
         "palette": [
-          "#F6F1E9",
-          "#7E8E74",
-          "#C59B56",
-          "#3D3730"
+          "#FBF8F1",
+          "#284234",
+          "#C6A15B",
+          "#6D826B"
         ],
         "typography": "Great Vibes · Cormorant Garamond · Amiri",
         "floral": "Eucalyptus Branches, Gold Twine & Olive Wax Seal",
@@ -1747,7 +1747,7 @@ window.SITE = {
       "langKey": "ar",
       "bg": "linear-gradient(145deg,#F8F4EE,#E6DACB)",
       "img": "assets/images/translucent-vellum-envelope.jpg",
-      "accent": "#8C6850",
+      "accent": "#D5AF8A",
       "desc": "Lace-trimmed V-pocket envelope with organza bow and teardrop pearl opens onto an animated 4-scene pearl-beaded couture card over draped ivory silk video.",
       "features": [
         "Lace Pocket & Pearl Drop",
@@ -1759,10 +1759,10 @@ window.SITE = {
       "moodboard": {
         "collection": "The Classic Edit",
         "palette": [
-          "#F8F4EE",
-          "#E6DACB",
-          "#6E4E3B",
-          "#FFFDF9"
+          "#FBF7F1",
+          "#D5AF8A",
+          "#4E3326",
+          "#ECE0CE"
         ],
         "typography": "Aref Ruqaa · Amiri · Cairo",
         "floral": "Guipure Floral Lace, Teardrop Pearls & Organza Bow",
@@ -1778,9 +1778,9 @@ window.SITE = {
       "venue": "Sofitel Nile El Gezirah, Zamalek",
       "lang": "Bilingual",
       "langKey": "bilingual",
-      "bg": "linear-gradient(145deg,#BDC9EA,#8E9FCA)",
+      "bg": "linear-gradient(145deg,#95A7CA,#5E739B)",
       "img": "assets/images/polaroid-couple.jpg",
-      "accent": "#F6D8E0",
+      "accent": "#F7DCE3",
       "desc": "Full-screen matte periwinkle envelope sealed with a 3D blush satin bow opens with a soft glow to print your B&W couple Polaroid straight from a rose-gold photobooth slot.",
       "features": [
         "Blush Satin Bow Seal",
@@ -1792,10 +1792,10 @@ window.SITE = {
       "moodboard": {
         "collection": "Modern Romance",
         "palette": [
-          "#A9B8DF",
-          "#F6D8E0",
-          "#E7C8B5",
-          "#FFFFFF"
+          "#7A8FB6",
+          "#F7DCE3",
+          "#C99A82",
+          "#FFFDFB"
         ],
         "typography": "Cormorant Garamond · Courier Prime · Cairo",
         "floral": "Ballet Blush Satin Bow, Matte Periwinkle & Rose Gold",

@@ -9,17 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --silk: #F8F4EE;
-      --satin: #EFE7DC;
-      --champagne: #E6DACB;
+      --silk: #FBF7F1;
+      --champagne: #ECE0CE;
       --pearl: #FFFDF9;
-      --bronze: #6E4E3B;
-      --bronze-light: #8C6850;
-      --cocoa: #5A3E2E;
+      --rose-gold: #D5AF8A;
+      --bronze: #5B3C2B;
+      --bronze-mid: #855D47;
+      --cocoa: #3E281C;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: radial-gradient(circle at 50% 18%, var(--pearl) 0%, var(--silk) 56%, var(--champagne) 100%);
+      background: radial-gradient(circle at 50% 18%, var(--pearl) 0%, var(--silk) 52%, var(--champagne) 100%);
       color: var(--cocoa);
       font-family: 'Cairo', sans-serif;
       min-height: 100vh;
@@ -29,270 +29,239 @@
     .amiri { font-family: 'Amiri', serif; }
     .ruqaa { font-family: 'Aref Ruqaa', serif; }
 
-    /* Soft Draped Ivory Silk Video Motion Backdrop */
+    /* Draped Champagne Silk Video Motion Layer */
     .silk-video {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.14;
-      filter: sepia(0.24) brightness(1.18) contrast(0.9);
+      opacity: 0.18;
+      filter: sepia(0.28) brightness(1.16) contrast(0.92);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ===== LACE V-POCKET ENVELOPE + TEARDROP PEARL COVER ===== */
+    /* ===== COUTURE LACE & PEARL 3D V-POCKET ENVELOPE ===== */
     #lace-cover {
       position: fixed;
       inset: 0;
       z-index: 5000;
-      background: radial-gradient(circle at 50% 35%, #FAF6F0, #E9DFD1);
+      perspective: 1300px;
+      background:
+        radial-gradient(circle at 50% 34%, rgba(255,253,249,0.92), rgba(235,222,204,0.96)),
+        url('../assets/images/translucent-vellum-envelope.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 20px;
       cursor: pointer;
-      transition: opacity 0.85s ease 0.8s, visibility 0.85s ease 0.8s;
+      transition: opacity 0.85s ease 0.9s, visibility 0.85s ease 0.9s;
     }
     #lace-cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
     .lace-env {
       position: relative;
-      width: min(330px, 90vw);
-      height: 238px;
-      background: linear-gradient(155deg, #FFFDF9, #EFE6D9);
-      border-radius: 16px;
-      border: 1.5px solid rgba(140, 104, 80, 0.28);
-      box-shadow: 0 28px 65px rgba(90, 62, 46, 0.18);
-      overflow: visible;
+      width: min(334px, 90vw);
+      height: 244px;
+      border-radius: 18px;
+      background: linear-gradient(155deg, #FFFDF9 0%, #F1E6D6 100%);
+      border: 1.5px solid rgba(213, 175, 138, 0.65);
+      box-shadow: 0 30px 70px rgba(62, 40, 28, 0.22), inset 0 0 0 6px rgba(255,255,255,0.65);
+      transform-style: preserve-3d;
+    }
+    .lace-pocket-front {
+      position: absolute;
+      inset: 0;
+      border-radius: 17px;
+      background: linear-gradient(180deg, transparent 36%, rgba(247, 238, 224, 0.96) 52%, #EFE2CF 100%);
+      z-index: 3;
+      pointer-events: none;
+      border-bottom: 2px solid rgba(213, 175, 138, 0.5);
     }
     .lace-flap {
       position: absolute;
       inset: 0 0 auto 0;
-      height: 132px;
-      background: linear-gradient(180deg, #FBF8F3, #EAE0D2);
+      height: 138px;
+      background: linear-gradient(180deg, #FFFDF9, #EBDEC9);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      border-bottom: 2px dotted rgba(255, 255, 255, 0.9);
       transform-origin: top center;
-      transition: transform 0.9s cubic-bezier(0.7, 0, 0.25, 1);
-      z-index: 4;
-      filter: drop-shadow(0 8px 14px rgba(90, 62, 46, 0.12));
+      transition: transform 0.95s cubic-bezier(0.7, 0, 0.22, 1);
+      z-index: 5;
+      filter: drop-shadow(0 10px 18px rgba(62, 40, 28, 0.16));
     }
-    #lace-cover.is-open .lace-flap { transform: rotateX(170deg); }
+    #lace-cover.is-open .lace-flap { transform: rotateX(174deg); }
     .lace-card-peek {
       position: absolute;
       left: 16px; right: 16px; top: 18px; bottom: 18px;
-      background: #FFFDF9;
-      border-radius: 10px;
-      border: 1px solid rgba(140, 104, 80, 0.35);
+      background: linear-gradient(160deg, #FFFFFF, #FAF4EB);
+      border-radius: 12px;
+      border: 1.5px solid rgba(213, 175, 138, 0.68);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 2;
-      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+      box-shadow: 0 14px 32px rgba(62, 40, 28, 0.14);
+      transition: transform 0.95s cubic-bezier(0.2, 0.9, 0.3, 1) 0.2s;
     }
-    #lace-cover.is-open .lace-card-peek { transform: translateY(-96px); }
+    #lace-cover.is-open .lace-card-peek { transform: translateY(-112px) scale(1.04); }
+
     .pearl-drop {
       position: absolute;
       left: 50%;
-      top: 118px;
+      top: 112px;
       transform: translateX(-50%);
-      z-index: 6;
+      z-index: 7;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
-    #lace-cover.is-open .pearl-drop { opacity: 0; }
-    .organza-bow {
-      width: 68px;
-      height: 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(236,226,212,0.72));
-      border: 1px solid rgba(140, 104, 80, 0.35);
-      box-shadow: 0 6px 14px rgba(90, 62, 46, 0.14);
-      display: grid;
-      place-items: center;
-    }
+    #lace-cover.is-open .pearl-drop { opacity: 0; transform: translateX(-50%) scale(0.8); }
     .teardrop {
-      width: 18px;
-      height: 22px;
-      margin-top: -3px;
-      border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
-      background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F4ECE0 62%, #D7C5B0 100%);
-      box-shadow: 0 6px 14px rgba(90, 62, 46, 0.25);
-      animation: pearlSwing 3.2s ease-in-out infinite;
+      width: 20px;
+      height: 25px;
+      margin-top: -5px;
+      border-radius: 50% 50% 50% 50% / 64% 64% 36% 36%;
+      background: radial-gradient(circle at 34% 28%, #FFFFFF 0%, #F7EFE3 56%, #D7C0A8 100%);
+      box-shadow: 0 8px 18px rgba(62, 40, 28, 0.26), inset 0 -2px 5px rgba(133, 93, 71, 0.22);
+      animation: pearlSway 3s ease-in-out infinite;
     }
-    @keyframes pearlSwing { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+    @keyframes pearlSway { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
     .open-hint {
-      margin-top: 28px;
-      padding: 9px 22px;
+      margin-top: 30px;
+      padding: 10px 24px;
       border-radius: 999px;
-      background: var(--bronze);
+      background: linear-gradient(135deg, #5B3C2B, #855D47);
       color: var(--pearl);
+      border: 1px solid var(--rose-gold);
       font-size: 12px;
       font-weight: 700;
-      box-shadow: 0 10px 24px rgba(90, 62, 46, 0.22);
+      box-shadow: 0 12px 26px rgba(62, 40, 28, 0.22);
     }
 
-    /* ===== PEARL-BEADED COUTURE CARD ===== */
-    .wrap {
-      position: relative;
-      z-index: 2;
-      max-width: 490px;
-      margin: 0 auto;
-      padding: 28px 16px 76px;
-      text-align: center;
-    }
+    /* ===== LUMINOUS PEARL-FRAMED SILK COUTURE CARD ===== */
+    .wrap { position: relative; z-index: 2; max-width: 490px; margin: 0 auto; padding: 30px 16px 76px; text-align: center; }
     .couture-card {
       position: relative;
-      background: rgba(255, 253, 249, 0.94);
-      border-radius: 24px;
-      padding: 36px 22px 32px;
-      border: 2px dotted rgba(214, 198, 178, 0.95);
+      background: linear-gradient(170deg, rgba(255,253,249,0.96) 0%, rgba(248,240,228,0.95) 100%);
+      border-radius: 26px;
+      padding: 40px 22px 30px;
+      border: 1.5px solid rgba(213, 175, 138, 0.72);
       box-shadow:
-        0 26px 64px rgba(90, 62, 46, 0.13),
-        inset 0 0 0 8px rgba(255, 253, 249, 0.95),
-        inset 0 0 0 9.5px rgba(140, 104, 80, 0.32);
+        0 28px 66px rgba(62, 40, 28, 0.14),
+        inset 0 0 0 9px rgba(255, 253, 249, 0.94),
+        inset 0 0 0 10.5px rgba(133, 93, 71, 0.34);
       margin-bottom: 18px;
+      overflow: hidden;
     }
-    .top-bow-pin {
-      width: 56px;
-      height: 24px;
-      margin: -48px auto 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #FFFFFF, #ECE2D5);
-      border: 1px solid rgba(140, 104, 80, 0.35);
-      box-shadow: 0 6px 14px rgba(90, 62, 46, 0.14);
+    /* Delicate glowing pearl rail top & bottom */
+    .pearl-rail {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .pearl-rail span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 30%, #FFFFFF, #EADAC6 70%, #C6A78A);
+      box-shadow: 0 2px 5px rgba(62, 40, 28, 0.18);
+    }
+    .pearl-rail span.big { width: 12px; height: 12px; margin-top: -2px; }
+
+    .scene-tabs { display: flex; justify-content: center; gap: 7px; margin-bottom: 14px; }
+    .scene-tabs button {
+      width: 28px; height: 4px; border-radius: 99px; border: 0;
+      background: rgba(133, 93, 71, 0.22); cursor: pointer; transition: all 0.35s ease;
+    }
+    .scene-tabs button.active { width: 46px; background: linear-gradient(90deg, var(--bronze), var(--rose-gold)); }
+
+    /* Smooth Cross-Fade Scene Stage (No Jarring Jumps) */
+    .scene-stage {
+      position: relative;
+      min-height: 235px;
       display: grid;
       place-items: center;
     }
-    .top-bow-pin::after {
-      content: '';
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #FFFFFF, #DFCBB5);
-      box-shadow: 0 2px 5px rgba(90, 62, 46, 0.25);
-    }
-    .scene-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 18px;
-    }
-    .scene-tabs button {
-      width: 28px;
-      height: 5px;
-      border-radius: 99px;
-      border: 0;
-      background: rgba(140, 104, 80, 0.22);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .scene-tabs button.active { width: 42px; background: var(--bronze); }
-    .scene-panel { display: none; animation: sceneFade 0.65s ease; min-height: 220px; flex-direction: column; align-items: center; justify-content: center; }
-    .scene-panel.active { display: flex; }
-    @keyframes sceneFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    .bronze-mono {
-      font-size: 62px;
-      line-height: 1;
-      background: linear-gradient(145deg, #9C755B, #5A3E2E 60%, #8C6850);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 6px 12px rgba(90, 62, 46, 0.18));
-      margin-bottom: 10px;
-    }
-    .date-spaced { font-size: 15px; letter-spacing: 0.28em; color: var(--bronze-light); font-weight: 700; direction: ltr; }
-    .ayah { font-size: 20px; color: var(--cocoa); line-height: 1.9; max-width: 340px; }
-    .month-poem { font-size: 22px; color: var(--bronze); line-height: 1.85; max-width: 320px; }
-
-    /* 3-Column Bronze Icon Row with Pearl Vertical Dividers */
-    .pearl-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      width: 100%;
-      margin: 14px 0 16px;
-      position: relative;
-    }
-    .p-col {
-      padding: 8px 6px;
-      position: relative;
+    .scene-panel {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      opacity: 0;
+      filter: blur(5px);
+      transform: translateY(10px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 0.65s ease, filter 0.65s ease, transform 0.65s ease;
     }
+    .scene-panel.active {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .bronze-mono {
+      font-size: 64px;
+      line-height: 1;
+      background: linear-gradient(145deg, #B38462 0%, #4E3326 55%, #9B7154 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 6px 14px rgba(62, 40, 28, 0.2));
+      margin-bottom: 10px;
+    }
+    .date-spaced { font-size: 15px; letter-spacing: 0.28em; color: var(--bronze-mid); font-weight: 700; direction: ltr; }
+    .ayah { font-size: 20px; color: var(--cocoa); line-height: 1.95; max-width: 340px; }
+    .month-poem { font-size: 22px; color: var(--bronze); line-height: 1.85; max-width: 320px; }
+
+    .pearl-grid { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; margin: 12px 0 14px; }
+    .p-col { padding: 8px 6px; position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .p-col:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 12%;
-      bottom: 12%;
-      width: 1px;
-      background: linear-gradient(180deg, transparent, rgba(140, 104, 80, 0.45), transparent);
+      content: ''; position: absolute; left: 0; top: 14%; bottom: 14%; width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(213, 175, 138, 0.8), transparent);
     }
     .p-ic {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #8C6850, #5A3E2E);
-      color: var(--pearl);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 6px 14px rgba(90, 62, 46, 0.2);
+      width: 34px; height: 34px; border-radius: 50%;
+      background: linear-gradient(145deg, #855D47, #4E3326);
+      color: var(--pearl); display: grid; place-items: center;
+      box-shadow: 0 6px 14px rgba(62, 40, 28, 0.22);
     }
     .p-col b { font-size: 11.5px; color: var(--cocoa); line-height: 1.35; }
-    .etiquette {
-      font-size: 11.5px;
-      color: var(--bronze-light);
-      line-height: 1.85;
-      border-top: 1px solid rgba(140, 104, 80, 0.2);
-      padding-top: 12px;
-      width: 100%;
-    }
-    .scene-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 14px;
-    }
+    .etiquette { font-size: 11.5px; color: var(--bronze-mid); line-height: 1.8; border-top: 1px solid rgba(213, 175, 138, 0.35); padding-top: 10px; width: 100%; }
+
+    .scene-nav { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
     .scene-nav button {
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(140, 104, 80, 0.35);
-      background: #FAF6F0;
-      color: var(--bronze);
-      font: 700 11px inherit;
-      cursor: pointer;
+      padding: 6px 14px; border-radius: 999px;
+      border: 1px solid rgba(213, 175, 138, 0.65); background: #FFFDF9;
+      color: var(--bronze); font: 700 11px inherit; cursor: pointer;
     }
 
     .card {
       background: rgba(255, 253, 249, 0.94);
-      border: 1px solid rgba(140, 104, 80, 0.28);
-      border-radius: 22px;
-      padding: 20px 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 12px 30px rgba(90, 62, 46, 0.07);
+      border: 1px solid rgba(213, 175, 138, 0.45);
+      border-radius: 22px; padding: 20px 18px; margin-bottom: 16px;
+      box-shadow: 0 12px 30px rgba(62, 40, 28, 0.08);
     }
     .cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 12px 0 16px; }
-    .cd div { background: var(--silk); border: 1px solid rgba(140, 104, 80, 0.24); border-radius: 12px; padding: 9px 4px; }
+    .cd div { background: var(--silk); border: 1px solid rgba(213, 175, 138, 0.38); border-radius: 12px; padding: 9px 4px; }
     .cd strong { display: block; font-size: 20px; color: var(--bronze); }
-    .cd span { font-size: 10px; color: var(--bronze-light); }
+    .cd span { font-size: 10px; color: var(--bronze-mid); }
     .btn-row { display: flex; gap: 8px; }
     .btn {
       flex: 1; display: inline-flex; align-items: center; justify-content: center;
       padding: 11px 16px; border-radius: 999px; font: 700 12.5px inherit;
       text-decoration: none; cursor: pointer; border: 0;
     }
-    .btn-bronze { background: linear-gradient(135deg, #8C6850, #5A3E2E); color: var(--pearl); }
-    .btn-out { background: transparent; color: var(--bronze); border: 1px solid var(--bronze-light); }
+    .btn-bronze { background: linear-gradient(135deg, #855D47, #4E3326); color: var(--pearl); border: 1px solid var(--rose-gold); }
+    .btn-out { background: transparent; color: var(--bronze); border: 1px solid var(--rose-gold); }
     .inp {
       width: 100%; padding: 10px 14px; border-radius: 12px;
-      border: 1px solid rgba(140, 104, 80, 0.36); background: #FFFFFF;
+      border: 1px solid rgba(213, 175, 138, 0.55); background: #FFFFFF;
       color: var(--cocoa); font: inherit; font-size: 13.5px; margin-bottom: 10px;
     }
   </style>
@@ -302,16 +271,21 @@
     <source src="../assets/video/wedding-intro-loop.mp4" type="video/mp4" />
   </video>
 
-  <!-- Guipure Lace V-Pocket Envelope & Teardrop Pearl Cover -->
+  <!-- 3D Couture Lace V-Pocket Envelope & Teardrop Pearl -->
   <div id="lace-cover" role="dialog" aria-label="افتح ظرف الدانتيل واللؤلؤ">
     <div class="lace-env">
       <div class="lace-flap"></div>
+      <div class="lace-pocket-front"></div>
       <div class="lace-card-peek">
-        <div class="ruqaa" style="font-size:32px;color:var(--bronze);" data-monogram>ح &amp; ي</div>
-        <div style="font-size:11px;color:var(--bronze-light);margin-top:4px;" data-couple-title>حسن و يارا</div>
+        <div class="ruqaa" style="font-size:34px;color:var(--bronze);" data-monogram>ح &amp; ي</div>
+        <div style="font-size:11.5px;color:var(--bronze-mid);margin-top:4px;" data-couple-title>حسن و يارا</div>
       </div>
       <div class="pearl-drop">
-        <div class="organza-bow"></div>
+        <svg width="78" height="34" viewBox="0 0 80 36" fill="none" aria-hidden="true">
+          <path d="M40 18C26 4 6 6 6 18C6 28 24 28 40 20Z" fill="rgba(255,253,249,0.9)" stroke="#D5AF8A" stroke-width="1"/>
+          <path d="M40 18C54 4 74 6 74 18C74 28 56 28 40 20Z" fill="rgba(255,253,249,0.9)" stroke="#D5AF8A" stroke-width="1"/>
+          <circle cx="40" cy="19" r="5" fill="#FFFDF9" stroke="#D5AF8A"/>
+        </svg>
         <div class="teardrop"></div>
       </div>
     </div>
@@ -320,7 +294,9 @@
 
   <main class="wrap">
     <section class="couture-card">
-      <div class="top-bow-pin" aria-hidden="true"></div>
+      <div class="pearl-rail" aria-hidden="true">
+        <span></span><span></span><span class="big"></span><span></span><span></span>
+      </div>
       <div class="scene-tabs" id="sceneDots">
         <button type="button" class="active" data-sc="0" aria-label="المشهد 1"></button>
         <button type="button" data-sc="1" aria-label="المشهد 2"></button>
@@ -328,49 +304,47 @@
         <button type="button" data-sc="3" aria-label="المشهد 4"></button>
       </div>
 
-      <!-- Scene 1: 3D Bronze Monogram & Date -->
-      <div class="scene-panel active" data-panel="0">
-        <div class="bronze-mono ruqaa" data-monogram>ح &amp; ي</div>
-        <h1 class="amiri" style="font-size:34px;color:var(--cocoa);margin-bottom:6px;" data-couple-title>حسن و يارا</h1>
-        <div class="date-spaced" data-event-date>16 . 10 . 2027</div>
-      </div>
-
-      <!-- Scene 2: Quranic Verse -->
-      <div class="scene-panel" data-panel="1">
-        <div class="amiri" style="font-size:16px;color:var(--bronze-light);margin-bottom:10px;">بسم الله الرحمن الرحيم</div>
-        <p class="ayah amiri">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</p>
-      </div>
-
-      <!-- Scene 3: Poetic Month Announcement -->
-      <div class="scene-panel" data-panel="2">
-        <p class="month-poem amiri">
-          وقد كُتب لأكتوبر<br>
-          أن يكون استثنائياً هذا العام<br>
-          ففيه تكتمل فرحتنا بحضوركم
-        </p>
-      </div>
-
-      <!-- Scene 4: 3-Column Pearl Details + Etiquette -->
-      <div class="scene-panel" data-panel="3">
-        <div class="amiri" style="font-size:17px;color:var(--bronze);font-weight:700;">وذلك بمشيئة الله تعالى</div>
-        <div class="pearl-grid">
-          <div class="p-col">
-            <div class="p-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <b data-venue-name>فندق النيل ريتز كارلتون</b>
-          </div>
-          <div class="p-col">
-            <div class="p-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
-            <b>8:00 PM</b>
-          </div>
-          <div class="p-col">
-            <div class="p-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <b>السبت 16 . 10 . 2027</b>
-          </div>
+      <div class="scene-stage">
+        <div class="scene-panel active" data-panel="0">
+          <div class="bronze-mono ruqaa" data-monogram>ح &amp; ي</div>
+          <h1 class="amiri" style="font-size:36px;color:var(--cocoa);margin-bottom:6px;" data-couple-title>حسن و يارا</h1>
+          <div class="date-spaced" data-event-date>16 . 10 . 2027</div>
         </div>
-        <div class="etiquette">
-          <div>خدمة صف السيارات (Valet) مجانية للضيوف</div>
-          <div data-table-seat>طاولة رقم ٦ • القاعة الملكية</div>
-          <div style="font-weight:700;color:var(--cocoa);margin-top:4px;">وبحضوركم يتم لنا الفرح والسرور</div>
+
+        <div class="scene-panel" data-panel="1">
+          <div class="amiri" style="font-size:16px;color:var(--bronze-mid);margin-bottom:10px;">بسم الله الرحمن الرحيم</div>
+          <p class="ayah amiri">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</p>
+        </div>
+
+        <div class="scene-panel" data-panel="2">
+          <p class="month-poem amiri">
+            وقد كُتب لأكتوبر<br>
+            أن يكون استثنائياً هذا العام<br>
+            ففيه تكتمل فرحتنا بحضوركم
+          </p>
+        </div>
+
+        <div class="scene-panel" data-panel="3">
+          <div class="amiri" style="font-size:17px;color:var(--bronze);font-weight:700;">وذلك بمشيئة الله تعالى</div>
+          <div class="pearl-grid">
+            <div class="p-col">
+              <div class="p-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <b data-venue-name>فندق النيل ريتز كارلتون</b>
+            </div>
+            <div class="p-col">
+              <div class="p-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
+              <b>8:00 PM</b>
+            </div>
+            <div class="p-col">
+              <div class="p-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <b>السبت 16 . 10 . 2027</b>
+            </div>
+          </div>
+          <div class="etiquette">
+            <div>خدمة صف السيارات (Valet) مجانية للضيوف</div>
+            <div data-table-seat>طاولة رقم ٦ • القاعة الملكية</div>
+            <div style="font-weight:700;color:var(--cocoa);margin-top:4px;">وبحضوركم يتم لنا الفرح والسرور</div>
+          </div>
         </div>
       </div>
 
@@ -420,7 +394,7 @@
       document.getElementById('lace-cover').classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
       try { WeddingSound.startMusic('jassmi_seta'); } catch (_) {}
-      timer = setInterval(() => showScene(cur + 1), 4200);
+      timer = setInterval(() => showScene(cur + 1), 4500);
     });
   </script>
 </body>
