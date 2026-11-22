@@ -1,4 +1,4 @@
-/* Single source of truth for MEEM — 6 categories, 6 Wedding Aesthetics, 48 curated designs with Moodboards */
+/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 48 curated designs with Moodboards */
 window.SITE = {
   "WHATSAPP": "201024190741",
   "BRAND": {
@@ -14,57 +14,57 @@ window.SITE = {
   "CATEGORIES": [
     {
       "id": "motion",
-      "title": "Video, Motion & Couple Photos",
+      "title": "Motion & Video Invitations",
       "short": "Motion & Video",
-      "ar": "فيديو وموشن وصور العروسين",
+      "ar": "فيديو وموشن",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"3\"/><polygon points=\"10 8.5 16 12 10 15.5 10 8.5\"/></svg>",
-      "blurb": "Cinematic video loops, Ken Burns motion reels, 3D lockets and couple photo galleries."
+      "blurb": "HD video loops, vertical reels, Ken Burns couple films and 3D motion lockets — customisable for any event."
     },
     {
       "id": "cards",
-      "title": "Tactile Opening & Silent Cards",
+      "title": "Silent Luxury Cards",
       "short": "Silent Cards",
-      "ar": "كروت هادئة (بدون صوت)",
+      "ar": "كروت صامتة",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg>",
-      "blurb": "Tactile opening cards and silent luxury stationery with zero sound or voice."
+      "blurb": "Zero-audio tactile folding stationery, translucent vellum envelopes and quiet architectural cards."
     },
     {
-      "id": "weddings",
-      "title": "Luxury Weddings & Palaces",
-      "short": "Weddings",
-      "ar": "الأفراح والقصور",
+      "id": "interactive",
+      "title": "Interactive Reveals & Games",
+      "short": "Interactive",
+      "ar": "دعوات تفاعلية",
+      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2l2.4 5.2L20 9.6l-4 3.9.9 5.5L12 16.4 7.1 19l.9-5.5-4-3.9 5.6-2.4L12 2z\"/></svg>",
+      "blurb": "Swinging doors, sliding lattice, glowing lanterns, curtains, watch dials, DJ requests and live table finder."
+    },
+    {
+      "id": "royal",
+      "title": "Royal, Palace & Classic",
+      "short": "Royal & Classic",
+      "ar": "ملكي وكلاسيك",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l2-9 4.5 4L12 5l2.5 7L19 8l2 9H3z\"/><path d=\"M4 20h16\"/></svg>",
-      "blurb": "Grand ballrooms, palaces and 5-star Nile venues."
+      "blurb": "Old Money wax seals, arabesque arches, metallic liquid chromium and timeless palace grandeur for any occasion."
     },
     {
-      "id": "katb",
-      "title": "Katb Ketab & Islamic Elegance",
-      "short": "Katb Ketab",
-      "ar": "عقد القران",
-      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3c-2.5 2.5-6 4.5-6 9v8h12v-8c0-4.5-3.5-6.5-6-9z\"/><path d=\"M9 20v-5a3 3 0 0 1 6 0v5\"/><path d=\"M4 20h16\"/></svg>",
-      "blurb": "Calm, respectful designs for mosque ceremonies."
-    },
-    {
-      "id": "engagement",
-      "title": "Engagement & Henna Nights",
-      "short": "Engagement",
-      "ar": "الخطوبة وليلة الحنة",
-      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"14\" r=\"6\"/><path d=\"M9 6l3-3 3 3-3 2-3-2z\"/></svg>",
-      "blurb": "Ring boxes, lanterns and ladies-only celebrations."
+      "id": "floral",
+      "title": "Floral, Garden & Coastal",
+      "short": "Floral & Coastal",
+      "ar": "ورود وساحل",
+      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v3\"/><path d=\"M5.6 5.6l2.1 2.1\"/><path d=\"M18.4 5.6l-2.1 2.1\"/><path d=\"M7 14a5 5 0 0 1 10 0\"/><path d=\"M3 17c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5\"/></svg>",
+      "blurb": "Soft botanical watercolors, pressed-glass herbariums, sunlit Sahel linen and golden destination sunsets."
     },
     {
       "id": "editorial",
-      "title": "Coastal, Destination & Modern",
-      "short": "Coastal & Modern",
-      "ar": "الساحل والتصاميم العصرية",
-      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v3\"/><path d=\"M5.6 5.6l2.1 2.1\"/><path d=\"M18.4 5.6l-2.1 2.1\"/><path d=\"M7 14a5 5 0 0 1 10 0\"/><path d=\"M3 17c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5\"/><path d=\"M3 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5\"/></svg>",
-      "blurb": "Sahel, El Gouna and magazine-style concepts."
+      "title": "Editorial, Magazine & Albums",
+      "short": "Editorial & Albums",
+      "ar": "مجلات وألبومات",
+      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"/></svg>",
+      "blurb": "Vogue-style issues, vintage newspapers, golden vinyl records, 3D flip postcards and swipeable photo albums."
     }
   ],
   "SAMPLES": [
     {
       "num": "01",
-      "cat": "weddings",
+      "cat": "interactive",
       "file": "samples/01-royal-emerald-gold.html",
       "title": "Royal Emerald & Gold",
       "subtitle": "أحمد و فريدة",
@@ -97,7 +97,7 @@ window.SITE = {
     },
     {
       "num": "02",
-      "cat": "weddings",
+      "cat": "royal",
       "file": "samples/02-wax-seal-editorial.html",
       "title": "Ivory Wax-Seal Editorial",
       "subtitle": "Youssef & Zeina",
@@ -131,7 +131,7 @@ window.SITE = {
     },
     {
       "num": "03",
-      "cat": "weddings",
+      "cat": "floral",
       "file": "samples/03-botanical-garden.html",
       "title": "Sage Botanical Watercolor",
       "subtitle": "Tarek & Yasmine",
@@ -164,7 +164,7 @@ window.SITE = {
     },
     {
       "num": "04",
-      "cat": "weddings",
+      "cat": "royal",
       "file": "samples/06-celestial-midnight.html",
       "title": "Celestial Midnight Velvet",
       "subtitle": "Sherif & Nadia",
@@ -196,7 +196,7 @@ window.SITE = {
     },
     {
       "num": "05",
-      "cat": "weddings",
+      "cat": "royal",
       "file": "samples/07-bilingual-palace.html",
       "title": "Nile Palace",
       "subtitle": "Karim & Mariam | كريم و مريم",
@@ -228,7 +228,7 @@ window.SITE = {
     },
     {
       "num": "06",
-      "cat": "katb",
+      "cat": "royal",
       "file": "samples/05-arabesque-pearl.html",
       "title": "Arabesque Pearl Katb Ketab",
       "subtitle": "يوسف و نور",
@@ -261,7 +261,7 @@ window.SITE = {
     },
     {
       "num": "07",
-      "cat": "katb",
+      "cat": "royal",
       "file": "samples/09-minimal-andalus.html",
       "title": "Quiet-Luxury Minimalist",
       "subtitle": "مصطفى و حبيبة",
@@ -294,7 +294,7 @@ window.SITE = {
     },
     {
       "num": "08",
-      "cat": "katb",
+      "cat": "royal",
       "file": "samples/15-nile-katb-ketab-arch.html",
       "title": "Royal Plum Mosque Arch",
       "subtitle": "عبدالرحمن و آية",
@@ -326,7 +326,7 @@ window.SITE = {
     },
     {
       "num": "09",
-      "cat": "engagement",
+      "cat": "interactive",
       "file": "samples/12-velvet-ring-box.html",
       "title": "Velvet Engagement Ring Box",
       "subtitle": "أحمد و رنا",
@@ -358,7 +358,7 @@ window.SITE = {
     },
     {
       "num": "10",
-      "cat": "engagement",
+      "cat": "interactive",
       "file": "samples/13-henna-night-lanterns.html",
       "title": "Glowing Lanterns Henna Night",
       "subtitle": "ليلة حنة سارة",
@@ -422,7 +422,7 @@ window.SITE = {
     },
     {
       "num": "12",
-      "cat": "editorial",
+      "cat": "floral",
       "file": "samples/08-destination-boarding-pass.html",
       "title": "El Gouna Boarding Pass",
       "subtitle": "Aly & Hana",
@@ -454,7 +454,7 @@ window.SITE = {
     },
     {
       "num": "13",
-      "cat": "editorial",
+      "cat": "floral",
       "file": "samples/10-golden-sunset-desert.html",
       "title": "Marassi Golden Sunset",
       "subtitle": "كريم و ملك",
@@ -754,7 +754,7 @@ window.SITE = {
     },
     {
       "num": "22",
-      "cat": "weddings",
+      "cat": "royal",
       "file": "samples/24-liquid-chromium-pearl.html",
       "title": "Liquid Chromium & Pearl",
       "subtitle": "Sherif & Amina",
@@ -958,7 +958,7 @@ window.SITE = {
     },
     {
       "num": "28",
-      "cat": "weddings",
+      "cat": "royal",
       "file": "samples/30-abdeen-palace-royal.html",
       "title": "Abdeen Palace Crimson Velvet",
       "subtitle": "هشام و لينا",
@@ -992,7 +992,7 @@ window.SITE = {
     },
     {
       "num": "29",
-      "cat": "katb",
+      "cat": "royal",
       "file": "samples/31-citadel-mosque-katb.html",
       "title": "Citadel Alabaster Katb Ketab",
       "subtitle": "مازن و هاجر",
@@ -1026,7 +1026,7 @@ window.SITE = {
     },
     {
       "num": "30",
-      "cat": "editorial",
+      "cat": "floral",
       "file": "samples/32-aswan-cataract-sunset.html",
       "title": "Old Cataract Aswan Sunset",
       "subtitle": "Adham & Farah",
@@ -1060,7 +1060,7 @@ window.SITE = {
     },
     {
       "num": "31",
-      "cat": "weddings",
+      "cat": "editorial",
       "file": "samples/34-madinet-nasr-triumph.html",
       "title": "Madinet Nasr Royal Hall & Table Pass",
       "subtitle": "سيف و مريم",
@@ -1128,7 +1128,7 @@ window.SITE = {
     },
     {
       "num": "33",
-      "cat": "weddings",
+      "cat": "interactive",
       "file": "samples/40-handwritten-love-letter.html",
       "title": "Handwritten Wax-Ribbon Love Letter",
       "subtitle": "Seif & Yasmin",
@@ -1162,7 +1162,7 @@ window.SITE = {
     },
     {
       "num": "34",
-      "cat": "katb",
+      "cat": "interactive",
       "file": "samples/41-mashrabiya-sliding-katb.html",
       "title": "Ottoman Mashrabiya Sliding Lattice",
       "subtitle": "عبدالله و سارة",
@@ -1230,7 +1230,7 @@ window.SITE = {
     },
     {
       "num": "36",
-      "cat": "weddings",
+      "cat": "floral",
       "file": "samples/43-pressed-glass-herbarium.html",
       "title": "Pressed-Glass Herbarium & 3-Tab Guide",
       "subtitle": "Badr & Jana",
@@ -1264,7 +1264,7 @@ window.SITE = {
     },
     {
       "num": "37",
-      "cat": "weddings",
+      "cat": "interactive",
       "file": "samples/44-haute-horology-dial.html",
       "title": "Haute Horology Luxury Watch Dial",
       "subtitle": "طارق و داليا",
@@ -1332,7 +1332,7 @@ window.SITE = {
     },
     {
       "num": "39",
-      "cat": "weddings",
+      "cat": "interactive",
       "file": "samples/46-velvet-curtain-gala.html",
       "title": "Emerald Velvet Theatre Curtain & Guestbook",
       "subtitle": "شريف و يارا",
@@ -1400,7 +1400,7 @@ window.SITE = {
     },
     {
       "num": "41",
-      "cat": "weddings",
+      "cat": "interactive",
       "file": "samples/48-interactive-table-finder.html",
       "title": "Live Find-Your-Table Seating Concierge",
       "subtitle": "حازم و فريدة",
@@ -1434,7 +1434,7 @@ window.SITE = {
     },
     {
       "num": "42",
-      "cat": "editorial",
+      "cat": "floral",
       "file": "samples/49-mediterranean-coastal-linen.html",
       "title": "Sahel 3-Day Coastal Weekend Linen",
       "subtitle": "Khaled & Nourhan",
@@ -1468,7 +1468,7 @@ window.SITE = {
     },
     {
       "num": "43",
-      "cat": "engagement",
+      "cat": "interactive",
       "file": "samples/50-henna-night-mosaic.html",
       "title": "Zellige Mosaic Henna & DJ Song Request",
       "subtitle": "آدم و رنا",
@@ -1570,7 +1570,7 @@ window.SITE = {
     },
     {
       "num": "46",
-      "cat": "engagement",
+      "cat": "editorial",
       "file": "samples/53-couple-photo-gallery-motion.html",
       "title": "Swipeable Couple Engagement Album",
       "subtitle": "مؤمن و دينا",
