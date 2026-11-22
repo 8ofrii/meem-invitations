@@ -61,8 +61,8 @@ http.createServer((req, res) => {
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'SAMEORIGIN',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-    'Content-Security-Policy': "default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com data: blob:;"
+    'Permissions-Policy': 'camera=(self), microphone=(self), geolocation=()',
+    'Content-Security-Policy': "default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://api.qrserver.com https://script.google.com https://script.googleusercontent.com data: blob:;"
   };
   if (gz && /\bgzip\b/.test(req.headers['accept-encoding'] || '')) {
     headers['Content-Encoding'] = 'gzip';

@@ -120,6 +120,98 @@
     color: var(--emerald);
     border: 1px solid rgba(13, 59, 46, 0.1);
   }
+  .addon-spotlight {
+    margin-top: 18px;
+    background: linear-gradient(145deg, #0D3B2E 0%, #154C3C 60%, #0D3B2E 100%);
+    color: #FAF6EE;
+    border: 1.5px solid rgba(197, 160, 89, 0.65);
+    border-radius: 22px;
+    padding: 24px 26px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    box-shadow: 0 18px 42px rgba(13, 59, 46, 0.18);
+  }
+  .addon-spot-left { flex: 1 1 360px; min-width: 0; }
+  .addon-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #F4E5C2;
+    background: rgba(197, 160, 89, 0.2);
+    border: 1px solid rgba(197, 160, 89, 0.45);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .addon-spot-left h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .addon-spot-left p {
+    font-size: 13px;
+    color: rgba(250, 246, 238, 0.86);
+    line-height: 1.6;
+    max-width: 580px;
+  }
+  .addon-spot-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .addon-spot-pills span {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(244, 229, 194, 0.3);
+    color: #F4E5C2;
+  }
+  .addon-spot-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .addon-btn-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #E8CA8C, #C5A059);
+    color: #0D3B2E;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  }
+  .addon-btn-out {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(244, 229, 194, 0.55);
+    color: #FAF6EE;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .addon-btn-out:hover { background: rgba(255, 255, 255, 0.18); }
 
   @media (max-width: 1024px) {
     .feat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -694,6 +786,25 @@
         <div class="feat-tags"><span>Save the Date</span><span>Katb Ketab</span><span>Bridal Shower</span><span>Thank You</span></div>
       </div>
     </div>
+
+    <div class="addon-spotlight">
+      <div class="addon-spot-left">
+        <div class="addon-kicker">Signature Add-On · إضافة مميزة</div>
+        <h3>Live QR Guest Camera &amp; Private Couple Album</h3>
+        <p>Guests simply scan a luxury QR card on their table — no app needed. Their camera opens instantly to snap candid photos or record videos that save automatically straight to the Groom &amp; Bride's private Google Drive folder.</p>
+        <div class="addon-spot-pills">
+          <span>No App Required</span>
+          <span>Live Camera &amp; Video</span>
+          <span>Direct to Couple's Google Drive</span>
+          <span>Private PIN Vault</span>
+          <span>Print-Ready Table QR Card</span>
+        </div>
+      </div>
+      <div class="addon-spot-actions">
+        <a class="addon-btn-light" href="/qr-memories">Try Live QR Camera Demo →</a>
+        <a class="addon-btn-out" id="qrAddonWa" target="_blank" rel="noopener">Add to Order</a>
+      </div>
+    </div>
   </div></section>
 
   <hr class="section-divider">
@@ -1083,5 +1194,6 @@
   });
   updateTry();
   $('ctaWa').href = Shell.wa('Hello MEEM! I would like to order a digital invitation.');
+  if ($('qrAddonWa')) $('qrAddonWa').href = Shell.wa('Hello MEEM! I would like to add the Live QR Guest Camera & Private Google Drive Memories Album to my invitation.');
 </script>
 </body></html>

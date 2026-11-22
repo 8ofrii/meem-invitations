@@ -144,3 +144,18 @@ node scripts/create-client-invite.js \
 - `jassmi_mix`: jassmi-zaffa.mp3, jassmi-seta-el-sobah.mp3
 - `hakim_mix`: hakim-kolo-yorkos.mp3, hakim-el-wad-da-helw.mp3
 - `silent`: Strictly silent (hides music button and plays zero audio)
+
+---
+
+## 4. Signature Add-On: Live QR Guest Camera & Google Drive Memories Album
+
+- **Live Demo & Client Page:** `/qr-memories` (`qr-memories.html`)
+- **Free Google Drive Connector:** `scripts/google-drive-apps-script.gs`
+- **Client URL Parameters:**
+  ```
+  https://meem-invitations.onrender.com/qr-memories?couple=Karim+%26+Nour&pin=2027&endpoint=<APPS_SCRIPT_URL>&drive=<GOOGLE_DRIVE_FOLDER_URL>
+  ```
+- **How to deliver to a paying client in 2 minutes ($0 hosting cost):**
+  1. Create a private folder in Google Drive for the couple and copy its Folder ID.
+  2. Paste `scripts/google-drive-apps-script.gs` into [script.google.com](https://script.google.com), set `FOLDER_ID`, and deploy as a Web App (`Execute as: Me`, `Who has access: Anyone`).
+  3. Open `/qr-memories?couple=...&pin=...&endpoint=<WEB_APP_URL>&drive=<DRIVE_URL>` and print/export the ready-made **Table QR Card** from the 3rd tab.

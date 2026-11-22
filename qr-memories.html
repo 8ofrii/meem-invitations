@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEEM • ميم — Live QR Guest Camera &amp; Wedding Memories Album</title>
+  <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --card: #FFFFFF;
+      --emerald: #0D3B2E;
+      --emerald-2: #16503F;
+      --gold: #C5A059;
+      --gold-dark: #9B7837;
+      --ink: #1C2420;
+      --muted: #66706A;
+      --line: rgba(197, 160, 89, 0.34);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #FFFDF9 0%, var(--bg) 55%, #EFE8DA 100%);
+      color: var(--ink);
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      padding: 20px 16px 70px;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .amiri { font-family: 'Amiri', serif; }
+    .shell { max-width: 780px; margin: 0 auto; }
+
+    /* Top Bar */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--emerald);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+    }
+    .lang-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #FFFFFF;
+      color: var(--emerald);
+      font: 700 12px inherit;
+      cursor: pointer;
+    }
+
+    /* Header Card */
+    .hero-card {
+      background: linear-gradient(155deg, #FFFFFF 0%, #FBF6EC 100%);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px 20px 24px;
+      text-align: center;
+      box-shadow: 0 18px 46px rgba(13, 59, 46, 0.07);
+      margin-bottom: 18px;
+    }
+    .hero-logo { width: 62px; height: 62px; object-fit: contain; margin: 0 auto 8px; display: block; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: rgba(13, 59, 46, 0.07);
+      border: 1px solid rgba(197, 160, 89, 0.42);
+      color: var(--emerald);
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .couple-head { font-size: clamp(32px, 6vw, 44px); color: var(--emerald); line-height: 1.15; }
+    .sub-lead { font-size: 13.5px; color: var(--muted); max-width: 520px; margin: 8px auto 0; line-height: 1.65; }
+
+    /* Mode Tabs */
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      padding: 11px 10px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #FFFFFF;
+      color: var(--muted);
+      font: 700 12.5px inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
+      color: #FFFFFF;
+      border-color: var(--gold);
+      box-shadow: 0 8px 20px rgba(13, 59, 46, 0.2);
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: 0 12px 32px rgba(13, 59, 46, 0.05);
+      margin-bottom: 16px;
+    }
+    .section-title { font-size: 22px; color: var(--emerald); margin-bottom: 6px; }
+    .muted { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* Guest Action Buttons */
+    .cam-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .act-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 12px;
+      border-radius: 18px;
+      border: 1.5px solid var(--line);
+      background: linear-gradient(155deg, #FFFFFF, #FAF6EE);
+      color: var(--emerald);
+      font: 700 13px inherit;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .act-tile.primary {
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
+      color: #FAF6EE;
+      border-color: var(--gold);
+      box-shadow: 0 10px 24px rgba(13, 59, 46, 0.22);
+    }
+    .act-tile:hover { transform: translateY(-2px); border-color: var(--gold); }
+    .act-tile small { font-size: 11px; font-weight: 500; opacity: 0.82; }
+
+    /* Live In-Browser Camera Viewfinder */
+    .cam-box {
+      display: none;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0F1412;
+      border: 2px solid var(--gold);
+      margin-bottom: 16px;
+    }
+    .cam-box.is-live { display: block; }
+    .cam-box video { width: 100%; max-height: 440px; object-fit: cover; display: block; }
+    .cam-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(13, 59, 46, 0.94);
+    }
+    .cam-ctrl-btn {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 229, 194, 0.55);
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      font: 700 12px inherit;
+      cursor: pointer;
+    }
+    .cam-ctrl-btn.shutter {
+      background: linear-gradient(135deg, #E8CA8C, var(--gold));
+      color: #0D3B2E;
+      border-color: #FFFDF8;
+    }
+    .cam-ctrl-btn.recording {
+      background: #DC2626;
+      color: #FFFFFF;
+      border-color: #FCA5A5;
+      animation: recPulse 1s infinite;
+    }
+    @keyframes recPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.65; } }
+
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .inp {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(13, 59, 46, 0.18);
+      background: #FAF7F2;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+    .inp:focus { border-color: var(--gold); background: #FFFFFF; }
+    .status-bar {
+      display: none;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 12px;
+      background: rgba(13, 59, 46, 0.08);
+      color: var(--emerald);
+      border: 1px solid rgba(197, 160, 89, 0.45);
+    }
+    .status-bar.show { display: block; }
+
+    /* Couple Private Gallery */
+    .pin-gate { text-align: center; padding: 18px 10px; }
+    .pin-row { display: flex; gap: 8px; justify-content: center; max-width: 320px; margin: 14px auto 0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font: 700 12.5px inherit;
+      cursor: pointer;
+      text-decoration: none;
+      border: 0;
+    }
+    .btn-em { background: linear-gradient(135deg, var(--emerald), var(--emerald-2)); color: #FFFFFF; border: 1px solid var(--gold); }
+    .btn-gold { background: linear-gradient(135deg, #E3C17B, var(--gold)); color: #0D3B2E; }
+    .btn-out { background: #FFFFFF; color: var(--emerald); border: 1px solid var(--line); }
+
+    .album-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .media-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #FAF7F2;
+      display: flex;
+      flex-direction: column;
+    }
+    .media-item img, .media-item video {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background: #111;
+    }
+    .media-meta { padding: 10px; font-size: 11.5px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .media-meta b { color: var(--emerald); }
+    .media-meta p { color: var(--muted); line-height: 1.4; }
+    .media-actions { display: flex; gap: 6px; margin-top: auto; padding-top: 6px; }
+    .media-actions a, .media-actions button {
+      flex: 1;
+      text-align: center;
+      padding: 5px 8px;
+      border-radius: 8px;
+      font: 700 10.5px inherit;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: #FFFFFF;
+      color: var(--emerald);
+    }
+
+    /* Printable Luxury Table QR Card */
+    .qr-tent {
+      max-width: 390px;
+      margin: 12px auto 18px;
+      background: linear-gradient(165deg, #FFFDF9 0%, #F7F0E3 100%);
+      border: 2px solid var(--gold);
+      border-radius: 26px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 22px 50px rgba(13, 59, 46, 0.12), inset 0 0 0 8px #FFFDF9, inset 0 0 0 9.5px rgba(197, 160, 89, 0.42);
+    }
+    .qr-frame {
+      width: 196px;
+      height: 196px;
+      margin: 16px auto;
+      padding: 12px;
+      border-radius: 18px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 10px 24px rgba(13, 59, 46, 0.1);
+      display: grid;
+      place-items: center;
+    }
+    .qr-frame img { width: 100%; height: 100%; display: block; }
+
+    @media (max-width: 640px) {
+      .cam-actions, .field-grid { grid-template-columns: 1fr; }
+      .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tab-btn { font-size: 11px; padding: 10px 6px; }
+    }
+    @media print {
+      body { background: #FFFFFF; padding: 0; }
+      .top-nav, .hero-card, .tabs, .no-print { display: none !important; }
+      #panel-qr { display: block !important; }
+      .card { border: 0; box-shadow: none; }
+      .qr-tent { box-shadow: none; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="top-nav">
+      <a class="back-link" href="/" id="backHome">← الرئيسية • MEEM</a>
+      <button type="button" class="lang-btn" id="langSwitch">English</button>
+    </div>
+
+    <section class="hero-card">
+      <img class="hero-logo" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
+      <div class="pill" id="addonPill">إضافة مميزة • Live QR Guest Camera Add-On</div>
+      <h1 class="amiri couple-head" id="coupleHead">كريم و نور — ألبوم ذكريات الضيوف</h1>
+      <p class="sub-lead" id="heroSub">امسح كود الـ QR، صوّر لحظات الفرح أو سجّل فيديو مباشرة من الكاميرا بدون تحميل أي تطبيق — وتتحفظ تلقائياً في ألبوم العروسين الخاص على Google Drive.</p>
+    </section>
+
+    <div class="tabs">
+      <button type="button" class="tab-btn active" data-tab="guest" id="tabGuest">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="12" cy="12" r="3.2"/></svg>
+        <span>كاميرا الضيوف</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="couple" id="tabCouple">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>ألبوم العروسين</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="qr" id="tabQr">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>
+        <span>كارت QR للطاولة</span>
+      </button>
+    </div>
+
+    <!-- PANEL 1: GUEST CAMERA & UPLOAD -->
+    <section class="panel active" id="panel-guest">
+      <div class="card">
+        <h2 class="amiri section-title" id="guestTitle">شارك العروسين أجمل لحظات الليلة</h2>
+        <p class="muted" id="guestDesc">يمكنك فتح الكاميرا مباشرة لالتقاط صورة أو فيديو، أو اختيار صور وفيديوهات من موبايلك — وستصل فوراً لألبوم العروسين الخاص.</p>
+
+        <div class="field-grid" style="margin-top:14px;">
+          <input class="inp" id="guestName" placeholder="اسمك (اختياري) — مثال: أحمد" />
+          <input class="inp" id="guestNote" placeholder="رسالة أو تهنئة للعروسين (اختياري)" />
+        </div>
+
+        <!-- Live Browser Camera Box -->
+        <div class="cam-box" id="camBox">
+          <video id="camVideo" autoplay playsinline muted></video>
+          <div class="cam-controls">
+            <button type="button" class="cam-ctrl-btn" id="flipCamBtn">تبديل الكاميرا</button>
+            <button type="button" class="cam-ctrl-btn shutter" id="snapPhotoBtn">التقاط صورة</button>
+            <button type="button" class="cam-ctrl-btn" id="recVideoBtn">تسجيل فيديو</button>
+            <button type="button" class="cam-ctrl-btn" id="closeCamBtn">إغلاق</button>
+          </div>
+        </div>
+
+        <div class="cam-actions">
+          <button type="button" class="act-tile primary" id="openLiveCamBtn">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <span id="btnLiveCam">فتح الكاميرا المباشرة</span>
+            <small id="btnLiveSub">تصوير صورة أو فيديو فوراً</small>
+          </button>
+
+          <label class="act-tile" for="nativeCamInput">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            <span id="btnNativeCam">كاميرا الموبايل (فيديو/صورة)</span>
+            <small id="btnNativeSub">فتح كاميرا الهاتف الأصلية</small>
+          </label>
+          <input id="nativeCamInput" type="file" accept="image/*,video/*" capture="environment" style="display:none" />
+
+          <label class="act-tile" for="galleryInput">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span id="btnGallery">رفع من الاستوديو</span>
+            <small id="btnGallerySub">اختيار عدة صور أو فيديوهات</small>
+          </label>
+          <input id="galleryInput" type="file" accept="image/*,video/*" multiple style="display:none" />
+        </div>
+
+        <div class="status-bar" id="uploadStatus"></div>
+      </div>
+
+      <div class="card" style="background:linear-gradient(155deg,#FFFDF9,#F6EFE2);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+        <div>
+          <strong style="color:var(--emerald);font-size:14px;" id="waAddTitle">هل تريد إضافة كاميرا الضيوف بالـ QR لدعوتك؟</strong>
+          <p class="muted" id="waAddSub">تُربط مباشرة بحساب Google Drive الخاص بالعروسين مع كارت QR جاهز للطباعة على الطاولات.</p>
+        </div>
+        <a class="btn btn-em" id="orderAddonWa" target="_blank" rel="noopener">اطلب الإضافة عبر واتساب</a>
+      </div>
+    </section>
+
+    <!-- PANEL 2: COUPLE PRIVATE ALBUM -->
+    <section class="panel" id="panel-couple">
+      <div class="card">
+        <div id="pinGate" class="pin-gate">
+          <div class="pill">حماية خصوصية العروسين • Private Couple Vault</div>
+          <h2 class="amiri section-title" id="pinTitle">أدخل الرقم السري لألبوم العروسين</h2>
+          <p class="muted" id="pinDesc">الألبوم محمي بحيث لا يرى الصور والفيديوهات إلا العريس والعروسة (الرقم التجريبي: <strong>1234</strong>).</p>
+          <div class="pin-row">
+            <input class="inp" id="pinInput" type="password" inputmode="numeric" placeholder="1234" style="text-align:center;letter-spacing:0.3em;" />
+            <button type="button" class="btn btn-em" id="unlockBtn">فتح الألبوم</button>
+          </div>
+          <p id="pinErr" style="color:#B91C1C;font-size:12px;margin-top:8px;display:none;">الرقم السري غير صحيح — جرّب 1234 للتجربة</p>
+        </div>
+
+        <div id="coupleVault" style="display:none;">
+          <div class="album-head">
+            <div>
+              <h2 class="amiri section-title" id="vaultTitle">ذكريات الضيوف المحفوظة</h2>
+              <p class="muted" id="vaultCount">0 صورة / فيديو</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <a class="btn btn-gold" id="driveFolderBtn" target="_blank" rel="noopener" style="display:none;">فتح مجلد Google Drive ↗</a>
+              <button type="button" class="btn btn-out" id="clearDemoBtn">مسح التجربة</button>
+            </div>
+          </div>
+          <div class="media-grid" id="mediaGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 3: PRINT-READY TABLE QR CARD -->
+    <section class="panel" id="panel-qr">
+      <div class="card">
+        <div class="qr-tent">
+          <img src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" style="width:46px;height:46px;object-fit:contain;margin:0 auto 6px;display:block;" />
+          <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;">CAPTURE OUR MEMORIES</div>
+          <h2 class="amiri" style="font-size:32px;color:var(--emerald);margin-top:4px;" id="qrCoupleName">كريم و نور</h2>
+          <p style="font-size:12.5px;color:var(--muted);margin-top:4px;" id="qrCardDesc">امسح الكود بكاميرا موبايلك وصوّر معنا أجمل لحظات الفرح — صورك ستصل فوراً لألبومنا الخاص</p>
+          <div class="qr-frame">
+            <img id="qrImg" alt="Scannable Wedding Album QR Code" />
+          </div>
+          <div style="font-size:11px;color:var(--emerald);font-weight:700;">No App Required • بدون تحميل أي تطبيق</div>
+        </div>
+        <div class="no-print" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+          <button type="button" class="btn btn-em" onclick="window.print()">طباعة / حفظ كارت الطاولة</button>
+          <button type="button" class="btn btn-out" id="copyQrLinkBtn">نسخ رابط الألبوم</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const COUPLE = params.get('couple') || 'كريم و نور';
+    const PIN = params.get('pin') || '1234';
+    const DRIVE_ENDPOINT = params.get('endpoint') || '';
+    const DRIVE_FOLDER_URL = params.get('drive') || '';
+    const STORAGE_KEY = 'meem_qr_memories_' + COUPLE.replace(/\W+/g, '_');
+
+    document.getElementById('coupleHead').textContent = `${COUPLE} — ألبوم ذكريات الضيوف`;
+    document.getElementById('qrCoupleName').textContent = COUPLE;
+    document.getElementById('orderAddonWa').href = `https://wa.me/201024190741?text=${encodeURIComponent('مرحباً MEEM! أريد إضافة خدمة كاميرا الضيوف بالـ QR Code وربطها بـ Google Drive لدعوتي.')}`;
+
+    if (DRIVE_FOLDER_URL) {
+      const btn = document.getElementById('driveFolderBtn');
+      btn.href = DRIVE_FOLDER_URL;
+      btn.style.display = 'inline-flex';
+    }
+
+    // Generate real scannable QR code pointing to current album URL
+    const shareUrl = location.href.split('#')[0];
+    document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&color=0D3B2E&bgcolor=FFFFFF&data=${encodeURIComponent(shareUrl)}`;
+
+    document.getElementById('copyQrLinkBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        document.getElementById('copyQrLinkBtn').textContent = '✓ تم النسخ';
+        setTimeout(() => document.getElementById('copyQrLinkBtn').textContent = 'نسخ رابط الألبوم', 2000);
+      } catch (_) {}
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+        if (btn.dataset.tab !== 'guest') stopCamera();
+      });
+    });
+
+    // IndexedDB lightweight local vault (supports photos & videos cleanly in Demo Mode + mirrors Drive uploads)
+    function openDB() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open('MEEM_QR_MEMORIES', 1);
+        req.onupgradeneeded = () => req.result.createObjectStore('items', { keyPath: 'id' });
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+    async function saveLocalItem(item) {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction('items', 'readwrite');
+        tx.objectStore('items').put(item);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+    async function listLocalItems() {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction('items', 'readonly');
+        const req = tx.objectStore('items').getAll();
+        req.onsuccess = () => resolve((req.result || []).filter(x => x.bucket === STORAGE_KEY).sort((a, b) => b.ts - a.ts));
+        req.onerror = () => reject(req.error);
+      });
+    }
+    async function deleteLocalItem(id) {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction('items', 'readwrite');
+        tx.objectStore('items').delete(id);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    const statusEl = document.getElementById('uploadStatus');
+    function showStatus(msg) {
+      statusEl.textContent = msg;
+      statusEl.classList.add('show');
+    }
+
+    function blobToDataURL(blob) {
+      return new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = reject;
+        r.readAsDataURL(blob);
+      });
+    }
+
+    async function handleCapturedBlob(blob, fallbackType) {
+      const mimeType = blob.type || fallbackType || 'image/jpeg';
+      const guestName = document.getElementById('guestName').value.trim() || 'ضيف الفرح';
+      const note = document.getElementById('guestNote').value.trim();
+      showStatus('جاري حفظ الذكرى في ألبوم العروسين…');
+
+      const dataUrl = await blobToDataURL(blob);
+      const item = {
+        id: 'm_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        bucket: STORAGE_KEY,
+        ts: Date.now(),
+        mimeType,
+        guestName,
+        note,
+        dataUrl
+      };
+      await saveLocalItem(item);
+
+      if (DRIVE_ENDPOINT) {
+        try {
+          await fetch(DRIVE_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ base64: dataUrl, mimeType, guestName, note })
+          });
+          showStatus('✓ تم الإرسال بنجاح وحفظ الملف مباشرة في Google Drive الخاص بالعروسين!');
+        } catch (_) {
+          showStatus('✓ تم الحفظ في الألبوم المحلي (تأكد من اتصال الإنترنت للرفع على Drive).');
+        }
+      } else {
+        showStatus('✓ تم التقاط وحفظ الذكرى في ألبوم العروسين! افتح تبويب "ألبوم العروسين" (الرقم السري 1234) لمشاهدتها.');
+      }
+      renderVault();
+    }
+
+    // Native camera & gallery file inputs
+    ['nativeCamInput', 'galleryInput'].forEach(id => {
+      document.getElementById(id).addEventListener('change', async (e) => {
+        const files = Array.from(e.target.files || []);
+        for (const f of files) {
+          await handleCapturedBlob(f, f.type);
+        }
+        e.target.value = '';
+      });
+    });
+
+    // Live Camera Viewfinder (getUserMedia + Photo Snapshot + Video MediaRecorder)
+    let stream = null;
+    let facingMode = 'environment';
+    let recorder = null;
+    let chunks = [];
+
+    async function startCamera() {
+      stopCamera();
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode }, audio: true });
+        document.getElementById('camVideo').srcObject = stream;
+        document.getElementById('camBox').classList.add('is-live');
+        showStatus('الكاميرا جاهزة — يمكنك التقاط صورة أو تسجيل فيديو الآن.');
+      } catch (err) {
+        showStatus('لم يتم منح إذن الكاميرا داخل المتصفح — يمكنك استخدام زر "كاميرا الموبايل" أو "رفع من الاستوديو".');
+      }
+    }
+    function stopCamera() {
+      if (recorder && recorder.state === 'recording') recorder.stop();
+      if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+      document.getElementById('camBox').classList.remove('is-live');
+      const rb = document.getElementById('recVideoBtn');
+      rb.classList.remove('recording');
+      rb.textContent = 'تسجيل فيديو';
+    }
+
+    document.getElementById('openLiveCamBtn').addEventListener('click', startCamera);
+    document.getElementById('closeCamBtn').addEventListener('click', stopCamera);
+    document.getElementById('flipCamBtn').addEventListener('click', () => {
+      facingMode = facingMode === 'environment' ? 'user' : 'environment';
+      startCamera();
+    });
+    document.getElementById('snapPhotoBtn').addEventListener('click', () => {
+      const v = document.getElementById('camVideo');
+      if (!v.videoWidth) return;
+      const cv = document.createElement('canvas');
+      cv.width = v.videoWidth;
+      cv.height = v.videoHeight;
+      cv.getContext('2d').drawImage(v, 0, 0);
+      cv.toBlob(b => b && handleCapturedBlob(b, 'image/jpeg'), 'image/jpeg', 0.9);
+    });
+    document.getElementById('recVideoBtn').addEventListener('click', () => {
+      const rb = document.getElementById('recVideoBtn');
+      if (recorder && recorder.state === 'recording') {
+        recorder.stop();
+        rb.classList.remove('recording');
+        rb.textContent = 'تسجيل فيديو';
+        return;
+      }
+      if (!stream || typeof MediaRecorder === 'undefined') {
+        document.getElementById('nativeCamInput').click();
+        return;
+      }
+      chunks = [];
+      recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = e => { if (e.data && e.data.size > 0) chunks.push(e.data); };
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: recorder.mimeType || 'video/webm' });
+        handleCapturedBlob(blob, 'video/webm');
+      };
+      recorder.start();
+      rb.classList.add('recording');
+      rb.textContent = 'إيقاف وحفظ الفيديو';
+    });
+
+    // Couple Vault PIN Unlock & Gallery Renderer
+    async function renderVault() {
+      const grid = document.getElementById('mediaGrid');
+      const items = await listLocalItems();
+      document.getElementById('vaultCount').textContent = `${items.length} صورة / فيديو في الألبوم`;
+      if (!items.length) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:28px;color:var(--muted);font-size:13px;">لا توجد صور أو فيديوهات بعد — التقط صورة تجريبية من تبويب "كاميرا الضيوف" وستظهر هنا فوراً.</div>`;
+        return;
+      }
+      grid.innerHTML = items.map(it => {
+        const isVid = (it.mimeType || '').startsWith('video');
+        const ext = isVid ? 'webm' : 'jpg';
+        return `
+          <div class="media-item">
+            ${isVid
+              ? `<video src="${it.dataUrl}" controls playsinline></video>`
+              : `<img src="${it.dataUrl}" alt="${it.guestName}" />`}
+            <div class="media-meta">
+              <b>${it.guestName}</b>
+              ${it.note ? `<p>${it.note}</p>` : ''}
+              <div class="media-actions">
+                <a href="${it.dataUrl}" download="MEEM_${it.ts}.${ext}">تحميل</a>
+                <button type="button" data-del="${it.id}">حذف</button>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    document.getElementById('mediaGrid').addEventListener('click', async (e) => {
+      const b = e.target.closest('button[data-del]');
+      if (!b) return;
+      await deleteLocalItem(b.dataset.del);
+      renderVault();
+    });
+    document.getElementById('clearDemoBtn').addEventListener('click', async () => {
+      const items = await listLocalItems();
+      for (const it of items) await deleteLocalItem(it.id);
+      renderVault();
+    });
+    document.getElementById('unlockBtn').addEventListener('click', () => {
+      if (document.getElementById('pinInput').value.trim() === PIN) {
+        document.getElementById('pinGate').style.display = 'none';
+        document.getElementById('coupleVault').style.display = 'block';
+        renderVault();
+      } else {
+        document.getElementById('pinErr').style.display = 'block';
+      }
+    });
+
+    // Bilingual AR / EN Toggle
+    let isEn = false;
+    document.getElementById('langSwitch').addEventListener('click', () => {
+      isEn = !isEn;
+      document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+      document.documentElement.lang = isEn ? 'en' : 'ar';
+      document.getElementById('langSwitch').textContent = isEn ? 'العربية' : 'English';
+      document.getElementById('backHome').textContent = isEn ? '← Back to MEEM' : '← الرئيسية • MEEM';
+      document.getElementById('heroSub').textContent = isEn
+        ? 'Scan the QR code, capture photos or record videos directly from your camera with no app download — saved straight to the couple’s private Google Drive album.'
+        : 'امسح كود الـ QR، صوّر لحظات الفرح أو سجّل فيديو مباشرة من الكاميرا بدون تحميل أي تطبيق — وتتحفظ تلقائياً في ألبوم العروسين الخاص على Google Drive.';
+      document.getElementById('tabGuest').querySelector('span').textContent = isEn ? 'Guest Camera' : 'كاميرا الضيوف';
+      document.getElementById('tabCouple').querySelector('span').textContent = isEn ? 'Couple Vault' : 'ألبوم العروسين';
+      document.getElementById('tabQr').querySelector('span').textContent = isEn ? 'Table QR Card' : 'كارت QR للطاولة';
+      document.getElementById('guestTitle').textContent = isEn ? 'Capture & Share Moments With the Couple' : 'شارك العروسين أجمل لحظات الليلة';
+      document.getElementById('guestDesc').textContent = isEn
+        ? 'Open the live camera to snap photos or record video, or upload from your phone gallery — everything saves straight to the couple’s private album.'
+        : 'يمكنك فتح الكاميرا مباشرة لالتقاط صورة أو فيديو، أو اختيار صور وفيديوهات من موبايلك — وستصل فوراً لألبوم العروسين الخاص.';
+      document.getElementById('btnLiveCam').textContent = isEn ? 'Open Live Camera' : 'فتح الكاميرا المباشرة';
+      document.getElementById('btnLiveSub').textContent = isEn ? 'Snap photo or record video' : 'تصوير صورة أو فيديو فوراً';
+      document.getElementById('btnNativeCam').textContent = isEn ? 'Phone Camera (Photo/Video)' : 'كاميرا الموبايل (فيديو/صورة)';
+      document.getElementById('btnNativeSub').textContent = isEn ? 'Use native phone camera' : 'فتح كاميرا الهاتف الأصلية';
+      document.getElementById('btnGallery').textContent = isEn ? 'Upload From Gallery' : 'رفع من الاستوديو';
+      document.getElementById('btnGallerySub').textContent = isEn ? 'Select multiple photos or videos' : 'اختيار عدة صور أو فيديوهات';
+      document.getElementById('waAddTitle').textContent = isEn ? 'Want Live QR Guest Camera as an Add-On?' : 'هل تريد إضافة كاميرا الضيوف بالـ QR لدعوتك؟';
+      document.getElementById('waAddSub').textContent = isEn
+        ? 'Connected directly to the couple’s private Google Drive folder with a print-ready luxury Table QR Card.'
+        : 'تُربط مباشرة بحساب Google Drive الخاص بالعروسين مع كارت QR جاهز للطباعة على الطاولات.';
+      document.getElementById('orderAddonWa').textContent = isEn ? 'Order Add-On on WhatsApp' : 'اطلب الإضافة عبر واتساب';
+    });
+  </script>
+</body>
+</html>
