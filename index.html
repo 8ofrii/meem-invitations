@@ -11,16 +11,149 @@
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/themes.css">
 <style>
-  /* Hero & Stats */
-  .hero { padding: 68px 0 40px; text-align: center; }
+  /* Hero & Stats (Cinematic Wedding Experience in Light) */
+  .hero { padding: 56px 0 42px; text-align: center; position: relative; overflow: hidden; }
+  .hero-video-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.22;
+    filter: saturate(0.85) contrast(1.02);
+  }
+  .hero-video-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 35%, rgba(255,253,249,0.58) 0%, rgba(250,247,242,0.88) 68%, rgba(244,239,230,1) 100%);
+  }
+  .hero > .container { position: relative; z-index: 2; }
+  .hero-emblem {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 14px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px rgba(13, 59, 46, 0.14));
+  }
+  .hero-subline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(19px, 2.4vw, 24px);
+    font-style: italic;
+    color: var(--emerald);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
   .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
   .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; max-width: 740px; margin: 30px auto 0; }
-  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 10px; text-align: center; }
+  .stat { background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 12px; padding: 12px 10px; text-align: center; }
   .stat b { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1.25; margin-bottom: 2px; white-space: nowrap; }
   .stat span { font-size: 11px; color: var(--muted); }
   .step .n { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font-weight: 700; margin-bottom: 14px; }
   .step h3 { font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 500; margin-bottom: 6px; }
   .step p { font-size: 13px; color: var(--muted); }
+
+  /* Find Your Wedding Aesthetic Vibe Matcher */
+  .aes-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .aes-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(13, 59, 46, 0.12);
+    border-radius: 16px;
+    padding: 14px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 4px 14px rgba(13, 59, 46, 0.04);
+    font-family: inherit;
+  }
+  .aes-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(13, 59, 46, 0.08); }
+  .aes-card.active {
+    background: linear-gradient(145deg, #0D3B2E, #164E3D);
+    border-color: #C5A059;
+    color: #FFFFFF;
+    box-shadow: 0 10px 24px rgba(13, 59, 46, 0.24);
+  }
+  .aes-dots { display: flex; gap: 4px; }
+  .aes-dots span { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.16); }
+  .aes-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; line-height: 1.15; color: var(--emerald); }
+  .aes-sub { font-size: 10.5px; color: var(--muted); line-height: 1.3; }
+  .aes-card.active .aes-name { color: #F4E5C2; }
+  .aes-card.active .aes-sub { color: rgba(255,255,255,0.82); }
+
+  /* Your Invitation, Your Soundtrack Lounge */
+  .track-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .track-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(13, 59, 46, 0.12);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 16px rgba(13, 59, 46, 0.04);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .track-card.is-playing {
+    border-color: var(--gold);
+    background: linear-gradient(155deg, #FFFFFF, #FAF4E8);
+    box-shadow: 0 10px 26px rgba(197, 160, 89, 0.18);
+  }
+  .track-top { display: flex; align-items: center; gap: 10px; }
+  .track-play {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #C5A059;
+    background: linear-gradient(135deg, #0D3B2E, #164E3D);
+    color: #F4E5C2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .track-meta { min-width: 0; flex: 1; }
+  .track-vibe { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-2); }
+  .track-title { font-size: 13px; font-weight: 700; color: var(--emerald); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .track-artist { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .track-use {
+    border: 1px solid rgba(13, 59, 46, 0.14);
+    background: #FAF7F2;
+    color: var(--emerald);
+    border-radius: 999px;
+    padding: 6px 10px;
+    font: 600 11px inherit;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .track-use:hover { background: var(--emerald); color: #FFFFFF; border-color: var(--gold); }
+  @media (max-width: 1024px) {
+    .aes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .aes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .track-grid { grid-template-columns: 1fr; }
+    .hero-emblem { width: 78px; height: 78px; }
+  }
 
   /* Designs filter bar */
   .filter-bar {
@@ -410,49 +543,72 @@
 </head>
 <body>
 <main>
-  <!-- 1. HOME SECTION -->
-  <section id="home" class="hero"><div class="container">
-    <div class="pill-tag">Digital Invitations · Motion · Sound</div>
-    <h1 class="h1">Invitations your guests will <em>open twice</em></h1>
-    <p class="lead" style="margin:18px auto 0">Interactive digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both. One link on WhatsApp, RSVPs and a QR pass for every guest.</p>
-    <div class="actions">
-      <a class="btn btn-gold btn-lg btn-pill" href="#designs">See the designs</a>
-      <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try it with your names</a>
+  <!-- 1. HOME SECTION (Cinematic Wedding Experience) -->
+  <section id="home" class="hero">
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="assets/images/al-masa-capital.jpg">
+        <source src="assets/video/wedding-intro-loop.mp4" type="video/mp4">
+      </video>
     </div>
-    <div class="stats">
-      <div class="stat"><b>48</b><span>Distinct designs</span></div>
-      <div class="stat"><b>6</b><span>Categories</span></div>
-      <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
-      <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
-    </div>
+    <div class="container">
+      <img class="hero-emblem" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM Digital Invitations">
+      <div class="pill-tag">Digital Wedding House · Cairo, Egypt</div>
+      <h1 class="h1">Every love story deserves a <em>beautiful entrance</em>.</h1>
+      <div class="hero-subline">Not just an invitation. An experience.</div>
+      <p class="lead" style="margin:14px auto 0">Cinematic motion, HD video, couple-photo storybooks, table seating passes &amp; bespoke digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both.</p>
+      <div class="actions">
+        <a class="btn btn-gold btn-lg btn-pill" href="#designs">Explore Collections</a>
+        <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Create Your Invitation</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>48</b><span>Distinct designs</span></div>
+        <div class="stat"><b>6</b><span>Curated aesthetics</span></div>
+        <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
+        <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
+      </div>
 
-    <div style="margin-top:64px">
-      <div class="center" style="margin-bottom:28px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
-      <div class="grid g4" style="text-align:left">
-        <div class="card step"><div class="n">1</div><h3>Pick a design</h3><p>Browse by occasion, motion video, couple photo, or silent card style.</p></div>
-        <div class="card step"><div class="n">2</div><h3>Personalise</h3><p>Try your names, date, venue, couple photo, table seating and music live.</p></div>
-        <div class="card step"><div class="n">3</div><h3>We build it</h3><p>Colors, music, couple photos and details matched to your wedding.</p></div>
-        <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One clean shareable link for all guests — no recipient name required.</p></div>
+      <div style="margin-top:64px">
+        <div class="center" style="margin-bottom:28px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
+        <div class="grid g4" style="text-align:left">
+          <div class="card step"><div class="n">1</div><h3>Pick an aesthetic</h3><p>Explore by wedding vibe, moodboard, motion video, or silent stationery.</p></div>
+          <div class="card step"><div class="n">2</div><h3>Personalise live</h3><p>Preview your names, venue, couple portrait, colors, table &amp; soundtrack.</p></div>
+          <div class="card step"><div class="n">3</div><h3>We craft it</h3><p>Custom motion, curated wedding music, venues and details built for you.</p></div>
+          <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One clean link for your guests with live countdown, map, RSVP &amp; QR pass.</p></div>
+        </div>
       </div>
     </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- 2. FIND YOUR WEDDING AESTHETIC & COLLECTIONS SECTION -->
+  <section id="designs" class="section"><div class="container">
+    <div class="center" style="margin-bottom:26px">
+      <div class="pill-tag">Find Your Wedding Aesthetic</div>
+      <h2 class="h2">Curated <em>Collections</em></h2>
+      <p class="lead" style="margin:10px auto 0">Choose the wedding vibe that feels like you — each design includes its own interactive preview &amp; tailored Wedding Moodboard.</p>
+    </div>
+
+    <div class="aes-grid" id="aesGrid"></div>
+
+    <div class="filter-bar">
+      <div class="pill-group" id="catPills"></div>
+      <input class="search-box" id="searchBox" placeholder="Search designs, aesthetics or venues…">
+    </div>
+
+    <div class="gallery-grid" id="designGrid"></div>
   </div></section>
 
   <hr class="section-divider">
 
-  <!-- 2. DESIGNS SECTION -->
-  <section id="designs" class="section"><div class="container">
-    <div class="center" style="margin-bottom:30px">
-      <div class="pill-tag">Collections</div>
-      <h2 class="h2">Interactive <em>Designs</em></h2>
-      <p class="lead" style="margin:10px auto 0">Browse 48 curated, one-of-a-kind video, motion, couple-photo, wedding, katb ketab, engagement, coastal &amp; silent card designs across Egypt.</p>
+  <!-- 2.5. YOUR INVITATION, YOUR SOUNDTRACK LOUNGE -->
+  <section id="soundtrack" class="section tight"><div class="container">
+    <div class="center" style="margin-bottom:26px">
+      <div class="pill-tag">Audio Preview</div>
+      <h2 class="h2">Your Invitation, <em>Your Soundtrack</em></h2>
+      <p class="lead" style="margin:10px auto 0">Listen to curated Egyptian, Arabic &amp; international wedding soundtracks matched to each aesthetic — then apply any track straight into your live preview.</p>
     </div>
-
-    <div class="filter-bar">
-      <div class="pill-group" id="catPills"></div>
-      <input class="search-box" id="searchBox" placeholder="Search designs or venues…">
-    </div>
-
-    <div class="gallery-grid" id="designGrid"></div>
+    <div class="track-grid" id="soundtrackGrid"></div>
   </div></section>
 
   <hr class="section-divider">
@@ -494,7 +650,15 @@
             <label for="song">8 · Wedding music or song (الموسيقى أو الأغنية)</label>
             <select id="song" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
               <option value="">Default for this design (الافتراضي للتصميم)</option>
+              <optgroup label="Luxury, Editorial &amp; Cinema — موسيقى فاخرة وكلاسيكية">
+                <option value="einaudi_experience">Ludovico Einaudi — Experience (Old Money / Luxury Piano &amp; Strings)</option>
+                <option value="clair_de_lune">Claude Debussy — Clair de Lune (Royal Classical Piano)</option>
+                <option value="golden_hour">JVKE — Golden Hour (Modern Minimal &amp; Editorial)</option>
+                <option value="young_and_beautiful">Lana Del Rey — Young and Beautiful (Royal &amp; Dramatic)</option>
+                <option value="taylor_enchanted">Taylor Swift — Enchanted (Soft Floral &amp; Dreamy)</option>
+              </optgroup>
               <optgroup label="Instrumental Music of Songs — موسيقى الأغاني بدون غناء">
+                <option value="amr_tamally_maak">Amr Diab — Tamally Maak Instrumental (موسيقى تملي معاك بدون غناء)</option>
                 <option value="om_kalthoum_inst">Umm Kulthum — Alf Leila w Leila Music (موسيقى ألف ليلة وليلة بدون غناء)</option>
                 <option value="farha_inst">Mahmoud El Esseily — Farha Music (موسيقى أغنية فرحة — كتب كتاب بدون غناء)</option>
                 <option value="egyptian_zaffa">Royal Egyptian Zaffa Music (موسيقى زفة مصرية ملكية بدون غناء)</option>
@@ -502,7 +666,8 @@
                 <option value="classic_romance_inst">Classic Romance Orchestra (موسيقى أوركسترا رومانسية كلاسيكية)</option>
                 <option value="instrumental_mix">Instrumental Wedding Mix (ميكس موسيقى هادئة بدون غناء)</option>
               </optgroup>
-              <optgroup label="Egyptian Marriage Songs (Start with Words) — أغاني الأفراح المصرية بالكلمات">
+              <optgroup label="Egyptian &amp; Arabic Romantic Songs — أغاني أفراح مصرية وعربية">
+                <option value="elissa_men_awal">Elissa &amp; Saad Lamjarred — Men Awal Deqiqa (إليسا وسعد لمجرد — من أول دقيقة)</option>
                 <option value="farha_katb">Mahmoud El Esseily — Farha (محمود العسيلي — أغنية فرحة بالكلمات)</option>
                 <option value="esseily_einy">Mahmoud El Esseily — Einy Shayfa Feeky (محمود العسيلي — عيني شايفة فيكي)</option>
                 <option value="esseily_wakheeran">Mahmoud El Esseily — Wa Akheeran (محمود العسيلي — وأخيراً)</option>
@@ -598,12 +763,34 @@
   Shell.init('home');
   const S = SITE, $ = id => document.getElementById(id), fmt = n => n.toLocaleString('en-US');
 
-  /* ===== 1. DESIGNS FILTER & GALLERY ===== */
+  /* ===== 1. FIND YOUR WEDDING AESTHETIC & DESIGNS GALLERY ===== */
   let curCat = 'all';
+  let curAes = '';
   function countFor(catId) {
     return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
   }
+  function countForAes(aesId) {
+    return S.SAMPLES.filter(s => s.aesthetic === aesId).length;
+  }
   const ALL_ICON = '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>';
+
+  if ($('aesGrid') && S.AESTHETICS) {
+    $('aesGrid').innerHTML = S.AESTHETICS.map(a => `
+      <button type="button" class="aes-card" data-aes="${a.id}">
+        <div class="aes-dots">${a.swatches.map(c => `<span style="background:${c}"></span>`).join('')}</div>
+        <div class="aes-name">${a.name}</div>
+        <div class="aes-sub">${a.sub} · ${countForAes(a.id)}</div>
+      </button>`).join('');
+
+    $('aesGrid').addEventListener('click', e => {
+      const b = e.target.closest('button[data-aes]'); if (!b) return;
+      const id = b.dataset.aes;
+      curAes = (curAes === id) ? '' : id;
+      $('aesGrid').querySelectorAll('.aes-card').forEach(x => x.classList.toggle('active', x.dataset.aes === curAes));
+      renderDesigns();
+    });
+  }
+
   $('catPills').innerHTML = `
     <button type="button" class="fpill active" data-cat="all">
       <span class="fpill-ic">${ALL_ICON}</span>
@@ -619,20 +806,110 @@
     const q = $('searchBox').value.trim().toLowerCase();
     const list = S.SAMPLES.filter(s => {
       if (curCat !== 'all' && s.cat !== curCat) return false;
-      if (q && !(s.title + ' ' + s.subtitle + ' ' + s.venue + ' ' + s.desc).toLowerCase().includes(q)) return false;
+      if (curAes && s.aesthetic !== curAes) return false;
+      if (q) {
+        const mb = s.moodboard ? `${s.moodboard.collection} ${s.moodboard.floral} ${s.moodboard.soundtrack}` : '';
+        if (!(s.title + ' ' + s.subtitle + ' ' + s.venue + ' ' + s.desc + ' ' + mb).toLowerCase().includes(q)) return false;
+      }
       return true;
     });
     $('designGrid').innerHTML = list.length
       ? list.map(Shell.cardMarkup).join('')
-      : `<div class="empty-state full" style="grid-column:1/-1"><p class="muted">No designs match your search. Try another filter.</p></div>`;
+      : `<div class="empty-state full" style="grid-column:1/-1"><p class="muted">No designs match that combination. Tap the active aesthetic again or pick All Designs.</p></div>`;
   }
   $('catPills').addEventListener('click', e => {
     const b = e.target.closest('button[data-cat]'); if (!b) return;
     $('catPills').querySelectorAll('.fpill').forEach(x => x.classList.remove('active'));
-    b.classList.add('active'); curCat = b.dataset.cat; renderDesigns();
+    b.classList.add('active');
+    curCat = b.dataset.cat;
+    if (curCat === 'all' && curAes) {
+      curAes = '';
+      if ($('aesGrid')) $('aesGrid').querySelectorAll('.aes-card').forEach(x => x.classList.remove('active'));
+    }
+    renderDesigns();
   });
   $('searchBox').addEventListener('input', renderDesigns);
   renderDesigns();
+
+  /* ===== 1.5. YOUR INVITATION, YOUR SOUNDTRACK LOUNGE ===== */
+  const SOUNDTRACK_SAMPLES = [
+    { key: 'einaudi_experience', vibe: 'Luxury · Old Money', title: 'Experience', artist: 'Ludovico Einaudi', src: 'assets/audio/einaudi-experience.mp3' },
+    { key: 'taylor_enchanted', vibe: 'Romantic · Floral', title: 'Enchanted', artist: 'Taylor Swift', src: 'assets/audio/taylor-enchanted.mp3' },
+    { key: 'golden_hour', vibe: 'Modern Minimal', title: 'Golden Hour', artist: 'JVKE', src: 'assets/audio/golden-hour.mp3' },
+    { key: 'young_and_beautiful', vibe: 'Royal · Dramatic', title: 'Young and Beautiful', artist: 'Lana Del Rey', src: 'assets/audio/young-and-beautiful.mp3' },
+    { key: 'clair_de_lune', vibe: 'Classic Editorial', title: 'Clair de Lune', artist: 'Claude Debussy', src: 'assets/audio/clair-de-lune.mp3' },
+    { key: 'amr_tamally_maak', vibe: 'Arabic Classic', title: 'Tamally Maak · تملي معاك', artist: 'Amr Diab (Instrumental)', src: 'assets/audio/amr-tamally-maak.mp3' },
+    { key: 'elissa_men_awal', vibe: 'Modern Arabic', title: 'Men Awal Deqiqa · من أول دقيقة', artist: 'Elissa & Saad Lamjarred', src: 'assets/audio/elissa-men-awal-deqiqa.mp3' },
+    { key: 'farha_katb', vibe: 'Katb Ketab · Joyful', title: 'Farha · فرحة', artist: 'Mahmoud El Esseily', src: 'assets/audio/farha-katb.mp3' }
+  ];
+  const PLAY_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>';
+  const PAUSE_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+
+  let loungeAudio = null;
+  let loungeKey = '';
+  window.addEventListener('meem:stop-lounge', stopLoungeAudio);
+  function stopLoungeAudio() {
+    if (loungeAudio) {
+      try { loungeAudio.pause(); } catch (_) {}
+      loungeAudio = null;
+    }
+    loungeKey = '';
+    if ($('soundtrackGrid')) {
+      $('soundtrackGrid').querySelectorAll('.track-card').forEach(c => {
+        c.classList.remove('is-playing');
+        const btn = c.querySelector('.track-play');
+        if (btn) btn.innerHTML = PLAY_SVG;
+      });
+    }
+  }
+  if ($('soundtrackGrid')) {
+    $('soundtrackGrid').innerHTML = SOUNDTRACK_SAMPLES.map(t => `
+      <div class="track-card" data-key="${t.key}">
+        <div class="track-top">
+          <button type="button" class="track-play" data-play="${t.key}" aria-label="Play ${t.title}">${PLAY_SVG}</button>
+          <div class="track-meta">
+            <div class="track-vibe">${t.vibe}</div>
+            <div class="track-title">${t.title}</div>
+            <div class="track-artist">${t.artist}</div>
+          </div>
+        </div>
+        <button type="button" class="track-use" data-use="${t.key}">Use in Live Preview →</button>
+      </div>`).join('');
+
+    $('soundtrackGrid').addEventListener('click', e => {
+      const playBtn = e.target.closest('button[data-play]');
+      if (playBtn) {
+        const key = playBtn.dataset.play;
+        const item = SOUNDTRACK_SAMPLES.find(x => x.key === key);
+        if (!item) return;
+        if (loungeKey === key && loungeAudio && !loungeAudio.paused) {
+          stopLoungeAudio();
+          return;
+        }
+        stopLoungeAudio();
+        loungeAudio = new Audio(item.src);
+        loungeAudio.volume = 0.72;
+        loungeKey = key;
+        const card = playBtn.closest('.track-card');
+        if (card) card.classList.add('is-playing');
+        playBtn.innerHTML = PAUSE_SVG;
+        loungeAudio.addEventListener('ended', stopLoungeAudio);
+        loungeAudio.play().catch(() => stopLoungeAudio());
+        return;
+      }
+      const useBtn = e.target.closest('button[data-use]');
+      if (useBtn) {
+        const key = useBtn.dataset.use;
+        stopLoungeAudio();
+        if ($('song')) {
+          $('song').value = key;
+          updateTry();
+        }
+        const el = $('try-it-live');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
   /* ===== 2. TRY IT LIVE STUDIO ===== */
   $('d').innerHTML = S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');

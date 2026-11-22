@@ -874,6 +874,13 @@
     cant_help_falling: '../assets/audio/cant-help-falling.mp3',
     until_i_found_you: '../assets/audio/until-i-found-you.mp3',
     classic_romance_inst: '../assets/audio/classic-romance-inst.mp3',
+    einaudi_experience: '../assets/audio/einaudi-experience.mp3',
+    clair_de_lune: '../assets/audio/clair-de-lune.mp3',
+    golden_hour: '../assets/audio/golden-hour.mp3',
+    young_and_beautiful: '../assets/audio/young-and-beautiful.mp3',
+    taylor_enchanted: '../assets/audio/taylor-enchanted.mp3',
+    amr_tamally_maak: '../assets/audio/amr-tamally-maak.mp3',
+    elissa_men_awal: '../assets/audio/elissa-men-awal-deqiqa.mp3',
     perfect: '../assets/audio/ed-sheeran-perfect.mp3',
     sahel_sunset: '../assets/audio/farha-katb.mp3',
     mediterranean: '../assets/audio/amr-diab-nour-el-ein.mp3'

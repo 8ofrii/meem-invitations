@@ -1,4 +1,4 @@
-/* Single source of truth for brand info, 6 categories, 48 curated distinct designs & packages */
+/* Single source of truth for MEEM — 6 categories, 6 Wedding Aesthetics, 48 curated designs with Moodboards */
 window.SITE = {
   "WHATSAPP": "201024190741",
   "BRAND": {
@@ -80,7 +80,20 @@ window.SITE = {
         "Digital Card",
         "Gold Dust",
         "Calendar Card"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#F3DCAA",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "02",
@@ -101,7 +114,20 @@ window.SITE = {
         "Gold Foil Reveal",
         "Framed Map",
         "Editorial Card"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#6D1D2A",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+      }
     },
     {
       "num": "03",
@@ -121,7 +147,20 @@ window.SITE = {
         "Ribbon Gates",
         "Drifting Petals",
         "Watercolor Art"
-      ]
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#3C4D3B",
+          "#E8C5BE",
+          "#FAF7F0",
+          "#A3824E"
+        ],
+        "typography": "Cormorant Garamond · Great Vibes",
+        "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
+        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+      }
     },
     {
       "num": "04",
@@ -140,7 +179,20 @@ window.SITE = {
         "Velvet Curtains",
         "Starry Sky",
         "Digital Card"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#E4C482",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Cinzel · Amiri Calligraphy",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "05",
@@ -159,7 +211,20 @@ window.SITE = {
         "Arabic & English",
         "Gold Foil Reveal",
         "Golden Glow"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#DFBE7F",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Cormorant Garamond · Amiri",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "06",
@@ -179,7 +244,20 @@ window.SITE = {
         "3-Tap Lace Doors",
         "Arabic Foil Reveal",
         "Rose Petals"
-      ]
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "The Art of Katb Ketab",
+        "palette": [
+          "#8D5852",
+          "#D7B067",
+          "#FBF7EE",
+          "#6A4B2A"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
+        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+      }
     },
     {
       "num": "07",
@@ -199,7 +277,20 @@ window.SITE = {
         "Arch Frame",
         "Arabic Monogram",
         "Page-Turn Sound"
-      ]
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "The Art of Katb Ketab",
+        "palette": [
+          "#6F583D",
+          "#D7B067",
+          "#FBF7EE",
+          "#6A4B2A"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
+        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+      }
     },
     {
       "num": "08",
@@ -218,7 +309,20 @@ window.SITE = {
         "Carved Gate",
         "Lavender Petals",
         "Families Card"
-      ]
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "The Art of Katb Ketab",
+        "palette": [
+          "#F5E1B5",
+          "#D7B067",
+          "#FBF7EE",
+          "#6A4B2A"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
+        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+      }
     },
     {
       "num": "09",
@@ -237,7 +341,20 @@ window.SITE = {
         "Ring Box Reveal",
         "Sparkle Chime",
         "Alexandria"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#F3D999",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "10",
@@ -256,7 +373,20 @@ window.SITE = {
         "Light 3 Lanterns",
         "Warm Sparks",
         "Ladies Henna"
-      ]
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#F6CB77",
+          "#E8C5BE",
+          "#FAF7F0",
+          "#A3824E"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
+        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+      }
     },
     {
       "num": "11",
@@ -275,7 +405,20 @@ window.SITE = {
         "Magazine Cover",
         "Page-Turn Sound",
         "Lookbook"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#E8D5B0",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Cormorant Garamond · Amiri",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "12",
@@ -294,7 +437,20 @@ window.SITE = {
         "Passport Stamp",
         "Boarding Pass",
         "3-Day Itinerary"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#F4D87F",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Cormorant Garamond · Amiri",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "13",
@@ -313,7 +469,20 @@ window.SITE = {
         "Warm Sparks",
         "Sunset Reveal",
         "North Coast"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#F7D7AD",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "14",
@@ -333,7 +502,20 @@ window.SITE = {
         "Folded Newspaper",
         "Page-Turn Sound",
         "Story Columns"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#8B2626",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+      }
     },
     {
       "num": "15",
@@ -353,7 +535,20 @@ window.SITE = {
         "Photo Deck",
         "Handwritten Notes",
         "Scrapbook"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#B86144",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Plus Jakarta Sans · Cormorant",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+      }
     },
     {
       "num": "16",
@@ -372,7 +567,20 @@ window.SITE = {
         "Spinning Vinyl",
         "Evening Setlist",
         "Song Request"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#E4BD73",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+      }
     },
     {
       "num": "17",
@@ -393,7 +601,20 @@ window.SITE = {
         "Photo Gallery",
         "Custom Photo Slot",
         "Keepsake Book"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#A96B5E",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Plus Jakarta Sans · Cormorant",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+      }
     },
     {
       "num": "18",
@@ -414,7 +635,20 @@ window.SITE = {
         "No Motion",
         "Embossed Crest",
         "WhatsApp RSVP"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#C5A059",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "19",
@@ -435,7 +669,20 @@ window.SITE = {
         "Botanical Frame",
         "No Motion",
         "Silent Luxury"
-      ]
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#264D31",
+          "#E8C5BE",
+          "#FAF7F0",
+          "#A3824E"
+        ],
+        "typography": "Cormorant Garamond · Great Vibes",
+        "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "20",
@@ -456,7 +703,20 @@ window.SITE = {
         "Amiri Calligraphy",
         "No Motion",
         "Katb Ketab"
-      ]
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "The Art of Katb Ketab",
+        "palette": [
+          "#F5DC9E",
+          "#D7B067",
+          "#FBF7EE",
+          "#6A4B2A"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "21",
@@ -477,7 +737,20 @@ window.SITE = {
         "No Motion",
         "Romantic Stationery",
         "WhatsApp RSVP"
-      ]
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#843C47",
+          "#E8C5BE",
+          "#FAF7F0",
+          "#A3824E"
+        ],
+        "typography": "Cormorant Garamond · Great Vibes",
+        "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "22",
@@ -498,7 +771,20 @@ window.SITE = {
         "Molten Motion",
         "Specular Sheen",
         "VIP QR Pass"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#0F172A",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Plus Jakarta Sans · Cormorant",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+      }
     },
     {
       "num": "23",
@@ -519,7 +805,20 @@ window.SITE = {
         "No Motion",
         "Embossed Monogram",
         "Silent Luxury"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#1E293B",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Plus Jakarta Sans · Cormorant",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "24",
@@ -540,7 +839,20 @@ window.SITE = {
         "Unfolds on Tap",
         "Zero Sound",
         "VIP QR Pass"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#8C6721",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Cormorant Garamond · Amiri",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "25",
@@ -561,7 +873,20 @@ window.SITE = {
         "Pull Tab Reveal",
         "Zero Sound",
         "Calendar & RSVP"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#7D5518",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "26",
@@ -582,7 +907,20 @@ window.SITE = {
         "3D Perspective Swing",
         "Zero Sound",
         "Bilingual RSVP"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#E6C682",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "27",
@@ -603,7 +941,20 @@ window.SITE = {
         "Smooth Slide Reveal",
         "Zero Sound",
         "Digital Pass"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#9A6B22",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "28",
@@ -624,7 +975,20 @@ window.SITE = {
         "Crimson Velvet",
         "Umm Kulthum Music",
         "WhatsApp RSVP"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#E2BE78",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "29",
@@ -645,7 +1009,20 @@ window.SITE = {
         "Ottoman Alabaster",
         "Farha Melody",
         "Katb Ketab"
-      ]
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "The Art of Katb Ketab",
+        "palette": [
+          "#F3DCAA",
+          "#D7B067",
+          "#FBF7EE",
+          "#6A4B2A"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
+        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+      }
     },
     {
       "num": "30",
@@ -666,7 +1043,20 @@ window.SITE = {
         "Terracotta & Gold",
         "Destination Theme",
         "Live Countdown"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#E8B88A",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Cormorant Garamond · Amiri",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "31",
@@ -687,7 +1077,20 @@ window.SITE = {
         "Table Seating on Phone",
         "Day Timeline",
         "Jassmi Zaffa"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#E2BE78",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "32",
@@ -708,7 +1111,20 @@ window.SITE = {
         "Table Seating Card",
         "Dress Code Guide",
         "Classic Romance"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#7A5426",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Cinzel · Amiri Calligraphy",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "33",
@@ -729,7 +1145,20 @@ window.SITE = {
         "Handwritten Lined Paper",
         "Airmail Stamp",
         "Ed Sheeran Perfect"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#6D1D2A",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+      }
     },
     {
       "num": "34",
@@ -750,7 +1179,20 @@ window.SITE = {
         "Ottoman Arch Card",
         "Prayer Timings",
         "Farha Music"
-      ]
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "The Art of Katb Ketab",
+        "palette": [
+          "#D7B067",
+          "#D7B067",
+          "#FBF7EE",
+          "#6A4B2A"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
+        "soundtrack": "Farha Instrumental / Mahmoud El Esseily — Farha"
+      }
     },
     {
       "num": "35",
@@ -771,7 +1213,20 @@ window.SITE = {
         "Movie Poster Hero",
         "Filmstrip Timeline",
         "A Thousand Years"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#E5C168",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Cinzel · Amiri Calligraphy",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "36",
@@ -792,7 +1247,20 @@ window.SITE = {
         "3-Tab Switcher",
         "Countdown Orbs",
         "Katameya Heights"
-      ]
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#2C4A3B",
+          "#E8C5BE",
+          "#FAF7F0",
+          "#A3824E"
+        ],
+        "typography": "Cormorant Garamond · Great Vibes",
+        "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
+        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+      }
     },
     {
       "num": "37",
@@ -813,7 +1281,20 @@ window.SITE = {
         "Roman Numeral Bezel",
         "Obsidian & Gold",
         "Alf Leila Music"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#D9B777",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "38",
@@ -834,7 +1315,20 @@ window.SITE = {
         "Vintage Egypt Stamp",
         "Zamalek Nile",
         "Until I Found You"
-      ]
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#B45338",
+          "#E6D5BC",
+          "#FAF5EC",
+          "#8C6721"
+        ],
+        "typography": "Playfair Display · La Belle Aurore",
+        "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
+        "soundtrack": "Amr Diab — Tamally Maak / Classic Romance Orchestra"
+      }
     },
     {
       "num": "39",
@@ -855,7 +1349,20 @@ window.SITE = {
         "Live Guestbook Wall",
         "Triumph Hotel",
         "Jassmi Zaffa"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#DFBA6E",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "40",
@@ -876,7 +1383,20 @@ window.SITE = {
         "Minimal Stone Paper",
         "Zero Sound",
         "Lake House Tagamoa"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#1D1D1B",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Plus Jakarta Sans · Cormorant",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+      }
     },
     {
       "num": "41",
@@ -897,7 +1417,20 @@ window.SITE = {
         "Phone Seat Card",
         "El Tagamoa",
         "Egyptian Song Mix"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#C5A059",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "42",
@@ -918,7 +1451,20 @@ window.SITE = {
         "Cobalt & White Linen",
         "North Coast Sahel",
         "Wedding Medley"
-      ]
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#FFFFFF",
+          "#C5A059",
+          "#FAF6EE",
+          "#1E3A2F"
+        ],
+        "typography": "Cormorant Garamond · Amiri",
+        "floral": "White Orchids, Gold Foliage & Wax Monogram",
+        "soundtrack": "Ludovico Einaudi — Experience / Hussain Al Jassmi"
+      }
     },
     {
       "num": "43",
@@ -939,7 +1485,20 @@ window.SITE = {
         "DJ Song Request RSVP",
         "El Obour City",
         "Egyptian Zaffa"
-      ]
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#E3A842",
+          "#E8C5BE",
+          "#FAF7F0",
+          "#A3824E"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
+        "soundtrack": "Taylor Swift — Enchanted / Ed Sheeran — Perfect"
+      }
     },
     {
       "num": "44",
@@ -960,7 +1519,20 @@ window.SITE = {
         "Couple Photo Slot",
         "Gold Dust Motion",
         "El Tagamoa"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#E5C682",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Cinzel · Amiri Calligraphy",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "45",
@@ -981,7 +1553,20 @@ window.SITE = {
         "Multi-Photo Reel",
         "Zamalek Palace",
         "Ed Sheeran Perfect"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#DFBC74",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Cinzel · Amiri Calligraphy",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "46",
@@ -1002,7 +1587,20 @@ window.SITE = {
         "Swipe Carousel",
         "Madinet Nasr",
         "Tamer Hosny"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#0D3B2E",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Amiri · Cairo Editorial",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+      }
     },
     {
       "num": "47",
@@ -1023,7 +1621,20 @@ window.SITE = {
         "Couple Portrait",
         "Floating Motion",
         "A Thousand Years"
-      ]
+      ],
+      "aesthetic": "midnight",
+      "moodboard": {
+        "collection": "Midnight Love",
+        "palette": [
+          "#E5C278",
+          "#DFBA6E",
+          "#2D0B14",
+          "#F5EFE4"
+        ],
+        "typography": "Cinzel · Amiri Calligraphy",
+        "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
+        "soundtrack": "Lana Del Rey — Young & Beautiful / Umm Kulthum"
+      }
     },
     {
       "num": "48",
@@ -1044,7 +1655,20 @@ window.SITE = {
         "HD Video Slide",
         "Couple Portrait",
         "English Song Mix"
-      ]
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Modern Romance",
+        "palette": [
+          "#E6C783",
+          "#CBD5E1",
+          "#F8FAFC",
+          "#94A3B8"
+        ],
+        "typography": "Plus Jakarta Sans · Cormorant",
+        "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
+        "soundtrack": "JVKE — Golden Hour / A Thousand Years Piano"
+      }
     }
   ],
   "PACKAGES": [
@@ -1129,6 +1753,80 @@ window.SITE = {
       "id": "social",
       "label": "Matching Save-the-Date Instagram story card",
       "price": 300
+    }
+  ],
+  "AESTHETICS": [
+    {
+      "id": "luxury",
+      "name": "The Royal Affair",
+      "sub": "Luxury · Gold · Old Money",
+      "ar": "الفخامة الملكية",
+      "swatches": [
+        "#0D3B2E",
+        "#C5A059",
+        "#FAF6EE",
+        "#2C1810"
+      ]
+    },
+    {
+      "id": "floral",
+      "name": "The Garden Story",
+      "sub": "Floral · Soft · Romantic",
+      "ar": "رومانسية الحدائق",
+      "swatches": [
+        "#5A7360",
+        "#EACBC4",
+        "#FAF7F0",
+        "#A3824E"
+      ]
+    },
+    {
+      "id": "modern",
+      "name": "Modern Romance",
+      "sub": "Video · Minimal · Contemporary",
+      "ar": "العصرية والفيديو",
+      "swatches": [
+        "#1E293B",
+        "#CBD5E1",
+        "#F8FAFC",
+        "#C5A059"
+      ]
+    },
+    {
+      "id": "classic",
+      "name": "The Classic Edit",
+      "sub": "Vintage · Editorial · Timeless",
+      "ar": "الكلاسيك الخالد",
+      "swatches": [
+        "#6D1D2A",
+        "#E8DCC8",
+        "#FAF5EE",
+        "#8C6721"
+      ]
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight Love",
+      "sub": "Dark · Cinematic · Dramatic",
+      "ar": "ليالي الحب الدرامية",
+      "swatches": [
+        "#0B0E18",
+        "#D9B777",
+        "#2D0B14",
+        "#F5EFE4"
+      ]
+    },
+    {
+      "id": "katb",
+      "name": "The Art of Katb Ketab",
+      "sub": "Traditional · Modern Arabic",
+      "ar": "فن عقد القران والعربية",
+      "swatches": [
+        "#0C3B2D",
+        "#D7B067",
+        "#FBF7EE",
+        "#5D3A2A"
+      ]
     }
   ]
 };

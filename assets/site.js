@@ -34,23 +34,29 @@
     const tc = hasImg ? '#FFFFFF' : (s.textDark ? '#1D1B18' : '#FAF6EE');
     const sc = hasImg ? '#F4E5C2' : (s.textDark ? 'rgba(29,27,24,.72)' : 'rgba(255,255,255,.78)');
     const ac = hasImg ? '#FFFFFF' : s.accent;
+    const mb = s.moodboard || null;
+    const colTag = mb && mb.collection ? `<span class="badge">${mb.collection}</span>` : '';
+    const dots = mb && mb.palette ? `<div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}"></span>`).join('')}</div>` : '';
     return `<article class="sample-card">
       <div class="card-thumb ${hasImg ? 'has-art' : ''}" style="background:${s.bg};color:${tc}">
         ${hasImg ? `<img class="bg-art" src="${s.img}" alt="${s.title}" loading="lazy" decoding="async">` : ''}
-        <div class="badge-row"><span class="badge plain">#${s.num}</span></div>
+        <div class="badge-row"><span class="badge plain">#${s.num}</span>${colTag}</div>
         <div class="thumb-inner">
           <div class="serif" style="font-size:26px;line-height:1.15;color:${ac};text-shadow:${hasImg ? '0 2px 10px rgba(0,0,0,0.65)' : 'none'}">${s.title}</div>
           <div class="arabic" style="font-size:16px;color:${sc};margin-top:6px;text-shadow:${hasImg ? '0 1px 6px rgba(0,0,0,0.65)' : 'none'}">${s.subtitle}</div>
         </div>
       </div>
       <div class="card-body">
-        <h3 class="card-title">${s.title}</h3>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;">
+          <h3 class="card-title" style="margin:0">${s.title}</h3>
+          ${dots}
+        </div>
         <div class="card-venue"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${s.venue}</div>
         <p class="card-desc">${s.desc}</p>
         <div class="chips">${s.features.map((f) => `<span class="chip">${f}</span>`).join('')}</div>
         <div class="card-actions">
-          <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Preview</button>
-          <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Try live →</button>
+          <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">Experience this invitation →</button>
+          <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Customise</button>
         </div>
       </div>
     </article>`;
@@ -69,7 +75,8 @@
     const prefix = isHome ? '' : '/';
     const NAV = [
       ['home', isHome ? '#home' : '/', 'Home'],
-      ['designs', `${prefix}#designs`, 'Designs'],
+      ['designs', `${prefix}#designs`, 'Collections'],
+      ['soundtrack', `${prefix}#soundtrack`, 'Soundtrack'],
       ['try-it-live', `${prefix}#try-it-live`, 'Try it live']
     ];
 
@@ -116,9 +123,16 @@
       <div class="modal-layout">
         <div class="phone-frame"><iframe id="previewFrame" title="Live preview"></iframe></div>
         <div class="modal-side">
-          <h3 id="modalTitle" class="serif gold" style="font-size:30px;line-height:1.15"></h3>
-          <p id="modalDesc" style="font-size:13.5px;color:rgba(255,255,255,0.85);line-height:1.6"></p>
-          <div class="tip"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3z"/></svg> Tap the cover inside the phone to experience the interactive motion.</div>
+          <div id="modalCollection" class="pill-tag" style="align-self:flex-start;margin:0;background:rgba(197,160,89,0.22);color:#F4E5C2;border-color:rgba(197,160,89,0.5);"></div>
+          <h3 id="modalTitle" class="serif gold" style="font-size:28px;line-height:1.15"></h3>
+          <p id="modalDesc" style="font-size:13px;color:rgba(255,255,255,0.86);line-height:1.55"></p>
+          <div class="moodboard-card" id="modalMoodboard">
+            <div class="mb-head">Wedding Moodboard</div>
+            <div class="mb-row"><span>Palette</span><div class="mb-swatches" id="mbSwatches"></div></div>
+            <div class="mb-row"><span>Typography</span><strong id="mbTypo"></strong></div>
+            <div class="mb-row"><span>Floral &amp; Style</span><strong id="mbFloral"></strong></div>
+            <div class="mb-row"><span>Soundtrack</span><strong id="mbSound"></strong></div>
+          </div>
           <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
           <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a>
         </div>
@@ -139,7 +153,7 @@
   }
 
   function initScrollSpy() {
-    const ids = ['home', 'designs', 'try-it-live'];
+    const ids = ['home', 'designs', 'soundtrack', 'try-it-live'];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
 
@@ -185,8 +199,17 @@
   function preview(num, extra) {
     const s = S.SAMPLES.find((x) => x.num === num);
     if (!s) return;
+    try { window.dispatchEvent(new CustomEvent('meem:stop-lounge')); } catch (_) {}
     document.getElementById('modalTitle').textContent = `#${s.num} — ${s.title}`;
     document.getElementById('modalDesc').textContent = `${s.venue} • ${s.desc}`;
+    const mb = s.moodboard || {};
+    const colEl = document.getElementById('modalCollection');
+    if (colEl) colEl.textContent = mb.collection || 'MEEM Curated Collection';
+    const swEl = document.getElementById('mbSwatches');
+    if (swEl) swEl.innerHTML = (mb.palette || ['#0D3B2E', '#C5A059', '#FAF6EE']).map((c) => `<span style="background:${c}" title="${c}"></span>`).join('');
+    const tyEl = document.getElementById('mbTypo'); if (tyEl) tyEl.textContent = mb.typography || 'Cormorant Garamond · Amiri';
+    const flEl = document.getElementById('mbFloral'); if (flEl) flEl.textContent = mb.floral || 'Garden Roses & Gold Wax Seal';
+    const snEl = document.getElementById('mbSound'); if (snEl) snEl.textContent = mb.soundtrack || 'Curated Wedding Soundtrack';
     document.getElementById('previewFrame').src = buildUrl(s.file, extra, true);
     document.getElementById('modalFull').href = buildUrl(s.file, extra);
     document.getElementById('modalWa').href = wa(`Hello! I love design #${s.num} (${s.title})${extra && extra.couple ? ' for ' + extra.couple : ''}.`);
