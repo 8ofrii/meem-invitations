@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam &amp; Layla — Botanical Scalloped Arch &amp; Gold Wax Seal Folio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #F6F1E9;
+      --paper-light: #FAF7F2;
+      --taupe: #D9CFC3;
+      --sage: #7E8E74;
+      --sage-dark: #58664F;
+      --gold: #C59B56;
+      --gold-deep: #9C7637;
+      --ink: #3D3730;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 20%, var(--paper-light) 0%, var(--paper) 65%, #EAE1D3 100%);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .script { font-family: 'Great Vibes', cursive; }
+    .amiri { font-family: 'Amiri', serif; }
+
+    /* ===== SCALLOPED COTTON-PAPER FOLIO WINGS + GOLD TWINE WAX SEAL ===== */
+    #folio-cover {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      background: var(--paper);
+      overflow: hidden;
+      cursor: pointer;
+      transition: opacity 0.85s ease 0.85s, visibility 0.85s ease 0.85s;
+    }
+    #folio-cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+    .wing {
+      position: relative;
+      width: 52%;
+      height: 100%;
+      background: linear-gradient(155deg, #FAF7F2 0%, #EFE8DC 100%);
+      box-shadow: 0 0 42px rgba(61, 55, 48, 0.16);
+      transition: transform 1.2s cubic-bezier(0.72, 0, 0.22, 1);
+    }
+    .wing-left {
+      border-radius: 0 54% 54% 0 / 0 28% 28% 0;
+      margin-right: -4%;
+      z-index: 2;
+      border-right: 1.5px solid rgba(197, 155, 86, 0.45);
+    }
+    .wing-right {
+      border-radius: 54% 0 0 54% / 28% 0 0 28%;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(126, 142, 116, 0.14), transparent 55%),
+        linear-gradient(155deg, #F6F1E9, #E9E0D2);
+      border-left: 1.5px solid rgba(197, 155, 86, 0.35);
+    }
+    #folio-cover.is-open .wing-left { transform: translateX(-115%) rotate(-4deg); }
+    #folio-cover.is-open .wing-right { transform: translateX(115%) rotate(4deg); }
+
+    .twine-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    #folio-cover.is-open .twine-layer { opacity: 0; transform: scale(1.15); }
+    .twine-line {
+      position: absolute;
+      width: 120%;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--gold) 25%, #E3C17F 50%, var(--gold) 75%, transparent);
+    }
+    .twine-line.t1 { transform: rotate(-12deg); }
+    .twine-line.t2 { transform: rotate(9deg); opacity: 0.7; }
+    .wax-seal {
+      position: relative;
+      z-index: 4;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 30%, #E7C882, #C59B56 58%, #9A7234 100%);
+      border: 3px solid rgba(255, 248, 232, 0.55);
+      box-shadow: 0 18px 40px rgba(61, 55, 48, 0.3), inset 0 0 14px rgba(92, 66, 22, 0.38);
+      display: grid;
+      place-items: center;
+      color: #FFF9EC;
+      animation: sealGlow 3s ease-in-out infinite;
+    }
+    @keyframes sealGlow { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .cover-hint {
+      position: absolute;
+      bottom: 48px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(88, 102, 79, 0.9);
+      color: #FAF7F2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold);
+    }
+
+    /* ===== RECESSED SCALLOPED OGEE-ARCH CARD ===== */
+    .wrap { max-width: 490px; margin: 0 auto; padding: 30px 16px 76px; text-align: center; }
+    .ogee-card {
+      position: relative;
+      background: linear-gradient(180deg, #FDFBF7 0%, #F7F2EA 100%);
+      border: 1.5px solid rgba(197, 155, 86, 0.52);
+      border-radius: 210px 210px 28px 28px;
+      padding: 58px 26px 42px;
+      box-shadow:
+        0 26px 60px rgba(61, 55, 48, 0.11),
+        inset 0 0 0 10px #FAF7F2,
+        inset 0 0 0 11.5px rgba(126, 142, 116, 0.32);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .botanical-edge {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 74px;
+      pointer-events: none;
+      opacity: 0.55;
+      color: var(--sage);
+    }
+    .botanical-edge.left { left: -6px; }
+    .botanical-edge.right { right: -6px; transform: scaleX(-1); }
+
+    .sculpt-mono {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: linear-gradient(145deg, #FFFDF9, #F2E9DA);
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      color: var(--gold-deep);
+      box-shadow: 0 10px 24px rgba(197, 155, 86, 0.18);
+      animation: fadeFloat 1.2s ease both;
+    }
+    @keyframes fadeFloat { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .script-name {
+      font-size: 54px;
+      color: var(--gold-deep);
+      line-height: 1.1;
+      margin: 8px 0 6px;
+      animation: fadeFloat 1.4s ease 0.2s both;
+    }
+    .spaced-date {
+      font-size: 14px;
+      letter-spacing: 0.34em;
+      color: var(--sage-dark);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .photo-medallion {
+      width: 148px;
+      height: 148px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      padding: 4px;
+      background: #FFFDF9;
+    }
+    .photo-medallion img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+    .venue-pill {
+      display: inline-block;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: rgba(126, 142, 116, 0.12);
+      border: 1px solid rgba(126, 142, 116, 0.32);
+      color: var(--sage-dark);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .card {
+      background: rgba(255, 253, 249, 0.94);
+      border: 1px solid rgba(197, 155, 86, 0.34);
+      border-radius: 22px;
+      padding: 22px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 12px 30px rgba(61, 55, 48, 0.06);
+    }
+    .cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 16px; }
+    .cd div { background: var(--paper); border: 1px solid rgba(197, 155, 86, 0.28); border-radius: 12px; padding: 10px 4px; }
+    .cd strong { display: block; font-size: 21px; color: var(--gold-deep); }
+    .cd span { font-size: 9.5px; text-transform: uppercase; color: var(--sage-dark); letter-spacing: 0.08em; }
+    .btn-row { display: flex; gap: 8px; }
+    .btn {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center;
+      padding: 11px 16px; border-radius: 999px; font: 600 12px inherit;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer; border: 0;
+    }
+    .btn-sage { background: linear-gradient(135deg, #6E7E64, #55634D); color: #FAF7F2; }
+    .btn-out { background: transparent; color: var(--sage-dark); border: 1px solid var(--gold); }
+    .inp {
+      width: 100%; padding: 10px 14px; border-radius: 12px;
+      border: 1px solid rgba(197, 155, 86, 0.4); background: #FFFFFF;
+      color: var(--ink); font: inherit; font-size: 13px; margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body class="wi-scroll-locked" data-music-mood="einaudi_experience" data-particles="gold-dust">
+
+  <!-- Scalloped Botanical Cotton-Paper Folio Cover -->
+  <div id="folio-cover" role="dialog" aria-label="Open Botanical Wax Seal Folio">
+    <div class="wing wing-left"></div>
+    <div class="wing wing-right"></div>
+    <div class="twine-layer">
+      <div class="twine-line t1"></div>
+      <div class="twine-line t2"></div>
+      <div class="wax-seal">
+        <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M24 40C24 28 24 18 24 8"/>
+          <path d="M24 28C16 26 12 21 12 16C18 16 22 20 24 28Z"/>
+          <path d="M24 22C32 20 36 15 36 10C30 10 26 14 24 22Z"/>
+          <path d="M24 34C31 32 35 28 35 24C29 24 26 28 24 34Z"/>
+        </svg>
+      </div>
+      <div class="cover-hint">Tap the Botanical Wax Seal</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="ogee-card">
+      <svg class="botanical-edge left" viewBox="0 0 80 420" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+        <path d="M18 410C32 320 14 210 38 110C48 70 30 35 16 14"/>
+        <path d="M26 290C46 278 58 264 62 248C44 252 32 268 26 290Z"/>
+        <path d="M22 210C44 200 58 186 64 170C46 174 30 190 22 210Z"/>
+        <path d="M30 132C50 120 62 106 66 90C48 96 36 110 30 132Z"/>
+      </svg>
+      <svg class="botanical-edge right" viewBox="0 0 80 420" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+        <path d="M18 410C32 320 14 210 38 110C48 70 30 35 16 14"/>
+        <path d="M26 290C46 278 58 264 62 248C44 252 32 268 26 290Z"/>
+        <path d="M22 210C44 200 58 186 64 170C46 174 30 190 22 210Z"/>
+        <path d="M30 132C50 120 62 106 66 90C48 96 36 110 30 132Z"/>
+      </svg>
+
+      <div style="font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--sage-dark);font-weight:700;margin-bottom:14px;">TOGETHER WITH THEIR FAMILIES</div>
+      <div class="sculpt-mono amiri" data-monogram>آ &amp; ل</div>
+      <h1 class="script script-name" data-couple-title>Adam &amp; Layla</h1>
+      <div class="spaced-date" data-event-date>27 . 11 . 2027</div>
+      <div class="photo-medallion">
+        <img data-couple-photo src="../assets/images/dusit-thani-cairo.jpg" alt="Venue & Couple Keepsake" />
+      </div>
+      <p class="serif" style="font-size:18px;font-style:italic;color:#5D554B;max-width:310px;margin:0 auto 14px;line-height:1.5;">
+        Not just an invitation — the serene beginning of our forever story.
+      </p>
+      <div class="venue-pill" data-venue-name>Dusit Thani LakeView · El Tagamoa, Cairo</div>
+      <div style="font-size:11.5px;color:var(--gold-deep);margin-top:8px;font-weight:600;" data-table-seat>Garden Terrace · Table 04</div>
+    </section>
+
+    <section class="card">
+      <div class="serif" style="font-size:24px;color:var(--sage-dark);">Counting Down to Forever</div>
+      <div class="cd" data-countdown="2027-11-27T18:30:00+02:00">
+        <div><strong data-cd="days">00</strong><span>Days</span></div>
+        <div><strong data-cd="hours">00</strong><span>Hours</span></div>
+        <div><strong data-cd="minutes">00</strong><span>Mins</span></div>
+        <div><strong data-cd="seconds">00</strong><span>Secs</span></div>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-sage" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">Save Date</button>
+        <a class="btn btn-out" href="https://maps.google.com/?q=Dusit+Thani+LakeView+Cairo" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="serif" style="font-size:24px;color:var(--ink);margin-bottom:10px;">Kindly Reply</div>
+      <form data-rsvp-form data-couple="Adam & Layla" data-lang="en" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="Your Full Name" />
+        <button type="submit" class="btn btn-sage" style="width:100%;">Confirm via WhatsApp</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </section>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'Adam & Layla Celebration', start: '2027-11-27T16:30:00Z', end: '2027-11-27T22:30:00Z', location: 'Dusit Thani LakeView, El Tagamoa, Cairo' };
+    document.getElementById('folio-cover').addEventListener('click', () => {
+      document.getElementById('folio-cover').classList.add('is-open');
+      document.body.classList.remove('wi-scroll-locked');
+      try { WeddingSound.startMusic('einaudi_experience'); } catch (_) {}
+    });
+  </script>
+</body>
+</html>

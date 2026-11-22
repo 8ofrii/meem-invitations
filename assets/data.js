@@ -1,4 +1,4 @@
-/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 48 curated designs with Moodboards */
+/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 51 curated designs with Moodboards */
 window.SITE = {
   "WHATSAPP": "201024190741",
   "BRAND": {
@@ -334,7 +334,7 @@ window.SITE = {
       "lang": "العربية",
       "langKey": "ar",
       "bg": "linear-gradient(145deg,#1E4280,#09162D)",
-      "img": "assets/images/alexandria-corniche.jpg",
+      "img": "assets/images/alexandria-san-stefano.jpg",
       "accent": "#F3D999",
       "desc": "A sapphire velvet ring box opens to reveal a sparkling ring with a soft chime.",
       "features": [
@@ -422,7 +422,7 @@ window.SITE = {
     },
     {
       "num": "12",
-      "cat": "floral",
+      "cat": "editorial",
       "file": "samples/08-destination-boarding-pass.html",
       "title": "El Gouna Boarding Pass",
       "subtitle": "Aly & Hana",
@@ -1060,7 +1060,7 @@ window.SITE = {
     },
     {
       "num": "31",
-      "cat": "editorial",
+      "cat": "royal",
       "file": "samples/34-madinet-nasr-triumph.html",
       "title": "Madinet Nasr Royal Hall & Table Pass",
       "subtitle": "سيف و مريم",
@@ -1668,6 +1668,105 @@ window.SITE = {
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
         "soundtrack": "JVKE — Golden Hour"
+      }
+    },
+    {
+      "num": "49",
+      "cat": "interactive",
+      "file": "samples/56-ivory-ribbon-doors-oval.html",
+      "title": "Royal Ivory Ribbon Doors & Gold Oval Arch",
+      "subtitle": "يوسف و سارة",
+      "venue": "Al Masa Royal Hall, Madinet Nasr",
+      "lang": "العربية",
+      "langKey": "ar",
+      "bg": "linear-gradient(145deg,#FAF5EB,#E5D7BF)",
+      "img": "assets/images/classic-ivory-gold-crest.jpg",
+      "accent": "#C5A059",
+      "desc": "Embossed 3D ivory double doors tied with a cream satin ribbon bow swing open onto a sunlit gilded oval mirror plaque with Arabic calligraphy.",
+      "features": [
+        "3D Satin Ribbon Doors",
+        "Gilded Oval Arch",
+        "Arabic Calligraphy",
+        "Live Countdown"
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "The Royal Affair",
+        "palette": [
+          "#FAF5EB",
+          "#C5A059",
+          "#4A3A2C",
+          "#8F967E"
+        ],
+        "typography": "Aref Ruqaa · Amiri · Cairo",
+        "floral": "White Magnolia Blossoms, Pearls & Cream Satin Ribbon",
+        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar"
+      }
+    },
+    {
+      "num": "50",
+      "cat": "floral",
+      "file": "samples/57-botanical-scalloped-folio.html",
+      "title": "Botanical Scalloped Arch & Wax Seal Folio",
+      "subtitle": "Adam & Layla",
+      "venue": "Dusit Thani LakeView, El Tagamoa",
+      "lang": "Bilingual",
+      "langKey": "bilingual",
+      "bg": "linear-gradient(145deg,#F6F1E9,#D9CFC3)",
+      "img": "assets/images/sage-olive-botanical.jpg",
+      "accent": "#7E8E74",
+      "desc": "Curved cotton-paper scalloped folio wings bound by gold twine and a leaf-embossed wax seal peel apart to reveal an illustrated botanical ogee-arch card.",
+      "features": [
+        "Scalloped Wing Reveal",
+        "Olive Wax Seal",
+        "Sculpted Monogram",
+        "Couple Medallion"
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "The Garden Story",
+        "palette": [
+          "#F6F1E9",
+          "#7E8E74",
+          "#C59B56",
+          "#3D3730"
+        ],
+        "typography": "Great Vibes · Cormorant Garamond · Amiri",
+        "floral": "Eucalyptus Branches, Gold Twine & Olive Wax Seal",
+        "soundtrack": "Ludovico Einaudi — Experience"
+      }
+    },
+    {
+      "num": "51",
+      "cat": "motion",
+      "file": "samples/58-pearl-lace-silk-couture.html",
+      "title": "Bridal Pearl Couture, Guipure Lace & Silk",
+      "subtitle": "حسن و يارا",
+      "venue": "The Nile Ritz-Carlton, Cairo",
+      "lang": "العربية",
+      "langKey": "ar",
+      "bg": "linear-gradient(145deg,#F8F4EE,#E6DACB)",
+      "img": "assets/images/translucent-vellum-envelope.jpg",
+      "accent": "#8C6850",
+      "desc": "Lace-trimmed V-pocket envelope with organza bow and teardrop pearl opens onto an animated 4-scene pearl-beaded couture card over draped ivory silk video.",
+      "features": [
+        "Lace Pocket & Pearl Drop",
+        "4-Scene Motion Story",
+        "3D Bronze Monogram",
+        "Valet & RSVP"
+      ],
+      "aesthetic": "classic",
+      "moodboard": {
+        "collection": "The Classic Edit",
+        "palette": [
+          "#F8F4EE",
+          "#E6DACB",
+          "#6E4E3B",
+          "#FFFDF9"
+        ],
+        "typography": "Aref Ruqaa · Amiri · Cairo",
+        "floral": "Guipure Floral Lace, Teardrop Pearls & Organza Bow",
+        "soundtrack": "Hussain Al Jassmi — Seta El Sobah"
       }
     }
   ],

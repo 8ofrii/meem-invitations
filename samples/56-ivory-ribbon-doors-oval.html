@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>يوسف و سارة — دعوة الأبواب الملكية العاجية والإطار الذهبي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ivory: #FAF5EB;
+      --cream: #EDE3D2;
+      --gold: #C5A059;
+      --gold-dark: #9B7837;
+      --cocoa: #4A3A2C;
+      --muted: #7B6A58;
+      --sage: #8F967E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 18%, #FFFDF8 0%, var(--ivory) 55%, var(--cream) 100%);
+      color: var(--cocoa);
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .ruqaa { font-family: 'Aref Ruqaa', serif; }
+
+    /* ===== 3D ROYAL IVORY RIBBON DOUBLE DOORS COVER ===== */
+    #door-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      perspective: 1400px;
+      display: flex;
+      overflow: hidden;
+      background: #EFE7DA;
+      cursor: pointer;
+      transition: opacity 0.8s ease 0.95s, visibility 0.8s ease 0.95s;
+    }
+    #door-stage.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+    .door {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(255,255,255,0.72), rgba(235,224,205,0.92)),
+        repeating-linear-gradient(135deg, rgba(197,160,89,0.04) 0 18px, transparent 18px 36px);
+      border-top: 12px solid #E5D7BF;
+      border-bottom: 12px solid #E5D7BF;
+      box-shadow: inset 0 0 40px rgba(92, 73, 56, 0.14);
+      transition: transform 1.25s cubic-bezier(0.74, 0, 0.22, 1);
+    }
+    .door-left {
+      transform-origin: left center;
+      border-left: 12px solid #E5D7BF;
+      border-right: 1.5px solid rgba(155, 120, 55, 0.45);
+    }
+    .door-right {
+      transform-origin: right center;
+      border-right: 12px solid #E5D7BF;
+      border-left: 1.5px solid rgba(155, 120, 55, 0.45);
+    }
+    .door::before {
+      content: '';
+      position: absolute;
+      inset: 28px 18px;
+      border: 1.5px solid rgba(197, 160, 89, 0.5);
+      border-radius: 90px 90px 8px 8px;
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,0.45);
+      pointer-events: none;
+    }
+    .door-handle {
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 76px;
+      margin-top: -38px;
+      border-radius: 99px;
+      background: linear-gradient(180deg, #E7CB8E, #A67E3B, #E7CB8E);
+      box-shadow: 0 4px 12px rgba(74, 58, 44, 0.28);
+    }
+    .door-left .door-handle { right: 14px; }
+    .door-right .door-handle { left: 14px; }
+    #door-stage.is-open .door-left { transform: rotateY(-112deg); }
+    #door-stage.is-open .door-right { transform: rotateY(112deg); }
+
+    /* Cream Satin Ribbon Bow & Floral Corners */
+    .ribbon-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      transition: opacity 0.45s ease, transform 0.55s ease;
+    }
+    #door-stage.is-open .ribbon-center { opacity: 0; transform: scale(1.14); }
+    .satin-band {
+      position: absolute;
+      left: 0; right: 0;
+      height: 36px;
+      background: linear-gradient(180deg, #FDF9F1, #E8DCC7 50%, #F7EFE0);
+      border-block: 1px solid rgba(197, 160, 89, 0.42);
+      box-shadow: 0 8px 22px rgba(74, 58, 44, 0.14);
+    }
+    .bow-medallion {
+      position: relative;
+      z-index: 2;
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #FFFFFF, #F3E9D8 75%);
+      border: 2px solid var(--gold);
+      box-shadow: 0 18px 42px rgba(74, 58, 44, 0.22), inset 0 0 0 6px rgba(197, 160, 89, 0.14);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: bowPulse 3s ease-in-out infinite;
+    }
+    @keyframes bowPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+    .tap-ribbon-hint {
+      position: absolute;
+      bottom: 44px;
+      z-index: 12;
+      padding: 9px 22px;
+      border-radius: 999px;
+      background: rgba(74, 58, 44, 0.88);
+      color: #FAF5EB;
+      border: 1px solid var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+    .door-floral {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      pointer-events: none;
+      z-index: 6;
+      opacity: 0.85;
+    }
+    .door-floral.tl { top: -10px; left: -10px; }
+    .door-floral.br { bottom: -10px; right: -10px; transform: rotate(180deg); }
+
+    /* ===== MARBLE HALL BACKDROP & GILDED OVAL PLAQUE ===== */
+    .hall-bg {
+      position: fixed;
+      inset: 0;
+      background: url('../assets/images/al-masa-capital.jpg') center/cover no-repeat;
+      opacity: 0.16;
+      filter: sepia(0.28) brightness(1.12);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 490px;
+      margin: 0 auto;
+      padding: 34px 16px 76px;
+      text-align: center;
+    }
+    .oval-plaque {
+      position: relative;
+      background: linear-gradient(168deg, rgba(255,253,248,0.97) 0%, rgba(248,241,228,0.95) 100%);
+      border: 2.5px solid var(--gold);
+      border-radius: 240px 240px 180px 180px;
+      padding: 52px 26px 46px;
+      box-shadow:
+        0 28px 65px rgba(74, 58, 44, 0.14),
+        inset 0 0 0 8px rgba(255, 253, 248, 0.9),
+        inset 0 0 0 9.5px rgba(197, 160, 89, 0.55);
+      margin-bottom: 22px;
+      animation: ovalRise 1s ease both;
+    }
+    @keyframes ovalRise { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .crest-crown {
+      width: 120px;
+      height: 36px;
+      margin: -22px auto 10px;
+      display: block;
+      color: var(--gold);
+    }
+    .mono-circle {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle, #FFFDF8, #F4EBDC);
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      color: var(--gold-dark);
+      box-shadow: 0 8px 20px rgba(197, 160, 89, 0.18);
+    }
+    .blessing {
+      font-size: 18px;
+      color: var(--gold-dark);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .poem {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.95;
+      max-width: 340px;
+      margin: 0 auto 16px;
+    }
+    .couple-names {
+      font-size: 46px;
+      color: var(--cocoa);
+      line-height: 1.15;
+      margin: 6px 0 18px;
+    }
+    .inshallah {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(197, 160, 89, 0.32);
+    }
+    .d-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 6px;
+    }
+    .d-item.full { grid-column: 1 / -1; }
+    .d-ic {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      background: rgba(197, 160, 89, 0.1);
+      display: grid;
+      place-items: center;
+      color: var(--cocoa);
+    }
+    .d-item b { font-size: 13.5px; color: var(--cocoa); }
+    .d-item span { font-size: 11px; color: var(--muted); }
+
+    .card {
+      background: rgba(255, 253, 248, 0.94);
+      border: 1px solid rgba(197, 160, 89, 0.36);
+      border-radius: 22px;
+      padding: 22px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 14px 34px rgba(74, 58, 44, 0.07);
+    }
+    .cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 12px 0 16px; }
+    .cd div { background: var(--ivory); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px; padding: 10px 4px; }
+    .cd strong { display: block; font-size: 21px; color: var(--gold-dark); }
+    .cd span { font-size: 10px; color: var(--muted); }
+    .btn-row { display: flex; gap: 8px; }
+    .btn {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center;
+      padding: 11px 16px; border-radius: 999px; font: 700 12.5px inherit;
+      text-decoration: none; cursor: pointer; border: 0;
+    }
+    .btn-gold { background: linear-gradient(135deg, #D5B26E, #A67E3B); color: #FFFDF8; }
+    .btn-out { background: transparent; color: var(--cocoa); border: 1px solid var(--gold); }
+    .inp {
+      width: 100%; padding: 10px 14px; border-radius: 12px;
+      border: 1px solid rgba(197, 160, 89, 0.45); background: #FFFFFF;
+      color: var(--cocoa); font: inherit; font-size: 13.5px; margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body class="wi-scroll-locked" data-music-mood="jassmi_zaffa" data-particles="gold-dust">
+  <div class="hall-bg" aria-hidden="true"></div>
+
+  <!-- 3D Embossed Royal Ivory Ribbon Doors -->
+  <div id="door-stage" role="dialog" aria-label="افتح الأبواب الملكية للدعوة">
+    <svg class="door-floral tl" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+      <path d="M10 10C48 26 78 62 96 112" stroke="#8F967E" stroke-width="1.6"/>
+      <circle cx="52" cy="46" r="18" fill="#FFFDF9" stroke="#C5A059" stroke-width="1"/>
+      <circle cx="52" cy="46" r="5" fill="#DFC387"/>
+      <circle cx="88" cy="74" r="14" fill="#FFFDF9" stroke="#C5A059" stroke-width="1"/>
+      <circle cx="88" cy="74" r="4" fill="#DFC387"/>
+      <circle cx="34" cy="82" r="5" fill="#FFFDF9" stroke="#C5A059"/>
+      <circle cx="68" cy="108" r="4" fill="#FFFDF9" stroke="#C5A059"/>
+    </svg>
+    <svg class="door-floral br" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+      <path d="M10 10C48 26 78 62 96 112" stroke="#8F967E" stroke-width="1.6"/>
+      <circle cx="52" cy="46" r="18" fill="#FFFDF9" stroke="#C5A059" stroke-width="1"/>
+      <circle cx="52" cy="46" r="5" fill="#DFC387"/>
+      <circle cx="88" cy="74" r="14" fill="#FFFDF9" stroke="#C5A059" stroke-width="1"/>
+      <circle cx="88" cy="74" r="4" fill="#DFC387"/>
+      <circle cx="34" cy="82" r="5" fill="#FFFDF9" stroke="#C5A059"/>
+    </svg>
+    <div class="door door-left"><div class="door-handle"></div></div>
+    <div class="door door-right"><div class="door-handle"></div></div>
+    <div class="ribbon-center">
+      <div class="satin-band"></div>
+      <div class="bow-medallion">
+        <div class="ruqaa" style="font-size:30px;color:var(--gold-dark);" data-monogram>ي &amp; س</div>
+        <div style="font-size:10.5px;color:var(--muted);margin-top:2px;">دعوة ملكية</div>
+      </div>
+      <div class="tap-ribbon-hint">اضغط لفك الشريط وفتح الأبواب الملكية</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="oval-plaque">
+      <svg class="crest-crown" viewBox="0 0 140 40" fill="none" aria-hidden="true">
+        <path d="M16 32C40 12 100 12 124 32" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="70" cy="14" r="6" fill="#FFFDF8" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="52" cy="19" r="3.5" fill="#FFFDF8" stroke="currentColor"/>
+        <circle cx="88" cy="19" r="3.5" fill="#FFFDF8" stroke="currentColor"/>
+      </svg>
+
+      <div class="mono-circle ruqaa" data-monogram>ي &amp; س</div>
+      <div class="blessing amiri">بارك الله لهما وبارك عليهما وجمع بينهما في خير</div>
+      <p class="poem amiri">
+        ابتدأ العمر بك، وبدأت الحكاية معك<br>
+        فكان اللقاء قدراً، وكانت السعادة أنت<br>
+        نتشرف بدعوتكم لحضور حفل زفاف
+      </p>
+      <h1 class="couple-names ruqaa" data-couple-title>يوسف و سارة</h1>
+      <div class="inshallah">وذلك بمشيئة الله تعالى</div>
+
+      <div class="details-grid">
+        <div class="d-item">
+          <div class="d-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
+          <b>الساعة 8:00 مساءً</b>
+          <span>موعد الاستقبال</span>
+        </div>
+        <div class="d-item">
+          <div class="d-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <b data-event-date>الخميس 2027.11.25</b>
+          <span>ليلة العمر</span>
+        </div>
+        <div class="d-item full">
+          <div class="d-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <b data-venue-name>قاعة الماسة الملكية — مدينة نصر، القاهرة</b>
+          <span data-table-seat>طاولة رقم ١٢ • كبار الزوار</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="amiri" style="font-size:20px;color:var(--gold-dark);">العد التنازلي لليلتنا</div>
+      <div class="cd" data-countdown="2027-11-25T20:00:00+02:00">
+        <div><strong data-cd="days">00</strong><span>يوم</span></div>
+        <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
+        <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
+        <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-gold" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة للتقويم</button>
+        <a class="btn btn-out" href="https://maps.google.com/?q=Al+Masa+Hotel+Nasr+City+Cairo" target="_blank" rel="noopener">موقع القاعة</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="amiri" style="font-size:22px;color:var(--cocoa);margin-bottom:10px;">تأكيد الحضور</div>
+      <form data-rsvp-form data-couple="يوسف و سارة" data-lang="ar" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" type="text" required placeholder="الاسم الكريم" />
+        <button type="submit" class="btn btn-gold" style="width:100%;">تأكيد الحضور عبر واتساب</button>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </section>
+  </main>
+
+  <script src="../assets/shared.js"></script>
+  <script>
+    const EVENT_INFO = { title: 'زفاف يوسف و سارة', start: '2027-11-25T18:00:00Z', end: '2027-11-25T23:30:00Z', location: 'Al Masa Royal Hall, Nasr City, Cairo' };
+    document.getElementById('door-stage').addEventListener('click', () => {
+      document.getElementById('door-stage').classList.add('is-open');
+      document.body.classList.remove('wi-scroll-locked');
+      try { WeddingSound.startMusic('jassmi_zaffa'); } catch (_) {}
+    });
+  </script>
+</body>
+</html>

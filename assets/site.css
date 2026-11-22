@@ -452,6 +452,7 @@ section[id] { scroll-margin-top: 82px; }
   .btn-lg { padding: 14px 22px; width: 100%; }
   .card-actions { gap: 8px; }
   .close-modal { top: 12px; right: 14px; padding: 7px 14px; font-size: 11px; }
+  .brand-sub { font-size: 9px; letter-spacing: .03em; white-space: nowrap; }
 }
 
 /* Ultra-compact Phones (<= 360px) */
