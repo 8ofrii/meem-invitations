@@ -14,51 +14,51 @@ window.SITE = {
   "CATEGORIES": [
     {
       "id": "motion",
-      "title": "Video & Motion Reels",
-      "short": "Video & Motion",
-      "ar": "فيديو وموشن",
+      "title": "Video & Reels",
+      "short": "Video & Reels",
+      "ar": "فيديو وريلز",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"3\"/><polygon points=\"10 8.5 16 12 10 15.5 10 8.5\"/></svg>",
       "blurb": "HD video loops, vertical reels, Ken Burns couple films and 3D motion lockets — customisable for any event."
     },
     {
       "id": "cards",
-      "title": "Silent Luxury Stationery",
-      "short": "Silent Stationery",
-      "ar": "كروت بدون صوت",
+      "title": "Silent Cards",
+      "short": "Silent Cards",
+      "ar": "كروت صامتة",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg>",
       "blurb": "Zero-audio tactile folding stationery, translucent vellum envelopes and quiet architectural cards."
     },
     {
       "id": "interactive",
-      "title": "Interactive Magic & Reveals",
-      "short": "Interactive Magic",
-      "ar": "دعوات تفاعلية",
+      "title": "Interactive",
+      "short": "Interactive",
+      "ar": "تفاعلية",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2l2.4 5.2L20 9.6l-4 3.9.9 5.5L12 16.4 7.1 19l.9-5.5-4-3.9 5.6-2.4L12 2z\"/></svg>",
-      "blurb": "Swinging doors, sliding lattice, glowing lanterns, curtains, watch dials, DJ requests and live table finder."
+      "blurb": "Swinging doors, satin bow reveals, sliding lattice, glowing lanterns, curtains, watch dials and live table finder."
     },
     {
       "id": "royal",
-      "title": "Luxury & Metallic Finishes",
-      "short": "Luxury & Metallic",
-      "ar": "فخامة وميتاليك",
+      "title": "Classic & Royal",
+      "short": "Classic & Royal",
+      "ar": "كلاسيك وملكي",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l2-9 4.5 4L12 5l2.5 7L19 8l2 9H3z\"/><path d=\"M4 20h16\"/></svg>",
       "blurb": "Old Money wax seals, arabesque arches, metallic liquid chromium and timeless palace grandeur for any occasion."
     },
     {
       "id": "floral",
-      "title": "Botanical & Sunset Escapes",
-      "short": "Botanical & Sunset",
-      "ar": "ورود وطبيعة",
+      "title": "Soft & Floral",
+      "short": "Soft & Floral",
+      "ar": "ناعم وورود",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v3\"/><path d=\"M5.6 5.6l2.1 2.1\"/><path d=\"M18.4 5.6l-2.1 2.1\"/><path d=\"M7 14a5 5 0 0 1 10 0\"/><path d=\"M3 17c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5\"/></svg>",
-      "blurb": "Soft botanical watercolors, pressed-glass herbariums, sunlit Sahel linen and golden destination sunsets."
+      "blurb": "Soft botanical watercolors, scalloped wax-seal folios, pressed-glass herbariums and sunlit coastal escapes."
     },
     {
       "id": "editorial",
-      "title": "Magazine & Photo Story",
-      "short": "Magazine & Story",
-      "ar": "مجلات وقصص",
+      "title": "Modern & Photo",
+      "short": "Modern & Photo",
+      "ar": "عصري وصور",
       "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"/><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"/></svg>",
-      "blurb": "Vogue-style issues, vintage newspapers, golden vinyl records, 3D flip postcards and swipeable photo albums."
+      "blurb": "Photobooth Polaroids, Vogue-style issues, vintage newspapers, golden vinyl records, 3D postcards and photo albums."
     }
   ],
   "SAMPLES": [
