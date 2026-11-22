@@ -770,7 +770,8 @@
                 <option value="tamer_helm">Tamer Hosny — Helm Seneen (تامر حسني — حلم سنين)</option>
                 <option value="ramy_mabrook">Ramy Sabry — Alf Mabrook (رامي صبري — ألف مبروك)</option>
                 <option value="amr_nour">Amr Diab — Nour El Ein (عمرو دياب — نور العين)</option>
-                <option value="dina_zaffa">Dina El Wedidi — Egyptian Zaffa Song (دينا الوديدي — أغنية زفة مصرية)</option>
+                <option value="hakim_kolo_yorkos">Hakim — Kollo Yourkos (حكيم — كله يرقص · أغنية رقص وحنة)</option>
+                <option value="hakim_el_wad">Hakim — El Wad Da Helw (حكيم — الواد ده حلو · أغنية رقص وفرح)</option>
               </optgroup>
               <optgroup label="English Romantic Wedding Songs — أغاني أفراح إنجليزية">
                 <option value="ed_perfect">Ed Sheeran — Perfect (الأغنية الأصلية)</option>
@@ -783,6 +784,7 @@
                 <option value="egyptian_mix">Egyptian Wedding Grand Mix (كوكتيل أفراح مصري: الجسمي · العسيلي · تامر · رامي)</option>
                 <option value="jassmi_mix">Hussain Al Jassmi Marriage Mix (ميكس أفراح حسين الجسمي)</option>
                 <option value="esseily_mix">Mahmoud El Esseily Marriage Mix (ميكس أفراح محمود العسيلي)</option>
+                <option value="hakim_mix">Hakim Ra2s &amp; Henna Dance Mix (ميكس رقص وحنة — حكيم)</option>
                 <option value="silent">Silent — No Audio (بدون صوت)</option>
               </optgroup>
             </select>
@@ -865,23 +867,23 @@
     return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
   }
   const CAT_THUMBS = {
-    all: 'assets/images/al-masa-capital.jpg',
-    motion: 'assets/images/st-regis-cairo.jpg',
-    cards: 'assets/images/translucent-vellum-envelope.jpg',
-    interactive: 'assets/images/baron-palace-cairo.jpg',
-    royal: 'assets/images/mena-house-giza.jpg',
-    floral: 'assets/images/el-gouna-lagoon.jpg',
-    editorial: 'assets/images/zamalek-marriott-palace.jpg'
+    all: 'assets/images/classic-ivory-gold-crest.jpg',
+    motion: 'assets/images/love-story-couple.jpg',
+    cards: 'assets/images/french-gatefold-card.jpg',
+    interactive: 'assets/images/midnight-gold-celestial.jpg',
+    royal: 'assets/images/liquid-chromium-pearl.jpg',
+    floral: 'assets/images/dusty-rose-floral.jpg',
+    editorial: 'assets/images/editorial-couple.jpg'
   };
 
   $('catPills').innerHTML = `
     <button type="button" class="fpill active" data-cat="all">
       <div class="fpill-arch">
-        <img src="${CAT_THUMBS.all}" alt="All Designs" loading="lazy">
+        <img src="${CAT_THUMBS.all}" alt="All Styles" loading="lazy">
         <span class="fpill-count">${countFor('all')}</span>
       </div>
       <div class="fpill-txt">
-        <span class="fpill-name">All Designs</span>
+        <span class="fpill-name">All Styles</span>
         <span class="fpill-ar">كل التصاميم</span>
       </div>
     </button>` +

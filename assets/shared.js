@@ -867,8 +867,9 @@
     tamer_helm: '../assets/audio/tamer-helm-seneen.mp3',
     ramy_mabrook: '../assets/audio/ramy-sabry-mabrook.mp3',
     amr_nour: '../assets/audio/amr-diab-nour-el-ein.mp3',
-    dina_zaffa: '../assets/audio/dina-zaffa.mp3',
-    oriental: '../assets/audio/dina-zaffa.mp3',
+    hakim_kolo_yorkos: '../assets/audio/hakim-kolo-yorkos.mp3',
+    hakim_el_wad: '../assets/audio/hakim-el-wad-da-helw.mp3',
+    oriental: '../assets/audio/hakim-kolo-yorkos.mp3',
     a_thousand_years: '../assets/audio/a-thousand-years.mp3',
     ed_perfect: '../assets/audio/ed-sheeran-perfect.mp3',
     cant_help_falling: '../assets/audio/cant-help-falling.mp3',
@@ -917,6 +918,10 @@
     jassmi_mix: [
       '../assets/audio/jassmi-zaffa.mp3',
       '../assets/audio/jassmi-seta-el-sobah.mp3'
+    ],
+    hakim_mix: [
+      '../assets/audio/hakim-kolo-yorkos.mp3',
+      '../assets/audio/hakim-el-wad-da-helw.mp3'
     ]
   };
 
