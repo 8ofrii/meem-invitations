@@ -475,8 +475,19 @@
     const COUPLE = params.get('couple') || 'كريم و نور';
     const PIN = params.get('pin') || '1234';
     const DRIVE_ENDPOINT = params.get('endpoint') || '';
+    const DRIVE_TOKEN = params.get('token') || '';
     const DRIVE_FOLDER_URL = params.get('drive') || '';
+    const GUEST_ONLY = params.get('guestOnly') === '1';
     const STORAGE_KEY = 'meem_qr_memories_' + COUPLE.replace(/\W+/g, '_');
+
+    // In production client QR mode (?guestOnly=1), guests ONLY see Camera & Upload (zero access to other guests' photos)
+    if (GUEST_ONLY) {
+      document.querySelector('.tabs').style.display = 'none';
+      const back = document.getElementById('backHome');
+      if (back) back.style.display = 'none';
+      const waCard = document.getElementById('orderAddonWa') && document.getElementById('orderAddonWa').closest('.card');
+      if (waCard) waCard.style.display = 'none';
+    }
 
     document.getElementById('coupleHead').textContent = `${COUPLE} — ألبوم ذكريات الضيوف`;
     document.getElementById('qrCoupleName').textContent = COUPLE;
@@ -579,7 +590,7 @@
         note,
         dataUrl
       };
-      await saveLocalItem(item);
+      if (!GUEST_ONLY) await saveLocalItem(item);
 
       if (DRIVE_ENDPOINT) {
         try {
@@ -587,16 +598,16 @@
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({ base64: dataUrl, mimeType, guestName, note })
+            body: JSON.stringify({ token: DRIVE_TOKEN, base64: dataUrl, mimeType, guestName, note })
           });
-          showStatus('✓ تم الإرسال بنجاح وحفظ الملف مباشرة في Google Drive الخاص بالعروسين!');
+          showStatus('✓ تم الإرسال وحفظ الذكرى بسرية تامة داخل ألبوم العروسين الخاص فقط!');
         } catch (_) {
-          showStatus('✓ تم الحفظ في الألبوم المحلي (تأكد من اتصال الإنترنت للرفع على Drive).');
+          showStatus('تعذر الاتصال بالإنترنت — برجاء المحاولة مرة أخرى.');
         }
       } else {
         showStatus('✓ تم التقاط وحفظ الذكرى في ألبوم العروسين! افتح تبويب "ألبوم العروسين" (الرقم السري 1234) لمشاهدتها.');
       }
-      renderVault();
+      if (!GUEST_ONLY) renderVault();
     }
 
     // Native camera & gallery file inputs
