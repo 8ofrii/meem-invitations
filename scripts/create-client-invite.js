@@ -53,6 +53,10 @@ const couple = args.couple || (args.groom && args.bride
 
 if (couple) {
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${couple} — MEEM Digital Invitation</title>`);
+  const ogImg = `https://meem-invitations.onrender.com/${sample.img || 'assets/images/classic-ivory-gold-crest.jpg'}`;
+  const ogDesc = `${args.dateText ? args.dateText + ' • ' : ''}${args.venue || 'You are warmly invited to celebrate with us.'}`;
+  const ogTags = `\n  <meta property="og:type" content="website" />\n  <meta property="og:title" content="${couple}" />\n  <meta property="og:description" content="${ogDesc}" />\n  <meta property="og:image" content="${ogImg}" />\n  <meta name="twitter:card" content="summary_large_image" />`;
+  html = html.replace(/<\/title>/i, `</title>${ogTags}`);
   html = html.replace(/(data-couple-title[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${couple}$3`);
   html = html.replace(/data-couple="[^"]*"/gi, `data-couple="${couple}"`);
 }
