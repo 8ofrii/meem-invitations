@@ -13,6 +13,9 @@ services:
       - path: /assets/data.js
         name: Cache-Control
         value: no-cache, must-revalidate
+      - path: /assets/audio/*
+        name: Cache-Control
+        value: no-cache, must-revalidate
       - path: /admin
         name: Cache-Control
         value: no-cache, must-revalidate

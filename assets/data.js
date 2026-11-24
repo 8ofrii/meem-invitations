@@ -2443,9 +2443,9 @@ window.SITE = {
     },
     {
       "key": "amina_okbal_andoko",
-      "label": "عقبال عندكوا — أمينة (حنة · 00:32 – 00:47)",
+      "label": "Oubal Andako — Amina (عقبال عندكوا · حنة · 00:32 – 00:47)",
       "group": "Henna & Celebration — أغاني وعزف الحنة",
-      "file": "assets/audio/amina-okbal-andoko.mp3",
+      "file": "assets/audio/amina-oubal-andako.mp3",
       "hidden": false
     },
     {
@@ -2459,7 +2459,7 @@ window.SITE = {
       "key": "henna_mix",
       "label": "Henna & Dance Mix (كوكتيل حنة: أمينة · بيت حبيبي · حكيم)",
       "group": "Henna & Celebration — أغاني وعزف الحنة",
-      "file": "assets/audio/amina-okbal-andoko.mp3",
+      "file": "assets/audio/amina-oubal-andako.mp3",
       "isMix": true,
       "hidden": false
     },

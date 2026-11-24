@@ -873,7 +873,7 @@
     // 3. Arabic & Henna Songs (أغاني أفراح وحنة)
     elissa_ayshalak: '../assets/audio/elissa-ayshalak.mp3',
     elissa_men_awal: '../assets/audio/elissa-men-awal-deqiqa.mp3',
-    amina_okbal_andoko: '../assets/audio/amina-okbal-andoko.mp3',
+    amina_okbal_andoko: '../assets/audio/amina-oubal-andako.mp3',
     om_kalthoum: '../assets/audio/om-kalthoum-alf-leila.mp3',
     farha_katb: '../assets/audio/farha-katb.mp3',
     katb_ketab: '../assets/audio/farha-instrumental.mp3',
@@ -914,7 +914,7 @@
       '../assets/audio/esseily-wakheeran.mp3'
     ],
     henna_mix: [
-      '../assets/audio/amina-okbal-andoko.mp3',
+      '../assets/audio/amina-oubal-andako.mp3',
       '../assets/audio/yara-beit-habibi-inst.mp3',
       '../assets/audio/hakim-kolo-yorkos.mp3'
     ]
