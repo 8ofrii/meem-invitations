@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEEM Admin Portal — Private Studio Control</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --emerald: #0D3B2E;
+      --emerald-2: #164F3E;
+      --gold: #C5A059;
+      --gold-2: #9B7837;
+      --text: #1C2420;
+      --muted: #66706A;
+      --line: rgba(197, 160, 89, 0.32);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top, #FFFDF9 0%, var(--bg) 60%, #EFE8DA 100%);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .ar { font-family: 'Amiri', serif; }
+
+    /* Login Gate */
+    #loginGate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      width: min(400px, 100%);
+      background: #FFFFFF;
+      border: 1.5px solid var(--line);
+      border-radius: 26px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(13, 59, 46, 0.1);
+    }
+    .login-card img { width: 72px; height: 72px; object-fit: contain; margin: 0 auto 10px; display: block; }
+    .login-card h1 { font-size: 32px; color: var(--emerald); margin-bottom: 6px; }
+    .login-card p { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .inp, .sel, .txt {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(13, 59, 46, 0.18);
+      background: #FAF7F2;
+      color: var(--text);
+      font: inherit;
+      font-size: 13.5px;
+      outline: none;
+    }
+    .inp:focus, .sel:focus, .txt:focus { border-color: var(--gold); background: #FFFFFF; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font: 700 12.5px inherit;
+      cursor: pointer;
+      border: 0;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-em { background: linear-gradient(135deg, var(--emerald), var(--emerald-2)); color: #FFFFFF; border: 1px solid var(--gold); }
+    .btn-gold { background: linear-gradient(135deg, #E8CA8C, var(--gold)); color: var(--emerald); }
+    .btn-out { background: #FFFFFF; color: var(--emerald); border: 1px solid var(--line); }
+    .btn-sm { padding: 7px 13px; font-size: 11.5px; }
+    .err-msg { color: #B91C1C; font-size: 12.5px; margin-top: 10px; display: none; }
+
+    /* Admin Dashboard */
+    #dashboard { display: none; padding-bottom: 70px; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 253, 249, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 24px;
+    }
+    .topbar-in {
+      max-width: 1240px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .brand-mini { display: flex; align-items: center; gap: 10px; }
+    .brand-mini img { width: 40px; height: 40px; object-fit: contain; }
+    .brand-mini b { font-size: 18px; color: var(--emerald); display: block; line-height: 1.1; }
+    .brand-mini span { font-size: 11px; color: var(--gold-2); }
+    .top-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+    .kpi {
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px;
+      padding: 16px 18px; box-shadow: 0 6px 20px rgba(13, 59, 46, 0.04);
+    }
+    .kpi b { display: block; font-size: 26px; color: var(--emerald); line-height: 1.1; }
+    .kpi span { font-size: 11.5px; color: var(--muted); }
+
+    .controls {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 18px; padding: 12px 14px; margin-bottom: 20px;
+    }
+    .ctrl-left { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .ctrl-left .sel { width: auto; padding: 8px 12px; font-size: 12.5px; }
+    .ctrl-search { width: 240px; padding: 8px 14px; font-size: 12.5px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+    .item-card {
+      background: #FFFFFF; border: 1.5px solid var(--line); border-radius: 18px;
+      overflow: hidden; display: flex; flex-direction: column;
+      box-shadow: 0 8px 22px rgba(13, 59, 46, 0.05);
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+    .item-card.is-hidden { opacity: 0.62; border-style: dashed; border-color: rgba(13, 59, 46, 0.22); background: #F7F4EE; }
+    .item-top {
+      height: 118px; position: relative; overflow: hidden; background: #0D3B2E;
+      display: flex; align-items: flex-end; padding: 10px 12px;
+    }
+    .item-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.72; }
+    .item-top::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,59,46,0.2), rgba(13,59,46,0.82)); }
+    .item-top-in { position: relative; z-index: 2; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #FFFFFF; }
+    .pill-status {
+      font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+      background: #10B981; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .item-card.is-hidden .pill-status { background: #64748B; }
+    .item-body { padding: 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .item-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--emerald); line-height: 1.15; }
+    .item-sub { font-size: 12px; color: var(--muted); }
+    .item-row { display: flex; gap: 8px; align-items: center; margin-top: auto; padding-top: 6px; }
+    .item-row .sel { padding: 6px 10px; font-size: 11.5px; flex: 1; }
+
+    /* Modal Add New Invitation */
+    .modal {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(13, 28, 22, 0.65); backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center; padding: 16px;
+    }
+    .modal.open { display: flex; }
+    .modal-box {
+      width: min(560px, 100%); max-height: 90vh; overflow-y: auto;
+      background: #FFFFFF; border: 1.5px solid var(--gold); border-radius: 22px; padding: 24px;
+    }
+    .modal-box h2 { font-size: 28px; color: var(--emerald); margin-bottom: 6px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .full { grid-column: 1 / -1; }
+    .lbl { display: block; font-size: 11px; font-weight: 700; color: var(--gold-2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .toast {
+      position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+      background: var(--emerald); color: #FAF6EE; border: 1px solid var(--gold);
+      padding: 10px 20px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25); display: none; z-index: 200;
+    }
+    .toast.show { display: block; }
+    @media (max-width: 768px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-grid { grid-template-columns: 1fr; }
+      .ctrl-search { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- PASSWORD LOGIN GATE -->
+  <section id="loginGate">
+    <div class="login-card">
+      <img src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
+      <h1 class="serif">MEEM Admin Portal</h1>
+      <p>Private studio console for managing visible designs, categories &amp; new invitations.</p>
+      <form id="loginForm">
+        <input class="inp" id="pwInput" type="password" required placeholder="Enter studio password" style="margin-bottom:12px;text-align:center;" />
+        <button type="submit" class="btn btn-em" style="width:100%;">Unlock Admin Panel</button>
+        <div class="err-msg" id="loginErr">Incorrect password. Please try again.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="dashboard">
+    <header class="topbar">
+      <div class="topbar-in">
+        <div class="brand-mini">
+          <img src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
+          <div><b>MEEM Studio Admin</b><span>Show · Hide · Organise · Add Invitations</span></div>
+        </div>
+        <div class="top-actions">
+          <button type="button" class="btn btn-gold btn-sm" id="openAddBtn">+ Add New Invitation</button>
+          <a class="btn btn-out btn-sm" href="/api/admin/export-data-js" download="data.js">Export data.js</a>
+          <a class="btn btn-out btn-sm" href="/" target="_blank">View Live Site ↗</a>
+          <button type="button" class="btn btn-out btn-sm" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="kpi-grid">
+        <div class="kpi"><b id="kTotal">0</b><span>Total Invitations (All Vault)</span></div>
+        <div class="kpi"><b id="kVisible" style="color:#059669">0</b><span>Visible on Production Site</span></div>
+        <div class="kpi"><b id="kHidden" style="color:#64748B">0</b><span>Hidden in Admin Vault</span></div>
+        <div class="kpi"><b id="kCats">0</b><span>Active Categories</span></div>
+      </div>
+
+      <div class="controls">
+        <div class="ctrl-left">
+          <select class="sel" id="filterCat"><option value="all">All Categories</option></select>
+          <select class="sel" id="filterStatus">
+            <option value="all">All Statuses</option>
+            <option value="visible">Visible Only</option>
+            <option value="hidden">Hidden Vault Only</option>
+          </select>
+        </div>
+        <input class="inp ctrl-search" id="adminSearch" placeholder="Search #num, title, venue..." />
+      </div>
+
+      <div class="grid" id="adminGrid"></div>
+    </main>
+  </div>
+
+  <!-- ADD NEW INVITATION MODAL -->
+  <div class="modal" id="addModal">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 class="serif">Add New Invitation</h2>
+        <button type="button" class="btn btn-out btn-sm" id="closeAddBtn">✕</button>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);">Clone any existing template with new details OR paste your own custom HTML code.</p>
+
+      <form id="addForm" class="form-grid">
+        <div>
+          <label class="lbl">Title (English)</label>
+          <input class="inp" name="title" required placeholder="e.g. Royal Jasmine Arch" />
+        </div>
+        <div>
+          <label class="lbl">Subtitle (Couple Names)</label>
+          <input class="inp" name="subtitle" required placeholder="e.g. كريم و نور" />
+        </div>
+        <div>
+          <label class="lbl">Category</label>
+          <select class="sel" name="cat" id="addCatSel"></select>
+        </div>
+        <div>
+          <label class="lbl">Venue</label>
+          <input class="inp" name="venue" placeholder="e.g. Nile Ritz-Carlton, Cairo" />
+        </div>
+        <div>
+          <label class="lbl">Clone Base Template</label>
+          <select class="sel" name="cloneFrom" id="cloneSel"></select>
+        </div>
+        <div>
+          <label class="lbl">Default Song Key</label>
+          <input class="inp" name="song" placeholder="einaudi_experience / jassmi_zaffa" />
+        </div>
+        <div class="full">
+          <label class="lbl">Description</label>
+          <input class="inp" name="desc" placeholder="Short luxury description of the invitation style..." />
+        </div>
+        <div class="full">
+          <label class="lbl">Custom HTML (Optional — leave empty to clone selected base template)</label>
+          <textarea class="txt" name="html" rows="4" placeholder="<!DOCTYPE html>..."></textarea>
+        </div>
+        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
+          <button type="button" class="btn btn-out" id="cancelAddBtn">Cancel</button>
+          <button type="submit" class="btn btn-em">Publish Invitation Live</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    let catalog = { CATEGORIES: [], SAMPLES: [] };
+    let adminToken = sessionStorage.getItem('meem_admin_token') || '';
+
+    function showToast(msg) {
+      const t = $('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2600);
+    }
+
+    async function api(url, opts = {}) {
+      const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+      if (adminToken) headers['Authorization'] = 'Bearer ' + adminToken;
+      const res = await fetch(url, { ...opts, headers });
+      return res.json();
+    }
+
+    async function loadCatalog() {
+      const data = await api('/api/catalog');
+      if (!data.ok) return;
+      catalog = data;
+
+      const catOpts = `<option value="all">All Categories (${catalog.SAMPLES.length})</option>` +
+        catalog.CATEGORIES.map(c => {
+          const vis = catalog.SAMPLES.filter(s => s.cat === c.id && !s.hidden).length;
+          const tot = catalog.SAMPLES.filter(s => s.cat === c.id).length;
+          return `<option value="${c.id}">${c.short} (${vis} visible / ${tot} total)</option>`;
+        }).join('');
+      const prevCat = $('filterCat').value || 'all';
+      $('filterCat').innerHTML = catOpts;
+      $('filterCat').value = prevCat;
+
+      $('addCatSel').innerHTML = catalog.CATEGORIES.map(c => `<option value="${c.id}">${c.short} (${c.ar})</option>`).join('');
+      $('cloneSel').innerHTML = catalog.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
+
+      renderDashboard();
+    }
+
+    function renderDashboard() {
+      const visCount = catalog.SAMPLES.filter(s => !s.hidden).length;
+      const hidCount = catalog.SAMPLES.length - visCount;
+      $('kTotal').textContent = catalog.SAMPLES.length;
+      $('kVisible').textContent = visCount;
+      $('kHidden').textContent = hidCount;
+      $('kCats').textContent = catalog.CATEGORIES.length;
+
+      const cf = $('filterCat').value;
+      const sf = $('filterStatus').value;
+      const q = $('adminSearch').value.trim().toLowerCase();
+
+      const list = catalog.SAMPLES.filter(s => {
+        if (cf !== 'all' && s.cat !== cf) return false;
+        if (sf === 'visible' && s.hidden) return false;
+        if (sf === 'hidden' && !s.hidden) return false;
+        if (q && !(s.num + ' ' + s.title + ' ' + s.subtitle + ' ' + s.venue).toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      $('adminGrid').innerHTML = list.map(s => `
+        <article class="item-card ${s.hidden ? 'is-hidden' : ''}">
+          <div class="item-top">
+            ${s.img ? `<img src="${s.img}" alt="${s.title}" loading="lazy" />` : ''}
+            <div class="item-top-in">
+              <strong style="font-size:13px">#${s.num}</strong>
+              <span class="pill-status">${s.hidden ? 'Hidden' : 'Visible'}</span>
+            </div>
+          </div>
+          <div class="item-body">
+            <div class="item-title">${s.title}</div>
+            <div class="item-sub">${s.subtitle} · ${s.venue}</div>
+            <div class="item-row">
+              <select class="sel" data-cat-change="${s.num}">
+                ${catalog.CATEGORIES.map(c => `<option value="${c.id}" ${s.cat === c.id ? 'selected' : ''}>${c.short}</option>`).join('')}
+              </select>
+              <a class="btn btn-out btn-sm" href="${s.file}" target="_blank">View</a>
+              <button type="button" class="btn ${s.hidden ? 'btn-em' : 'btn-gold'} btn-sm" data-toggle="${s.num}" data-next="${s.hidden ? '0' : '1'}">
+                ${s.hidden ? 'Show' : 'Hide'}
+              </button>
+            </div>
+          </div>
+        </article>`).join('');
+    }
+
+    $('adminGrid').addEventListener('click', async e => {
+      const btn = e.target.closest('button[data-toggle]');
+      if (!btn) return;
+      const num = btn.dataset.toggle;
+      const hidden = btn.dataset.next === '1';
+      const r = await api('/api/admin/toggle', { method: 'POST', body: JSON.stringify({ num, hidden }) });
+      if (r.ok) {
+        showToast(hidden ? `#${num} hidden from production site` : `#${num} is now visible on site!`);
+        await loadCatalog();
+      }
+    });
+
+    $('adminGrid').addEventListener('change', async e => {
+      const sel = e.target.closest('select[data-cat-change]');
+      if (!sel) return;
+      const num = sel.dataset.catChange;
+      const cat = sel.value;
+      const r = await api('/api/admin/update', { method: 'POST', body: JSON.stringify({ num, cat }) });
+      if (r.ok) {
+        showToast(`Moved #${num} to ${cat}`);
+        await loadCatalog();
+      }
+    });
+
+    $('filterCat').addEventListener('change', renderDashboard);
+    $('filterStatus').addEventListener('change', renderDashboard);
+    $('adminSearch').addEventListener('input', renderDashboard);
+
+    $('openAddBtn').addEventListener('click', () => $('addModal').classList.add('open'));
+    $('closeAddBtn').addEventListener('click', () => $('addModal').classList.remove('open'));
+    $('cancelAddBtn').addEventListener('click', () => $('addModal').classList.remove('open'));
+
+    $('addForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const payload = Object.fromEntries(fd.entries());
+      const r = await api('/api/admin/add', { method: 'POST', body: JSON.stringify(payload) });
+      if (r.ok) {
+        $('addModal').classList.remove('open');
+        e.target.reset();
+        showToast(`Added #${r.sample.num} (${r.sample.title}) live!`);
+        await loadCatalog();
+      } else {
+        showToast(r.error || 'Could not add invitation');
+      }
+    });
+
+    $('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      $('loginErr').style.display = 'none';
+      const r = await api('/api/admin/login', { method: 'POST', body: JSON.stringify({ password: $('pwInput').value }) });
+      if (r.ok) {
+        adminToken = r.token;
+        sessionStorage.setItem('meem_admin_token', adminToken);
+        $('loginGate').style.display = 'none';
+        $('dashboard').style.display = 'block';
+        await loadCatalog();
+      } else {
+        $('loginErr').style.display = 'block';
+      }
+    });
+
+    $('logoutBtn').addEventListener('click', async () => {
+      await api('/api/admin/logout', { method: 'POST' });
+      adminToken = '';
+      sessionStorage.removeItem('meem_admin_token');
+      $('dashboard').style.display = 'none';
+      $('loginGate').style.display = 'flex';
+      $('pwInput').value = '';
+    });
+
+    // Check existing session on load
+    (async () => {
+      const st = await api('/api/admin/status');
+      if (st.authed) {
+        $('loginGate').style.display = 'none';
+        $('dashboard').style.display = 'block';
+        await loadCatalog();
+      }
+    })();
+  </script>
+</body>
+</html>

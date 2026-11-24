@@ -4,3 +4,4 @@ _archive-logos/
 .DS_Store
 Thumbs.db
 *.log
+data/admin-state.json

@@ -610,9 +610,11 @@
   }
   .pill-group {
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
     width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
   }
   .fpill {
     position: relative;
@@ -994,6 +996,7 @@
     .pill-group {
       display: flex;
       flex-wrap: nowrap;
+      max-width: 100%;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 9px;
@@ -1058,8 +1061,8 @@
         <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Create Your Invitation</a>
       </div>
       <div class="stats">
-        <div class="stat"><b>52</b><span>Distinct designs</span></div>
-        <div class="stat"><b>6</b><span>Curated aesthetics</span></div>
+        <div class="stat"><b id="statDesigns">35</b><span>Curated designs</span></div>
+        <div class="stat"><b id="statCats">7</b><span>Signature styles</span></div>
         <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
         <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
       </div>
@@ -1423,7 +1426,7 @@
           <h4>MEEM Invitation</h4>
           <p class="tier-sub">Elegant standalone digital invitation crafted to your style.</p>
           <ul class="tier-ul">
-            <li>Any of our 52 curated designs</li>
+            <li>Any of our curated signature designs</li>
             <li>Custom colors, song &amp; opening motion</li>
             <li>Live countdown &amp; Google Maps</li>
             <li>WhatsApp RSVP button</li>
@@ -1577,7 +1580,7 @@
       <details class="faq-item">
         <summary><span>Can I customise the colors &amp; language? · هل يمكن تعديل الألوان واللغة؟</span><span class="faq-plus">+</span></summary>
         <div class="faq-ans">Yes — every single design can be customised in <strong>100% Arabic, 100% English, or Bilingual</strong>, with your wedding's exact color palette and metallic finish.
-          <span class="ar-line">نعم، كل تصميم من الـ 52 متاح بالعربية أو الإنجليزية أو اللغتين معاً وبنفس ألوان ديكور فرحكم.</span>
+          <span class="ar-line">نعم، كل تصميم متاح بالعربية أو الإنجليزية أو اللغتين معاً وبنفس ألوان ديكور فرحكم.</span>
         </div>
       </details>
 
@@ -1625,48 +1628,53 @@
 
   /* ===== 1. BESPOKE ARCHED VENUE-THUMBNAIL FILTER & GALLERY ===== */
   let curCat = 'all';
+  const visibleSamples = () => S.SAMPLES.filter(s => !s.hidden);
   function countFor(catId) {
-    return catId === 'all' ? S.SAMPLES.length : S.SAMPLES.filter(s => s.cat === catId).length;
+    const vis = visibleSamples();
+    return catId === 'all' ? vis.length : vis.filter(s => s.cat === catId).length;
   }
   const CAT_THUMBS = {
     all: 'assets/images/mohamed-ali-palace.jpg',
-    motion: 'assets/images/love-story-couple.jpg',
-    cards: 'assets/images/french-gatefold-card.jpg',
-    interactive: 'assets/images/translucent-vellum-envelope.jpg',
-    royal: 'assets/images/classic-ivory-gold-crest.jpg',
+    luxury: 'assets/images/classic-ivory-gold-crest.jpg',
     floral: 'assets/images/dusty-rose-floral.jpg',
-    editorial: 'assets/images/polaroid-couple.jpg'
+    modern: 'assets/images/polaroid-couple.jpg',
+    royal: 'assets/images/midnight-gold-celestial.jpg',
+    arabic: 'assets/images/andalusian-arabesque-katb.jpg',
+    motion: 'assets/images/love-story-couple.jpg',
+    cards: 'assets/images/french-gatefold-card.jpg'
   };
   const ARCH_PLAY_SVG = '<span class="fpill-play-badge" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>';
 
-  $('catPills').innerHTML = `
-    <button type="button" class="fpill active" data-cat="all">
-      <div class="fpill-arch">
-        <img src="${CAT_THUMBS.all}" alt="All" loading="lazy">
-        <span class="fpill-count">${countFor('all')}</span>
-      </div>
-      <div class="fpill-txt">
-        <span class="fpill-name">All</span>
-        <span class="fpill-ar">الكل</span>
-      </div>
-    </button>` +
-    S.CATEGORIES.map(c => `
-    <button type="button" class="fpill" data-cat="${c.id}">
-      <div class="fpill-arch">
-        ${c.id === 'motion'
-          ? `<video autoplay muted loop playsinline poster="${CAT_THUMBS.motion}"><source src="assets/video/wedding-intro-loop.mp4" type="video/mp4"></video>${ARCH_PLAY_SVG}`
-          : `<img src="${CAT_THUMBS[c.id] || CAT_THUMBS.all}" alt="${c.short || c.title}" loading="lazy">`}
-        <span class="fpill-count">${countFor(c.id)}</span>
-      </div>
-      <div class="fpill-txt">
-        <span class="fpill-name">${c.short || c.title}</span>
-        <span class="fpill-ar">${c.ar || ''}</span>
-      </div>
-    </button>`).join('');
+  function renderCatPills() {
+    $('catPills').innerHTML = `
+      <button type="button" class="fpill${curCat === 'all' ? ' active' : ''}" data-cat="all">
+        <div class="fpill-arch">
+          <img src="${CAT_THUMBS.all}" alt="All" loading="lazy">
+          <span class="fpill-count">${countFor('all')}</span>
+        </div>
+        <div class="fpill-txt">
+          <span class="fpill-name">All</span>
+          <span class="fpill-ar">الكل</span>
+        </div>
+      </button>` +
+      S.CATEGORIES.map(c => `
+      <button type="button" class="fpill${curCat === c.id ? ' active' : ''}" data-cat="${c.id}">
+        <div class="fpill-arch">
+          ${c.id === 'motion'
+            ? `<video autoplay muted loop playsinline poster="${CAT_THUMBS.motion}"><source src="assets/video/wedding-intro-loop.mp4" type="video/mp4"></video>${ARCH_PLAY_SVG}`
+            : `<img src="${CAT_THUMBS[c.id] || CAT_THUMBS.all}" alt="${c.short || c.title}" loading="lazy">`}
+          <span class="fpill-count">${countFor(c.id)}</span>
+        </div>
+        <div class="fpill-txt">
+          <span class="fpill-name">${c.short || c.title}</span>
+          <span class="fpill-ar">${c.ar || ''}</span>
+        </div>
+      </button>`).join('');
+  }
 
   function renderDesigns() {
     const q = $('searchBox').value.trim().toLowerCase();
-    const list = S.SAMPLES.filter(s => {
+    const list = visibleSamples().filter(s => {
       if (curCat !== 'all' && s.cat !== curCat) return false;
       if (q) {
         const mb = s.moodboard ? `${s.moodboard.collection} ${s.moodboard.floral} ${s.moodboard.soundtrack}` : '';
@@ -1686,10 +1694,27 @@
     renderDesigns();
   });
   $('searchBox').addEventListener('input', renderDesigns);
-  renderDesigns();
 
   /* ===== 2. TRY IT LIVE STUDIO ===== */
-  $('d').innerHTML = S.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
+  function populateDesignSelects() {
+    const vis = visibleSamples();
+    const prevTry = $('d') ? $('d').value : '';
+    if ($('d')) {
+      $('d').innerHTML = vis.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
+      if (prevTry && vis.some(s => s.num === prevTry)) $('d').value = prevTry;
+    }
+    const prevB = $('bDesign') ? $('bDesign').value : '';
+    if ($('bDesign')) {
+      $('bDesign').innerHTML = `<option value="Not decided yet">I will choose with your team (سأختار معكم)</option>` +
+        vis.map(s => `<option value="#${s.num} — ${s.title}">#${s.num} — ${s.title}</option>`).join('');
+      if (prevB && Array.from($('bDesign').options).some(o => o.value === prevB)) $('bDesign').value = prevB;
+    }
+    if ($('statDesigns')) $('statDesigns').textContent = vis.length;
+    if ($('statCats')) $('statCats').textContent = S.CATEGORIES.length;
+  }
+  renderCatPills();
+  renderDesigns();
+  populateDesignSelects();
   let hasPhoto = false;
   const tryData = () => {
     const groom = $('cg').value.trim();
@@ -1717,6 +1742,7 @@
   };
   function updateTry() {
     const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
+    if (!s) return;
     $('frame').src = Shell.buildUrl(s.file, x, true);
     $('full').href = Shell.buildUrl(s.file, x);
     $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${x.table ? ' (with table seating on phone)' : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
@@ -1830,10 +1856,6 @@
   if ($('addonMultiWa')) $('addonMultiWa').href = Shell.wa('Hello MEEM! I would like to add Multi-Version & Bilingual Invitation Links to my order.');
 
   /* ===== 3. BUILD YOUR WEDDING EXPERIENCE & 4 TIERS ===== */
-  if ($('bDesign')) {
-    $('bDesign').innerHTML = `<option value="Not decided yet">I will choose with your team (سأختار معكم)</option>` +
-      S.SAMPLES.map(s => `<option value="#${s.num} — ${s.title}">#${s.num} — ${s.title}</option>`).join('');
-  }
   const TIER_PRESETS = {
     invitation: { label: 'MEEM Invitation', keys: ['invite'] },
     plus:       { label: 'MEEM Plus',       keys: ['invite', 'seating', 'reels'] },
@@ -1872,5 +1894,21 @@
   if ($('bDesign')) $('bDesign').addEventListener('change', updateBuilder);
   if ($('bEvent')) $('bEvent').addEventListener('change', updateBuilder);
   updateBuilder();
+
+  /* ===== 4. HYDRATE LIVE ADMIN CATALOG OVERRIDES ===== */
+  fetch('/api/catalog', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (!data || !Array.isArray(data.SAMPLES) || !data.SAMPLES.length) return;
+      S.SAMPLES = data.SAMPLES;
+      if (Array.isArray(data.CATEGORIES) && data.CATEGORIES.length) S.CATEGORIES = data.CATEGORIES;
+      const prevTry = $('d') ? $('d').value : '';
+      renderCatPills();
+      renderDesigns();
+      populateDesignSelects();
+      if ($('d') && $('d').value !== prevTry) updateTry();
+      updateBuilder();
+    })
+    .catch(() => {});
 </script>
 </body></html>
