@@ -842,87 +842,81 @@
   MOODS.celestial = MOODS.bridgerton;
   MOODS.mediterranean = MOODS.perfect;
 
-  // Real Egyptian & Wedding MP3 tracks (all trimmed to start immediately on the words or main melody)
+  // Real Egyptian & Wedding MP3 tracks (exact Instagram Stories timestamps & studio audio)
   const AUDIO_TRACKS = {
-    // 1. Instrumental Music Only (موسيقى الأغاني بدون غناء)
+    // 1. Luxury, Classical & Piano Covers
+    young_and_beautiful: '../assets/audio/young-and-beautiful.mp3',
+    another_love_piano: '../assets/audio/another-love-piano.mp3',
+    bridgerton_beckman: '../assets/audio/bridgerton-beckman.mp3',
+    golden_hour: '../assets/audio/golden-hour.mp3',
+    taylor_enchanted: '../assets/audio/taylor-enchanted.mp3',
+
+    // 2. Instrumental Music Only (موسيقى وعزف بدون غناء)
+    alexis_tamally_maak: '../assets/audio/alexis-tamally-maak.mp3',
+    nagham_qesset_hob: '../assets/audio/nagham-qesset-hob.mp3',
+    yara_beit_habibi_inst: '../assets/audio/yara-beit-habibi-inst.mp3',
     om_kalthoum_inst: '../assets/audio/om-kalthoum-instrumental.mp3',
     farha_inst: '../assets/audio/farha-instrumental.mp3',
     egyptian_zaffa: '../assets/audio/egyptian-zaffa.mp3',
     sammoo_besm_allah: '../assets/audio/egyptian-zaffa.mp3',
     thousand_years_inst: '../assets/audio/thousand-years-instrumental.mp3',
-    bridgerton: '../assets/audio/thousand-years-instrumental.mp3',
-    canon_in_d: '../assets/audio/thousand-years-instrumental.mp3',
-    classic: '../assets/audio/thousand-years-instrumental.mp3',
-    romantic_piano: '../assets/audio/thousand-years-instrumental.mp3',
-    liquid_chromium: '../assets/audio/om-kalthoum-instrumental.mp3',
-    celestial: '../assets/audio/thousand-years-instrumental.mp3',
+    classic_romance_inst: '../assets/audio/classic-romance-inst.mp3',
 
-    // 2. Original Vocal Marriage Songs (تبدأ بالكلمات مباشرة)
+    // Legacy mood aliases safely mapped to active studio tracks
+    bridgerton: '../assets/audio/bridgerton-beckman.mp3',
+    canon_in_d: '../assets/audio/bridgerton-beckman.mp3',
+    classic: '../assets/audio/classic-romance-inst.mp3',
+    romantic_piano: '../assets/audio/another-love-piano.mp3',
+    liquid_chromium: '../assets/audio/another-love-piano.mp3',
+    celestial: '../assets/audio/young-and-beautiful.mp3',
+
+    // 3. Arabic & Henna Songs (أغاني أفراح وحنة)
+    elissa_ayshalak: '../assets/audio/elissa-ayshalak.mp3',
+    elissa_men_awal: '../assets/audio/elissa-men-awal-deqiqa.mp3',
+    amina_okbal_andoko: '../assets/audio/amina-okbal-andoko.mp3',
     om_kalthoum: '../assets/audio/om-kalthoum-alf-leila.mp3',
     farha_katb: '../assets/audio/farha-katb.mp3',
     katb_ketab: '../assets/audio/farha-instrumental.mp3',
     esseily_einy: '../assets/audio/esseily-einy-shayfa.mp3',
     esseily_wakheeran: '../assets/audio/esseily-wakheeran.mp3',
-    jassmi_zaffa: '../assets/audio/jassmi-zaffa.mp3',
-    jassmi_seta: '../assets/audio/jassmi-seta-el-sobah.mp3',
     tamer_helm: '../assets/audio/tamer-helm-seneen.mp3',
     ramy_mabrook: '../assets/audio/ramy-sabry-mabrook.mp3',
     amr_nour: '../assets/audio/amr-diab-nour-el-ein.mp3',
     hakim_kolo_yorkos: '../assets/audio/hakim-kolo-yorkos.mp3',
-    hakim_el_wad: '../assets/audio/hakim-el-wad-da-helw.mp3',
     oriental: '../assets/audio/hakim-kolo-yorkos.mp3',
+
+    // 4. English Romantic Wedding Songs
     a_thousand_years: '../assets/audio/a-thousand-years.mp3',
     ed_perfect: '../assets/audio/ed-sheeran-perfect.mp3',
-    cant_help_falling: '../assets/audio/cant-help-falling.mp3',
-    until_i_found_you: '../assets/audio/until-i-found-you.mp3',
-    classic_romance_inst: '../assets/audio/classic-romance-inst.mp3',
-    einaudi_experience: '../assets/audio/einaudi-experience.mp3',
-    clair_de_lune: '../assets/audio/clair-de-lune.mp3',
-    golden_hour: '../assets/audio/golden-hour.mp3',
-    young_and_beautiful: '../assets/audio/young-and-beautiful.mp3',
-    taylor_enchanted: '../assets/audio/taylor-enchanted.mp3',
-    amr_tamally_maak: '../assets/audio/amr-tamally-maak.mp3',
-    elissa_men_awal: '../assets/audio/elissa-men-awal-deqiqa.mp3',
     perfect: '../assets/audio/ed-sheeran-perfect.mp3',
-    sahel_sunset: '../assets/audio/farha-katb.mp3',
-    mediterranean: '../assets/audio/amr-diab-nour-el-ein.mp3'
+    sahel_sunset: '../assets/audio/alexis-tamally-maak.mp3',
+    mediterranean: '../assets/audio/alexis-tamally-maak.mp3'
   };
 
-  // Curated Egyptian Wedding Song & Instrumental Mixes
+  // Curated Wedding Song & Instrumental Mixes
   const AUDIO_MIXES = {
     english_mix: [
-      '../assets/audio/ed-sheeran-perfect.mp3',
+      '../assets/audio/young-and-beautiful.mp3',
+      '../assets/audio/another-love-piano.mp3',
       '../assets/audio/a-thousand-years.mp3',
-      '../assets/audio/cant-help-falling.mp3',
-      '../assets/audio/until-i-found-you.mp3',
-      '../assets/audio/classic-romance-inst.mp3'
+      '../assets/audio/ed-sheeran-perfect.mp3'
     ],
     instrumental_mix: [
+      '../assets/audio/alexis-tamally-maak.mp3',
+      '../assets/audio/nagham-qesset-hob.mp3',
+      '../assets/audio/bridgerton-beckman.mp3',
       '../assets/audio/om-kalthoum-instrumental.mp3',
-      '../assets/audio/farha-instrumental.mp3',
-      '../assets/audio/classic-romance-inst.mp3',
-      '../assets/audio/thousand-years-instrumental.mp3'
-    ],
-    egyptian_mix: [
-      '../assets/audio/jassmi-zaffa.mp3',
-      '../assets/audio/farha-katb.mp3',
-      '../assets/audio/tamer-helm-seneen.mp3',
-      '../assets/audio/ramy-sabry-mabrook.mp3',
-      '../assets/audio/esseily-einy-shayfa.mp3',
-      '../assets/audio/om-kalthoum-alf-leila.mp3'
+      '../assets/audio/farha-instrumental.mp3'
     ],
     esseily_mix: [
       '../assets/audio/farha-katb.mp3',
       '../assets/audio/esseily-einy-shayfa.mp3',
       '../assets/audio/esseily-wakheeran.mp3'
     ],
-    jassmi_mix: [
-      '../assets/audio/jassmi-zaffa.mp3',
-      '../assets/audio/jassmi-seta-el-sobah.mp3'
-    ],
-    hakim_mix: [
-      '../assets/audio/hakim-kolo-yorkos.mp3',
-      '../assets/audio/hakim-el-wad-da-helw.mp3'
+    henna_mix: [
+      '../assets/audio/amina-okbal-andoko.mp3',
+      '../assets/audio/yara-beit-habibi-inst.mp3',
+      '../assets/audio/hakim-kolo-yorkos.mp3'
     ]
   };
 
@@ -959,7 +953,7 @@
     const bodyMusicSrc = (document.body && document.body.dataset.musicSrc) || '';
     const chosenMood = customSong
       ? customSong
-      : (mood || bodyMood || currentMood || 'egyptian_mix');
+      : (mood || bodyMood || currentMood || 'alexis_tamally_maak');
     if (chosenMood === 'silent' || chosenMood === 'none' || chosenMood === 'mute') return;
     currentMood = chosenMood;
     if (musicPlaying) return;

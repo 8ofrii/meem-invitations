@@ -169,7 +169,7 @@
     @media (max-width: 480px) { .sched-cols { grid-template-columns: 1fr; } }
   </style>
 </head>
-<body class="wi-scroll-locked" data-music-mood="clair_de_lune" data-venue-img="../assets/images/sofitel-gezirah.jpg" data-venue-label="Gezira Sporting Club • Zamalek, Cairo">
+<body class="wi-scroll-locked" data-music-mood="another_love_piano" data-venue-img="../assets/images/sofitel-gezirah.jpg" data-venue-label="Gezira Sporting Club • Zamalek, Cairo">
   <div id="paper-cover" role="dialog" aria-label="Unfold Wedding Newspaper">
     <div class="folded-edition">
       <div class="extra-badge">Special Zamalek Edition • Extra!</div>
@@ -299,7 +299,7 @@
     document.getElementById('unfoldPaperBtn').addEventListener('click', (e) => {
       WeddingSound.playPageTurn();
       WeddingMotion.spawnRipple(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
-      WeddingSound.startMusic('clair_de_lune');
+      WeddingSound.startMusic('another_love_piano');
       document.getElementById('paper-cover').classList.add('is-open');
       document.body.classList.remove('wi-scroll-locked');
     });

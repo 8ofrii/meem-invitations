@@ -123,7 +123,7 @@
     @media (max-width: 600px) { .card { padding: 34px 18px; } }
   </style>
 </head>
-<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="until_i_found_you" data-venue-img="../assets/images/nile-ritz-carlton.jpg" data-venue-label="The Nile Ritz-Carlton • Downtown Cairo">
+<body class="wi-scroll-locked" data-particles="gold-dust" data-music-mood="a_thousand_years" data-venue-img="../assets/images/nile-ritz-carlton.jpg" data-venue-label="The Nile Ritz-Carlton • Downtown Cairo">
 
   <div id="vinyl-cover" role="dialog" aria-label="Spin Vinyl Record to Open Invitation">
     <div class="turntable" id="turntable">
@@ -235,7 +235,7 @@
       if (tt.classList.contains('is-spinning')) return;
       tt.classList.add('is-spinning');
       WeddingSound.playSparkle();
-      WeddingSound.startMusic('until_i_found_you');
+      WeddingSound.startMusic('a_thousand_years');
       WeddingMotion.burstGoldenLight((e && e.clientX) || window.innerWidth / 2, (e && e.clientY) || window.innerHeight / 2);
       setTimeout(() => { cover.classList.add('is-open'); document.body.classList.remove('wi-scroll-locked'); }, 1050);
     }

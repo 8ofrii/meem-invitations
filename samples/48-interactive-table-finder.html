@@ -27,7 +27,7 @@
     .btn-em{background:var(--em);color:#fff} .btn-g{border:1px solid var(--gold);color:var(--em);background:#fff}
   </style>
 </head>
-<body data-music-mood="egyptian_mix">
+<body data-music-mood="nagham_qesset_hob">
   <main class="wrap">
     <div class="hero-card" id="startMusicCard">
       <img src="../assets/images/tagamoa-mirage-palace.jpg" alt="JW Marriott Mirage City" />
@@ -96,13 +96,13 @@
         document.getElementById('seatZone').textContent = 'القاعة الكبرى — منطقة الضيوف المميزين';
         document.getElementById('seatNum').textContent = 'طاولة ٠٨';
       }
-      try { WeddingSound.startMusic('egyptian_mix'); } catch(_) {}
+      try { WeddingSound.startMusic('nagham_qesset_hob'); } catch(_) {}
     }
     document.getElementById('tableSearch').addEventListener('input', e => lookup(e.target.value));
     document.getElementById('demoGuests').addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
       document.getElementById('tableSearch').value = b.dataset.q; lookup(b.dataset.q);
     });
-    document.getElementById('startMusicCard').addEventListener('click', () => { try { WeddingSound.startMusic('egyptian_mix'); } catch(_) {} });
+    document.getElementById('startMusicCard').addEventListener('click', () => { try { WeddingSound.startMusic('nagham_qesset_hob'); } catch(_) {} });
   </script>
 </body></html>

@@ -101,7 +101,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Ludovico Einaudi — Experience",
+        "soundtrack": "Thomas Beckman — Bridgerton Music",
         "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
         "mood": "Classic, refined & nostalgic",
         "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
@@ -138,7 +138,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience",
+        "soundtrack": "Thomas Beckman — Bridgerton Music",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Warm Taupe · Champagne Gold · Alabaster Ivory · Emerald Sage",
@@ -216,7 +216,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)",
+        "soundtrack": "Alexis Quiroz — تملي معاك",
         "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
         "mood": "Dramatic, cinematic & glamorous",
         "paletteNames": "Starlight Gold · Blush Gold · Velvet Crimson · Warm Pearl",
@@ -254,7 +254,7 @@ window.SITE = {
         ],
         "typography": "Aref Ruqaa · Amiri · Cairo",
         "floral": "White Magnolia Blossoms, Pearls & Cream Satin Ribbon",
-        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar",
+        "soundtrack": "Elissa — Ayshalak (عايشالك)",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Silk Ivory · Champagne Gold · Warm Cocoa · Olive Leaf",
@@ -369,7 +369,7 @@ window.SITE = {
         ],
         "typography": "Great Vibes · Cormorant Garamond · Amiri",
         "floral": "Eucalyptus Branches, Gold Twine & Olive Wax Seal",
-        "soundtrack": "Ludovico Einaudi — Experience",
+        "soundtrack": "Thomas Beckman — Bridgerton Music",
         "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
         "mood": "Soft, dreamy & romantic",
         "paletteNames": "Linen Ivory · Botanical Emerald · Brushed Gold · Eucalyptus Sage",
@@ -408,7 +408,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Can't Help Falling In Love Medley",
+        "soundtrack": "Tom Odell — Another Love (Piano Glow)",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Pure White · Champagne Gold · Alabaster Ivory · Emerald Sage",
@@ -447,7 +447,7 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)",
+        "soundtrack": "Alexis Quiroz — تملي معاك",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Blush Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
@@ -486,7 +486,7 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "Ludovico Einaudi — Experience",
+        "soundtrack": "Thomas Beckman — Bridgerton Music",
         "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
         "mood": "Chic, editorial & contemporary",
         "paletteNames": "Midnight Onyx · Liquid Silver · Pure White · Royal Sapphire",
@@ -561,7 +561,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Stephen Sanchez — Until I Found You",
+        "soundtrack": "Christina Perri — A Thousand Years",
         "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
         "mood": "Classic, refined & nostalgic",
         "paletteNames": "Blush Gold · Warm Taupe · Warm Ivory · Burnished Gold",
@@ -637,7 +637,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Claude Debussy — Clair de Lune",
+        "soundtrack": "Tom Odell — Another Love (Piano Glow)",
         "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
         "mood": "Classic, refined & nostalgic",
         "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
@@ -675,7 +675,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar",
+        "soundtrack": "Elissa — Ayshalak (عايشالك)",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Soft Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
@@ -942,7 +942,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Egyptian Wedding Grand Mix",
+        "soundtrack": "Nagham Debal — قصة حب عزف",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Champagne Gold · Alabaster Ivory · Emerald Sage",
@@ -1020,7 +1020,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Hakim — El Wad Da Helw (حكيم — الواد ده حلو)",
+        "soundtrack": "أمينة — عقبال عندكوا (حنة)",
         "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
         "mood": "Soft, dreamy & romantic",
         "paletteNames": "Blush Gold · Warm Taupe · Warm Ivory · Bronze Gold",
@@ -1214,7 +1214,7 @@ window.SITE = {
         ],
         "typography": "Aref Ruqaa · Amiri · Cairo",
         "floral": "Guipure Floral Lace, Teardrop Pearls & Organza Bow",
-        "soundtrack": "Hussain Al Jassmi — Seta El Sobah",
+        "soundtrack": "Nagham Debal — قصة حب عزف",
         "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
         "mood": "Classic, refined & nostalgic",
         "paletteNames": "Bridal Ivory · Rose Gold · Espresso Bronze · Warm Satin",
@@ -1448,7 +1448,7 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar",
+        "soundtrack": "Elissa — Ayshalak (عايشالك)",
         "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
         "mood": "Regal, opulent & timeless",
         "paletteNames": "Blush Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
@@ -1487,7 +1487,7 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)",
+        "soundtrack": "Alexis Quiroz — تملي معاك",
         "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
         "mood": "Dramatic, cinematic & glamorous",
         "paletteNames": "Royal Burgundy · Blush Gold · Velvet Crimson · Warm Pearl",
@@ -1562,7 +1562,7 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Claude Debussy — Clair de Lune",
+        "soundtrack": "Tom Odell — Another Love (Piano Glow)",
         "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
         "mood": "Classic, refined & nostalgic",
         "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
@@ -2280,88 +2280,102 @@ window.SITE = {
   ],
   "SONGS": [
     {
-      "key": "einaudi_experience",
-      "label": "Ludovico Einaudi — Experience (Old Money / Luxury Piano & Strings)",
-      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
-      "file": "assets/audio/einaudi-experience.mp3",
+      "key": "young_and_beautiful",
+      "label": "Lana Del Rey — Young & Beautiful (00:11 – 00:45)",
+      "group": "Luxury, Cinema & Piano — موسيقى فاخرة وبيانو",
+      "file": "assets/audio/young-and-beautiful.mp3",
       "hidden": false
     },
     {
-      "key": "clair_de_lune",
-      "label": "Claude Debussy — Clair de Lune (Royal Classical Piano)",
-      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
-      "file": "assets/audio/clair-de-lune.mp3",
+      "key": "another_love_piano",
+      "label": "Tom Odell — Another Love · Piano Glow (00:01 – 00:33)",
+      "group": "Luxury, Cinema & Piano — موسيقى فاخرة وبيانو",
+      "file": "assets/audio/another-love-piano.mp3",
+      "hidden": false
+    },
+    {
+      "key": "bridgerton_beckman",
+      "label": "Thomas Beckman — Bridgerton Music (00:05 – 00:20)",
+      "group": "Luxury, Cinema & Piano — موسيقى فاخرة وبيانو",
+      "file": "assets/audio/bridgerton-beckman.mp3",
       "hidden": false
     },
     {
       "key": "golden_hour",
       "label": "JVKE — Golden Hour (Modern Minimal & Editorial)",
-      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "group": "Luxury, Cinema & Piano — موسيقى فاخرة وبيانو",
       "file": "assets/audio/golden-hour.mp3",
-      "hidden": false
-    },
-    {
-      "key": "young_and_beautiful",
-      "label": "Lana Del Rey — Young and Beautiful (Royal & Dramatic)",
-      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
-      "file": "assets/audio/young-and-beautiful.mp3",
       "hidden": false
     },
     {
       "key": "taylor_enchanted",
       "label": "Taylor Swift — Enchanted (Soft Floral & Dreamy)",
-      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "group": "Luxury, Cinema & Piano — موسيقى فاخرة وبيانو",
       "file": "assets/audio/taylor-enchanted.mp3",
       "hidden": false
     },
     {
-      "key": "amr_tamally_maak",
-      "label": "Amr Diab — Tamally Maak Instrumental (موسيقى تملي معاك بدون غناء)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
-      "file": "assets/audio/amr-tamally-maak.mp3",
+      "key": "alexis_tamally_maak",
+      "label": "Alexis Quiroz — تملي معاك · Tamally Maak (00:36 – 01:11)",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
+      "file": "assets/audio/alexis-tamally-maak.mp3",
+      "hidden": false
+    },
+    {
+      "key": "nagham_qesset_hob",
+      "label": "Nagham Debal — قصة حب عزف قانون (00:44 – 01:12)",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
+      "file": "assets/audio/nagham-qesset-hob.mp3",
       "hidden": false
     },
     {
       "key": "om_kalthoum_inst",
       "label": "Umm Kulthum — Alf Leila w Leila Music (موسيقى ألف ليلة وليلة بدون غناء)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
       "file": "assets/audio/om-kalthoum-instrumental.mp3",
       "hidden": false
     },
     {
       "key": "farha_inst",
       "label": "Mahmoud El Esseily — Farha Music (موسيقى أغنية فرحة — كتب كتاب بدون غناء)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
       "file": "assets/audio/farha-instrumental.mp3",
       "hidden": false
     },
     {
       "key": "egyptian_zaffa",
       "label": "Royal Egyptian Zaffa Music (موسيقى زفة مصرية ملكية بدون غناء)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
       "file": "assets/audio/egyptian-zaffa.mp3",
       "hidden": false
     },
     {
       "key": "thousand_years_inst",
       "label": "A Thousand Years — Piano & Cello Music (موسيقى بيانو وتشيللو بدون غناء)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
       "file": "assets/audio/thousand-years-instrumental.mp3",
       "hidden": false
     },
     {
       "key": "classic_romance_inst",
       "label": "Classic Romance Orchestra (موسيقى أوركسترا رومانسية كلاسيكية)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
       "file": "assets/audio/classic-romance-inst.mp3",
       "hidden": false
     },
     {
       "key": "instrumental_mix",
       "label": "Instrumental Wedding Mix (ميكس موسيقى هادئة بدون غناء)",
-      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
-      "file": "assets/audio/om-kalthoum-instrumental.mp3",
+      "group": "Instrumental & Arabic Melodies — موسيقى وعزف بدون غناء",
+      "file": "assets/audio/alexis-tamally-maak.mp3",
       "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "elissa_ayshalak",
+      "label": "Elissa — Ayshalak (إليسا — عايشالك · 00:01 – 00:36)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/elissa-ayshalak.mp3",
       "hidden": false
     },
     {
@@ -2393,20 +2407,6 @@ window.SITE = {
       "hidden": false
     },
     {
-      "key": "jassmi_zaffa",
-      "label": "Hussain Al Jassmi — Sharaft Aghla El Bashar (حسين الجسمي — شرفت أغلى البشر)",
-      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
-      "file": "assets/audio/jassmi-zaffa.mp3",
-      "hidden": false
-    },
-    {
-      "key": "jassmi_seta",
-      "label": "Hussain Al Jassmi — Seta El Sobah (حسين الجسمي — ستة الصبح)",
-      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
-      "file": "assets/audio/jassmi-seta-el-sobah.mp3",
-      "hidden": false
-    },
-    {
       "key": "om_kalthoum",
       "label": "Umm Kulthum — Alf Leila w Leila (أم كلثوم — ألف ليلة وليلة الأصلية)",
       "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
@@ -2435,17 +2435,39 @@ window.SITE = {
       "hidden": false
     },
     {
+      "key": "yara_beit_habibi_inst",
+      "label": "بيت حبيبي — عزف يارا (حنة · Beit Habibi Instrumental)",
+      "group": "Henna & Celebration — أغاني وعزف الحنة",
+      "file": "assets/audio/yara-beit-habibi-inst.mp3",
+      "hidden": false
+    },
+    {
+      "key": "amina_okbal_andoko",
+      "label": "عقبال عندكوا — أمينة (حنة · 00:32 – 00:47)",
+      "group": "Henna & Celebration — أغاني وعزف الحنة",
+      "file": "assets/audio/amina-okbal-andoko.mp3",
+      "hidden": false
+    },
+    {
       "key": "hakim_kolo_yorkos",
-      "label": "Hakim — Kollo Yourkos (حكيم — كله يرقص · أغنية رقص وحنة)",
-      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "label": "Hakim — Kollo Yourkos (حكيم — كله يرقص · حنة ورقص)",
+      "group": "Henna & Celebration — أغاني وعزف الحنة",
       "file": "assets/audio/hakim-kolo-yorkos.mp3",
       "hidden": false
     },
     {
-      "key": "hakim_el_wad",
-      "label": "Hakim — El Wad Da Helw (حكيم — الواد ده حلو · أغنية رقص وفرح)",
-      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
-      "file": "assets/audio/hakim-el-wad-da-helw.mp3",
+      "key": "henna_mix",
+      "label": "Henna & Dance Mix (كوكتيل حنة: أمينة · بيت حبيبي · حكيم)",
+      "group": "Henna & Celebration — أغاني وعزف الحنة",
+      "file": "assets/audio/amina-okbal-andoko.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "a_thousand_years",
+      "label": "Christina Perri — A Thousand Years (00:10 – 00:30)",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
+      "file": "assets/audio/a-thousand-years.mp3",
       "hidden": false
     },
     {
@@ -2456,70 +2478,25 @@ window.SITE = {
       "hidden": false
     },
     {
-      "key": "a_thousand_years",
-      "label": "Christina Perri — A Thousand Years (الأغنية الأصلية)",
-      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
-      "file": "assets/audio/a-thousand-years.mp3",
-      "hidden": false
-    },
-    {
-      "key": "cant_help_falling",
-      "label": "Beautiful In White & Can't Help Falling In Love Medley",
-      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
-      "file": "assets/audio/cant-help-falling.mp3",
-      "hidden": false
-    },
-    {
-      "key": "until_i_found_you",
-      "label": "Stephen Sanchez — Until I Found You (Romantic Violin)",
-      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
-      "file": "assets/audio/until-i-found-you.mp3",
-      "hidden": false
-    },
-    {
       "key": "english_mix",
       "label": "English Romantic Wedding Mix (ميكس أغاني إنجليزية رومانسية)",
       "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
-      "file": "assets/audio/ed-sheeran-perfect.mp3",
-      "isMix": true,
-      "hidden": false
-    },
-    {
-      "key": "egyptian_mix",
-      "label": "Egyptian Wedding Grand Mix (كوكتيل أفراح مصري: الجسمي · العسيلي · تامر · رامي)",
-      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
-      "file": "assets/audio/jassmi-zaffa.mp3",
-      "isMix": true,
-      "hidden": false
-    },
-    {
-      "key": "jassmi_mix",
-      "label": "Hussain Al Jassmi Marriage Mix (ميكس أفراح حسين الجسمي)",
-      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
-      "file": "assets/audio/jassmi-zaffa.mp3",
+      "file": "assets/audio/young-and-beautiful.mp3",
       "isMix": true,
       "hidden": false
     },
     {
       "key": "esseily_mix",
       "label": "Mahmoud El Esseily Marriage Mix (ميكس أفراح محمود العسيلي)",
-      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
       "file": "assets/audio/farha-katb.mp3",
-      "isMix": true,
-      "hidden": false
-    },
-    {
-      "key": "hakim_mix",
-      "label": "Hakim Ra2s & Henna Dance Mix (ميكس رقص وحنة — حكيم)",
-      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
-      "file": "assets/audio/hakim-kolo-yorkos.mp3",
       "isMix": true,
       "hidden": false
     },
     {
       "key": "silent",
       "label": "Silent — No Audio (بدون صوت)",
-      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "group": "Silent — بدون صوت",
       "file": "",
       "hidden": false
     }
