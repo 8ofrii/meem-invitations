@@ -225,90 +225,75 @@ section[id] { scroll-margin-top: 82px; }
 .g4 { grid-template-columns: repeat(4,1fr); }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 20px; }
 
-/* Sample card — 6 Distinct Editorial Aesthetic Styles */
+/* Sample card — Clean Uniform Rounded Edges & Compact Luxury Proportions */
 .sample-card {
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 22px;
+  border: 1.5px solid rgba(197, 160, 89, 0.34);
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-  box-shadow: 0 10px 30px rgba(45, 35, 20, 0.05);
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+  box-shadow: 0 10px 28px rgba(45, 35, 20, 0.05);
   position: relative;
 }
 .sample-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--gold);
-  box-shadow: 0 22px 50px rgba(45, 35, 20, 0.12);
+  box-shadow: 0 20px 44px rgba(45, 35, 20, 0.11);
 }
 
-/* Style 1: Luxury / Royal Affair — Double Champagne Gold Frame */
+/* 6 Aesthetic Tints (All sharing crisp uniform 20px outer edges) */
 .sample-card[data-aes="luxury"] {
   background: linear-gradient(175deg, #FFFFFF 0%, #FAF5EA 100%);
-  border: 1.5px solid rgba(197, 160, 89, 0.48);
-  box-shadow: 0 12px 34px rgba(13, 59, 46, 0.07), inset 0 0 0 4px rgba(255, 253, 249, 0.9);
+  border-color: rgba(197, 160, 89, 0.48);
 }
 .sample-card[data-aes="luxury"]::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, #0D3B2E, #C5A059, #0D3B2E); z-index: 4;
 }
-
-/* Style 2: Floral / Garden Story — Soft Sculpted Arch & Blush Ivory */
 .sample-card[data-aes="floral"] {
   background: linear-gradient(175deg, #FFFDFC 0%, #FAF1EE 100%);
-  border: 1px solid rgba(196, 150, 140, 0.38);
-  border-radius: 28px 28px 22px 22px;
+  border-color: rgba(196, 150, 140, 0.4);
 }
-.sample-card[data-aes="floral"] .card-thumb {
-  border-radius: 0 0 38px 38px;
+.sample-card[data-aes="floral"]::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #5A7360, #EACBC4, #C5A059); z-index: 4;
 }
-
-/* Style 3: Modern Romance — Crisp Architectural Editorial Frame */
 .sample-card[data-aes="modern"] {
   background: #FFFFFF;
-  border: 1px solid rgba(30, 41, 59, 0.16);
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  border-color: rgba(30, 41, 59, 0.18);
 }
 .sample-card[data-aes="modern"]::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, #1E293B, #94A3B8, #C5A059); z-index: 4;
 }
-
-/* Style 4: Classic Edit — Warm Parchment Heirloom Stationery */
 .sample-card[data-aes="classic"] {
   background: linear-gradient(175deg, #FFFDF8 0%, #F5EDE0 100%);
-  border: 1.5px solid rgba(140, 103, 33, 0.34);
-  border-radius: 18px;
+  border-color: rgba(140, 103, 33, 0.36);
 }
-
-/* Style 5: Midnight Love — Dramatic Velvet Accent & Gold Rim */
+.sample-card[data-aes="classic"]::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #6D1D2A, #C5A059, #8C6721); z-index: 4;
+}
 .sample-card[data-aes="midnight"] {
   background: linear-gradient(175deg, #FFFFFF 0%, #F4F1EC 100%);
-  border: 1.5px solid rgba(13, 24, 34, 0.24);
-  box-shadow: 0 14px 36px rgba(11, 14, 24, 0.10);
+  border-color: rgba(13, 24, 34, 0.26);
 }
 .sample-card[data-aes="midnight"]::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3.5px;
   background: linear-gradient(90deg, #0B0E18, #D9B777, #2D0B14); z-index: 4;
 }
-
-/* Style 6: Art of Katb Ketab — Serene Emerald-Jade Arch Trim */
 .sample-card[data-aes="katb"] {
   background: linear-gradient(175deg, #FFFFFF 0%, #F2F7F4 100%);
-  border: 1.5px solid rgba(13, 59, 46, 0.26);
-  border-radius: 26px 26px 20px 20px;
-}
-.sample-card[data-aes="katb"] .card-thumb {
-  border-radius: 0 0 28px 28px;
+  border-color: rgba(13, 59, 46, 0.28);
 }
 .sample-card[data-aes="katb"]::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3.5px;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, #0C3B2D, #D7B067, #0C3B2D); z-index: 4;
 }
 
-.card-thumb { height: 204px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 22px; text-align: center; }
+.card-thumb { height: 170px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 18px; text-align: center; }
 .card-thumb img.bg-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .88; transition: transform .6s ease; }
 .card-thumb.has-art::before {
   content: '';
@@ -320,39 +305,45 @@ section[id] { scroll-margin-top: 82px; }
 }
 .sample-card:hover .bg-art { transform: scale(1.06); }
 .thumb-inner { position: relative; z-index: 2; }
-.badge-row { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; z-index: 3; }
+.badge-row { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; z-index: 3; }
 .badge {
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .09em;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.94);
   color: var(--gold-2);
   border: 1px solid var(--gold-dim);
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
-.badge.plain { color: #1C1917; border-color: rgba(0,0,0,0.08); background: rgba(255, 255, 255, 0.90); }
-.card-body { padding: 20px 20px 22px; flex: 1; display: flex; flex-direction: column; }
-.card-title { font-family: 'Cormorant Garamond', serif; font-size: 25px; font-weight: 600; line-height: 1.15; margin: 0 0 10px; color: #0D3B2E; }
-.card-desc { font-size: 13px; color: #3D3831; line-height: 1.62; margin-bottom: 8px; }
+.badge.plain { color: #1C1917; border-color: rgba(0,0,0,0.08); background: rgba(255, 255, 255, 0.92); }
+.card-body { padding: 16px 17px 17px; flex: 1; display: flex; flex-direction: column; }
+.card-head-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.card-title { font-family: 'Cormorant Garamond', serif; font-size: 22.5px; font-weight: 600; line-height: 1.15; margin: 0; color: #0D3B2E; }
+.card-desc { font-size: 12.5px; color: #3D3831; line-height: 1.55; margin-bottom: 7px; }
 .card-insp {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-style: italic;
   color: #6B6156;
-  line-height: 1.45;
-  margin-bottom: 12px;
-  padding-left: 10px;
+  line-height: 1.4;
+  margin-bottom: 11px;
+  padding-left: 9px;
   border-left: 2px solid rgba(197, 160, 89, 0.55);
 }
 .card-specs {
   display: grid;
-  gap: 5px;
-  padding: 10px 12px;
+  gap: 4px;
+  padding: 8px 10px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(197, 160, 89, 0.24);
   margin-bottom: 12px;
   margin-top: auto;
@@ -367,9 +358,8 @@ section[id] { scroll-margin-top: 82px; }
   min-width: 0;
 }
 .card-spec-row span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-.chip { padding: 4px 10px; border-radius: 999px; background: rgba(244, 239, 230, 0.9); border: 1px solid rgba(197, 160, 89, 0.24); font-size: 10.5px; color: #4A423A; font-weight: 600; }
-.card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.card-actions .btn { padding: 10px 12px; font-size: 12.5px; white-space: nowrap; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 48px 0 28px; background: #F4EFE6; }
@@ -432,47 +422,17 @@ section[id] { scroll-margin-top: 82px; }
 }
 .close-modal:hover { transform: scale(1.06); background: #FAF7F2; }
 .tip { font-size: 12px; color: #4A423A; background: rgba(255, 255, 255, 0.92); border: 1px solid rgba(28, 25, 23, 0.10); padding: 12px; border-radius: 12px; }
-.card-palette-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
-  margin-bottom: 11px;
-  border-radius: 13px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(197, 160, 89, 0.28);
-}
-.card-swatches { display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.card-swatches { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .card-swatches span {
-  width: 21px;
-  height: 21px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 2px solid #FFFFFF;
-  box-shadow: 0 0 0 1px rgba(13, 59, 46, 0.2), 0 3px 8px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 0 1px rgba(13, 59, 46, 0.22), 0 3px 8px rgba(0, 0, 0, 0.16);
   display: block;
   transition: transform 0.2s ease;
 }
 .card-swatches span:hover { transform: scale(1.16); }
-.card-palette-names {
-  font-size: 11px;
-  font-weight: 600;
-  color: #5C5349;
-  line-height: 1.3;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.card-mood {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #9A7435;
-  margin-bottom: 4px;
-}
 .mb-insp { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14.5px; font-style: italic; color: #3D4A44; line-height: 1.4; margin: 0; padding-bottom: 4px; border-bottom: 1px dashed rgba(197, 160, 89, 0.3); }
 .moodboard-card {
   background: rgba(255, 253, 249, 0.96);

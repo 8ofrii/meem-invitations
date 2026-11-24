@@ -38,11 +38,7 @@
     const aes = s.aesthetic || 'luxury';
     const colTag = mb && mb.collection ? `<span class="badge">${mb.collection}</span>` : '';
     const paletteHtml = mb && mb.palette ? `
-      <div class="card-palette-bar">
-        <div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}" title="${c}"></span>`).join('')}</div>
-        <span class="card-palette-names">${mb.paletteNames || 'Curated Palette'}</span>
-      </div>` : '';
-    const moodLine = mb && mb.mood ? `<div class="card-mood">${mb.mood}</div>` : '';
+      <div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}" title="${c}"></span>`).join('')}</div>` : '';
     const inspLine = mb && mb.inspiration ? `<p class="card-insp">${mb.inspiration}</p>` : '';
     const soundLine = mb && mb.soundtrack ? `<div class="card-spec-row"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>${mb.soundtrack}</span></div>` : '';
     return `<article class="sample-card" data-aes="${aes}">
@@ -50,23 +46,23 @@
         ${hasImg ? `<img class="bg-art" src="${s.img}" alt="${s.title}" loading="lazy" decoding="async">` : ''}
         <div class="badge-row"><span class="badge plain">#${s.num}</span>${colTag}</div>
         <div class="thumb-inner">
-          <div class="serif" style="font-size:26px;line-height:1.15;color:${ac};text-shadow:${hasImg ? '0 2px 10px rgba(0,0,0,0.65)' : 'none'}">${s.title}</div>
-          <div class="arabic" style="font-size:16px;color:${sc};margin-top:6px;text-shadow:${hasImg ? '0 1px 6px rgba(0,0,0,0.65)' : 'none'}">${s.subtitle}</div>
+          <div class="serif" style="font-size:24px;line-height:1.15;color:${ac};text-shadow:${hasImg ? '0 2px 10px rgba(0,0,0,0.65)' : 'none'}">${s.title}</div>
+          <div class="arabic" style="font-size:15px;color:${sc};margin-top:5px;text-shadow:${hasImg ? '0 1px 6px rgba(0,0,0,0.65)' : 'none'}">${s.subtitle}</div>
         </div>
       </div>
       <div class="card-body">
-        ${moodLine}
-        <h3 class="card-title">${s.title}</h3>
-        ${paletteHtml}
+        <div class="card-head-row">
+          <h3 class="card-title">${s.title}</h3>
+          ${paletteHtml}
+        </div>
         <p class="card-desc">${s.desc}</p>
         ${inspLine}
         <div class="card-specs">
           <div class="card-spec-row"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${s.venue}</span></div>
           ${soundLine}
         </div>
-        <div class="chips">${s.features.map((f) => `<span class="chip">${f}</span>`).join('')}</div>
         <div class="card-actions">
-          <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">Experience this invitation →</button>
+          <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">Experience →</button>
           <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Customise</button>
         </div>
       </div>
