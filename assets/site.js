@@ -35,10 +35,17 @@
     const sc = hasImg ? '#F4E5C2' : (s.textDark ? 'rgba(29,27,24,.72)' : 'rgba(255,255,255,.78)');
     const ac = hasImg ? '#FFFFFF' : s.accent;
     const mb = s.moodboard || null;
+    const aes = s.aesthetic || 'luxury';
     const colTag = mb && mb.collection ? `<span class="badge">${mb.collection}</span>` : '';
-    const dots = mb && mb.palette ? `<div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}"></span>`).join('')}</div>` : '';
-    const moodLine = mb && mb.mood ? `<div class="card-mood">${mb.mood}${mb.paletteNames ? ' · ' + mb.paletteNames.split(' · ').slice(0, 2).join(' &amp; ') : ''}</div>` : '';
-    return `<article class="sample-card">
+    const paletteHtml = mb && mb.palette ? `
+      <div class="card-palette-bar">
+        <div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}" title="${c}"></span>`).join('')}</div>
+        <span class="card-palette-names">${mb.paletteNames || 'Curated Palette'}</span>
+      </div>` : '';
+    const moodLine = mb && mb.mood ? `<div class="card-mood">${mb.mood}</div>` : '';
+    const inspLine = mb && mb.inspiration ? `<p class="card-insp">${mb.inspiration}</p>` : '';
+    const soundLine = mb && mb.soundtrack ? `<div class="card-spec-row"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>${mb.soundtrack}</span></div>` : '';
+    return `<article class="sample-card" data-aes="${aes}">
       <div class="card-thumb ${hasImg ? 'has-art' : ''}" style="background:${s.bg};color:${tc}">
         ${hasImg ? `<img class="bg-art" src="${s.img}" alt="${s.title}" loading="lazy" decoding="async">` : ''}
         <div class="badge-row"><span class="badge plain">#${s.num}</span>${colTag}</div>
@@ -48,13 +55,15 @@
         </div>
       </div>
       <div class="card-body">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px;">
-          <h3 class="card-title" style="margin:0">${s.title}</h3>
-          ${dots}
-        </div>
         ${moodLine}
-        <div class="card-venue"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${s.venue}</div>
+        <h3 class="card-title">${s.title}</h3>
+        ${paletteHtml}
         <p class="card-desc">${s.desc}</p>
+        ${inspLine}
+        <div class="card-specs">
+          <div class="card-spec-row"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${s.venue}</span></div>
+          ${soundLine}
+        </div>
         <div class="chips">${s.features.map((f) => `<span class="chip">${f}</span>`).join('')}</div>
         <div class="card-actions">
           <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">Experience this invitation →</button>
