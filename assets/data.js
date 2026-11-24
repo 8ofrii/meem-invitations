@@ -1,4 +1,4 @@
-/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 52 curated designs with Moodboards */
+/* Single source of truth for MEEM — 6 Format & Style categories (all work for any event), 52 curated designs with Editorial Moodboards */
 window.SITE = {
   "WHATSAPP": "201024190741",
   "BRAND": {
@@ -92,7 +92,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar"
+        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Soft Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -126,7 +130,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Ludovico Einaudi — Experience"
+        "soundtrack": "Ludovico Einaudi — Experience",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -159,7 +167,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Great Vibes",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Taylor Swift — Enchanted"
+        "soundtrack": "Taylor Swift — Enchanted",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Emerald Sage · Warm Taupe · Warm Ivory · Bronze Gold",
+        "customization": "Colors · Floral Tone · Music · AR / EN · Couple Photo & QR"
       }
     },
     {
@@ -191,7 +203,11 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young and Beautiful"
+        "soundtrack": "Lana Del Rey — Young and Beautiful",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Warm Taupe · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -223,7 +239,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Umm Kulthum — Alf Leila w Leila"
+        "soundtrack": "Umm Kulthum — Alf Leila w Leila",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -256,7 +276,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)",
+        "inspiration": "Inspired by serene Islamic architectural arches, Andalusian arabesque artistry, and sacred elegance.",
+        "mood": "Serene, respectful & graceful",
+        "paletteNames": "Royal Burgundy · Warm Gold · Pearl Cream · Warm Taupe",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -289,7 +313,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)",
+        "inspiration": "Inspired by serene Islamic architectural arches, Andalusian arabesque artistry, and sacred elegance.",
+        "mood": "Serene, respectful & graceful",
+        "paletteNames": "Warm Taupe · Warm Gold · Pearl Cream",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -321,7 +349,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)",
+        "inspiration": "Inspired by serene Islamic architectural arches, Andalusian arabesque artistry, and sacred elegance.",
+        "mood": "Serene, respectful & graceful",
+        "paletteNames": "Warm Taupe · Warm Gold · Pearl Cream",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -353,7 +385,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Elissa & Saad Lamjarred — Men Awal Deqiqa"
+        "soundtrack": "Elissa & Saad Lamjarred — Men Awal Deqiqa",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Warm Taupe · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -385,7 +421,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Hakim — Kollo Yourkos (حكيم — كله يرقص)"
+        "soundtrack": "Hakim — Kollo Yourkos (حكيم — كله يرقص)",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Blush Gold · Warm Taupe · Warm Ivory · Bronze Gold",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -417,7 +457,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Ludovico Einaudi — Experience"
+        "soundtrack": "Ludovico Einaudi — Experience",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Warm Taupe · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -449,7 +493,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Amr Diab — Nour El Ein"
+        "soundtrack": "Amr Diab — Nour El Ein",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -481,7 +529,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Mahmoud El Esseily — Einy Shayfa Feeky"
+        "soundtrack": "Mahmoud El Esseily — Einy Shayfa Feeky",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Warm Taupe · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Floral Tone · Music · AR / EN · Couple Photo & QR"
       }
     },
     {
@@ -514,7 +566,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Claude Debussy — Clair de Lune"
+        "soundtrack": "Claude Debussy — Clair de Lune",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -547,7 +603,11 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour"
+        "soundtrack": "JVKE — Golden Hour",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Royal Burgundy · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -579,7 +639,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Stephen Sanchez — Until I Found You"
+        "soundtrack": "Stephen Sanchez — Until I Found You",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Blush Gold · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -613,7 +677,11 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "Christina Perri — A Thousand Years"
+        "soundtrack": "Christina Perri — A Thousand Years",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Royal Burgundy · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -647,7 +715,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -681,7 +753,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Great Vibes",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Emerald Sage · Warm Taupe · Warm Ivory · Bronze Gold",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -715,7 +791,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by serene Islamic architectural arches, Andalusian arabesque artistry, and sacred elegance.",
+        "mood": "Serene, respectful & graceful",
+        "paletteNames": "Warm Taupe · Warm Gold · Pearl Cream",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -749,7 +829,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Great Vibes",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Bronze Gold",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -783,7 +867,11 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "Ludovico Einaudi — Experience"
+        "soundtrack": "Ludovico Einaudi — Experience",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Midnight Onyx · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -817,7 +905,11 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Slate Obsidian · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -851,7 +943,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Burnished Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -885,7 +981,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -919,7 +1019,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Warm Taupe · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -953,7 +1057,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -987,7 +1095,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Umm Kulthum — Alf Leila Instrumental"
+        "soundtrack": "Umm Kulthum — Alf Leila Instrumental",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -1021,7 +1133,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Mahmoud El Esseily — Farha (Katb Ketab)"
+        "soundtrack": "Mahmoud El Esseily — Farha (Katb Ketab)",
+        "inspiration": "Inspired by serene Islamic architectural arches, Andalusian arabesque artistry, and sacred elegance.",
+        "mood": "Serene, respectful & graceful",
+        "paletteNames": "Soft Gold · Warm Gold · Pearl Cream · Warm Taupe",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -1055,7 +1171,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)"
+        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Blush Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Floral Tone · Music · AR / EN · Couple Photo & QR"
       }
     },
     {
@@ -1089,7 +1209,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar"
+        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Blush Gold · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Metallic Finish · Music · AR / EN · Table Seating & QR"
       }
     },
     {
@@ -1123,7 +1247,11 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)"
+        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Royal Burgundy · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -1157,7 +1285,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Ed Sheeran — Perfect"
+        "soundtrack": "Ed Sheeran — Perfect",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1191,7 +1323,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Jasmine, Crescent Arabesque & Carved Mashrabiya",
-        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)"
+        "soundtrack": "Mahmoud El Esseily — Farha (Instrumental)",
+        "inspiration": "Inspired by serene Islamic architectural arches, Andalusian arabesque artistry, and sacred elegance.",
+        "mood": "Serene, respectful & graceful",
+        "paletteNames": "Warm Gold · Pearl Cream · Warm Taupe",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1225,7 +1361,11 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young and Beautiful"
+        "soundtrack": "Lana Del Rey — Young and Beautiful",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -1259,7 +1399,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Great Vibes",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Taylor Swift — Enchanted"
+        "soundtrack": "Taylor Swift — Enchanted",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Emerald Sage · Warm Taupe · Warm Ivory · Bronze Gold",
+        "customization": "Colors · Floral Tone · Music · AR / EN · Couple Photo & QR"
       }
     },
     {
@@ -1293,7 +1437,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)"
+        "soundtrack": "Amr Diab — Tamally Maak (Instrumental)",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Starlight Gold · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1327,7 +1475,11 @@ window.SITE = {
         ],
         "typography": "Playfair Display · La Belle Aurore",
         "floral": "Ivory Peonies, Satin Ribbon & Vintage Wax Seal",
-        "soundtrack": "Claude Debussy — Clair de Lune"
+        "soundtrack": "Claude Debussy — Clair de Lune",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Royal Burgundy · Warm Taupe · Warm Ivory · Burnished Gold",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -1361,7 +1513,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Elissa & Saad Lamjarred — Men Awal Deqiqa"
+        "soundtrack": "Elissa & Saad Lamjarred — Men Awal Deqiqa",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1395,7 +1551,11 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "Strictly Silent — Zero Audio Stationery"
+        "soundtrack": "Strictly Silent — Zero Audio Stationery",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Midnight Onyx · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Typography · AR / EN · Strictly Silent or Optional Music"
       }
     },
     {
@@ -1429,7 +1589,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Egyptian Wedding Grand Mix"
+        "soundtrack": "Egyptian Wedding Grand Mix",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1463,7 +1627,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Amiri",
         "floral": "White Orchids, Gold Foliage & Wax Monogram",
-        "soundtrack": "Can't Help Falling In Love Medley"
+        "soundtrack": "Can't Help Falling In Love Medley",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Pure White · Champagne Gold · Alabaster Ivory · Emerald Sage",
+        "customization": "Colors · Floral Tone · Music · AR / EN · Couple Photo & QR"
       }
     },
     {
@@ -1497,7 +1665,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Garden Roses, Olive Branches & Pressed Botanicals",
-        "soundtrack": "Hakim — El Wad Da Helw (حكيم — الواد ده حلو)"
+        "soundtrack": "Hakim — El Wad Da Helw (حكيم — الواد ده حلو)",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Blush Gold · Warm Taupe · Warm Ivory · Bronze Gold",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1531,7 +1703,11 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Lana Del Rey — Young and Beautiful"
+        "soundtrack": "Lana Del Rey — Young and Beautiful",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Warm Taupe · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -1565,7 +1741,11 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Ed Sheeran — Perfect"
+        "soundtrack": "Ed Sheeran — Perfect",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Champagne Gold · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -1599,7 +1779,11 @@ window.SITE = {
         ],
         "typography": "Amiri · Cairo Editorial",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "Tamer Hosny — Helm Seneen"
+        "soundtrack": "Tamer Hosny — Helm Seneen",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Deep Emerald · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     },
     {
@@ -1633,7 +1817,11 @@ window.SITE = {
         ],
         "typography": "Cinzel · Amiri Calligraphy",
         "floral": "Deep Velvet Roses, Candlelight & Starlit Gold",
-        "soundtrack": "Christina Perri — A Thousand Years"
+        "soundtrack": "Christina Perri — A Thousand Years",
+        "inspiration": "Inspired by dramatic evening galas, velvet theatre curtains, and starlit luxury celebrations.",
+        "mood": "Dramatic, cinematic & glamorous",
+        "paletteNames": "Champagne Gold · Blush Gold · Velvet Crimson · Warm Pearl",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -1667,7 +1855,11 @@ window.SITE = {
         ],
         "typography": "Plus Jakarta Sans · Cormorant",
         "floral": "Architectural Calla Lilies & Liquid Platinum Accents",
-        "soundtrack": "JVKE — Golden Hour"
+        "soundtrack": "JVKE — Golden Hour",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Warm Taupe · Liquid Silver · Pure White · Royal Sapphire",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -1700,7 +1892,11 @@ window.SITE = {
         ],
         "typography": "Aref Ruqaa · Amiri · Cairo",
         "floral": "White Magnolia Blossoms, Pearls & Cream Satin Ribbon",
-        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar"
+        "soundtrack": "Hussain Al Jassmi — Sharaft Aghla El Bashar",
+        "inspiration": "Inspired by timeless royal palace receptions, candlelit grand halls, and gilded heirloom invitations.",
+        "mood": "Regal, opulent & timeless",
+        "paletteNames": "Silk Ivory · Champagne Gold · Warm Cocoa · Olive Leaf",
+        "customization": "Colors · Music · AR / EN · Interactive Reveal · Table Seating & QR"
       }
     },
     {
@@ -1733,7 +1929,11 @@ window.SITE = {
         ],
         "typography": "Great Vibes · Cormorant Garamond · Amiri",
         "floral": "Eucalyptus Branches, Gold Twine & Olive Wax Seal",
-        "soundtrack": "Ludovico Einaudi — Experience"
+        "soundtrack": "Ludovico Einaudi — Experience",
+        "inspiration": "Inspired by sunlit botanical gardens, fine watercolor florals, and romantic outdoor celebrations.",
+        "mood": "Soft, dreamy & romantic",
+        "paletteNames": "Linen Ivory · Botanical Emerald · Brushed Gold · Eucalyptus Sage",
+        "customization": "Colors · Floral Tone · Music · AR / EN · Couple Photo & QR"
       }
     },
     {
@@ -1766,7 +1966,11 @@ window.SITE = {
         ],
         "typography": "Aref Ruqaa · Amiri · Cairo",
         "floral": "Guipure Floral Lace, Teardrop Pearls & Organza Bow",
-        "soundtrack": "Hussain Al Jassmi — Seta El Sobah"
+        "soundtrack": "Hussain Al Jassmi — Seta El Sobah",
+        "inspiration": "Inspired by Old Money European stationery, wax-sealed keepsakes, and heirloom calligraphy.",
+        "mood": "Classic, refined & nostalgic",
+        "paletteNames": "Bridal Ivory · Rose Gold · Espresso Bronze · Warm Satin",
+        "customization": "Colors · Music · AR / EN · Couple Photo · Video Motion · Table & QR"
       }
     },
     {
@@ -1799,7 +2003,11 @@ window.SITE = {
         ],
         "typography": "Cormorant Garamond · Courier Prime · Cairo",
         "floral": "Ballet Blush Satin Bow, Matte Periwinkle & Rose Gold",
-        "soundtrack": "JVKE — Golden Hour"
+        "soundtrack": "JVKE — Golden Hour",
+        "inspiration": "Inspired by contemporary editorial lookbooks, minimalist cinema reels, and modern bride aesthetics.",
+        "mood": "Chic, editorial & contemporary",
+        "paletteNames": "Parisian Dusty Blue · Champagne Blush · Brushed Rose Gold · Alabaster",
+        "customization": "Colors · Music · AR / EN · Couple Photos · Print & Story Layout"
       }
     }
   ],

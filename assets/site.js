@@ -37,6 +37,7 @@
     const mb = s.moodboard || null;
     const colTag = mb && mb.collection ? `<span class="badge">${mb.collection}</span>` : '';
     const dots = mb && mb.palette ? `<div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}"></span>`).join('')}</div>` : '';
+    const moodLine = mb && mb.mood ? `<div class="card-mood">${mb.mood}${mb.paletteNames ? ' · ' + mb.paletteNames.split(' · ').slice(0, 2).join(' &amp; ') : ''}</div>` : '';
     return `<article class="sample-card">
       <div class="card-thumb ${hasImg ? 'has-art' : ''}" style="background:${s.bg};color:${tc}">
         ${hasImg ? `<img class="bg-art" src="${s.img}" alt="${s.title}" loading="lazy" decoding="async">` : ''}
@@ -47,10 +48,11 @@
         </div>
       </div>
       <div class="card-body">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px;">
           <h3 class="card-title" style="margin:0">${s.title}</h3>
           ${dots}
         </div>
+        ${moodLine}
         <div class="card-venue"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${s.venue}</div>
         <p class="card-desc">${s.desc}</p>
         <div class="chips">${s.features.map((f) => `<span class="chip">${f}</span>`).join('')}</div>
@@ -76,7 +78,9 @@
     const NAV = [
       ['home', isHome ? '#home' : '/', 'Home'],
       ['designs', `${prefix}#designs`, 'Collections'],
-      ['try-it-live', `${prefix}#try-it-live`, 'Try it live']
+      ['try-it-live', `${prefix}#try-it-live`, 'Try it live'],
+      ['journey', `${prefix}#journey`, 'Experience'],
+      ['faq', `${prefix}#faq`, 'FAQ']
     ];
 
     const logoSrc = (B && B.logo) ? B.logo : 'assets/logos/meem-logo-320.png';
@@ -126,11 +130,14 @@
           <h3 id="modalTitle" class="serif gold" style="font-size:28px;line-height:1.15"></h3>
           <p id="modalDesc" style="font-size:13px;color:rgba(255,255,255,0.86);line-height:1.55"></p>
           <div class="moodboard-card" id="modalMoodboard">
-            <div class="mb-head">Wedding Moodboard</div>
-            <div class="mb-row"><span>Palette</span><div class="mb-swatches" id="mbSwatches"></div></div>
+            <div class="mb-head">Design Story &amp; Wedding Moodboard</div>
+            <p class="mb-insp" id="mbInsp"></p>
+            <div class="mb-row"><span>Mood</span><strong id="mbMood"></strong></div>
+            <div class="mb-row"><span>Color Palette</span><div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="mb-swatches" id="mbSwatches"></div><small id="mbPalNames" style="font-size:10px;color:#6E7872;text-align:right"></small></div></div>
             <div class="mb-row"><span>Typography</span><strong id="mbTypo"></strong></div>
-            <div class="mb-row"><span>Floral &amp; Style</span><strong id="mbFloral"></strong></div>
+            <div class="mb-row"><span>Floral &amp; Details</span><strong id="mbFloral"></strong></div>
             <div class="mb-row"><span>Soundtrack</span><strong id="mbSound"></strong></div>
+            <div class="mb-row"><span>Customisation</span><strong id="mbCustom"></strong></div>
           </div>
           <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
           <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a>
@@ -152,7 +159,7 @@
   }
 
   function initScrollSpy() {
-    const ids = ['home', 'designs', 'try-it-live'];
+    const ids = ['home', 'designs', 'try-it-live', 'journey', 'faq'];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
 
@@ -203,11 +210,15 @@
     const mb = s.moodboard || {};
     const colEl = document.getElementById('modalCollection');
     if (colEl) colEl.textContent = mb.collection || 'MEEM Curated Collection';
+    const inEl = document.getElementById('mbInsp'); if (inEl) inEl.textContent = mb.inspiration || 'Inspired by timeless modern celebrations.';
+    const mdEl = document.getElementById('mbMood'); if (mdEl) mdEl.textContent = mb.mood || 'Elegant & Timeless';
     const swEl = document.getElementById('mbSwatches');
     if (swEl) swEl.innerHTML = (mb.palette || ['#0D3B2E', '#C5A059', '#FAF6EE']).map((c) => `<span style="background:${c}" title="${c}"></span>`).join('');
+    const pnEl = document.getElementById('mbPalNames'); if (pnEl) pnEl.textContent = mb.paletteNames || '';
     const tyEl = document.getElementById('mbTypo'); if (tyEl) tyEl.textContent = mb.typography || 'Cormorant Garamond · Amiri';
     const flEl = document.getElementById('mbFloral'); if (flEl) flEl.textContent = mb.floral || 'Garden Roses & Gold Wax Seal';
     const snEl = document.getElementById('mbSound'); if (snEl) snEl.textContent = mb.soundtrack || 'Curated Wedding Soundtrack';
+    const cuEl = document.getElementById('mbCustom'); if (cuEl) cuEl.textContent = mb.customization || 'Colors · Music · AR / EN · Photo · QR';
     document.getElementById('previewFrame').src = buildUrl(s.file, extra, true);
     document.getElementById('modalFull').href = buildUrl(s.file, extra);
     document.getElementById('modalWa').href = wa(`Hello! I love design #${s.num} (${s.title})${extra && extra.couple ? ' for ' + extra.couple : ''}.`);

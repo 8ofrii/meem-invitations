@@ -338,6 +338,8 @@ section[id] { scroll-margin-top: 82px; }
 .tip { font-size: 12px; color: #4A423A; background: rgba(255, 255, 255, 0.92); border: 1px solid rgba(28, 25, 23, 0.10); padding: 12px; border-radius: 12px; }
 .card-swatches { display: inline-flex; gap: 4px; flex-shrink: 0; }
 .card-swatches span { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.16); display: block; }
+.card-mood { font-size: 11px; font-weight: 600; color: #8C6721; letter-spacing: 0.02em; margin-bottom: 5px; }
+.mb-insp { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14.5px; font-style: italic; color: #3D4A44; line-height: 1.4; margin: 0; padding-bottom: 4px; border-bottom: 1px dashed rgba(197, 160, 89, 0.3); }
 .moodboard-card {
   background: rgba(255, 253, 249, 0.96);
   color: #1A2420;
