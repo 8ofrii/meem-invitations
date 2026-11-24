@@ -284,6 +284,34 @@ http.createServer(async (req, res) => {
       }
     }
 
+    if (urlPath === '/api/admin/save-site' && req.method === 'POST') {
+      try {
+        const body = await readJsonBody(req, 25_000_000);
+        if (body.files && typeof body.files === 'object') {
+          for (const [relPath, entry] of Object.entries(body.files)) {
+            const cleanRel = String(relPath).replace(/^\/+/, '');
+            if (!/^(assets\/images\/|assets\/audio\/|samples\/)[a-zA-Z0-9._-]+$/.test(cleanRel)) continue;
+            const abs = path.join(ROOT, cleanRel);
+            fs.mkdirSync(path.dirname(abs), { recursive: true });
+            if (entry && entry.base64) {
+              fs.writeFileSync(abs, Buffer.from(entry.base64, 'base64'));
+            } else if (entry && typeof entry.text === 'string') {
+              fs.writeFileSync(abs, entry.text, 'utf8');
+            }
+          }
+        }
+        if (body.site && Array.isArray(body.site.SAMPLES)) {
+          const js = '/* Single source of truth for MEEM — Updated from MEEM Admin Portal */\nwindow.SITE = ' + JSON.stringify(body.site, null, 2) + ';\n';
+          fs.writeFileSync(path.join(ROOT, 'assets/data.js'), js, 'utf8');
+          if (fs.existsSync(STATE_FILE)) fs.unlinkSync(STATE_FILE);
+          cache.clear();
+        }
+        return sendJson(res, 200, { ok: true });
+      } catch (e) {
+        return sendJson(res, 500, { ok: false, error: String(e) });
+      }
+    }
+
     if (urlPath === '/api/admin/export-data-js' && req.method === 'GET') {
       const merged = getMergedCatalog();
       const js = '/* Single source of truth for MEEM — Exported from Admin Panel */\nwindow.SITE = ' + JSON.stringify(merged, null, 2) + ';\n';

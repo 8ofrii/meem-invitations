@@ -1052,10 +1052,10 @@
     <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M196 28C164 62 150 112 158 176" stroke="currentColor" stroke-width="1"/><path d="M174 62C152 54 134 60 126 74C144 82 162 78 174 62Z" stroke="currentColor" stroke-width="0.85"/><path d="M164 102C140 94 120 102 114 118C134 126 154 120 164 102Z" stroke="currentColor" stroke-width="0.85"/><path d="M158 142C136 138 120 148 118 164C138 170 154 160 158 142Z" stroke="currentColor" stroke-width="0.85"/><path d="M180 82C200 76 216 84 220 98C202 104 186 98 180 82Z" stroke="currentColor" stroke-width="0.85"/><path d="M172 122C194 118 210 128 212 144C194 148 178 140 172 122Z" stroke="currentColor" stroke-width="0.85"/></svg>
     <div class="container">
       <img class="hero-emblem" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM Digital Invitations">
-      <div class="pill-tag">Online Digital Wedding House</div>
+      <div class="pill-tag" id="heroPill">Online Digital Wedding House</div>
       <h1 class="h1">Every love story deserves a <em>beautiful entrance</em>.</h1>
-      <div class="hero-subline">Not just an invitation. An experience.</div>
-      <p class="lead" style="margin:14px auto 0">Cinematic motion, HD video, couple-photo storybooks, table seating passes &amp; bespoke digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both.</p>
+      <div class="hero-subline" id="heroSubline">Not just an invitation. An experience.</div>
+      <p class="lead" id="heroLead" style="margin:14px auto 0">Cinematic motion, HD video, couple-photo storybooks, table seating passes &amp; bespoke digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both.</p>
       <div class="actions">
         <a class="btn btn-gold btn-lg btn-pill" href="#designs">Explore Collections</a>
         <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Create Your Invitation</a>
@@ -1064,7 +1064,7 @@
         <div class="stat"><b id="statDesigns">35</b><span>Curated designs</span></div>
         <div class="stat"><b id="statCats">7</b><span>Signature styles</span></div>
         <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
-        <div class="stat"><b>48h</b><span>Fastest delivery</span></div>
+        <div class="stat"><b id="statDelivery">48h</b><span id="statDeliveryLabel">Fastest delivery</span></div>
       </div>
 
       <div style="margin-top:64px">
@@ -1626,6 +1626,17 @@
   Shell.init('home');
   const S = SITE, $ = id => document.getElementById(id), fmt = n => n.toLocaleString('en-US');
 
+  /* ===== 0. APPLY LOCAL ADMIN DRAFT PREVIEW BEFORE RENDERING ===== */
+  try {
+    const rawFull = localStorage.getItem('meem_admin_cms_v1');
+    if (rawFull) {
+      const draftSite = JSON.parse(rawFull);
+      if (draftSite && Array.isArray(draftSite.SAMPLES)) {
+        Object.assign(S, draftSite);
+      }
+    }
+  } catch (_) {}
+
   /* ===== 1. BESPOKE ARCHED VENUE-THUMBNAIL FILTER & GALLERY ===== */
   let curCat = 'all';
   const visibleSamples = () => S.SAMPLES.filter(s => !s.hidden);
@@ -1633,23 +1644,55 @@
     const vis = visibleSamples();
     return catId === 'all' ? vis.length : vis.filter(s => s.cat === catId).length;
   }
-  const CAT_THUMBS = {
-    all: 'assets/images/mohamed-ali-palace.jpg',
-    luxury: 'assets/images/classic-ivory-gold-crest.jpg',
-    floral: 'assets/images/dusty-rose-floral.jpg',
-    modern: 'assets/images/polaroid-couple.jpg',
-    royal: 'assets/images/midnight-gold-celestial.jpg',
-    arabic: 'assets/images/andalusian-arabesque-katb.jpg',
-    motion: 'assets/images/love-story-couple.jpg',
-    cards: 'assets/images/french-gatefold-card.jpg'
-  };
+  function getCatThumb(id) {
+    const map = S.CAT_THUMBS || {
+      all: 'assets/images/mohamed-ali-palace.jpg',
+      luxury: 'assets/images/classic-ivory-gold-crest.jpg',
+      floral: 'assets/images/dusty-rose-floral.jpg',
+      modern: 'assets/images/polaroid-couple.jpg',
+      royal: 'assets/images/midnight-gold-celestial.jpg',
+      arabic: 'assets/images/andalusian-arabesque-katb.jpg',
+      motion: 'assets/images/love-story-couple.jpg',
+      cards: 'assets/images/french-gatefold-card.jpg'
+    };
+    return map[id] || map.all || 'assets/images/mohamed-ali-palace.jpg';
+  }
   const ARCH_PLAY_SVG = '<span class="fpill-play-badge" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>';
+
+  function applyHeroAndSiteOptions() {
+    if (S.HERO) {
+      if ($('heroPill') && S.HERO.pill) $('heroPill').textContent = S.HERO.pill;
+      if ($('heroSubline') && S.HERO.subline) $('heroSubline').textContent = S.HERO.subline;
+      if ($('heroLead') && S.HERO.lead) $('heroLead').textContent = S.HERO.lead;
+      if ($('statDelivery') && S.HERO.deliveryStat) $('statDelivery').textContent = S.HERO.deliveryStat;
+      if ($('statDeliveryLabel') && S.HERO.deliveryLabel) $('statDeliveryLabel').textContent = S.HERO.deliveryLabel;
+    }
+    if ($('th') && Array.isArray(S.THEMES) && S.THEMES.length) {
+      const prevTh = $('th').value;
+      $('th').innerHTML = S.THEMES.filter(t => !t.hidden).map(t => `<option value="${t.id}">${t.label}</option>`).join('');
+      if (prevTh) $('th').value = prevTh;
+    }
+    if ($('song') && Array.isArray(S.SONGS) && S.SONGS.length) {
+      const prevSong = $('song').value;
+      const visSongs = S.SONGS.filter(x => !x.hidden);
+      const groups = [];
+      const byGroup = new Map();
+      for (const item of visSongs) {
+        const g = item.group || 'Curated Wedding Songs';
+        if (!byGroup.has(g)) { byGroup.set(g, []); groups.push(g); }
+        byGroup.get(g).push(item);
+      }
+      $('song').innerHTML = `<option value="">Default for this design (الافتراضي للتصميم)</option>` +
+        groups.map(g => `<optgroup label="${g}">${byGroup.get(g).map(x => `<option value="${x.key}">${x.label}</option>`).join('')}</optgroup>`).join('');
+      if (prevSong) $('song').value = prevSong;
+    }
+  }
 
   function renderCatPills() {
     $('catPills').innerHTML = `
       <button type="button" class="fpill${curCat === 'all' ? ' active' : ''}" data-cat="all">
         <div class="fpill-arch">
-          <img src="${CAT_THUMBS.all}" alt="All" loading="lazy">
+          <img src="${getCatThumb('all')}" alt="All" loading="lazy">
           <span class="fpill-count">${countFor('all')}</span>
         </div>
         <div class="fpill-txt">
@@ -1661,8 +1704,8 @@
       <button type="button" class="fpill${curCat === c.id ? ' active' : ''}" data-cat="${c.id}">
         <div class="fpill-arch">
           ${c.id === 'motion'
-            ? `<video autoplay muted loop playsinline poster="${CAT_THUMBS.motion}"><source src="assets/video/wedding-intro-loop.mp4" type="video/mp4"></video>${ARCH_PLAY_SVG}`
-            : `<img src="${CAT_THUMBS[c.id] || CAT_THUMBS.all}" alt="${c.short || c.title}" loading="lazy">`}
+            ? `<video autoplay muted loop playsinline poster="${getCatThumb('motion')}"><source src="assets/video/wedding-intro-loop.mp4" type="video/mp4"></video>${ARCH_PLAY_SVG}`
+            : `<img src="${getCatThumb(c.id)}" alt="${c.short || c.title}" loading="lazy">`}
           <span class="fpill-count">${countFor(c.id)}</span>
         </div>
         <div class="fpill-txt">
@@ -1712,6 +1755,7 @@
     if ($('statDesigns')) $('statDesigns').textContent = vis.length;
     if ($('statCats')) $('statCats').textContent = S.CATEGORIES.length;
   }
+  applyHeroAndSiteOptions();
   renderCatPills();
   renderDesigns();
   populateDesignSelects();
@@ -1743,6 +1787,12 @@
   function updateTry() {
     const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
     if (!s) return;
+    const effectiveSong = x.song || s.songKey || '';
+    if (effectiveSong) {
+      x.song = effectiveSong;
+      const songObj = Array.isArray(S.SONGS) ? S.SONGS.find(o => o.key === effectiveSong) : null;
+      if (songObj && songObj.file && !songObj.isMix) x.songsrc = songObj.file;
+    }
     $('frame').src = Shell.buildUrl(s.file, x, true);
     $('full').href = Shell.buildUrl(s.file, x);
     $('order').href = Shell.wa(`Hello MEEM! I'd like design #${s.num} (${s.title})${x.couple ? ' for ' + x.couple : ''}${x.date ? ' on ' + x.date : ''}${x.venue ? ' at ' + x.venue : ''}${x.table ? ' (with table seating on phone)' : ''}${hasPhoto ? ' (with our couple photo)' : ''}.`);
@@ -1895,46 +1945,15 @@
   if ($('bEvent')) $('bEvent').addEventListener('change', updateBuilder);
   updateBuilder();
 
-  /* ===== 4. HYDRATE LOCAL ADMIN PREVIEW & LOCAL DEV API ===== */
-  function applyCatalogState(state) {
-    if (!state) return;
-    const ov = state.overrides || {};
-    const added = Array.isArray(state.added) ? state.added : [];
-    const baseSamples = S.SAMPLES.map(s => {
-      const patch = ov[s.num];
-      if (!patch) return s;
-      const merged = { ...s, ...patch };
-      if (patch.moodboard) merged.moodboard = { ...(s.moodboard || {}), ...patch.moodboard };
-      return merged;
-    });
-    const existingNums = new Set(baseSamples.map(s => s.num));
-    for (const extra of added) {
-      if (!existingNums.has(extra.num)) {
-        baseSamples.push({ ...extra, ...(ov[extra.num] || {}) });
-      }
-    }
-    S.SAMPLES = baseSamples;
-    const prevTry = $('d') ? $('d').value : '';
-    renderCatPills();
-    renderDesigns();
-    populateDesignSelects();
-    if ($('d') && $('d').value !== prevTry) updateTry();
-    updateBuilder();
-  }
-
-  try {
-    const rawDraft = localStorage.getItem('meem_admin_state_v1');
-    if (rawDraft) applyCatalogState(JSON.parse(rawDraft));
-  } catch (_) {}
-
+  /* ===== 4. HYDRATE LOCAL DEV SERVER API (ONLY ON LOCALHOST) ===== */
   if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
     fetch('/api/catalog', { cache: 'no-store' })
       .then(r => (r.ok && (r.headers.get('content-type') || '').includes('application/json')) ? r.json() : null)
       .then(data => {
         if (!data || !Array.isArray(data.SAMPLES) || !data.SAMPLES.length) return;
-        S.SAMPLES = data.SAMPLES;
-        if (Array.isArray(data.CATEGORIES) && data.CATEGORIES.length) S.CATEGORIES = data.CATEGORIES;
+        Object.assign(S, data);
         const prevTry = $('d') ? $('d').value : '';
+        applyHeroAndSiteOptions();
         renderCatPills();
         renderDesigns();
         populateDesignSelects();

@@ -1,4 +1,4 @@
-/* Single source of truth for MEEM — 7 Curated Categories, 35 Public Showcase + 17 Admin Vault (52 total) */
+/* Single source of truth for MEEM — Full Studio Catalog (Categories, Invitations, Songs, Media, Settings) */
 window.SITE = {
   "WHATSAPP": "201024190741",
   "BRAND": {
@@ -2228,5 +2228,343 @@ window.SITE = {
         "#5D3A2A"
       ]
     }
+  ],
+  "HERO": {
+    "pill": "Online Digital Wedding House",
+    "subline": "Not just an invitation. An experience.",
+    "lead": "Cinematic motion, HD video, couple-photo storybooks, table seating passes & bespoke digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both.",
+    "deliveryStat": "48h",
+    "deliveryLabel": "Fastest delivery"
+  },
+  "CAT_THUMBS": {
+    "all": "assets/images/mohamed-ali-palace.jpg",
+    "luxury": "assets/images/classic-ivory-gold-crest.jpg",
+    "floral": "assets/images/dusty-rose-floral.jpg",
+    "modern": "assets/images/polaroid-couple.jpg",
+    "royal": "assets/images/midnight-gold-celestial.jpg",
+    "arabic": "assets/images/andalusian-arabesque-katb.jpg",
+    "motion": "assets/images/love-story-couple.jpg",
+    "cards": "assets/images/french-gatefold-card.jpg"
+  },
+  "THEMES": [
+    {
+      "id": "",
+      "label": "Original design palette (الألوان الأصلية)",
+      "hidden": false
+    },
+    {
+      "id": "gold",
+      "label": "Royal Champagne Gold (ذهبي ملكي)",
+      "hidden": false
+    },
+    {
+      "id": "chromium",
+      "label": "Liquid Chromium & Platinum (كروم وبلاتين)",
+      "hidden": false
+    },
+    {
+      "id": "emerald",
+      "label": "Emerald Palace Green (زمردي ملكي)",
+      "hidden": false
+    },
+    {
+      "id": "rose",
+      "label": "Dusty Rose & Pearl (وردي لؤلؤي)",
+      "hidden": false
+    },
+    {
+      "id": "sapphire",
+      "label": "Mediterranean Sapphire (أزرق ياقوتي)",
+      "hidden": false
+    }
+  ],
+  "SONGS": [
+    {
+      "key": "einaudi_experience",
+      "label": "Ludovico Einaudi — Experience (Old Money / Luxury Piano & Strings)",
+      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "file": "assets/audio/einaudi-experience.mp3",
+      "hidden": false
+    },
+    {
+      "key": "clair_de_lune",
+      "label": "Claude Debussy — Clair de Lune (Royal Classical Piano)",
+      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "file": "assets/audio/clair-de-lune.mp3",
+      "hidden": false
+    },
+    {
+      "key": "golden_hour",
+      "label": "JVKE — Golden Hour (Modern Minimal & Editorial)",
+      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "file": "assets/audio/golden-hour.mp3",
+      "hidden": false
+    },
+    {
+      "key": "young_and_beautiful",
+      "label": "Lana Del Rey — Young and Beautiful (Royal & Dramatic)",
+      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "file": "assets/audio/young-and-beautiful.mp3",
+      "hidden": false
+    },
+    {
+      "key": "taylor_enchanted",
+      "label": "Taylor Swift — Enchanted (Soft Floral & Dreamy)",
+      "group": "Luxury, Editorial & Cinema — موسيقى فاخرة وكلاسيكية",
+      "file": "assets/audio/taylor-enchanted.mp3",
+      "hidden": false
+    },
+    {
+      "key": "amr_tamally_maak",
+      "label": "Amr Diab — Tamally Maak Instrumental (موسيقى تملي معاك بدون غناء)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/amr-tamally-maak.mp3",
+      "hidden": false
+    },
+    {
+      "key": "om_kalthoum_inst",
+      "label": "Umm Kulthum — Alf Leila w Leila Music (موسيقى ألف ليلة وليلة بدون غناء)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/om-kalthoum-instrumental.mp3",
+      "hidden": false
+    },
+    {
+      "key": "farha_inst",
+      "label": "Mahmoud El Esseily — Farha Music (موسيقى أغنية فرحة — كتب كتاب بدون غناء)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/farha-instrumental.mp3",
+      "hidden": false
+    },
+    {
+      "key": "egyptian_zaffa",
+      "label": "Royal Egyptian Zaffa Music (موسيقى زفة مصرية ملكية بدون غناء)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/egyptian-zaffa.mp3",
+      "hidden": false
+    },
+    {
+      "key": "thousand_years_inst",
+      "label": "A Thousand Years — Piano & Cello Music (موسيقى بيانو وتشيللو بدون غناء)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/thousand-years-instrumental.mp3",
+      "hidden": false
+    },
+    {
+      "key": "classic_romance_inst",
+      "label": "Classic Romance Orchestra (موسيقى أوركسترا رومانسية كلاسيكية)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/classic-romance-inst.mp3",
+      "hidden": false
+    },
+    {
+      "key": "instrumental_mix",
+      "label": "Instrumental Wedding Mix (ميكس موسيقى هادئة بدون غناء)",
+      "group": "Instrumental Music of Songs — موسيقى الأغاني بدون غناء",
+      "file": "assets/audio/om-kalthoum-instrumental.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "elissa_men_awal",
+      "label": "Elissa & Saad Lamjarred — Men Awal Deqiqa (إليسا وسعد لمجرد — من أول دقيقة)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/elissa-men-awal-deqiqa.mp3",
+      "hidden": false
+    },
+    {
+      "key": "farha_katb",
+      "label": "Mahmoud El Esseily — Farha (محمود العسيلي — أغنية فرحة بالكلمات)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/farha-katb.mp3",
+      "hidden": false
+    },
+    {
+      "key": "esseily_einy",
+      "label": "Mahmoud El Esseily — Einy Shayfa Feeky (محمود العسيلي — عيني شايفة فيكي)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/esseily-einy-shayfa.mp3",
+      "hidden": false
+    },
+    {
+      "key": "esseily_wakheeran",
+      "label": "Mahmoud El Esseily — Wa Akheeran (محمود العسيلي — وأخيراً)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/esseily-wakheeran.mp3",
+      "hidden": false
+    },
+    {
+      "key": "jassmi_zaffa",
+      "label": "Hussain Al Jassmi — Sharaft Aghla El Bashar (حسين الجسمي — شرفت أغلى البشر)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/jassmi-zaffa.mp3",
+      "hidden": false
+    },
+    {
+      "key": "jassmi_seta",
+      "label": "Hussain Al Jassmi — Seta El Sobah (حسين الجسمي — ستة الصبح)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/jassmi-seta-el-sobah.mp3",
+      "hidden": false
+    },
+    {
+      "key": "om_kalthoum",
+      "label": "Umm Kulthum — Alf Leila w Leila (أم كلثوم — ألف ليلة وليلة الأصلية)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/om-kalthoum-alf-leila.mp3",
+      "hidden": false
+    },
+    {
+      "key": "tamer_helm",
+      "label": "Tamer Hosny — Helm Seneen (تامر حسني — حلم سنين)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/tamer-helm-seneen.mp3",
+      "hidden": false
+    },
+    {
+      "key": "ramy_mabrook",
+      "label": "Ramy Sabry — Alf Mabrook (رامي صبري — ألف مبروك)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/ramy-sabry-mabrook.mp3",
+      "hidden": false
+    },
+    {
+      "key": "amr_nour",
+      "label": "Amr Diab — Nour El Ein (عمرو دياب — نور العين)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/amr-diab-nour-el-ein.mp3",
+      "hidden": false
+    },
+    {
+      "key": "hakim_kolo_yorkos",
+      "label": "Hakim — Kollo Yourkos (حكيم — كله يرقص · أغنية رقص وحنة)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/hakim-kolo-yorkos.mp3",
+      "hidden": false
+    },
+    {
+      "key": "hakim_el_wad",
+      "label": "Hakim — El Wad Da Helw (حكيم — الواد ده حلو · أغنية رقص وفرح)",
+      "group": "Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية",
+      "file": "assets/audio/hakim-el-wad-da-helw.mp3",
+      "hidden": false
+    },
+    {
+      "key": "ed_perfect",
+      "label": "Ed Sheeran — Perfect (الأغنية الأصلية)",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
+      "file": "assets/audio/ed-sheeran-perfect.mp3",
+      "hidden": false
+    },
+    {
+      "key": "a_thousand_years",
+      "label": "Christina Perri — A Thousand Years (الأغنية الأصلية)",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
+      "file": "assets/audio/a-thousand-years.mp3",
+      "hidden": false
+    },
+    {
+      "key": "cant_help_falling",
+      "label": "Beautiful In White & Can't Help Falling In Love Medley",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
+      "file": "assets/audio/cant-help-falling.mp3",
+      "hidden": false
+    },
+    {
+      "key": "until_i_found_you",
+      "label": "Stephen Sanchez — Until I Found You (Romantic Violin)",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
+      "file": "assets/audio/until-i-found-you.mp3",
+      "hidden": false
+    },
+    {
+      "key": "english_mix",
+      "label": "English Romantic Wedding Mix (ميكس أغاني إنجليزية رومانسية)",
+      "group": "English Romantic Wedding Songs — أغاني أفراح إنجليزية",
+      "file": "assets/audio/ed-sheeran-perfect.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "egyptian_mix",
+      "label": "Egyptian Wedding Grand Mix (كوكتيل أفراح مصري: الجسمي · العسيلي · تامر · رامي)",
+      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "file": "assets/audio/jassmi-zaffa.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "jassmi_mix",
+      "label": "Hussain Al Jassmi Marriage Mix (ميكس أفراح حسين الجسمي)",
+      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "file": "assets/audio/jassmi-zaffa.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "esseily_mix",
+      "label": "Mahmoud El Esseily Marriage Mix (ميكس أفراح محمود العسيلي)",
+      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "file": "assets/audio/farha-katb.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "hakim_mix",
+      "label": "Hakim Ra2s & Henna Dance Mix (ميكس رقص وحنة — حكيم)",
+      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "file": "assets/audio/hakim-kolo-yorkos.mp3",
+      "isMix": true,
+      "hidden": false
+    },
+    {
+      "key": "silent",
+      "label": "Silent — No Audio (بدون صوت)",
+      "group": "Egyptian Wedding Song Mixes & Silent — ميكس وكوكتيل أفراح",
+      "file": "",
+      "hidden": false
+    }
+  ],
+  "MEDIA_IMAGES": [
+    "assets/images/abdeen-palace.jpg",
+    "assets/images/al-azhar-park.jpg",
+    "assets/images/al-masa-capital.jpg",
+    "assets/images/alexandria-corniche.jpg",
+    "assets/images/alexandria-san-stefano.jpg",
+    "assets/images/amalfi-coast.jpg",
+    "assets/images/andalusian-arabesque-katb.jpg",
+    "assets/images/baron-palace-cairo.jpg",
+    "assets/images/bifold-luxury-folding.jpg",
+    "assets/images/botanical-watercolor.jpg",
+    "assets/images/citadel-mosque.jpg",
+    "assets/images/classic-ivory-gold-crest.jpg",
+    "assets/images/desert-sunset-palace.jpg",
+    "assets/images/dusit-thani-cairo.jpg",
+    "assets/images/dusty-rose-floral.jpg",
+    "assets/images/editorial-couple.jpg",
+    "assets/images/el-gouna-lagoon.jpg",
+    "assets/images/el-obour-golf-gardens.jpg",
+    "assets/images/el-shorta-mosque.jpg",
+    "assets/images/four-seasons-nile.jpg",
+    "assets/images/french-gatefold-card.jpg",
+    "assets/images/kempinski-palace.jpg",
+    "assets/images/liquid-chromium-pearl.jpg",
+    "assets/images/love-story-couple.jpg",
+    "assets/images/madinet-nasr-venue.jpg",
+    "assets/images/mena-house-giza.jpg",
+    "assets/images/midnight-gold-celestial.jpg",
+    "assets/images/minimalist-noir-stationery.jpg",
+    "assets/images/mohamed-ali-palace.jpg",
+    "assets/images/molten-chrome-minimalist.jpg",
+    "assets/images/moshir-tantawi-mosque.jpg",
+    "assets/images/nile-ritz-carlton.jpg",
+    "assets/images/old-cataract-aswan.jpg",
+    "assets/images/pocket-sleeve-stationery.jpg",
+    "assets/images/polaroid-couple.jpg",
+    "assets/images/sage-olive-botanical.jpg",
+    "assets/images/sofitel-gezirah.jpg",
+    "assets/images/st-regis-cairo.jpg",
+    "assets/images/tagamoa-mirage-palace.jpg",
+    "assets/images/translucent-vellum-envelope.jpg",
+    "assets/images/zamalek-marriott-palace.jpg"
   ]
 };

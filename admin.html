@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MEEM Admin Portal — Private Studio Control</title>
+  <title>MEEM Admin Studio — Full Website Control</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -51,15 +51,16 @@
     .login-card img { width: 72px; height: 72px; object-fit: contain; margin: 0 auto 10px; display: block; }
     .login-card h1 { font-size: 32px; color: var(--emerald); margin-bottom: 6px; }
     .login-card p { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+
     .inp, .sel, .txt {
       width: 100%;
-      padding: 11px 14px;
-      border-radius: 12px;
+      padding: 10px 13px;
+      border-radius: 11px;
       border: 1px solid rgba(13, 59, 46, 0.18);
       background: #FAF7F2;
       color: var(--text);
       font: inherit;
-      font-size: 13.5px;
+      font-size: 13px;
       outline: none;
     }
     .inp:focus, .sel:focus, .txt:focus { border-color: var(--gold); background: #FFFFFF; }
@@ -67,10 +68,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      padding: 10px 18px;
+      gap: 6px;
+      padding: 9px 16px;
       border-radius: 999px;
-      font: 700 12.5px inherit;
+      font: 700 12px inherit;
       cursor: pointer;
       border: 0;
       text-decoration: none;
@@ -81,31 +82,33 @@
     .btn-em { background: linear-gradient(135deg, var(--emerald), var(--emerald-2)); color: #FFFFFF; border: 1px solid var(--gold); }
     .btn-gold { background: linear-gradient(135deg, #E8CA8C, var(--gold)); color: var(--emerald); }
     .btn-out { background: #FFFFFF; color: var(--emerald); border: 1px solid var(--line); }
+    .btn-out:hover { border-color: var(--gold); background: #FAF7F2; }
     .btn-danger { background: #FEF2F2; color: #B91C1C; border: 1px solid rgba(185, 28, 28, 0.25); }
-    .btn-sm { padding: 7px 13px; font-size: 11.5px; }
+    .btn-sm { padding: 6px 12px; font-size: 11.5px; }
     .err-msg { color: #B91C1C; font-size: 12.5px; margin-top: 10px; display: none; }
 
-    /* Admin Dashboard */
-    #dashboard { display: none; padding-bottom: 70px; }
+    /* Dashboard Topbar */
+    #dashboard { display: none; padding-bottom: 80px; }
     .topbar {
       position: sticky; top: 0; z-index: 50;
       background: rgba(255, 253, 249, 0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
-      padding: 12px 20px;
+      padding: 11px 20px;
     }
     .topbar-in {
-      max-width: 1240px; margin: 0 auto;
+      max-width: 1260px; margin: 0 auto;
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
     }
     .brand-mini { display: flex; align-items: center; gap: 10px; }
-    .brand-mini img { width: 40px; height: 40px; object-fit: contain; }
-    .brand-mini b { font-size: 18px; color: var(--emerald); display: block; line-height: 1.1; }
+    .brand-mini img { width: 38px; height: 38px; object-fit: contain; }
+    .brand-mini b { font-size: 17px; color: var(--emerald); display: block; line-height: 1.1; }
     .brand-mini span { font-size: 11px; color: var(--gold-2); }
     .top-actions { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
 
-    .wrap { max-width: 1240px; margin: 0 auto; padding: 22px 18px; }
+    .wrap { max-width: 1260px; margin: 0 auto; padding: 20px 18px; }
 
+    /* Unsaved Draft Banner */
     .publish-banner {
       display: none;
       align-items: center;
@@ -116,31 +119,61 @@
       color: #FAF6EE;
       border: 1.5px solid var(--gold);
       border-radius: 18px;
-      padding: 14px 18px;
+      padding: 13px 18px;
       margin-bottom: 18px;
       box-shadow: 0 12px 28px rgba(13, 59, 46, 0.16);
     }
     .publish-banner.show { display: flex; }
     .publish-banner b { color: #F4E5C2; font-size: 13.5px; display: block; }
-    .publish-banner span { font-size: 12px; color: rgba(250, 246, 238, 0.86); }
+    .publish-banner span { font-size: 12px; color: rgba(250, 246, 238, 0.88); }
     .publish-banner-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
-    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    /* KPI Grid */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
     .kpi {
       background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px;
-      padding: 15px 17px; box-shadow: 0 6px 20px rgba(13, 59, 46, 0.04);
+      padding: 14px 16px; box-shadow: 0 6px 18px rgba(13, 59, 46, 0.04);
     }
-    .kpi b { display: block; font-size: 26px; color: var(--emerald); line-height: 1.1; }
-    .kpi span { font-size: 11.5px; color: var(--muted); }
+    .kpi b { display: block; font-size: 24px; color: var(--emerald); line-height: 1.1; }
+    .kpi span { font-size: 11px; color: var(--muted); }
 
+    /* Tabs */
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+    .tab-btn {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #FFFFFF;
+      color: var(--emerald);
+      font: 700 12.5px inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { border-color: var(--gold); }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
+      color: #FFFFFF;
+      border-color: var(--gold);
+      box-shadow: 0 6px 18px rgba(13, 59, 46, 0.18);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Controls Bar */
     .controls {
       display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
-      background: #FFFFFF; border: 1px solid var(--line); border-radius: 18px; padding: 12px 14px; margin-bottom: 20px;
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; padding: 11px 14px; margin-bottom: 18px;
     }
     .ctrl-left { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
     .ctrl-left .sel { width: auto; padding: 8px 12px; font-size: 12.5px; }
-    .ctrl-search { width: 240px; padding: 8px 14px; font-size: 12.5px; }
+    .ctrl-search { width: 240px; padding: 8px 13px; font-size: 12.5px; }
 
+    /* Invitation Cards */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
     .item-card {
       background: #FFFFFF; border: 1.5px solid var(--line); border-radius: 18px;
@@ -148,40 +181,121 @@
       box-shadow: 0 8px 22px rgba(13, 59, 46, 0.05);
       transition: opacity 0.2s, border-color 0.2s;
     }
-    .item-card.is-hidden { opacity: 0.64; border-style: dashed; border-color: rgba(13, 59, 46, 0.22); background: #F7F4EE; }
+    .item-card.is-hidden { opacity: 0.65; border-style: dashed; border-color: rgba(13, 59, 46, 0.22); background: #F7F4EE; }
     .item-top {
-      height: 118px; position: relative; overflow: hidden; background: #0D3B2E;
+      height: 126px; position: relative; overflow: hidden; background: #0D3B2E;
       display: flex; align-items: flex-end; padding: 10px 12px;
     }
-    .item-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.72; }
-    .item-top::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,59,46,0.2), rgba(13,59,46,0.82)); }
+    .item-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.78; }
+    .item-top::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,59,46,0.18), rgba(13,59,46,0.82)); }
     .item-top-in { position: relative; z-index: 2; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #FFFFFF; }
     .pill-status {
       font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
       background: #10B981; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.08em;
     }
     .item-card.is-hidden .pill-status { background: #64748B; }
-    .item-body { padding: 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .item-body { padding: 13px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
     .item-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--emerald); line-height: 1.15; }
-    .item-sub { font-size: 12px; color: var(--muted); }
-    .item-row { display: flex; gap: 6px; align-items: center; margin-top: auto; padding-top: 6px; flex-wrap: wrap; }
-    .item-row .sel { padding: 6px 10px; font-size: 11.5px; flex: 1; min-width: 120px; }
+    .item-sub { font-size: 11.5px; color: var(--muted); }
+    .item-meta { font-size: 11px; color: var(--gold-2); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .mini-dots { display: inline-flex; gap: 4px; align-items: center; }
+    .mini-dots i { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.18); display: inline-block; }
+    .item-row { display: flex; gap: 6px; align-items: center; margin-top: auto; padding-top: 8px; flex-wrap: wrap; }
+    .item-row .sel { padding: 6px 9px; font-size: 11.5px; flex: 1; min-width: 110px; }
+
+    /* Songs List */
+    .song-list { display: grid; gap: 10px; }
+    .song-row {
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 15px;
+      padding: 12px 14px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+      box-shadow: 0 4px 14px rgba(13, 59, 46, 0.04);
+    }
+    .song-row.is-hidden { opacity: 0.58; border-style: dashed; background: #F7F4EE; }
+    .play-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
+      color: #F4E5C2; border: 1.5px solid var(--gold);
+      display: grid; place-items: center; cursor: pointer; font-size: 14px; flex-shrink: 0;
+    }
+    .play-btn.playing { background: linear-gradient(135deg, #E8CA8C, var(--gold)); color: var(--emerald); }
+    .song-info b { display: block; font-size: 13px; color: var(--emerald); }
+    .song-info span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+    .song-info code { font-size: 10.5px; color: var(--gold-2); background: #FAF7F2; padding: 1px 6px; border-radius: 6px; }
+    .song-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+
+    /* Images & Category Covers */
+    .sec-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--emerald); margin: 4px 0 12px; }
+    .cat-covers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; margin-bottom: 28px; }
+    .cover-card {
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .cover-card img { width: 100%; height: 120px; object-fit: cover; display: block; background: #EFE8DA; }
+    .cover-card-body { padding: 10px 12px; display: flex; flex-direction: column; gap: 7px; }
+    .cover-card-body b { font-size: 13px; color: var(--emerald); }
+    .cover-card-body span { font-size: 10.5px; color: var(--muted); word-break: break-all; }
+    .cover-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 12px; }
+    .media-card {
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .media-card img { width: 100%; height: 112px; object-fit: cover; display: block; background: #EFE8DA; }
+    .media-card-body { padding: 9px 10px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .media-card-body b { font-size: 11px; color: var(--emerald); word-break: break-all; line-height: 1.3; }
+    .media-card-body span { font-size: 10px; color: var(--muted); }
+
+    /* Site Settings Cards */
+    .settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .set-card {
+      background: #FFFFFF; border: 1px solid var(--line); border-radius: 18px; padding: 20px;
+      box-shadow: 0 6px 18px rgba(13, 59, 46, 0.04);
+    }
+    .set-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--emerald); margin-bottom: 12px; }
+    .set-fields { display: grid; gap: 10px; }
+    .cat-edit-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+      padding: 11px; border-radius: 12px; background: #FAF7F2; border: 1px solid var(--line);
+    }
+    .theme-edit-row {
+      display: grid; grid-template-columns: 110px 1fr auto; gap: 8px; align-items: center;
+      padding: 8px 10px; border-radius: 11px; background: #FAF7F2; border: 1px solid var(--line);
+    }
 
     /* Modals */
     .modal {
       position: fixed; inset: 0; z-index: 100;
-      background: rgba(13, 28, 22, 0.65); backdrop-filter: blur(8px);
-      display: none; align-items: center; justify-content: center; padding: 16px;
+      background: rgba(13, 28, 22, 0.68); backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center; padding: 14px;
     }
     .modal.open { display: flex; }
     .modal-box {
-      width: min(560px, 100%); max-height: 90vh; overflow-y: auto;
-      background: #FFFFFF; border: 1.5px solid var(--gold); border-radius: 22px; padding: 24px;
+      width: min(640px, 100%); max-height: 92vh; overflow-y: auto;
+      background: #FFFFFF; border: 1.5px solid var(--gold); border-radius: 22px; padding: 22px;
     }
-    .modal-box h2 { font-size: 28px; color: var(--emerald); margin-bottom: 6px; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .modal-box h2 { font-size: 27px; color: var(--emerald); margin-bottom: 4px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
     .full { grid-column: 1 / -1; }
-    .lbl { display: block; font-size: 11px; font-weight: 700; color: var(--gold-2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .lbl { display: block; font-size: 10.5px; font-weight: 700; color: var(--gold-2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .img-preview-row {
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+      padding: 10px; border-radius: 12px; background: #FAF7F2; border: 1px solid var(--line);
+    }
+    .img-preview-row img { width: 84px; height: 64px; object-fit: cover; border-radius: 9px; border: 1px solid var(--gold); }
+    .palette-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .palette-pick { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: var(--muted); }
+    .palette-pick input[type="color"] { width: 100%; height: 34px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; padding: 2px; }
+
+    .picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+    .pick-tile {
+      border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; cursor: pointer;
+      background: #FAF7F2; text-align: left; padding: 0; transition: all 0.15s;
+    }
+    .pick-tile:hover { border-color: var(--emerald); transform: translateY(-2px); }
+    .pick-tile img { width: 100%; height: 78px; object-fit: cover; display: block; }
+    .pick-tile span { display: block; font-size: 10px; padding: 5px 6px; color: var(--emerald); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
     .help-box {
       background: #FAF7F2; border: 1px solid var(--line); border-radius: 14px;
       padding: 12px 14px; font-size: 12px; color: #4A5550; line-height: 1.6; margin-top: 10px;
@@ -191,13 +305,20 @@
       position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
       background: var(--emerald); color: #FAF6EE; border: 1px solid var(--gold);
       padding: 10px 20px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25); display: none; z-index: 200; max-width: 92vw; text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25); display: none; z-index: 250; max-width: 92vw; text-align: center;
     }
     .toast.show { display: block; }
+
+    @media (max-width: 900px) {
+      .settings-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
       .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-      .form-grid { grid-template-columns: 1fr; }
+      .form-grid, .cat-edit-row { grid-template-columns: 1fr; }
+      .song-row { grid-template-columns: auto 1fr; }
+      .song-actions { grid-column: 1 / -1; justify-content: flex-start; }
       .ctrl-search { width: 100%; }
+      .palette-row { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -206,8 +327,8 @@
   <section id="loginGate">
     <div class="login-card">
       <img src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
-      <h1 class="serif">MEEM Admin Portal</h1>
-      <p>Private studio console for managing visible designs, categories &amp; new invitations.</p>
+      <h1 class="serif">MEEM Admin Studio</h1>
+      <p>Full control over invitations, songs, images, categories &amp; site options.</p>
       <form id="loginForm">
         <input class="inp" id="pwInput" type="password" required autocomplete="current-password" placeholder="Enter studio password" style="margin-bottom:12px;text-align:center;" />
         <button type="submit" class="btn btn-em" style="width:100%;">Unlock Admin Panel</button>
@@ -222,10 +343,9 @@
       <div class="topbar-in">
         <div class="brand-mini">
           <img src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
-          <div><b>MEEM Studio Admin</b><span id="modeSubtitle">Show · Hide · Organise · Add Invitations</span></div>
+          <div><b>MEEM Studio Admin</b><span id="modeSubtitle">Invitations · Songs · Images · Site Settings</span></div>
         </div>
         <div class="top-actions">
-          <button type="button" class="btn btn-gold btn-sm" id="openAddBtn">+ Add Invitation</button>
           <button type="button" class="btn btn-em btn-sm" id="publishLiveBtn">Publish Live to Site</button>
           <button type="button" class="btn btn-out btn-sm" id="exportJsBtn">Download data.js</button>
           <button type="button" class="btn btn-out btn-sm" id="openGhBtn">GitHub Sync</button>
@@ -238,8 +358,8 @@
     <main class="wrap">
       <div class="publish-banner" id="draftBanner">
         <div>
-          <b>Unpublished Studio Changes Ready (<span id="draftCount">0</span>)</b>
-          <span>Visible immediately in your browser preview. Click <strong>Publish Live to Site</strong> to push permanently for all customers.</span>
+          <b>Unpublished Changes Ready (<span id="draftInfo">Draft active</span>)</b>
+          <span>Visible immediately when you click <strong>Preview Site ↗</strong>. Click <strong>Publish Live to Site</strong> to deploy globally for all customers.</span>
         </div>
         <div class="publish-banner-actions">
           <button type="button" class="btn btn-gold btn-sm" id="bannerPublishBtn">Publish Live Now</button>
@@ -248,26 +368,185 @@
       </div>
 
       <div class="kpi-grid">
-        <div class="kpi"><b id="kTotal">0</b><span>Total Invitations (All Vault)</span></div>
-        <div class="kpi"><b id="kVisible" style="color:#059669">0</b><span>Visible on Production Site</span></div>
-        <div class="kpi"><b id="kHidden" style="color:#64748B">0</b><span>Hidden in Admin Vault</span></div>
-        <div class="kpi"><b id="kCats">0</b><span>Active Categories</span></div>
+        <div class="kpi"><b id="kVisible" style="color:#059669">0</b><span>Visible Invitations</span></div>
+        <div class="kpi"><b id="kHidden" style="color:#64748B">0</b><span>Hidden Vault</span></div>
+        <div class="kpi"><b id="kSongs">0</b><span>Active Songs</span></div>
+        <div class="kpi"><b id="kImages">0</b><span>Studio Images</span></div>
       </div>
 
-      <div class="controls">
-        <div class="ctrl-left">
-          <select class="sel" id="filterCat"><option value="all">All Categories</option></select>
-          <select class="sel" id="filterStatus">
-            <option value="all">All Statuses</option>
-            <option value="visible">Visible Only</option>
-            <option value="hidden">Hidden Vault Only</option>
+      <nav class="tabs" id="adminTabs">
+        <button type="button" class="tab-btn active" data-tab="invites">Invitations</button>
+        <button type="button" class="tab-btn" data-tab="songs">Songs &amp; Music</button>
+        <button type="button" class="tab-btn" data-tab="images">Images &amp; Covers</button>
+        <button type="button" class="tab-btn" data-tab="settings">Site Options &amp; Categories</button>
+      </nav>
+
+      <!-- TAB 1: INVITATIONS -->
+      <section class="tab-panel active" id="tab-invites">
+        <div class="controls">
+          <div class="ctrl-left">
+            <select class="sel" id="filterCat"><option value="all">All Categories</option></select>
+            <select class="sel" id="filterStatus">
+              <option value="all">All Statuses</option>
+              <option value="visible">Visible Only</option>
+              <option value="hidden">Hidden Vault Only</option>
+            </select>
+            <button type="button" class="btn btn-gold btn-sm" id="openAddBtn">+ Add New Invitation</button>
+          </div>
+          <input class="inp ctrl-search" id="adminSearch" placeholder="Search #num, title, venue..." />
+        </div>
+        <div class="grid" id="adminGrid"></div>
+      </section>
+
+      <!-- TAB 2: SONGS & MUSIC -->
+      <section class="tab-panel" id="tab-songs">
+        <div class="controls">
+          <div class="ctrl-left">
+            <select class="sel" id="songGroupFilter"><option value="all">All Song Groups</option></select>
+            <button type="button" class="btn btn-gold btn-sm" id="openAddSongBtn">+ Add / Upload New Song (.mp3)</button>
+          </div>
+          <input class="inp ctrl-search" id="songSearch" placeholder="Search song name or key..." />
+        </div>
+        <div class="song-list" id="songsList"></div>
+      </section>
+
+      <!-- TAB 3: IMAGES & CATEGORY COVERS -->
+      <section class="tab-panel" id="tab-images">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;">
+          <h2 class="sec-title" style="margin:0;">Category Arched Filter Covers</h2>
+        </div>
+        <div class="cat-covers-grid" id="catCoversGrid"></div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+          <h2 class="sec-title" style="margin:0;">Studio Image Library (assets/images/)</h2>
+          <label class="btn btn-gold btn-sm" style="cursor:pointer;">
+            + Upload New Studio Image
+            <input type="file" id="uploadNewMediaInput" accept="image/*" style="display:none;" />
+          </label>
+        </div>
+        <div class="media-grid" id="mediaGrid"></div>
+      </section>
+
+      <!-- TAB 4: SITE OPTIONS & SETTINGS -->
+      <section class="tab-panel" id="tab-settings">
+        <div class="settings-grid">
+          <div class="set-card">
+            <h3>Brand &amp; Contact Info</h3>
+            <div class="set-fields">
+              <div><label class="lbl">Brand Name (EN)</label><input class="inp" id="setBrandName" /></div>
+              <div><label class="lbl">Brand Name (AR)</label><input class="inp" id="setBrandAr" /></div>
+              <div><label class="lbl">Subtitle</label><input class="inp" id="setBrandSub" /></div>
+              <div><label class="lbl">Tagline</label><input class="inp" id="setBrandTagline" /></div>
+              <div><label class="lbl">WhatsApp Number (with country code, e.g. 201024190741)</label><input class="inp" id="setWhatsapp" /></div>
+              <div><label class="lbl">Instagram Handle</label><input class="inp" id="setHandle" /></div>
+              <button type="button" class="btn btn-em" id="saveBrandBtn">Save Brand &amp; Contact</button>
+            </div>
+          </div>
+
+          <div class="set-card">
+            <h3>Homepage Hero Copy &amp; Delivery</h3>
+            <div class="set-fields">
+              <div><label class="lbl">Top Badge Pill</label><input class="inp" id="setHeroPill" /></div>
+              <div><label class="lbl">Hero Italic Subline</label><input class="inp" id="setHeroSubline" /></div>
+              <div><label class="lbl">Hero Lead Description</label><textarea class="txt" id="setHeroLead" rows="3"></textarea></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div><label class="lbl">Delivery Stat</label><input class="inp" id="setDeliveryStat" /></div>
+                <div><label class="lbl">Delivery Label</label><input class="inp" id="setDeliveryLabel" /></div>
+              </div>
+              <button type="button" class="btn btn-em" id="saveHeroBtn">Save Hero Copy</button>
+            </div>
+          </div>
+
+          <div class="set-card">
+            <h3>Categories Names &amp; Descriptions</h3>
+            <div class="set-fields" id="catsSettingsList"></div>
+            <button type="button" class="btn btn-em" id="saveCatsBtn" style="margin-top:12px;">Save All Categories</button>
+          </div>
+
+          <div class="set-card">
+            <h3>Color Finish Themes (Try It Live)</h3>
+            <div class="set-fields" id="themesSettingsList"></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+              <button type="button" class="btn btn-out btn-sm" id="addThemeRowBtn">+ Add Theme Option</button>
+              <button type="button" class="btn btn-em btn-sm" id="saveThemesBtn">Save Themes</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FULL EDIT INVITATION MODAL -->
+  <div class="modal" id="editInviteModal">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 class="serif" id="editInvHeading">Edit Invitation</h2>
+        <button type="button" class="btn btn-out btn-sm" data-close="editInviteModal">✕</button>
+      </div>
+      <form id="editInviteForm" class="form-grid">
+        <input type="hidden" name="num" />
+        <div><label class="lbl">Title (English)</label><input class="inp" name="title" required /></div>
+        <div><label class="lbl">Subtitle (Couple Names)</label><input class="inp" name="subtitle" required /></div>
+        <div><label class="lbl">Category</label><select class="sel" name="cat" id="editCatSel"></select></div>
+        <div><label class="lbl">Visibility</label>
+          <select class="sel" name="hidden">
+            <option value="0">Visible on Website</option>
+            <option value="1">Hidden in Admin Vault</option>
           </select>
         </div>
-        <input class="inp ctrl-search" id="adminSearch" placeholder="Search #num, title, venue..." />
-      </div>
+        <div><label class="lbl">Venue</label><input class="inp" name="venue" /></div>
+        <div><label class="lbl">Language Tag</label><input class="inp" name="lang" placeholder="Bilingual / Arabic / English" /></div>
 
-      <div class="grid" id="adminGrid"></div>
-    </main>
+        <div class="full">
+          <label class="lbl">Cover Image</label>
+          <div class="img-preview-row">
+            <img id="editImgPreview" src="" alt="Preview" />
+            <div style="flex:1;min-width:180px;display:grid;gap:6px;">
+              <input class="inp" name="img" id="editImgInput" placeholder="assets/images/..." />
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <button type="button" class="btn btn-out btn-sm" id="editPickImgBtn">Choose from Library</button>
+                <label class="btn btn-gold btn-sm" style="cursor:pointer;">
+                  Upload New Photo
+                  <input type="file" id="editUploadImgInput" accept="image/*" style="display:none;" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="lbl">Default Song (Audio Track)</label>
+          <select class="sel" name="songKey" id="editSongSel"></select>
+        </div>
+        <div>
+          <label class="lbl">Soundtrack Display Label (Shown on Card)</label>
+          <input class="inp" name="soundtrack" placeholder="e.g. Ludovico Einaudi — Experience" />
+        </div>
+
+        <div class="full">
+          <label class="lbl">Color Palette Swatches &amp; Accent</label>
+          <div class="palette-row">
+            <label class="palette-pick"><input type="color" name="pal0" /><span>Color 1</span></label>
+            <label class="palette-pick"><input type="color" name="pal1" /><span>Color 2</span></label>
+            <label class="palette-pick"><input type="color" name="pal2" /><span>Color 3</span></label>
+            <label class="palette-pick"><input type="color" name="pal3" /><span>Color 4</span></label>
+            <label class="palette-pick"><input type="color" name="accent" /><span>Accent</span></label>
+          </div>
+        </div>
+
+        <div class="full"><label class="lbl">Short Description</label><textarea class="txt" name="desc" rows="2"></textarea></div>
+        <div class="full"><label class="lbl">Design Inspiration (Italic Story Line)</label><textarea class="txt" name="inspiration" rows="2"></textarea></div>
+        <div><label class="lbl">Mood</label><input class="inp" name="mood" /></div>
+        <div><label class="lbl">Typography</label><input class="inp" name="typography" /></div>
+        <div><label class="lbl">Floral &amp; Details</label><input class="inp" name="floral" /></div>
+        <div><label class="lbl">Customisation Summary</label><input class="inp" name="customization" /></div>
+
+        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
+          <button type="button" class="btn btn-out" data-close="editInviteModal">Cancel</button>
+          <button type="submit" class="btn btn-em">Save Changes</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- ADD NEW INVITATION MODAL -->
@@ -275,48 +554,77 @@
     <div class="modal-box">
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <h2 class="serif">Add New Invitation</h2>
-        <button type="button" class="btn btn-out btn-sm" id="closeAddBtn">✕</button>
+        <button type="button" class="btn btn-out btn-sm" data-close="addModal">✕</button>
       </div>
-      <p style="font-size:12.5px;color:var(--muted);">Clone any existing template with new details OR paste your own custom HTML code.</p>
-
+      <p style="font-size:12.5px;color:var(--muted);">Clone any existing template with new details OR paste custom HTML.</p>
       <form id="addForm" class="form-grid">
-        <div>
-          <label class="lbl">Title (English)</label>
-          <input class="inp" name="title" required placeholder="e.g. Royal Jasmine Arch" />
-        </div>
-        <div>
-          <label class="lbl">Subtitle (Couple Names)</label>
-          <input class="inp" name="subtitle" required placeholder="e.g. كريم و نور" />
-        </div>
-        <div>
-          <label class="lbl">Category</label>
-          <select class="sel" name="cat" id="addCatSel"></select>
-        </div>
-        <div>
-          <label class="lbl">Venue</label>
-          <input class="inp" name="venue" placeholder="e.g. Nile Ritz-Carlton, Cairo" />
-        </div>
-        <div>
-          <label class="lbl">Clone Base Template</label>
-          <select class="sel" name="cloneFrom" id="cloneSel"></select>
-        </div>
-        <div>
-          <label class="lbl">Default Song Key</label>
-          <input class="inp" name="song" placeholder="einaudi_experience / jassmi_zaffa" />
-        </div>
+        <div><label class="lbl">Title (English)</label><input class="inp" name="title" required placeholder="e.g. Royal Jasmine Arch" /></div>
+        <div><label class="lbl">Subtitle (Couple Names)</label><input class="inp" name="subtitle" required placeholder="e.g. كريم و نور" /></div>
+        <div><label class="lbl">Category</label><select class="sel" name="cat" id="addCatSel"></select></div>
+        <div><label class="lbl">Venue</label><input class="inp" name="venue" placeholder="e.g. Nile Ritz-Carlton, Cairo" /></div>
+        <div><label class="lbl">Clone Base Template</label><select class="sel" name="cloneFrom" id="cloneSel"></select></div>
+        <div><label class="lbl">Default Song</label><select class="sel" name="song" id="addSongSel"></select></div>
         <div class="full">
-          <label class="lbl">Description</label>
-          <input class="inp" name="desc" placeholder="Short luxury description of the invitation style..." />
+          <label class="lbl">Cover Image</label>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <input class="inp" name="img" id="addImgInput" value="assets/images/classic-ivory-gold-crest.jpg" style="flex:1;min-width:180px;" />
+            <button type="button" class="btn btn-out btn-sm" id="addPickImgBtn">Pick Image</button>
+            <label class="btn btn-gold btn-sm" style="cursor:pointer;">Upload Photo<input type="file" id="addUploadImgInput" accept="image/*" style="display:none;" /></label>
+          </div>
         </div>
-        <div class="full">
-          <label class="lbl">Custom HTML (Optional — leave empty to clone selected base template)</label>
-          <textarea class="txt" name="html" rows="4" placeholder="<!DOCTYPE html>..."></textarea>
-        </div>
+        <div class="full"><label class="lbl">Description</label><input class="inp" name="desc" placeholder="Short luxury description..." /></div>
+        <div class="full"><label class="lbl">Custom HTML (Optional — leave empty to clone base template)</label><textarea class="txt" name="html" rows="3" placeholder="<!DOCTYPE html>..."></textarea></div>
         <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
-          <button type="button" class="btn btn-out" id="cancelAddBtn">Cancel</button>
+          <button type="button" class="btn btn-out" data-close="addModal">Cancel</button>
           <button type="submit" class="btn btn-em">Add Invitation</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT SONG MODAL -->
+  <div class="modal" id="songModal">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 class="serif" id="songModalTitle">Add / Edit Song</h2>
+        <button type="button" class="btn btn-out btn-sm" data-close="songModal">✕</button>
+      </div>
+      <form id="songForm" class="form-grid">
+        <input type="hidden" name="origKey" />
+        <div class="full"><label class="lbl">Display Name (Shown to Customers)</label><input class="inp" name="label" required placeholder="e.g. Amr Diab — Tamally Maak (عمرو دياب — تملي معاك)" /></div>
+        <div><label class="lbl">Song Key (letters/underscores)</label><input class="inp" name="key" required placeholder="e.g. amr_tamally_custom" /></div>
+        <div><label class="lbl">Group / Category</label>
+          <input class="inp" name="group" list="songGroupOptions" required placeholder="Choose or type group..." />
+          <datalist id="songGroupOptions"></datalist>
+        </div>
+        <div class="full">
+          <label class="lbl">Audio File (.mp3)</label>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <input class="inp" name="file" id="songFileInput" placeholder="assets/audio/my-song.mp3" style="flex:1;min-width:180px;" />
+            <label class="btn btn-gold btn-sm" style="cursor:pointer;">
+              Upload MP3 File
+              <input type="file" id="songMp3Upload" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;" />
+            </label>
+          </div>
+          <small id="songUploadHint" style="font-size:11px;color:var(--muted);display:block;margin-top:4px;">Upload any .mp3 from your phone or computer (recommended under 8 MB).</small>
+        </div>
+        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
+          <button type="button" class="btn btn-out" data-close="songModal">Cancel</button>
+          <button type="submit" class="btn btn-em">Save Song</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- STUDIO IMAGE PICKER MODAL -->
+  <div class="modal" id="imagePickerModal">
+    <div class="modal-box" style="width:min(760px,100%);">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+        <h2 class="serif">Choose Studio Image</h2>
+        <button type="button" class="btn btn-out btn-sm" data-close="imagePickerModal">✕</button>
+      </div>
+      <input class="inp" id="pickerSearch" placeholder="Filter images by filename..." style="margin-top:10px;" />
+      <div class="picker-grid" id="pickerGrid"></div>
     </div>
   </div>
 
@@ -325,9 +633,9 @@
     <div class="modal-box">
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <h2 class="serif">Connect Live Auto-Publish</h2>
-        <button type="button" class="btn btn-out btn-sm" id="closeGhBtn">✕</button>
+        <button type="button" class="btn btn-out btn-sm" data-close="ghModal">✕</button>
       </div>
-      <p style="font-size:12.5px;color:var(--muted);">Because MEEM is hosted as a lightning-fast static site on Render, connecting your GitHub token once lets you publish Show/Hide/Add updates straight to <strong>meem-invitations.onrender.com</strong> for all customers in ~20 seconds.</p>
+      <p style="font-size:12.5px;color:var(--muted);">Connect your GitHub token once to push edited invitations, uploaded images, uploaded songs, and settings straight to <strong>meem-invitations.onrender.com</strong> for all customers in ~20 seconds.</p>
       <div class="help-box">
         <strong>One-Time Setup (30 seconds):</strong><br>
         1. Open <code>github.com/settings/personal-access-tokens/new</code><br>
@@ -336,18 +644,12 @@
         4. Click <strong>Generate token</strong> and paste it below (saved privately in this browser only).
       </div>
       <form id="ghForm" class="form-grid">
-        <div class="full">
-          <label class="lbl">GitHub Repository (owner/repo)</label>
-          <input class="inp" id="ghRepo" value="8ofrii/meem-invitations" required />
-        </div>
-        <div class="full">
-          <label class="lbl">GitHub Personal Access Token</label>
-          <input class="inp" id="ghToken" type="password" placeholder="github_pat_..." />
-        </div>
+        <div class="full"><label class="lbl">GitHub Repository (owner/repo)</label><input class="inp" id="ghRepo" value="8ofrii/meem-invitations" required /></div>
+        <div class="full"><label class="lbl">GitHub Personal Access Token</label><input class="inp" id="ghToken" type="password" placeholder="github_pat_..." /></div>
         <div class="full" style="display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:6px;">
           <button type="button" class="btn btn-danger btn-sm" id="clearGhBtn">Disconnect Token</button>
           <div style="display:flex;gap:8px;">
-            <button type="button" class="btn btn-out" id="cancelGhBtn">Cancel</button>
+            <button type="button" class="btn btn-out" data-close="ghModal">Cancel</button>
             <button type="submit" class="btn btn-em">Save &amp; Connect</button>
           </div>
         </div>
@@ -360,20 +662,27 @@
   <script src="assets/data.js"></script>
   <script>
     const $ = id => document.getElementById(id);
-    const STORAGE_KEY = 'meem_admin_state_v1';
+    const CMS_STORAGE_KEY = 'meem_admin_cms_v1';
     const GH_TOKEN_KEY = 'meem_gh_token_v1';
     const GH_REPO_KEY = 'meem_gh_repo_v1';
     const AUTH_SESSION_KEY = 'meem_admin_authed_v1';
     const PASS_HASH = '5c51a3d78cca9cde722e603efd2717af47be6f6766c3bc303b5dd70d81a4c30c';
 
-    const BASE_SITE = JSON.parse(JSON.stringify(window.SITE || { CATEGORIES: [], SAMPLES: [] }));
+    const BASE_SITE = JSON.parse(JSON.stringify(window.SITE || { CATEGORIES: [], SAMPLES: [], SONGS: [], MEDIA_IMAGES: [], THEMES: [], HERO: {}, CAT_THUMBS: {}, BRAND: {} }));
     const isLocalHost = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
     let useServerApi = false;
     let adminToken = sessionStorage.getItem('meem_admin_token') || '';
-    let catalog = { CATEGORIES: [], SAMPLES: [] };
-    let addedFilesHtml = {}; // relFile -> html text for GitHub publish
+    let siteData = JSON.parse(JSON.stringify(BASE_SITE));
+    let hasUnsavedDraft = false;
 
-    // Pure-JS SHA-256 so password check works on HTTPS, HTTP, and file:// without errors
+    // Pending binary/text files waiting to be committed to GitHub or saved to local server
+    // { 'assets/images/foo.jpg': { base64, previewUrl }, 'assets/audio/bar.mp3': { base64, previewUrl }, 'samples/53-x.html': { text } }
+    let pendingFiles = {};
+    let audioPlayer = new Audio();
+    let playingSongKey = '';
+    let imagePickerCallback = null;
+
+    // Pure-JS SHA-256
     function sha256(str) {
       const rightRotate = (v, a) => (v >>> a) | (v << (32 - a));
       const mathPow = Math.pow, maxWord = mathPow(2, 32);
@@ -389,13 +698,9 @@
       }
       const utf8 = unescape(encodeURIComponent(str));
       asciiBitLength = utf8.length * 8;
-      const padded = utf8 + '\x80';
-      let msg = padded;
+      let msg = utf8 + '\x80';
       while ((msg.length % 64) - 56) msg += '\x00';
-      for (let i = 0; i < msg.length; i++) {
-        const j = msg.charCodeAt(i);
-        words[i >> 2] |= j << ((3 - i) % 4) * 8;
-      }
+      for (let i = 0; i < msg.length; i++) words[i >> 2] |= msg.charCodeAt(i) << ((3 - i) % 4) * 8;
       words[words.length] = ((asciiBitLength / maxWord) | 0);
       words[words.length] = (asciiBitLength | 0);
       const h = hash.slice(0, 8);
@@ -403,8 +708,7 @@
         const w = words.slice(j, j += 16);
         const oldHash = h.slice(0);
         for (let i = 0; i < 64; i++) {
-          const w15 = w[i - 15], w2 = w[i - 2];
-          const a = h[0], e = h[4];
+          const w15 = w[i - 15], w2 = w[i - 2], a = h[0], e = h[4];
           const temp1 = h[7] + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) + ((e & h[5]) ^ ((~e) & h[6])) + k[i] +
             (w[i] = (i < 16) ? w[i] : (w[i - 16] + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3)) + w[i - 7] + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))) | 0);
           const temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) + ((a & h[1]) ^ (a & h[2]) ^ (h[1] & h[2]));
@@ -414,16 +718,14 @@
         }
         for (let i = 0; i < 8; i++) h[i] = (h[i] + oldHash[i]) | 0;
       }
-      for (let i = 0; i < 8; i++) {
-        for (let j = 3; j + 1; j--) {
-          const b = (h[i] >> (j * 8)) & 255;
-          result += ((b < 16) ? '0' : '') + b.toString(16);
-        }
+      for (let i = 0; i < 8; i++) for (let j = 3; j + 1; j--) {
+        const b = (h[i] >> (j * 8)) & 255;
+        result += ((b < 16) ? '0' : '') + b.toString(16);
       }
       return result;
     }
 
-    function showToast(msg, ms = 2800) {
+    function showToast(msg, ms = 3000) {
       const t = $('toast');
       t.textContent = msg;
       t.classList.add('show');
@@ -431,37 +733,28 @@
       showToast._t = setTimeout(() => t.classList.remove('show'), ms);
     }
 
-    function readLocalState() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) return JSON.parse(raw);
-      } catch (_) {}
-      return { overrides: {}, added: [] };
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    function writeLocalState(st) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
+    function resolvePreviewSrc(relPath) {
+      if (pendingFiles[relPath] && pendingFiles[relPath].previewUrl) return pendingFiles[relPath].previewUrl;
+      return relPath;
     }
 
-    function countDraftChanges() {
-      const st = readLocalState();
-      return Object.keys(st.overrides || {}).length + (st.added || []).length;
+    function persistDraft() {
+      hasUnsavedDraft = true;
+      try { localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(siteData)); } catch (_) {}
+      updateDraftBanner();
     }
 
-    function buildMergedStaticCatalog() {
-      const st = readLocalState();
-      const ov = st.overrides || {};
-      const samples = BASE_SITE.SAMPLES.map(s => {
-        const patch = ov[s.num];
-        if (!patch) return { ...s };
-        const merged = { ...s, ...patch };
-        if (patch.moodboard) merged.moodboard = { ...(s.moodboard || {}), ...patch.moodboard };
-        return merged;
-      });
-      for (const extra of (st.added || [])) {
-        samples.push({ ...extra, ...(ov[extra.num] || {}) });
-      }
-      return { ...BASE_SITE, SAMPLES: samples };
+    function updateDraftBanner() {
+      const fileCount = Object.keys(pendingFiles).length;
+      const show = hasUnsavedDraft || fileCount > 0;
+      $('draftBanner').classList.toggle('show', show);
+      $('draftInfo').textContent = fileCount > 0
+        ? `Catalog edits + ${fileCount} file(s) ready to upload`
+        : 'Catalog edits ready to publish';
     }
 
     async function safeApi(url, opts = {}) {
@@ -474,19 +767,16 @@
       return { status: res.status, ...data };
     }
 
-    function buildDataJsText(mergedObj) {
-      return '/* Single source of truth for MEEM — Updated from MEEM Admin Portal */\nwindow.SITE = ' + JSON.stringify(mergedObj, null, 2) + ';\n';
+    function buildDataJsText(obj) {
+      return '/* Single source of truth for MEEM — Updated from MEEM Admin Studio */\nwindow.SITE = ' + JSON.stringify(obj, null, 2) + ';\n';
     }
 
     function downloadTextFile(filename, text, mime = 'application/javascript') {
       const blob = new Blob([text], { type: mime + ';charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
@@ -497,7 +787,43 @@
       return btoa(bin);
     }
 
-    async function ghPutFile(repo, token, filePath, contentStr, message) {
+    function compressImageFile(file, maxDim = 1200, quality = 0.84) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = reject;
+        reader.onload = () => {
+          const img = new Image();
+          img.onerror = reject;
+          img.onload = () => {
+            const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+            const cv = document.createElement('canvas');
+            cv.width = Math.round(img.width * scale);
+            cv.height = Math.round(img.height * scale);
+            cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+            const dataUrl = cv.toDataURL('image/jpeg', quality);
+            const base64 = dataUrl.split(',')[1];
+            resolve({ dataUrl, base64 });
+          };
+          img.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function readBinaryAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = reject;
+        reader.onload = () => {
+          const dataUrl = reader.result;
+          const base64 = String(dataUrl).split(',')[1];
+          resolve({ base64, previewUrl: URL.createObjectURL(file) });
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function ghPutContent(repo, token, filePath, base64Content, message) {
       const apiBase = `https://api.github.com/repos/${repo}/contents/${filePath}`;
       const headers = {
         'Authorization': 'Bearer ' + token,
@@ -513,20 +839,35 @@
       const putRes = await fetch(apiBase, {
         method: 'PUT',
         headers,
-        body: JSON.stringify({
-          message,
-          content: toBase64Utf8(contentStr),
-          ...(sha ? { sha } : {})
-        })
+        body: JSON.stringify({ message, content: base64Content, ...(sha ? { sha } : {}) })
       });
       if (!putRes.ok) {
         const err = await putRes.json().catch(() => ({}));
-        throw new Error(err.message || `GitHub HTTP ${putRes.status}`);
+        throw new Error(`${filePath}: ${err.message || 'HTTP ' + putRes.status}`);
       }
       return putRes.json();
     }
 
-    async function publishLiveToGitHub() {
+    async function publishAllLive() {
+      if (useServerApi) {
+        const payloadFiles = {};
+        for (const [k, v] of Object.entries(pendingFiles)) {
+          payloadFiles[k] = v.base64 ? { base64: v.base64 } : { text: v.text };
+        }
+        const r = await safeApi('/api/admin/save-site', {
+          method: 'POST',
+          body: JSON.stringify({ site: siteData, files: payloadFiles })
+        });
+        if (r.ok) {
+          localStorage.removeItem(CMS_STORAGE_KEY);
+          pendingFiles = {};
+          hasUnsavedDraft = false;
+          updateDraftBanner();
+          showToast('Saved directly to local project files!', 3500);
+          return;
+        }
+      }
+
       const token = localStorage.getItem(GH_TOKEN_KEY) || '';
       const repo = localStorage.getItem(GH_REPO_KEY) || '8ofrii/meem-invitations';
       if (!token) {
@@ -535,78 +876,74 @@
         $('ghModal').classList.add('open');
         return;
       }
+
       const btns = [$('publishLiveBtn'), $('bannerPublishBtn')];
       btns.forEach(b => { if (b) { b.disabled = true; b.textContent = 'Publishing...'; } });
       try {
-        // 1. Push any newly created invitation HTML files
-        for (const [relFile, html] of Object.entries(addedFilesHtml)) {
-          await ghPutFile(repo, token, relFile, html, `Admin: add ${relFile}`);
+        const fileEntries = Object.entries(pendingFiles);
+        for (let i = 0; i < fileEntries.length; i++) {
+          const [relFile, entry] = fileEntries[i];
+          showToast(`Uploading file ${i + 1}/${fileEntries.length}: ${relFile}`, 6000);
+          const b64 = entry.base64 ? entry.base64 : toBase64Utf8(entry.text || '');
+          await ghPutContent(repo, token, relFile, b64, `Admin Studio: upload ${relFile}`);
         }
-        // 2. Push updated assets/data.js
-        const merged = useServerApi ? catalog : buildMergedStaticCatalog();
-        const jsText = buildDataJsText(merged);
-        await ghPutFile(repo, token, 'assets/data.js', jsText, 'Admin: update visible invitations & categories');
+        showToast('Updating assets/data.js...', 6000);
+        await ghPutContent(repo, token, 'assets/data.js', toBase64Utf8(buildDataJsText(siteData)), 'Admin Studio: publish catalog, songs, images & settings');
 
-        // Clear local draft & refresh base state
-        localStorage.removeItem(STORAGE_KEY);
-        addedFilesHtml = {};
-        BASE_SITE.SAMPLES = JSON.parse(JSON.stringify(merged.SAMPLES));
-        renderDashboard();
-        showToast('Published live! Render will update for all visitors in ~20 seconds.', 4500);
+        localStorage.removeItem(CMS_STORAGE_KEY);
+        pendingFiles = {};
+        hasUnsavedDraft = false;
+        Object.assign(BASE_SITE, JSON.parse(JSON.stringify(siteData)));
+        updateDraftBanner();
+        showToast('Published live! Render will update for all visitors in ~20 seconds.', 5000);
       } catch (e) {
-        showToast('Publish failed: ' + e.message, 4500);
+        showToast('Publish failed: ' + e.message, 5000);
       } finally {
         if ($('publishLiveBtn')) { $('publishLiveBtn').disabled = false; $('publishLiveBtn').textContent = 'Publish Live to Site'; }
         if ($('bannerPublishBtn')) { $('bannerPublishBtn').disabled = false; $('bannerPublishBtn').textContent = 'Publish Live Now'; }
       }
     }
 
-    async function loadCatalog() {
-      if (useServerApi) {
-        const data = await safeApi('/api/catalog');
-        if (data.ok) catalog = { CATEGORIES: data.CATEGORIES, SAMPLES: data.SAMPLES };
-      } else {
-        catalog = buildMergedStaticCatalog();
-      }
-
-      const catOpts = `<option value="all">All Categories (${catalog.SAMPLES.length})</option>` +
-        catalog.CATEGORIES.map(c => {
-          const vis = catalog.SAMPLES.filter(s => s.cat === c.id && !s.hidden).length;
-          const tot = catalog.SAMPLES.filter(s => s.cat === c.id).length;
-          return `<option value="${c.id}">${c.short} (${vis} visible / ${tot} total)</option>`;
-        }).join('');
-      const prevCat = $('filterCat').value || 'all';
-      $('filterCat').innerHTML = catOpts;
-      $('filterCat').value = prevCat;
-
-      $('addCatSel').innerHTML = catalog.CATEGORIES.map(c => `<option value="${c.id}">${c.short} (${c.ar})</option>`).join('');
-      $('cloneSel').innerHTML = catalog.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${s.title}</option>`).join('');
-
-      renderDashboard();
-    }
-
-    function renderDashboard() {
-      const visCount = catalog.SAMPLES.filter(s => !s.hidden).length;
-      const hidCount = catalog.SAMPLES.length - visCount;
-      $('kTotal').textContent = catalog.SAMPLES.length;
+    function renderAll() {
+      const visCount = siteData.SAMPLES.filter(s => !s.hidden).length;
       $('kVisible').textContent = visCount;
-      $('kHidden').textContent = hidCount;
-      $('kCats').textContent = catalog.CATEGORIES.length;
-
-      const drafts = useServerApi ? 0 : countDraftChanges();
-      $('draftCount').textContent = drafts;
-      $('draftBanner').classList.toggle('show', drafts > 0);
+      $('kHidden').textContent = siteData.SAMPLES.length - visCount;
+      $('kSongs').textContent = (siteData.SONGS || []).filter(s => !s.hidden).length;
+      $('kImages').textContent = (siteData.MEDIA_IMAGES || []).length;
 
       const hasGh = Boolean(localStorage.getItem(GH_TOKEN_KEY));
       $('modeSubtitle').textContent = useServerApi
         ? 'Connected to Local Studio Server'
-        : (hasGh ? 'Live GitHub Auto-Publish Connected ✓' : 'Static Mode · Connect GitHub Sync to Publish Globally');
+        : (hasGh ? 'Live GitHub Auto-Publish Connected ✓' : 'Static Mode · Connect GitHub Sync to Publish Live');
+
+      updateDraftBanner();
+      renderInvitesTab();
+      renderSongsTab();
+      renderImagesTab();
+      renderSettingsTab();
+    }
+
+    /* ===== TAB 1: INVITATIONS ===== */
+    function renderInvitesTab() {
+      const prevCat = $('filterCat').value || 'all';
+      $('filterCat').innerHTML = `<option value="all">All Categories (${siteData.SAMPLES.length})</option>` +
+        siteData.CATEGORIES.map(c => {
+          const vis = siteData.SAMPLES.filter(s => s.cat === c.id && !s.hidden).length;
+          const tot = siteData.SAMPLES.filter(s => s.cat === c.id).length;
+          return `<option value="${c.id}">${esc(c.short)} (${vis}/${tot})</option>`;
+        }).join('');
+      $('filterCat').value = prevCat;
+
+      $('addCatSel').innerHTML = siteData.CATEGORIES.map(c => `<option value="${c.id}">${esc(c.short)} (${esc(c.ar)})</option>`).join('');
+      $('cloneSel').innerHTML = siteData.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${esc(s.title)}</option>`).join('');
+      $('addSongSel').innerHTML = `<option value="">Keep template default</option>` +
+        (siteData.SONGS || []).map(x => `<option value="${esc(x.key)}">${esc(x.label)}</option>`).join('');
 
       const cf = $('filterCat').value;
       const sf = $('filterStatus').value;
       const q = $('adminSearch').value.trim().toLowerCase();
 
-      const list = catalog.SAMPLES.filter(s => {
+      const list = siteData.SAMPLES.filter(s => {
         if (cf !== 'all' && s.cat !== cf) return false;
         if (sf === 'visible' && s.hidden) return false;
         if (sf === 'hidden' && !s.hidden) return false;
@@ -614,217 +951,706 @@
         return true;
       });
 
-      $('adminGrid').innerHTML = list.map(s => `
+      $('adminGrid').innerHTML = list.map(s => {
+        const pal = (s.moodboard && s.moodboard.palette) ? s.moodboard.palette : [];
+        const songLabel = (s.moodboard && s.moodboard.soundtrack) ? s.moodboard.soundtrack : (s.songKey || 'Default');
+        const viewHref = s.songKey ? `${s.file}?song=${encodeURIComponent(s.songKey)}` : s.file;
+        return `
         <article class="item-card ${s.hidden ? 'is-hidden' : ''}">
           <div class="item-top">
-            ${s.img ? `<img src="${s.img}" alt="${s.title}" loading="lazy" />` : ''}
+            ${s.img ? `<img src="${esc(resolvePreviewSrc(s.img))}" alt="${esc(s.title)}" loading="lazy" />` : ''}
             <div class="item-top-in">
               <strong style="font-size:13px">#${s.num}</strong>
               <span class="pill-status">${s.hidden ? 'Hidden' : 'Visible'}</span>
             </div>
           </div>
           <div class="item-body">
-            <div class="item-title">${s.title}</div>
-            <div class="item-sub">${s.subtitle} · ${s.venue}</div>
+            <div class="item-title">${esc(s.title)}</div>
+            <div class="item-sub">${esc(s.subtitle)} · ${esc(s.venue)}</div>
+            <div class="item-meta">
+              <span class="mini-dots">${pal.map(c => `<i style="background:${esc(c)}"></i>`).join('')}</span>
+              <span>♪ ${esc(songLabel)}</span>
+            </div>
             <div class="item-row">
               <select class="sel" data-cat-change="${s.num}">
-                ${catalog.CATEGORIES.map(c => `<option value="${c.id}" ${s.cat === c.id ? 'selected' : ''}>${c.short}</option>`).join('')}
+                ${siteData.CATEGORIES.map(c => `<option value="${c.id}" ${s.cat === c.id ? 'selected' : ''}>${esc(c.short)}</option>`).join('')}
               </select>
-              <a class="btn btn-out btn-sm" href="${s.file}" target="_blank">View</a>
+              <button type="button" class="btn btn-out btn-sm" data-edit-inv="${s.num}">Edit</button>
+              <a class="btn btn-out btn-sm" href="${esc(viewHref)}" target="_blank">View</a>
               <button type="button" class="btn ${s.hidden ? 'btn-em' : 'btn-gold'} btn-sm" data-toggle="${s.num}" data-next="${s.hidden ? '0' : '1'}">
                 ${s.hidden ? 'Show' : 'Hide'}
               </button>
             </div>
           </div>
-        </article>`).join('');
+        </article>`;
+      }).join('');
     }
 
-    $('adminGrid').addEventListener('click', async e => {
-      const btn = e.target.closest('button[data-toggle]');
-      if (!btn) return;
-      const num = btn.dataset.toggle;
-      const hidden = btn.dataset.next === '1';
-      if (useServerApi) {
-        const r = await safeApi('/api/admin/toggle', { method: 'POST', body: JSON.stringify({ num, hidden }) });
-        if (r.ok) {
-          showToast(hidden ? `#${num} hidden from site` : `#${num} is now visible on site!`);
-          await loadCatalog();
-        }
-      } else {
-        const st = readLocalState();
-        st.overrides = st.overrides || {};
-        st.overrides[num] = { ...(st.overrides[num] || {}), hidden };
-        writeLocalState(st);
-        showToast(hidden ? `#${num} hidden — click Publish Live when ready` : `#${num} set visible — click Publish Live when ready`);
-        await loadCatalog();
+    function openEditInvite(num) {
+      const s = siteData.SAMPLES.find(x => x.num === num);
+      if (!s) return;
+      const f = $('editInviteForm');
+      $('editInvHeading').textContent = `Edit #${s.num} — ${s.title}`;
+      $('editCatSel').innerHTML = siteData.CATEGORIES.map(c => `<option value="${c.id}">${esc(c.short)} (${esc(c.ar)})</option>`).join('');
+      $('editSongSel').innerHTML = `<option value="">Keep template default</option>` +
+        (siteData.SONGS || []).map(x => `<option value="${esc(x.key)}">${esc(x.label)}</option>`).join('');
+
+      f.num.value = s.num;
+      f.title.value = s.title || '';
+      f.subtitle.value = s.subtitle || '';
+      f.cat.value = s.cat || 'luxury';
+      f.hidden.value = s.hidden ? '1' : '0';
+      f.venue.value = s.venue || '';
+      f.lang.value = s.lang || 'Bilingual';
+      f.img.value = s.img || '';
+      $('editImgPreview').src = resolvePreviewSrc(s.img || 'assets/images/classic-ivory-gold-crest.jpg');
+      f.songKey.value = s.songKey || '';
+
+      const mb = s.moodboard || {};
+      const pal = mb.palette || ['#0D3B2E', '#C5A059', '#FAF6EE', '#2C1810'];
+      f.soundtrack.value = mb.soundtrack || '';
+      f.pal0.value = pal[0] || '#0D3B2E';
+      f.pal1.value = pal[1] || '#C5A059';
+      f.pal2.value = pal[2] || '#FAF6EE';
+      f.pal3.value = pal[3] || '#2C1810';
+      f.accent.value = s.accent || pal[1] || '#C5A059';
+      f.desc.value = s.desc || '';
+      f.inspiration.value = mb.inspiration || '';
+      f.mood.value = mb.mood || '';
+      f.typography.value = mb.typography || '';
+      f.floral.value = mb.floral || '';
+      f.customization.value = mb.customization || '';
+
+      $('editInviteModal').classList.add('open');
+    }
+
+    $('editImgInput').addEventListener('input', () => {
+      $('editImgPreview').src = resolvePreviewSrc($('editImgInput').value.trim());
+    });
+    $('editSongSel').addEventListener('change', () => {
+      const k = $('editSongSel').value;
+      const so = (siteData.SONGS || []).find(x => x.key === k);
+      if (so && $('editInviteForm').soundtrack) $('editInviteForm').soundtrack.value = so.label.split('(')[0].trim();
+    });
+    $('editPickImgBtn').addEventListener('click', () => {
+      openImagePicker(imgPath => {
+        $('editImgInput').value = imgPath;
+        $('editImgPreview').src = resolvePreviewSrc(imgPath);
+      });
+    });
+    $('editUploadImgInput').addEventListener('change', async e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const slug = (file.name.replace(/\.[^.]+$/, '') || 'invite-cover').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + Date.now().toString(36).slice(-4);
+      const rel = `assets/images/${slug}.jpg`;
+      const { dataUrl, base64 } = await compressImageFile(file, 1200, 0.84);
+      pendingFiles[rel] = { base64, previewUrl: dataUrl };
+      if (!siteData.MEDIA_IMAGES.includes(rel)) siteData.MEDIA_IMAGES.unshift(rel);
+      $('editImgInput').value = rel;
+      $('editImgPreview').src = dataUrl;
+      showToast(`Photo staged as ${rel} — Save & Publish Live!`);
+      e.target.value = '';
+    });
+
+    $('editInviteForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const f = e.target;
+      const s = siteData.SAMPLES.find(x => x.num === f.num.value);
+      if (!s) return;
+      const CAT_AES = { luxury: 'luxury', floral: 'floral', modern: 'modern', royal: 'midnight', arabic: 'katb', motion: 'modern', cards: 'classic' };
+      const catObj = siteData.CATEGORIES.find(c => c.id === f.cat.value);
+
+      s.title = f.title.value.trim();
+      s.subtitle = f.subtitle.value.trim();
+      s.cat = f.cat.value;
+      s.aesthetic = CAT_AES[s.cat] || 'luxury';
+      s.hidden = f.hidden.value === '1';
+      s.venue = f.venue.value.trim();
+      s.lang = f.lang.value.trim() || 'Bilingual';
+      s.img = f.img.value.trim();
+      s.accent = f.accent.value;
+      s.desc = f.desc.value.trim();
+      if (f.songKey.value) s.songKey = f.songKey.value;
+      else delete s.songKey;
+
+      s.moodboard = {
+        ...(s.moodboard || {}),
+        collection: catObj ? catObj.short : 'MEEM Curated',
+        palette: [f.pal0.value, f.pal1.value, f.pal2.value, f.pal3.value],
+        soundtrack: f.soundtrack.value.trim(),
+        inspiration: f.inspiration.value.trim(),
+        mood: f.mood.value.trim(),
+        typography: f.typography.value.trim(),
+        floral: f.floral.value.trim(),
+        customization: f.customization.value.trim()
+      };
+
+      persistDraft();
+      $('editInviteModal').classList.remove('open');
+      renderAll();
+      showToast(`Updated #${s.num} (${s.title})!`);
+    });
+
+    /* ===== TAB 2: SONGS & MUSIC ===== */
+    function stopAudioPreview() {
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+      playingSongKey = '';
+      document.querySelectorAll('.play-btn.playing').forEach(b => { b.classList.remove('playing'); b.textContent = '▶'; });
+    }
+    audioPlayer.addEventListener('ended', stopAudioPreview);
+
+    function renderSongsTab() {
+      const songs = siteData.SONGS || [];
+      const groups = [...new Set(songs.map(s => s.group || 'Other'))];
+      const prevG = $('songGroupFilter').value || 'all';
+      $('songGroupFilter').innerHTML = `<option value="all">All Song Groups (${songs.length})</option>` +
+        groups.map(g => `<option value="${esc(g)}">${esc(g)}</option>`).join('');
+      $('songGroupFilter').value = prevG;
+      $('songGroupOptions').innerHTML = groups.map(g => `<option value="${esc(g)}"></option>`).join('');
+
+      const gf = $('songGroupFilter').value;
+      const q = $('songSearch').value.trim().toLowerCase();
+      const filtered = songs.filter(s => {
+        if (gf !== 'all' && s.group !== gf) return false;
+        if (q && !(s.key + ' ' + s.label + ' ' + s.group + ' ' + (s.file || '')).toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      $('songsList').innerHTML = filtered.map(s => {
+        const isPlay = playingSongKey === s.key;
+        return `
+        <div class="song-row ${s.hidden ? 'is-hidden' : ''}">
+          <button type="button" class="play-btn ${isPlay ? 'playing' : ''}" data-play-song="${esc(s.key)}" ${!s.file ? 'disabled title="Silent"' : ''}>
+            ${isPlay ? '■' : '▶'}
+          </button>
+          <div class="song-info">
+            <b>${esc(s.label)}</b>
+            <span>${esc(s.group)} · <code>${esc(s.key)}</code> ${s.file ? `· <code>${esc(s.file)}</code>` : '· Silent'}</span>
+          </div>
+          <div class="song-actions">
+            <button type="button" class="btn btn-out btn-sm" data-edit-song="${esc(s.key)}">Edit</button>
+            <button type="button" class="btn ${s.hidden ? 'btn-em' : 'btn-gold'} btn-sm" data-toggle-song="${esc(s.key)}">${s.hidden ? 'Show' : 'Hide'}</button>
+            <button type="button" class="btn btn-danger btn-sm" data-del-song="${esc(s.key)}">Delete</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    $('songsList').addEventListener('click', e => {
+      const playBtn = e.target.closest('button[data-play-song]');
+      if (playBtn) {
+        const key = playBtn.dataset.playSong;
+        const s = (siteData.SONGS || []).find(x => x.key === key);
+        if (!s || !s.file) return;
+        if (playingSongKey === key) { stopAudioPreview(); return; }
+        stopAudioPreview();
+        playingSongKey = key;
+        audioPlayer.src = resolvePreviewSrc(s.file);
+        audioPlayer.play().catch(() => showToast('Could not play audio file.'));
+        playBtn.classList.add('playing');
+        playBtn.textContent = '■';
+        return;
+      }
+      const editBtn = e.target.closest('button[data-edit-song]');
+      if (editBtn) {
+        const s = (siteData.SONGS || []).find(x => x.key === editBtn.dataset.editSong);
+        if (!s) return;
+        const f = $('songForm');
+        $('songModalTitle').textContent = 'Edit Song';
+        f.origKey.value = s.key;
+        f.label.value = s.label;
+        f.key.value = s.key;
+        f.group.value = s.group;
+        f.file.value = s.file || '';
+        $('songUploadHint').textContent = 'Leave empty or upload a new .mp3 to replace this song audio.';
+        $('songModal').classList.add('open');
+        return;
+      }
+      const togBtn = e.target.closest('button[data-toggle-song]');
+      if (togBtn) {
+        const s = (siteData.SONGS || []).find(x => x.key === togBtn.dataset.toggleSong);
+        if (!s) return;
+        s.hidden = !s.hidden;
+        persistDraft();
+        renderAll();
+        showToast(s.hidden ? `Hidden song: ${s.key}` : `Shown song: ${s.key}`);
+        return;
+      }
+      const delBtn = e.target.closest('button[data-del-song]');
+      if (delBtn) {
+        const key = delBtn.dataset.delSong;
+        if (!confirm(`Delete song "${key}" from the studio list?`)) return;
+        if (playingSongKey === key) stopAudioPreview();
+        siteData.SONGS = (siteData.SONGS || []).filter(x => x.key !== key);
+        persistDraft();
+        renderAll();
+        showToast(`Deleted song "${key}".`);
       }
     });
 
-    $('adminGrid').addEventListener('change', async e => {
+    $('openAddSongBtn').addEventListener('click', () => {
+      const f = $('songForm');
+      f.reset();
+      f.origKey.value = '';
+      $('songModalTitle').textContent = 'Add New Wedding Song';
+      f.group.value = 'Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية';
+      $('songUploadHint').textContent = 'Upload an .mp3 file from your device (recommended under 8 MB).';
+      $('songModal').classList.add('open');
+    });
+
+    $('songMp3Upload').addEventListener('change', async e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (file.size > 15 * 1024 * 1024) {
+        showToast('Audio file is over 15 MB. Please trim/compress it first.', 4000);
+        return;
+      }
+      const baseSlug = (file.name.replace(/\.[^.]+$/, '') || 'custom-song').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const rel = `assets/audio/${baseSlug}.mp3`;
+      const { base64, previewUrl } = await readBinaryAsBase64(file);
+      pendingFiles[rel] = { base64, previewUrl };
+      $('songFileInput').value = rel;
+      const f = $('songForm');
+      if (!f.key.value.trim()) f.key.value = baseSlug.replace(/-/g, '_');
+      if (!f.label.value.trim()) f.label.value = file.name.replace(/\.[^.]+$/, '');
+      $('songUploadHint').textContent = `Ready to upload: ${rel} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+      showToast(`MP3 staged: ${rel}`);
+      e.target.value = '';
+    });
+
+    $('songForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const f = e.target;
+      const origKey = f.origKey.value;
+      const newKey = f.key.value.trim().toLowerCase().replace(/[^a-z0-9_]+/g, '_');
+      const item = {
+        key: newKey,
+        label: f.label.value.trim(),
+        group: f.group.value.trim(),
+        file: f.file.value.trim(),
+        hidden: false
+      };
+      siteData.SONGS = siteData.SONGS || [];
+      if (origKey) {
+        const idx = siteData.SONGS.findIndex(x => x.key === origKey);
+        if (idx >= 0) siteData.SONGS[idx] = { ...siteData.SONGS[idx], ...item };
+      } else {
+        siteData.SONGS.unshift(item);
+      }
+      persistDraft();
+      $('songModal').classList.remove('open');
+      renderAll();
+      showToast(`Saved song "${item.label}"!`);
+    });
+
+    /* ===== TAB 3: IMAGES & CATEGORY COVERS ===== */
+    function renderImagesTab() {
+      const catIds = [{ id: 'all', title: 'All Designs Cover', ar: 'صورة قسم الكل' }, ...siteData.CATEGORIES];
+      siteData.CAT_THUMBS = siteData.CAT_THUMBS || {};
+      $('catCoversGrid').innerHTML = catIds.map(c => {
+        const imgPath = siteData.CAT_THUMBS[c.id] || 'assets/images/mohamed-ali-palace.jpg';
+        return `
+        <div class="cover-card">
+          <img src="${esc(resolvePreviewSrc(imgPath))}" alt="${esc(c.title)}" loading="lazy" />
+          <div class="cover-card-body">
+            <b>${esc(c.short || c.title)}</b>
+            <span>${esc(imgPath)}</span>
+            <div class="cover-btns">
+              <button type="button" class="btn btn-out btn-sm" data-pick-cat-cover="${c.id}">Pick</button>
+              <label class="btn btn-gold btn-sm" style="cursor:pointer;">Upload<input type="file" accept="image/*" data-upload-cat-cover="${c.id}" style="display:none;" /></label>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+
+      const usageMap = {};
+      for (const s of siteData.SAMPLES) {
+        if (s.img) usageMap[s.img] = (usageMap[s.img] || 0) + 1;
+      }
+      const imgs = siteData.MEDIA_IMAGES || [];
+      $('mediaGrid').innerHTML = imgs.map(imgPath => {
+        const name = imgPath.split('/').pop();
+        const used = usageMap[imgPath] || 0;
+        return `
+        <div class="media-card">
+          <img src="${esc(resolvePreviewSrc(imgPath))}" alt="${esc(name)}" loading="lazy" />
+          <div class="media-card-body">
+            <b>${esc(name)}</b>
+            <span>Used by ${used} design${used === 1 ? '' : 's'}</span>
+            <label class="btn btn-out btn-sm" style="cursor:pointer;margin-top:auto;">
+              Replace Image
+              <input type="file" accept="image/*" data-replace-media="${esc(imgPath)}" style="display:none;" />
+            </label>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    $('catCoversGrid').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-pick-cat-cover]');
+      if (!btn) return;
+      const catId = btn.dataset.pickCatCover;
+      openImagePicker(imgPath => {
+        siteData.CAT_THUMBS[catId] = imgPath;
+        persistDraft();
+        renderAll();
+        showToast(`Updated cover for "${catId}"!`);
+      });
+    });
+
+    $('catCoversGrid').addEventListener('change', async e => {
+      const inp = e.target.closest('input[data-upload-cat-cover]');
+      if (!inp || !inp.files[0]) return;
+      const catId = inp.dataset.uploadCatCover;
+      const rel = `assets/images/cat-${catId}-${Date.now().toString(36).slice(-4)}.jpg`;
+      const { dataUrl, base64 } = await compressImageFile(inp.files[0], 1000, 0.84);
+      pendingFiles[rel] = { base64, previewUrl: dataUrl };
+      if (!siteData.MEDIA_IMAGES.includes(rel)) siteData.MEDIA_IMAGES.unshift(rel);
+      siteData.CAT_THUMBS[catId] = rel;
+      persistDraft();
+      renderAll();
+      showToast(`Uploaded new cover for "${catId}"!`);
+    });
+
+    $('mediaGrid').addEventListener('change', async e => {
+      const inp = e.target.closest('input[data-replace-media]');
+      if (!inp || !inp.files[0]) return;
+      const rel = inp.dataset.replaceMedia;
+      const { dataUrl, base64 } = await compressImageFile(inp.files[0], 1200, 0.85);
+      pendingFiles[rel] = { base64, previewUrl: dataUrl };
+      persistDraft();
+      renderAll();
+      showToast(`Replaced ${rel} — click Publish Live to update everywhere!`);
+    });
+
+    $('uploadNewMediaInput').addEventListener('change', async e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const slug = (file.name.replace(/\.[^.]+$/, '') || 'studio-photo').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + Date.now().toString(36).slice(-4);
+      const rel = `assets/images/${slug}.jpg`;
+      const { dataUrl, base64 } = await compressImageFile(file, 1200, 0.85);
+      pendingFiles[rel] = { base64, previewUrl: dataUrl };
+      siteData.MEDIA_IMAGES.unshift(rel);
+      persistDraft();
+      renderAll();
+      showToast(`Uploaded ${rel} to Studio Library!`);
+      e.target.value = '';
+    });
+
+    /* ===== IMAGE PICKER MODAL ===== */
+    function openImagePicker(cb) {
+      imagePickerCallback = cb;
+      $('pickerSearch').value = '';
+      renderPickerGrid();
+      $('imagePickerModal').classList.add('open');
+    }
+    function renderPickerGrid() {
+      const q = $('pickerSearch').value.trim().toLowerCase();
+      const imgs = (siteData.MEDIA_IMAGES || []).filter(p => !q || p.toLowerCase().includes(q));
+      $('pickerGrid').innerHTML = imgs.map(p => `
+        <button type="button" class="pick-tile" data-pick-src="${esc(p)}">
+          <img src="${esc(resolvePreviewSrc(p))}" alt="${esc(p)}" loading="lazy" />
+          <span>${esc(p.split('/').pop())}</span>
+        </button>`).join('');
+    }
+    $('pickerSearch').addEventListener('input', renderPickerGrid);
+    $('pickerGrid').addEventListener('click', e => {
+      const tile = e.target.closest('button[data-pick-src]');
+      if (!tile) return;
+      const src = tile.dataset.pickSrc;
+      $('imagePickerModal').classList.remove('open');
+      if (imagePickerCallback) imagePickerCallback(src);
+    });
+
+    /* ===== TAB 4: SITE SETTINGS & CATEGORIES ===== */
+    function renderSettingsTab() {
+      const B = siteData.BRAND || {};
+      $('setBrandName').value = B.name || '';
+      $('setBrandAr').value = B.ar || '';
+      $('setBrandSub').value = B.sub || '';
+      $('setBrandTagline').value = B.tagline || '';
+      $('setWhatsapp').value = siteData.WHATSAPP || '';
+      $('setHandle').value = B.handle || '';
+
+      const H = siteData.HERO || {};
+      $('setHeroPill').value = H.pill || '';
+      $('setHeroSubline').value = H.subline || '';
+      $('setHeroLead').value = H.lead || '';
+      $('setDeliveryStat').value = H.deliveryStat || '';
+      $('setDeliveryLabel').value = H.deliveryLabel || '';
+
+      $('catsSettingsList').innerHTML = siteData.CATEGORIES.map((c, i) => `
+        <div class="cat-edit-row" data-cat-idx="${i}">
+          <div><label class="lbl">Category (${c.id}) EN Name</label><input class="inp" data-cf="short" value="${esc(c.short || c.title)}" /></div>
+          <div><label class="lbl">Arabic Name</label><input class="inp" data-cf="ar" value="${esc(c.ar || '')}" /></div>
+          <div class="full"><label class="lbl">Description Blurb</label><input class="inp" data-cf="blurb" value="${esc(c.blurb || '')}" /></div>
+        </div>`).join('');
+
+      $('themesSettingsList').innerHTML = (siteData.THEMES || []).map((t, i) => `
+        <div class="theme-edit-row" data-th-idx="${i}">
+          <input class="inp" data-tf="id" value="${esc(t.id)}" placeholder="id (e.g. gold)" />
+          <input class="inp" data-tf="label" value="${esc(t.label)}" placeholder="Display label" />
+          <button type="button" class="btn ${t.hidden ? 'btn-em' : 'btn-out'} btn-sm" data-toggle-th="${i}">${t.hidden ? 'Hidden' : 'Visible'}</button>
+        </div>`).join('');
+    }
+
+    $('saveBrandBtn').addEventListener('click', () => {
+      siteData.BRAND = {
+        ...(siteData.BRAND || {}),
+        name: $('setBrandName').value.trim(),
+        ar: $('setBrandAr').value.trim(),
+        full: `${$('setBrandName').value.trim()} • ${$('setBrandAr').value.trim()}`,
+        sub: $('setBrandSub').value.trim(),
+        tagline: $('setBrandTagline').value.trim(),
+        handle: $('setHandle').value.trim()
+      };
+      siteData.WHATSAPP = $('setWhatsapp').value.trim().replace(/[^0-9]/g, '');
+      persistDraft();
+      showToast('Brand & Contact saved!');
+    });
+
+    $('saveHeroBtn').addEventListener('click', () => {
+      siteData.HERO = {
+        pill: $('setHeroPill').value.trim(),
+        subline: $('setHeroSubline').value.trim(),
+        lead: $('setHeroLead').value.trim(),
+        deliveryStat: $('setDeliveryStat').value.trim(),
+        deliveryLabel: $('setDeliveryLabel').value.trim()
+      };
+      persistDraft();
+      showToast('Homepage Hero copy saved!');
+    });
+
+    $('saveCatsBtn').addEventListener('click', () => {
+      document.querySelectorAll('#catsSettingsList .cat-edit-row').forEach(row => {
+        const idx = Number(row.dataset.catIdx);
+        const c = siteData.CATEGORIES[idx];
+        if (!c) return;
+        const shortVal = row.querySelector('[data-cf="short"]').value.trim();
+        c.short = shortVal;
+        c.title = shortVal;
+        c.ar = row.querySelector('[data-cf="ar"]').value.trim();
+        c.blurb = row.querySelector('[data-cf="blurb"]').value.trim();
+      });
+      persistDraft();
+      renderAll();
+      showToast('All Categories updated!');
+    });
+
+    $('themesSettingsList').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-toggle-th]');
+      if (!btn) return;
+      const idx = Number(btn.dataset.toggleTh);
+      siteData.THEMES[idx].hidden = !siteData.THEMES[idx].hidden;
+      persistDraft();
+      renderSettingsTab();
+    });
+    $('addThemeRowBtn').addEventListener('click', () => {
+      siteData.THEMES = siteData.THEMES || [];
+      siteData.THEMES.push({ id: 'custom', label: 'New Custom Palette', hidden: false });
+      renderSettingsTab();
+    });
+    $('saveThemesBtn').addEventListener('click', () => {
+      const updated = [];
+      document.querySelectorAll('#themesSettingsList .theme-edit-row').forEach(row => {
+        const idx = Number(row.dataset.thIdx);
+        const id = row.querySelector('[data-tf="id"]').value.trim();
+        const label = row.querySelector('[data-tf="label"]').value.trim();
+        if (label) updated.push({ id, label, hidden: Boolean(siteData.THEMES[idx]?.hidden) });
+      });
+      siteData.THEMES = updated;
+      persistDraft();
+      showToast('Color Finish Themes saved!');
+    });
+
+    /* ===== INVITATION GRID QUICK ACTIONS ===== */
+    $('adminGrid').addEventListener('click', e => {
+      const editBtn = e.target.closest('button[data-edit-inv]');
+      if (editBtn) { openEditInvite(editBtn.dataset.editInv); return; }
+
+      const togBtn = e.target.closest('button[data-toggle]');
+      if (!togBtn) return;
+      const s = siteData.SAMPLES.find(x => x.num === togBtn.dataset.toggle);
+      if (!s) return;
+      s.hidden = togBtn.dataset.next === '1';
+      persistDraft();
+      renderAll();
+      showToast(s.hidden ? `#${s.num} hidden from site` : `#${s.num} set visible on site!`);
+    });
+
+    $('adminGrid').addEventListener('change', e => {
       const sel = e.target.closest('select[data-cat-change]');
       if (!sel) return;
-      const num = sel.dataset.catChange;
+      const s = siteData.SAMPLES.find(x => x.num === sel.dataset.catChange);
+      if (!s) return;
       const cat = sel.value;
-      const catObj = catalog.CATEGORIES.find(c => c.id === cat);
+      const catObj = siteData.CATEGORIES.find(c => c.id === cat);
       const CAT_AES = { luxury: 'luxury', floral: 'floral', modern: 'modern', royal: 'midnight', arabic: 'katb', motion: 'modern', cards: 'classic' };
-      if (useServerApi) {
-        const r = await safeApi('/api/admin/update', { method: 'POST', body: JSON.stringify({ num, cat }) });
-        if (r.ok) {
-          showToast(`Moved #${num} to ${catObj ? catObj.short : cat}`);
-          await loadCatalog();
-        }
-      } else {
-        const st = readLocalState();
-        st.overrides = st.overrides || {};
-        st.overrides[num] = {
-          ...(st.overrides[num] || {}),
-          cat,
-          aesthetic: CAT_AES[cat] || 'luxury',
-          moodboard: { ...(st.overrides[num]?.moodboard || {}), collection: catObj ? catObj.short : cat }
-        };
-        writeLocalState(st);
-        showToast(`Moved #${num} to ${catObj ? catObj.short : cat}`);
-        await loadCatalog();
-      }
+      s.cat = cat;
+      s.aesthetic = CAT_AES[cat] || 'luxury';
+      s.moodboard = { ...(s.moodboard || {}), collection: catObj ? catObj.short : cat };
+      persistDraft();
+      renderAll();
+      showToast(`Moved #${s.num} to ${catObj ? catObj.short : cat}`);
     });
 
-    $('filterCat').addEventListener('change', renderDashboard);
-    $('filterStatus').addEventListener('change', renderDashboard);
-    $('adminSearch').addEventListener('input', renderDashboard);
-
+    /* ===== ADD NEW INVITATION ===== */
     $('openAddBtn').addEventListener('click', () => $('addModal').classList.add('open'));
-    $('closeAddBtn').addEventListener('click', () => $('addModal').classList.remove('open'));
-    $('cancelAddBtn').addEventListener('click', () => $('addModal').classList.remove('open'));
-
-    $('openGhBtn').addEventListener('click', () => {
-      $('ghRepo').value = localStorage.getItem(GH_REPO_KEY) || '8ofrii/meem-invitations';
-      $('ghToken').value = localStorage.getItem(GH_TOKEN_KEY) || '';
-      $('ghModal').classList.add('open');
+    $('addPickImgBtn').addEventListener('click', () => {
+      openImagePicker(imgPath => { $('addImgInput').value = imgPath; });
     });
-    $('closeGhBtn').addEventListener('click', () => $('ghModal').classList.remove('open'));
-    $('cancelGhBtn').addEventListener('click', () => $('ghModal').classList.remove('open'));
-    $('clearGhBtn').addEventListener('click', () => {
-      localStorage.removeItem(GH_TOKEN_KEY);
-      $('ghToken').value = '';
-      $('ghModal').classList.remove('open');
-      renderDashboard();
-      showToast('GitHub token removed from this browser.');
-    });
-    $('ghForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const repo = $('ghRepo').value.trim();
-      const token = $('ghToken').value.trim();
-      if (!repo || !token) return;
-      localStorage.setItem(GH_REPO_KEY, repo);
-      localStorage.setItem(GH_TOKEN_KEY, token);
-      $('ghModal').classList.remove('open');
-      renderDashboard();
-      showToast('GitHub Auto-Publish connected! You can now publish live.');
-    });
-
-    $('publishLiveBtn').addEventListener('click', publishLiveToGitHub);
-    $('bannerPublishBtn').addEventListener('click', publishLiveToGitHub);
-    $('resetDraftBtn').addEventListener('click', async () => {
-      localStorage.removeItem(STORAGE_KEY);
-      addedFilesHtml = {};
-      await loadCatalog();
-      showToast('Unpublished draft changes discarded.');
-    });
-
-    $('exportJsBtn').addEventListener('click', () => {
-      const merged = useServerApi ? catalog : buildMergedStaticCatalog();
-      downloadTextFile('data.js', buildDataJsText(merged), 'application/javascript');
-      showToast('Downloaded updated data.js!');
+    $('addUploadImgInput').addEventListener('change', async e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const slug = (file.name.replace(/\.[^.]+$/, '') || 'new-invite').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + Date.now().toString(36).slice(-4);
+      const rel = `assets/images/${slug}.jpg`;
+      const { dataUrl, base64 } = await compressImageFile(file, 1200, 0.84);
+      pendingFiles[rel] = { base64, previewUrl: dataUrl };
+      siteData.MEDIA_IMAGES.unshift(rel);
+      $('addImgInput').value = rel;
+      showToast(`Cover photo staged as ${rel}!`);
+      e.target.value = '';
     });
 
     $('addForm').addEventListener('submit', async e => {
       e.preventDefault();
       const fd = new FormData(e.target);
-      const payload = Object.fromEntries(fd.entries());
-      if (useServerApi) {
-        const r = await safeApi('/api/admin/add', { method: 'POST', body: JSON.stringify(payload) });
-        if (r.ok) {
-          $('addModal').classList.remove('open');
-          e.target.reset();
-          showToast(`Added #${r.sample.num} (${r.sample.title}) live!`);
-          await loadCatalog();
-        } else {
-          showToast(r.error || 'Could not add invitation');
-        }
-        return;
-      }
-
-      // Static Mode: clone selected template or use pasted HTML
-      const nextNum = String(catalog.SAMPLES.length + 1).padStart(2, '0');
-      const slug = String(payload.title || 'custom-invite').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'custom';
+      const p = Object.fromEntries(fd.entries());
+      const nextNum = String(siteData.SAMPLES.length + 1).padStart(2, '0');
+      const slug = String(p.title || 'custom-invite').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'custom';
       const relFile = `samples/${nextNum}-${slug}.html`;
-      let html = String(payload.html || '').trim();
-      if (!html && payload.cloneFrom) {
-        const src = catalog.SAMPLES.find(x => x.num === String(payload.cloneFrom).padStart(2, '0'));
+      let html = String(p.html || '').trim();
+      if (!html && p.cloneFrom) {
+        const src = siteData.SAMPLES.find(x => x.num === String(p.cloneFrom).padStart(2, '0'));
         if (src) {
           try {
             html = await fetch(src.file).then(r => r.text());
-            if (payload.subtitle) html = html.replace(/(data-couple-title[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${payload.subtitle}$3`);
-            if (payload.venue) html = html.replace(/(data-venue-name[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${payload.venue}$3`);
-            if (payload.song) {
-              html = html.replace(/data-music-mood="[^"]*"/gi, `data-music-mood="${payload.song}"`);
-              html = html.replace(/WeddingSound\.startMusic\(\s*['"][^'"]+['"]\s*\)/g, `WeddingSound.startMusic('${payload.song}')`);
+            if (p.subtitle) html = html.replace(/(data-couple-title[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${p.subtitle}$3`);
+            if (p.venue) html = html.replace(/(data-venue-name[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${p.venue}$3`);
+            if (p.song) {
+              html = html.replace(/data-music-mood="[^"]*"/gi, `data-music-mood="${p.song}"`);
+              html = html.replace(/WeddingSound\.startMusic\(\s*['"][^'"]+['"]\s*\)/g, `WeddingSound.startMusic('${p.song}')`);
             }
           } catch (_) {}
         }
       }
-      if (!html) {
-        showToast('Please paste custom HTML or pick a base template.');
-        return;
-      }
-      addedFilesHtml[relFile] = html;
+      if (!html) { showToast('Provide custom HTML or choose a base template.'); return; }
+      pendingFiles[relFile] = { text: html };
 
       const CAT_AES = { luxury: 'luxury', floral: 'floral', modern: 'modern', royal: 'midnight', arabic: 'katb', motion: 'modern', cards: 'classic' };
-      const catObj = catalog.CATEGORIES.find(c => c.id === payload.cat);
-      const newItem = {
+      const catObj = siteData.CATEGORIES.find(c => c.id === p.cat);
+      const songObj = (siteData.SONGS || []).find(x => x.key === p.song);
+      siteData.SAMPLES.push({
         num: nextNum,
-        cat: payload.cat || 'luxury',
+        cat: p.cat || 'luxury',
         file: relFile,
-        title: String(payload.title || `New Design #${nextNum}`).trim(),
-        subtitle: String(payload.subtitle || 'كريم و نور').trim(),
-        venue: String(payload.venue || 'Royal Grand Hall').trim(),
+        title: String(p.title || `New Design #${nextNum}`).trim(),
+        subtitle: String(p.subtitle || 'كريم و نور').trim(),
+        venue: String(p.venue || 'Royal Grand Hall').trim(),
         lang: 'Bilingual',
         langKey: 'bilingual',
         bg: 'linear-gradient(145deg,#0D3B2E,#164F3E)',
-        img: 'assets/images/classic-ivory-gold-crest.jpg',
+        img: p.img || 'assets/images/classic-ivory-gold-crest.jpg',
         accent: '#C5A059',
-        desc: String(payload.desc || 'Bespoke MEEM digital invitation customised with interactive motion and curated music.').trim(),
+        desc: String(p.desc || 'Bespoke MEEM digital invitation customised with interactive motion and curated music.').trim(),
         features: ['Custom Motion', 'Live Countdown', 'RSVP & Map'],
-        aesthetic: CAT_AES[payload.cat] || 'luxury',
+        aesthetic: CAT_AES[p.cat] || 'luxury',
         hidden: false,
+        ...(p.song ? { songKey: p.song } : {}),
         moodboard: {
           collection: catObj ? catObj.short : 'MEEM Curated',
           palette: ['#0D3B2E', '#C5A059', '#FAF6EE', '#2C1810'],
           paletteNames: 'Curated Palette',
           typography: 'Cormorant Garamond · Amiri',
           floral: 'Bespoke MEEM Styling',
-          soundtrack: payload.song || 'Curated Wedding Soundtrack',
+          soundtrack: songObj ? songObj.label.split('(')[0].trim() : 'Curated Wedding Soundtrack',
           inspiration: 'Crafted exclusively for MEEM celebrations.',
           mood: 'Elegant & timeless',
           customization: 'Colors · Music · AR / EN · Couple Photo · Table & QR'
         }
-      };
+      });
 
-      const st = readLocalState();
-      st.added = st.added || [];
-      st.added.push(newItem);
-      writeLocalState(st);
-
+      persistDraft();
       $('addModal').classList.remove('open');
       e.target.reset();
-      await loadCatalog();
-      showToast(`Added #${nextNum} (${newItem.title}) — click Publish Live to deploy!`, 3500);
+      renderAll();
+      showToast(`Added #${nextNum} — click Publish Live to deploy!`, 3500);
+    });
+
+    /* ===== TABS, MODALS, FILTERS, AUTH ===== */
+    $('adminTabs').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-tab]');
+      if (!btn) return;
+      document.querySelectorAll('#adminTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      $('tab-' + btn.dataset.tab).classList.add('active');
+    });
+
+    document.addEventListener('click', e => {
+      const cl = e.target.closest('[data-close]');
+      if (cl) $(cl.dataset.close).classList.remove('open');
+    });
+
+    $('filterCat').addEventListener('change', renderInvitesTab);
+    $('filterStatus').addEventListener('change', renderInvitesTab);
+    $('adminSearch').addEventListener('input', renderInvitesTab);
+    $('songGroupFilter').addEventListener('change', renderSongsTab);
+    $('songSearch').addEventListener('input', renderSongsTab);
+
+    $('openGhBtn').addEventListener('click', () => {
+      $('ghRepo').value = localStorage.getItem(GH_REPO_KEY) || '8ofrii/meem-invitations';
+      $('ghToken').value = localStorage.getItem(GH_TOKEN_KEY) || '';
+      $('ghModal').classList.add('open');
+    });
+    $('clearGhBtn').addEventListener('click', () => {
+      localStorage.removeItem(GH_TOKEN_KEY);
+      $('ghToken').value = '';
+      $('ghModal').classList.remove('open');
+      renderAll();
+      showToast('GitHub token disconnected.');
+    });
+    $('ghForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const repo = $('ghRepo').value.trim(), token = $('ghToken').value.trim();
+      if (!repo || !token) return;
+      localStorage.setItem(GH_REPO_KEY, repo);
+      localStorage.setItem(GH_TOKEN_KEY, token);
+      $('ghModal').classList.remove('open');
+      renderAll();
+      showToast('GitHub Auto-Publish connected!');
+    });
+
+    $('publishLiveBtn').addEventListener('click', publishAllLive);
+    $('bannerPublishBtn').addEventListener('click', publishAllLive);
+    $('resetDraftBtn').addEventListener('click', () => {
+      localStorage.removeItem(CMS_STORAGE_KEY);
+      pendingFiles = {};
+      hasUnsavedDraft = false;
+      siteData = JSON.parse(JSON.stringify(BASE_SITE));
+      renderAll();
+      showToast('Unpublished draft changes discarded.');
+    });
+    $('exportJsBtn').addEventListener('click', () => {
+      downloadTextFile('data.js', buildDataJsText(siteData), 'application/javascript');
+      showToast('Downloaded updated data.js!');
     });
 
     function unlockDashboard() {
       $('loginGate').style.display = 'none';
       $('dashboard').style.display = 'block';
-      loadCatalog();
+      try {
+        const saved = localStorage.getItem(CMS_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && Array.isArray(parsed.SAMPLES)) {
+            siteData = parsed;
+            hasUnsavedDraft = true;
+          }
+        }
+      } catch (_) {}
+      renderAll();
     }
 
     $('loginForm').addEventListener('submit', async e => {
@@ -853,6 +1679,7 @@
     });
 
     $('logoutBtn').addEventListener('click', async () => {
+      stopAudioPreview();
       if (useServerApi) await safeApi('/api/admin/logout', { method: 'POST' }).catch(() => {});
       adminToken = '';
       sessionStorage.removeItem('meem_admin_token');
@@ -862,7 +1689,7 @@
       $('pwInput').value = '';
     });
 
-    // Boot cleanly: detect local Node backend if on localhost; otherwise zero-error Static Studio Mode
+    // Boot cleanly
     (async () => {
       if (isLocalHost) {
         try {
@@ -875,9 +1702,7 @@
         } catch (_) {}
       }
       useServerApi = false;
-      if (sessionStorage.getItem(AUTH_SESSION_KEY) === '1') {
-        unlockDashboard();
-      }
+      if (sessionStorage.getItem(AUTH_SESSION_KEY) === '1') unlockDashboard();
     })();
   </script>
 </body>

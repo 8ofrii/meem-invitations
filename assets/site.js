@@ -23,7 +23,7 @@
   function buildUrl(file, extra, clean) {
     extra = extra || {};
     const q = new URLSearchParams();
-    ['groom', 'bride', 'couple', 'venue', 'date', 'guest', 'table', 'theme', 'photo', 'lang', 'song'].forEach((k) => extra[k] && q.set(k, extra[k]));
+    ['groom', 'bride', 'couple', 'venue', 'date', 'guest', 'table', 'theme', 'photo', 'lang', 'song', 'songsrc'].forEach((k) => extra[k] && q.set(k, extra[k]));
     if (clean) q.set('clean', '1');
     const s = q.toString();
     return s ? `${file}?${s}` : file;
@@ -210,6 +210,12 @@
   function preview(num, extra) {
     const s = S.SAMPLES.find((x) => x.num === num);
     if (!s) return;
+    extra = { ...(extra || {}) };
+    if (!extra.song && s.songKey) {
+      extra.song = s.songKey;
+      const so = Array.isArray(S.SONGS) ? S.SONGS.find((o) => o.key === s.songKey) : null;
+      if (so && so.file && !so.isMix) extra.songsrc = so.file;
+    }
     document.getElementById('modalTitle').textContent = `#${s.num} — ${s.title}`;
     document.getElementById('modalDesc').textContent = `${s.venue} • ${s.desc}`;
     const mb = s.moodboard || {};
