@@ -75,10 +75,13 @@
       border: 0;
       text-decoration: none;
       transition: all 0.2s;
+      white-space: nowrap;
     }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
     .btn-em { background: linear-gradient(135deg, var(--emerald), var(--emerald-2)); color: #FFFFFF; border: 1px solid var(--gold); }
     .btn-gold { background: linear-gradient(135deg, #E8CA8C, var(--gold)); color: var(--emerald); }
     .btn-out { background: #FFFFFF; color: var(--emerald); border: 1px solid var(--line); }
+    .btn-danger { background: #FEF2F2; color: #B91C1C; border: 1px solid rgba(185, 28, 28, 0.25); }
     .btn-sm { padding: 7px 13px; font-size: 11.5px; }
     .err-msg { color: #B91C1C; font-size: 12.5px; margin-top: 10px; display: none; }
 
@@ -86,26 +89,46 @@
     #dashboard { display: none; padding-bottom: 70px; }
     .topbar {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(255, 253, 249, 0.95);
+      background: rgba(255, 253, 249, 0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
-      padding: 12px 24px;
+      padding: 12px 20px;
     }
     .topbar-in {
       max-width: 1240px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
     }
     .brand-mini { display: flex; align-items: center; gap: 10px; }
     .brand-mini img { width: 40px; height: 40px; object-fit: contain; }
     .brand-mini b { font-size: 18px; color: var(--emerald); display: block; line-height: 1.1; }
     .brand-mini span { font-size: 11px; color: var(--gold-2); }
-    .top-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .top-actions { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
 
-    .wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 22px 18px; }
+
+    .publish-banner {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: linear-gradient(135deg, #0D3B2E 0%, #175443 100%);
+      color: #FAF6EE;
+      border: 1.5px solid var(--gold);
+      border-radius: 18px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 12px 28px rgba(13, 59, 46, 0.16);
+    }
+    .publish-banner.show { display: flex; }
+    .publish-banner b { color: #F4E5C2; font-size: 13.5px; display: block; }
+    .publish-banner span { font-size: 12px; color: rgba(250, 246, 238, 0.86); }
+    .publish-banner-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
     .kpi {
       background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px;
-      padding: 16px 18px; box-shadow: 0 6px 20px rgba(13, 59, 46, 0.04);
+      padding: 15px 17px; box-shadow: 0 6px 20px rgba(13, 59, 46, 0.04);
     }
     .kpi b { display: block; font-size: 26px; color: var(--emerald); line-height: 1.1; }
     .kpi span { font-size: 11.5px; color: var(--muted); }
@@ -125,7 +148,7 @@
       box-shadow: 0 8px 22px rgba(13, 59, 46, 0.05);
       transition: opacity 0.2s, border-color 0.2s;
     }
-    .item-card.is-hidden { opacity: 0.62; border-style: dashed; border-color: rgba(13, 59, 46, 0.22); background: #F7F4EE; }
+    .item-card.is-hidden { opacity: 0.64; border-style: dashed; border-color: rgba(13, 59, 46, 0.22); background: #F7F4EE; }
     .item-top {
       height: 118px; position: relative; overflow: hidden; background: #0D3B2E;
       display: flex; align-items: flex-end; padding: 10px 12px;
@@ -141,10 +164,10 @@
     .item-body { padding: 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
     .item-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--emerald); line-height: 1.15; }
     .item-sub { font-size: 12px; color: var(--muted); }
-    .item-row { display: flex; gap: 8px; align-items: center; margin-top: auto; padding-top: 6px; }
-    .item-row .sel { padding: 6px 10px; font-size: 11.5px; flex: 1; }
+    .item-row { display: flex; gap: 6px; align-items: center; margin-top: auto; padding-top: 6px; flex-wrap: wrap; }
+    .item-row .sel { padding: 6px 10px; font-size: 11.5px; flex: 1; min-width: 120px; }
 
-    /* Modal Add New Invitation */
+    /* Modals */
     .modal {
       position: fixed; inset: 0; z-index: 100;
       background: rgba(13, 28, 22, 0.65); backdrop-filter: blur(8px);
@@ -159,11 +182,16 @@
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
     .full { grid-column: 1 / -1; }
     .lbl { display: block; font-size: 11px; font-weight: 700; color: var(--gold-2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .help-box {
+      background: #FAF7F2; border: 1px solid var(--line); border-radius: 14px;
+      padding: 12px 14px; font-size: 12px; color: #4A5550; line-height: 1.6; margin-top: 10px;
+    }
+    .help-box code { background: #EFE7D8; padding: 1px 6px; border-radius: 5px; font-size: 11.5px; color: var(--emerald); }
     .toast {
       position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
       background: var(--emerald); color: #FAF6EE; border: 1px solid var(--gold);
       padding: 10px 20px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25); display: none; z-index: 200;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25); display: none; z-index: 200; max-width: 92vw; text-align: center;
     }
     .toast.show { display: block; }
     @media (max-width: 768px) {
@@ -181,7 +209,7 @@
       <h1 class="serif">MEEM Admin Portal</h1>
       <p>Private studio console for managing visible designs, categories &amp; new invitations.</p>
       <form id="loginForm">
-        <input class="inp" id="pwInput" type="password" required placeholder="Enter studio password" style="margin-bottom:12px;text-align:center;" />
+        <input class="inp" id="pwInput" type="password" required autocomplete="current-password" placeholder="Enter studio password" style="margin-bottom:12px;text-align:center;" />
         <button type="submit" class="btn btn-em" style="width:100%;">Unlock Admin Panel</button>
         <div class="err-msg" id="loginErr">Incorrect password. Please try again.</div>
       </form>
@@ -194,18 +222,31 @@
       <div class="topbar-in">
         <div class="brand-mini">
           <img src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
-          <div><b>MEEM Studio Admin</b><span>Show · Hide · Organise · Add Invitations</span></div>
+          <div><b>MEEM Studio Admin</b><span id="modeSubtitle">Show · Hide · Organise · Add Invitations</span></div>
         </div>
         <div class="top-actions">
-          <button type="button" class="btn btn-gold btn-sm" id="openAddBtn">+ Add New Invitation</button>
-          <a class="btn btn-out btn-sm" href="/api/admin/export-data-js" download="data.js">Export data.js</a>
-          <a class="btn btn-out btn-sm" href="/" target="_blank">View Live Site ↗</a>
+          <button type="button" class="btn btn-gold btn-sm" id="openAddBtn">+ Add Invitation</button>
+          <button type="button" class="btn btn-em btn-sm" id="publishLiveBtn">Publish Live to Site</button>
+          <button type="button" class="btn btn-out btn-sm" id="exportJsBtn">Download data.js</button>
+          <button type="button" class="btn btn-out btn-sm" id="openGhBtn">GitHub Sync</button>
+          <a class="btn btn-out btn-sm" href="/" target="_blank">Preview Site ↗</a>
           <button type="button" class="btn btn-out btn-sm" id="logoutBtn">Logout</button>
         </div>
       </div>
     </header>
 
     <main class="wrap">
+      <div class="publish-banner" id="draftBanner">
+        <div>
+          <b>Unpublished Studio Changes Ready (<span id="draftCount">0</span>)</b>
+          <span>Visible immediately in your browser preview. Click <strong>Publish Live to Site</strong> to push permanently for all customers.</span>
+        </div>
+        <div class="publish-banner-actions">
+          <button type="button" class="btn btn-gold btn-sm" id="bannerPublishBtn">Publish Live Now</button>
+          <button type="button" class="btn btn-out btn-sm" id="resetDraftBtn">Discard Draft</button>
+        </div>
+      </div>
+
       <div class="kpi-grid">
         <div class="kpi"><b id="kTotal">0</b><span>Total Invitations (All Vault)</span></div>
         <div class="kpi"><b id="kVisible" style="color:#059669">0</b><span>Visible on Production Site</span></div>
@@ -273,7 +314,42 @@
         </div>
         <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
           <button type="button" class="btn btn-out" id="cancelAddBtn">Cancel</button>
-          <button type="submit" class="btn btn-em">Publish Invitation Live</button>
+          <button type="submit" class="btn btn-em">Add Invitation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- GITHUB LIVE PUBLISH SETUP MODAL -->
+  <div class="modal" id="ghModal">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 class="serif">Connect Live Auto-Publish</h2>
+        <button type="button" class="btn btn-out btn-sm" id="closeGhBtn">✕</button>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);">Because MEEM is hosted as a lightning-fast static site on Render, connecting your GitHub token once lets you publish Show/Hide/Add updates straight to <strong>meem-invitations.onrender.com</strong> for all customers in ~20 seconds.</p>
+      <div class="help-box">
+        <strong>One-Time Setup (30 seconds):</strong><br>
+        1. Open <code>github.com/settings/personal-access-tokens/new</code><br>
+        2. Select <strong>Only select repositories</strong> → <code>8ofrii/meem-invitations</code><br>
+        3. Under <strong>Repository permissions</strong>, set <strong>Contents</strong> to <strong>Read and write</strong>.<br>
+        4. Click <strong>Generate token</strong> and paste it below (saved privately in this browser only).
+      </div>
+      <form id="ghForm" class="form-grid">
+        <div class="full">
+          <label class="lbl">GitHub Repository (owner/repo)</label>
+          <input class="inp" id="ghRepo" value="8ofrii/meem-invitations" required />
+        </div>
+        <div class="full">
+          <label class="lbl">GitHub Personal Access Token</label>
+          <input class="inp" id="ghToken" type="password" placeholder="github_pat_..." />
+        </div>
+        <div class="full" style="display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:6px;">
+          <button type="button" class="btn btn-danger btn-sm" id="clearGhBtn">Disconnect Token</button>
+          <div style="display:flex;gap:8px;">
+            <button type="button" class="btn btn-out" id="cancelGhBtn">Cancel</button>
+            <button type="submit" class="btn btn-em">Save &amp; Connect</button>
+          </div>
         </div>
       </form>
     </div>
@@ -281,29 +357,217 @@
 
   <div class="toast" id="toast"></div>
 
+  <script src="assets/data.js"></script>
   <script>
     const $ = id => document.getElementById(id);
-    let catalog = { CATEGORIES: [], SAMPLES: [] };
-    let adminToken = sessionStorage.getItem('meem_admin_token') || '';
+    const STORAGE_KEY = 'meem_admin_state_v1';
+    const GH_TOKEN_KEY = 'meem_gh_token_v1';
+    const GH_REPO_KEY = 'meem_gh_repo_v1';
+    const AUTH_SESSION_KEY = 'meem_admin_authed_v1';
+    const PASS_HASH = '5c51a3d78cca9cde722e603efd2717af47be6f6766c3bc303b5dd70d81a4c30c';
 
-    function showToast(msg) {
+    const BASE_SITE = JSON.parse(JSON.stringify(window.SITE || { CATEGORIES: [], SAMPLES: [] }));
+    const isLocalHost = (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+    let useServerApi = false;
+    let adminToken = sessionStorage.getItem('meem_admin_token') || '';
+    let catalog = { CATEGORIES: [], SAMPLES: [] };
+    let addedFilesHtml = {}; // relFile -> html text for GitHub publish
+
+    // Pure-JS SHA-256 so password check works on HTTPS, HTTP, and file:// without errors
+    function sha256(str) {
+      const rightRotate = (v, a) => (v >>> a) | (v << (32 - a));
+      const mathPow = Math.pow, maxWord = mathPow(2, 32);
+      let result = '', words = [], asciiBitLength = str.length * 8;
+      let hash = sha256.h = sha256.h || [], k = sha256.k = sha256.k || [], primeCounter = k.length;
+      const isComposite = {};
+      for (let candidate = 2; primeCounter < 64; candidate++) {
+        if (!isComposite[candidate]) {
+          for (let i = 0; i < 313; i += candidate) isComposite[i] = candidate;
+          hash[primeCounter] = (mathPow(candidate, 0.5) * maxWord) | 0;
+          k[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
+        }
+      }
+      const utf8 = unescape(encodeURIComponent(str));
+      asciiBitLength = utf8.length * 8;
+      const padded = utf8 + '\x80';
+      let msg = padded;
+      while ((msg.length % 64) - 56) msg += '\x00';
+      for (let i = 0; i < msg.length; i++) {
+        const j = msg.charCodeAt(i);
+        words[i >> 2] |= j << ((3 - i) % 4) * 8;
+      }
+      words[words.length] = ((asciiBitLength / maxWord) | 0);
+      words[words.length] = (asciiBitLength | 0);
+      const h = hash.slice(0, 8);
+      for (let j = 0; j < words.length;) {
+        const w = words.slice(j, j += 16);
+        const oldHash = h.slice(0);
+        for (let i = 0; i < 64; i++) {
+          const w15 = w[i - 15], w2 = w[i - 2];
+          const a = h[0], e = h[4];
+          const temp1 = h[7] + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) + ((e & h[5]) ^ ((~e) & h[6])) + k[i] +
+            (w[i] = (i < 16) ? w[i] : (w[i - 16] + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3)) + w[i - 7] + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))) | 0);
+          const temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) + ((a & h[1]) ^ (a & h[2]) ^ (h[1] & h[2]));
+          h.unshift((temp1 + temp2) | 0);
+          h[4] = (h[4] + temp1) | 0;
+          h.pop();
+        }
+        for (let i = 0; i < 8; i++) h[i] = (h[i] + oldHash[i]) | 0;
+      }
+      for (let i = 0; i < 8; i++) {
+        for (let j = 3; j + 1; j--) {
+          const b = (h[i] >> (j * 8)) & 255;
+          result += ((b < 16) ? '0' : '') + b.toString(16);
+        }
+      }
+      return result;
+    }
+
+    function showToast(msg, ms = 2800) {
       const t = $('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2600);
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => t.classList.remove('show'), ms);
     }
 
-    async function api(url, opts = {}) {
+    function readLocalState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      return { overrides: {}, added: [] };
+    }
+
+    function writeLocalState(st) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(st));
+    }
+
+    function countDraftChanges() {
+      const st = readLocalState();
+      return Object.keys(st.overrides || {}).length + (st.added || []).length;
+    }
+
+    function buildMergedStaticCatalog() {
+      const st = readLocalState();
+      const ov = st.overrides || {};
+      const samples = BASE_SITE.SAMPLES.map(s => {
+        const patch = ov[s.num];
+        if (!patch) return { ...s };
+        const merged = { ...s, ...patch };
+        if (patch.moodboard) merged.moodboard = { ...(s.moodboard || {}), ...patch.moodboard };
+        return merged;
+      });
+      for (const extra of (st.added || [])) {
+        samples.push({ ...extra, ...(ov[extra.num] || {}) });
+      }
+      return { ...BASE_SITE, SAMPLES: samples };
+    }
+
+    async function safeApi(url, opts = {}) {
       const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
       if (adminToken) headers['Authorization'] = 'Bearer ' + adminToken;
       const res = await fetch(url, { ...opts, headers });
-      return res.json();
+      const ct = res.headers.get('content-type') || '';
+      if (!ct.includes('application/json')) return { ok: false, status: res.status, notJson: true };
+      const data = await res.json();
+      return { status: res.status, ...data };
+    }
+
+    function buildDataJsText(mergedObj) {
+      return '/* Single source of truth for MEEM — Updated from MEEM Admin Portal */\nwindow.SITE = ' + JSON.stringify(mergedObj, null, 2) + ';\n';
+    }
+
+    function downloadTextFile(filename, text, mime = 'application/javascript') {
+      const blob = new Blob([text], { type: mime + ';charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function toBase64Utf8(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+
+    async function ghPutFile(repo, token, filePath, contentStr, message) {
+      const apiBase = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+      const headers = {
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      };
+      let sha = undefined;
+      const getRes = await fetch(apiBase, { headers });
+      if (getRes.ok) {
+        const info = await getRes.json();
+        sha = info.sha;
+      }
+      const putRes = await fetch(apiBase, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          message,
+          content: toBase64Utf8(contentStr),
+          ...(sha ? { sha } : {})
+        })
+      });
+      if (!putRes.ok) {
+        const err = await putRes.json().catch(() => ({}));
+        throw new Error(err.message || `GitHub HTTP ${putRes.status}`);
+      }
+      return putRes.json();
+    }
+
+    async function publishLiveToGitHub() {
+      const token = localStorage.getItem(GH_TOKEN_KEY) || '';
+      const repo = localStorage.getItem(GH_REPO_KEY) || '8ofrii/meem-invitations';
+      if (!token) {
+        $('ghRepo').value = repo;
+        $('ghToken').value = '';
+        $('ghModal').classList.add('open');
+        return;
+      }
+      const btns = [$('publishLiveBtn'), $('bannerPublishBtn')];
+      btns.forEach(b => { if (b) { b.disabled = true; b.textContent = 'Publishing...'; } });
+      try {
+        // 1. Push any newly created invitation HTML files
+        for (const [relFile, html] of Object.entries(addedFilesHtml)) {
+          await ghPutFile(repo, token, relFile, html, `Admin: add ${relFile}`);
+        }
+        // 2. Push updated assets/data.js
+        const merged = useServerApi ? catalog : buildMergedStaticCatalog();
+        const jsText = buildDataJsText(merged);
+        await ghPutFile(repo, token, 'assets/data.js', jsText, 'Admin: update visible invitations & categories');
+
+        // Clear local draft & refresh base state
+        localStorage.removeItem(STORAGE_KEY);
+        addedFilesHtml = {};
+        BASE_SITE.SAMPLES = JSON.parse(JSON.stringify(merged.SAMPLES));
+        renderDashboard();
+        showToast('Published live! Render will update for all visitors in ~20 seconds.', 4500);
+      } catch (e) {
+        showToast('Publish failed: ' + e.message, 4500);
+      } finally {
+        if ($('publishLiveBtn')) { $('publishLiveBtn').disabled = false; $('publishLiveBtn').textContent = 'Publish Live to Site'; }
+        if ($('bannerPublishBtn')) { $('bannerPublishBtn').disabled = false; $('bannerPublishBtn').textContent = 'Publish Live Now'; }
+      }
     }
 
     async function loadCatalog() {
-      const data = await api('/api/catalog');
-      if (!data.ok) return;
-      catalog = data;
+      if (useServerApi) {
+        const data = await safeApi('/api/catalog');
+        if (data.ok) catalog = { CATEGORIES: data.CATEGORIES, SAMPLES: data.SAMPLES };
+      } else {
+        catalog = buildMergedStaticCatalog();
+      }
 
       const catOpts = `<option value="all">All Categories (${catalog.SAMPLES.length})</option>` +
         catalog.CATEGORIES.map(c => {
@@ -328,6 +592,15 @@
       $('kVisible').textContent = visCount;
       $('kHidden').textContent = hidCount;
       $('kCats').textContent = catalog.CATEGORIES.length;
+
+      const drafts = useServerApi ? 0 : countDraftChanges();
+      $('draftCount').textContent = drafts;
+      $('draftBanner').classList.toggle('show', drafts > 0);
+
+      const hasGh = Boolean(localStorage.getItem(GH_TOKEN_KEY));
+      $('modeSubtitle').textContent = useServerApi
+        ? 'Connected to Local Studio Server'
+        : (hasGh ? 'Live GitHub Auto-Publish Connected ✓' : 'Static Mode · Connect GitHub Sync to Publish Globally');
 
       const cf = $('filterCat').value;
       const sf = $('filterStatus').value;
@@ -371,9 +644,18 @@
       if (!btn) return;
       const num = btn.dataset.toggle;
       const hidden = btn.dataset.next === '1';
-      const r = await api('/api/admin/toggle', { method: 'POST', body: JSON.stringify({ num, hidden }) });
-      if (r.ok) {
-        showToast(hidden ? `#${num} hidden from production site` : `#${num} is now visible on site!`);
+      if (useServerApi) {
+        const r = await safeApi('/api/admin/toggle', { method: 'POST', body: JSON.stringify({ num, hidden }) });
+        if (r.ok) {
+          showToast(hidden ? `#${num} hidden from site` : `#${num} is now visible on site!`);
+          await loadCatalog();
+        }
+      } else {
+        const st = readLocalState();
+        st.overrides = st.overrides || {};
+        st.overrides[num] = { ...(st.overrides[num] || {}), hidden };
+        writeLocalState(st);
+        showToast(hidden ? `#${num} hidden — click Publish Live when ready` : `#${num} set visible — click Publish Live when ready`);
         await loadCatalog();
       }
     });
@@ -383,9 +665,25 @@
       if (!sel) return;
       const num = sel.dataset.catChange;
       const cat = sel.value;
-      const r = await api('/api/admin/update', { method: 'POST', body: JSON.stringify({ num, cat }) });
-      if (r.ok) {
-        showToast(`Moved #${num} to ${cat}`);
+      const catObj = catalog.CATEGORIES.find(c => c.id === cat);
+      const CAT_AES = { luxury: 'luxury', floral: 'floral', modern: 'modern', royal: 'midnight', arabic: 'katb', motion: 'modern', cards: 'classic' };
+      if (useServerApi) {
+        const r = await safeApi('/api/admin/update', { method: 'POST', body: JSON.stringify({ num, cat }) });
+        if (r.ok) {
+          showToast(`Moved #${num} to ${catObj ? catObj.short : cat}`);
+          await loadCatalog();
+        }
+      } else {
+        const st = readLocalState();
+        st.overrides = st.overrides || {};
+        st.overrides[num] = {
+          ...(st.overrides[num] || {}),
+          cat,
+          aesthetic: CAT_AES[cat] || 'luxury',
+          moodboard: { ...(st.overrides[num]?.moodboard || {}), collection: catObj ? catObj.short : cat }
+        };
+        writeLocalState(st);
+        showToast(`Moved #${num} to ${catObj ? catObj.short : cat}`);
         await loadCatalog();
       }
     });
@@ -398,52 +696,187 @@
     $('closeAddBtn').addEventListener('click', () => $('addModal').classList.remove('open'));
     $('cancelAddBtn').addEventListener('click', () => $('addModal').classList.remove('open'));
 
+    $('openGhBtn').addEventListener('click', () => {
+      $('ghRepo').value = localStorage.getItem(GH_REPO_KEY) || '8ofrii/meem-invitations';
+      $('ghToken').value = localStorage.getItem(GH_TOKEN_KEY) || '';
+      $('ghModal').classList.add('open');
+    });
+    $('closeGhBtn').addEventListener('click', () => $('ghModal').classList.remove('open'));
+    $('cancelGhBtn').addEventListener('click', () => $('ghModal').classList.remove('open'));
+    $('clearGhBtn').addEventListener('click', () => {
+      localStorage.removeItem(GH_TOKEN_KEY);
+      $('ghToken').value = '';
+      $('ghModal').classList.remove('open');
+      renderDashboard();
+      showToast('GitHub token removed from this browser.');
+    });
+    $('ghForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const repo = $('ghRepo').value.trim();
+      const token = $('ghToken').value.trim();
+      if (!repo || !token) return;
+      localStorage.setItem(GH_REPO_KEY, repo);
+      localStorage.setItem(GH_TOKEN_KEY, token);
+      $('ghModal').classList.remove('open');
+      renderDashboard();
+      showToast('GitHub Auto-Publish connected! You can now publish live.');
+    });
+
+    $('publishLiveBtn').addEventListener('click', publishLiveToGitHub);
+    $('bannerPublishBtn').addEventListener('click', publishLiveToGitHub);
+    $('resetDraftBtn').addEventListener('click', async () => {
+      localStorage.removeItem(STORAGE_KEY);
+      addedFilesHtml = {};
+      await loadCatalog();
+      showToast('Unpublished draft changes discarded.');
+    });
+
+    $('exportJsBtn').addEventListener('click', () => {
+      const merged = useServerApi ? catalog : buildMergedStaticCatalog();
+      downloadTextFile('data.js', buildDataJsText(merged), 'application/javascript');
+      showToast('Downloaded updated data.js!');
+    });
+
     $('addForm').addEventListener('submit', async e => {
       e.preventDefault();
       const fd = new FormData(e.target);
       const payload = Object.fromEntries(fd.entries());
-      const r = await api('/api/admin/add', { method: 'POST', body: JSON.stringify(payload) });
-      if (r.ok) {
-        $('addModal').classList.remove('open');
-        e.target.reset();
-        showToast(`Added #${r.sample.num} (${r.sample.title}) live!`);
-        await loadCatalog();
-      } else {
-        showToast(r.error || 'Could not add invitation');
+      if (useServerApi) {
+        const r = await safeApi('/api/admin/add', { method: 'POST', body: JSON.stringify(payload) });
+        if (r.ok) {
+          $('addModal').classList.remove('open');
+          e.target.reset();
+          showToast(`Added #${r.sample.num} (${r.sample.title}) live!`);
+          await loadCatalog();
+        } else {
+          showToast(r.error || 'Could not add invitation');
+        }
+        return;
       }
+
+      // Static Mode: clone selected template or use pasted HTML
+      const nextNum = String(catalog.SAMPLES.length + 1).padStart(2, '0');
+      const slug = String(payload.title || 'custom-invite').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'custom';
+      const relFile = `samples/${nextNum}-${slug}.html`;
+      let html = String(payload.html || '').trim();
+      if (!html && payload.cloneFrom) {
+        const src = catalog.SAMPLES.find(x => x.num === String(payload.cloneFrom).padStart(2, '0'));
+        if (src) {
+          try {
+            html = await fetch(src.file).then(r => r.text());
+            if (payload.subtitle) html = html.replace(/(data-couple-title[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${payload.subtitle}$3`);
+            if (payload.venue) html = html.replace(/(data-venue-name[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${payload.venue}$3`);
+            if (payload.song) {
+              html = html.replace(/data-music-mood="[^"]*"/gi, `data-music-mood="${payload.song}"`);
+              html = html.replace(/WeddingSound\.startMusic\(\s*['"][^'"]+['"]\s*\)/g, `WeddingSound.startMusic('${payload.song}')`);
+            }
+          } catch (_) {}
+        }
+      }
+      if (!html) {
+        showToast('Please paste custom HTML or pick a base template.');
+        return;
+      }
+      addedFilesHtml[relFile] = html;
+
+      const CAT_AES = { luxury: 'luxury', floral: 'floral', modern: 'modern', royal: 'midnight', arabic: 'katb', motion: 'modern', cards: 'classic' };
+      const catObj = catalog.CATEGORIES.find(c => c.id === payload.cat);
+      const newItem = {
+        num: nextNum,
+        cat: payload.cat || 'luxury',
+        file: relFile,
+        title: String(payload.title || `New Design #${nextNum}`).trim(),
+        subtitle: String(payload.subtitle || 'كريم و نور').trim(),
+        venue: String(payload.venue || 'Royal Grand Hall').trim(),
+        lang: 'Bilingual',
+        langKey: 'bilingual',
+        bg: 'linear-gradient(145deg,#0D3B2E,#164F3E)',
+        img: 'assets/images/classic-ivory-gold-crest.jpg',
+        accent: '#C5A059',
+        desc: String(payload.desc || 'Bespoke MEEM digital invitation customised with interactive motion and curated music.').trim(),
+        features: ['Custom Motion', 'Live Countdown', 'RSVP & Map'],
+        aesthetic: CAT_AES[payload.cat] || 'luxury',
+        hidden: false,
+        moodboard: {
+          collection: catObj ? catObj.short : 'MEEM Curated',
+          palette: ['#0D3B2E', '#C5A059', '#FAF6EE', '#2C1810'],
+          paletteNames: 'Curated Palette',
+          typography: 'Cormorant Garamond · Amiri',
+          floral: 'Bespoke MEEM Styling',
+          soundtrack: payload.song || 'Curated Wedding Soundtrack',
+          inspiration: 'Crafted exclusively for MEEM celebrations.',
+          mood: 'Elegant & timeless',
+          customization: 'Colors · Music · AR / EN · Couple Photo · Table & QR'
+        }
+      };
+
+      const st = readLocalState();
+      st.added = st.added || [];
+      st.added.push(newItem);
+      writeLocalState(st);
+
+      $('addModal').classList.remove('open');
+      e.target.reset();
+      await loadCatalog();
+      showToast(`Added #${nextNum} (${newItem.title}) — click Publish Live to deploy!`, 3500);
     });
+
+    function unlockDashboard() {
+      $('loginGate').style.display = 'none';
+      $('dashboard').style.display = 'block';
+      loadCatalog();
+    }
 
     $('loginForm').addEventListener('submit', async e => {
       e.preventDefault();
       $('loginErr').style.display = 'none';
-      const r = await api('/api/admin/login', { method: 'POST', body: JSON.stringify({ password: $('pwInput').value }) });
-      if (r.ok) {
-        adminToken = r.token;
-        sessionStorage.setItem('meem_admin_token', adminToken);
-        $('loginGate').style.display = 'none';
-        $('dashboard').style.display = 'block';
-        await loadCatalog();
+      const pw = $('pwInput').value.trim();
+
+      if (useServerApi) {
+        const r = await safeApi('/api/admin/login', { method: 'POST', body: JSON.stringify({ password: pw }) });
+        if (r.ok) {
+          adminToken = r.token;
+          sessionStorage.setItem('meem_admin_token', adminToken);
+          unlockDashboard();
+          return;
+        }
+        $('loginErr').style.display = 'block';
+        return;
+      }
+
+      if (sha256(pw) === PASS_HASH) {
+        sessionStorage.setItem(AUTH_SESSION_KEY, '1');
+        unlockDashboard();
       } else {
         $('loginErr').style.display = 'block';
       }
     });
 
     $('logoutBtn').addEventListener('click', async () => {
-      await api('/api/admin/logout', { method: 'POST' });
+      if (useServerApi) await safeApi('/api/admin/logout', { method: 'POST' }).catch(() => {});
       adminToken = '';
       sessionStorage.removeItem('meem_admin_token');
+      sessionStorage.removeItem(AUTH_SESSION_KEY);
       $('dashboard').style.display = 'none';
       $('loginGate').style.display = 'flex';
       $('pwInput').value = '';
     });
 
-    // Check existing session on load
+    // Boot cleanly: detect local Node backend if on localhost; otherwise zero-error Static Studio Mode
     (async () => {
-      const st = await api('/api/admin/status');
-      if (st.authed) {
-        $('loginGate').style.display = 'none';
-        $('dashboard').style.display = 'block';
-        await loadCatalog();
+      if (isLocalHost) {
+        try {
+          const st = await safeApi('/api/admin/status');
+          if (!st.notJson && st.status === 200) {
+            useServerApi = true;
+            if (st.authed) unlockDashboard();
+            return;
+          }
+        } catch (_) {}
+      }
+      useServerApi = false;
+      if (sessionStorage.getItem(AUTH_SESSION_KEY) === '1') {
+        unlockDashboard();
       }
     })();
   </script>

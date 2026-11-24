@@ -10,7 +10,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const STATE_FILE = path.join(DATA_DIR, 'admin-state.json');
 
 // Private admin password (override on Render with MEEM_ADMIN_PASSWORD env var)
-const ADMIN_PASSWORD = process.env.MEEM_ADMIN_PASSWORD || 'MEEM2027';
+const ADMIN_PASSWORD = process.env.MEEM_ADMIN_PASSWORD || 'M112001';
 const SESSION_SECRET = process.env.MEEM_SESSION_SECRET || crypto.createHash('sha256').update(ADMIN_PASSWORD + ':meem_salt_v1').digest('hex');
 
 const MIME = {

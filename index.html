@@ -1895,20 +1895,53 @@
   if ($('bEvent')) $('bEvent').addEventListener('change', updateBuilder);
   updateBuilder();
 
-  /* ===== 4. HYDRATE LIVE ADMIN CATALOG OVERRIDES ===== */
-  fetch('/api/catalog', { cache: 'no-store' })
-    .then(r => r.ok ? r.json() : null)
-    .then(data => {
-      if (!data || !Array.isArray(data.SAMPLES) || !data.SAMPLES.length) return;
-      S.SAMPLES = data.SAMPLES;
-      if (Array.isArray(data.CATEGORIES) && data.CATEGORIES.length) S.CATEGORIES = data.CATEGORIES;
-      const prevTry = $('d') ? $('d').value : '';
-      renderCatPills();
-      renderDesigns();
-      populateDesignSelects();
-      if ($('d') && $('d').value !== prevTry) updateTry();
-      updateBuilder();
-    })
-    .catch(() => {});
+  /* ===== 4. HYDRATE LOCAL ADMIN PREVIEW & LOCAL DEV API ===== */
+  function applyCatalogState(state) {
+    if (!state) return;
+    const ov = state.overrides || {};
+    const added = Array.isArray(state.added) ? state.added : [];
+    const baseSamples = S.SAMPLES.map(s => {
+      const patch = ov[s.num];
+      if (!patch) return s;
+      const merged = { ...s, ...patch };
+      if (patch.moodboard) merged.moodboard = { ...(s.moodboard || {}), ...patch.moodboard };
+      return merged;
+    });
+    const existingNums = new Set(baseSamples.map(s => s.num));
+    for (const extra of added) {
+      if (!existingNums.has(extra.num)) {
+        baseSamples.push({ ...extra, ...(ov[extra.num] || {}) });
+      }
+    }
+    S.SAMPLES = baseSamples;
+    const prevTry = $('d') ? $('d').value : '';
+    renderCatPills();
+    renderDesigns();
+    populateDesignSelects();
+    if ($('d') && $('d').value !== prevTry) updateTry();
+    updateBuilder();
+  }
+
+  try {
+    const rawDraft = localStorage.getItem('meem_admin_state_v1');
+    if (rawDraft) applyCatalogState(JSON.parse(rawDraft));
+  } catch (_) {}
+
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    fetch('/api/catalog', { cache: 'no-store' })
+      .then(r => (r.ok && (r.headers.get('content-type') || '').includes('application/json')) ? r.json() : null)
+      .then(data => {
+        if (!data || !Array.isArray(data.SAMPLES) || !data.SAMPLES.length) return;
+        S.SAMPLES = data.SAMPLES;
+        if (Array.isArray(data.CATEGORIES) && data.CATEGORIES.length) S.CATEGORIES = data.CATEGORIES;
+        const prevTry = $('d') ? $('d').value : '';
+        renderCatPills();
+        renderDesigns();
+        populateDesignSelects();
+        if ($('d') && $('d').value !== prevTry) updateTry();
+        updateBuilder();
+      })
+      .catch(() => {});
+  }
 </script>
 </body></html>

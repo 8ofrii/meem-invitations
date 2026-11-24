@@ -10,3 +10,15 @@ services:
       - path: /assets/*
         name: Cache-Control
         value: public, max-age=604800
+      - path: /assets/data.js
+        name: Cache-Control
+        value: no-cache, must-revalidate
+      - path: /admin
+        name: Cache-Control
+        value: no-cache, must-revalidate
+      - path: /admin.html
+        name: Cache-Control
+        value: no-cache, must-revalidate
+      - path: /
+        name: Cache-Control
+        value: no-cache, must-revalidate
