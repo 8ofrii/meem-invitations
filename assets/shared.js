@@ -955,18 +955,23 @@
 
   function startMusic(mood) {
     if (customSong === 'silent' || customSong === 'none' || customSong === 'mute') return;
+    const bodyMood = (document.body && document.body.dataset.musicMood) || '';
+    const bodyMusicSrc = (document.body && document.body.dataset.musicSrc) || '';
     const chosenMood = customSong
       ? customSong
-      : (mood || currentMood || 'egyptian_mix');
+      : (mood || bodyMood || currentMood || 'egyptian_mix');
+    if (chosenMood === 'silent' || chosenMood === 'none' || chosenMood === 'mute') return;
     currentMood = chosenMood;
     if (musicPlaying) return;
 
-    activeMixList = (!customSongSrc && AUDIO_MIXES[currentMood]) ? AUDIO_MIXES[currentMood].map(resolveAudioPath) : null;
+    activeMixList = (!customSongSrc && !(!customSong && bodyMusicSrc) && AUDIO_MIXES[currentMood]) ? AUDIO_MIXES[currentMood].map(resolveAudioPath) : null;
     activeMixIdx = 0;
-    const directCustom = customSongSrc ? resolveAudioPath(customSongSrc) : '';
+    const directCustom = customSongSrc
+      ? resolveAudioPath(customSongSrc)
+      : (!customSong && bodyMusicSrc ? resolveAudioPath(bodyMusicSrc) : '');
     const mappedTrack = AUDIO_TRACKS[currentMood]
       ? resolveAudioPath(AUDIO_TRACKS[currentMood])
-      : (customSong ? resolveAudioPath('../assets/audio/' + customSong.replace(/_/g, '-') + '.mp3') : resolveAudioPath(AUDIO_TRACKS.om_kalthoum));
+      : resolveAudioPath('../assets/audio/' + currentMood.replace(/_/g, '-') + '.mp3');
     const trackSrc = directCustom || (activeMixList ? activeMixList[0] : mappedTrack);
     musicPlaying = true;
     updateMusicFab();

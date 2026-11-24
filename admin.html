@@ -283,9 +283,24 @@
       padding: 10px; border-radius: 12px; background: #FAF7F2; border: 1px solid var(--line);
     }
     .img-preview-row img { width: 84px; height: 64px; object-fit: cover; border-radius: 9px; border: 1px solid var(--gold); }
-    .palette-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-    .palette-pick { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: var(--muted); }
-    .palette-pick input[type="color"] { width: 100%; height: 34px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; padding: 2px; }
+    .palette-row { display: flex; gap: 10px; align-items: center; }
+    .palette-row input[type="color"] { width: 42px; height: 34px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; padding: 2px; }
+    .audio-box {
+      background: #FAF7F2; border: 1px solid var(--line); border-radius: 14px;
+      padding: 12px; display: flex; flex-direction: column; gap: 9px;
+    }
+    .audio-box audio { width: 100%; height: 36px; border-radius: 999px; }
+    .audio-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .audio-row .sel { flex: 1; min-width: 180px; }
+    .more-details {
+      border: 1px solid var(--line); border-radius: 14px; padding: 10px 13px; background: #FCFBF8;
+    }
+    .more-details summary {
+      cursor: pointer; font-size: 12px; font-weight: 700; color: var(--emerald); list-style: none;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .more-details summary::-webkit-details-marker { display: none; }
+    .more-details[open] summary { margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); }
 
     .picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
     .pick-tile {
@@ -476,72 +491,83 @@
     </main>
   </div>
 
-  <!-- FULL EDIT INVITATION MODAL -->
+  <!-- SIMPLE CLEAN EDIT INVITATION MODAL -->
   <div class="modal" id="editInviteModal">
-    <div class="modal-box">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <h2 class="serif" id="editInvHeading">Edit Invitation</h2>
+    <div class="modal-box" style="width:min(540px,100%);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <h2 class="serif" id="editInvHeading" style="font-size:25px;">Edit Invitation</h2>
         <button type="button" class="btn btn-out btn-sm" data-close="editInviteModal">✕</button>
       </div>
-      <form id="editInviteForm" class="form-grid">
+      <form id="editInviteForm" class="form-grid" style="gap:12px;">
         <input type="hidden" name="num" />
-        <div><label class="lbl">Title (English)</label><input class="inp" name="title" required /></div>
-        <div><label class="lbl">Subtitle (Couple Names)</label><input class="inp" name="subtitle" required /></div>
+        <input type="hidden" name="img" id="editImgInput" />
+
+        <div><label class="lbl">Title</label><input class="inp" name="title" required /></div>
+        <div><label class="lbl">Couple Names</label><input class="inp" name="subtitle" required /></div>
         <div><label class="lbl">Category</label><select class="sel" name="cat" id="editCatSel"></select></div>
-        <div><label class="lbl">Visibility</label>
-          <select class="sel" name="hidden">
-            <option value="0">Visible on Website</option>
-            <option value="1">Hidden in Admin Vault</option>
-          </select>
-        </div>
         <div><label class="lbl">Venue</label><input class="inp" name="venue" /></div>
-        <div><label class="lbl">Language Tag</label><input class="inp" name="lang" placeholder="Bilingual / Arabic / English" /></div>
 
         <div class="full">
-          <label class="lbl">Cover Image</label>
+          <label class="lbl">Cover Photo</label>
           <div class="img-preview-row">
             <img id="editImgPreview" src="" alt="Preview" />
-            <div style="flex:1;min-width:180px;display:grid;gap:6px;">
-              <input class="inp" name="img" id="editImgInput" placeholder="assets/images/..." />
-              <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                <button type="button" class="btn btn-out btn-sm" id="editPickImgBtn">Choose from Library</button>
-                <label class="btn btn-gold btn-sm" style="cursor:pointer;">
-                  Upload New Photo
-                  <input type="file" id="editUploadImgInput" accept="image/*" style="display:none;" />
-                </label>
-              </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+              <button type="button" class="btn btn-out btn-sm" id="editPickImgBtn">Choose from Library</button>
+              <label class="btn btn-gold btn-sm" style="cursor:pointer;">
+                Upload Photo
+                <input type="file" id="editUploadImgInput" accept="image/*" style="display:none;" />
+              </label>
             </div>
           </div>
         </div>
 
-        <div>
-          <label class="lbl">Default Song (Audio Track)</label>
-          <select class="sel" name="songKey" id="editSongSel"></select>
-        </div>
-        <div>
-          <label class="lbl">Soundtrack Display Label (Shown on Card)</label>
-          <input class="inp" name="soundtrack" placeholder="e.g. Ludovico Einaudi — Experience" />
-        </div>
-
         <div class="full">
-          <label class="lbl">Color Palette Swatches &amp; Accent</label>
-          <div class="palette-row">
-            <label class="palette-pick"><input type="color" name="pal0" /><span>Color 1</span></label>
-            <label class="palette-pick"><input type="color" name="pal1" /><span>Color 2</span></label>
-            <label class="palette-pick"><input type="color" name="pal2" /><span>Color 3</span></label>
-            <label class="palette-pick"><input type="color" name="pal3" /><span>Color 4</span></label>
-            <label class="palette-pick"><input type="color" name="accent" /><span>Accent</span></label>
+          <label class="lbl">Invitation Song (Actual Audio)</label>
+          <div class="audio-box">
+            <div class="audio-row">
+              <select class="sel" name="songKey" id="editSongSel"></select>
+              <label class="btn btn-gold btn-sm" style="cursor:pointer;">
+                Upload MP3
+                <input type="file" id="editUploadSongInput" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;" />
+              </label>
+            </div>
+            <audio id="editAudioPlayer" controls preload="none"></audio>
+            <small id="editSongStatus" style="font-size:11px;color:var(--muted);">Pick any song or upload a new .mp3 — updates the real invitation audio.</small>
           </div>
         </div>
 
-        <div class="full"><label class="lbl">Short Description</label><textarea class="txt" name="desc" rows="2"></textarea></div>
-        <div class="full"><label class="lbl">Design Inspiration (Italic Story Line)</label><textarea class="txt" name="inspiration" rows="2"></textarea></div>
-        <div><label class="lbl">Mood</label><input class="inp" name="mood" /></div>
-        <div><label class="lbl">Typography</label><input class="inp" name="typography" /></div>
-        <div><label class="lbl">Floral &amp; Details</label><input class="inp" name="floral" /></div>
-        <div><label class="lbl">Customisation Summary</label><input class="inp" name="customization" /></div>
+        <div class="full" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+          <label class="lbl" style="margin:0;">Card Colors</label>
+          <div class="palette-row">
+            <input type="color" name="pal0" title="Color 1" />
+            <input type="color" name="pal1" title="Color 2" />
+            <input type="color" name="pal2" title="Color 3" />
+            <input type="color" name="pal3" title="Color 4" />
+          </div>
+        </div>
 
-        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
+        <div class="full"><label class="lbl">Description</label><textarea class="txt" name="desc" rows="2"></textarea></div>
+
+        <details class="full more-details">
+          <summary><span>More options (Visibility, Inspiration, Song Label &amp; Style)</span><span>▾</span></summary>
+          <div class="form-grid" style="margin-top:4px;">
+            <div><label class="lbl">Visibility</label>
+              <select class="sel" name="hidden">
+                <option value="0">Visible on Website</option>
+                <option value="1">Hidden in Vault</option>
+              </select>
+            </div>
+            <div><label class="lbl">Language</label><input class="inp" name="lang" placeholder="Bilingual" /></div>
+            <div class="full"><label class="lbl">Song Name Shown on Card</label><input class="inp" name="soundtrack" /></div>
+            <div class="full"><label class="lbl">Design Inspiration</label><textarea class="txt" name="inspiration" rows="2"></textarea></div>
+            <div><label class="lbl">Mood</label><input class="inp" name="mood" /></div>
+            <div><label class="lbl">Typography</label><input class="inp" name="typography" /></div>
+            <div><label class="lbl">Floral &amp; Details</label><input class="inp" name="floral" /></div>
+            <div><label class="lbl">Customisation</label><input class="inp" name="customization" /></div>
+          </div>
+        </details>
+
+        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px;">
           <button type="button" class="btn btn-out" data-close="editInviteModal">Cancel</button>
           <button type="submit" class="btn btn-em">Save Changes</button>
         </div>
@@ -582,33 +608,38 @@
     </div>
   </div>
 
-  <!-- ADD / EDIT SONG MODAL -->
+  <!-- SIMPLE ADD / EDIT SONG MODAL -->
   <div class="modal" id="songModal">
-    <div class="modal-box">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <h2 class="serif" id="songModalTitle">Add / Edit Song</h2>
+    <div class="modal-box" style="width:min(480px,100%);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <h2 class="serif" id="songModalTitle" style="font-size:25px;">Edit Song</h2>
         <button type="button" class="btn btn-out btn-sm" data-close="songModal">✕</button>
       </div>
-      <form id="songForm" class="form-grid">
+      <form id="songForm" class="form-grid" style="gap:12px;">
         <input type="hidden" name="origKey" />
-        <div class="full"><label class="lbl">Display Name (Shown to Customers)</label><input class="inp" name="label" required placeholder="e.g. Amr Diab — Tamally Maak (عمرو دياب — تملي معاك)" /></div>
-        <div><label class="lbl">Song Key (letters/underscores)</label><input class="inp" name="key" required placeholder="e.g. amr_tamally_custom" /></div>
-        <div><label class="lbl">Group / Category</label>
-          <input class="inp" name="group" list="songGroupOptions" required placeholder="Choose or type group..." />
-          <datalist id="songGroupOptions"></datalist>
-        </div>
+        <input type="hidden" name="key" />
+        <input type="hidden" name="file" id="songFileInput" />
+
         <div class="full">
-          <label class="lbl">Audio File (.mp3)</label>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-            <input class="inp" name="file" id="songFileInput" placeholder="assets/audio/my-song.mp3" style="flex:1;min-width:180px;" />
-            <label class="btn btn-gold btn-sm" style="cursor:pointer;">
-              Upload MP3 File
-              <input type="file" id="songMp3Upload" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;" />
-            </label>
+          <label class="lbl">Audio Track (.mp3)</label>
+          <div class="audio-box">
+            <audio id="songModalPlayer" controls preload="none"></audio>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+              <small id="songUploadHint" style="font-size:11.5px;color:var(--muted);">Current audio ready</small>
+              <label class="btn btn-gold btn-sm" style="cursor:pointer;">
+                Upload / Replace MP3
+                <input type="file" id="songMp3Upload" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;" />
+              </label>
+            </div>
           </div>
-          <small id="songUploadHint" style="font-size:11px;color:var(--muted);display:block;margin-top:4px;">Upload any .mp3 from your phone or computer (recommended under 8 MB).</small>
         </div>
-        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px;">
+
+        <div class="full"><label class="lbl">Song Name</label><input class="inp" name="label" required placeholder="e.g. Amr Diab — Tamally Maak" /></div>
+        <div class="full"><label class="lbl">Song Group</label>
+          <select class="sel" name="group" id="songGroupSel" required></select>
+        </div>
+
+        <div class="full" style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px;">
           <button type="button" class="btn btn-out" data-close="songModal">Cancel</button>
           <button type="submit" class="btn btn-em">Save Song</button>
         </div>
@@ -986,6 +1017,28 @@
       }).join('');
     }
 
+    function syncEditAudioPreview(songKey) {
+      const player = $('editAudioPlayer');
+      const status = $('editSongStatus');
+      player.pause();
+      if (!songKey || songKey === 'silent') {
+        player.removeAttribute('src');
+        player.load();
+        status.textContent = songKey === 'silent' ? 'Silent — no audio will play.' : 'Using invitation default audio — pick a song or upload an .mp3 to change it.';
+        return;
+      }
+      const so = (siteData.SONGS || []).find(x => x.key === songKey);
+      if (so && so.file) {
+        player.src = resolvePreviewSrc(so.file);
+        player.load();
+        status.textContent = `Audio ready: ${so.file}`;
+      } else {
+        player.removeAttribute('src');
+        player.load();
+        status.textContent = 'Song selected.';
+      }
+    }
+
     function openEditInvite(num) {
       const s = siteData.SAMPLES.find(x => x.num === num);
       if (!s) return;
@@ -1004,16 +1057,23 @@
       f.lang.value = s.lang || 'Bilingual';
       f.img.value = s.img || '';
       $('editImgPreview').src = resolvePreviewSrc(s.img || 'assets/images/classic-ivory-gold-crest.jpg');
-      f.songKey.value = s.songKey || '';
 
       const mb = s.moodboard || {};
+      let detectedKey = s.songKey || '';
+      if (!detectedKey && mb.soundtrack) {
+        const needle = mb.soundtrack.toLowerCase().slice(0, 18);
+        const match = (siteData.SONGS || []).find(x => x.label.toLowerCase().includes(needle));
+        if (match) detectedKey = match.key;
+      }
+      f.songKey.value = detectedKey;
+      syncEditAudioPreview(detectedKey);
+
       const pal = mb.palette || ['#0D3B2E', '#C5A059', '#FAF6EE', '#2C1810'];
       f.soundtrack.value = mb.soundtrack || '';
       f.pal0.value = pal[0] || '#0D3B2E';
       f.pal1.value = pal[1] || '#C5A059';
       f.pal2.value = pal[2] || '#FAF6EE';
       f.pal3.value = pal[3] || '#2C1810';
-      f.accent.value = s.accent || pal[1] || '#C5A059';
       f.desc.value = s.desc || '';
       f.inspiration.value = mb.inspiration || '';
       f.mood.value = mb.mood || '';
@@ -1021,17 +1081,50 @@
       f.floral.value = mb.floral || '';
       f.customization.value = mb.customization || '';
 
+      const moreBox = f.querySelector('.more-details');
+      if (moreBox) moreBox.open = false;
       $('editInviteModal').classList.add('open');
     }
 
-    $('editImgInput').addEventListener('input', () => {
-      $('editImgPreview').src = resolvePreviewSrc($('editImgInput').value.trim());
-    });
     $('editSongSel').addEventListener('change', () => {
       const k = $('editSongSel').value;
       const so = (siteData.SONGS || []).find(x => x.key === k);
       if (so && $('editInviteForm').soundtrack) $('editInviteForm').soundtrack.value = so.label.split('(')[0].trim();
+      syncEditAudioPreview(k);
     });
+
+    $('editUploadSongInput').addEventListener('change', async e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (file.size > 15 * 1024 * 1024) { showToast('MP3 is over 15 MB — please trim it first.', 4000); return; }
+      const baseName = file.name.replace(/\.[^.]+$/, '') || 'custom-song';
+      const slug = baseName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || ('song-' + Date.now().toString(36));
+      const key = slug.replace(/-/g, '_');
+      const rel = `assets/audio/${slug}.mp3`;
+      const { base64, previewUrl } = await readBinaryAsBase64(file);
+      pendingFiles[rel] = { base64, previewUrl };
+      siteData.SONGS = siteData.SONGS || [];
+      const existing = siteData.SONGS.find(x => x.key === key);
+      if (existing) {
+        existing.file = rel;
+      } else {
+        siteData.SONGS.unshift({
+          key,
+          label: baseName,
+          group: 'Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية',
+          file: rel,
+          hidden: false
+        });
+      }
+      $('editSongSel').innerHTML = `<option value="">Keep template default</option>` +
+        siteData.SONGS.map(x => `<option value="${esc(x.key)}">${esc(x.label)}</option>`).join('');
+      $('editSongSel').value = key;
+      $('editInviteForm').soundtrack.value = baseName;
+      syncEditAudioPreview(key);
+      showToast(`Uploaded "${baseName}"! Save & Publish Live to apply.`, 3500);
+      e.target.value = '';
+    });
+
     $('editPickImgBtn').addEventListener('click', () => {
       openImagePicker(imgPath => {
         $('editImgInput').value = imgPath;
@@ -1048,12 +1141,37 @@
       if (!siteData.MEDIA_IMAGES.includes(rel)) siteData.MEDIA_IMAGES.unshift(rel);
       $('editImgInput').value = rel;
       $('editImgPreview').src = dataUrl;
-      showToast(`Photo staged as ${rel} — Save & Publish Live!`);
+      showToast(`Photo ready! Save & Publish Live.`);
       e.target.value = '';
     });
 
-    $('editInviteForm').addEventListener('submit', e => {
+    async function patchInvitationSongHtml(sample, songKey, songFile) {
+      if (!sample || !sample.file || !songKey) return;
+      try {
+        let html = (pendingFiles[sample.file] && pendingFiles[sample.file].text)
+          ? pendingFiles[sample.file].text
+          : await fetch(sample.file).then(r => r.text());
+        if (!html || !html.includes('<body')) return;
+        if (/data-music-mood="[^"]*"/i.test(html)) {
+          html = html.replace(/data-music-mood="[^"]*"/gi, `data-music-mood="${songKey}"`);
+        } else {
+          html = html.replace(/<body([^>]*)>/i, `<body$1 data-music-mood="${songKey}">`);
+        }
+        if (songFile) {
+          if (/data-music-src="[^"]*"/i.test(html)) {
+            html = html.replace(/data-music-src="[^"]*"/gi, `data-music-src="${songFile}"`);
+          } else {
+            html = html.replace(/<body([^>]*)>/i, `<body$1 data-music-src="${songFile}">`);
+          }
+        }
+        html = html.replace(/WeddingSound\.startMusic\(\s*['"][^'"]+['"]\s*\)/g, `WeddingSound.startMusic('${songKey}')`);
+        pendingFiles[sample.file] = { text: html };
+      } catch (_) {}
+    }
+
+    $('editInviteForm').addEventListener('submit', async e => {
       e.preventDefault();
+      $('editAudioPlayer').pause();
       const f = e.target;
       const s = siteData.SAMPLES.find(x => x.num === f.num.value);
       if (!s) return;
@@ -1068,10 +1186,16 @@
       s.venue = f.venue.value.trim();
       s.lang = f.lang.value.trim() || 'Bilingual';
       s.img = f.img.value.trim();
-      s.accent = f.accent.value;
+      s.accent = f.pal1.value;
       s.desc = f.desc.value.trim();
-      if (f.songKey.value) s.songKey = f.songKey.value;
-      else delete s.songKey;
+      const chosenSong = f.songKey.value;
+      if (chosenSong) {
+        s.songKey = chosenSong;
+        const so = (siteData.SONGS || []).find(x => x.key === chosenSong);
+        await patchInvitationSongHtml(s, chosenSong, (so && !so.isMix) ? so.file : '');
+      } else {
+        delete s.songKey;
+      }
 
       s.moodboard = {
         ...(s.moodboard || {}),
@@ -1088,7 +1212,7 @@
       persistDraft();
       $('editInviteModal').classList.remove('open');
       renderAll();
-      showToast(`Updated #${s.num} (${s.title})!`);
+      showToast(`Saved #${s.num} (${s.title}) + real audio!`);
     });
 
     /* ===== TAB 2: SONGS & MUSIC ===== */
@@ -1107,7 +1231,7 @@
       $('songGroupFilter').innerHTML = `<option value="all">All Song Groups (${songs.length})</option>` +
         groups.map(g => `<option value="${esc(g)}">${esc(g)}</option>`).join('');
       $('songGroupFilter').value = prevG;
-      $('songGroupOptions').innerHTML = groups.map(g => `<option value="${esc(g)}"></option>`).join('');
+      $('songGroupSel').innerHTML = groups.map(g => `<option value="${esc(g)}">${esc(g)}</option>`).join('');
 
       const gf = $('songGroupFilter').value;
       const q = $('songSearch').value.trim().toLowerCase();
@@ -1126,10 +1250,10 @@
           </button>
           <div class="song-info">
             <b>${esc(s.label)}</b>
-            <span>${esc(s.group)} · <code>${esc(s.key)}</code> ${s.file ? `· <code>${esc(s.file)}</code>` : '· Silent'}</span>
+            <span>${esc(s.group)}</span>
           </div>
           <div class="song-actions">
-            <button type="button" class="btn btn-out btn-sm" data-edit-song="${esc(s.key)}">Edit</button>
+            <button type="button" class="btn btn-out btn-sm" data-edit-song="${esc(s.key)}">Edit / Replace MP3</button>
             <button type="button" class="btn ${s.hidden ? 'btn-em' : 'btn-gold'} btn-sm" data-toggle-song="${esc(s.key)}">${s.hidden ? 'Show' : 'Hide'}</button>
             <button type="button" class="btn btn-danger btn-sm" data-del-song="${esc(s.key)}">Delete</button>
           </div>
@@ -1157,13 +1281,22 @@
         const s = (siteData.SONGS || []).find(x => x.key === editBtn.dataset.editSong);
         if (!s) return;
         const f = $('songForm');
-        $('songModalTitle').textContent = 'Edit Song';
+        $('songModalTitle').textContent = 'Edit Song & Audio';
         f.origKey.value = s.key;
         f.label.value = s.label;
         f.key.value = s.key;
         f.group.value = s.group;
         f.file.value = s.file || '';
-        $('songUploadHint').textContent = 'Leave empty or upload a new .mp3 to replace this song audio.';
+        const pl = $('songModalPlayer');
+        if (s.file) {
+          pl.src = resolvePreviewSrc(s.file);
+          pl.load();
+          $('songUploadHint').textContent = `Current MP3: ${s.file.split('/').pop()}`;
+        } else {
+          pl.removeAttribute('src');
+          pl.load();
+          $('songUploadHint').textContent = 'Silent option (no MP3)';
+        }
         $('songModal').classList.add('open');
         return;
       }
@@ -1174,18 +1307,18 @@
         s.hidden = !s.hidden;
         persistDraft();
         renderAll();
-        showToast(s.hidden ? `Hidden song: ${s.key}` : `Shown song: ${s.key}`);
+        showToast(s.hidden ? `Hidden song: ${s.label}` : `Shown song: ${s.label}`);
         return;
       }
       const delBtn = e.target.closest('button[data-del-song]');
       if (delBtn) {
         const key = delBtn.dataset.delSong;
-        if (!confirm(`Delete song "${key}" from the studio list?`)) return;
+        if (!confirm(`Delete this song from the studio list?`)) return;
         if (playingSongKey === key) stopAudioPreview();
         siteData.SONGS = (siteData.SONGS || []).filter(x => x.key !== key);
         persistDraft();
         renderAll();
-        showToast(`Deleted song "${key}".`);
+        showToast('Song deleted.');
       }
     });
 
@@ -1193,9 +1326,12 @@
       const f = $('songForm');
       f.reset();
       f.origKey.value = '';
-      $('songModalTitle').textContent = 'Add New Wedding Song';
-      f.group.value = 'Egyptian & Arabic Romantic Songs — أغاني أفراح مصرية وعربية';
-      $('songUploadHint').textContent = 'Upload an .mp3 file from your device (recommended under 8 MB).';
+      f.key.value = '';
+      f.file.value = '';
+      $('songModalTitle').textContent = 'Upload New Wedding Song';
+      $('songModalPlayer').removeAttribute('src');
+      $('songModalPlayer').load();
+      $('songUploadHint').textContent = 'Choose an .mp3 file from your device (up to 15 MB)';
       $('songModal').classList.add('open');
     });
 
@@ -1206,27 +1342,36 @@
         showToast('Audio file is over 15 MB. Please trim/compress it first.', 4000);
         return;
       }
-      const baseSlug = (file.name.replace(/\.[^.]+$/, '') || 'custom-song').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      const rel = `assets/audio/${baseSlug}.mp3`;
+      const f = $('songForm');
+      const existingFile = f.file.value.trim();
+      const baseSlug = (file.name.replace(/\.[^.]+$/, '') || 'custom-song').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || ('song-' + Date.now().toString(36));
+      // If replacing an existing song, overwrite its exact MP3 filename so every invitation using it updates automatically!
+      const rel = (f.origKey.value && existingFile && existingFile.startsWith('assets/audio/'))
+        ? existingFile
+        : `assets/audio/${baseSlug}.mp3`;
       const { base64, previewUrl } = await readBinaryAsBase64(file);
       pendingFiles[rel] = { base64, previewUrl };
       $('songFileInput').value = rel;
-      const f = $('songForm');
       if (!f.key.value.trim()) f.key.value = baseSlug.replace(/-/g, '_');
       if (!f.label.value.trim()) f.label.value = file.name.replace(/\.[^.]+$/, '');
-      $('songUploadHint').textContent = `Ready to upload: ${rel} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
-      showToast(`MP3 staged: ${rel}`);
+      const pl = $('songModalPlayer');
+      pl.src = previewUrl;
+      pl.load();
+      $('songUploadHint').textContent = `New MP3 ready (${(file.size / 1024 / 1024).toFixed(2)} MB) — press Play to test!`;
+      showToast('New MP3 audio loaded! Click Save Song.', 3000);
       e.target.value = '';
     });
 
     $('songForm').addEventListener('submit', e => {
       e.preventDefault();
+      $('songModalPlayer').pause();
       const f = e.target;
       const origKey = f.origKey.value;
-      const newKey = f.key.value.trim().toLowerCase().replace(/[^a-z0-9_]+/g, '_');
+      const label = f.label.value.trim();
+      const autoKey = (f.key.value.trim() || label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || ('song_' + Date.now().toString(36)));
       const item = {
-        key: newKey,
-        label: f.label.value.trim(),
+        key: autoKey,
+        label,
         group: f.group.value.trim(),
         file: f.file.value.trim(),
         hidden: false
@@ -1241,7 +1386,7 @@
       persistDraft();
       $('songModal').classList.remove('open');
       renderAll();
-      showToast(`Saved song "${item.label}"!`);
+      showToast(`Saved "${item.label}"!`);
     });
 
     /* ===== TAB 3: IMAGES & CATEGORY COVERS ===== */
@@ -1590,7 +1735,11 @@
 
     document.addEventListener('click', e => {
       const cl = e.target.closest('[data-close]');
-      if (cl) $(cl.dataset.close).classList.remove('open');
+      if (cl) {
+        $(cl.dataset.close).classList.remove('open');
+        if ($('editAudioPlayer')) $('editAudioPlayer').pause();
+        if ($('songModalPlayer')) $('songModalPlayer').pause();
+      }
     });
 
     $('filterCat').addEventListener('change', renderInvitesTab);
