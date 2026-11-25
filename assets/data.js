@@ -388,7 +388,7 @@ window.SITE = {
       "langKey": "en",
       "textDark": false,
       "bg": "linear-gradient(145deg,#13427A,#1E5CA8)",
-      "img": "assets/images/el-gouna-lagoon.jpg",
+      "img": "assets/images/hacienda-marassi-sahel.jpg",
       "accent": "#FFFFFF",
       "desc": "Breezy cobalt-and-linen Mediterranean invitation with interactive 3-Day Wedding Weekend tabs (Friday Welcome · Saturday Ceremony · Sunday Brunch).",
       "features": [
@@ -2523,6 +2523,7 @@ window.SITE = {
     "assets/images/el-shorta-mosque.jpg",
     "assets/images/four-seasons-nile.jpg",
     "assets/images/french-gatefold-card.jpg",
+    "assets/images/hacienda-marassi-sahel.jpg",
     "assets/images/kempinski-palace.jpg",
     "assets/images/liquid-chromium-pearl.jpg",
     "assets/images/love-story-couple.jpg",
