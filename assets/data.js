@@ -883,7 +883,7 @@ window.SITE = {
       "langKey": "ar",
       "textDark": false,
       "bg": "linear-gradient(145deg,#241911,#0E3A2C)",
-      "img": "assets/images/citadel-mosque.jpg",
+      "img": "assets/images/al-azhar-mosque-cairo.jpg",
       "accent": "#D7B067",
       "desc": "Carved Islamic Mashrabiya lattice shutters slide open sideways to reveal a domed Ottoman manuscript with prayer timings.",
       "features": [
@@ -2504,6 +2504,7 @@ window.SITE = {
   "MEDIA_IMAGES": [
     "assets/images/abdeen-palace.jpg",
     "assets/images/abdeen-palace-staircase.jpg",
+    "assets/images/al-azhar-mosque-cairo.jpg",
     "assets/images/al-azhar-park.jpg",
     "assets/images/al-masa-capital.jpg",
     "assets/images/alexandria-corniche.jpg",
