@@ -2,107 +2,431 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>حازم و فريدة — نظام البحث عن طاولتك على الموبايل | التجمع الخامس</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>حازم و فريدة — دعوة زفاف ملكية ونظام الطاولات | JW Marriott Cairo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{--em:#0D3B2E;--gold:#C5A059;--bg:#FAF7F1;--ink:#13241F}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;min-height:100vh;padding:20px 14px 60px}
-    .amiri{font-family:'Amiri',serif}
-    .wrap{max-width:480px;margin:0 auto}
-    .hero-card{background:linear-gradient(155deg,#0D3B2E,#07221A);color:#fff;border-radius:22px;padding:24px 20px;text-align:center;border:1px solid var(--gold);box-shadow:0 20px 50px rgba(13,59,46,.22);margin-bottom:16px}
-    .hero-card img{width:100%;height:165px;object-fit:cover;border-radius:14px;border:1px solid rgba(197,160,89,.45);margin-bottom:14px}
-    .finder{background:#fff;border:1.5px solid rgba(197,160,89,.45);border-radius:20px;padding:20px 18px;margin-bottom:16px;box-shadow:0 12px 32px rgba(13,59,46,.07)}
-    .search-inp{width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid rgba(13,59,46,.18);font:inherit;font-size:13.5px;margin:10px 0 12px;outline:none}
-    .search-inp:focus{border-color:var(--gold)}
-    .seat-result{background:linear-gradient(135deg,#0D3B2E,#164E3D);color:#fff;border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--gold)}
-    .seat-num{background:var(--gold);color:#111;font-weight:700;padding:8px 14px;border-radius:12px;font-size:14px;white-space:nowrap}
-    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-    .chips button{border:1px solid rgba(13,59,46,.15);background:#FAF7F1;color:var(--em);padding:5px 10px;border-radius:999px;font:600 11px inherit;cursor:pointer}
-    .card{background:#fff;border:1px solid rgba(13,59,46,.12);border-radius:18px;padding:18px;margin-bottom:16px;text-align:center}
-    .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-    .cd div{background:#FAF7F1;border-radius:10px;padding:8px 4px}
-    .cd strong{display:block;font-size:20px;color:var(--em)} .cd span{font-size:10px;color:#5A6862}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;font:700 12.5px inherit;border:0;cursor:pointer;text-decoration:none}
-    .btn-em{background:var(--em);color:#fff} .btn-g{border:1px solid var(--gold);color:var(--em);background:#fff}
+    :root {
+      --em: #0B3529;
+      --em-deep: #062119;
+      --em-mid: #134D3C;
+      --gold: #D4AF63;
+      --gold-light: #F3DCAA;
+      --ivory: #FAF6EE;
+      --paper: #FFFFFF;
+      --ink: #12241E;
+      --muted: #5C6B65;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at top center, rgba(212,175,99,0.16) 0%, transparent 45%),
+        linear-gradient(180deg, #FBF8F1 0%, #F1E9DA 100%);
+      color: var(--ink);
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      padding: 18px 12px 64px;
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .wrap { max-width: 470px; margin: 0 auto; display: grid; gap: 16px; }
+
+    /* Luxury Emerald Palace Hero */
+    .hero-card {
+      position: relative;
+      background: linear-gradient(160deg, var(--em) 0%, var(--em-deep) 100%);
+      color: #FFFFFF;
+      border-radius: 26px;
+      padding: 22px 18px 24px;
+      text-align: center;
+      border: 1.5px solid rgba(212,175,99,0.72);
+      box-shadow: 0 24px 56px rgba(6,33,25,0.28), inset 0 0 0 5px rgba(212,175,99,0.12);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 15px;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      opacity: 0.92;
+    }
+    .arch-frame {
+      position: relative;
+      width: 100%;
+      height: 205px;
+      border-radius: 130px 130px 18px 18px;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.42);
+      margin-bottom: 16px;
+    }
+    .arch-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+    .hero-card:hover .arch-frame img { transform: scale(1.04); }
+    .arch-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,33,25,0.08) 45%, rgba(6,33,25,0.72) 100%);
+      pointer-events: none;
+    }
+    .venue-pill {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      white-space: nowrap;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--gold-light);
+      background: rgba(6,33,25,0.78);
+      border: 1px solid rgba(212,175,99,0.55);
+      backdrop-filter: blur(6px);
+      padding: 4px 13px;
+      border-radius: 999px;
+    }
+    .kicker {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .couple-h1 {
+      font-family: 'Amiri', serif;
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 4px 0 6px;
+      background: linear-gradient(180deg, #FFFDF8 0%, #F3DCAA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-meta { font-size: 12.5px; color: #DCE6E1; line-height: 1.6; }
+    .hero-date {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(212,175,99,0.16);
+      border: 1px solid rgba(212,175,99,0.45);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Interactive Table Seating Concierge + Mini Floorplan + VIP QR */
+    .panel {
+      background: var(--paper);
+      border: 1.5px solid rgba(212,175,99,0.48);
+      border-radius: 22px;
+      padding: 20px 18px;
+      box-shadow: 0 14px 36px rgba(11,53,41,0.08);
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .panel-head h2 {
+      font-family: 'Amiri', serif;
+      font-size: 24px;
+      color: var(--em);
+      line-height: 1.15;
+    }
+    .vip-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(212,175,99,0.18);
+      color: #8A6722;
+      border: 1px solid rgba(212,175,99,0.45);
+    }
+    .sub-txt { font-size: 12px; color: var(--muted); }
+    .search-inp {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 13px;
+      border: 1.5px solid rgba(11,53,41,0.18);
+      background: #FAF8F3;
+      font: inherit;
+      font-size: 13.5px;
+      margin: 11px 0 10px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-inp:focus { border-color: var(--gold); background: #FFFFFF; box-shadow: 0 0 0 3px rgba(212,175,99,0.16); }
+
+    .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .chips button {
+      border: 1px solid rgba(11,53,41,0.16);
+      background: #FAF7F0;
+      color: var(--em);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font: 700 11px inherit;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .chips button:hover, .chips button.active {
+      background: var(--em);
+      color: var(--gold-light);
+      border-color: var(--gold);
+    }
+
+    /* VIP Seat Pass Card */
+    .seat-pass {
+      background: linear-gradient(145deg, var(--em) 0%, var(--em-mid) 60%, var(--em-deep) 100%);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 16px;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 12px 28px rgba(11,53,41,0.22);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .pass-guest { font-size: 15px; font-weight: 700; color: #FFFFFF; }
+    .pass-zone { font-size: 11.5px; color: var(--gold-light); margin-top: 2px; }
+    .seat-badge {
+      display: inline-block;
+      margin-top: 8px;
+      background: linear-gradient(135deg, #F3DCAA, var(--gold));
+      color: var(--em-deep);
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    .qr-box {
+      background: #FFFFFF;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1.5px solid var(--gold);
+      text-align: center;
+    }
+    .qr-box img { width: 66px; height: 66px; display: block; border-radius: 6px; }
+    .qr-box span { display: block; font-size: 9px; font-weight: 700; color: var(--em); margin-top: 3px; letter-spacing: 0.06em; }
+
+    /* Mini Visual Ballroom Floorplan */
+    .hall-map {
+      margin-top: 12px;
+      background: #FAF7F0;
+      border: 1px dashed rgba(212,175,99,0.55);
+      border-radius: 14px;
+      padding: 11px;
+      text-align: center;
+    }
+    .stage-bar {
+      background: linear-gradient(90deg, transparent, rgba(212,175,99,0.35), transparent);
+      border: 1px solid rgba(212,175,99,0.5);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--em);
+      margin-bottom: 9px;
+    }
+    .zones-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+    .zone-pill {
+      padding: 7px 6px;
+      border-radius: 10px;
+      border: 1px solid rgba(11,53,41,0.12);
+      background: #FFFFFF;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.25s;
+    }
+    .zone-pill.active {
+      background: var(--em);
+      color: var(--gold-light);
+      border-color: var(--gold);
+      box-shadow: 0 4px 14px rgba(11,53,41,0.22);
+      transform: scale(1.02);
+    }
+
+    /* Evening Timeline Strip */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .t-item {
+      background: #FAF7F0;
+      border: 1px solid rgba(212,175,99,0.35);
+      border-radius: 13px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+    .t-item b { display: block; font-size: 12px; color: var(--em); }
+    .t-item span { display: block; font-size: 10.5px; color: #8A6722; font-weight: 700; margin-top: 2px; }
+
+    /* Countdown & RSVP */
+    .cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; text-align: center; }
+    .cd div {
+      background: linear-gradient(180deg, #FAF7F0, #F3EBDC);
+      border: 1px solid rgba(212,175,99,0.35);
+      border-radius: 12px;
+      padding: 9px 4px;
+    }
+    .cd strong { display: block; font-size: 21px; color: var(--em); line-height: 1.1; }
+    .cd span { font-size: 10px; color: var(--muted); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font: 700 12.5px inherit;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.18s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-em { background: linear-gradient(135deg, var(--em), var(--em-mid)); color: #FFFFFF; border: 1px solid var(--gold); }
+    .btn-g { border: 1.5px solid var(--gold); color: var(--em); background: #FFFFFF; }
   </style>
 </head>
-<body data-music-mood="nagham_qesset_hob">
+<body data-particles="gold-dust" data-music-mood="nagham_qesset_hob">
   <main class="wrap">
-    <div class="hero-card" id="startMusicCard">
-      <img src="../assets/images/tagamoa-mirage-palace.jpg" alt="JW Marriott Mirage City" />
-      <div style="font-size:11px;color:var(--gold);letter-spacing:.14em;">دعوة زفاف + خدمة رقم الطاولة على الموبايل</div>
-      <div data-guest-name data-guest-prefix="أهلاً بك يا " style="display:none;color:#F3DCAA;font-size:13px;font-weight:700;margin-top:4px;"></div>
-      <h1 class="amiri" style="font-size:40px;margin:4px 0;" data-couple-title>حازم و فريدة</h1>
-      <div style="font-size:12.5px;color:#D6E2DC;" data-venue-name>فندق جي دبليو ماريوت ميراج سيتي — التجمع الخامس</div>
-      <div style="font-size:12px;color:var(--gold);margin-top:4px;" data-event-date>السبت، ١٨ ديسمبر ٢٠٢٧ • الثامنة مساءً</div>
-    </div>
-
-    <!-- Interactive Live Table Finder -->
-    <section class="finder">
-      <div style="font-weight:700;font-size:15px;color:var(--em);">ابحث عن رقم طاولتك (Table Seating)</div>
-      <div style="font-size:11.5px;color:#5A6862;">اكتب اسمك لمعرفة رقم الطاولة والمنطقة المخصصة لك في القاعة:</div>
-      <input class="search-inp" id="tableSearch" placeholder="مثال: أحمد، كريم، د. منى، سارة..." />
-      <div class="seat-result" id="seatResult">
-        <div>
-          <div style="font-size:11px;color:#F3DCAA;" id="seatGuest">ضيفنا العزيز</div>
-          <div style="font-size:13.5px;font-weight:700;" id="seatZone">القاعة الملكية — صف كبار الزوار</div>
-        </div>
-        <div class="seat-num" id="seatNum" data-table-seat>طاولة ٠٥</div>
+    <!-- 1. ROYAL TWILIGHT HERO -->
+    <header class="hero-card" id="startMusicCard">
+      <div class="bismillah">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا ﴾</div>
+      <div class="arch-frame">
+        <img src="../assets/images/jw-marriott-mirage-cairo.jpg" alt="JW Marriott Mirage City Cairo" />
+        <div class="venue-pill">JW Marriott Mirage City · القاهرة الجديدة</div>
       </div>
+      <div class="kicker">دعوة زفاف ملكية • بطاقة الطاولة والـ QR</div>
+      <div data-guest-name data-guest-prefix="تشرفنا دعوتكم، أهلاً بك يا " style="display:none;color:#F3DCAA;font-size:13px;font-weight:700;margin-top:6px;"></div>
+      <h1 class="couple-h1" data-couple-title>حازم و فريدة</h1>
+      <div class="hero-meta" data-venue-name>فندق جي دبليو ماريوت ميراج سيتي — التجمع الخامس</div>
+      <div class="hero-date" data-event-date>السبت، ١٨ ديسمبر ٢٠٢٧ • الثامنة مساءً</div>
+    </header>
+
+    <!-- 2. LIVE TABLE SEATING CONCIERGE + FLOORPLAN + VIP QR PASS -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>ابحث عن رقم طاولتك</h2>
+        <span class="vip-tag">VIP Seating &amp; QR</span>
+      </div>
+      <div class="sub-txt">اكتب اسمك لمعرفة رقم طاولتك وموقعها في القاعة وإصدار كارت الدخول الخاص بك:</div>
+      <input class="search-inp" id="tableSearch" placeholder="اكتب اسمك هنا (مثال: أحمد، كريم، د. منى، سارة)..." />
+
       <div class="chips" id="demoGuests">
-        <button type="button" data-q="أحمد">أستاذ أحمد</button>
+        <button type="button" class="active" data-q="أحمد">أستاذ أحمد</button>
         <button type="button" data-q="كريم">م. كريم</button>
         <button type="button" data-q="منى">د. منى</button>
         <button type="button" data-q="سارة">آنسة سارة</button>
       </div>
+
+      <div class="seat-pass" id="seatResult">
+        <div>
+          <div style="font-size:10px;color:var(--gold-light);letter-spacing:.1em;">بطاقة جلوس خاصة • VIP PASS</div>
+          <div class="pass-guest" id="seatGuest">أستاذ أحمد عبد الرحمن</div>
+          <div class="pass-zone" id="seatZone">المنطقة الملكية — بجوار الكوشة</div>
+          <div class="seat-badge" id="seatNum" data-table-seat>طاولة ٠١ • VIP</div>
+        </div>
+        <div class="qr-box">
+          <img id="seatQr" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&color=0B3529&data=MEEM-VIP-Table01-Ahmed" alt="VIP QR Pass" />
+          <span>ENTRY QR</span>
+        </div>
+      </div>
+
+      <div class="hall-map">
+        <div class="stage-bar">✦ الكوشة الملكية ومنصة العروسين ✦</div>
+        <div class="zones-grid" id="zonesGrid">
+          <div class="zone-pill active" data-zone="z1">المنطقة الملكية (VIP)</div>
+          <div class="zone-pill" data-zone="z2">الصف الأول — عائلة العروس</div>
+          <div class="zone-pill" data-zone="z3">الجناح الشرقي — أصدقاء العريس</div>
+          <div class="zone-pill" data-zone="z4">جناح المسبح — أصدقاء العروس</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item"><b>استقبال الضيوف</b><span>٠٧:٣٠ م</span></div>
+        <div class="t-item"><b>الزفة الملكية</b><span>٠٨:٣٠ م</span></div>
+        <div class="t-item"><b>العشاء والاحتفال</b><span>١٠:٠٠ م</span></div>
+      </div>
     </section>
 
-    <div class="card">
+    <!-- 3. COUNTDOWN, MAP & WHATSAPP RSVP -->
+    <section class="panel" style="text-align:center;">
       <div class="cd" data-countdown="2027-12-18T20:00:00+02:00">
         <div><strong data-cd="days">00</strong><span>يوم</span></div>
         <div><strong data-cd="hours">00</strong><span>ساعة</span></div>
         <div><strong data-cd="minutes">00</strong><span>دقيقة</span></div>
         <div><strong data-cd="seconds">00</strong><span>ثانية</span></div>
       </div>
-      <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <div style="display:flex;gap:8px;margin-bottom:14px;">
         <button type="button" class="btn btn-em" style="flex:1" onclick="WeddingCalendar.openGoogleCalendar(EVENT_INFO)">إضافة للتقويم</button>
-        <a class="btn btn-g" style="flex:1" href="https://maps.google.com/?q=JW+Marriott+Mirage+City+Cairo" target="_blank" rel="noopener">الخريطة</a>
+        <a class="btn btn-g" style="flex:1" href="https://maps.google.com/?q=JW+Marriott+Mirage+City+Cairo" target="_blank" rel="noopener">موقع الفندق ↗</a>
       </div>
       <form data-rsvp-form data-couple="حازم و فريدة" data-lang="ar" data-result-target="rsvp-res">
         <input class="search-inp" style="margin:0 0 10px" name="guestName" type="text" required placeholder="الاسم الكريم لتأكيد الحضور" />
-        <button type="submit" class="btn btn-em" style="width:100%;">تأكيد الحضور واستلام الكارت عبر واتساب</button>
+        <button type="submit" class="btn btn-em" style="width:100%;">تأكيد الحضور واستلام الدعوة عبر واتساب</button>
       </form>
       <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
-    </div>
+    </section>
   </main>
+
   <script src="../assets/shared.js"></script>
   <script>
-    const EVENT_INFO = { title: 'زفاف حازم و فريدة', start: '2027-12-18T18:00:00Z', end: '2027-12-18T23:30:00Z', location: 'JW Marriott Mirage City, El Tagamoa, Cairo' };
+    const EVENT_INFO = {
+      title: 'زفاف حازم و فريدة — JW Marriott Cairo',
+      start: '2027-12-18T18:00:00Z',
+      end: '2027-12-18T23:30:00Z',
+      location: 'JW Marriott Mirage City, El Tagamoa, Cairo'
+    };
     const GUEST_MAP = [
-      { k: 'أحمد', name: 'أستاذ أحمد عبد الرحمن', zone: 'المنطقة الملكية — بجوار الكوشة', table: 'طاولة ٠١ • VIP' },
-      { k: 'كريم', name: 'م. كريم وعائلته', zone: 'الجناح الشرقي — أصدقاء العريس', table: 'طاولة ٠٧' },
-      { k: 'منى', name: 'د. منى والأسرة', zone: 'الصف الأول — عائلة العروس', table: 'طاولة ٠٢ • VIP' },
-      { k: 'سارة', name: 'آنسة سارة وصديقاتها', zone: 'جناح الحديقة — أصدقاء العروس', table: 'طاولة ١١' }
+      { k: 'أحمد', name: 'أستاذ أحمد عبد الرحمن', zone: 'المنطقة الملكية — بجوار الكوشة', table: 'طاولة ٠١ • VIP', zId: 'z1' },
+      { k: 'كريم', name: 'م. كريم وعائلته', zone: 'الجناح الشرقي — أصدقاء العريس', table: 'طاولة ٠٧', zId: 'z3' },
+      { k: 'منى', name: 'د. منى والأسرة', zone: 'الصف الأول — عائلة العروس', table: 'طاولة ٠٢ • VIP', zId: 'z2' },
+      { k: 'سارة', name: 'آنسة سارة وصديقاتها', zone: 'جناح المسبح — أصدقاء العروس', table: 'طاولة ١١', zId: 'z4' }
     ];
+    function highlightZone(zId) {
+      document.querySelectorAll('#zonesGrid .zone-pill').forEach(el => {
+        el.classList.toggle('active', el.dataset.zone === zId);
+      });
+    }
     function lookup(q) {
-      const hit = GUEST_MAP.find(g => g.k.includes(q) || g.name.includes(q));
-      if (hit) {
-        document.getElementById('seatGuest').textContent = hit.name;
-        document.getElementById('seatZone').textContent = hit.zone;
-        document.getElementById('seatNum').textContent = hit.table;
-      } else if (q.trim()) {
-        document.getElementById('seatGuest').textContent = q.trim();
-        document.getElementById('seatZone').textContent = 'القاعة الكبرى — منطقة الضيوف المميزين';
-        document.getElementById('seatNum').textContent = 'طاولة ٠٨';
-      }
-      try { WeddingSound.startMusic('nagham_qesset_hob'); } catch(_) {}
+      const clean = (q || '').trim();
+      const hit = GUEST_MAP.find(g => clean && (g.k.includes(clean) || g.name.includes(clean)));
+      const guest = hit ? hit.name : (clean || 'أستاذ أحمد عبد الرحمن');
+      const zone = hit ? hit.zone : (clean ? 'القاعة الكبرى — منطقة الضيوف المميزين' : 'المنطقة الملكية — بجوار الكوشة');
+      const table = hit ? hit.table : (clean ? 'طاولة ٠٨' : 'طاولة ٠١ • VIP');
+      const zId = hit ? hit.zId : (clean ? 'z3' : 'z1');
+
+      document.getElementById('seatGuest').textContent = guest;
+      document.getElementById('seatZone').textContent = zone;
+      document.getElementById('seatNum').textContent = table;
+      document.getElementById('seatQr').src = 'https://api.qrserver.com/v1/create-qr-code/?size=140x140&color=0B3529&data=' + encodeURIComponent(`MEEM-VIP | ${guest} | ${table}`);
+      highlightZone(zId);
+      try { WeddingSound.startMusic('nagham_qesset_hob'); } catch (_) {}
     }
     document.getElementById('tableSearch').addEventListener('input', e => lookup(e.target.value));
     document.getElementById('demoGuests').addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
-      document.getElementById('tableSearch').value = b.dataset.q; lookup(b.dataset.q);
+      document.querySelectorAll('#demoGuests button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      document.getElementById('tableSearch').value = b.dataset.q;
+      lookup(b.dataset.q);
     });
-    document.getElementById('startMusicCard').addEventListener('click', () => { try { WeddingSound.startMusic('nagham_qesset_hob'); } catch(_) {} });
+    document.getElementById('startMusicCard').addEventListener('click', () => {
+      try { WeddingSound.startMusic('nagham_qesset_hob'); } catch (_) {}
+    });
   </script>
 </body></html>
