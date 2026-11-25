@@ -311,7 +311,7 @@ window.SITE = {
       "langKey": "en",
       "textDark": true,
       "bg": "linear-gradient(145deg,#ECF3ED,#D1E2D5)",
-      "img": "assets/images/el-obour-golf-gardens.jpg",
+      "img": "assets/images/katameya-heights-golf.jpg",
       "accent": "#2C4A3B",
       "desc": "Frosted botanical glass card over sunlit garden photography with circular countdown orbs and an interactive 3-tab Details/Schedule/Dress switcher.",
       "features": [
@@ -2530,6 +2530,7 @@ window.SITE = {
     "assets/images/hacienda-marassi-sahel.jpg",
     "assets/images/hilton-alexandria.jpg",
     "assets/images/jw-marriott-mirage-cairo.jpg",
+    "assets/images/katameya-heights-golf.jpg",
     "assets/images/kempinski-palace.jpg",
     "assets/images/liquid-chromium-pearl.jpg",
     "assets/images/love-story-couple.jpg",
