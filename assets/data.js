@@ -157,7 +157,7 @@ window.SITE = {
       "langKey": "en",
       "textDark": true,
       "bg": "linear-gradient(145deg,#FBF7F0,#E6D9C6)",
-      "img": "assets/images/al-azhar-park.jpg",
+      "img": "assets/images/villa-belle-epoque-maadi.jpg",
       "accent": "#6D1D2A",
       "desc": "Burgundy satin ribbon & wax seal packet that unties and unfolds into a cursive handwritten lined love letter with airmail stamp.",
       "features": [
@@ -2542,6 +2542,7 @@ window.SITE = {
     "assets/images/st-regis-cairo.jpg",
     "assets/images/tagamoa-mirage-palace.jpg",
     "assets/images/translucent-vellum-envelope.jpg",
+    "assets/images/villa-belle-epoque-maadi.jpg",
     "assets/images/zamalek-marriott-palace.jpg"
   ]
 };
