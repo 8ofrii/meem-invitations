@@ -961,7 +961,7 @@ window.SITE = {
       "langKey": "ar",
       "textDark": true,
       "bg": "linear-gradient(145deg,#FAF6EF,#E5DAC8)",
-      "img": "assets/images/madinet-nasr-venue.jpg",
+      "img": "assets/images/al-masa-madinet-nasr.jpg",
       "accent": "#0D3B2E",
       "desc": "Interactive swipeable couple engagement shoot album with custom photo upload support and Tamer Hosny romantic wedding song.",
       "features": [
@@ -2507,6 +2507,7 @@ window.SITE = {
     "assets/images/al-azhar-mosque-cairo.jpg",
     "assets/images/al-azhar-park.jpg",
     "assets/images/al-masa-capital.jpg",
+    "assets/images/al-masa-madinet-nasr.jpg",
     "assets/images/alexandria-corniche.jpg",
     "assets/images/alexandria-san-stefano.jpg",
     "assets/images/amalfi-coast.jpg",
