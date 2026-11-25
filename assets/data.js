@@ -770,7 +770,7 @@ window.SITE = {
       "langKey": "ar",
       "textDark": false,
       "bg": "linear-gradient(145deg,#0B2E24,#071C16)",
-      "img": "assets/images/madinet-nasr-venue.jpg",
+      "img": "assets/images/triumph-luxury-hotel.jpg",
       "accent": "#DFBA6E",
       "desc": "Pleated emerald theatre drapes part under a golden spotlight to reveal a live interactive Guestbook Wishes Wall where guests post blessings.",
       "features": [
@@ -2544,6 +2544,7 @@ window.SITE = {
     "assets/images/st-regis-cairo.jpg",
     "assets/images/tagamoa-mirage-palace.jpg",
     "assets/images/translucent-vellum-envelope.jpg",
+    "assets/images/triumph-luxury-hotel.jpg",
     "assets/images/villa-belle-epoque-maadi.jpg",
     "assets/images/zamalek-marriott-palace.jpg"
   ]
