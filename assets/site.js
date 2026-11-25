@@ -84,7 +84,7 @@
       ['home', isHome ? '#home' : '/', 'Home'],
       ['designs', `${prefix}#designs`, 'Collections'],
       ['try-it-live', `${prefix}#try-it-live`, 'Try it live'],
-      ['journey', `${prefix}#journey`, 'Experience'],
+      ['journey', `${prefix}#journey`, 'Packages'],
       ['faq', `${prefix}#faq`, 'FAQ']
     ];
 

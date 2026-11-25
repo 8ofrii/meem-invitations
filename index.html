@@ -54,9 +54,22 @@
   .stat { background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 12px; padding: 12px 10px; text-align: center; }
   .stat b { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1.25; margin-bottom: 2px; white-space: nowrap; }
   .stat span { font-size: 11px; color: var(--muted); }
-  .step .n { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: grid; place-items: center; font-weight: 700; margin-bottom: 14px; }
-  .step h3 { font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 500; margin-bottom: 6px; }
-  .step p { font-size: 13px; color: var(--muted); }
+  .mini-steps {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px;
+    max-width: 780px; margin: 18px auto 0; padding: 10px 16px;
+    border-radius: 999px; background: rgba(255,255,255,0.72); border: 1px solid var(--line);
+    font-size: 12px; color: var(--emerald);
+  }
+  .mini-steps span { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+  .mini-steps b {
+    width: 19px; height: 19px; border-radius: 50%; background: var(--emerald); color: #F4E5C2;
+    font-size: 10.5px; display: inline-grid; place-items: center;
+  }
+  .studio-tip {
+    margin-top: 14px; padding: 10px 14px; border-radius: 12px;
+    background: rgba(197, 160, 89, 0.09); border: 1px solid rgba(197, 160, 89, 0.34);
+    font-size: 12px; color: var(--emerald); line-height: 1.55;
+  }
 
   /* Signature Features & Occasions Strip */
   .feat-grid {
@@ -1041,8 +1054,8 @@
 </head>
 <body>
 <main>
-  <!-- 1. HOME SECTION (Cinematic Wedding Experience) -->
-  <section id="home" class="hero has-bg-art">
+  <!-- 1. HERO SECTION (Focused Entrance — Designs Immediately Below) -->
+  <section id="home" class="hero has-bg-art" style="padding:46px 0 34px">
     <div class="hero-video-wrap" aria-hidden="true">
       <video autoplay muted loop playsinline poster="assets/images/al-masa-capital.jpg">
         <source src="assets/video/wedding-intro-loop.mp4" type="video/mp4">
@@ -1055,10 +1068,10 @@
       <div class="pill-tag" id="heroPill">Online Digital Wedding House</div>
       <h1 class="h1">Every love story deserves a <em>beautiful entrance</em>.</h1>
       <div class="hero-subline" id="heroSubline">Not just an invitation. An experience.</div>
-      <p class="lead" id="heroLead" style="margin:14px auto 0">Cinematic motion, HD video, couple-photo storybooks, table seating passes &amp; bespoke digital invitations for weddings, katb ketab, engagement and henna nights — in Arabic, English or both.</p>
+      <p class="lead" id="heroLead" style="margin:12px auto 0">Interactive digital invitations, cinematic reels, couple-photo storybooks &amp; QR seating passes for weddings, katb ketab, engagement and henna — in Arabic, English or both.</p>
       <div class="actions">
         <a class="btn btn-gold btn-lg btn-pill" href="#designs">Explore Collections</a>
-        <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Create Your Invitation</a>
+        <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try With Your Names</a>
       </div>
       <div class="stats">
         <div class="stat"><b id="statDesigns">35</b><span>Curated designs</span></div>
@@ -1066,149 +1079,27 @@
         <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
         <div class="stat"><b id="statDelivery">48h</b><span id="statDeliveryLabel">Fastest delivery</span></div>
       </div>
-
-      <div style="margin-top:64px">
-        <div class="center" style="margin-bottom:28px"><div class="pill-tag">How it works</div><h2 class="h2">From idea to a shareable link in <em>4 steps</em></h2></div>
-        <div class="grid g4" style="text-align:left">
-          <div class="card step"><div class="n">1</div><h3>Pick an aesthetic</h3><p>Explore by wedding vibe, moodboard, motion video, or silent stationery.</p></div>
-          <div class="card step"><div class="n">2</div><h3>Personalise live</h3><p>Preview your names, venue, couple portrait, colors, table &amp; soundtrack.</p></div>
-          <div class="card step"><div class="n">3</div><h3>We craft it</h3><p>Custom motion, curated wedding music, venues and details built for you.</p></div>
-          <div class="card step"><div class="n">4</div><h3>Share on WhatsApp</h3><p>One clean link for your guests with live countdown, map, RSVP &amp; QR pass.</p></div>
-        </div>
+      <div class="mini-steps" aria-label="How it works">
+        <span><b>1</b> Pick a style</span>
+        <span><b>2</b> Preview with your names</span>
+        <span><b>3</b> We personalise it</span>
+        <span><b>4</b> Share on WhatsApp</span>
       </div>
     </div>
   </section>
 
   <hr class="section-divider">
 
-  <!-- 1.5. SIGNATURE FEATURES & OCCASIONS (More Than a Card — Top Showcase) -->
-  <section id="features" class="section tight has-bg-art">
-    <div class="bg-venue align-soft" style="background-image:url('assets/images/baron-palace-cairo.jpg')" aria-hidden="true"></div>
-    <svg class="bg-shape bg-shape-br" viewBox="0 0 240 240" fill="none" aria-hidden="true"><rect x="48" y="48" width="144" height="144" stroke="currentColor" stroke-width="0.8"/><rect x="48" y="48" width="144" height="144" transform="rotate(45 120 120)" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="46" stroke="currentColor" stroke-width="0.7"/></svg>
-    <div class="container">
-    <div class="center" style="margin-bottom:26px">
-      <div class="pill-tag">Signature Experience</div>
-      <h2 class="h2">More Than a Card — <em>Every Detail Included</em></h2>
-      <p class="lead" style="margin:10px auto 0">Crafted for modern celebrations online with interactive reveals, short cinematic reels, guest conveniences and custom add-ons.</p>
-    </div>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <div class="feat-ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
-        <h3>Live Wedding Website</h3>
-        <p>Envelope &amp; wax-seal opening, gradual reveal, live countdown, Google Maps directions, dress code palette, Our Story &amp; event timeline.</p>
-        <div class="feat-tags"><span>Countdown</span><span>Google Maps</span><span>Dress Code</span><span>Our Story</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><polygon points="10 8.5 16 12 10 15.5 10 8.5"/></svg></div>
-        <h3>Cinematic Short Videos</h3>
-        <p>15–30 second vertical invitation reels in Old Money palace, vintage film, black &amp; white editorial, or luxury hotel styles — with or without couple photos.</p>
-        <div class="feat-tags"><span>Old Money</span><span>Vintage Film</span><span>B&amp;W Editorial</span><span>HD Reels</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9-9.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9 5.5c-2 5-9 9.5-9 9.5z"/></svg></div>
-        <h3>Interactive Guest Moments</h3>
-        <p>Scratch-to-reveal venue, tap-to-reveal date, couple love notes, live RSVP, individual QR Guest Passes, and each guest's table number on their phone.</p>
-        <div class="feat-tags"><span>Scratch Reveal</span><span>RSVP</span><span>QR Pass</span><span>Table Seating</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 4.6 5.1.7-3.7 3.6.9 5.1L12 14.6 7.5 17l.9-5.1L4.7 8.3l5.1-.7L12 3z"/></svg></div>
-        <h3>Every Occasion &amp; Suite</h3>
-        <p>Matching digital suites across every milestone — Weddings, Katb Ketab, Engagement, Henna, Save the Date, Bridal Shower, Welcome Screens &amp; Thank You Cards.</p>
-        <div class="feat-tags"><span>Save the Date</span><span>Katb Ketab</span><span>Bridal Shower</span><span>Thank You</span></div>
-      </div>
-    </div>
-
-    <div class="addon-spotlight">
-      <div class="addon-head-row">
-        <div>
-          <div class="addon-kicker">Optional Add-On · إضافة اختيارية مميزة</div>
-          <h3>Live QR Guest Camera &amp; Private Couple Album</h3>
-        </div>
-        <a class="addon-btn-light" id="qrAddonWa" target="_blank" rel="noopener">Request This Add-On on WhatsApp</a>
-      </div>
-
-      <div class="addon-bilingual">
-        <div class="addon-brief">
-          <strong>How It Works (EN):</strong> Guests scan a bespoke QR card placed on their tables — <strong>no app download needed</strong>. Their phone camera opens immediately to capture candid photos and videos (or upload from their gallery), and every memory saves automatically into the <strong>Groom &amp; Bride's private Google Drive folder</strong> in original quality.
-        </div>
-        <div class="addon-brief ar">
-          <strong>كيف تعمل الميزة (بالعربية):</strong> يمسح الضيوف كارت الـ QR الأنيق الموجود على الطاولات <strong>بدون تحميل أي تطبيق</strong>، فتفتح كاميرا الهاتف مباشرة لالتقاط صور وفيديوهات الفرح (أو رفعها من الاستوديو)، وتُحفظ كل اللحظات تلقائياً وبجودتها الأصلية داخل <strong>فولدر Google Drive الخاص بالعريس والعروسة فقط</strong> لمشاهدتها وتحميلها في أي وقت.
-        </div>
-      </div>
-
-      <div class="addon-steps">
-        <div class="addon-step">
-          <div class="addon-step-num">1</div>
-          <div>
-            <b>Scan Table QR · امسح الكود</b>
-            <span>Print-ready luxury table card matching your invitation design.</span>
-          </div>
-        </div>
-        <div class="addon-step">
-          <div class="addon-step-num">2</div>
-          <div>
-            <b>Snap &amp; Record · صوّر وسجّل</b>
-            <span>Instant camera permission for photos &amp; videos — zero app required.</span>
-          </div>
-        </div>
-        <div class="addon-step">
-          <div class="addon-step-num">3</div>
-          <div>
-            <b>Private Drive · ألبوم العروسين</b>
-            <span>Saved directly &amp; privately for the Bride &amp; Groom to view and keep forever.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="addons-mini-grid">
-      <div class="addon-mini-card">
-        <div class="addon-mini-top">
-          <div class="feat-ic" style="margin:0"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-          <span class="addon-mini-badge">Add-On · إضافة</span>
-        </div>
-        <h4>Voice &amp; Written Wishes Guestbook</h4>
-        <p class="addon-mini-en">Guests record heartfelt voice notes or leave written blessings saved privately for the couple to listen to and cherish forever.</p>
-        <p class="addon-mini-ar">دفتر تهاني صوتي ومكتوب: يترك الضيوف رسائل صوتية بصوتهم أو تهنئة مكتوبة تُحفظ بسرية للعريس والعروسة كذكرى للأبد.</p>
-        <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
-      </div>
-
-      <div class="addon-mini-card">
-        <div class="addon-mini-top">
-          <div class="feat-ic" style="margin:0"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><polygon points="10 9 15 12 10 15 10 9"/></svg></div>
-          <span class="addon-mini-badge">Add-On · إضافة</span>
-        </div>
-        <h4>15–30s Vertical Reels Video Invite</h4>
-        <p class="addon-mini-en">A ready-to-share vertical HD video invitation with your names, animated typography and song — ideal for WhatsApp &amp; Instagram Stories.</p>
-        <p class="addon-mini-ar">فيديو دعوة ريلز (15–30 ثانية): فيديو عمودي فاخر جاهز للمشاركة مباشرة على واتساب وستوري إنستجرام بأغنيتكم المفضلة.</p>
-        <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
-      </div>
-
-      <div class="addon-mini-card">
-        <div class="addon-mini-top">
-          <div class="feat-ic" style="margin:0"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-          <span class="addon-mini-badge">Add-On · إضافة</span>
-        </div>
-        <h4>Multi-Version &amp; Bilingual Links</h4>
-        <p class="addon-mini-en">Separate customized links under one cohesive design — Arabic for family, English for international guests, or dedicated VIP &amp; friends timings.</p>
-        <p class="addon-mini-ar">نسخ متعددة لنفس الدعوة: روابط منفصلة بنفس التصميم الفخم (نسخة عربي للأهل، نسخة إنجليزي للأصدقاء، أو مواعيد خاصة للـ VIP).</p>
-        <a class="addon-mini-cta" id="addonMultiWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
-      </div>
-    </div>
-  </div></section>
-
-  <hr class="section-divider">
-
-  <!-- 2. CURATED COLLECTIONS SECTION (Bespoke Arched Venue-Thumbnail Filter) -->
-  <section id="designs" class="section has-bg-art">
+  <!-- 2. CURATED COLLECTIONS (Right at the Top!) -->
+  <section id="designs" class="section tight has-bg-art">
     <div class="bg-venue align-top" style="background-image:url('assets/images/mohamed-ali-palace.jpg')" aria-hidden="true"></div>
     <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="68" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3 5"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.85"/></svg>
     <svg class="bg-shape bg-shape-bl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 212V112C36 66 74 30 120 30C166 30 204 66 204 112V212" stroke="currentColor" stroke-width="0.9"/><path d="M58 212V118C58 84 86 56 120 56C154 56 182 84 182 118V212" stroke="currentColor" stroke-width="0.7"/></svg>
     <div class="container">
-    <div class="center" style="margin-bottom:26px">
+    <div class="center" style="margin-bottom:24px">
       <div class="pill-tag">Curated Collections</div>
-      <h2 class="h2">Choose Your <em>Design Format</em></h2>
-      <p class="lead" style="margin:10px auto 0">Filter by invitation style — <strong>every design works for any event</strong> (Wedding, Katb Ketab, Engagement, Henna or Save the Date) in Arabic, English, or both.</p>
+      <h2 class="h2">Choose Your <em>Design Style</em></h2>
+      <p class="lead" style="margin:8px auto 0"><strong>Every design works for any event</strong> (Wedding, Katb Ketab, Engagement, Henna or Save the Date) in Arabic, English, or both.</p>
     </div>
 
     <div class="filter-bar">
@@ -1224,16 +1115,16 @@
 
   <hr class="section-divider">
 
-  <!-- 3. TRY IT LIVE SECTION -->
-  <section id="try-it-live" class="section has-bg-art">
+  <!-- 3. TRY IT LIVE STUDIO -->
+  <section id="try-it-live" class="section tight has-bg-art">
     <div class="bg-venue" style="background-image:url('assets/images/mena-house-giza.jpg')" aria-hidden="true"></div>
     <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M54 216C74 156 96 106 144 48" stroke="currentColor" stroke-width="0.9"/><path d="M104 102C84 86 64 88 54 100C70 112 88 112 104 102Z" stroke="currentColor" stroke-width="0.8"/><path d="M84 146C60 132 42 136 34 150C52 162 72 158 84 146Z" stroke="currentColor" stroke-width="0.8"/><path d="M120 80C140 74 156 80 162 94C144 102 128 96 120 80Z" stroke="currentColor" stroke-width="0.8"/></svg>
     <svg class="bg-shape bg-shape-br" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 220V116C36 68 74 30 120 30C166 30 204 68 204 116V220" stroke="currentColor" stroke-width="0.9"/><path d="M54 220V122C54 84 84 54 120 54C156 54 186 84 186 122V220" stroke="currentColor" stroke-width="0.7" stroke-dasharray="4 4"/></svg>
     <div class="container">
-    <div class="center" style="margin-bottom:32px">
+    <div class="center" style="margin-bottom:26px">
       <div class="pill-tag">Live Preview</div>
       <h2 class="h2">Try it with <em>your names</em></h2>
-      <p class="lead" style="margin:10px auto 0">Pick any design, enter your details or upload a couple photo and see your invitation update inside the phone immediately.</p>
+      <p class="lead" style="margin:8px auto 0">Pick any design, enter your details or upload a couple photo and see your invitation update inside the phone immediately.</p>
     </div>
 
     <div class="studio">
@@ -1339,19 +1230,8 @@
           </div>
         </form>
 
-        <div class="color-note">
-          <svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-4.9-4.5-8.6-10-8.6z"/></svg>
-          <b>Custom Colors &amp; Metallic Finishes:</b> Choose between Liquid Chromium, Molten Platinum, Royal Gold, Rose Gold, or Silver to match your wedding styling.
-        </div>
-        <div class="color-note" style="margin-top:10px;">
-          <svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <b>Available in Any Language:</b> Any design can be ordered in 100% Arabic, 100% English, or Bilingual (Arabic &amp; English) upon request.
-        </div>
-
-        <div class="steps-note">
-          <div>✓ Names, venue, date and countdown update instantly</div>
-          <div>✓ Arabic and English both supported</div>
-          <div>✓ Tap the cover inside the phone to experience motion &amp; sound</div>
+        <div class="studio-tip">
+          ✓ Tap the cover inside the phone to experience motion &amp; sound · Custom colors &amp; 100% Arabic, English or Bilingual available on every design.
         </div>
       </div>
 
@@ -1365,56 +1245,15 @@
 
   <hr class="section-divider">
 
-  <!-- 4. MEEM — THE WEDDING JOURNEY & 4 EXPERIENCE TIERS -->
-  <section id="journey" class="section has-bg-art">
+  <!-- 4. EXPERIENCE PACKAGES, SIGNATURE ADD-ONS & CUSTOM BUILDER (Consolidated & Clean) -->
+  <section id="journey" class="section tight has-bg-art">
     <div class="bg-venue align-soft" style="background-image:url('assets/images/four-seasons-nile.jpg')" aria-hidden="true"></div>
     <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.8"/></svg>
     <div class="container">
-      <div class="center" style="margin-bottom:30px">
-        <div class="pill-tag">MEEM — The Wedding Journey</div>
-        <h2 class="h2">One Cohesive Identity, <em>Before, During &amp; After</em></h2>
-        <p class="lead" style="margin:10px auto 0">Every touchpoint — from your Save the Date and Digital Invitation to Table Seating, Live Guest Camera and Thank You Cards — crafted in one signature theme.</p>
-      </div>
-
-      <div class="journey-grid">
-        <div class="journey-card">
-          <div class="journey-stage">01 · Before the Wedding</div>
-          <h3>The Grand Entrance</h3>
-          <div class="journey-ar">قبل الفرح — الاستعداد والتشويق</div>
-          <ul class="journey-list">
-            <li>Digital Save the Date &amp; Reels Video Teaser</li>
-            <li>Interactive Digital Invitation in Your Theme</li>
-            <li>Personalised Guest Greetings &amp; Bilingual Links</li>
-            <li>Live RSVP Confirmation &amp; Guest Headcount Sheet</li>
-          </ul>
-        </div>
-        <div class="journey-card">
-          <div class="journey-stage">02 · During the Wedding</div>
-          <h3>The Live Experience</h3>
-          <div class="journey-ar">أثناء الفرح — تنظيم وتفاعل فوري</div>
-          <ul class="journey-list">
-            <li>Individual VIP QR Guest Passes at Entrance</li>
-            <li>Digital Table Seating Number on Guest Phones</li>
-            <li>Live Event Timeline &amp; One-Tap Venue Map</li>
-            <li>QR Table Camera — Candid Photos &amp; Videos Direct to Drive</li>
-          </ul>
-        </div>
-        <div class="journey-card">
-          <div class="journey-stage">03 · After the Wedding</div>
-          <h3>Keepsakes Forever</h3>
-          <div class="journey-ar">بعد الفرح — ذكريات تبقى للأبد</div>
-          <ul class="journey-list">
-            <li>Private Couple Memories Gallery (Google Drive)</li>
-            <li>Digital Voice &amp; Written Wishes Guestbook</li>
-            <li>Matching Digital Thank You Cards with Album Link</li>
-            <li>Hosted Archive Link Active 3+ Months Post-Event</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="center" style="margin-bottom:22px">
-        <div class="pill-tag">Experience Tiers · مستويات التجربة</div>
-        <h3 class="serif" style="font-size:32px;font-weight:500;color:var(--emerald)">Choose a Ready Tier or Customise Below</h3>
+      <div class="center" style="margin-bottom:24px">
+        <div class="pill-tag">Packages &amp; Add-Ons · الباقات والإضافات</div>
+        <h2 class="h2">Choose a Package or <em>Build Your Own</em></h2>
+        <p class="lead" style="margin:8px auto 0">From a standalone digital invitation to a complete wedding experience with QR passes, table seating and private guest memories.</p>
       </div>
 
       <div class="tiers-grid">
@@ -1470,93 +1309,140 @@
           <button type="button" class="tier-btn" data-tier="forever">Select in Builder ↓</button>
         </div>
       </div>
+
+      <!-- Compact QR Guest Camera Spotlight -->
+      <div class="addon-spotlight" style="margin-top:24px;padding:22px 22px 20px;gap:14px">
+        <div class="addon-head-row">
+          <div>
+            <div class="addon-kicker">Signature Add-On · إضافة حصرية</div>
+            <h3 style="font-size:25px">Live QR Guest Camera &amp; Private Couple Album</h3>
+          </div>
+          <a class="addon-btn-light" id="qrAddonWa" target="_blank" rel="noopener">Add to My Wedding →</a>
+        </div>
+        <div class="addon-bilingual">
+          <div class="addon-brief" style="padding:12px 14px">
+            Guests scan a bespoke table QR card — <strong>no app needed</strong>. Their camera opens instantly to capture photos &amp; videos saved straight into the <strong>couple's private Google Drive folder</strong> in original quality.
+          </div>
+          <div class="addon-brief ar" style="padding:12px 14px">
+            يمسح الضيوف كارت الـ QR على الطاولات <strong>بدون تحميل أي تطبيق</strong>، وتُحفظ صورهم وفيديوهاتهم تلقائياً بجودتها الأصلية في <strong>فولدر Google Drive سري خاص بالعريس والعروسة فقط</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="addons-mini-grid">
+        <div class="addon-mini-card" style="padding:16px">
+          <div class="addon-mini-top">
+            <h4 style="font-size:20px">Voice &amp; Wishes Guestbook</h4>
+            <span class="addon-mini-badge">Add-On</span>
+          </div>
+          <p class="addon-mini-en">Guests record heartfelt voice notes &amp; written wishes saved privately forever.</p>
+          <p class="addon-mini-ar">دفتر تهاني صوتي ومكتوب يُحفظ بسرية للعروسين للأبد.</p>
+          <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
+        </div>
+
+        <div class="addon-mini-card" style="padding:16px">
+          <div class="addon-mini-top">
+            <h4 style="font-size:20px">15–30s Vertical Reels Video</h4>
+            <span class="addon-mini-badge">Add-On</span>
+          </div>
+          <p class="addon-mini-en">Ready-to-share vertical HD video invitation for WhatsApp &amp; Instagram Stories.</p>
+          <p class="addon-mini-ar">فيديو دعوة ريلز عمودي جاهز للواتساب والإنستجرام بأغنيتكم.</p>
+          <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
+        </div>
+
+        <div class="addon-mini-card" style="padding:16px">
+          <div class="addon-mini-top">
+            <h4 style="font-size:20px">Multi-Version &amp; Bilingual Links</h4>
+            <span class="addon-mini-badge">Add-On</span>
+          </div>
+          <p class="addon-mini-en">Separate links under one cohesive theme — Arabic for family, English or VIP timings.</p>
+          <p class="addon-mini-ar">روابط منفصلة بنفس التصميم (عربي للأهل، إنجليزي أو مواعيد VIP).</p>
+          <a class="addon-mini-cta" id="addonMultiWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
+        </div>
+      </div>
+
+      <!-- Interactive Package Builder (Directly Below Tiers & Add-Ons) -->
+      <div id="build-experience" style="margin-top:34px;padding-top:26px;border-top:1px solid var(--line)">
+        <div class="center" style="margin-bottom:22px">
+          <div class="pill-tag">Build Your Wedding Experience</div>
+          <h3 class="serif" style="font-size:32px;font-weight:500;color:var(--emerald)">Tailor Your <em>Own Package</em></h3>
+        </div>
+
+        <div class="builder-grid">
+          <div class="builder-card">
+            <div class="builder-row">
+              <div class="field">
+                <label for="bDesign">Favourite Design (اختياري)</label>
+                <select id="bDesign" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917"></select>
+              </div>
+              <div class="field">
+                <label for="bEvent">Celebration Type (نوع المناسبة)</label>
+                <select id="bEvent" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
+                  <option value="Wedding · فرح">Wedding · حفل زفاف</option>
+                  <option value="Katb Ketab · كتب كتاب">Katb Ketab · عقد قران</option>
+                  <option value="Engagement · خطوبة">Engagement · خطوبة</option>
+                  <option value="Henna Night · ليلة الحنة">Henna Night · ليلة حنة</option>
+                  <option value="Save the Date · احفظ التاريخ">Save the Date · احفظ التاريخ</option>
+                  <option value="Private Celebration · مناسبة خاصة">Bridal / Baby Shower / Private Event</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="exp-opts" id="expOpts">
+              <label class="exp-opt">
+                <input type="checkbox" value="Digital Invitation (Custom Colors, Song & Animation)" data-key="invite" checked disabled />
+                <div><b>Digital Invitation (Included)</b><span>الدعوة الرقمية بتخصيص الألوان والأغنية</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Live RSVP & Guest Management Sheet" data-key="rsvp" />
+                <div><b>Guest Management &amp; RSVP Sheet</b><span>شيت حضور وإدارة الضيوف (Excel)</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Table Seating & VIP QR Entry Passes" data-key="seating" />
+                <div><b>Table Seating &amp; VIP QR Passes</b><span>رقم الطاولة وكارت دخول QR لكل ضيف</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Live QR Guest Camera & Private Google Drive Album" data-key="qrcam" />
+                <div><b>QR Guest Camera (Private Drive)</b><span>ألبوم صور وفيديوهات الضيوف السري</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Voice & Written Wishes Guestbook" data-key="voice" />
+                <div><b>Voice &amp; Written Guestbook</b><span>دفتر التهاني الصوتي والمكتوب</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="15-30s Vertical Reels Video Invitation" data-key="reels" />
+                <div><b>15–30s Vertical Reels Video</b><span>فيديو ريلز عمودي للواتساب والإنستجرام</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Multi-Version / Bilingual Links (AR + EN / VIP)" data-key="multi" />
+                <div><b>Multi-Version &amp; Bilingual Links</b><span>نسخ متعددة (عربي / إنجليزي / VIP)</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Matching Save the Date & Post-Wedding Thank You Cards" data-key="suite" />
+                <div><b>Save the Date &amp; Thank You Cards</b><span>كروت احفظ التاريخ والشكر بنفس الثيم</span></div>
+              </label>
+            </div>
+          </div>
+
+          <aside class="builder-summary">
+            <div class="bs-head">Your Custom Selection · ملخص باقتك</div>
+            <h3 id="bsTierName">Custom Wedding Experience</h3>
+            <div style="font-size:12px;color:rgba(244,229,194,0.88)" id="bsMeta"></div>
+            <ul class="bs-list" id="bsList"></ul>
+            <a id="bsWaBtn" class="addon-btn-light" style="width:100%;justify-content:center" target="_blank" rel="noopener">Send My Experience on WhatsApp →</a>
+          </aside>
+        </div>
+      </div>
     </div>
   </section>
 
   <hr class="section-divider">
 
-  <!-- 5. BUILD YOUR WEDDING EXPERIENCE INTERACTIVE BUILDER -->
-  <section id="build-experience" class="section tight"><div class="container">
-    <div class="center" style="margin-bottom:28px">
-      <div class="pill-tag">Build Your Wedding Experience</div>
-      <h2 class="h2">Tailor Your <em>Own Package</em></h2>
-      <p class="lead" style="margin:10px auto 0">Pick the exact features you need — and send a clean, organised summary straight to our concierge on WhatsApp.</p>
-    </div>
-
-    <div class="builder-grid">
-      <div class="builder-card">
-        <div class="builder-row">
-          <div class="field">
-            <label for="bDesign">Favourite Design (اختياري)</label>
-            <select id="bDesign" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917"></select>
-          </div>
-          <div class="field">
-            <label for="bEvent">Celebration Type (نوع المناسبة)</label>
-            <select id="bEvent" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
-              <option value="Wedding · فرح">Wedding · حفل زفاف</option>
-              <option value="Katb Ketab · كتب كتاب">Katb Ketab · عقد قران</option>
-              <option value="Engagement · خطوبة">Engagement · خطوبة</option>
-              <option value="Henna Night · ليلة الحنة">Henna Night · ليلة حنة</option>
-              <option value="Save the Date · احفظ التاريخ">Save the Date · احفظ التاريخ</option>
-              <option value="Private Celebration · مناسبة خاصة">Bridal / Baby Shower / Private Event</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="exp-opts" id="expOpts">
-          <label class="exp-opt">
-            <input type="checkbox" value="Digital Invitation (Custom Colors, Song & Animation)" data-key="invite" checked disabled />
-            <div><b>Digital Invitation (Included)</b><span>الدعوة الرقمية بتخصيص الألوان والأغنية</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="Live RSVP & Guest Management Sheet" data-key="rsvp" />
-            <div><b>Guest Management &amp; RSVP Sheet</b><span>شيت حضور وإدارة الضيوف (Excel)</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="Table Seating & VIP QR Entry Passes" data-key="seating" />
-            <div><b>Table Seating &amp; VIP QR Passes</b><span>رقم الطاولة وكارت دخول QR لكل ضيف</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="Live QR Guest Camera & Private Google Drive Album" data-key="qrcam" />
-            <div><b>QR Guest Camera (Private Drive)</b><span>ألبوم صور وفيديوهات الضيوف السري</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="Voice & Written Wishes Guestbook" data-key="voice" />
-            <div><b>Voice &amp; Written Guestbook</b><span>دفتر التهاني الصوتي والمكتوب</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="15-30s Vertical Reels Video Invitation" data-key="reels" />
-            <div><b>15–30s Vertical Reels Video</b><span>فيديو ريلز عمودي للواتساب والإنستجرام</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="Multi-Version / Bilingual Links (AR + EN / VIP)" data-key="multi" />
-            <div><b>Multi-Version &amp; Bilingual Links</b><span>نسخ متعددة (عربي / إنجليزي / VIP)</span></div>
-          </label>
-          <label class="exp-opt">
-            <input type="checkbox" value="Matching Save the Date & Post-Wedding Thank You Cards" data-key="suite" />
-            <div><b>Save the Date &amp; Thank You Cards</b><span>كروت احفظ التاريخ والشكر بنفس الثيم</span></div>
-          </label>
-        </div>
-      </div>
-
-      <aside class="builder-summary">
-        <div class="bs-head">Your Custom Selection · ملخص باقتك</div>
-        <h3 id="bsTierName">Custom Wedding Experience</h3>
-        <div style="font-size:12px;color:rgba(244,229,194,0.88)" id="bsMeta"></div>
-        <ul class="bs-list" id="bsList"></ul>
-        <a id="bsWaBtn" class="addon-btn-light" style="width:100%;justify-content:center" target="_blank" rel="noopener">Send My Experience on WhatsApp →</a>
-      </aside>
-    </div>
-  </div></section>
-
-  <hr class="section-divider">
-
-  <!-- 6. BEFORE YOU ORDER (BILINGUAL FAQ) -->
+  <!-- 5. BEFORE YOU ORDER (BILINGUAL FAQ) -->
   <section id="faq" class="section tight"><div class="container">
-    <div class="center" style="margin-bottom:26px">
+    <div class="center" style="margin-bottom:24px">
       <div class="pill-tag">Before You Order · قبل الحجز</div>
       <h2 class="h2">Everything You Need <em>to Know</em></h2>
-      <p class="lead" style="margin:10px auto 0">Quick answers in English &amp; Arabic so you can book with complete peace of mind.</p>
     </div>
 
     <div class="faq-grid">
@@ -1583,7 +1469,7 @@
 
       <details class="faq-item">
         <summary><span>Can I pick my own song or go silent? · هل يمكن اختيار أغنيتنا أو بدون صوت؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans">Choose from our 34 curated Arabic &amp; international wedding tracks, send us <strong>any special song</strong>, or make any invitation <strong>strictly silent</strong>.
+        <div class="faq-ans">Choose from our curated Arabic &amp; international wedding tracks, send us <strong>any special song</strong>, or make any invitation <strong>strictly silent</strong>.
           <span class="ar-line">تقدر تختار من مكتبتنا، أو تبعت لنا أي أغنية خاصة بيكم، أو تطلب الدعوة صامتة تماماً بدون صوت.</span>
         </div>
       </details>
@@ -1606,13 +1492,14 @@
     <p class="occasions-note">Also crafted to order for <strong>Bridal Showers · Baby Showers · Birthdays · Graduation &amp; Private Celebrations</strong>.</p>
   </div></section>
 
+  <!-- 6. CLOSING WHATSAPP CTA -->
   <section class="section tight"><div class="container">
-    <div class="cta has-bg-art" style="text-align:center;border-radius:26px;padding:48px 24px">
+    <div class="cta has-bg-art" style="text-align:center;border-radius:24px;padding:38px 22px">
       <div class="bg-venue" style="background-image:url('assets/images/al-masa-capital.jpg')" aria-hidden="true"></div>
-      <svg class="bg-shape bg-shape-tl" style="width:180px;height:180px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M24 220V116C24 62 66 24 120 24C174 24 216 62 216 116V220" stroke="currentColor" stroke-width="1"/></svg>
-      <svg class="bg-shape bg-shape-br" style="width:180px;height:180px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="82" stroke="currentColor" stroke-width="0.85"/><path d="M120 38L132 108L202 120L132 132L120 202L108 132L38 120L108 108Z" stroke="currentColor" stroke-width="0.85"/></svg>
+      <svg class="bg-shape bg-shape-tl" style="width:160px;height:160px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M24 220V116C24 62 66 24 120 24C174 24 216 62 216 116V220" stroke="currentColor" stroke-width="1"/></svg>
+      <svg class="bg-shape bg-shape-br" style="width:160px;height:160px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="82" stroke="currentColor" stroke-width="0.85"/><path d="M120 38L132 108L202 120L132 132L120 202L108 132L38 120L108 108Z" stroke="currentColor" stroke-width="0.85"/></svg>
       <h2 class="h2">Ready to send your <em>invitation</em>?</h2>
-      <p class="lead" style="margin:12px auto 22px">Tell us your occasion, date and favourite design — we will personalise colors, music and every detail for you.</p>
+      <p class="lead" style="margin:10px auto 18px">Tell us your occasion, date and favourite design — we will personalise colors, music and every detail for you.</p>
       <a id="ctaWa" class="btn btn-gold btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
   </div></section>
