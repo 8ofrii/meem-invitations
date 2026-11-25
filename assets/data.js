@@ -731,7 +731,7 @@ window.SITE = {
       "langKey": "ar",
       "textDark": false,
       "bg": "linear-gradient(145deg,#2D0B14,#140409)",
-      "img": "assets/images/abdeen-palace.jpg",
+      "img": "assets/images/abdeen-palace-staircase.jpg",
       "accent": "#E2BE78",
       "desc": "Royal crimson velvet palace invitation with antique gold foil seal, Abdeen Palace photography and Umm Kulthum melody.",
       "features": [
@@ -2503,6 +2503,7 @@ window.SITE = {
   ],
   "MEDIA_IMAGES": [
     "assets/images/abdeen-palace.jpg",
+    "assets/images/abdeen-palace-staircase.jpg",
     "assets/images/al-azhar-park.jpg",
     "assets/images/al-masa-capital.jpg",
     "assets/images/alexandria-corniche.jpg",
