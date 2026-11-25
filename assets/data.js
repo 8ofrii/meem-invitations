@@ -808,7 +808,7 @@ window.SITE = {
       "lang": "العربية",
       "langKey": "ar",
       "bg": "linear-gradient(145deg,#1E4280,#09162D)",
-      "img": "assets/images/alexandria-san-stefano.jpg",
+      "img": "assets/images/hilton-alexandria.jpg",
       "accent": "#F3D999",
       "desc": "A sapphire velvet ring box opens to reveal a sparkling ring with a soft chime.",
       "features": [
@@ -2525,6 +2525,7 @@ window.SITE = {
     "assets/images/four-seasons-nile.jpg",
     "assets/images/french-gatefold-card.jpg",
     "assets/images/hacienda-marassi-sahel.jpg",
+    "assets/images/hilton-alexandria.jpg",
     "assets/images/kempinski-palace.jpg",
     "assets/images/liquid-chromium-pearl.jpg",
     "assets/images/love-story-couple.jpg",
