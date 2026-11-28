@@ -1622,11 +1622,22 @@
       const pSuite = getAddonPrice('suite', 250);
       const pRush = getAddonPrice('rush', 250);
 
+      const sale25 = (n) => Math.floor((Number(n) * 0.75 + 2.49) / 5) * 5;
+      const pBaseSale = sale25(pBase);
+      const pQrSale = sale25(pQr);
+      const pQrAloneSale = sale25(pQrAlone);
+      const pSeatSale = sale25(pSeat);
+      const pVoiceSale = sale25(pVoice);
+      const pReelsSale = sale25(pReels);
+      const pMultiSale = sale25(pMulti);
+      const pRsvpSale = sale25(pRsvp);
+      const pSuiteSale = sale25(pSuite);
+
       const govHookAr = {
         all: '',
         cairo: '\n📍 متاح لينك عربي للأهل ولينك إنجليزي للأصدقاء مع كاميرا QR الطاولات.',
         giza: '\n📍 متاح باركود دخول QR لكل ضيف لتنظيم بوابات القاعات والنوادي.',
-        qalyubia: `\n📍 أوفر من الكروت الورق وبعدد معازيم مفتوح بـ ${pBase} ج بس.`,
+        qalyubia: `\n📍 أوفر من الكروت الورق وبعدد معازيم مفتوح بـ ${pBaseSale} ج بس.`,
         alex: '\n📍 متاح باركود دخول QR وفيديو الريلز لقاعات وفنادق إسكندرية.'
       }[gov] || '';
 
@@ -1634,14 +1645,12 @@
         all: '',
         cairo: '\n📍 Separate AR/EN links & Table QR Camera available for Cairo venues.',
         giza: '\n📍 Individual VIP QR gate passes available for Zayed, October & Giza.',
-        qalyubia: `\n📍 Unlimited guests starting at ${pBase} EGP across El Obour, Banha & Qalyubia.`,
+        qalyubia: `\n📍 Unlimited guests starting at ${pBaseSale} EGP across El Obour, Banha & Qalyubia.`,
         alex: '\n📍 QR gate passes & Reels video available for Alexandria venues.'
       }[gov] || '';
 
-      const pBaseSale = Math.round((pBase * 0.75) / 5) * 5;
-
       if (mode === 'ar_short') {
-        return `ألف مبروك للعروسين وربنا يتمملكم على خير يارب 🤍✨\nأهلاً بيكم في *MEEM • ميم للدعوات الرقمية*\n\n🎁 *عرض الافتتاح — خصم 25% لفترة محدودة:*\n💌 *الدعوة الرقمية التفاعلية بـ ${pBaseSale} ج فقط* *(بدلاً من ${pBase} ج)* ✨\nشاملة أي تصميم من الموقع + ألوانكم وأغنيتكم + عد تنازلي + لوكيشن القاعة + تأكيد حضور *(بعدد معازيم مفتوح)*.\n\n➕ *إضافات حسب رغبتكم (يشملها خصم الـ 25%):*\n• كاميرا الضيوف QR على Google Drive سري: *+${pQr} ج* *(أو ${pQrAlone} ج لوحدها)*\n• باركود دخول VIP ورقم الطاولة: *+${pSeat} ج*\n• دفتر تهاني صوتي ومكتوب: *+${pVoice} ج*\n• فيديو ريلز عمودي للدعوة: *+${pReels} ج*\n• نسخة إضافية (عربي + إنجليزي / VIP): *+${pMulti} ج*\n• شيت حضور Excel أو كروت Save the Date: *+${pRsvp} ج*${govHookAr}\n\n🔗 *شوفوا التصميمات وجربوها بأسمائكم هنا:*\nhttps://meem-invitations.onrender.com\n\nقولولنا ميعاد فرحكم إمتى، وأنهي تصميم عجبكم أكتر؟ 🤍`;
+        return `ألف مبروك للعروسين وربنا يتمملكم على خير يارب 🤍✨\nأهلاً بيكم في *MEEM • ميم للدعوات الرقمية*\n\n🎁 *عرض الافتتاح — خصم 25% على كل الأسعار لفترة محدودة:*\n\n💌 *الدعوة الرقمية التفاعلية: ${pBaseSale} ج* *(بدلاً من ${pBase} ج)* ✨\nشاملة أي تصميم من الموقع + ألوانكم وأغنيتكم + عد تنازلي + لوكيشن القاعة + تأكيد حضور *(بعدد معازيم مفتوح)*.\n\n➕ *الإضافات بعد خصم الـ 25%:*\n• كاميرا الضيوف QR على Google Drive سري: *+${pQrSale} ج* *(بدل ${pQr} ج — أو ${pQrAloneSale} ج لوحدها بدل ${pQrAlone} ج)*\n• باركود دخول VIP ورقم الطاولة: *+${pSeatSale} ج* *(بدل ${pSeat} ج)*\n• دفتر تهاني صوتي ومكتوب: *+${pVoiceSale} ج* *(بدل ${pVoice} ج)*\n• فيديو ريلز عمودي للدعوة: *+${pReelsSale} ج* *(بدل ${pReels} ج)*\n• نسخة إضافية (عربي + إنجليزي / VIP): *+${pMultiSale} ج* *(بدل ${pMulti} ج)*\n• شيت حضور Excel أو كروت Save the Date: *+${pRsvpSale} ج* *(بدل ${pRsvp} ج)*${govHookAr}\n\n🔗 *شوفوا التصميمات وجربوها بأسمائكم هنا:*\nhttps://meem-invitations.onrender.com\n\nقولولنا ميعاد فرحكم إمتى، وأنهي تصميم عجبكم أكتر؟ 🤍`;
       }
 
       if (mode === 'ar_quote') {
@@ -1649,33 +1658,36 @@
         const hasBase = checked.some(c => c.value === 'base');
         const addons = checked.filter(c => c.value !== 'base');
         let rawTotal = 0;
+        let saleTotal = 0;
         const lines = [];
         if (hasBase) {
           rawTotal += pBase;
-          lines.push(`• الدعوة الرقمية التفاعلية: *${pBase} ج*`);
+          saleTotal += pBaseSale;
+          lines.push(`• الدعوة الرقمية التفاعلية: *${pBaseSale} ج* *(بدل ${pBase} ج)*`);
         }
         addons.forEach(cb => {
           const id = cb.value;
           const a = (siteData.ADDONS || []).find(x => x.id === id);
           if (!a) return;
           const pr = (!hasBase && id === 'qrcam') ? pQrAlone : Number(a.price);
+          const prS = sale25(pr);
           rawTotal += pr;
-          lines.push(`• ${a.ar || a.label}: *${pr} ج*`);
+          saleTotal += prS;
+          lines.push(`• ${a.ar || a.label}: *${prS} ج* *(بدل ${pr} ج)*`);
         });
         if (!lines.length) {
           rawTotal = pBase;
-          lines.push(`• الدعوة الرقمية التفاعلية: *${pBase} ج*`);
+          saleTotal = pBaseSale;
+          lines.push(`• الدعوة الرقمية التفاعلية: *${pBaseSale} ج* *(بدل ${pBase} ج)*`);
         }
-        const capped = (hasBase && addons.length >= 6 && rawTotal > pCap) ? pCap : rawTotal;
-        const discounted = Math.round((capped * 0.75) / 5) * 5;
-        return `ألف مبروك للعروسين وربنا يتمملكم على خير 🤍✨\n\n🎁 *عرض الافتتاح (خصم 25%) — الإجمالي: ${discounted.toLocaleString('en-US')} ج فقط* *(بدلاً من ${capped.toLocaleString('en-US')} ج)* ✨\n\n📋 *اختياراتكم:*\n${lines.join('\n')}\n\nابعتولنا بس البيانات دي عشان نبدأ تصميم دعوتكم:\n1. أسماء العروسين\n2. تاريخ وميعاد الفرح\n3. اسم القاعة + لينك اللوكيشن\n4. الأغنية والألوان المفضلة 🤍`;
+        return `ألف مبروك للعروسين وربنا يتمملكم على خير 🤍✨\n\n🎁 *عرض الافتتاح (خصم 25%) — الإجمالي: ${saleTotal.toLocaleString('en-US')} ج فقط* *(بدلاً من ${rawTotal.toLocaleString('en-US')} ج)* ✨\n\n📋 *اختياراتكم بعد الخصم:*\n${lines.join('\n')}\n\nابعتولنا بس البيانات دي عشان نبدأ تصميم دعوتكم:\n1. أسماء العروسين\n2. تاريخ وميعاد الفرح\n3. اسم القاعة + لينك اللوكيشن\n4. الأغنية والألوان المفضلة 🤍`;
       }
 
       if (mode === 'en_full') {
-        return `Congratulations to the lovely couple! Wishing you a lifetime of happiness 🤍✨\nWelcome to *MEEM • ميم Digital Invitations*\n\n🎁 *Grand Opening Sale — 25% OFF (Limited Time):*\n💌 *Interactive Digital Invitation: ${pBaseSale} EGP* *(instead of ${pBase} EGP)* ✨\nIncludes any design + your colors & song + live countdown + Google Maps + RSVP *(unlimited guests)*.\n\n➕ *Optional Add-Ons (25% OFF applies too):*\n• QR Guest Camera (Private Google Drive): *+${pQr} EGP* *(${pQrAlone} EGP standalone)*\n• VIP QR Pass & Table Number: *+${pSeat} EGP*\n• Voice & Written Guestbook: *+${pVoice} EGP*\n• Vertical Reels Video: *+${pReels} EGP*\n• Extra Link (AR + EN / VIP): *+${pMulti} EGP*\n• RSVP Excel Sheet / Save the Date: *+${pRsvp} EGP*${govHookEn}\n\n🔗 *Preview all designs with your names:*\nhttps://meem-invitations.onrender.com\n\nWhen is your big day, and which invitation style caught your eye? 🤍`;
+        return `Congratulations to the lovely couple! Wishing you a lifetime of happiness 🤍✨\nWelcome to *MEEM • ميم Digital Invitations*\n\n🎁 *Grand Opening Sale — 25% OFF All Items (Limited Time):*\n\n💌 *Interactive Digital Invitation: ${pBaseSale} EGP* *(instead of ${pBase} EGP)* ✨\nIncludes any design + your colors & song + live countdown + Google Maps + RSVP *(unlimited guests)*.\n\n➕ *Optional Add-Ons (After 25% OFF):*\n• QR Guest Camera (Private Google Drive): *+${pQrSale} EGP* *(was ${pQr} — or ${pQrAloneSale} EGP standalone, was ${pQrAlone})*\n• VIP QR Pass & Table Number: *+${pSeatSale} EGP* *(was ${pSeat})*\n• Voice & Written Guestbook: *+${pVoiceSale} EGP* *(was ${pVoice})*\n• Vertical Reels Video: *+${pReelsSale} EGP* *(was ${pReels})*\n• Extra Link (AR + EN / VIP): *+${pMultiSale} EGP* *(was ${pMulti})*\n• RSVP Excel Sheet / Save the Date: *+${pRsvpSale} EGP* *(was ${pRsvp})*${govHookEn}\n\n🔗 *Preview all designs with your names:*\nhttps://meem-invitations.onrender.com\n\nWhen is your big day, and which invitation style caught your eye? 🤍`;
       }
 
-      return `ألف مبروك للعروسين وربنا يتمملكم على خير يارب 🤍✨\nأهلاً بيكم في *MEEM • ميم للدعوات الرقمية*\n\n🎁 *عرض الافتتاح — خصم 25% لفترة محدودة:*\n💌 *الدعوة الرقمية التفاعلية بـ ${pBaseSale} ج فقط* *(بدلاً من ${pBase} ج)* ✨\n• اختيار أي تصميم من *41 تصميم تفاعلي* (Liquid Glass، أبواب ملكية، ختم شمع، ورود، فيديو أو كروت صامتة) *بعدد معازيم مفتوح*\n• تخصيص الألوان + أغنيتكم المفضلة + عد تنازلي + لوكيشن Google Maps + تأكيد حضور واتساب.\n\n➕ *إضافات حسب رغبتكم (يشملها خصم الـ 25%):*\n• 📸 *كاميرا الضيوف QR على Google Drive سري:* +${pQr} ج *(أو ${pQrAlone} ج لوحدها)*\n• 🎫 *باركود دخول VIP ورقم الطاولة لكل ضيف:* +${pSeat} ج\n• 🎙️ *دفتر التهاني الصوتي والمكتوب:* +${pVoice} ج\n• 🎬 *فيديو دعوة ريلز عمودي (15–30 ثانية):* +${pReels} ج\n• 🌐 *نسخة إضافية من الرابط (عربي + إنجليزي / VIP):* +${pMulti} ج\n• 📊 *شيت حضور الضيوف (Excel):* +${pRsvp} ج\n• 💌 *كارت Save the Date + كارت شكر بعد الفرح:* +${pSuite} ج${govHookAr}\n\n🌐 *شوفوا التصميمات وجربوها بأسمائكم هنا:*\nhttps://meem-invitations.onrender.com\n\nقولولنا ميعاد فرحكم إمتى، وأنهي تصميم عجبكم أكتر؟ 🤍`;
+      return `ألف مبروك للعروسين وربنا يتمملكم على خير يارب 🤍✨\nأهلاً بيكم في *MEEM • ميم للدعوات الرقمية*\n\n🎁 *عرض الافتتاح — خصم 25% على كل الأسعار لفترة محدودة:*\n\n💌 *الدعوة الرقمية التفاعلية: ${pBaseSale} ج* *(بدلاً من ${pBase} ج)* ✨\n• اختيار أي تصميم من *41 تصميم تفاعلي* (Liquid Glass، أبواب ملكية، ختم شمع، ورود، فيديو أو كروت صامتة) *بعدد معازيم مفتوح*\n• تخصيص الألوان + أغنيتكم المفضلة + عد تنازلي + لوكيشن Google Maps + تأكيد حضور واتساب.\n\n➕ *الإضافات بعد خصم الـ 25%:*\n• 📸 *كاميرا الضيوف QR على Google Drive سري:* +${pQrSale} ج *(بدل ${pQr} ج — أو ${pQrAloneSale} ج لوحدها بدل ${pQrAlone} ج)*\n• 🎫 *باركود دخول VIP ورقم الطاولة لكل ضيف:* +${pSeatSale} ج *(بدل ${pSeat} ج)*\n• 🎙️ *دفتر التهاني الصوتي والمكتوب:* +${pVoiceSale} ج *(بدل ${pVoice} ج)*\n• 🎬 *فيديو دعوة ريلز عمودي (15–30 ثانية):* +${pReelsSale} ج *(بدل ${pReels} ج)*\n• 🌐 *نسخة إضافية من الرابط (عربي + إنجليزي / VIP):* +${pMultiSale} ج *(بدل ${pMulti} ج)*\n• 📊 *شيت حضور الضيوف (Excel):* +${pRsvpSale} ج *(بدل ${pRsvp} ج)*\n• 💌 *كارت Save the Date + كارت شكر بعد الفرح:* +${pSuiteSale} ج *(بدل ${pSuite} ج)*${govHookAr}\n\n🌐 *شوفوا التصميمات وجربوها بأسمائكم هنا:*\nhttps://meem-invitations.onrender.com\n\nقولولنا ميعاد فرحكم إمتى، وأنهي تصميم عجبكم أكتر؟ 🤍`;
     }
 
     function renderWhatsappPricingTab() {
