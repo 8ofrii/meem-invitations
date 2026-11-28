@@ -22,11 +22,47 @@
       background: linear-gradient(180deg, rgba(10,16,28,0.52) 0%, rgba(10,16,28,0.38) 50%, rgba(8,12,22,0.84) 100%);
       pointer-events: none;
     }
-    .wf-pipeline { position: relative; z-index: 3; padding-left: 26px; margin-top: 10px; }
+    .wf-top-bar {
+      position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center;
+      opacity: 0; visibility: hidden; transition: opacity .45s ease;
+    }
+    .cascade-frame.is-opened .wf-top-bar { opacity: 1; visibility: visible; }
+
+    .flow-gate {
+      position: absolute; inset: 0; z-index: 10; border-radius: inherit;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 30px 24px; cursor: pointer;
+      background: radial-gradient(circle at 50% 42%, rgba(255,255,255,0.14), rgba(8,14,26,0.52));
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      transition: opacity .5s ease, transform .55s cubic-bezier(.22,1,.36,1), visibility 0s linear 0s;
+    }
+    .cascade-frame.is-opened .flow-gate {
+      opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.06);
+      transition: opacity .45s ease, transform .55s cubic-bezier(.22,1,.36,1), visibility 0s linear .5s;
+    }
+    .flow-orb {
+      width: 96px; height: 96px; border-radius: 50%; margin: 18px 0;
+      background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.62), rgba(147,197,253,0.28) 55%, rgba(15,23,42,0.58));
+      border: 1.5px solid rgba(255,255,255,0.88);
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.9), 0 16px 38px rgba(0,0,0,0.42), 0 0 0 8px rgba(186,230,253,0.14);
+      display: grid; place-items: center;
+      animation: orbPulse 3s ease-in-out infinite;
+    }
+    @keyframes orbPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+    .wf-pipeline {
+      position: relative; z-index: 3; padding-left: 26px; margin-top: 10px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+    }
+    .cascade-frame.is-started .wf-pipeline {
+      opacity: 1; visibility: visible; pointer-events: auto;
+    }
     .wf-line {
       position: absolute; left: 8px; top: 14px; width: 2px; height: 0;
       background: linear-gradient(180deg, #FFFFFF, rgba(186,220,255,0.85), rgba(255,255,255,0.3));
       box-shadow: 0 0 12px rgba(186,220,255,0.9);
+    }
+    .cascade-frame.is-started .wf-line {
       animation: drawLine 3.2s cubic-bezier(.22,1,.36,1) forwards;
     }
     @keyframes drawLine { to { height: calc(100% - 36px); } }
@@ -38,6 +74,8 @@
       border: 1.2px solid rgba(255,255,255,0.54);
       box-shadow: inset 0 1.5px 2px rgba(255,255,255,0.78), 0 14px 34px rgba(0,0,0,0.36);
       opacity: 0; transform: translateX(16px) scale(0.97);
+    }
+    .cascade-frame.is-started .wf-card {
       animation: popNode .6s cubic-bezier(.22,1,.36,1) forwards;
     }
     .wf-card::before {
@@ -45,10 +83,10 @@
       background: #FFFFFF; border: 2px solid #93C5FD; box-shadow: 0 0 12px #FFFFFF;
     }
     @keyframes popNode { to { opacity: 1; transform: none; } }
-    .wf-card.d1 { animation-delay: 0.15s; }
-    .wf-card.d2 { animation-delay: 0.90s; }
-    .wf-card.d3 { animation-delay: 1.65s; }
-    .wf-card.d4 { animation-delay: 2.40s; }
+    .cascade-frame.is-started .wf-card.d1 { animation-delay: 0.15s; }
+    .cascade-frame.is-started .wf-card.d2 { animation-delay: 0.90s; }
+    .cascade-frame.is-started .wf-card.d3 { animation-delay: 1.65s; }
+    .cascade-frame.is-started .wf-card.d4 { animation-delay: 2.40s; }
     .inp { width: 100%; padding: 8px 11px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.36); background: rgba(255,255,255,0.14); color: #fff; font: inherit; font-size: 12px; outline: none; margin-bottom: 7px; }
   </style>
   <style id="meem-mobile-fit">
@@ -209,8 +247,15 @@
   <section class="cascade-frame" id="cascadeRoot">
     <video autoplay muted loop playsinline poster="../assets/images/nile-ritz-carlton-twilight.jpg" src="../assets/video/glass-editorial-nile-reel.mp4"></video>
 
-    <div style="position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.9;">▶ Tap for Music · Data Workflow</span>
+    <div class="flow-gate" id="flowGate" data-open-invite>
+      <div style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#BAE6FD;">A Private Wedding Invitation</div>
+      <div class="flow-orb"><span class="serif" style="font-size:28px;color:#FFFFFF;" data-monogram>S &amp; H</span></div>
+      <div class="serif" style="font-size:32px;line-height:1.1;color:#FFFFFF;" data-couple-title>Seif &amp; Hana</div>
+      <div style="margin-top:16px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.62);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#FFFFFF;">▶ Tap to Start Flow</div>
+    </div>
+
+    <div class="wf-top-bar">
+      <span style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.9;">✦ Connected Data Flow</span>
       <button type="button" onclick="replayWf(event)" style="padding:4px 11px;border-radius:99px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.48);color:#fff;font-size:10px;cursor:pointer;">↻ Replay Flow</button>
     </div>
 
@@ -256,14 +301,18 @@
   </section>
   <script src="../assets/shared.js"></script>
   <script>
-    document.getElementById('cascadeRoot').addEventListener('click', function () {
-      try { WeddingSound.startMusic('alexis_tamally_maak'); } catch (_) {}
-    }, { once: true });
+    var cascadeRoot = document.getElementById('cascadeRoot');
+    function startFlow() {
+      if (cascadeRoot.classList.contains('is-opened')) return;
+      cascadeRoot.classList.add('is-opened', 'is-started');
+      try { WeddingSound.playSparkle(); WeddingSound.startMusic('alexis_tamally_maak'); } catch (_) {}
+    }
+    document.getElementById('flowGate').addEventListener('click', startFlow);
     function replayWf(e) {
       if (e) e.stopPropagation();
-      var p = document.getElementById('wfPipe');
-      var clone = p.cloneNode(true);
-      p.parentNode.replaceChild(clone, p);
+      cascadeRoot.classList.remove('is-started');
+      void cascadeRoot.offsetWidth;
+      cascadeRoot.classList.add('is-started');
     }
   </script>
 </body></html>
