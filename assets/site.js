@@ -82,7 +82,7 @@
       ['home', isHome ? '#home' : '/', 'Home'],
       ['designs', `${prefix}#designs`, 'Collections'],
       ['try-it-live', `${prefix}#try-it-live`, 'Try it live'],
-      ['journey', `${prefix}#journey`, 'Packages'],
+      ['journey', `${prefix}#journey`, 'Add-Ons'],
       ['faq', `${prefix}#faq`, 'FAQ']
     ];
 
@@ -117,7 +117,7 @@
         </div>
         <p class="muted" style="font-size:13px;max-width:300px">${B.tagline}</p>
       </div>
-      <div><h4>Explore</h4><a href="${prefix}#designs">Designs</a><a href="${prefix}#try-it-live">Try it live</a></div>
+      <div><h4>Explore</h4><a href="${prefix}#designs">Collections</a><a href="${prefix}#try-it-live">Try it live</a><a href="${prefix}#journey">Add-Ons &amp; Customise</a></div>
       <div><h4>Contact</h4><a href="${wa('Hello!')}" target="_blank" rel="noopener">WhatsApp: 01024190741</a><a href="#">Instagram ${B.handle}</a><a href="#">TikTok</a></div>
     </div><div class="foot-bottom"><span>© ${new Date().getFullYear()} ${B.name} — Online Worldwide</span><span>Digital Wedding &amp; Celebration Invitations</span></div></div>`;
     document.body.appendChild(footer);

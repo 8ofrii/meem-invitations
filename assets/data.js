@@ -2319,88 +2319,61 @@ window.SITE = {
       "hidden": true
     }
   ],
-  "PACKAGES": [
-    {
-      "id": "essential",
-      "name": "Essential",
-      "ar": "الباقة الأساسية",
-      "price": 950,
-      "delivery": "24 – 48 hours",
-      "bestFor": "Katb Ketab, Engagement & Henna",
-      "blurb": "Any ready-made design from our collection personalised with your full event details.",
-      "items": [
-        "Any of our 48 distinct interactive, video & stationery designs",
-        "Couple names, date, schedule & venue map",
-        "Live countdown timer & Add-to-Calendar",
-        "Opening animation, sound effects & music",
-        "WhatsApp RSVP & digital entry pass",
-        "2 rounds of edits included",
-        "Free date or time update before the event"
-      ]
-    },
-    {
-      "id": "signature",
-      "name": "Signature",
-      "ar": "الباقة المميزة",
-      "price": 1850,
-      "delivery": "2 – 3 days",
-      "bestFor": "Weddings & Reception Nights",
-      "featured": true,
-      "blurb": "Tailored colours, your favourite wedding song and personalised VIP guest links.",
-      "items": [
-        "Everything in the Essential package",
-        "Colours & typography matched to your wedding",
-        "Your own wedding song (with mute button)",
-        "Personalised guest links (guest name on cover)",
-        "Individual QR entry pass per confirmed guest",
-        "Up to 4 rounds of edits included",
-        "Private preview link before final payment"
-      ]
-    },
-    {
-      "id": "royal",
-      "name": "Royal Bespoke",
-      "ar": "الباقة الملكية الخاصة",
-      "price": 3500,
-      "delivery": "4 – 5 days",
-      "bestFor": "Luxury & Destination Weddings",
-      "blurb": "A custom invitation designed from scratch around your story, venue and theme.",
-      "items": [
-        "Everything in the Signature package",
-        "Bespoke design concept & custom artwork",
-        "Bilingual Arabic & English live switcher",
-        "Photo gallery, love story & dress code guide",
-        "Guestbook / wishes section for family & friends",
-        "Unlimited edits until your wedding day",
-        "Dedicated WhatsApp support & priority delivery"
-      ]
-    }
-  ],
+  "PRICING": {
+    "baseInvitation": 650,
+    "standaloneQrCam": 850,
+    "allInCap": 1950,
+    "delivery": "24 – 48 hours"
+  },
   "ADDONS": [
     {
-      "id": "bilingual",
-      "label": "Extra language version (Arabic & English)",
-      "price": 450
+      "id": "qrcam",
+      "label": "Live QR Guest Camera → Private Google Drive",
+      "ar": "كاميرا الضيوف التفاعلية QR على Google Drive سري",
+      "price": 650,
+      "standalonePrice": 850
     },
     {
-      "id": "gallery",
-      "label": "Photo gallery & couple story section",
-      "price": 500
+      "id": "seating",
+      "label": "Table Seating Number & VIP QR Entry Passes",
+      "ar": "باركود دخول VIP ورقم الطاولة لكل ضيف",
+      "price": 350
     },
     {
-      "id": "wishes",
-      "label": "Wishes & guestbook section",
-      "price": 600
+      "id": "voice",
+      "label": "Voice & Written Wishes Digital Guestbook",
+      "ar": "دفتر التهاني الصوتي والمكتوب للأبد",
+      "price": 350
+    },
+    {
+      "id": "reels",
+      "label": "15–30s Vertical Reels Video Invitation",
+      "ar": "فيديو دعوة ريلز عمودي للواتساب والإنستجرام",
+      "price": 300
+    },
+    {
+      "id": "multi",
+      "label": "Multi-Version / Bilingual Links (AR + EN / VIP)",
+      "ar": "نسخة إضافية من الرابط (عربي + إنجليزي أو VIP)",
+      "price": 300
+    },
+    {
+      "id": "rsvp",
+      "label": "Live RSVP & Guest Management Sheet (Excel)",
+      "ar": "شيت تنظيم وإدارة تأكيد حضور الضيوف",
+      "price": 250
+    },
+    {
+      "id": "suite",
+      "label": "Save the Date + Post-Wedding Thank You Cards",
+      "ar": "كارت Save the Date وكارت شكر بعد الفرح",
+      "price": 250
     },
     {
       "id": "rush",
-      "label": "Express delivery within 24 hours",
-      "price": 500
-    },
-    {
-      "id": "social",
-      "label": "Matching Save-the-Date Instagram story card",
-      "price": 300
+      "label": "Priority Express Delivery (within 12–24h)",
+      "ar": "تسليم مستعجل أولوية خلال 12–24 ساعة",
+      "price": 250
     }
   ],
   "AESTHETICS": [

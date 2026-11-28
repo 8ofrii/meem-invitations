@@ -393,6 +393,7 @@
         <button type="button" class="tab-btn active" data-tab="invites">Invitations</button>
         <button type="button" class="tab-btn" data-tab="songs">Songs &amp; Music</button>
         <button type="button" class="tab-btn" data-tab="images">Images &amp; Covers</button>
+        <button type="button" class="tab-btn" data-tab="whatsapp">WhatsApp &amp; Pricing</button>
         <button type="button" class="tab-btn" data-tab="settings">Site Options &amp; Categories</button>
       </nav>
 
@@ -442,7 +443,77 @@
         <div class="media-grid" id="mediaGrid"></div>
       </section>
 
-      <!-- TAB 4: SITE OPTIONS & SETTINGS -->
+      <!-- TAB 4: WHATSAPP REPLIES & EGP PRICING -->
+      <section class="tab-panel" id="tab-whatsapp">
+        <div class="settings-grid">
+          <div class="set-card">
+            <h3>WhatsApp Price Reply &amp; Custom Quote Sender</h3>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5;">
+              Prices stay off the public homepage — send this formatted reply (or a custom quote) directly to leads in <strong>Cairo, Giza, Qalyubia &amp; Alexandria</strong>.
+            </p>
+            <div class="set-fields">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div>
+                  <label class="lbl">Reply Template</label>
+                  <select class="sel" id="waTplMode">
+                    <option value="ar_full">Arabic — Full Menu (Base + Add-Ons)</option>
+                    <option value="ar_short">Arabic — Short Fast Reply (IG / Quick DM)</option>
+                    <option value="ar_quote">Arabic — Custom Quote Calculator (Exact Total)</option>
+                    <option value="en_full">English — Full Menu (Base + Add-Ons)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="lbl">Governorate Hook</label>
+                  <select class="sel" id="waGovSel">
+                    <option value="all">General (All Egypt)</option>
+                    <option value="cairo">Cairo (Tagamoa · Nasr City · Maadi)</option>
+                    <option value="giza">Giza (Zayed · October · Dokki · Haram)</option>
+                    <option value="qalyubia">Qalyubia (Banha · Obour · Shubra)</option>
+                    <option value="alex">Alexandria (San Stefano · Smouha · Gleem)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="waQuoteChecklistWrap" style="display:none;background:#FAF7F2;border:1px solid var(--line);border-radius:12px;padding:10px 12px;">
+                <label class="lbl" style="margin-bottom:6px;">Tick What the Client Requested (Auto-Calculates Total &amp; 50% Deposit)</label>
+                <div id="waQuoteChecks" style="display:grid;gap:6px;font-size:12px;"></div>
+              </div>
+
+              <div>
+                <label class="lbl">Client WhatsApp Number (Optional — e.g. 01012345678)</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <input class="inp" id="waClientPhone" placeholder="010... or +201..." style="flex:1;min-width:160px;" />
+                  <button type="button" class="btn btn-gold btn-sm" id="waCopyMsgBtn">Copy Message</button>
+                  <button type="button" class="btn btn-em btn-sm" id="waSendClientBtn">Send on WhatsApp ↗</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="lbl">Live Message Preview (Editable Before Copy / Send)</label>
+                <textarea class="txt" id="waMsgPreview" rows="16" dir="auto" style="font-size:12.5px;line-height:1.65;"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="set-card">
+            <h3>Base Invitation &amp; Add-On Prices (EGP)</h3>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5;">
+              Adjust your EGP prices anytime — updates the WhatsApp templates on the left automatically.
+            </p>
+            <div class="set-fields">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+                <div><label class="lbl">Base Invite (EGP)</label><input class="inp" type="number" id="prBaseInvite" /></div>
+                <div><label class="lbl">QR Cam Alone (EGP)</label><input class="inp" type="number" id="prQrAlone" /></div>
+                <div><label class="lbl">All-In Cap (EGP)</label><input class="inp" type="number" id="prAllInCap" /></div>
+              </div>
+              <div id="addonsPriceList" style="display:grid;gap:8px;margin-top:6px;"></div>
+              <button type="button" class="btn btn-em" id="savePricingBtn" style="margin-top:8px;">Save Prices</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: SITE OPTIONS & SETTINGS -->
       <section class="tab-panel" id="tab-settings">
         <div class="settings-grid">
           <div class="set-card">
@@ -951,6 +1022,7 @@
       renderInvitesTab();
       renderSongsTab();
       renderImagesTab();
+      renderWhatsappPricingTab();
       renderSettingsTab();
     }
 
@@ -1508,7 +1580,174 @@
       if (imagePickerCallback) imagePickerCallback(src);
     });
 
-    /* ===== TAB 4: SITE SETTINGS & CATEGORIES ===== */
+    /* ===== TAB 4: WHATSAPP REPLIES & EGP PRICING ===== */
+    const DEFAULT_PRICING = { baseInvitation: 650, standaloneQrCam: 850, allInCap: 1950 };
+    const DEFAULT_ADDONS = [
+      { id: 'qrcam', label: 'Live QR Guest Camera → Private Google Drive', ar: 'كاميرا الضيوف التفاعلية QR على Google Drive سري', price: 650 },
+      { id: 'seating', label: 'Table Seating Number & VIP QR Entry Passes', ar: 'باركود دخول VIP ورقم الطاولة لكل ضيف', price: 350 },
+      { id: 'voice', label: 'Voice & Written Wishes Digital Guestbook', ar: 'دفتر التهاني الصوتي والمكتوب للأبد', price: 350 },
+      { id: 'reels', label: '15–30s Vertical Reels Video Invitation', ar: 'فيديو دعوة ريلز عمودي للواتساب والإنستجرام', price: 300 },
+      { id: 'multi', label: 'Multi-Version / Bilingual Links (AR + EN / VIP)', ar: 'نسخة إضافية من الرابط (عربي + إنجليزي أو VIP)', price: 300 },
+      { id: 'rsvp', label: 'Live RSVP & Guest Management Sheet (Excel)', ar: 'شيت تنظيم وإدارة تأكيد حضور الضيوف', price: 250 },
+      { id: 'suite', label: 'Save the Date + Post-Wedding Thank You Cards', ar: 'كارت Save the Date وكارت شكر بعد الفرح', price: 250 },
+      { id: 'rush', label: 'Priority Express Delivery (within 12–24h)', ar: 'تسليم مستعجل أولوية خلال 12–24 ساعة', price: 250 }
+    ];
+
+    function ensurePricingData() {
+      siteData.PRICING = { ...DEFAULT_PRICING, ...(siteData.PRICING || {}) };
+      if (!Array.isArray(siteData.ADDONS) || !siteData.ADDONS.some(a => a.id === 'qrcam')) {
+        siteData.ADDONS = JSON.parse(JSON.stringify(DEFAULT_ADDONS));
+      }
+    }
+
+    function getAddonPrice(id, fallback) {
+      const found = (siteData.ADDONS || []).find(a => a.id === id);
+      return found ? Number(found.price) : fallback;
+    }
+
+    function buildWhatsappReplyText() {
+      ensurePricingData();
+      const P = siteData.PRICING;
+      const mode = $('waTplMode') ? $('waTplMode').value : 'ar_full';
+      const gov = $('waGovSel') ? $('waGovSel').value : 'all';
+      const pBase = Number(P.baseInvitation || 650);
+      const pQrAlone = Number(P.standaloneQrCam || 850);
+      const pCap = Number(P.allInCap || 1950);
+      const pQr = getAddonPrice('qrcam', 650);
+      const pSeat = getAddonPrice('seating', 350);
+      const pVoice = getAddonPrice('voice', 350);
+      const pReels = getAddonPrice('reels', 300);
+      const pMulti = getAddonPrice('multi', 300);
+      const pRsvp = getAddonPrice('rsvp', 250);
+      const pSuite = getAddonPrice('suite', 250);
+      const pRush = getAddonPrice('rush', 250);
+
+      const govHookAr = {
+        all: '',
+        cairo: '\n📍 وميزتها في فنادق وقاعات القاهرة والتجمع إننا نقدر نعملكم نسخة عربي للأهل ونسخة إنجليزي للأصدقاء مع كاميرا الـ QR السرية على الطاولات.',
+        giza: '\n📍 متاح تفعيل باركود الدخول QR الخاص بكل ضيف لتنظيم البوابات في قاعات ونوادي الجيزة والشيخ زايد وأكتوبر بكل شياكة.',
+        qalyubia: `\n📍 بدل تكلفة طباعة الكروت الورقية، الرابط بيتبعت لعدد مفتوح من المعازيم في بنها والعبور والقليوبية مع لوكيشن القاعة المباشر بـ ${pBase} ج بس.`,
+        alex: '\n📍 منفذين تصميمات مخصوص لقاعات وفنادق إسكندرية والكورنيش مع باركود الدخول QR وفيديو الريلز جاهز للواتساب.'
+      }[gov] || '';
+
+      const govHookEn = {
+        all: '',
+        cairo: '\n📍 Popular across Cairo, Tagamoa, Nasr City & Maadi venues: separate Arabic & English links plus Table QR Guest Camera.',
+        giza: '\n📍 Ideal for Sheikh Zayed, October & Giza venues with individual VIP QR gate passes and live Google Maps pin.',
+        qalyubia: `\n📍 Smarter than paper cards in El Obour, Banha & Qalyubia — share with unlimited guests starting at ${pBase} EGP.`,
+        alex: '\n📍 Tailored for Alexandria Corniche, San Stefano & Smouha venues with QR entry passes and Reels video invites.'
+      }[gov] || '';
+
+      if (mode === 'ar_short') {
+        return `أهلاً بيكم في *MEEM • ميم للدعوات الرقمية* 🤍 ألف مبروك مقدماً! ✨\n\nنظامنا بدون باقات إجبارية — بتختاروا الدعوة وبتضيفوا بس اللي محتاجينه *(بعدد معازيم مفتوح)*:\n\n💌 *الدعوة الرقمية التفاعلية الأساسية — ${pBase} ج.م*\nأي تصميم من 41 تصميم (Liquid Glass · أبواب ملكية · ختم شمع · ورود) + تخصيص الألوان والأغنية + عد تنازلي + لوكيشن Google Maps + تأكيد حضور.\n\n➕ *الإضافات الاختيارية (حسب الطلب):*\n• كاميرا الضيوف QR على Google Drive سري: *+${pQr} ج* *(أو ${pQrAlone} ج منفردة بدون دعوة)*\n• باركود دخول VIP ورقم الطاولة لكل ضيف: *+${pSeat} ج*\n• دفتر التهاني الصوتي والمكتوب: *+${pVoice} ج*\n• فيديو دعوة ريلز عمودي (15–30 ثانية): *+${pReels} ج*\n• نسخة إضافية للرابط (عربي + إنجليزي أو VIP): *+${pMulti} ج*\n• شيت حضور الضيوف Excel أو كروت Save the Date: *+${pRsvp} ج*${govHookAr}\n\n✨ الدفع *50% مقدم* (InstaPay / Vodafone Cash) والباقي *بعد تجربة الرابط الفعلي على موبايلكم*.\n🔗 شوفوا التصميمات وجربوها بأسمائكم: https://meem-invitations.onrender.com\n\nتحبوا نبدأ بأي تصميم وإيه الإضافات اللي محتاجينها؟ 🤍`;
+      }
+
+      if (mode === 'ar_quote') {
+        const checked = Array.from(document.querySelectorAll('#waQuoteChecks input[type="checkbox"]:checked'));
+        const hasBase = checked.some(c => c.value === 'base');
+        const addons = checked.filter(c => c.value !== 'base');
+        let rawTotal = 0;
+        const lines = [];
+        if (hasBase) {
+          rawTotal += pBase;
+          lines.push(`• الدعوة الرقمية التفاعلية (تخصيص الألوان + الأغنية + اللوكيشن + العد التنازلي): *${pBase} ج.م*`);
+        }
+        addons.forEach(cb => {
+          const id = cb.value;
+          const a = (siteData.ADDONS || []).find(x => x.id === id);
+          if (!a) return;
+          const pr = (!hasBase && id === 'qrcam') ? pQrAlone : Number(a.price);
+          rawTotal += pr;
+          lines.push(`• ${a.ar || a.label}: *${pr} ج.م*`);
+        });
+        if (!lines.length) {
+          rawTotal = pBase;
+          lines.push(`• الدعوة الرقمية التفاعلية الأساسية: *${pBase} ج.م*`);
+        }
+        const capped = (hasBase && addons.length >= 6 && rawTotal > pCap) ? pCap : rawTotal;
+        const dep = Math.round(capped / 2);
+        const rem = capped - dep;
+        return `أهلاً بيكم في *MEEM • ميم للدعوات الرقمية* 🤍 ألف مبروك مقدماً! ✨\n\n📋 *ملخص طلبكم المخصص (بعدد ضيوف مفتوح):*\n${lines.join('\n')}${capped < rawTotal ? `\n🎁 *خصم التجربة الكاملة:* بدلاً من ${rawTotal} ج.م` : ''}\n\n💰 *الإجمالي:* *${capped.toLocaleString('en-US')} ج.م*\n💳 *طريقة الدفع:* *${dep.toLocaleString('en-US')} ج.م* مقدم (InstaPay أو Vodafone Cash) لتأكيد الحجز والبدء، و*${rem.toLocaleString('en-US')} ج.م* بعد معاينة واستلام الرابط شغال على موبايلكم.\n⏱ *التسليم:* خلال 24 – 48 ساعة شامل تعديلين مجانيين.${govHookAr}\n\nلو جاهزين نبدأ، ابعتولنا *(أسماء العروسين + التاريخ + اسم القاعة + الأغنية المفضلة)* وهنبدأ فوراً 🤍`;
+      }
+
+      if (mode === 'en_full') {
+        return `Welcome to *MEEM • ميم Digital Invitations* 🤍✨\nCongratulations on your upcoming celebration!\n\nWe have *no rigid packages* — start with any interactive invitation (with *unlimited guests*) and customize only the add-ons you want:\n\n💌 *Interactive Digital Invitation — ${pBase} EGP*\n• Any of our *41 curated designs* (Liquid Glass, 3D Doors, Wax Seal, Floral, Video & Silent)\n• Custom colors, your chosen Arabic/English song, live countdown, Google Maps & WhatsApp RSVP\n• Ready in 24–48h · 2 free revisions · Link active 3 months after event\n\n➕ *Optional Add-Ons (Pick Only What You Need):*\n• *Live QR Guest Camera → Private Google Drive:* +${pQr} EGP *(or ${pQrAlone} EGP standalone without invite)*\n• *VIP QR Entry Passes & Table Seating Number:* +${pSeat} EGP\n• *Voice & Written Wishes Digital Guestbook:* +${pVoice} EGP\n• *15–30s Vertical Reels Video Invite:* +${pReels} EGP\n• *Extra Link Version (Bilingual AR+EN or VIP):* +${pMulti} EGP\n• *Live RSVP & Guest Management Sheet (Excel):* +${pRsvp} EGP\n• *Save the Date + Thank You Cards:* +${pSuite} EGP\n• *Express 12–24h Delivery:* +${pRush} EGP\n*(Full Custom Suite Cap — Invitation + All Add-Ons: ${pCap.toLocaleString('en-US')} EGP)*${govHookEn}\n\n💳 *How Booking Works:*\n50% deposit via *InstaPay or Vodafone Cash*, and the remaining 50% only after you test and approve your live link on your phone.\n\n🌐 *Preview all 41 designs with your names:*\nhttps://meem-invitations.onrender.com\n\nShare your *occasion, date, venue & chosen add-ons* and we'll get started right away 🤍`;
+      }
+
+      return `أهلاً بيكم في *MEEM • ميم للدعوات الرقمية* 🤍✨\nألف مبروك مقدماً، ويسعدنا نكون جزء من فرحتكم!\n\nنظامنا في ميم *بدون باقات مقفولة* — بتختاروا الدعوة التفاعلية أو أي إضافة محتاجينها فقط *(بعدد معازيم مفتوح بدون حد أقصى)* في *(القاهرة · الجيزة · القليوبية · الإسكندرية وجميع المحافظات)*:\n\n💌 *الدعوة الرقمية التفاعلية الأساسية — ${pBase} ج.م*\n• اختيار أي تصميم من *41 تصميم تفاعلي* (Liquid Glass، أبواب ملكية، ختم شمع، ورود، فيديو أو كروت صامتة)\n• تخصيص الألوان + أغنيتكم المفضلة + عد تنازلي + لوكيشن Google Maps + تأكيد حضور واتساب\n• شاملة تعديلين مجانيين + الرابط يظل فعالاً 3 شهور بعد الفرح.\n\n➕ *خصّص دعوتك بالإضافات اللي تحبها فقط (Add-Ons):*\n• 📸 *كاميرا الضيوف QR السرية (Google Drive خاص بيكم بدون تطبيق):* +${pQr} ج.م *(أو ${pQrAlone} ج.م منفردة بدون دعوة)*\n• 🎫 *باركود دخول VIP ورقم الطاولة على موبايل كل ضيف:* +${pSeat} ج.م\n• 🎙️ *دفتر التهاني الصوتي والمكتوب (يُحفظ للأبد):* +${pVoice} ج.م\n• 🎬 *فيديو دعوة ريلز عمودي (15–30 ثانية للواتساب والإنستجرام):* +${pReels} ج.م\n• 🌐 *نسخة إضافية من الرابط (عربي للأهل + إنجليزي أو مواعيد VIP):* +${pMulti} ج.م\n• 📊 *شيت تنظيم وإدارة تأكيد حضور الضيوف (Excel):* +${pRsvp} ج.م\n• 💌 *كارت Save the Date + كارت شكر بعد الفرح بنفس الثيم:* +${pSuite} ج.م\n• ⚡ *تسليم مستعجل خلال 12–24 ساعة:* +${pRush} ج.م\n*(🎁 سقف التجربة الكاملة — الدعوة + كل الإضافات معاً بـ ${pCap.toLocaleString('en-US')} ج.م فقط)*${govHookAr}\n\n💳 *طريقة الحجز والدفع:*\n• التنفيذ خلال *24 – 48 ساعة*.\n• يتم دفع *50% مقدم* عبر *(InstaPay أو Vodafone Cash)* والـ *50% الباقية بعد معاينة وتجربة رابط الدعوة الفعلي على موبايلكم*.\n\n🌐 جربوا كل الـ 41 تصميم بأسمائكم الآن وتختاروا الإضافات من موقعنا:\nhttps://meem-invitations.onrender.com\n\nقولولنا *(نوع المناسبة + التاريخ + القاعة + الإضافات اللي عجبتكم)* وهنبدأ معكم فوراً 🤍`;
+    }
+
+    function renderWhatsappPricingTab() {
+      ensurePricingData();
+      const P = siteData.PRICING;
+      $('prBaseInvite').value = P.baseInvitation;
+      $('prQrAlone').value = P.standaloneQrCam;
+      $('prAllInCap').value = P.allInCap;
+
+      $('addonsPriceList').innerHTML = (siteData.ADDONS || []).map((a, idx) => `
+        <div style="display:grid;grid-template-columns:1fr 95px;gap:8px;align-items:center;" data-ad-idx="${idx}">
+          <span style="font-size:12px;color:var(--text);"><b>${esc(a.label)}</b><br><small style="color:var(--muted)">${esc(a.ar || '')}</small></span>
+          <input class="inp" type="number" data-ad-price="${idx}" value="${Number(a.price)}" />
+        </div>`).join('');
+
+      const prevChecked = new Set(Array.from(document.querySelectorAll('#waQuoteChecks input:checked')).map(c => c.value));
+      const defaultSet = prevChecked.size ? prevChecked : new Set(['base']);
+      $('waQuoteChecks').innerHTML = `
+        <label style="display:flex;align-items:center;gap:7px;cursor:pointer;">
+          <input type="checkbox" value="base" ${defaultSet.has('base') ? 'checked' : ''} />
+          <span><b>Base Digital Invitation</b> (${P.baseInvitation} EGP)</span>
+        </label>` + (siteData.ADDONS || []).map(a => `
+        <label style="display:flex;align-items:center;gap:7px;cursor:pointer;">
+          <input type="checkbox" value="${esc(a.id)}" ${defaultSet.has(a.id) ? 'checked' : ''} />
+          <span>${esc(a.label)} (+${a.price} EGP)</span>
+        </label>`).join('');
+
+      $('waQuoteChecklistWrap').style.display = $('waTplMode').value === 'ar_quote' ? 'block' : 'none';
+      $('waMsgPreview').value = buildWhatsappReplyText();
+    }
+
+    $('waTplMode').addEventListener('change', () => {
+      $('waQuoteChecklistWrap').style.display = $('waTplMode').value === 'ar_quote' ? 'block' : 'none';
+      $('waMsgPreview').value = buildWhatsappReplyText();
+    });
+    $('waGovSel').addEventListener('change', () => { $('waMsgPreview').value = buildWhatsappReplyText(); });
+    $('waQuoteChecks').addEventListener('change', () => { $('waMsgPreview').value = buildWhatsappReplyText(); });
+
+    $('savePricingBtn').addEventListener('click', () => {
+      ensurePricingData();
+      siteData.PRICING.baseInvitation = Number($('prBaseInvite').value) || 650;
+      siteData.PRICING.standaloneQrCam = Number($('prQrAlone').value) || 850;
+      siteData.PRICING.allInCap = Number($('prAllInCap').value) || 1950;
+      document.querySelectorAll('#addonsPriceList input[data-ad-price]').forEach(inp => {
+        const idx = Number(inp.dataset.adPrice);
+        if (siteData.ADDONS[idx]) siteData.ADDONS[idx].price = Number(inp.value) || 0;
+      });
+      persistDraft();
+      renderWhatsappPricingTab();
+      showToast('Prices updated & WhatsApp templates refreshed!');
+    });
+
+    $('waCopyMsgBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText($('waMsgPreview').value);
+        showToast('✓ WhatsApp pricing message copied!');
+      } catch (_) {
+        $('waMsgPreview').select();
+        document.execCommand('copy');
+        showToast('✓ Copied!');
+      }
+    });
+
+    $('waSendClientBtn').addEventListener('click', () => {
+      let digits = ($('waClientPhone').value || '').replace(/[^0-9]/g, '');
+      if (digits.startsWith('01') && digits.length === 11) digits = '2' + digits;
+      else if (digits.startsWith('00')) digits = digits.slice(2);
+      const text = encodeURIComponent($('waMsgPreview').value);
+      const url = digits ? `https://wa.me/${digits}?text=${text}` : `https://wa.me/?text=${text}`;
+      window.open(url, '_blank', 'noopener');
+    });
+
+    /* ===== TAB 5: SITE SETTINGS & CATEGORIES ===== */
     function renderSettingsTab() {
       const B = siteData.BRAND || {};
       $('setBrandName').value = B.name || '';

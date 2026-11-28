@@ -307,60 +307,9 @@
     font-size: 11.5px; color: var(--muted); line-height: 1.5;
   }
 
-  /* ===== 4. PACKAGES, ADD-ONS & BUILDER (COHESIVE DAYLIGHT PEARL GLASS) ===== */
-  .tiers-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-  .tier-card {
-    position: relative;
-    background: var(--glass-surface);
-    backdrop-filter: blur(26px) saturate(175%);
-    -webkit-backdrop-filter: blur(26px) saturate(175%);
-    border: 1.5px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 22px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    box-shadow: var(--glass-bevel), var(--glass-shadow);
-    overflow: hidden;
-    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
-  }
-  .tier-card:hover { transform: translateY(-3px); border-color: var(--rim-gold); }
-  /* Featured Tier: Daylight Pearl Spotlight Glow (No Jarring Dark Block!) */
-  .tier-card.featured {
-    background: var(--glass-strong);
-    border-color: var(--rim-gold);
-    box-shadow: inset 0 2px 4px #FFFFFF, 0 0 0 1px rgba(197, 155, 78, 0.36), 0 22px 48px rgba(48, 36, 20, 0.14);
-  }
-  .tier-card.featured::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 0%, var(--beam-gold) 0%, transparent 68%);
-    pointer-events: none;
-  }
-  .tier-card > * { position: relative; z-index: 1; }
-  .tier-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold-2); }
-  .tier-card h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--text); line-height: 1.1; }
-  .tier-sub { font-size: 12px; color: var(--muted); line-height: 1.45; }
-  .tier-ul { list-style: none; display: grid; gap: 6px; margin: 6px 0 12px; flex: 1; }
-  .tier-ul li { font-size: 12px; color: var(--text); padding-left: 17px; position: relative; line-height: 1.4; }
-  .tier-ul li::before { content: '✓'; position: absolute; left: 0; color: var(--gold-2); font-weight: 700; }
-  .tier-btn {
-    width: 100%; padding: 9px 14px; border-radius: 999px;
-    border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.72);
-    color: var(--emerald); font: 700 11.5px inherit; cursor: pointer;
-    box-shadow: inset 0 1px 2px #fff; transition: all 0.2s;
-  }
-  .tier-btn:hover, .tier-card.featured .tier-btn {
-    background: linear-gradient(135deg, #1A4B3C 0%, #0D3B2E 100%);
-    color: #FFFDF9;
-    border-color: rgba(255, 255, 255, 0.78);
-    box-shadow: inset 0 1.5px 2px rgba(255,255,255,0.4), 0 8px 20px rgba(13, 59, 46, 0.2);
-  }
-
-  /* Unified 4-Column Signature Add-Ons Strip */
+  /* ===== 4. SIGNATURE ADD-ONS & CUSTOMISER (COHESIVE DAYLIGHT PEARL GLASS) ===== */
   .addons-strip {
-    margin-top: 18px;
+    margin-top: 6px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
@@ -371,17 +320,22 @@
     -webkit-backdrop-filter: blur(24px) saturate(175%);
     border: 1.5px solid var(--glass-border);
     box-shadow: var(--glass-bevel), 0 12px 28px rgba(48, 36, 20, 0.06);
-    border-radius: 20px;
-    padding: 16px 16px 15px;
+    border-radius: 22px;
+    padding: 18px 17px 16px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    transition: transform 0.22s ease, border-color 0.22s ease;
+    gap: 7px;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
   }
   .addon-glass-card:hover { transform: translateY(-2px); border-color: var(--rim-gold); }
   .addon-glass-card.qr-highlight {
     background: var(--glass-strong);
     border-color: rgba(197, 155, 78, 0.55);
+  }
+  .addon-glass-card.is-selected {
+    background: var(--glass-strong);
+    border-color: var(--rim-gold);
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 0 0 1px rgba(197, 155, 78, 0.35), 0 16px 36px rgba(48, 36, 20, 0.11);
   }
   .addon-mini-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
   .addon-mini-badge {
@@ -396,10 +350,23 @@
     font-size: 13.5px; color: var(--emerald); line-height: 1.65;
     padding-top: 5px; border-top: 1px dashed var(--line);
   }
+  .addon-mini-actions {
+    margin-top: auto; padding-top: 8px;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  }
+  .addon-toggle-btn {
+    padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.78);
+    color: var(--emerald); font: 700 11px inherit; cursor: pointer;
+    box-shadow: inset 0 1px 2px #fff; transition: all 0.2s ease;
+  }
+  .addon-toggle-btn:hover, .addon-glass-card.is-selected .addon-toggle-btn {
+    background: linear-gradient(135deg, #1A4B3C 0%, #0D3B2E 100%);
+    color: #FFFDF9; border-color: rgba(255, 255, 255, 0.78);
+  }
   .addon-mini-cta {
-    margin-top: auto; padding-top: 6px;
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 11.5px; font-weight: 700; color: var(--gold-2); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 700; color: var(--gold-2); text-decoration: none;
   }
   .addon-mini-cta:hover { color: var(--emerald); }
 
@@ -516,7 +483,7 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
-    .tiers-grid, .addons-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .addons-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .builder-grid { grid-template-columns: 1fr; }
     .builder-summary { position: static; }
   }
@@ -547,7 +514,7 @@
     .exp-opts, .builder-row, .faq-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .form, .tiers-grid, .addons-strip { grid-template-columns: 1fr; }
+    .form, .addons-strip { grid-template-columns: 1fr; }
     .form-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .form-actions #apply { grid-column: 1 / -1; width: 100%; }
     .stats { gap: 8px; }
@@ -704,120 +671,77 @@
     </div>
   </section>
 
-  <!-- 4. PACKAGES, SIGNATURE ADD-ONS & CUSTOM BUILDER -->
+  <!-- 4. SIGNATURE ADD-ONS & CUSTOMISE YOUR INVITATION -->
   <section id="journey" class="section tight">
     <div class="container">
       <div class="center" style="margin-bottom:22px">
-        <div class="pill-tag">Packages &amp; Add-Ons · الباقات والإضافات</div>
-        <h2 class="h2">Choose a Package or <em>Build Your Own</em></h2>
-        <p class="lead" style="margin:6px auto 0">From a standalone digital invitation to a complete wedding experience with QR passes, table seating and private guest memories.</p>
-      </div>
-
-      <!-- 4 Daylight Pearl Glass Tiers -->
-      <div class="tiers-grid">
-        <div class="tier-card">
-          <div class="tier-tag">Tier 01 · الباقة الأساسية</div>
-          <h4>MEEM Invitation</h4>
-          <p class="tier-sub">Elegant standalone digital invitation crafted to your style.</p>
-          <ul class="tier-ul">
-            <li>Any of our 41 curated designs</li>
-            <li>Custom colors, song &amp; opening motion</li>
-            <li>Live countdown &amp; Google Maps</li>
-            <li>WhatsApp RSVP confirmation</li>
-          </ul>
-          <button type="button" class="tier-btn" data-tier="invitation">Select in Builder ↓</button>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-tag">Tier 02 · الأكثر طلباً</div>
-          <h4>MEEM Plus</h4>
-          <p class="tier-sub">Invitation upgraded with guest seating &amp; Reels video.</p>
-          <ul class="tier-ul">
-            <li>Everything in MEEM Invitation</li>
-            <li>Individual VIP QR Guest Passes</li>
-            <li>Table number on guest phone</li>
-            <li>15–30s Vertical Reels Video Invite</li>
-          </ul>
-          <button type="button" class="tier-btn" data-tier="plus">Select in Builder ↓</button>
-        </div>
-
-        <div class="tier-card featured">
-          <div class="tier-tag">Tier 03 · تجربة متكاملة ★</div>
-          <h4>MEEM Experience</h4>
-          <p class="tier-sub">Complete guest management, bilingual links &amp; private QR camera.</p>
-          <ul class="tier-ul">
-            <li>Everything in MEEM Plus</li>
-            <li>Live RSVP &amp; Guest Management Sheet</li>
-            <li>Multi-Version / Bilingual Links</li>
-            <li>Live QR Guest Camera → Private Drive</li>
-          </ul>
-          <button type="button" class="tier-btn" data-tier="experience">Select in Builder ↓</button>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-tag">Tier 04 · رحلة العمر الكاملة</div>
-          <h4>MEEM Forever</h4>
-          <p class="tier-sub">The complete before, during &amp; after luxury wedding suite.</p>
-          <ul class="tier-ul">
-            <li>Everything in MEEM Experience</li>
-            <li>Voice &amp; Written Wishes Guestbook</li>
-            <li>Save the Date + Thank You Cards</li>
-            <li>Priority 24h Concierge Delivery</li>
-          </ul>
-          <button type="button" class="tier-btn" data-tier="forever">Select in Builder ↓</button>
-        </div>
+        <div class="pill-tag">Add-Ons &amp; Customise · الإضافات وتخصيص الدعوة</div>
+        <h2 class="h2">Signature Add-Ons &amp; <em>Customise</em></h2>
+        <p class="lead" style="margin:6px auto 0">No rigid packages — pick any interactive invitation (or order add-ons standalone) and add only the extras you love.</p>
       </div>
 
       <!-- Unified 4-Column Frosted Glass Signature Add-Ons -->
       <div class="addons-strip">
-        <div class="addon-glass-card qr-highlight">
+        <div class="addon-glass-card qr-highlight" data-addon-card="qrcam">
           <div class="addon-mini-top">
             <h4>QR Guest Camera</h4>
             <span class="addon-mini-badge">Signature</span>
           </div>
           <p class="addon-mini-en">Table QR scan with zero app — guest photos &amp; videos save privately to your Google Drive.</p>
           <p class="addon-mini-ar">كارت QR بدون تطبيق يحفظ صور وفيديوهات الضيوف في Drive سري للعروسين.</p>
-          <a class="addon-mini-cta" id="qrAddonWa" target="_blank" rel="noopener">Add to Wedding →</a>
+          <div class="addon-mini-actions">
+            <button type="button" class="addon-toggle-btn" data-toggle-addon="qrcam">+ Add to Customise</button>
+            <a class="addon-mini-cta" id="qrAddonWa" target="_blank" rel="noopener">Standalone ↗</a>
+          </div>
         </div>
 
-        <div class="addon-glass-card">
+        <div class="addon-glass-card" data-addon-card="seating">
+          <div class="addon-mini-top">
+            <h4>VIP QR &amp; Seating</h4>
+            <span class="addon-mini-badge">Add-On</span>
+          </div>
+          <p class="addon-mini-en">Personalised gate QR pass &amp; assigned table number displayed right on each guest's phone.</p>
+          <p class="addon-mini-ar">باركود دخول خاص ورقم الطاولة يظهر على موبايل كل ضيف عند البوابة.</p>
+          <div class="addon-mini-actions">
+            <button type="button" class="addon-toggle-btn" data-toggle-addon="seating">+ Add to Customise</button>
+            <a class="addon-mini-cta" id="addonSeatingWa" target="_blank" rel="noopener">Ask ↗</a>
+          </div>
+        </div>
+
+        <div class="addon-glass-card" data-addon-card="voice">
           <div class="addon-mini-top">
             <h4>Voice Guestbook</h4>
             <span class="addon-mini-badge">Add-On</span>
           </div>
           <p class="addon-mini-en">Guests record heartfelt voice notes &amp; written wishes saved privately forever.</p>
           <p class="addon-mini-ar">دفتر تهاني صوتي ومكتوب يُحفظ بسرية للعروسين للأبد.</p>
-          <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Request →</a>
+          <div class="addon-mini-actions">
+            <button type="button" class="addon-toggle-btn" data-toggle-addon="voice">+ Add to Customise</button>
+            <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Ask ↗</a>
+          </div>
         </div>
 
-        <div class="addon-glass-card">
+        <div class="addon-glass-card" data-addon-card="reels">
           <div class="addon-mini-top">
             <h4>Vertical Reels Video</h4>
             <span class="addon-mini-badge">Add-On</span>
           </div>
           <p class="addon-mini-en">15–30s HD vertical video invitation ready for WhatsApp &amp; Instagram Stories.</p>
           <p class="addon-mini-ar">فيديو دعوة ريلز عمودي جاهز للواتساب والإنستجرام بأغنيتكم.</p>
-          <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Request →</a>
-        </div>
-
-        <div class="addon-glass-card">
-          <div class="addon-mini-top">
-            <h4>Bilingual &amp; VIP Links</h4>
-            <span class="addon-mini-badge">Add-On</span>
+          <div class="addon-mini-actions">
+            <button type="button" class="addon-toggle-btn" data-toggle-addon="reels">+ Add to Customise</button>
+            <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Ask ↗</a>
           </div>
-          <p class="addon-mini-en">Separate links under one cohesive theme — Arabic for family, English or VIP timings.</p>
-          <p class="addon-mini-ar">روابط منفصلة بنفس التصميم (عربي للأهل، إنجليزي أو مواعيد VIP).</p>
-          <a class="addon-mini-cta" id="addonMultiWa" target="_blank" rel="noopener">Request →</a>
         </div>
       </div>
 
-      <!-- Interactive Package Builder -->
-      <div id="build-experience" style="margin-top:26px">
+      <!-- Interactive Customise Selector -->
+      <div id="build-experience" style="margin-top:24px">
         <div class="builder-grid">
           <div class="builder-card">
             <div style="margin-bottom:14px">
-              <div class="bs-head">Customise Your Suite · صمّم باقتك</div>
-              <h3 class="serif" style="font-size:28px;font-weight:500;color:var(--text)">Tailor Your <em style="color:var(--gold-2)">Own Package</em></h3>
+              <div class="bs-head">Customise Your Order · خصّص دعوتك وإضافاتك</div>
+              <h3 class="serif" style="font-size:28px;font-weight:500;color:var(--text)">Customise Your <em style="color:var(--gold-2)">Invitation &amp; Add-Ons</em></h3>
             </div>
 
             <div class="builder-row">
@@ -840,20 +764,16 @@
 
             <div class="exp-opts" id="expOpts">
               <label class="exp-opt">
-                <input type="checkbox" value="Digital Invitation (Custom Colors, Song & Animation)" data-key="invite" checked disabled />
-                <div><b>Digital Invitation (Included)</b><span>الدعوة الرقمية بتخصيص الألوان والأغنية</span></div>
-              </label>
-              <label class="exp-opt">
-                <input type="checkbox" value="Live RSVP & Guest Management Sheet" data-key="rsvp" />
-                <div><b>Guest Management &amp; RSVP Sheet</b><span>شيت حضور وإدارة الضيوف (Excel)</span></div>
-              </label>
-              <label class="exp-opt">
-                <input type="checkbox" value="Table Seating & VIP QR Entry Passes" data-key="seating" />
-                <div><b>Table Seating &amp; VIP QR Passes</b><span>رقم الطاولة وكارت دخول QR لكل ضيف</span></div>
+                <input type="checkbox" value="Interactive Digital Invitation (Custom Colors, Song, Maps & RSVP)" data-key="invite" checked />
+                <div><b>Digital Invitation</b><span>الدعوة الرقمية التفاعلية بالألوان والأغنية واللوكيشن</span></div>
               </label>
               <label class="exp-opt">
                 <input type="checkbox" value="Live QR Guest Camera & Private Google Drive Album" data-key="qrcam" />
                 <div><b>QR Guest Camera (Private Drive)</b><span>ألبوم صور وفيديوهات الضيوف السري</span></div>
+              </label>
+              <label class="exp-opt">
+                <input type="checkbox" value="Table Seating & VIP QR Entry Passes" data-key="seating" />
+                <div><b>Table Seating &amp; VIP QR Passes</b><span>رقم الطاولة وكارت دخول QR لكل ضيف</span></div>
               </label>
               <label class="exp-opt">
                 <input type="checkbox" value="Voice & Written Wishes Guestbook" data-key="voice" />
@@ -868,6 +788,10 @@
                 <div><b>Multi-Version &amp; Bilingual Links</b><span>نسخ متعددة (عربي / إنجليزي / VIP)</span></div>
               </label>
               <label class="exp-opt">
+                <input type="checkbox" value="Live RSVP & Guest Management Sheet" data-key="rsvp" />
+                <div><b>Guest Management &amp; RSVP Sheet</b><span>شيت حضور وإدارة الضيوف (Excel)</span></div>
+              </label>
+              <label class="exp-opt">
                 <input type="checkbox" value="Matching Save the Date & Post-Wedding Thank You Cards" data-key="suite" />
                 <div><b>Save the Date &amp; Thank You Cards</b><span>كروت احفظ التاريخ والشكر بنفس الثيم</span></div>
               </label>
@@ -875,11 +799,11 @@
           </div>
 
           <aside class="builder-summary">
-            <div class="bs-head">Your Custom Selection · ملخص باقتك</div>
-            <h3 id="bsTierName">Custom Wedding Experience</h3>
+            <div class="bs-head">Your Custom Order · اختياراتك المخصصة</div>
+            <h3 id="bsTierName">Custom Invitation</h3>
             <div style="font-size:12px;color:var(--muted)" id="bsMeta"></div>
             <ul class="bs-list" id="bsList"></ul>
-            <a id="bsWaBtn" class="btn btn-gold" style="width:100%" target="_blank" rel="noopener">Send My Package on WhatsApp →</a>
+            <a id="bsWaBtn" class="btn btn-gold" style="width:100%" target="_blank" rel="noopener">Send Custom Order on WhatsApp →</a>
           </aside>
         </div>
       </div>
@@ -1237,47 +1161,64 @@
   updateTry();
 
   $('ctaWa').href = Shell.wa('Hello MEEM! I would like to order a digital invitation.');
-  if ($('qrAddonWa')) $('qrAddonWa').href = Shell.wa('Hello MEEM! I would like to add the Live QR Guest Camera & Private Google Drive Memories Album to my invitation.');
-  if ($('addonVoiceWa')) $('addonVoiceWa').href = Shell.wa('Hello MEEM! I would like to add the Voice & Written Wishes Guestbook add-on to my invitation.');
+  if ($('qrAddonWa')) $('qrAddonWa').href = Shell.wa('Hello MEEM! I would like to order the Standalone Live QR Guest Camera & Private Google Drive Album.');
+  if ($('addonSeatingWa')) $('addonSeatingWa').href = Shell.wa('Hello MEEM! I would like to ask about VIP QR Entry Passes & Table Seating.');
+  if ($('addonVoiceWa')) $('addonVoiceWa').href = Shell.wa('Hello MEEM! I would like to add the Voice & Written Wishes Guestbook add-on.');
   if ($('addonReelsWa')) $('addonReelsWa').href = Shell.wa('Hello MEEM! I would like to add the 15-30s Vertical Reels Video Invitation add-on.');
-  if ($('addonMultiWa')) $('addonMultiWa').href = Shell.wa('Hello MEEM! I would like to add Multi-Version & Bilingual Invitation Links to my order.');
 
-  /* ===== 3. BUILD YOUR WEDDING EXPERIENCE & 4 TIERS ===== */
-  const TIER_PRESETS = {
-    invitation: { label: 'MEEM Invitation', keys: ['invite'] },
-    plus:       { label: 'MEEM Plus',       keys: ['invite', 'seating', 'reels'] },
-    experience: { label: 'MEEM Experience', keys: ['invite', 'rsvp', 'seating', 'qrcam', 'reels', 'multi'] },
-    forever:    { label: 'MEEM Forever',    keys: ['invite', 'rsvp', 'seating', 'qrcam', 'voice', 'reels', 'multi', 'suite'] }
-  };
-  let activeTierLabel = 'Custom Wedding Experience';
+  /* ===== 3. CUSTOMISE INVITATION & ADD-ONS SELECTOR ===== */
+  function syncAddonStripCards() {
+    document.querySelectorAll('[data-addon-card]').forEach(card => {
+      const key = card.dataset.addonCard;
+      const cb = document.querySelector(`#expOpts input[data-key="${key}"]`);
+      const on = Boolean(cb && cb.checked);
+      card.classList.toggle('is-selected', on);
+      const btn = card.querySelector('[data-toggle-addon]');
+      if (btn) btn.textContent = on ? '✓ Added to Custom Order' : '+ Add to Customise';
+    });
+  }
 
   function updateBuilder() {
-    const opts = Array.from(document.querySelectorAll('#expOpts input[type="checkbox"]:checked')).map(cb => cb.value);
+    const checkedBoxes = Array.from(document.querySelectorAll('#expOpts input[type="checkbox"]:checked'));
+    const hasInvite = checkedBoxes.some(cb => cb.dataset.key === 'invite');
+    const addonCount = checkedBoxes.filter(cb => cb.dataset.key !== 'invite').length;
+    const opts = checkedBoxes.map(cb => cb.value);
     const des = $('bDesign') ? $('bDesign').value : '';
     const ev = $('bEvent') ? $('bEvent').value : '';
-    if ($('bsTierName')) $('bsTierName').textContent = activeTierLabel;
-    if ($('bsMeta')) $('bsMeta').textContent = `${ev} · Design: ${des}`;
-    if ($('bsList')) $('bsList').innerHTML = opts.map(x => `<li>${x}</li>`).join('');
+
+    let heading = 'Custom Invitation';
+    if (hasInvite && addonCount > 0) heading = `Invitation + ${addonCount} Add-On${addonCount > 1 ? 's' : ''}`;
+    else if (!hasInvite && addonCount > 0) heading = `${addonCount} Standalone Add-On${addonCount > 1 ? 's' : ''}`;
+    else if (!hasInvite && addonCount === 0) heading = 'Select Your Options';
+
+    if ($('bsTierName')) $('bsTierName').textContent = heading;
+    if ($('bsMeta')) $('bsMeta').textContent = hasInvite ? `${ev} · Design: ${des}` : `${ev} · Add-Ons Only`;
+    if ($('bsList')) {
+      $('bsList').innerHTML = opts.length
+        ? opts.map(x => `<li>${x}</li>`).join('')
+        : `<li style="color:var(--muted)">Tick your invitation or any add-ons on the left</li>`;
+    }
     if ($('bsWaBtn')) {
-      const msg = `Hello MEEM! I would like to book:\n• Package: ${activeTierLabel}\n• Event: ${ev}\n• Design: ${des}\n• Selected Experience:\n- ${opts.join('\n- ')}\n\nPlease share pricing & next steps.`;
+      const chosenLines = opts.length ? opts.join('\n- ') : 'Interactive Digital Invitation';
+      const msg = `Hello MEEM! I would like to customise my order:\n• Occasion: ${ev}${hasInvite ? `\n• Design: ${des}` : ''}\n• Selected Items:\n- ${chosenLines}\n\nPlease share pricing & next steps.`;
       $('bsWaBtn').href = Shell.wa(msg);
     }
+    syncAddonStripCards();
   }
-  document.querySelectorAll('button[data-tier]').forEach(btn => {
+
+  document.querySelectorAll('button[data-toggle-addon]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const preset = TIER_PRESETS[btn.dataset.tier];
-      if (!preset) return;
-      activeTierLabel = preset.label;
-      document.querySelectorAll('#expOpts input[type="checkbox"]').forEach(cb => {
-        if (cb.disabled) return;
-        cb.checked = preset.keys.includes(cb.dataset.key);
-      });
+      const key = btn.dataset.toggleAddon;
+      const cb = document.querySelector(`#expOpts input[data-key="${key}"]`);
+      if (!cb) return;
+      cb.checked = !cb.checked;
       updateBuilder();
-      const target = $('build-experience');
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (cb.checked && $('build-experience')) {
+        $('build-experience').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   });
-  if ($('expOpts')) $('expOpts').addEventListener('change', () => { activeTierLabel = 'Custom Wedding Experience'; updateBuilder(); });
+  if ($('expOpts')) $('expOpts').addEventListener('change', updateBuilder);
   if ($('bDesign')) $('bDesign').addEventListener('change', updateBuilder);
   if ($('bEvent')) $('bEvent').addEventListener('change', updateBuilder);
   updateBuilder();
