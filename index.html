@@ -575,42 +575,166 @@
   .bs-list li::before { content: '✓'; color: var(--emerald); font-weight: 700; }
 
   /* ===== 5. BILINGUAL PEARL GLASS FAQ & CLOSING CTA ===== */
-  .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .faq-item {
-    background: var(--glass-surface);
-    backdrop-filter: blur(24px) saturate(170%);
-    -webkit-backdrop-filter: blur(24px) saturate(170%);
-    border: 1.5px solid var(--glass-border);
-    box-shadow: var(--glass-bevel), 0 8px 22px rgba(48, 36, 20, 0.05);
-    border-radius: 18px;
-    padding: 15px 18px;
-    transition: border-color 0.2s, background 0.2s;
+  .faq-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
   }
-  .faq-item[open] { border-color: var(--rim-gold); background: var(--glass-strong); }
+  .faq-col { display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    position: relative;
+    background: var(--glass-surface);
+    backdrop-filter: blur(26px) saturate(175%);
+    -webkit-backdrop-filter: blur(26px) saturate(175%);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: var(--glass-bevel), 0 12px 28px rgba(48, 36, 20, 0.06);
+    border-radius: 22px;
+    padding: 16px 18px;
+    overflow: hidden;
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  }
+  .faq-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(197, 155, 78, 0.55);
+  }
+  .faq-item[open] {
+    border-color: var(--rim-gold);
+    background: var(--glass-strong);
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 18px 40px rgba(48, 36, 20, 0.1);
+  }
+  .faq-item[open]::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 15%; right: 15%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rim-gold), transparent);
+    pointer-events: none;
+  }
   .faq-item summary {
-    list-style: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.4;
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) 30px;
+    align-items: center;
+    gap: 13px;
   }
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-plus {
-    width: 24px; height: 24px; border-radius: 50%;
-    background: rgba(255, 255, 255, 0.78); border: 1px solid #FFFFFF;
-    color: var(--gold-2); display: grid; place-items: center;
-    font-size: 15px; font-weight: 600; flex-shrink: 0;
-    transition: transform 0.2s ease, background 0.2s ease;
+  .faq-num {
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(247,238,221,0.86));
+    border: 1px solid rgba(197, 155, 78, 0.45);
+    box-shadow: inset 0 1px 2px #FFFFFF;
+    color: var(--gold-2);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    display: grid;
+    place-items: center;
+    transition: all 0.22s ease;
   }
-  .faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--emerald); color: #FFFDF8; border-color: var(--emerald); }
+  .faq-item[open] .faq-num, .faq-item:hover .faq-num {
+    background: linear-gradient(135deg, #1A4B3C, #0D3B2E);
+    color: #F4E5C2;
+    border-color: rgba(197, 155, 78, 0.7);
+  }
+  .faq-q-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .faq-q-en {
+    display: block;
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .faq-q-ar {
+    display: block;
+    direction: rtl;
+    unicode-bidi: isolate;
+    text-align: left;
+    font-family: 'Amiri', serif;
+    font-size: 14.5px;
+    color: var(--gold-2);
+    line-height: 1.45;
+  }
+  .faq-chev {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 2px #FFFFFF;
+    color: var(--emerald);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, background 0.22s ease, color 0.22s ease;
+  }
+  .faq-item[open] .faq-chev {
+    transform: rotate(180deg);
+    background: var(--emerald);
+    color: #F4E5C2;
+    border-color: var(--emerald);
+  }
   .faq-ans {
-    margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line);
-    font-size: 12.5px; color: var(--muted); line-height: 1.65;
+    margin-top: 13px;
+    padding: 13px 15px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(197, 155, 78, 0.28);
+    box-shadow: inset 0 1px 3px rgba(48, 36, 20, 0.04);
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.65;
   }
+  .faq-ans strong { color: var(--text); }
   .faq-ans .ar-line {
-    display: block; direction: rtl; text-align: right;
-    font-family: 'Amiri', serif; font-size: 14px; color: var(--emerald); margin-top: 5px;
+    display: block;
+    direction: rtl;
+    unicode-bidi: isolate;
+    text-align: right;
+    font-family: 'Amiri', serif;
+    font-size: 15px;
+    color: var(--emerald);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+    line-height: 1.7;
   }
-  .occasions-note { text-align: center; margin-top: 18px; font-size: 12px; color: var(--muted); }
-  .occasions-note strong { color: var(--emerald); }
+  .occasions-strip {
+    margin: 22px auto 0;
+    max-width: 780px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 2px #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .occasions-strip span.occ-pill {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(197, 155, 78, 0.35);
+    color: var(--emerald);
+    font-weight: 600;
+    font-size: 11px;
+  }
 
   .cta-pavilion {
     text-align: center;
@@ -661,7 +785,8 @@
     .fpill-name { font-size: 14px; }
     .fpill-ar { font-size: 10px; }
     .search-wrap { max-width: 100%; }
-    .exp-opts, .builder-row, .faq-grid { grid-template-columns: 1fr; }
+    .exp-opts, .builder-row, .faq-cols { grid-template-columns: 1fr; }
+    .occasions-strip { border-radius: 20px; padding: 12px 14px; }
   }
   @media (max-width: 600px) {
     .form, .addons-strip { grid-template-columns: 1fr; }
@@ -994,59 +1119,113 @@
     </div>
   </section>
 
-  <!-- 5. BEFORE YOU ORDER (BILINGUAL FAQ) -->
+  <!-- 5. BEFORE YOU ORDER (BILINGUAL EDITORIAL PEARL GLASS FAQ) -->
   <section id="faq" class="section tight">
     <div class="container">
-      <div class="center" style="margin-bottom:22px">
-        <div class="pill-tag">Before You Order · قبل الحجز</div>
+      <div class="center" style="margin-bottom:24px">
+        <div class="pill-tag">Before You Order · الأسئلة الشائعة</div>
         <h2 class="h2">Everything You Need <em>to Know</em></h2>
+        <p class="lead" style="margin:6px auto 0">Simple, transparent answers on customisation, delivery, and guest privacy.</p>
       </div>
 
-      <div class="faq-grid">
-        <details class="faq-item" open>
-          <summary><span>How long does delivery take? · كم يستغرق التنفيذ؟</span><span class="faq-plus">+</span></summary>
-          <div class="faq-ans">Standard delivery takes <strong>24 to 48 hours</strong> after confirming your details. Express same-day delivery is also available upon request.
-            <span class="ar-line">مدة التنفيذ من 24 إلى 48 ساعة بعد تأكيد البيانات، ويتوفر التسليم المستعجل في نفس اليوم عند الطلب.</span>
-          </div>
-        </details>
+      <div class="faq-cols">
+        <div class="faq-col">
+          <details class="faq-item" open>
+            <summary>
+              <span class="faq-num">01</span>
+              <span class="faq-q-wrap">
+                <span class="faq-q-en">How long does delivery take?</span>
+                <span class="faq-q-ar" dir="rtl">كم يستغرق تنفيذ واستلام الدعوة؟</span>
+              </span>
+              <span class="faq-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-ans">Standard delivery takes <strong>24 to 48 hours</strong> after confirming your details. Express same-day delivery is also available upon request.
+              <span class="ar-line" dir="rtl">مدة التنفيذ من 24 إلى 48 ساعة بعد تأكيد البيانات، ويتوفر التسليم المستعجل في نفس اليوم عند الطلب.</span>
+            </div>
+          </details>
 
-        <details class="faq-item">
-          <summary><span>How many revisions are included? · كم عدد التعديلات المتاحة؟</span><span class="faq-plus">+</span></summary>
-          <div class="faq-ans">Every order includes <strong>2 complimentary revisions</strong> for dates, venue details, wording, colors, or soundtrack before final sign-off.
-            <span class="ar-line">يشمل كل طلب تعديلين مجانيين على البيانات أو المواعيد أو الألوان أو الأغنية قبل الاعتماد النهائي.</span>
-          </div>
-        </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-num">03</span>
+              <span class="faq-q-wrap">
+                <span class="faq-q-en">Can I customise the colors &amp; language?</span>
+                <span class="faq-q-ar" dir="rtl">هل يمكن تعديل الألوان واللغة بالكامل؟</span>
+              </span>
+              <span class="faq-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-ans">Yes — every single design can be customised in <strong>100% Arabic, 100% English, or Bilingual</strong>, matched to your wedding's exact color palette.
+              <span class="ar-line" dir="rtl">نعم، كل تصميم متاح بالعربية أو الإنجليزية أو اللغتين معاً وبنفس ألوان ديكور فرحكم.</span>
+            </div>
+          </details>
 
-        <details class="faq-item">
-          <summary><span>Can I customise the colors &amp; language? · هل يمكن تعديل الألوان واللغة؟</span><span class="faq-plus">+</span></summary>
-          <div class="faq-ans">Yes — every single design can be customised in <strong>100% Arabic, 100% English, or Bilingual</strong>, with your wedding's exact color palette and metallic finish.
-            <span class="ar-line">نعم، كل تصميم متاح بالعربية أو الإنجليزية أو اللغتين معاً وبنفس ألوان ديكور فرحكم.</span>
-          </div>
-        </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-num">05</span>
+              <span class="faq-q-wrap">
+                <span class="faq-q-en">How long does my link stay active?</span>
+                <span class="faq-q-ar" dir="rtl">كم مدة بقاء رابط الدعوة فعالاً؟</span>
+              </span>
+              <span class="faq-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-ans">Your private link stays live throughout your wedding countdown plus <strong>3 full months after your celebration</strong> (extendable anytime).
+              <span class="ar-line" dir="rtl">يظل الرابط فعالاً طوال الفترة قبل الفرح بالإضافة إلى 3 شهور كاملة بعد المناسبة مع إمكانية التمديد.</span>
+            </div>
+          </details>
+        </div>
 
-        <details class="faq-item">
-          <summary><span>Can I pick my own song or go silent? · هل يمكن اختيار أغنيتنا أو بدون صوت؟</span><span class="faq-plus">+</span></summary>
-          <div class="faq-ans">Choose from our curated Arabic &amp; international wedding tracks, send us <strong>any special song</strong>, or make any invitation <strong>strictly silent</strong>.
-            <span class="ar-line">تقدر تختار من مكتبتنا، أو تبعت لنا أي أغنية خاصة بيكم، أو تطلب الدعوة صامتة تماماً بدون صوت.</span>
-          </div>
-        </details>
+        <div class="faq-col">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-num">02</span>
+              <span class="faq-q-wrap">
+                <span class="faq-q-en">How many revisions are included?</span>
+                <span class="faq-q-ar" dir="rtl">كم عدد التعديلات المجانية المتاحة؟</span>
+              </span>
+              <span class="faq-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-ans">Every order includes <strong>2 complimentary revisions</strong> for dates, venue details, wording, colors, or soundtrack — plus free schedule updates if hall timings change.
+              <span class="ar-line" dir="rtl">يشمل كل طلب تعديلين مجانيين على البيانات أو الألوان أو الأغنية، مع تحديث الموعد أو القاعة مجاناً عند أي تغيير طارئ.</span>
+            </div>
+          </details>
 
-        <details class="faq-item">
-          <summary><span>How long does my link stay active? · كم مدة بقاء الرابط فعالاً؟</span><span class="faq-plus">+</span></summary>
-          <div class="faq-ans">Your private link stays live throughout your wedding countdown plus <strong>3 full months after your event</strong> (extendable anytime).
-            <span class="ar-line">يظل الرابط شغالاً طوال الفترة قبل الفرح بالإضافة إلى 3 شهور كاملة بعد المناسبة مع إمكانية التمديد.</span>
-          </div>
-        </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-num">04</span>
+              <span class="faq-q-wrap">
+                <span class="faq-q-en">Can I pick our own song or go silent?</span>
+                <span class="faq-q-ar" dir="rtl">هل يمكن اختيار أغنيتنا الخاصة أو دعوة صامتة؟</span>
+              </span>
+              <span class="faq-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-ans">Choose from our curated Arabic &amp; international wedding tracks, send us <strong>any special song</strong>, or request your invitation <strong>strictly silent</strong>.
+              <span class="ar-line" dir="rtl">تقدر تختار من مكتبتنا، أو تبعت لنا أي أغنية خاصة بيكم، أو تطلب الدعوة صامتة تماماً بدون موسيقى.</span>
+            </div>
+          </details>
 
-        <details class="faq-item">
-          <summary><span>Are QR guest photos &amp; voices private? · هل صور ورسائل الضيوف سرية؟</span><span class="faq-plus">+</span></summary>
-          <div class="faq-ans"><strong>100% private.</strong> Each wedding gets an isolated, write-only Google Drive folder shared exclusively with the Groom &amp; Bride — guests can upload but never view others' photos.
-            <span class="ar-line">سرية 100%: لكل فرح فولدر Google Drive معزول ومقفول على إيميلات العروسين فقط — الضيف يرفع فقط ولا يمكنه رؤية صور أي ضيف آخر.</span>
-          </div>
-        </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-num">06</span>
+              <span class="faq-q-wrap">
+                <span class="faq-q-en">Are QR guest photos &amp; voice wishes private?</span>
+                <span class="faq-q-ar" dir="rtl">هل صور ورسائل الضيوف الصوتية سرية تماماً؟</span>
+              </span>
+              <span class="faq-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-ans"><strong>100% private.</strong> Each wedding gets an isolated, write-only Google Drive folder shared exclusively with the Groom &amp; Bride — guests upload directly without ever seeing others' files.
+              <span class="ar-line" dir="rtl">سرية 100%: لكل فرح فولدر Google Drive معزول ومقفول على إيميلات العروسين فقط — الضيف يرفع فقط ولا يمكنه رؤية صور أي ضيف آخر.</span>
+            </div>
+          </details>
+        </div>
       </div>
 
-      <p class="occasions-note">Also crafted to order for <strong>Bridal Showers · Baby Showers · Birthdays · Graduation &amp; Private Celebrations</strong>.</p>
+      <div class="occasions-strip">
+        <span>Also crafted to order for:</span>
+        <span class="occ-pill">Bridal Showers</span>
+        <span class="occ-pill">Baby Showers</span>
+        <span class="occ-pill">Birthdays</span>
+        <span class="occ-pill">Graduation</span>
+        <span class="occ-pill">Private Celebrations</span>
+      </div>
     </div>
   </section>
 
