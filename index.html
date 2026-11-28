@@ -7,618 +7,110 @@
 <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png">
 <link rel="apple-touch-icon" href="assets/logos/meem-logo-320.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="assets/themes.css">
 <style>
-  /* Hero & Stats (Cinematic Wedding Experience in Light) */
-  .hero { padding: 56px 0 42px; text-align: center; position: relative; overflow: hidden; }
-  .hero-video-wrap {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+  /* ===== 1. DAYLIGHT PEARL HERO PAVILION ===== */
+  .hero { padding: 20px 0 18px; }
+  .hero-pavilion {
+    position: relative;
+    border-radius: 34px;
+    padding: 42px 32px 34px;
+    text-align: center;
+    background: var(--glass-surface);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: var(--glass-bevel), var(--glass-shadow);
     overflow: hidden;
-    pointer-events: none;
   }
-  .hero-video-wrap video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.22;
-    filter: saturate(0.85) contrast(1.02);
-  }
-  .hero-video-wrap::after {
+  .hero-pavilion::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 35%, rgba(255,253,249,0.58) 0%, rgba(250,247,242,0.88) 68%, rgba(244,239,230,1) 100%);
+    top: 0; left: 20%; right: 20%; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), var(--rim-gold), rgba(255,255,255,0.95), transparent);
+    pointer-events: none;
   }
-  .hero > .container { position: relative; z-index: 2; }
-  .hero-emblem {
-    width: 96px;
-    height: 96px;
+  .hero-emblem-wrap {
+    width: 84px;
+    height: 84px;
     margin: 0 auto 14px;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.66);
+    border: 1.5px solid #FFFFFF;
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 10px 24px rgba(48, 36, 20, 0.08);
+    display: grid;
+    place-items: center;
+  }
+  .hero-emblem {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 6px 16px rgba(13, 59, 46, 0.14));
   }
   .hero-subline {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(19px, 2.4vw, 24px);
+    font-size: clamp(18px, 2.2vw, 23px);
     font-style: italic;
     color: var(--emerald);
-    margin-top: 10px;
-    letter-spacing: 0.02em;
+    margin-top: 8px;
   }
-  .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; max-width: 740px; margin: 30px auto 0; }
-  .stat { background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 12px; padding: 12px 10px; text-align: center; }
-  .stat b { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); line-height: 1.25; margin-bottom: 2px; white-space: nowrap; }
+  .hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 720px;
+    margin: 26px auto 0;
+  }
+  .stat {
+    background: var(--glass-recessed);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 2px 4px rgba(48, 36, 20, 0.05), inset 0 -1px 0 #FFFFFF;
+    border-radius: 18px;
+    padding: 13px 10px;
+    text-align: center;
+  }
+  .stat b {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--gold-2);
+    line-height: 1.2;
+    margin-bottom: 2px;
+    white-space: nowrap;
+  }
   .stat span { font-size: 11px; color: var(--muted); }
   .mini-steps {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px;
-    max-width: 780px; margin: 18px auto 0; padding: 10px 16px;
-    border-radius: 999px; background: rgba(255,255,255,0.72); border: 1px solid var(--line);
-    font-size: 12px; color: var(--emerald);
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    margin-top: 18px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.56);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 2px #FFFFFF;
+    font-size: 11.5px;
+    color: var(--text);
   }
   .mini-steps span { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
   .mini-steps b {
-    width: 19px; height: 19px; border-radius: 50%; background: var(--emerald); color: #F4E5C2;
-    font-size: 10.5px; display: inline-grid; place-items: center;
-  }
-  .studio-tip {
-    margin-top: 14px; padding: 10px 14px; border-radius: 12px;
-    background: rgba(197, 160, 89, 0.09); border: 1px solid rgba(197, 160, 89, 0.34);
-    font-size: 12px; color: var(--emerald); line-height: 1.55;
+    width: 19px; height: 19px; border-radius: 50%;
+    background: var(--emerald); color: #F4E5C2;
+    font-size: 10px; display: inline-grid; place-items: center;
   }
 
-  /* Signature Features & Occasions Strip */
-  .feat-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .feat-card {
-    background: linear-gradient(155deg, #FFFFFF 0%, #FAF6EE 100%);
-    border: 1px solid rgba(197, 160, 89, 0.28);
-    border-radius: 18px;
-    padding: 20px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    box-shadow: 0 6px 20px rgba(13, 59, 46, 0.04);
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-  }
-  .feat-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--gold);
-    box-shadow: 0 12px 28px rgba(13, 59, 46, 0.08);
-  }
-  .feat-ic {
-    width: 38px;
-    height: 38px;
-    border-radius: 11px;
-    background: linear-gradient(135deg, rgba(13, 59, 46, 0.08), rgba(197, 160, 89, 0.16));
-    border: 1px solid rgba(197, 160, 89, 0.35);
-    color: var(--emerald);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 4px;
-  }
-  .feat-card h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 21px;
-    font-weight: 600;
-    color: var(--emerald);
-    line-height: 1.15;
-  }
-  .feat-card p {
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-  .feat-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: auto;
-    padding-top: 6px;
-  }
-  .feat-tags span {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 999px;
-    background: rgba(13, 59, 46, 0.06);
-    color: var(--emerald);
-    border: 1px solid rgba(13, 59, 46, 0.1);
-  }
-  .addon-spotlight {
-    margin-top: 20px;
-    background: linear-gradient(155deg, #0D3B2E 0%, #154C3C 60%, #0D3B2E 100%);
-    color: #FAF6EE;
-    border: 1.5px solid rgba(197, 160, 89, 0.65);
-    border-radius: 22px;
-    padding: 26px 26px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    box-shadow: 0 18px 42px rgba(13, 59, 46, 0.16);
-  }
-  .addon-head-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .addon-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #F4E5C2;
-    background: rgba(197, 160, 89, 0.2);
-    border: 1px solid rgba(197, 160, 89, 0.45);
-    padding: 4px 12px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .addon-spotlight h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 28px;
-    font-weight: 600;
-    color: #FFFFFF;
-    line-height: 1.15;
-  }
-  .addon-bilingual {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .addon-brief {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(244, 229, 194, 0.22);
-    border-radius: 16px;
-    padding: 15px 16px;
-    font-size: 13px;
-    color: rgba(250, 246, 238, 0.9);
-    line-height: 1.7;
-  }
-  .addon-brief.ar {
-    direction: rtl;
-    text-align: right;
-    font-family: 'Amiri', 'Plus Jakarta Sans', serif;
-    font-size: 15px;
-    line-height: 1.85;
-  }
-  .addon-brief strong { color: #F4E5C2; }
-  .addon-steps {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-  }
-  .addon-step {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(197, 160, 89, 0.32);
-    border-radius: 14px;
-    padding: 12px 14px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .addon-step-num {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #E8CA8C, #C5A059);
-    color: #0D3B2E;
-    font-size: 11px;
-    font-weight: 700;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .addon-step b { display: block; font-size: 12.5px; color: #FFFFFF; margin-bottom: 2px; }
-  .addon-step span { display: block; font-size: 11px; color: rgba(244, 229, 194, 0.85); line-height: 1.45; }
-  .addon-btn-light {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 11px 22px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #E8CA8C, #C5A059);
-    color: #0D3B2E;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-    white-space: nowrap;
-  }
-  @media (max-width: 768px) {
-    .addon-bilingual, .addon-steps, .addons-mini-grid { grid-template-columns: 1fr; }
-    .addon-spotlight { padding: 20px 18px; }
-  }
-  .addons-mini-grid {
-    margin-top: 16px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .addon-mini-card {
-    background: linear-gradient(155deg, #FFFFFF 0%, #FAF6EE 100%);
-    border: 1px solid rgba(197, 160, 89, 0.34);
-    border-radius: 18px;
-    padding: 20px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    box-shadow: 0 6px 20px rgba(13, 59, 46, 0.05);
-    transition: transform 0.22s ease, border-color 0.22s ease;
-  }
-  .addon-mini-card:hover { transform: translateY(-2px); border-color: var(--gold); }
-  .addon-mini-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .addon-mini-badge {
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold-2);
-    background: rgba(197, 160, 89, 0.14);
-    padding: 3px 9px;
-    border-radius: 999px;
-  }
-  .addon-mini-card h4 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--emerald);
-    line-height: 1.15;
-  }
-  .addon-mini-en { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
-  .addon-mini-ar {
-    direction: rtl;
-    text-align: right;
-    font-family: 'Amiri', serif;
-    font-size: 14.5px;
-    color: #3D4A44;
-    line-height: 1.7;
-    padding-top: 6px;
-    border-top: 1px dashed rgba(197, 160, 89, 0.32);
-  }
-  .addon-mini-cta {
-    margin-top: auto;
-    padding-top: 10px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--emerald);
-    text-decoration: none;
-  }
-  .addon-mini-cta:hover { color: var(--gold-2); }
-
-  /* 1. MEEM — The Wedding Journey (Before · During · After) & 4 Experience Tiers */
-  .journey-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-bottom: 34px;
-  }
-  .journey-card {
-    background: linear-gradient(160deg, #FFFFFF 0%, #FAF6EE 100%);
-    border: 1px solid rgba(197, 160, 89, 0.34);
-    border-radius: 22px;
-    padding: 24px 20px;
-    box-shadow: 0 10px 28px rgba(13, 59, 46, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .journey-stage {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    align-self: flex-start;
-    padding: 4px 12px;
-    border-radius: 999px;
-    background: rgba(13, 59, 46, 0.07);
-    border: 1px solid rgba(197, 160, 89, 0.4);
-    color: var(--emerald);
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .journey-card h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 25px;
-    font-weight: 600;
-    color: var(--emerald);
-    line-height: 1.15;
-  }
-  .journey-ar { font-family: 'Amiri', serif; font-size: 15px; color: var(--gold-2); margin-top: -4px; }
-  .journey-list {
-    list-style: none;
-    display: grid;
-    gap: 7px;
-    margin-top: 4px;
-  }
-  .journey-list li {
-    font-size: 12.5px;
-    color: #464038;
-    padding-left: 18px;
-    position: relative;
-    line-height: 1.45;
-  }
-  .journey-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--gold-2);
-    font-weight: 700;
-  }
-
-  .tiers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .tier-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(13, 59, 46, 0.14);
-    border-radius: 20px;
-    padding: 22px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-    box-shadow: 0 8px 24px rgba(13, 59, 46, 0.04);
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-  }
-  .tier-card:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 14px 32px rgba(13, 59, 46, 0.09); }
-  .tier-card.featured {
-    background: linear-gradient(160deg, #0D3B2E 0%, #154C3C 100%);
-    border-color: var(--gold);
-    color: #FAF6EE;
-    box-shadow: 0 16px 38px rgba(13, 59, 46, 0.22);
-  }
-  .tier-tag {
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold-2);
-  }
-  .tier-card.featured .tier-tag { color: #F4E5C2; }
-  .tier-card h4 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 25px;
-    font-weight: 600;
-    color: var(--emerald);
-    line-height: 1.1;
-  }
-  .tier-card.featured h4 { color: #FFFFFF; }
-  .tier-sub { font-size: 12px; color: var(--muted); line-height: 1.45; }
-  .tier-card.featured .tier-sub { color: rgba(250, 246, 238, 0.84); }
-  .tier-ul { list-style: none; display: grid; gap: 6px; margin: 8px 0 14px; flex: 1; }
-  .tier-ul li { font-size: 12px; color: #4A423A; padding-left: 17px; position: relative; line-height: 1.4; }
-  .tier-ul li::before { content: '✓'; position: absolute; left: 0; color: var(--gold-2); font-weight: 700; }
-  .tier-card.featured .tier-ul li { color: rgba(255, 255, 255, 0.9); }
-  .tier-card.featured .tier-ul li::before { color: #F4E5C2; }
-  .tier-btn {
-    width: 100%;
-    padding: 9px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(13, 59, 46, 0.2);
-    background: #FAF7F2;
-    color: var(--emerald);
-    font: 700 12px inherit;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .tier-btn:hover { background: var(--emerald); color: #FFFFFF; border-color: var(--gold); }
-  .tier-card.featured .tier-btn { background: linear-gradient(135deg, #E8CA8C, #C5A059); color: #0D3B2E; border-color: #FAF6EE; }
-
-  /* 2. Build Your Wedding Experience Interactive Builder */
-  .builder-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: 22px;
-    align-items: start;
-  }
-  .builder-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(197, 160, 89, 0.34);
-    border-radius: 22px;
-    padding: 24px 22px;
-    box-shadow: 0 10px 30px rgba(13, 59, 46, 0.05);
-  }
-  .builder-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .exp-opts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .exp-opt {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px 13px;
-    border-radius: 14px;
-    border: 1px solid rgba(13, 59, 46, 0.13);
-    background: #FAF7F2;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .exp-opt:hover { border-color: var(--gold); background: #FFFDF9; }
-  .exp-opt:has(input:checked) {
-    border-color: var(--emerald);
-    background: linear-gradient(155deg, #FFFFFF, #F2F7F4);
-    box-shadow: 0 4px 14px rgba(13, 59, 46, 0.08);
-  }
-  .exp-opt input { accent-color: var(--emerald); width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
-  .exp-opt b { display: block; font-size: 12.5px; color: var(--emerald); line-height: 1.25; }
-  .exp-opt span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
-  .builder-summary {
-    position: sticky;
-    top: 92px;
-    background: linear-gradient(155deg, #0D3B2E 0%, #154C3C 100%);
-    color: #FAF6EE;
-    border: 1.5px solid var(--gold);
-    border-radius: 22px;
-    padding: 24px 22px;
-    box-shadow: 0 18px 42px rgba(13, 59, 46, 0.2);
-  }
-  .bs-head { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #F4E5C2; margin-bottom: 6px; }
-  .builder-summary h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px; color: #FFFFFF; margin-bottom: 12px; }
-  .bs-list { list-style: none; display: grid; gap: 8px; margin: 12px 0 18px; padding: 12px 0; border-block: 1px solid rgba(244, 229, 194, 0.22); }
-  .bs-list li { font-size: 12.5px; color: #FAF6EE; display: flex; align-items: center; gap: 8px; }
-  .bs-list li::before { content: '✓'; color: #E8CA8C; font-weight: 700; }
-
-  /* 3. Before You Order (Bilingual FAQ Accordion) */
-  .faq-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .faq-item {
-    background: #FFFFFF;
-    border: 1px solid rgba(197, 160, 89, 0.3);
-    border-radius: 16px;
-    padding: 15px 18px;
-    box-shadow: 0 4px 16px rgba(13, 59, 46, 0.04);
-    transition: border-color 0.2s;
-  }
-  .faq-item[open] { border-color: var(--gold); background: linear-gradient(160deg, #FFFFFF, #FCF9F3); }
-  .faq-item summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--emerald);
-    line-height: 1.4;
-  }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-plus {
-    width: 24px; height: 24px; border-radius: 50%;
-    border: 1px solid rgba(197, 160, 89, 0.5);
-    color: var(--gold-2);
-    display: grid; place-items: center;
-    font-size: 15px; font-weight: 600; flex-shrink: 0;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-  .faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--emerald); color: #F4E5C2; border-color: var(--emerald); }
-  .faq-ans {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(197, 160, 89, 0.3);
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-  .faq-ans .ar-line {
-    display: block;
-    direction: rtl;
-    text-align: right;
-    font-family: 'Amiri', serif;
-    font-size: 14.5px;
-    color: #3B4742;
-    margin-top: 6px;
-  }
-  .occasions-note {
-    text-align: center;
-    margin-top: 22px;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
-  .occasions-note strong { color: var(--emerald); }
-
-  @media (max-width: 1024px) {
-    .feat-grid, .tiers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .journey-grid { grid-template-columns: 1fr; }
-    .builder-grid { grid-template-columns: 1fr; }
-    .builder-summary { position: static; }
-  }
-  @media (max-width: 768px) {
-    .exp-opts, .builder-row, .faq-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
-    .feat-grid, .tiers-grid { grid-template-columns: 1fr; }
-    .hero-emblem { width: 78px; height: 78px; }
-  }
-
-  /* Translucent Egyptian Venues & Architectural Shape Backgrounds */
-  .has-bg-art {
-    position: relative;
-    overflow: hidden;
-  }
-  .has-bg-art > .container {
-    position: relative;
-    z-index: 2;
-  }
-  .bg-venue {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.11;
-    filter: saturate(0.55) sepia(0.2) contrast(0.95);
-    pointer-events: none;
-    -webkit-mask-image: radial-gradient(ellipse 88% 76% at 50% 48%, rgba(0,0,0,0.92) 15%, rgba(0,0,0,0.35) 62%, transparent 98%);
-    mask-image: radial-gradient(ellipse 88% 76% at 50% 48%, rgba(0,0,0,0.92) 15%, rgba(0,0,0,0.35) 62%, transparent 98%);
-  }
-  .bg-venue.align-top { background-position: center 22%; }
-  .bg-venue.align-soft { opacity: 0.095; }
-  .bg-shape {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    color: #C5A059;
-    opacity: 0.26;
-  }
-  .bg-shape-tl { top: -24px; left: -26px; width: 260px; height: 260px; }
-  .bg-shape-tr { top: -20px; right: -26px; width: 270px; height: 270px; }
-  .bg-shape-bl { bottom: -30px; left: -24px; width: 250px; height: 250px; }
-  .bg-shape-br { bottom: -26px; right: -24px; width: 260px; height: 260px; }
-  .cta.has-bg-art {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(155deg, rgba(255, 253, 249, 0.94), rgba(248, 241, 228, 0.92));
-    border: 1px solid rgba(197, 160, 89, 0.42);
-  }
-  .cta.has-bg-art .bg-venue {
-    opacity: 0.16;
-    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-  }
-  .cta.has-bg-art > *:not(.bg-venue):not(.bg-shape) {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Bespoke Arched Venue-Thumbnail Category Filter */
+  /* ===== 2. ARCHED DAYLIGHT PEARL CATEGORY FILTER & RECESSED SEARCH ===== */
   .filter-bar {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    margin-bottom: 34px;
+    margin-bottom: 28px;
     width: 100%;
   }
   .pill-group {
@@ -627,7 +119,7 @@
     justify-content: center;
     gap: 12px;
     width: 100%;
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
   }
   .fpill {
@@ -637,635 +129,601 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 7px;
-    padding: 9px 8px 11px;
-    border-radius: 76px 76px 16px 16px;
-    border: 1px solid rgba(197, 160, 89, 0.32);
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(8px);
-    color: var(--emerald);
+    gap: 6px;
+    padding: 8px 8px 11px;
+    border-radius: 72px 72px 18px 18px;
+    border: 1.5px solid var(--glass-border);
+    background: var(--glass-surface);
+    backdrop-filter: blur(24px) saturate(175%);
+    -webkit-backdrop-filter: blur(24px) saturate(175%);
+    color: var(--text);
     font-family: inherit;
     cursor: pointer;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    box-shadow: 0 6px 20px rgba(13, 59, 46, 0.05);
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: var(--glass-bevel), 0 10px 24px rgba(48, 36, 20, 0.07);
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
-  .fpill-arch {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 66px 66px 10px 10px;
-    overflow: hidden;
-    border: 1px solid rgba(197, 160, 89, 0.42);
-    background: #EFE7D8;
+  .fpill:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 155, 78, 0.65);
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 14px 30px rgba(48, 36, 20, 0.11);
   }
-  .fpill-arch img,
-  .fpill-arch video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease, filter 0.3s ease;
-    filter: brightness(0.95) saturate(0.92);
+  /* Active Category Pill: Daylight Pearl Spotlight Cone + Specular Gold Rim */
+  .fpill.active {
+    transform: translateY(-4px);
+    background: var(--glass-strong);
+    border-color: var(--rim-gold);
+    box-shadow:
+      inset 0 2px 4px #FFFFFF,
+      0 0 0 1px rgba(197, 155, 78, 0.45),
+      0 18px 36px rgba(48, 36, 20, 0.15);
   }
-  .fpill-play-badge {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(13, 59, 46, 0.72);
-    border: 1.5px solid rgba(244, 229, 194, 0.88);
-    color: #FAF6EE;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
-    pointer-events: none;
-  }
-  .fpill-arch::after {
+  .fpill.active::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(13, 59, 46, 0.04) 20%, rgba(13, 59, 46, 0.32) 100%);
+    background: radial-gradient(circle at 50% 0%, var(--beam-gold) 0%, transparent 72%);
     pointer-events: none;
+    z-index: 0;
+  }
+  .fpill-arch {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 62px 62px 11px 11px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: #EAE0D0;
+  }
+  .fpill.active .fpill-arch { border-color: var(--rim-gold); }
+  .fpill-arch img, .fpill-arch video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .fpill:hover .fpill-arch img { transform: scale(1.06); }
+  .fpill-play-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 3; width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.84); border: 1px solid #FFFFFF; color: var(--emerald);
+    display: inline-flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(6px); pointer-events: none;
   }
   .fpill-count {
-    position: absolute;
-    bottom: 6px;
-    right: 6px;
-    z-index: 2;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 999px;
-    background: rgba(255, 253, 249, 0.92);
-    color: var(--emerald);
-    border: 1px solid rgba(197, 160, 89, 0.5);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
-    transition: all 0.2s ease;
+    position: absolute; bottom: 6px; right: 6px; z-index: 2;
+    font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.90); color: var(--emerald);
+    border: 1px solid #FFFFFF; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+  .fpill.active .fpill-count {
+    background: var(--emerald); color: #FFFDF8; border-color: var(--rim-gold);
   }
   .fpill-txt {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1px;
-    width: 100%;
-    min-width: 0;
-    padding: 0 2px;
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+    width: 100%; min-width: 0; padding: 0 2px;
   }
   .fpill-name {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15.5px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--emerald);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
+    font-size: 15.5px; font-weight: 700; line-height: 1.15; color: var(--text);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
   }
+  .fpill.active .fpill-name { color: var(--emerald); }
   .fpill-ar {
-    font-family: 'Amiri', serif;
-    font-size: 11px;
-    color: var(--gold-2);
-    line-height: 1.25;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
+    font-family: 'Amiri', serif; font-size: 11px; color: var(--gold-2); line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
   }
-  .fpill:hover {
-    border-color: var(--gold);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 26px rgba(13, 59, 46, 0.1);
-  }
-  .fpill:hover .fpill-arch img {
-    transform: scale(1.07);
-    filter: brightness(1) saturate(1.04);
-  }
-  .fpill.active {
-    background: linear-gradient(160deg, #0D3B2E 0%, #16503F 100%);
-    border-color: #C5A059;
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(13, 59, 46, 0.26), 0 0 0 1px rgba(197, 160, 89, 0.45);
-  }
-  .fpill.active .fpill-arch {
-    border-color: #E8CA8C;
-  }
-  .fpill.active .fpill-name {
-    color: #FAF6EE;
-  }
-  .fpill.active .fpill-ar {
-    color: #E8CA8C;
-  }
-  .fpill.active .fpill-count {
-    background: linear-gradient(135deg, #E8CA8C, #C5A059);
-    color: #0D3B2E;
-    border-color: #FAF6EE;
-  }
+
   .search-wrap {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 440px;
+    max-width: 460px;
   }
   .search-wrap svg {
-    position: absolute;
-    left: 16px;
-    width: 15px;
-    height: 15px;
-    color: var(--gold-2);
-    pointer-events: none;
+    position: absolute; left: 16px; width: 15px; height: 15px;
+    color: var(--gold-2); pointer-events: none; z-index: 2;
   }
   .search-box {
     width: 100%;
-    padding: 10px 18px 10px 42px;
+    padding: 11px 88px 11px 42px;
     border-radius: 999px;
-    border: 1px solid rgba(197, 160, 89, 0.36);
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(6px);
+    border: 1.5px solid var(--glass-border);
+    background: var(--glass-recessed);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     color: var(--text);
     font: inherit;
     font-size: 13px;
     outline: none;
-    box-shadow: 0 4px 16px rgba(13, 59, 46, 0.04);
+    box-shadow: inset 0 2px 5px rgba(48, 36, 20, 0.06), inset 0 -1px 0 #FFFFFF;
     transition: all 0.2s;
   }
   .search-box:focus {
-    border-color: var(--gold);
-    background: #FFFFFF;
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.16);
+    background: rgba(255, 255, 255, 0.88);
+    border-color: var(--rim-gold);
+    box-shadow: 0 0 0 3px rgba(197, 155, 78, 0.15);
+  }
+  .search-live-badge {
+    position: absolute; right: 10px; z-index: 2;
+    padding: 4px 10px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78); border: 1px solid #FFFFFF;
+    font-size: 10.5px; font-weight: 700; color: var(--emerald);
+    pointer-events: none;
   }
 
-  /* Try it live studio */
-  .studio { display: grid; grid-template-columns: 1fr 410px; gap: 34px; align-items: start; width: 100%; }
-  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  /* ===== 3. TRY IT LIVE GLASS STUDIO ===== */
+  .studio { display: grid; grid-template-columns: 1fr 400px; gap: 28px; align-items: start; width: 100%; }
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .full { grid-column: 1 / -1; }
-  .form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-  .steps-note { display: grid; gap: 8px; font-size: 13px; color: #D5D0C8; margin-top: 16px; }
-  .color-note { margin-top: 16px; padding: 12px 14px; border-radius: 12px; background: rgba(223,190,127,.08); border: 1px solid var(--gold-dim); font-size: 13px; color: var(--gold); line-height: 1.55; }
+  .form-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
   .phone-wrap { position: sticky; top: 92px; display: flex; justify-content: center; }
-  .phone-frame {
-    width: min(380px, 100%);
-    max-width: calc(100vw - 32px);
-    height: min(740px, 80vh);
-    border-radius: 44px;
-    border: 10px solid #22222A;
-    background: #000;
-    box-shadow: 0 32px 90px rgba(0,0,0,.7), 0 0 0 1px var(--gold-dim);
-    overflow: hidden;
-    position: relative;
-    box-sizing: border-box;
-    margin: 0 auto;
+  .quick { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 6px; }
+  .quick button {
+    font: 600 11px inherit; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.62);
+    color: var(--muted); cursor: pointer; box-shadow: inset 0 1px 1px #fff; transition: all .2s;
   }
-  .phone-frame iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    background: #fff;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
-  .phone-frame iframe::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-  .phone-frame .phone-notch { display: none !important; }
-  .quick { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-  .quick button { font: 600 11px inherit; font-family: inherit; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
-  .quick button:hover { border-color: var(--gold); color: var(--gold); }
-  .hint { font-size: 12px; color: var(--muted); }
+  .quick button:hover { border-color: var(--rim-gold); color: var(--emerald); background: #FFFFFF; }
+  .hint { font-size: 11.5px; color: var(--muted); font-weight: 600; }
 
-  /* Compact Try It Live Form & Photo Dropzone */
-  #try-it-live .form { gap: 11px; }
-  #try-it-live .field { gap: 4px; }
-  #try-it-live .field label {
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: none;
-    color: var(--muted);
-  }
-  #try-it-live .field input,
-  #try-it-live .field select {
-    padding: 9px 12px;
-    font-size: 13px;
-    border-radius: 10px;
-  }
   .photo-dropzone {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 12px;
-    border-radius: 12px;
-    border: 1.5px dashed rgba(197, 160, 89, 0.55);
-    background: linear-gradient(145deg, #FFFFFF 0%, #FAF6EE 100%);
-    cursor: pointer;
-    transition: all 0.22s ease;
-    position: relative;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
+    display: flex; align-items: center; gap: 11px; padding: 10px 13px;
+    border-radius: 16px; border: 1.5px dashed rgba(197, 155, 78, 0.55);
+    background: var(--glass-recessed); backdrop-filter: blur(14px);
+    cursor: pointer; transition: all 0.22s ease;
   }
   .photo-dropzone:hover, .photo-dropzone.is-dragover {
-    border-color: var(--emerald);
-    background: linear-gradient(145deg, #FFFFFF 0%, #F2F7F4 100%);
-    box-shadow: 0 4px 14px rgba(13, 59, 46, 0.07);
+    border-color: var(--emerald); background: rgba(255, 255, 255, 0.82);
   }
-  .photo-dropzone.has-photo {
-    border-style: solid;
-    border-color: var(--gold);
-    background: #FFFFFF;
-  }
+  .photo-dropzone.has-photo { border-style: solid; border-color: var(--rim-gold); background: rgba(255, 255, 255, 0.86); }
   .photo-icon-wrap {
-    width: 36px;
-    height: 36px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, rgba(13, 59, 46, 0.08), rgba(197, 160, 89, 0.16));
-    border: 1px solid rgba(197, 160, 89, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--emerald);
-    overflow: hidden;
+    width: 38px; height: 38px; border-radius: 11px;
+    background: rgba(255, 255, 255, 0.8); border: 1px solid #FFFFFF;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: var(--emerald); overflow: hidden;
   }
-  .photo-icon-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .photo-meta {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .photo-meta strong {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--emerald);
-    text-transform: none;
-    letter-spacing: 0;
-  }
-  .photo-meta span {
-    font-size: 10.5px;
-    color: var(--muted);
-    text-transform: none;
-    letter-spacing: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .photo-actions {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
+  .photo-icon-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .photo-meta strong { font-size: 12px; font-weight: 600; color: var(--text); }
+  .photo-meta span { font-size: 10.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .photo-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .photo-pick-pill {
-    padding: 5px 11px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #0D3B2E 0%, #165241 100%);
-    color: #FFFFFF;
-    font-size: 11px;
-    font-weight: 600;
-    border: 1px solid #C5A059;
-    white-space: nowrap;
-    text-transform: none;
-    letter-spacing: 0;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--emerald); color: #FFFFFF;
+    font-size: 11px; font-weight: 600; border: 1px solid rgba(255,255,255,0.6);
   }
   .photo-remove-btn {
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: rgba(185, 28, 28, 0.08);
-    color: #991B1B;
-    border: 1px solid rgba(185, 28, 28, 0.2);
-    font-size: 10.5px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    display: none;
+    display: none; padding: 5px 10px; border-radius: 999px;
+    background: rgba(185, 28, 28, 0.08); color: #991B1B;
+    border: 1px solid rgba(185, 28, 28, 0.2); font-size: 10.5px; cursor: pointer;
   }
-  .photo-remove-btn:hover { background: rgba(185, 28, 28, 0.14); }
+  .studio-tip {
+    margin-top: 14px; padding: 10px 14px; border-radius: 14px;
+    background: rgba(255, 255, 255, 0.54); border: 1px solid var(--glass-border);
+    font-size: 11.5px; color: var(--muted); line-height: 1.5;
+  }
 
-  /* Packages & Order Calculator */
-  .pkg { display: flex; flex-direction: column; position: relative; padding: 28px 24px; }
-  .pkg.featured { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 26px 60px rgba(0,0,0,.45); }
-  .ribbon { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,#E8CA8C,var(--gold-2)); color: #111; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 14px; border-radius: 999px; white-space: nowrap; }
-  .pkg-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .pkg h3 { font-family: 'Cormorant Garamond',serif; font-size: 30px; font-weight: 500; }
-  .pkg .ar { font-family: 'Amiri',serif; color: var(--gold); font-size: 18px; }
-  .price { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold); margin: 14px 0 4px; line-height: 1.05; }
-  .price small { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); }
-  .meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 12px; }
-  .meta-pill { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: #D8D3CA; }
-  .pkg ul { list-style: none; display: grid; gap: 9px; margin: 16px 0 24px; flex: 1; }
-  .pkg li { font-size: 13px; color: #D5D0C8; padding-left: 22px; position: relative; }
-  .pkg li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  /* ===== 4. PACKAGES, ADD-ONS & BUILDER (COHESIVE DAYLIGHT PEARL GLASS) ===== */
+  .tiers-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .tier-card {
+    position: relative;
+    background: var(--glass-surface);
+    backdrop-filter: blur(26px) saturate(175%);
+    -webkit-backdrop-filter: blur(26px) saturate(175%);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: var(--glass-bevel), var(--glass-shadow);
+    overflow: hidden;
+    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+  }
+  .tier-card:hover { transform: translateY(-3px); border-color: var(--rim-gold); }
+  /* Featured Tier: Daylight Pearl Spotlight Glow (No Jarring Dark Block!) */
+  .tier-card.featured {
+    background: var(--glass-strong);
+    border-color: var(--rim-gold);
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 0 0 1px rgba(197, 155, 78, 0.36), 0 22px 48px rgba(48, 36, 20, 0.14);
+  }
+  .tier-card.featured::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--beam-gold) 0%, transparent 68%);
+    pointer-events: none;
+  }
+  .tier-card > * { position: relative; z-index: 1; }
+  .tier-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold-2); }
+  .tier-card h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--text); line-height: 1.1; }
+  .tier-sub { font-size: 12px; color: var(--muted); line-height: 1.45; }
+  .tier-ul { list-style: none; display: grid; gap: 6px; margin: 6px 0 12px; flex: 1; }
+  .tier-ul li { font-size: 12px; color: var(--text); padding-left: 17px; position: relative; line-height: 1.4; }
+  .tier-ul li::before { content: '✓'; position: absolute; left: 0; color: var(--gold-2); font-weight: 700; }
+  .tier-btn {
+    width: 100%; padding: 9px 14px; border-radius: 999px;
+    border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.72);
+    color: var(--emerald); font: 700 11.5px inherit; cursor: pointer;
+    box-shadow: inset 0 1px 2px #fff; transition: all 0.2s;
+  }
+  .tier-btn:hover, .tier-card.featured .tier-btn {
+    background: linear-gradient(135deg, #1A4B3C 0%, #0D3B2E 100%);
+    color: #FFFDF9;
+    border-color: rgba(255, 255, 255, 0.78);
+    box-shadow: inset 0 1.5px 2px rgba(255,255,255,0.4), 0 8px 20px rgba(13, 59, 46, 0.2);
+  }
 
-  .trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 28px; }
-  .trust-item { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 18px; }
-  .trust-item b { display: block; color: var(--gold); font-size: 14px; margin-bottom: 5px; }
-  .trust-item span { font-size: 12px; color: var(--muted); display: block; line-height: 1.55; }
+  /* Unified 4-Column Signature Add-Ons Strip */
+  .addons-strip {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .addon-glass-card {
+    background: var(--glass-surface);
+    backdrop-filter: blur(24px) saturate(175%);
+    -webkit-backdrop-filter: blur(24px) saturate(175%);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: var(--glass-bevel), 0 12px 28px rgba(48, 36, 20, 0.06);
+    border-radius: 20px;
+    padding: 16px 16px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.22s ease, border-color 0.22s ease;
+  }
+  .addon-glass-card:hover { transform: translateY(-2px); border-color: var(--rim-gold); }
+  .addon-glass-card.qr-highlight {
+    background: var(--glass-strong);
+    border-color: rgba(197, 155, 78, 0.55);
+  }
+  .addon-mini-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+  .addon-mini-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-2); background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #FFFFFF; padding: 2px 8px; border-radius: 999px;
+  }
+  .addon-glass-card h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 600; color: var(--text); line-height: 1.15; }
+  .addon-mini-en { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+  .addon-mini-ar {
+    direction: rtl; text-align: right; font-family: 'Amiri', serif;
+    font-size: 13.5px; color: var(--emerald); line-height: 1.65;
+    padding-top: 5px; border-top: 1px dashed var(--line);
+  }
+  .addon-mini-cta {
+    margin-top: auto; padding-top: 6px;
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11.5px; font-weight: 700; color: var(--gold-2); text-decoration: none;
+  }
+  .addon-mini-cta:hover { color: var(--emerald); }
 
-  .order-layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 24px; align-items: start; margin-top: 32px; }
-  .orderform { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .addon-list { display: grid; gap: 8px; margin-top: 6px; }
-  .addon-opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: #FFFFFF; cursor: pointer; font-size: 13px; transition: border-color .2s; }
-  .addon-opt:hover { border-color: var(--gold-dim); }
-  .addon-opt:has(input:checked) { border-color: var(--gold); background: rgba(168, 129, 58, 0.08); }
-  .addon-left { display: flex; align-items: center; gap: 10px; }
-  .addon-opt input { accent-color: var(--gold); width: 16px; height: 16px; }
-  .addon-price { color: var(--gold-2); font-weight: 700; white-space: nowrap; }
+  /* Interactive Package Builder */
+  .builder-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; align-items: start; }
+  .builder-card {
+    background: var(--glass-surface);
+    backdrop-filter: blur(28px) saturate(175%);
+    -webkit-backdrop-filter: blur(28px) saturate(175%);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: var(--glass-bevel), var(--glass-shadow);
+    border-radius: 26px;
+    padding: 24px 22px;
+  }
+  .builder-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .exp-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .exp-opt {
+    display: flex; align-items: flex-start; gap: 9px;
+    padding: 11px 12px; border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-recessed);
+    box-shadow: inset 0 1.5px 3px rgba(48, 36, 20, 0.04);
+    cursor: pointer; transition: all 0.2s ease;
+  }
+  .exp-opt:hover { background: rgba(255, 255, 255, 0.8); border-color: rgba(197, 155, 78, 0.45); }
+  .exp-opt:has(input:checked) {
+    border-color: var(--rim-gold);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: inset 0 1.5px 2px #fff, 0 6px 16px rgba(48, 36, 20, 0.07);
+  }
+  .exp-opt input { accent-color: var(--emerald); width: 15px; height: 15px; margin-top: 2px; flex-shrink: 0; }
+  .exp-opt b { display: block; font-size: 12px; color: var(--text); line-height: 1.25; }
+  .exp-opt span { display: block; font-size: 10.5px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
 
-  .summary-box { position: sticky; top: 92px; background: linear-gradient(155deg,#FFFFFF,#FAF5ED); border: 1px solid var(--gold-dim); border-radius: 22px; padding: 26px 22px; box-shadow: 0 16px 40px rgba(45, 35, 20, 0.06); }
-  .sum-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; color: #4A423A; }
-  .sum-total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0 6px; font-size: 14px; font-weight: 600; }
-  .sum-total b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; color: var(--gold-2); line-height: 1; }
-  .deposit-note { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
-  .pay-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
-  .pay-badge { font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .builder-summary {
+    position: sticky; top: 92px;
+    background: var(--glass-strong);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1.5px solid var(--rim-gold);
+    border-radius: 26px;
+    padding: 24px 22px;
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 20px 48px rgba(48, 36, 20, 0.12);
+    overflow: hidden;
+  }
+  .builder-summary::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--beam-gold) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .builder-summary > * { position: relative; z-index: 1; }
+  .bs-head { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-2); margin-bottom: 4px; }
+  .builder-summary h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px; color: var(--text); line-height: 1.15; margin-bottom: 6px; }
+  .bs-list { list-style: none; display: grid; gap: 7px; margin: 12px 0 16px; padding: 12px 0; border-block: 1px solid var(--line); }
+  .bs-list li { font-size: 12px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .bs-list li::before { content: '✓'; color: var(--emerald); font-weight: 700; }
 
-  .section-divider { border: 0; border-top: 1px solid var(--line); margin: 10px 0; }
+  /* ===== 5. BILINGUAL PEARL GLASS FAQ & CLOSING CTA ===== */
+  .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .faq-item {
+    background: var(--glass-surface);
+    backdrop-filter: blur(24px) saturate(170%);
+    -webkit-backdrop-filter: blur(24px) saturate(170%);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: var(--glass-bevel), 0 8px 22px rgba(48, 36, 20, 0.05);
+    border-radius: 18px;
+    padding: 15px 18px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .faq-item[open] { border-color: var(--rim-gold); background: var(--glass-strong); }
+  .faq-item summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.4;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-plus {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.78); border: 1px solid #FFFFFF;
+    color: var(--gold-2); display: grid; place-items: center;
+    font-size: 15px; font-weight: 600; flex-shrink: 0;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .faq-item[open] .faq-plus { transform: rotate(45deg); background: var(--emerald); color: #FFFDF8; border-color: var(--emerald); }
+  .faq-ans {
+    margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line);
+    font-size: 12.5px; color: var(--muted); line-height: 1.65;
+  }
+  .faq-ans .ar-line {
+    display: block; direction: rtl; text-align: right;
+    font-family: 'Amiri', serif; font-size: 14px; color: var(--emerald); margin-top: 5px;
+  }
+  .occasions-note { text-align: center; margin-top: 18px; font-size: 12px; color: var(--muted); }
+  .occasions-note strong { color: var(--emerald); }
 
+  .cta-pavilion {
+    text-align: center;
+    border-radius: 30px;
+    padding: 38px 24px;
+    background: var(--glass-strong);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: var(--glass-bevel), var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-pavilion::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--beam-gold) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-pavilion > * { position: relative; z-index: 1; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .tiers-grid, .addons-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .builder-grid { grid-template-columns: 1fr; }
+    .builder-summary { position: static; }
+  }
   @media (max-width: 980px) {
-    .studio, .order-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-    .studio > *, .form > * { min-width: 0; max-width: 100%; }
-    .phone-wrap, .summary-box { position: static; }
-    .stats, .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .studio { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .phone-wrap { position: static; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 768px) {
-    .filter-bar { gap: 12px; margin-bottom: 24px; }
+    .hero-pavilion { padding: 30px 18px 26px; border-radius: 26px; }
+    .filter-bar { gap: 12px; margin-bottom: 22px; }
     .pill-group {
-      display: flex;
-      flex-wrap: nowrap;
-      max-width: 100%;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 9px;
-      padding: 4px 2px 10px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      display: flex; flex-wrap: nowrap; max-width: 100%;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      gap: 9px; padding: 4px 2px 10px;
+      scrollbar-width: none; -ms-overflow-style: none;
+      justify-content: flex-start;
     }
     .pill-group::-webkit-scrollbar { display: none; }
     .fpill {
-      flex: 0 0 128px;
-      min-width: 128px;
-      scroll-snap-align: start;
-      padding: 7px 7px 9px;
-      border-radius: 56px 56px 14px 14px;
+      flex: 0 0 128px; min-width: 128px; scroll-snap-align: start;
+      padding: 7px 7px 9px; border-radius: 56px 56px 14px 14px;
     }
     .fpill-arch { border-radius: 48px 48px 9px 9px; }
     .fpill-name { font-size: 14px; }
     .fpill-ar { font-size: 10px; }
     .search-wrap { max-width: 100%; }
-    .bg-shape { width: 170px !important; height: 170px !important; opacity: 0.18; }
+    .exp-opts, .builder-row, .faq-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .form, .orderform, .trust-grid { grid-template-columns: 1fr; }
+    .form, .tiers-grid, .addons-strip { grid-template-columns: 1fr; }
     .form-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .form-actions #apply { grid-column: 1 / -1; width: 100%; }
     .stats { gap: 8px; }
-    .stat { padding: 10px 6px; }
-    .stat b { font-size: 15px; }
+    .stat { padding: 10px 8px; }
+    .stat b { font-size: 16px; }
     .hero .actions .btn { width: 100%; }
-    .phone-frame {
-      width: min(340px, calc(100vw - 32px));
-      height: min(620px, 74vh);
-      height: min(620px, 74dvh);
-      border-width: 6px;
-      border-radius: 30px;
-    }
-  }
-  @media (max-width: 360px) {
-    .form-actions { grid-template-columns: 1fr; }
-    .phone-frame { width: 100%; border-width: 5px; border-radius: 22px; }
+    .hero-emblem-wrap { width: 70px; height: 70px; }
   }
 </style>
 </head>
 <body>
 <main>
-  <!-- 1. HERO SECTION (Focused Entrance — Designs Immediately Below) -->
-  <section id="home" class="hero has-bg-art" style="padding:46px 0 34px">
-    <div class="hero-video-wrap" aria-hidden="true">
-      <video autoplay muted loop playsinline poster="assets/images/al-masa-capital.jpg">
-        <source src="assets/video/wedding-intro-loop.mp4" type="video/mp4">
-      </video>
-    </div>
-    <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M24 220V116C24 62 66 24 120 24C174 24 216 62 216 116V220" stroke="currentColor" stroke-width="1"/><path d="M40 220V120C40 74 75 40 120 40C165 40 200 74 200 120V220" stroke="currentColor" stroke-width="0.7" stroke-dasharray="4 4"/><polygon points="120,12 126,24 120,36 114,24" stroke="currentColor" stroke-width="0.9"/></svg>
-    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M196 28C164 62 150 112 158 176" stroke="currentColor" stroke-width="1"/><path d="M174 62C152 54 134 60 126 74C144 82 162 78 174 62Z" stroke="currentColor" stroke-width="0.85"/><path d="M164 102C140 94 120 102 114 118C134 126 154 120 164 102Z" stroke="currentColor" stroke-width="0.85"/><path d="M158 142C136 138 120 148 118 164C138 170 154 160 158 142Z" stroke="currentColor" stroke-width="0.85"/><path d="M180 82C200 76 216 84 220 98C202 104 186 98 180 82Z" stroke="currentColor" stroke-width="0.85"/><path d="M172 122C194 118 210 128 212 144C194 148 178 140 172 122Z" stroke="currentColor" stroke-width="0.85"/></svg>
+  <!-- 1. DAYLIGHT PEARL HERO PAVILION -->
+  <section id="home" class="hero">
     <div class="container">
-      <img class="hero-emblem" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM Digital Invitations">
-      <div class="pill-tag" id="heroPill">Online Digital Wedding House</div>
-      <h1 class="h1">Every love story deserves a <em>beautiful entrance</em>.</h1>
-      <div class="hero-subline" id="heroSubline">Not just an invitation. An experience.</div>
-      <p class="lead" id="heroLead" style="margin:12px auto 0">Interactive digital invitations, cinematic reels, couple-photo storybooks &amp; QR seating passes for weddings, katb ketab, engagement and henna — in Arabic, English or both.</p>
-      <div class="actions">
-        <a class="btn btn-gold btn-lg btn-pill" href="#designs">Explore Collections</a>
-        <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try With Your Names</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><b id="statDesigns">41</b><span>Curated designs</span></div>
-        <div class="stat"><b id="statCats">8</b><span>Signature styles</span></div>
-        <div class="stat"><b style="font-size:15px;white-space:nowrap">Arabic &amp; English</b><span>Every style</span></div>
-        <div class="stat"><b id="statDelivery">48h</b><span id="statDeliveryLabel">Fastest delivery</span></div>
-      </div>
-      <div class="mini-steps" aria-label="How it works">
-        <span><b>1</b> Pick a style</span>
-        <span><b>2</b> Preview with your names</span>
-        <span><b>3</b> We personalise it</span>
-        <span><b>4</b> Share on WhatsApp</span>
+      <div class="hero-pavilion">
+        <div class="hero-emblem-wrap">
+          <img class="hero-emblem" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM Digital Invitations">
+        </div>
+        <div class="pill-tag" id="heroPill">✦ Online Digital Wedding House</div>
+        <h1 class="h1">Every love story deserves a <em>beautiful entrance</em>.</h1>
+        <div class="hero-subline" id="heroSubline">Not just an invitation. An experience.</div>
+        <p class="lead" id="heroLead" style="margin:10px auto 0">Interactive digital invitations, frosted liquid-glass arches, cinematic video workflows &amp; QR seating passes for weddings, katb ketab, engagement and henna — in Arabic, English or both.</p>
+        <div class="actions">
+          <a class="btn btn-gold btn-lg btn-pill" href="#designs">Explore Collections</a>
+          <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try With Your Names</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="statDesigns">41</b><span>Curated designs</span></div>
+          <div class="stat"><b id="statCats">8</b><span>Signature styles</span></div>
+          <div class="stat"><b style="font-size:15px">AR &amp; EN</b><span>Every design</span></div>
+          <div class="stat"><b id="statDelivery">48h</b><span id="statDeliveryLabel">Fastest delivery</span></div>
+        </div>
+        <div class="mini-steps" aria-label="How it works">
+          <span><b>1</b> Pick a style</span>
+          <span><b>2</b> Preview with your names</span>
+          <span><b>3</b> We personalise it</span>
+          <span><b>4</b> Share on WhatsApp</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider">
-
-  <!-- 2. CURATED COLLECTIONS (Right at the Top!) -->
-  <section id="designs" class="section tight has-bg-art">
-    <div class="bg-venue align-top" style="background-image:url('assets/images/mohamed-ali-palace.jpg')" aria-hidden="true"></div>
-    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><circle cx="120" cy="120" r="68" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3 5"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.85"/></svg>
-    <svg class="bg-shape bg-shape-bl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 212V112C36 66 74 30 120 30C166 30 204 66 204 112V212" stroke="currentColor" stroke-width="0.9"/><path d="M58 212V118C58 84 86 56 120 56C154 56 182 84 182 118V212" stroke="currentColor" stroke-width="0.7"/></svg>
+  <!-- 2. CURATED COLLECTIONS -->
+  <section id="designs" class="section tight">
     <div class="container">
-    <div class="center" style="margin-bottom:24px">
-      <div class="pill-tag">Curated Collections</div>
-      <h2 class="h2">Choose Your <em>Design Style</em></h2>
-      <p class="lead" style="margin:8px auto 0"><strong>Every design works for any event</strong> (Wedding, Katb Ketab, Engagement, Henna or Save the Date) in Arabic, English, or both.</p>
-    </div>
-
-    <div class="filter-bar">
-      <div class="pill-group" id="catPills"></div>
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="search-box" id="searchBox" placeholder="Search designs, moods or venues…">
+      <div class="center" style="margin-bottom:22px">
+        <div class="pill-tag">Curated Collections · مجموعاتنا المختارة</div>
+        <h2 class="h2">Choose Your <em>Design Style</em></h2>
+        <p class="lead" style="margin:6px auto 0"><strong>Every design works for any celebration</strong> (Wedding, Katb Ketab, Engagement, Henna or Save the Date) in Arabic, English, or both.</p>
       </div>
+
+      <div class="filter-bar">
+        <div class="pill-group" id="catPills"></div>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="search-box" id="searchBox" placeholder="Search designs, moods or Cairo venues…">
+          <span class="search-live-badge" id="searchCountBadge">41 Live</span>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="designGrid"></div>
     </div>
-
-    <div class="gallery-grid" id="designGrid"></div>
-  </div></section>
-
-  <hr class="section-divider">
+  </section>
 
   <!-- 3. TRY IT LIVE STUDIO -->
-  <section id="try-it-live" class="section tight has-bg-art">
-    <div class="bg-venue" style="background-image:url('assets/images/mena-house-giza.jpg')" aria-hidden="true"></div>
-    <svg class="bg-shape bg-shape-tl" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M54 216C74 156 96 106 144 48" stroke="currentColor" stroke-width="0.9"/><path d="M104 102C84 86 64 88 54 100C70 112 88 112 104 102Z" stroke="currentColor" stroke-width="0.8"/><path d="M84 146C60 132 42 136 34 150C52 162 72 158 84 146Z" stroke="currentColor" stroke-width="0.8"/><path d="M120 80C140 74 156 80 162 94C144 102 128 96 120 80Z" stroke="currentColor" stroke-width="0.8"/></svg>
-    <svg class="bg-shape bg-shape-br" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M36 220V116C36 68 74 30 120 30C166 30 204 68 204 116V220" stroke="currentColor" stroke-width="0.9"/><path d="M54 220V122C54 84 84 54 120 54C156 54 186 84 186 122V220" stroke="currentColor" stroke-width="0.7" stroke-dasharray="4 4"/></svg>
+  <section id="try-it-live" class="section tight">
     <div class="container">
-    <div class="center" style="margin-bottom:26px">
-      <div class="pill-tag">Live Preview</div>
-      <h2 class="h2">Try it with <em>your names</em></h2>
-      <p class="lead" style="margin:8px auto 0">Pick any design, enter your details or upload a couple photo and see your invitation update inside the phone immediately.</p>
-    </div>
-
-    <div class="studio">
-      <div class="card">
-        <form class="form" id="f" onsubmit="return false">
-          <div class="field full">
-            <label for="d">1 · Design</label>
-            <select id="d" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917"></select>
-          </div>
-          <div class="field"><label for="cg">2 · Groom's Name (اسم العريس)</label><input id="cg" autocomplete="off" placeholder="Karim / كريم"></div>
-          <div class="field"><label for="cb">3 · Bride's Name (اسم العروسة)</label><input id="cb" autocomplete="off" placeholder="Nour / نور"></div>
-          <div class="field"><label for="dt">4 · Date (التاريخ)</label><input id="dt" type="date"></div>
-          <div class="field"><label for="v">5 · Venue / city (مكان الحفل)</label><input id="v" autocomplete="off" placeholder="Madinet Nasr / Zamalek / Tagamoa / Obour"></div>
-          <div class="field"><label for="tb">6 · Table number on phone (رقم الطاولة — اختياري)</label><input id="tb" autocomplete="off" placeholder="Table 7 · VIP / طاولة رقم ٧"></div>
-
-          <div class="field">
-            <label for="th">7 · Color finish theme (تخصيص الألوان)</label>
-            <select id="th" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
-              <option value="">Original design palette (الألوان الأصلية)</option>
-              <option value="gold">Royal Champagne Gold (ذهبي ملكي)</option>
-              <option value="chromium">Liquid Chromium &amp; Platinum (كروم وبلاتين)</option>
-              <option value="emerald">Emerald Palace Green (زمردي ملكي)</option>
-              <option value="rose">Dusty Rose &amp; Pearl (وردي لؤلؤي)</option>
-              <option value="sapphire">Mediterranean Sapphire (أزرق ياقوتي)</option>
-            </select>
-          </div>
-
-          <div class="field full">
-            <label for="song">8 · Wedding music or song (الموسيقى أو الأغنية)</label>
-            <select id="song" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
-              <option value="">Default for this design (الافتراضي للتصميم)</option>
-              <optgroup label="Luxury, Cinema &amp; Piano — موسيقى فاخرة وبيانو">
-                <option value="young_and_beautiful">Lana Del Rey — Young &amp; Beautiful (00:11 – 00:45)</option>
-                <option value="another_love_piano">Tom Odell — Another Love · Piano Glow (00:01 – 00:33)</option>
-                <option value="bridgerton_beckman">Thomas Beckman — Bridgerton Music (00:05 – 00:20)</option>
-                <option value="golden_hour">JVKE — Golden Hour (Modern Minimal &amp; Editorial)</option>
-                <option value="taylor_enchanted">Taylor Swift — Enchanted (Soft Floral &amp; Dreamy)</option>
-              </optgroup>
-              <optgroup label="Instrumental &amp; Arabic Melodies — موسيقى وعزف بدون غناء">
-                <option value="alexis_tamally_maak">Alexis Quiroz — تملي معاك · Tamally Maak (00:36 – 01:11)</option>
-                <option value="nagham_qesset_hob">Nagham Debal — قصة حب عزف قانون (00:44 – 01:12)</option>
-                <option value="om_kalthoum_inst">Umm Kulthum — Alf Leila w Leila Music (موسيقى ألف ليلة وليلة بدون غناء)</option>
-                <option value="farha_inst">Mahmoud El Esseily — Farha Music (موسيقى أغنية فرحة — كتب كتاب بدون غناء)</option>
-                <option value="egyptian_zaffa">Royal Egyptian Zaffa Music (موسيقى زفة مصرية ملكية بدون غناء)</option>
-                <option value="thousand_years_inst">A Thousand Years — Piano &amp; Cello Music (موسيقى بيانو وتشيللو بدون غناء)</option>
-                <option value="classic_romance_inst">Classic Romance Orchestra (موسيقى أوركسترا رومانسية كلاسيكية)</option>
-                <option value="instrumental_mix">Instrumental Wedding Mix (ميكس موسيقى هادئة بدون غناء)</option>
-              </optgroup>
-              <optgroup label="Egyptian &amp; Arabic Romantic Songs — أغاني أفراح مصرية وعربية">
-                <option value="elissa_ayshalak">Elissa — Ayshalak (إليسا — عايشالك · 00:01 – 00:36)</option>
-                <option value="elissa_men_awal">Elissa &amp; Saad Lamjarred — Men Awal Deqiqa (إليسا وسعد لمجرد — من أول دقيقة)</option>
-                <option value="farha_katb">Mahmoud El Esseily — Farha (محمود العسيلي — أغنية فرحة بالكلمات)</option>
-                <option value="esseily_einy">Mahmoud El Esseily — Einy Shayfa Feeky (محمود العسيلي — عيني شايفة فيكي)</option>
-                <option value="esseily_wakheeran">Mahmoud El Esseily — Wa Akheeran (محمود العسيلي — وأخيراً)</option>
-                <option value="om_kalthoum">Umm Kulthum — Alf Leila w Leila (أم كلثوم — ألف ليلة وليلة الأصلية)</option>
-                <option value="tamer_helm">Tamer Hosny — Helm Seneen (تامر حسني — حلم سنين)</option>
-                <option value="ramy_mabrook">Ramy Sabry — Alf Mabrook (رامي صبري — ألف مبروك)</option>
-                <option value="amr_nour">Amr Diab — Nour El Ein (عمرو دياب — نور العين)</option>
-              </optgroup>
-              <optgroup label="Henna &amp; Celebration — أغاني وعزف الحنة">
-                <option value="yara_beit_habibi_inst">بيت حبيبي — عزف يارا (حنة · Beit Habibi Instrumental)</option>
-                <option value="amina_okbal_andoko">Oubal Andako — Amina (عقبال عندكوا · حنة · 00:32 – 00:47)</option>
-                <option value="hakim_kolo_yorkos">Hakim — Kollo Yourkos (حكيم — كله يرقص · حنة ورقص)</option>
-                <option value="henna_mix">Henna &amp; Dance Mix (كوكتيل حنة: أمينة · بيت حبيبي · حكيم)</option>
-              </optgroup>
-              <optgroup label="English Romantic Wedding Songs — أغاني أفراح إنجليزية">
-                <option value="a_thousand_years">Christina Perri — A Thousand Years (00:10 – 00:30)</option>
-                <option value="ed_perfect">Ed Sheeran — Perfect (الأغنية الأصلية)</option>
-                <option value="english_mix">English Romantic Wedding Mix (ميكس أغاني إنجليزية رومانسية)</option>
-                <option value="esseily_mix">Mahmoud El Esseily Marriage Mix (ميكس أفراح محمود العسيلي)</option>
-                <option value="silent">Silent — No Audio (بدون صوت)</option>
-              </optgroup>
-            </select>
-          </div>
-
-          <div class="field full">
-            <label for="ph">9 · Couple portrait (صورة العروسين — اختياري)</label>
-            <input id="ph" type="file" accept="image/*" style="display:none">
-            <label for="ph" class="photo-dropzone" id="phDrop">
-              <div class="photo-icon-wrap" id="phIconWrap">
-                <svg id="phPlaceholderSvg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="12" cy="12" r="3.2"/><path d="M8.5 5l1.2-2h4.6l1.2 2"/></svg>
-                <img id="phThumb" alt="Couple portrait preview" style="display:none">
-              </div>
-              <div class="photo-meta">
-                <strong id="phTitle">Add couple portrait</strong>
-                <span id="phSub">Tap or drop a photo — displayed inside your invitation</span>
-              </div>
-              <div class="photo-actions">
-                <span class="photo-pick-pill" id="phPickLabel">Choose Photo</span>
-                <button type="button" class="photo-remove-btn" id="phClear">Remove</button>
-              </div>
-            </label>
-          </div>
-
-          <div class="full"><div class="hint">Quick examples:</div>
-            <div class="quick"><button type="button" data-ex="1">Karim &amp; Nour · Giza</button><button type="button" data-ex="2">يوسف و زينة · القاهرة</button><button type="button" data-ex="3">Clear all</button></div></div>
-
-          <div class="full form-actions">
-            <button class="btn btn-gold" id="apply"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg> Update preview</button>
-            <a class="btn btn-ghost" id="full" target="_blank">Full screen ↗</a>
-            <button class="btn btn-ghost" id="copy">Copy link</button>
-            <a class="btn btn-ghost" id="order" target="_blank" rel="noopener">Order on WhatsApp</a>
-          </div>
-        </form>
-
-        <div class="studio-tip">
-          ✓ Tap the cover inside the phone to experience motion &amp; sound · Custom colors &amp; 100% Arabic, English or Bilingual available on every design.
-        </div>
+      <div class="center" style="margin-bottom:22px">
+        <div class="pill-tag">Live Personalisation Studio</div>
+        <h2 class="h2">Try It With <em>Your Names</em></h2>
+        <p class="lead" style="margin:6px auto 0">Pick any design, enter your details or drop a couple/venue photo to preview your invitation live inside the phone.</p>
       </div>
 
-      <div class="phone-wrap">
-        <div class="phone-frame">
-          <iframe id="frame" title="Live preview"></iframe>
+      <div class="studio">
+        <div class="card">
+          <form class="form" id="f" onsubmit="return false">
+            <div class="field full">
+              <label for="d">Design Template · التصميم</label>
+              <select id="d"></select>
+            </div>
+            <div class="field"><label for="cg">Groom's Name · اسم العريس</label><input id="cg" autocomplete="off" placeholder="Karim / كريم"></div>
+            <div class="field"><label for="cb">Bride's Name · اسم العروسة</label><input id="cb" autocomplete="off" placeholder="Nour / نور"></div>
+            <div class="field"><label for="dt">Event Date · التاريخ</label><input id="dt" type="date"></div>
+            <div class="field"><label for="v">Venue · القاعة أو الفندق</label><input id="v" autocomplete="off" placeholder="Villa Belle Époque / Nile Ritz / Tagamoa"></div>
+            <div class="field"><label for="tb">VIP Table · رقم الطاولة (اختياري)</label><input id="tb" autocomplete="off" placeholder="Table 04 · VIP / طاولة رقم ٤"></div>
+
+            <div class="field">
+              <label for="th">Color Finish · تخصيص الألوان</label>
+              <select id="th">
+                <option value="">Original design palette (الألوان الأصلية)</option>
+                <option value="gold">Royal Champagne Gold (ذهبي ملكي)</option>
+                <option value="chromium">Liquid Chromium &amp; Platinum (كروم وبلاتين)</option>
+                <option value="emerald">Emerald Palace Green (زمردي ملكي)</option>
+                <option value="rose">Dusty Rose &amp; Pearl (وردي لؤلؤي)</option>
+                <option value="sapphire">Mediterranean Sapphire (أزرق ياقوتي)</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="song">Wedding Song · الموسيقى أو الأغنية</label>
+              <select id="song">
+                <option value="">Default for this design (الافتراضي للتصميم)</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="ph">Couple or Venue Photo · صورة العروسين أو القاعة (اختياري)</label>
+              <input id="ph" type="file" accept="image/*" style="display:none">
+              <label for="ph" class="photo-dropzone" id="phDrop">
+                <div class="photo-icon-wrap" id="phIconWrap">
+                  <svg id="phPlaceholderSvg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="12" cy="12" r="3.2"/><path d="M8.5 5l1.2-2h4.6l1.2 2"/></svg>
+                  <img id="phThumb" alt="Couple portrait preview" style="display:none">
+                </div>
+                <div class="photo-meta">
+                  <strong id="phTitle">Add couple portrait</strong>
+                  <span id="phSub">Tap or drop a photo — displayed inside your invitation</span>
+                </div>
+                <div class="photo-actions">
+                  <span class="photo-pick-pill" id="phPickLabel">Choose Photo</span>
+                  <button type="button" class="photo-remove-btn" id="phClear">Remove</button>
+                </div>
+              </label>
+            </div>
+
+            <div class="full">
+              <div class="hint">Quick examples:</div>
+              <div class="quick">
+                <button type="button" data-ex="1">Karim &amp; Nour · Cairo</button>
+                <button type="button" data-ex="2">يوسف و زينة · الماسة</button>
+                <button type="button" data-ex="3">Clear all</button>
+              </div>
+            </div>
+
+            <div class="full form-actions">
+              <button class="btn btn-gold" id="apply"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg> Update preview</button>
+              <a class="btn btn-ghost" id="full" target="_blank">Full screen ↗</a>
+              <button class="btn btn-ghost" id="copy">Copy link</button>
+              <a class="btn btn-ghost" id="order" target="_blank" rel="noopener">Order on WhatsApp</a>
+            </div>
+          </form>
+
+          <div class="studio-tip">
+            ✓ Tap the seal or cover inside the phone to experience motion &amp; sound · Custom colors &amp; 100% Arabic, English or Bilingual available on every design.
+          </div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone-frame">
+            <iframe id="frame" title="Live preview"></iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div></section>
+  </section>
 
-  <hr class="section-divider">
-
-  <!-- 4. EXPERIENCE PACKAGES, SIGNATURE ADD-ONS & CUSTOM BUILDER (Consolidated & Clean) -->
-  <section id="journey" class="section tight has-bg-art">
-    <div class="bg-venue align-soft" style="background-image:url('assets/images/four-seasons-nile.jpg')" aria-hidden="true"></div>
-    <svg class="bg-shape bg-shape-tr" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="0.8"/><path d="M120 32L134 106L208 120L134 134L120 208L106 134L32 120L106 106Z" stroke="currentColor" stroke-width="0.8"/></svg>
+  <!-- 4. PACKAGES, SIGNATURE ADD-ONS & CUSTOM BUILDER -->
+  <section id="journey" class="section tight">
     <div class="container">
-      <div class="center" style="margin-bottom:24px">
+      <div class="center" style="margin-bottom:22px">
         <div class="pill-tag">Packages &amp; Add-Ons · الباقات والإضافات</div>
         <h2 class="h2">Choose a Package or <em>Build Your Own</em></h2>
-        <p class="lead" style="margin:8px auto 0">From a standalone digital invitation to a complete wedding experience with QR passes, table seating and private guest memories.</p>
+        <p class="lead" style="margin:6px auto 0">From a standalone digital invitation to a complete wedding experience with QR passes, table seating and private guest memories.</p>
       </div>
 
+      <!-- 4 Daylight Pearl Glass Tiers -->
       <div class="tiers-grid">
         <div class="tier-card">
           <div class="tier-tag">Tier 01 · الباقة الأساسية</div>
           <h4>MEEM Invitation</h4>
           <p class="tier-sub">Elegant standalone digital invitation crafted to your style.</p>
           <ul class="tier-ul">
-            <li>Any of our curated signature designs</li>
+            <li>Any of our 41 curated designs</li>
             <li>Custom colors, song &amp; opening motion</li>
             <li>Live countdown &amp; Google Maps</li>
-            <li>WhatsApp RSVP button</li>
+            <li>WhatsApp RSVP confirmation</li>
           </ul>
           <button type="button" class="tier-btn" data-tier="invitation">Select in Builder ↓</button>
         </div>
@@ -1273,7 +731,7 @@
         <div class="tier-card">
           <div class="tier-tag">Tier 02 · الأكثر طلباً</div>
           <h4>MEEM Plus</h4>
-          <p class="tier-sub">Invitation upgraded with guest conveniences &amp; Reels video.</p>
+          <p class="tier-sub">Invitation upgraded with guest seating &amp; Reels video.</p>
           <ul class="tier-ul">
             <li>Everything in MEEM Invitation</li>
             <li>Individual VIP QR Guest Passes</li>
@@ -1286,7 +744,7 @@
         <div class="tier-card featured">
           <div class="tier-tag">Tier 03 · تجربة متكاملة ★</div>
           <h4>MEEM Experience</h4>
-          <p class="tier-sub">Seamless guest management, bilingual links &amp; private QR camera.</p>
+          <p class="tier-sub">Complete guest management, bilingual links &amp; private QR camera.</p>
           <ul class="tier-ul">
             <li>Everything in MEEM Plus</li>
             <li>Live RSVP &amp; Guest Management Sheet</li>
@@ -1310,74 +768,66 @@
         </div>
       </div>
 
-      <!-- Compact QR Guest Camera Spotlight -->
-      <div class="addon-spotlight" style="margin-top:24px;padding:22px 22px 20px;gap:14px">
-        <div class="addon-head-row">
-          <div>
-            <div class="addon-kicker">Signature Add-On · إضافة حصرية</div>
-            <h3 style="font-size:25px">Live QR Guest Camera &amp; Private Couple Album</h3>
-          </div>
-          <a class="addon-btn-light" id="qrAddonWa" target="_blank" rel="noopener">Add to My Wedding →</a>
-        </div>
-        <div class="addon-bilingual">
-          <div class="addon-brief" style="padding:12px 14px">
-            Guests scan a bespoke table QR card — <strong>no app needed</strong>. Their camera opens instantly to capture photos &amp; videos saved straight into the <strong>couple's private Google Drive folder</strong> in original quality.
-          </div>
-          <div class="addon-brief ar" style="padding:12px 14px">
-            يمسح الضيوف كارت الـ QR على الطاولات <strong>بدون تحميل أي تطبيق</strong>، وتُحفظ صورهم وفيديوهاتهم تلقائياً بجودتها الأصلية في <strong>فولدر Google Drive سري خاص بالعريس والعروسة فقط</strong>.
-          </div>
-        </div>
-      </div>
-
-      <div class="addons-mini-grid">
-        <div class="addon-mini-card" style="padding:16px">
+      <!-- Unified 4-Column Frosted Glass Signature Add-Ons -->
+      <div class="addons-strip">
+        <div class="addon-glass-card qr-highlight">
           <div class="addon-mini-top">
-            <h4 style="font-size:20px">Voice &amp; Wishes Guestbook</h4>
+            <h4>QR Guest Camera</h4>
+            <span class="addon-mini-badge">Signature</span>
+          </div>
+          <p class="addon-mini-en">Table QR scan with zero app — guest photos &amp; videos save privately to your Google Drive.</p>
+          <p class="addon-mini-ar">كارت QR بدون تطبيق يحفظ صور وفيديوهات الضيوف في Drive سري للعروسين.</p>
+          <a class="addon-mini-cta" id="qrAddonWa" target="_blank" rel="noopener">Add to Wedding →</a>
+        </div>
+
+        <div class="addon-glass-card">
+          <div class="addon-mini-top">
+            <h4>Voice Guestbook</h4>
             <span class="addon-mini-badge">Add-On</span>
           </div>
           <p class="addon-mini-en">Guests record heartfelt voice notes &amp; written wishes saved privately forever.</p>
           <p class="addon-mini-ar">دفتر تهاني صوتي ومكتوب يُحفظ بسرية للعروسين للأبد.</p>
-          <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
+          <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Request →</a>
         </div>
 
-        <div class="addon-mini-card" style="padding:16px">
+        <div class="addon-glass-card">
           <div class="addon-mini-top">
-            <h4 style="font-size:20px">15–30s Vertical Reels Video</h4>
+            <h4>Vertical Reels Video</h4>
             <span class="addon-mini-badge">Add-On</span>
           </div>
-          <p class="addon-mini-en">Ready-to-share vertical HD video invitation for WhatsApp &amp; Instagram Stories.</p>
+          <p class="addon-mini-en">15–30s HD vertical video invitation ready for WhatsApp &amp; Instagram Stories.</p>
           <p class="addon-mini-ar">فيديو دعوة ريلز عمودي جاهز للواتساب والإنستجرام بأغنيتكم.</p>
-          <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
+          <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Request →</a>
         </div>
 
-        <div class="addon-mini-card" style="padding:16px">
+        <div class="addon-glass-card">
           <div class="addon-mini-top">
-            <h4 style="font-size:20px">Multi-Version &amp; Bilingual Links</h4>
+            <h4>Bilingual &amp; VIP Links</h4>
             <span class="addon-mini-badge">Add-On</span>
           </div>
           <p class="addon-mini-en">Separate links under one cohesive theme — Arabic for family, English or VIP timings.</p>
           <p class="addon-mini-ar">روابط منفصلة بنفس التصميم (عربي للأهل، إنجليزي أو مواعيد VIP).</p>
-          <a class="addon-mini-cta" id="addonMultiWa" target="_blank" rel="noopener">Request on WhatsApp →</a>
+          <a class="addon-mini-cta" id="addonMultiWa" target="_blank" rel="noopener">Request →</a>
         </div>
       </div>
 
-      <!-- Interactive Package Builder (Directly Below Tiers & Add-Ons) -->
-      <div id="build-experience" style="margin-top:34px;padding-top:26px;border-top:1px solid var(--line)">
-        <div class="center" style="margin-bottom:22px">
-          <div class="pill-tag">Build Your Wedding Experience</div>
-          <h3 class="serif" style="font-size:32px;font-weight:500;color:var(--emerald)">Tailor Your <em>Own Package</em></h3>
-        </div>
-
+      <!-- Interactive Package Builder -->
+      <div id="build-experience" style="margin-top:26px">
         <div class="builder-grid">
           <div class="builder-card">
+            <div style="margin-bottom:14px">
+              <div class="bs-head">Customise Your Suite · صمّم باقتك</div>
+              <h3 class="serif" style="font-size:28px;font-weight:500;color:var(--text)">Tailor Your <em style="color:var(--gold-2)">Own Package</em></h3>
+            </div>
+
             <div class="builder-row">
               <div class="field">
-                <label for="bDesign">Favourite Design (اختياري)</label>
-                <select id="bDesign" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917"></select>
+                <label for="bDesign">Favourite Design · التصميم المفضل</label>
+                <select id="bDesign"></select>
               </div>
               <div class="field">
-                <label for="bEvent">Celebration Type (نوع المناسبة)</label>
-                <select id="bEvent" style="color-scheme:light;background-color:#FFFFFF;color:#1C1917">
+                <label for="bEvent">Celebration Type · نوع المناسبة</label>
+                <select id="bEvent">
                   <option value="Wedding · فرح">Wedding · حفل زفاف</option>
                   <option value="Katb Ketab · كتب كتاب">Katb Ketab · عقد قران</option>
                   <option value="Engagement · خطوبة">Engagement · خطوبة</option>
@@ -1427,88 +877,88 @@
           <aside class="builder-summary">
             <div class="bs-head">Your Custom Selection · ملخص باقتك</div>
             <h3 id="bsTierName">Custom Wedding Experience</h3>
-            <div style="font-size:12px;color:rgba(244,229,194,0.88)" id="bsMeta"></div>
+            <div style="font-size:12px;color:var(--muted)" id="bsMeta"></div>
             <ul class="bs-list" id="bsList"></ul>
-            <a id="bsWaBtn" class="addon-btn-light" style="width:100%;justify-content:center" target="_blank" rel="noopener">Send My Experience on WhatsApp →</a>
+            <a id="bsWaBtn" class="btn btn-gold" style="width:100%" target="_blank" rel="noopener">Send My Package on WhatsApp →</a>
           </aside>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider">
-
   <!-- 5. BEFORE YOU ORDER (BILINGUAL FAQ) -->
-  <section id="faq" class="section tight"><div class="container">
-    <div class="center" style="margin-bottom:24px">
-      <div class="pill-tag">Before You Order · قبل الحجز</div>
-      <h2 class="h2">Everything You Need <em>to Know</em></h2>
+  <section id="faq" class="section tight">
+    <div class="container">
+      <div class="center" style="margin-bottom:22px">
+        <div class="pill-tag">Before You Order · قبل الحجز</div>
+        <h2 class="h2">Everything You Need <em>to Know</em></h2>
+      </div>
+
+      <div class="faq-grid">
+        <details class="faq-item" open>
+          <summary><span>How long does delivery take? · كم يستغرق التنفيذ؟</span><span class="faq-plus">+</span></summary>
+          <div class="faq-ans">Standard delivery takes <strong>24 to 48 hours</strong> after confirming your details. Express same-day delivery is also available upon request.
+            <span class="ar-line">مدة التنفيذ من 24 إلى 48 ساعة بعد تأكيد البيانات، ويتوفر التسليم المستعجل في نفس اليوم عند الطلب.</span>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>How many revisions are included? · كم عدد التعديلات المتاحة؟</span><span class="faq-plus">+</span></summary>
+          <div class="faq-ans">Every order includes <strong>2 complimentary revisions</strong> for dates, venue details, wording, colors, or soundtrack before final sign-off.
+            <span class="ar-line">يشمل كل طلب تعديلين مجانيين على البيانات أو المواعيد أو الألوان أو الأغنية قبل الاعتماد النهائي.</span>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>Can I customise the colors &amp; language? · هل يمكن تعديل الألوان واللغة؟</span><span class="faq-plus">+</span></summary>
+          <div class="faq-ans">Yes — every single design can be customised in <strong>100% Arabic, 100% English, or Bilingual</strong>, with your wedding's exact color palette and metallic finish.
+            <span class="ar-line">نعم، كل تصميم متاح بالعربية أو الإنجليزية أو اللغتين معاً وبنفس ألوان ديكور فرحكم.</span>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>Can I pick my own song or go silent? · هل يمكن اختيار أغنيتنا أو بدون صوت؟</span><span class="faq-plus">+</span></summary>
+          <div class="faq-ans">Choose from our curated Arabic &amp; international wedding tracks, send us <strong>any special song</strong>, or make any invitation <strong>strictly silent</strong>.
+            <span class="ar-line">تقدر تختار من مكتبتنا، أو تبعت لنا أي أغنية خاصة بيكم، أو تطلب الدعوة صامتة تماماً بدون صوت.</span>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>How long does my link stay active? · كم مدة بقاء الرابط فعالاً؟</span><span class="faq-plus">+</span></summary>
+          <div class="faq-ans">Your private link stays live throughout your wedding countdown plus <strong>3 full months after your event</strong> (extendable anytime).
+            <span class="ar-line">يظل الرابط شغالاً طوال الفترة قبل الفرح بالإضافة إلى 3 شهور كاملة بعد المناسبة مع إمكانية التمديد.</span>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span>Are QR guest photos &amp; voices private? · هل صور ورسائل الضيوف سرية؟</span><span class="faq-plus">+</span></summary>
+          <div class="faq-ans"><strong>100% private.</strong> Each wedding gets an isolated, write-only Google Drive folder shared exclusively with the Groom &amp; Bride — guests can upload but never view others' photos.
+            <span class="ar-line">سرية 100%: لكل فرح فولدر Google Drive معزول ومقفول على إيميلات العروسين فقط — الضيف يرفع فقط ولا يمكنه رؤية صور أي ضيف آخر.</span>
+          </div>
+        </details>
+      </div>
+
+      <p class="occasions-note">Also crafted to order for <strong>Bridal Showers · Baby Showers · Birthdays · Graduation &amp; Private Celebrations</strong>.</p>
     </div>
+  </section>
 
-    <div class="faq-grid">
-      <details class="faq-item" open>
-        <summary><span>How long does delivery take? · كم يستغرق التنفيذ؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans">Standard delivery takes <strong>24 to 48 hours</strong> after confirming your details. Express same-day delivery is also available upon request.
-          <span class="ar-line">مدة التنفيذ من 24 إلى 48 ساعة بعد تأكيد البيانات، ويتوفر التسليم المستعجل في نفس اليوم عند الطلب.</span>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary><span>How many revisions are included? · كم عدد التعديلات المتاحة؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans">Every order includes <strong>2 complimentary revisions</strong> for dates, venue details, wording, colors, or soundtrack before final sign-off.
-          <span class="ar-line">يشمل كل طلب تعديلين مجانيين على البيانات أو المواعيد أو الألوان أو الأغنية قبل الاعتماد النهائي.</span>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary><span>Can I customise the colors &amp; language? · هل يمكن تعديل الألوان واللغة؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans">Yes — every single design can be customised in <strong>100% Arabic, 100% English, or Bilingual</strong>, with your wedding's exact color palette and metallic finish.
-          <span class="ar-line">نعم، كل تصميم متاح بالعربية أو الإنجليزية أو اللغتين معاً وبنفس ألوان ديكور فرحكم.</span>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary><span>Can I pick my own song or go silent? · هل يمكن اختيار أغنيتنا أو بدون صوت؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans">Choose from our curated Arabic &amp; international wedding tracks, send us <strong>any special song</strong>, or make any invitation <strong>strictly silent</strong>.
-          <span class="ar-line">تقدر تختار من مكتبتنا، أو تبعت لنا أي أغنية خاصة بيكم، أو تطلب الدعوة صامتة تماماً بدون صوت.</span>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary><span>How long does my link stay active? · كم مدة بقاء الرابط فعالاً؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans">Your private link stays live throughout your wedding countdown plus <strong>3 full months after your event</strong> (extendable anytime).
-          <span class="ar-line">يظل الرابط شغالاً طوال الفترة قبل الفرح بالإضافة إلى 3 شهور كاملة بعد المناسبة مع إمكانية التمديد.</span>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary><span>Are QR guest photos &amp; voices private? · هل صور ورسائل الضيوف سرية؟</span><span class="faq-plus">+</span></summary>
-        <div class="faq-ans"><strong>100% private.</strong> Each wedding gets an isolated, write-only Google Drive folder shared exclusively with the Groom &amp; Bride — guests can upload but never view others' photos.
-          <span class="ar-line">سرية 100%: لكل فرح فولدر Google Drive معزول ومقفول على إيميلات العروسين فقط — الضيف يرفع فقط ولا يمكنه رؤية صور أي ضيف آخر.</span>
-        </div>
-      </details>
+  <!-- 6. CLOSING WHATSAPP INVITATION PAVILION -->
+  <section class="section tight">
+    <div class="container">
+      <div class="cta-pavilion">
+        <div class="pill-tag">Start Your Story · ابدأ دعوة فرحكم</div>
+        <h2 class="h2">Ready to send your <em>invitation</em>?</h2>
+        <p class="lead" style="margin:8px auto 18px">Tell us your occasion, date and favourite design — we will personalise colors, music and every detail for you.</p>
+        <a id="ctaWa" class="btn btn-gold btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp →</a>
+      </div>
     </div>
-
-    <p class="occasions-note">Also crafted to order for <strong>Bridal Showers · Baby Showers · Birthdays · Graduation &amp; Private Celebrations</strong>.</p>
-  </div></section>
-
-  <!-- 6. CLOSING WHATSAPP CTA -->
-  <section class="section tight"><div class="container">
-    <div class="cta has-bg-art" style="text-align:center;border-radius:24px;padding:38px 22px">
-      <div class="bg-venue" style="background-image:url('assets/images/al-masa-capital.jpg')" aria-hidden="true"></div>
-      <svg class="bg-shape bg-shape-tl" style="width:160px;height:160px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><path d="M24 220V116C24 62 66 24 120 24C174 24 216 62 216 116V220" stroke="currentColor" stroke-width="1"/></svg>
-      <svg class="bg-shape bg-shape-br" style="width:160px;height:160px" viewBox="0 0 240 240" fill="none" aria-hidden="true"><circle cx="120" cy="120" r="82" stroke="currentColor" stroke-width="0.85"/><path d="M120 38L132 108L202 120L132 132L120 202L108 132L38 120L108 108Z" stroke="currentColor" stroke-width="0.85"/></svg>
-      <h2 class="h2">Ready to send your <em>invitation</em>?</h2>
-      <p class="lead" style="margin:10px auto 18px">Tell us your occasion, date and favourite design — we will personalise colors, music and every detail for you.</p>
-      <a id="ctaWa" class="btn btn-gold btn-lg btn-pill" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-  </div></section>
+  </section>
 </main>
 
 <script src="assets/data.js"></script><script src="assets/site.js"></script>
 <script>
   Shell.init('home');
-  const S = SITE, $ = id => document.getElementById(id), fmt = n => n.toLocaleString('en-US');
+  const S = SITE, $ = id => document.getElementById(id);
 
   /* ===== 0. APPLY LOCAL ADMIN DRAFT PREVIEW BEFORE RENDERING ===== */
   try {
@@ -1610,6 +1060,7 @@
       }
       return true;
     });
+    if ($('searchCountBadge')) $('searchCountBadge').textContent = `${list.length} Live`;
     $('designGrid').innerHTML = list.length
       ? list.map(Shell.cardMarkup).join('')
       : `<div class="empty-state full" style="grid-column:1/-1"><p class="muted">No designs match your search. Try another filter or keyword.</p></div>`;
@@ -1644,6 +1095,7 @@
   renderCatPills();
   renderDesigns();
   populateDesignSelects();
+
   let hasPhoto = false;
   const tryData = () => {
     const groom = $('cg').value.trim();
@@ -1689,7 +1141,7 @@
     $('phThumb').style.display = active ? 'block' : 'none';
     if (active && dataUrl) $('phThumb').src = dataUrl;
     $('phClear').style.display = active ? 'inline-flex' : 'none';
-    $('phTitle').textContent = active ? 'Couple portrait ready' : 'Add couple portrait';
+    $('phTitle').textContent = active ? 'Portrait ready' : 'Add couple portrait';
     $('phSub').textContent = active ? 'Applied live inside your invitation preview' : 'Tap or drop a photo — displayed inside your invitation';
     $('phPickLabel').textContent = active ? 'Change' : 'Choose Photo';
   }
@@ -1768,9 +1220,8 @@
   $('d').addEventListener('change', updateTry);
   if ($('song')) $('song').addEventListener('change', updateTry);
   if ($('th')) $('th').addEventListener('change', updateTry);
-  if ($('l')) $('l').addEventListener('change', updateTry);
   $('apply').addEventListener('click', updateTry);
-  ['cg','cb','dt','v','g','tb'].forEach(id => $(id) && $(id).addEventListener('keydown', e => e.key === 'Enter' && updateTry()));
+  ['cg','cb','dt','v','tb'].forEach(id => $(id) && $(id).addEventListener('keydown', e => e.key === 'Enter' && updateTry()));
   $('copy').addEventListener('click', async () => {
     const x = tryData(), s = S.SAMPLES.find(a => a.num === x.num);
     try { await navigator.clipboard.writeText(new URL(Shell.buildUrl(s.file, x), location.href).href); $('copy').textContent = '✓ Copied'; setTimeout(() => $('copy').textContent = 'Copy link', 2000); } catch (_) {}
@@ -1778,12 +1229,13 @@
   document.querySelector('.quick').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     const k = b.dataset.ex;
-    if (k === '1') { $('cg').value = 'Karim'; $('cb').value = 'Nour'; $('v').value = 'JW Marriott Mirage City, El Tagamoa'; if ($('tb')) $('tb').value = 'Table 7 · VIP'; }
+    if (k === '1') { $('cg').value = 'Karim'; $('cb').value = 'Nour'; $('v').value = 'Villa Belle Époque, Maadi'; if ($('tb')) $('tb').value = 'Table 04 · VIP'; }
     if (k === '2') { $('cg').value = 'يوسف'; $('cb').value = 'زينة'; $('v').value = 'قاعة الماسة الملكية، مدينة نصر'; if ($('tb')) $('tb').value = 'طاولة رقم ٥ • كبار الزوار'; }
     if (k === '3') { ['cg','cb','dt','v','tb'].forEach(id => $(id) && ($(id).value = '')); if ($('th')) $('th').value = ''; }
     updateTry();
   });
   updateTry();
+
   $('ctaWa').href = Shell.wa('Hello MEEM! I would like to order a digital invitation.');
   if ($('qrAddonWa')) $('qrAddonWa').href = Shell.wa('Hello MEEM! I would like to add the Live QR Guest Camera & Private Google Drive Memories Album to my invitation.');
   if ($('addonVoiceWa')) $('addonVoiceWa').href = Shell.wa('Hello MEEM! I would like to add the Voice & Written Wishes Guestbook add-on to my invitation.');

@@ -14,7 +14,7 @@
   } catch (_) {}
 
   const savedTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('meem_site_theme'));
-  const effectiveTheme = (savedTheme === 'rose-pearl' || savedTheme === 'ivory-editorial') ? savedTheme : 'ivory-editorial';
+  const effectiveTheme = (savedTheme === 'rose-pearl' || savedTheme === 'daylight-pearl') ? savedTheme : 'daylight-pearl';
   document.documentElement.dataset.theme = effectiveTheme;
   if (typeof localStorage !== 'undefined') localStorage.setItem('meem_site_theme', effectiveTheme);
 
@@ -39,7 +39,6 @@
     const colTag = mb && mb.collection ? `<span class="badge">${mb.collection}</span>` : '';
     const paletteHtml = mb && mb.palette ? `
       <div class="card-swatches" aria-label="Color palette">${mb.palette.map(c => `<span style="background:${c}" title="${c}"></span>`).join('')}</div>` : '';
-    const inspLine = mb && mb.inspiration ? `<p class="card-insp">${mb.inspiration}</p>` : '';
     const soundLine = mb && mb.soundtrack ? `<div class="card-spec-row"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>${mb.soundtrack}</span></div>` : '';
     return `<article class="sample-card" data-aes="${aes}">
       <div class="card-thumb ${hasImg ? 'has-art' : ''}" style="background:${s.bg};color:${tc}">
@@ -56,7 +55,6 @@
           ${paletteHtml}
         </div>
         <p class="card-desc">${s.desc}</p>
-        ${inspLine}
         <div class="card-specs">
           <div class="card-spec-row"><svg class="ic-svg ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${s.venue}</span></div>
           ${soundLine}
@@ -74,7 +72,7 @@
       const amb = document.createElement('div');
       amb.className = 'liquid-ambient';
       amb.setAttribute('aria-hidden', 'true');
-      amb.innerHTML = '<div class="liquid-orb o1"></div><div class="liquid-orb o2"></div><div class="liquid-orb o3"></div>';
+      amb.innerHTML = '<div class="liquid-palace"></div><div class="liquid-tint"></div><div class="liquid-orb o1"></div><div class="liquid-orb o2"></div><div class="liquid-orb o3"></div>';
       document.body.prepend(amb);
     }
 
