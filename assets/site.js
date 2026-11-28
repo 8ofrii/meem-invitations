@@ -61,8 +61,9 @@
         </div>
         <div class="card-actions">
           <button type="button" class="btn btn-gold" onclick="Shell.preview('${s.num}')">Experience →</button>
-          <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Customise</button>
+          <button type="button" class="btn btn-ghost" onclick="Shell.tryDesign('${s.num}')">Try Names</button>
         </div>
+        <button type="button" class="card-addons-hint" onclick="Shell.pickWithAddons('${s.num}')">✦ + Add-Ons (QR Camera · VIP Pass · Voice) ↓</button>
       </div>
     </article>`;
   }
@@ -82,7 +83,7 @@
       ['home', isHome ? '#home' : '/', 'Home'],
       ['designs', `${prefix}#designs`, 'Collections'],
       ['try-it-live', `${prefix}#try-it-live`, 'Try it live'],
-      ['journey', `${prefix}#journey`, 'Add-Ons'],
+      ['journey', `${prefix}#journey`, 'Add-Ons ✦'],
       ['faq', `${prefix}#faq`, 'FAQ']
     ];
 
@@ -143,6 +144,7 @@
             <div class="mb-row"><span>Customisation</span><strong id="mbCustom"></strong></div>
           </div>
           <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
+          <button type="button" id="modalAddonsBtn" class="btn btn-ghost" style="border-color:rgba(197,160,89,0.65);color:#F4E5C2;">✦ Pick Add-Ons with This Design ↓</button>
           <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a>
         </div>
       </div>`;
@@ -205,6 +207,30 @@
     }
   }
 
+  function pickWithAddons(num) {
+    const modal = document.getElementById('preview-modal');
+    if (modal && modal.classList.contains('is-open')) {
+      modal.classList.remove('is-open');
+      const pf = document.getElementById('previewFrame');
+      if (pf) pf.src = 'about:blank';
+    }
+    const s = S.SAMPLES.find((x) => x.num === num);
+    const bDes = document.getElementById('bDesign');
+    const target = document.getElementById('journey') || document.getElementById('build-experience');
+    if (bDes && s) {
+      const val = `#${s.num} — ${s.title}`;
+      if (Array.from(bDes.options).some((o) => o.value === val)) {
+        bDes.value = val;
+        bDes.dispatchEvent(new Event('change'));
+      }
+    }
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      location.href = `/pricing?design=${encodeURIComponent(num)}`;
+    }
+  }
+
   function preview(num, extra) {
     const s = S.SAMPLES.find((x) => x.num === num);
     if (!s) return;
@@ -230,6 +256,8 @@
     const cuEl = document.getElementById('mbCustom'); if (cuEl) cuEl.textContent = mb.customization || 'Colors · Music · AR / EN · Photo · QR';
     document.getElementById('previewFrame').src = buildUrl(s.file, extra, true);
     document.getElementById('modalFull').href = buildUrl(s.file, extra);
+    const maBtn = document.getElementById('modalAddonsBtn');
+    if (maBtn) maBtn.onclick = () => pickWithAddons(s.num);
     document.getElementById('modalWa').href = wa(`Hello! I love design #${s.num} (${s.title})${extra && extra.couple ? ' for ' + extra.couple : ''}.`);
     document.getElementById('preview-modal').classList.add('is-open');
   }
@@ -245,5 +273,5 @@
     document.documentElement.dataset.theme = themeId;
   }
 
-  window.Shell = { init: injectShell, cardMarkup, preview, buildUrl, wa, setLogo, setTheme, tryDesign };
+  window.Shell = { init: injectShell, cardMarkup, preview, buildUrl, wa, setLogo, setTheme, tryDesign, pickWithAddons };
 })();

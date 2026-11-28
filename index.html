@@ -104,6 +104,156 @@
     font-size: 10px; display: inline-grid; place-items: center;
   }
 
+  /* Add-Ons Discovery Touchpoints (Hero Chips, Card Hint, Bridge Banner & Floating Pill) */
+  .hero-addons-bar {
+    margin: 16px auto 0;
+    max-width: 780px;
+    padding: 10px 14px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.78), rgba(251,245,233,0.82));
+    border: 1px solid rgba(197, 155, 78, 0.45);
+    box-shadow: inset 0 1px 2px #FFFFFF, 0 10px 24px rgba(48, 36, 20, 0.06);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+  .hero-addons-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--emerald);
+    letter-spacing: 0.04em;
+    margin-right: 2px;
+  }
+  .hero-addon-chip {
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--text);
+    font: 600 11px inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 1px 1px #fff;
+  }
+  .hero-addon-chip:hover {
+    border-color: var(--rim-gold);
+    background: #FFFFFF;
+    color: var(--emerald);
+    transform: translateY(-1px);
+  }
+  .hero-addon-chip.cta {
+    background: linear-gradient(135deg, #1A4B3C, #0D3B2E);
+    color: #F4E5C2;
+    border-color: rgba(197, 155, 78, 0.6);
+  }
+  .card-addons-hint {
+    margin-top: 8px;
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px dashed rgba(197, 155, 78, 0.52);
+    background: rgba(255, 255, 255, 0.56);
+    color: var(--emerald);
+    font: 600 11px inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .card-addons-hint:hover {
+    background: rgba(255, 255, 255, 0.92);
+    border-style: solid;
+    border-color: var(--rim-gold);
+  }
+  .addons-bridge-banner {
+    margin-top: 26px;
+    padding: 18px 22px;
+    border-radius: 24px;
+    background: var(--glass-strong);
+    backdrop-filter: blur(26px) saturate(180%);
+    -webkit-backdrop-filter: blur(26px) saturate(180%);
+    border: 1.5px solid var(--rim-gold);
+    box-shadow: inset 0 2px 4px #FFFFFF, 0 16px 38px rgba(48, 36, 20, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .addons-bridge-txt strong {
+    display: block;
+    font-size: 15px;
+    color: var(--emerald);
+    margin-bottom: 3px;
+  }
+  .addons-bridge-txt span {
+    display: block;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .addons-bridge-txt .ar {
+    font-family: 'Amiri', serif;
+    font-size: 14.5px;
+    color: var(--gold-2);
+    margin-top: 2px;
+  }
+  .try-addons-cta {
+    margin-top: 12px;
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(197, 155, 78, 0.58);
+    background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(250,242,226,0.92));
+    color: var(--emerald);
+    font: 700 12px inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-shadow: inset 0 1px 2px #FFFFFF, 0 8px 20px rgba(48, 36, 20, 0.06);
+    transition: all 0.2s ease;
+  }
+  .try-addons-cta:hover {
+    border-color: var(--emerald);
+    transform: translateY(-1px);
+  }
+  .floating-addons-cue {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 90;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: rgba(13, 59, 46, 0.92);
+    color: #FFFDF9;
+    border: 1.5px solid rgba(232, 202, 140, 0.78);
+    box-shadow: 0 14px 34px rgba(13, 59, 46, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    font: 700 12px 'Plus Jakarta Sans', sans-serif;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+  .floating-addons-cue em {
+    font-style: normal;
+    font-family: 'Amiri', serif;
+    font-size: 13.5px;
+    color: #F4E5C2;
+  }
+  .floating-addons-cue.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(18px);
+  }
+
   /* ===== 2. ARCHED DAYLIGHT PEARL CATEGORY FILTER & RECESSED SEARCH ===== */
   .filter-bar {
     display: flex;
@@ -522,6 +672,15 @@
     .stat b { font-size: 16px; }
     .hero .actions .btn { width: 100%; }
     .hero-emblem-wrap { width: 70px; height: 70px; }
+    .try-addons-cta { flex-direction: column; text-align: center; gap: 4px; }
+    .addons-bridge-banner .btn { width: 100%; }
+    .floating-addons-cue {
+      max-width: calc(100vw - 24px);
+      padding: 8px 14px;
+      font-size: 11px;
+      gap: 6px;
+    }
+    .floating-addons-cue span { overflow: hidden; text-overflow: ellipsis; }
   }
 </style>
 </head>
@@ -541,6 +700,7 @@
         <div class="actions">
           <a class="btn btn-gold btn-lg btn-pill" href="#designs">Explore Collections</a>
           <a class="btn btn-ghost btn-lg btn-pill" href="#try-it-live">Try With Your Names</a>
+          <a class="btn btn-ghost btn-lg btn-pill" href="#journey" style="border-color:rgba(197,155,78,0.6);">✦ Add-Ons &amp; Customise ↓</a>
         </div>
         <div class="stats">
           <div class="stat"><b id="statDesigns">41</b><span>Curated designs</span></div>
@@ -551,8 +711,17 @@
         <div class="mini-steps" aria-label="How it works">
           <span><b>1</b> Pick a style</span>
           <span><b>2</b> Preview with your names</span>
-          <span><b>3</b> We personalise it</span>
+          <span><b>3</b> <a href="#journey" style="color:var(--emerald);text-decoration:underline;text-underline-offset:3px;">Choose optional Add-Ons ↓</a></span>
           <span><b>4</b> Share on WhatsApp</span>
+        </div>
+        <div class="hero-addons-bar" aria-label="Available Wedding Add-Ons">
+          <span class="hero-addons-lbl">✦ Signature Add-Ons Below:</span>
+          <button type="button" class="hero-addon-chip" data-jump-addon="qrcam">📸 QR Guest Camera</button>
+          <button type="button" class="hero-addon-chip" data-jump-addon="seating">🎫 VIP Gate QR &amp; Table</button>
+          <button type="button" class="hero-addon-chip" data-jump-addon="voice">🎙️ Voice Guestbook</button>
+          <button type="button" class="hero-addon-chip" data-jump-addon="reels">🎬 Vertical Reels</button>
+          <button type="button" class="hero-addon-chip" data-jump-addon="suite">💌 Save the Date</button>
+          <a class="hero-addon-chip cta" href="#journey">See All Add-Ons ↓</a>
         </div>
       </div>
     </div>
@@ -577,6 +746,16 @@
       </div>
 
       <div class="gallery-grid" id="designGrid"></div>
+
+      <!-- Add-Ons Discovery Callout right after the gallery -->
+      <div class="addons-bridge-banner">
+        <div class="addons-bridge-txt">
+          <strong>✦ Upgrade Any Invitation With Optional Wedding Add-Ons Below</strong>
+          <span>Add a private Google Drive QR Guest Camera on tables, VIP Gate QR Passes, Voice Guestbook, Bilingual Links, or Live RSVP Sheet.</span>
+          <span class="ar">متاح بالأسفل إضافة كاميرا QR سرية لصور الضيوف، باركود دخول البوابات، دفتر تهاني صوتي، وشيت تنظيم الحضور لأي تصميم!</span>
+        </div>
+        <a class="btn btn-gold btn-pill" href="#journey">Explore Add-Ons &amp; Customise ↓</a>
+      </div>
     </div>
   </section>
 
@@ -657,6 +836,11 @@
             </div>
           </form>
 
+          <button type="button" class="try-addons-cta" id="tryToAddonsBtn">
+            <span>✦ Want QR Guest Camera, VIP Gate Passes or Voice Guestbook with this design?</span>
+            <span style="color:var(--gold-2);white-space:nowrap;">Pick Add-Ons ↓</span>
+          </button>
+
           <div class="studio-tip">
             ✓ Tap the seal or cover inside the phone to experience motion &amp; sound · Custom colors &amp; 100% Arabic, English or Bilingual available on every design.
           </div>
@@ -691,7 +875,7 @@
           <p class="addon-mini-ar">كارت QR بدون تطبيق يحفظ صور وفيديوهات الضيوف في Drive سري للعروسين.</p>
           <div class="addon-mini-actions">
             <button type="button" class="addon-toggle-btn" data-toggle-addon="qrcam">+ Add to Customise</button>
-            <a class="addon-mini-cta" id="qrAddonWa" target="_blank" rel="noopener">Standalone ↗</a>
+            <a class="addon-mini-cta" href="qr-memories.html" target="_blank">Live Demo ↗</a>
           </div>
         </div>
 
@@ -704,7 +888,7 @@
           <p class="addon-mini-ar">باركود دخول خاص ورقم الطاولة يظهر على موبايل كل ضيف عند البوابة.</p>
           <div class="addon-mini-actions">
             <button type="button" class="addon-toggle-btn" data-toggle-addon="seating">+ Add to Customise</button>
-            <a class="addon-mini-cta" id="addonSeatingWa" target="_blank" rel="noopener">Ask ↗</a>
+            <a class="addon-mini-cta" href="vip-pass.html" target="_blank">Sample Pass ↗</a>
           </div>
         </div>
 
@@ -717,7 +901,7 @@
           <p class="addon-mini-ar">دفتر تهاني صوتي ومكتوب يُحفظ بسرية للعروسين للأبد.</p>
           <div class="addon-mini-actions">
             <button type="button" class="addon-toggle-btn" data-toggle-addon="voice">+ Add to Customise</button>
-            <a class="addon-mini-cta" id="addonVoiceWa" target="_blank" rel="noopener">Ask ↗</a>
+            <a class="addon-mini-cta" href="voice-guestbook.html" target="_blank">Live Demo ↗</a>
           </div>
         </div>
 
@@ -730,7 +914,7 @@
           <p class="addon-mini-ar">فيديو دعوة ريلز عمودي جاهز للواتساب والإنستجرام بأغنيتكم.</p>
           <div class="addon-mini-actions">
             <button type="button" class="addon-toggle-btn" data-toggle-addon="reels">+ Add to Customise</button>
-            <a class="addon-mini-cta" id="addonReelsWa" target="_blank" rel="noopener">Ask ↗</a>
+            <a class="addon-mini-cta" href="keepsake-card.html" target="_blank">Story Card ↗</a>
           </div>
         </div>
       </div>
@@ -878,6 +1062,11 @@
     </div>
   </section>
 </main>
+
+<a href="#journey" class="floating-addons-cue" id="floatingAddonsCue">
+  <span>✦ Explore Add-Ons (QR Camera · VIP Pass · Voice)</span>
+  <em>الإضافات بالأسفل ↓</em>
+</a>
 
 <script src="assets/data.js"></script><script src="assets/site.js"></script>
 <script>
@@ -1218,6 +1407,35 @@
       }
     });
   });
+  document.querySelectorAll('button[data-jump-addon]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const key = chip.dataset.jumpAddon;
+      const cb = document.querySelector(`#expOpts input[data-key="${key}"]`);
+      if (cb) { cb.checked = true; updateBuilder(); }
+      const target = $('journey') || $('build-experience');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  if ($('tryToAddonsBtn')) {
+    $('tryToAddonsBtn').addEventListener('click', () => {
+      if (window.Shell && Shell.pickWithAddons && $('d')) {
+        Shell.pickWithAddons($('d').value);
+      } else if ($('journey')) {
+        $('journey').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+  const floatCue = $('floatingAddonsCue');
+  const journeySec = $('journey');
+  if (floatCue && journeySec) {
+    const syncCue = () => {
+      const rect = journeySec.getBoundingClientRect();
+      const reachedAddons = rect.top < window.innerHeight * 0.72;
+      floatCue.classList.toggle('is-hidden', reachedAddons);
+    };
+    window.addEventListener('scroll', syncCue, { passive: true });
+    syncCue();
+  }
   if ($('expOpts')) $('expOpts').addEventListener('change', updateBuilder);
   if ($('bDesign')) $('bDesign').addEventListener('change', updateBuilder);
   if ($('bEvent')) $('bEvent').addEventListener('change', updateBuilder);

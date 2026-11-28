@@ -558,7 +558,7 @@ section[id] { scroll-margin-top: 90px; }
   .close-modal { top: 14px; right: 16px; padding: 8px 16px; font-size: 12px; }
   .modal-side { max-width: 100%; width: 100%; flex-direction: row; flex-wrap: nowrap; gap: 8px; justify-content: center; align-items: center; }
   .modal-side h3, .modal-side p, .modal-side .tip, .modal-side .moodboard-card, .modal-side .pill-tag { display: none; }
-  .modal-side .btn { flex: 1; min-width: 0; padding: 12px 14px; font-size: 12.5px; text-align: center; }
+  .modal-side .btn { flex: 1 1 auto; min-width: 110px; padding: 11px 12px; font-size: 12px; text-align: center; }
 }
 @media (max-width: 600px) {
   .topbar { padding: 8px 10px 0; }
@@ -597,4 +597,21 @@ section[id] { scroll-margin-top: 90px; }
   font-feature-settings: "lnum" 1, "tnum" 1 !important;
 }
 .serif, .h1, .h2 { font-variant-numeric: lining-nums tabular-nums; }
+.card-addons-hint {
+  margin-top: 8px;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px dashed rgba(197, 155, 78, 0.52);
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--emerald);
+  font: 600 11px inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.card-addons-hint:hover {
+  background: rgba(255, 255, 255, 0.92);
+  border-style: solid;
+  border-color: var(--rim-gold);
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
