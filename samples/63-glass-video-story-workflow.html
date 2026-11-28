@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarek &amp; Dalida — Video Reel · 4-Stage Glass Story Workflow | MEEM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0D0A08; display: flex; align-items: center; justify-content: center; padding: 18px 12px 58px;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .reel-frame {
+      position: relative; width: min(378px, 100%); height: 656px; border-radius: 36px;
+      overflow: hidden; border: 1.5px solid rgba(255,244,224,0.48);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.75); color: #FFFBF5;
+      display: flex; flex-direction: column; justify-content: space-between; padding: 18px 18px 22px;
+      cursor: pointer;
+    }
+    .reel-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .reel-frame::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(16,10,6,0.46) 0%, rgba(16,10,6,0.16) 42%, rgba(16,10,6,0.76) 100%);
+      pointer-events: none;
+    }
+    .reel-top, .reel-bottom { position: relative; z-index: 3; }
+    .story-bars { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 10px; }
+    .s-bar { height: 3.5px; border-radius: 99px; background: rgba(255,255,255,0.28); overflow: hidden; cursor: pointer; }
+    .s-fill { height: 100%; width: 0%; background: #FFF8EB; transition: width 0.1s linear; }
+
+    .workflow-stage-glass {
+      border-radius: 28px; padding: 22px 20px; text-align: center;
+      background: linear-gradient(165deg, rgba(255,248,236,0.30) 0%, rgba(42,28,18,0.58) 100%);
+      backdrop-filter: blur(26px) saturate(175%); -webkit-backdrop-filter: blur(26px) saturate(175%);
+      border: 1.5px solid rgba(255,246,228,0.58);
+      box-shadow: inset 0 2px 3px rgba(255,255,255,0.75), 0 24px 54px rgba(0,0,0,0.5);
+      animation: stageIn .48s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes stageIn { from { opacity: 0; transform: translateY(18px) scale(0.97); } to { opacity: 1; transform: none; } }
+    .stage-pane { display: none; }
+    .stage-pane.active { display: block; }
+    .wf-node {
+      display: flex; align-items: center; gap: 10px; text-align: left; padding: 8px 11px;
+      border-radius: 14px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,245,228,0.30); margin-top: 7px;
+    }
+    .wf-dot { width: 9px; height: 9px; border-radius: 50%; background: #F8DFB6; box-shadow: 0 0 10px #F8DFB6; flex-shrink: 0; }
+    .jump-btn { padding: 5px 10px; border-radius: 99px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.36); color: #fff; font-size: 10px; font-weight: 600; cursor: pointer; }
+    .jump-btn.active { background: #FFF8EB; color: #2B1D12; border-color: #FFF8EB; }
+    .inp { width: 100%; padding: 8px 11px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.36); background: rgba(255,255,255,0.14); color: #fff; font: inherit; font-size: 12px; outline: none; margin-bottom: 7px; }
+  </style>
+</head>
+<body data-music-mood="young_and_beautiful" data-music-src="../assets/audio/young-and-beautiful.mp3" data-particles="gold-dust">
+  <section class="reel-frame" id="reelRoot">
+    <video autoplay muted loop playsinline poster="../assets/images/villa-belle-epoque-maadi.jpg" src="../assets/video/glass-couple-palace-reel.mp4"></video>
+
+    <div class="reel-top">
+      <div class="story-bars" id="bars">
+        <div class="s-bar" data-idx="0"><div class="s-fill"></div></div>
+        <div class="s-bar" data-idx="1"><div class="s-fill"></div></div>
+        <div class="s-bar" data-idx="2"><div class="s-fill"></div></div>
+        <div class="s-bar" data-idx="3"><div class="s-fill"></div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:10.5px;">
+        <span style="letter-spacing:.16em;text-transform:uppercase;opacity:.92;">▶ Tap for Sound · Story Workflow</span>
+        <button type="button" id="togglePlay" style="padding:4px 11px;border-radius:99px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.45);color:#fff;font-size:10px;cursor:pointer;">⏸ Pause</button>
+      </div>
+    </div>
+
+    <div class="reel-bottom">
+      <div class="workflow-stage-glass" id="stageCard">
+        <div class="stage-pane active" data-pane="0">
+          <div style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#F8DFB6;">Step 01 · The Couple</div>
+          <div data-guest-name data-guest-prefix="Welcome, " style="display:none;margin-top:3px;font-size:12.5px;color:#F8DFB6;"></div>
+          <h1 class="serif" style="font-size:44px;line-height:1.05;margin:6px 0;" data-couple-title>Tarek &amp; Dalida</h1>
+          <p class="serif" style="font-style:italic;font-size:16.5px;opacity:.92;">invite you to witness the beginning of forever</p>
+        </div>
+
+        <div class="stage-pane" data-pane="1">
+          <div style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#F8DFB6;">Step 02 · Date &amp; Countdown</div>
+          <div class="serif" style="font-size:32px;margin:5px 0;" data-event-date>Friday · 22 Nov 2027</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;" data-countdown="2027-11-22T20:00:00+02:00">
+            <div style="padding:6px 4px;border-radius:12px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,245,228,0.34);"><b data-cd="days">48</b><div style="font-size:8.5px;opacity:.78;">DAYS</div></div>
+            <div style="padding:6px 4px;border-radius:12px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,245,228,0.34);"><b data-cd="hours">14</b><div style="font-size:8.5px;opacity:.78;">HRS</div></div>
+            <div style="padding:6px 4px;border-radius:12px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,245,228,0.34);"><b data-cd="minutes">32</b><div style="font-size:8.5px;opacity:.78;">MIN</div></div>
+            <div style="padding:6px 4px;border-radius:12px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,245,228,0.34);"><b data-cd="seconds">19</b><div style="font-size:8.5px;opacity:.78;">SEC</div></div>
+          </div>
+        </div>
+
+        <div class="stage-pane" data-pane="2">
+          <div style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#F8DFB6;margin-bottom:4px;">Step 03 · Evening Workflow</div>
+          <div class="wf-node"><span class="wf-dot"></span><div><b style="font-size:11.5px;">7:30 PM · Courtyard Arrival</b><div style="font-size:10px;opacity:.8;">Champagne &amp; strings welcome</div></div></div>
+          <div class="wf-node"><span class="wf-dot"></span><div><b style="font-size:11.5px;">8:30 PM · Grand Zaffa &amp; Rings</b><div style="font-size:10px;opacity:.8;">Candlelit arch entrance</div></div></div>
+          <div class="wf-node"><span class="wf-dot"></span><div><b style="font-size:11.5px;">10:00 PM · Gala Dinner</b><div style="font-size:10px;opacity:.8;">Celebration under the stars</div></div></div>
+        </div>
+
+        <div class="stage-pane" data-pane="3">
+          <div style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#F8DFB6;">Step 04 · Venue &amp; RSVP</div>
+          <div class="serif" style="font-size:24px;margin:4px 0;" data-venue-name>The St. Regis Cairo</div>
+          <div style="font-size:11px;opacity:.85;margin-bottom:9px;" data-table-seat>VIP Table 04 · Formal Evening</div>
+          <form data-rsvp-form data-couple="Tarek & Dalida" data-lang="en" data-result-target="rsvp-res">
+            <input class="inp" name="guestName" required placeholder="Your Full Name for RSVP" />
+            <div style="display:grid;grid-template-columns:1.3fr 0.9fr;gap:7px;">
+              <button type="submit" style="padding:9px 14px;border-radius:999px;background:#FFF8EB;color:#2B1D12;font-weight:700;font-size:11px;border:0;cursor:pointer;">Confirm RSVP</button>
+              <a href="https://maps.google.com/?q=The+St.+Regis+Cairo" target="_blank" rel="noopener" style="padding:9px 12px;border-radius:999px;background:rgba(255,255,255,0.16);color:#fff;font-size:11px;font-weight:600;border:1px solid rgba(255,255,255,0.42);text-decoration:none;display:inline-block;">Map ↗</a>
+            </div>
+          </form>
+          <div id="rsvp-res" style="display:none;margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:10px;" id="jumpRow">
+        <button type="button" class="jump-btn active" onclick="goStage(0)">1 · Couple</button>
+        <button type="button" class="jump-btn" onclick="goStage(1)">2 · Date</button>
+        <button type="button" class="jump-btn" onclick="goStage(2)">3 · Flow</button>
+        <button type="button" class="jump-btn" onclick="goStage(3)">4 · RSVP</button>
+      </div>
+    </div>
+  </section>
+  <script src="../assets/shared.js"></script>
+  <script>
+    document.getElementById('reelRoot').addEventListener('click', function () {
+      try { WeddingSound.startMusic('young_and_beautiful'); } catch (_) {}
+    }, { once: true });
+    var cur = 0, prog = 0, playing = true;
+    var panes = document.querySelectorAll('.stage-pane');
+    var fills = document.querySelectorAll('.s-fill');
+    var jBtns = document.querySelectorAll('.jump-btn');
+    function renderStage() {
+      panes.forEach(function (p, i) { p.classList.toggle('active', i === cur); });
+      jBtns.forEach(function (b, i) { b.classList.toggle('active', i === cur); });
+      var card = document.getElementById('stageCard');
+      card.style.animation = 'none'; void card.offsetWidth; card.style.animation = '';
+    }
+    function goStage(idx) { cur = idx; prog = 0; renderStage(); updateBars(); }
+    function updateBars() {
+      fills.forEach(function (f, i) { f.style.width = i < cur ? '100%' : (i === cur ? prog + '%' : '0%'); });
+    }
+    setInterval(function () {
+      if (!playing) return;
+      prog += 2.2;
+      if (prog >= 100) { cur = (cur + 1) % 4; prog = 0; renderStage(); }
+      updateBars();
+    }, 100);
+    document.getElementById('togglePlay').addEventListener('click', function (e) {
+      e.stopPropagation();
+      playing = !playing;
+      this.textContent = playing ? '⏸ Pause' : '▶ Play';
+    });
+  </script>
+</body></html>

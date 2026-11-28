@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youssef &amp; Lara — Blooming Peony &amp; Kinetic Levitating Glass | MEEM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #E8D6DC; display: flex; align-items: center; justify-content: center;
+      padding: 28px 14px 68px; position: relative; overflow-x: hidden; cursor: pointer;
+    }
+    .bg-peony {
+      position: fixed; inset: -6%;
+      background: url('../assets/images/dusty-rose-floral.jpg') center/cover no-repeat;
+      filter: brightness(0.88) saturate(1.14);
+      animation: bgFloat 16s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes bgFloat { from { transform: scale(1) rotate(0deg); } to { transform: scale(1.07) rotate(0.8deg); } }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    .kinetic-peony-card {
+      position: relative; z-index: 3; width: min(374px, 100%);
+      border-radius: 42px; padding: 34px 24px 26px; text-align: center; color: #3D1F28;
+      background: linear-gradient(165deg, rgba(255,250,252,0.75) 0%, rgba(252,234,240,0.60) 52%, rgba(245,218,226,0.75) 100%);
+      backdrop-filter: blur(22px) saturate(175%); -webkit-backdrop-filter: blur(22px) saturate(175%);
+      border: 1.5px solid rgba(255,255,255,0.95);
+      box-shadow: inset 0 2px 6px #fff, 0 32px 72px rgba(48,16,28,0.24);
+      overflow: hidden;
+      animation: levitate 5.4s ease-in-out infinite;
+    }
+    @keyframes levitate { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .kinetic-peony-card::before {
+      content: ''; position: absolute; inset: 8px; border-radius: 34px;
+      border: 1px solid rgba(186,118,138,0.34); pointer-events: none; z-index: 4;
+    }
+    .peony-corners {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: url('../assets/images/dusty-rose-floral.jpg') center/cover no-repeat;
+      mix-blend-mode: multiply; opacity: 0.66;
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 40%, #000 86%);
+      mask-image: radial-gradient(circle at 50% 50%, transparent 40%, #000 86%);
+    }
+    .kinetic-peony-card > *:not(.peony-corners) { position: relative; z-index: 2; }
+    .cameo-motion {
+      width: 146px; height: 146px; margin: 12px auto; padding: 5px; border-radius: 50%;
+      background: rgba(255,255,255,0.88); border: 1.5px solid #fff;
+      box-shadow: 0 12px 28px rgba(84,32,48,0.18); overflow: hidden;
+    }
+    .cameo-motion img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; animation: slowZoom 12s ease-in-out infinite alternate; }
+    @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+    .motion-tabs { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; padding: 5px; border-radius: 999px; background: rgba(255,255,255,0.60); border: 1px solid rgba(186,118,138,0.32); margin-top: 12px; }
+    .m-tab { padding: 7px 4px; border-radius: 999px; font-size: 10.5px; font-weight: 600; cursor: pointer; transition: all .25s ease; }
+    .m-tab.active { background: #6E3044; color: #FFF8FA; box-shadow: 0 6px 14px rgba(110,48,68,0.28); }
+    .btn-berry { width: 100%; padding: 11px 16px; border-radius: 999px; background: linear-gradient(135deg,#6E3044,#8F445C); color: #fff; font: 700 11px inherit; letter-spacing: .07em; text-transform: uppercase; border: 0; cursor: pointer; }
+    .btn-outline { width: 100%; padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,0.72); color: #5C2C3C; font: 600 11px inherit; border: 1px solid rgba(186,118,138,0.42); text-decoration: none; display: inline-block; }
+    .inp { width: 100%; padding: 9px 12px; border-radius: 11px; border: 1px solid rgba(143,68,92,0.34); background: rgba(255,255,255,0.80); color: #3D1F28; font: inherit; font-size: 12.5px; outline: none; margin-bottom: 8px; }
+  </style>
+</head>
+<body data-music-mood="bridgerton_beckman" data-music-src="../assets/audio/bridgerton-beckman.mp3" data-particles="petals">
+  <div class="bg-peony"></div>
+  <article class="kinetic-peony-card" id="peonyCard">
+    <div class="peony-corners"></div>
+    <div style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#824357;">Blooming Peonies · Kinetic Glass</div>
+    <div data-guest-name data-guest-prefix="Dearest " style="display:none;margin-top:3px;font-size:13px;color:#824357;"></div>
+    <h1 class="serif" style="font-size:44px;line-height:1.05;font-weight:600;margin-top:5px;" data-couple-title>Youssef &amp; Lara</h1>
+    <p class="serif" style="font-style:italic;font-size:16px;color:#6E3B4B;margin-top:2px;">a celebration of love in motion</p>
+
+    <div class="cameo-motion"><img data-couple-photo src="../assets/images/editorial-couple.jpg" alt="Youssef & Lara" /></div>
+
+    <div style="padding:10px 14px;border-radius:16px;background:rgba(255,255,255,0.66);border:1px solid rgba(186,118,138,0.32);">
+      <div class="serif" style="font-size:20px;font-weight:600;" data-venue-name>Four Seasons Nile Plaza</div>
+      <div style="font-size:11px;color:#6E3B4B;"><span data-event-date>Saturday · 14 Dec 2027 · 7:30 PM</span> · <span data-table-seat>Rose Ballroom</span></div>
+    </div>
+
+    <div class="motion-tabs" id="mTabs">
+      <div class="m-tab active" data-txt="7:30 PM · Violin strings &amp; rosewater welcome.">Welcome</div>
+      <div class="m-tab" data-txt="8:30 PM · Floral aisle entrance &amp; first dance.">First Dance</div>
+      <div class="m-tab" data-txt="10:00 PM · Candlelit gala dinner &amp; celebration.">Dinner</div>
+    </div>
+    <div id="mTabTxt" style="font-size:11.5px;color:#5C2C3C;margin:9px 0 12px;">7:30 PM · Violin strings &amp; rosewater welcome.</div>
+
+    <form data-rsvp-form data-couple="Youssef & Lara" data-lang="en" data-result-target="rsvp-res">
+      <input class="inp" name="guestName" required placeholder="Your Full Name for RSVP" />
+      <div style="display:grid;grid-template-columns:1.25fr 0.95fr;gap:8px;">
+        <button type="submit" class="btn-berry">Confirm RSVP</button>
+        <a class="btn-outline" href="https://maps.google.com/?q=Four+Seasons+Hotel+Cairo+at+Nile+Plaza" target="_blank" rel="noopener">Garden Map ↗</a>
+      </div>
+    </form>
+    <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+  </article>
+  <script src="../assets/shared.js"></script>
+  <script>
+    document.body.addEventListener('click', function () {
+      try { WeddingSound.startMusic('bridgerton_beckman'); } catch (_) {}
+    }, { once: true });
+    document.getElementById('mTabs').addEventListener('click', function (e) {
+      var t = e.target.closest('.m-tab'); if (!t) return;
+      document.querySelectorAll('.m-tab').forEach(function (el) { el.classList.remove('active'); });
+      t.classList.add('active');
+      document.getElementById('mTabTxt').textContent = t.dataset.txt;
+    });
+  </script>
+</body></html>

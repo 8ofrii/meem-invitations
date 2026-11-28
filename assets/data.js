@@ -53,6 +53,14 @@ window.SITE = {
       "blurb": "Refined Arabic calligraphy, sliding mashrabiya lattice, Nile palaces, interactive seating and joyful Arabic heritage."
     },
     {
+      "id": "glass",
+      "title": "Liquid Glass",
+      "short": "Liquid Glass",
+      "ar": "زجاج كريستال",
+      "icon": "<svg class=\"ic-svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3h12l4 6-10 12L2 9l4-6z\"/><path d=\"M2 9h20\"/></svg>",
+      "blurb": "Frosted crystal arches, watercolor floral vellum glass, floating kinetic motion and live video data-workflow invitations."
+    },
+    {
       "id": "motion",
       "title": "Video & Reels",
       "short": "Video & Reels",
@@ -1419,6 +1427,246 @@ window.SITE = {
     },
     {
       "num": "36",
+      "cat": "glass",
+      "file": "samples/60-glass-champagne-arch.html",
+      "title": "Smoked Champagne Crystal Arch",
+      "subtitle": "Karim & Nour",
+      "venue": "Villa Belle Epoque, Maadi, Cairo",
+      "lang": "English",
+      "langKey": "en",
+      "songKey": "another_love_piano",
+      "textDark": false,
+      "bg": "linear-gradient(145deg,#3A291C,#160E08)",
+      "img": "assets/images/villa-belle-epoque-maadi.jpg",
+      "accent": "#F8DFB6",
+      "desc": "Opaque frosted crystal monogram seal that opens with zero bleed-through into a smoked champagne couture glass arch with photo frame & live countdown.",
+      "features": [
+        "Crystal Seal Reveal",
+        "Smoked Champagne Glass",
+        "Photo Frame",
+        "Tom Odell Piano"
+      ],
+      "aesthetic": "luxury",
+      "moodboard": {
+        "collection": "Liquid Glass",
+        "palette": [
+          "#F8DFB6",
+          "#C99E67",
+          "#3A291C",
+          "#FFFBF4"
+        ],
+        "typography": "Cormorant Garamond · Plus Jakarta Sans",
+        "floral": "Candlelit Courtyard Bokeh & Cut-Crystal Bevel",
+        "soundtrack": "Tom Odell — Another Love · Piano Glow",
+        "inspiration": "Inspired by smoked champagne crystal, Old Money candlelit courtyards, and specular liquid refraction.",
+        "mood": "Warm, intimate & luminous",
+        "paletteNames": "Champagne Gold · Smoked Amber · Espresso Glass · Pearl Ivory",
+        "customization": "Colors · Couple or Venue Photo · Music · AR / EN · Live Countdown & RSVP"
+      },
+      "hidden": false
+    },
+    {
+      "num": "37",
+      "cat": "glass",
+      "file": "samples/61-glass-floral-botanical-arch.html",
+      "title": "White Rose & Botanical Frosted Glass",
+      "subtitle": "Ziad & Malak",
+      "venue": "Katameya Heights Golf & Resort, New Cairo",
+      "lang": "English",
+      "langKey": "en",
+      "songKey": "a_thousand_years",
+      "textDark": true,
+      "bg": "linear-gradient(145deg,#F7F2E8,#DFD5C3)",
+      "img": "assets/images/botanical-watercolor.jpg",
+      "accent": "#5C4E3E",
+      "desc": "Watercolor white & blush roses with olive leaves framing a frosted vellum-glass arch, drifting 3D rose petals, crystal light sweep and botanical wax seal.",
+      "features": [
+        "Botanical Glass Wreath",
+        "Drifting Rose Petals",
+        "Light Sweep",
+        "A Thousand Years"
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "Liquid Glass",
+        "palette": [
+          "#E9D3B0",
+          "#8FA38B",
+          "#F5D7DC",
+          "#3B3228"
+        ],
+        "typography": "Cormorant Garamond · Plus Jakarta Sans",
+        "floral": "White English Roses, Blush Buds & Eucalyptus Wreath",
+        "soundtrack": "Christina Perri — A Thousand Years",
+        "inspiration": "Inspired by translucent botanical vellum, pressed garden roses, and sunlit frosted acrylic stationery.",
+        "mood": "Romantic, airy & poetic",
+        "paletteNames": "Warm Vellum · Eucalyptus Sage · Petal Blush · Espresso Ink",
+        "customization": "Colors · Couple or Venue Photo · Music · AR / EN · RSVP"
+      },
+      "hidden": false
+    },
+    {
+      "num": "38",
+      "cat": "glass",
+      "file": "samples/62-glass-motion-peony-bloom.html",
+      "title": "Blooming Peony & Kinetic Floating Glass",
+      "subtitle": "Youssef & Lara",
+      "venue": "Four Seasons Nile Plaza, Cairo",
+      "lang": "English",
+      "langKey": "en",
+      "songKey": "bridgerton_beckman",
+      "textDark": true,
+      "bg": "linear-gradient(145deg,#F9E8EE,#DFBBC7)",
+      "img": "assets/images/dusty-rose-floral.jpg",
+      "accent": "#6E3044",
+      "desc": "Dusty-rose peonies blooming around a gently levitating crystal card with Ken Burns floral motion, circular cameo portrait and interactive evening tabs.",
+      "features": [
+        "Levitating Glass Motion",
+        "Dusty-Rose Peonies",
+        "3-Step Evening Tabs",
+        "Bridgerton Strings"
+      ],
+      "aesthetic": "floral",
+      "moodboard": {
+        "collection": "Liquid Glass",
+        "palette": [
+          "#6E3044",
+          "#F4B8C8",
+          "#FAF0F3",
+          "#C9A27E"
+        ],
+        "typography": "Cormorant Garamond · Plus Jakarta Sans",
+        "floral": "Dusty-Rose Peonies, Ivory Garden Roses & Silk Cameo",
+        "soundtrack": "Thomas Beckman — Bridgerton Music",
+        "inspiration": "Inspired by Regency garden balls, floating rose-quartz crystal, and kinetic floral couture.",
+        "mood": "Dreamy, graceful & kinetic",
+        "paletteNames": "Berry Velvet · Blush Peony · Rose Quartz · Champagne",
+        "customization": "Colors · Couple Portrait · Music · AR / EN · Program Tabs & RSVP"
+      },
+      "hidden": false
+    },
+    {
+      "num": "39",
+      "cat": "glass",
+      "file": "samples/63-glass-video-story-workflow.html",
+      "title": "Video Reel · 4-Stage Glass Story Workflow",
+      "subtitle": "Tarek & Dalida",
+      "venue": "The St. Regis Cairo",
+      "lang": "English",
+      "langKey": "en",
+      "songKey": "young_and_beautiful",
+      "textDark": false,
+      "bg": "linear-gradient(145deg,#261A12,#0D0A08)",
+      "img": "assets/images/love-story-couple.jpg",
+      "accent": "#F8DFB6",
+      "desc": "Looping 9:16 wedding video reel where frosted Liquid Glass cards auto-advance through 4 sequential story stages (Couple → Date → Evening Flow → RSVP).",
+      "features": [
+        "Live Looping Video",
+        "4-Stage Auto Workflow",
+        "Story Progress Bars",
+        "Young & Beautiful"
+      ],
+      "aesthetic": "motion",
+      "moodboard": {
+        "collection": "Liquid Glass",
+        "palette": [
+          "#F8DFB6",
+          "#D4A86A",
+          "#261A12",
+          "#FFFBF5"
+        ],
+        "typography": "Cormorant Garamond · Plus Jakarta Sans",
+        "floral": "Cinematic Couple Film & Frosted Champagne Glass",
+        "soundtrack": "Lana Del Rey — Young & Beautiful",
+        "inspiration": "Inspired by luxury Instagram Story Reels and sequential frosted-glass keynote storytelling.",
+        "mood": "Cinematic, modern & immersive",
+        "paletteNames": "Champagne Glow · Warm Gold · Cinema Espresso · Alabaster",
+        "customization": "Custom Couple Video · Stages · Music · AR / EN · Live Countdown & RSVP"
+      },
+      "hidden": false
+    },
+    {
+      "num": "40",
+      "cat": "glass",
+      "file": "samples/64-glass-video-cascade-workflow.html",
+      "title": "Live Video · Connected Glass Data Flow",
+      "subtitle": "Seif & Hana",
+      "venue": "The Nile Ritz-Carlton, Cairo",
+      "lang": "English",
+      "langKey": "en",
+      "songKey": "alexis_tamally_maak",
+      "textDark": false,
+      "bg": "linear-gradient(145deg,#18263A,#070B12)",
+      "img": "assets/images/nile-ritz-carlton-twilight.jpg",
+      "accent": "#BAE6FD",
+      "desc": "Looping 9:16 Nile twilight video where a glowing crystal timeline draws downward and reveals each frosted glass invitation card step by step.",
+      "features": [
+        "Nile Twilight Video",
+        "Animated Crystal Pipeline",
+        "Step-by-Step Reveal",
+        "Tamally Maak"
+      ],
+      "aesthetic": "modern",
+      "moodboard": {
+        "collection": "Liquid Glass",
+        "palette": [
+          "#BAE6FD",
+          "#FFFFFF",
+          "#18263A",
+          "#93C5FD"
+        ],
+        "typography": "Cormorant Garamond · Plus Jakarta Sans",
+        "floral": "Nile Twilight Reflections & Pure Pearl Crystal Nodes",
+        "soundtrack": "Alexis Quiroz — تملي معاك",
+        "inspiration": "Inspired by interactive motion pipelines, glowing fiber-optic crystal, and Cairo twilight views.",
+        "mood": "Sleek, architectural & dynamic",
+        "paletteNames": "Ice Crystal · Pure Pearl · Midnight Nile · Sky Silver",
+        "customization": "Custom Video · Timeline Nodes · Music · AR / EN · Instant RSVP"
+      },
+      "hidden": false
+    },
+    {
+      "num": "41",
+      "cat": "glass",
+      "file": "samples/65-glass-arabic-emerald-mihrab.html",
+      "title": "Emerald & Pearl Crystal Mihrab",
+      "subtitle": "آدم و فريدة",
+      "venue": "مسجد المشير طنطاوي، القاهرة الجديدة",
+      "lang": "العربية",
+      "langKey": "ar",
+      "songKey": "nagham_qesset_hob",
+      "textDark": false,
+      "bg": "linear-gradient(145deg,#103A2E,#04130E)",
+      "img": "assets/images/moshir-tantawi-mosque.jpg",
+      "accent": "#F6E5B8",
+      "desc": "Iridescent emerald & mother-of-pearl Arabic crystal mihrab with an opaque Bismillah pearl seal, Quranic verse, mosque frame and Qanun melody.",
+      "features": [
+        "ختم اللؤلؤ والبسملة",
+        "زجاج الزمرد واللؤلؤ",
+        "عقد قران وزفاف",
+        "عزف قانون قصة حب"
+      ],
+      "aesthetic": "katb",
+      "moodboard": {
+        "collection": "Liquid Glass",
+        "palette": [
+          "#F6E5B8",
+          "#A4EED2",
+          "#103A2E",
+          "#FFFDF7"
+        ],
+        "typography": "Amiri · Readex Pro",
+        "floral": "Mother-of-Pearl Medallion & Emerald Crystal Arch",
+        "soundtrack": "Nagham Debal — قصة حب عزف قانون",
+        "inspiration": "Inspired by luminous Islamic mihrab arches, iridescent mother-of-pearl inlay, and emerald glass.",
+        "mood": "Sacred, regal & luminous",
+        "paletteNames": "Champagne Pearl · Jade Mist · Palace Emerald · Ivory",
+        "customization": "الألوان · صورة القاعة أو العروسين · الموسيقى · عربي / إنجليزي · تأكيد الحضور"
+      },
+      "hidden": false
+    },
+    {
+      "num": "42",
       "cat": "luxury",
       "file": "samples/34-madinet-nasr-triumph.html",
       "title": "Madinet Nasr Royal Hall & Table Pass",
@@ -1457,7 +1705,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "37",
+      "num": "43",
       "cat": "luxury",
       "file": "samples/35-zamalek-nile-garden.html",
       "title": "Zamalek Gezira Palace Classic Romance",
@@ -1496,7 +1744,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "38",
+      "num": "44",
       "cat": "floral",
       "file": "samples/10-golden-sunset-desert.html",
       "title": "Marassi Golden Sunset",
@@ -1533,7 +1781,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "39",
+      "num": "45",
       "cat": "modern",
       "file": "samples/11-cairo-newspaper.html",
       "title": "The Cairo Chronicle",
@@ -1571,7 +1819,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "40",
+      "num": "46",
       "cat": "arabic",
       "file": "samples/05-arabesque-pearl.html",
       "title": "Arabesque Pearl Katb Ketab",
@@ -1609,7 +1857,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "41",
+      "num": "47",
       "cat": "arabic",
       "file": "samples/09-minimal-andalus.html",
       "title": "Quiet-Luxury Minimalist",
@@ -1647,7 +1895,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "42",
+      "num": "48",
       "cat": "arabic",
       "file": "samples/15-nile-katb-ketab-arch.html",
       "title": "Royal Plum Mosque Arch",
@@ -1684,7 +1932,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "43",
+      "num": "49",
       "cat": "arabic",
       "file": "samples/31-citadel-mosque-katb.html",
       "title": "Citadel Alabaster Katb Ketab",
@@ -1723,7 +1971,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "44",
+      "num": "50",
       "cat": "arabic",
       "file": "samples/13-henna-night-lanterns.html",
       "title": "Glowing Lanterns Henna Night",
@@ -1760,7 +2008,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "45",
+      "num": "51",
       "cat": "motion",
       "file": "samples/14-polaroid-scrapbook.html",
       "title": "Polaroid Story Scrapbook",
@@ -1798,7 +2046,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "46",
+      "num": "52",
       "cat": "motion",
       "file": "samples/17-love-story-journey.html",
       "title": "Our Love Story Journey",
@@ -1837,7 +2085,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "47",
+      "num": "53",
       "cat": "motion",
       "file": "samples/42-cinema-premiere-ticket.html",
       "title": "Cinema Premiere Tear-Off Golden Ticket",
@@ -1876,7 +2124,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "48",
+      "num": "54",
       "cat": "cards",
       "file": "samples/18-classic-ivory-gold.html",
       "title": "Classic Ivory & Gold Crest",
@@ -1915,7 +2163,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "49",
+      "num": "55",
       "cat": "cards",
       "file": "samples/20-sage-olive-botanical.html",
       "title": "Sage Olive Botanical Card",
@@ -1954,7 +2202,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "50",
+      "num": "56",
       "cat": "cards",
       "file": "samples/21-andalus-katb-card.html",
       "title": "Andalusian Arabesque Katb Card",
@@ -1993,7 +2241,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "51",
+      "num": "57",
       "cat": "cards",
       "file": "samples/22-dusty-rose-pearl.html",
       "title": "Dusty Rose & Pearl Floral Card",
@@ -2032,7 +2280,7 @@ window.SITE = {
       "hidden": true
     },
     {
-      "num": "52",
+      "num": "58",
       "cat": "cards",
       "file": "samples/25-molten-chrome-card.html",
       "title": "Molten Chrome Minimalist Card",
@@ -2244,7 +2492,8 @@ window.SITE = {
     "royal": "assets/images/midnight-gold-celestial.jpg",
     "arabic": "assets/images/andalusian-arabesque-katb.jpg",
     "motion": "assets/images/love-story-couple.jpg",
-    "cards": "assets/images/french-gatefold-card.jpg"
+    "cards": "assets/images/french-gatefold-card.jpg",
+    "glass": "assets/images/translucent-vellum-envelope.jpg"
   },
   "THEMES": [
     {

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ziad &amp; Malak — White Rose &amp; Botanical Frosted Crystal Arch | MEEM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #DFD8CA; display: flex; align-items: center; justify-content: center;
+      padding: 28px 14px 68px; position: relative; overflow-x: hidden;
+    }
+    .bg-kenburns {
+      position: fixed; inset: -6%;
+      background: url('../assets/images/botanical-watercolor.jpg') center/cover no-repeat;
+      filter: brightness(0.90) saturate(1.12);
+      animation: kenburns 18s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes kenburns { from { transform: scale(1) translateY(0); } to { transform: scale(1.08) translateY(-12px); } }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    .petal {
+      position: fixed; width: 15px; height: 19px;
+      border-radius: 75% 25% 70% 30% / 70% 30% 70% 30%;
+      background: radial-gradient(circle at 30% 30%, #FFFDFB, #F5D7DC 75%, rgba(226,178,186,0.6));
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      pointer-events: none; z-index: 4; opacity: 0.85;
+      animation: drift 11s linear infinite;
+    }
+    @keyframes drift {
+      0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.88; }
+      85% { opacity: 0.85; }
+      100% { transform: translateY(108vh) translateX(48px) rotate(260deg); opacity: 0; }
+    }
+
+    .floral-glass-arch {
+      position: relative; z-index: 3; width: min(374px, 100%); min-height: 632px;
+      border-radius: 146px 146px 34px 34px; padding: 48px 24px 28px;
+      text-align: center; color: #2D2620;
+      background: linear-gradient(168deg, rgba(255,253,249,0.72) 0%, rgba(250,244,235,0.56) 52%, rgba(238,228,214,0.72) 100%);
+      backdrop-filter: blur(22px) saturate(165%); -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border: 1.5px solid rgba(255,255,255,0.94);
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.98), 0 30px 70px rgba(28,22,16,0.24);
+      display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+    }
+    .floral-crown-overlay {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: url('../assets/images/botanical-watercolor.jpg') center/cover no-repeat;
+      mix-blend-mode: multiply; opacity: 0.62;
+      -webkit-mask-image: radial-gradient(ellipse 68% 54% at 50% 50%, transparent 40%, #000 86%);
+      mask-image: radial-gradient(ellipse 68% 54% at 50% 50%, transparent 40%, #000 86%);
+    }
+    .glass-sheen {
+      position: absolute; top: -40%; left: -120%; width: 70%; height: 180%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+      transform: rotate(24deg); pointer-events: none; z-index: 5;
+      animation: sheenSweep 6.5s ease-in-out infinite;
+    }
+    @keyframes sheenSweep { 0%, 45% { left: -120%; } 100% { left: 170%; } }
+
+    .floral-glass-arch::before {
+      content: ''; position: absolute; inset: 9px; border-radius: 137px 137px 25px 25px;
+      border: 1px solid rgba(168,142,104,0.38); pointer-events: none; z-index: 4;
+    }
+    .card-body {
+      position: relative; z-index: 3;
+      opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(14px);
+      transition: opacity .6s ease .12s, transform .65s cubic-bezier(.22,1,.36,1) .12s;
+    }
+    .floral-glass-arch.is-open .card-body { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+
+    .seal-gate {
+      position: absolute; inset: 0; z-index: 10; border-radius: inherit;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 32px 26px; cursor: pointer;
+      transition: opacity .5s ease, transform .55s cubic-bezier(.22,1,.36,1), visibility 0s linear 0s;
+    }
+    .floral-glass-arch.is-open .seal-gate {
+      opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.07);
+      transition: opacity .45s ease, transform .55s cubic-bezier(.22,1,.36,1), visibility 0s linear .5s;
+    }
+    .wax-crystal {
+      width: 106px; height: 106px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 28%, #FFFDF9, #E9D3B0 58%, #C4A270);
+      border: 2px solid #FFFFFF;
+      box-shadow: inset 0 2px 5px #fff, 0 14px 32px rgba(64,46,24,0.22), 0 0 0 8px rgba(255,255,255,0.48);
+      display: grid; place-items: center; margin: 20px 0;
+      animation: pulseSeal 3s ease-in-out infinite;
+    }
+    @keyframes pulseSeal { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+
+    .photo-arch {
+      width: 100%; height: 142px; margin: 12px 0; padding: 4px;
+      border-radius: 70px 70px 18px 18px;
+      background: rgba(255,255,255,0.76); border: 1px solid rgba(184,156,118,0.48); overflow: hidden;
+    }
+    .photo-arch img { width: 100%; height: 100%; object-fit: cover; border-radius: 66px 66px 14px 14px; display: block; }
+    .btn-gold {
+      width: 100%; padding: 11px 16px; border-radius: 999px;
+      background: linear-gradient(135deg, #3B3228, #594A3A); color: #FFFDF9;
+      font: 700 11px inherit; letter-spacing: .08em; text-transform: uppercase; border: 0; cursor: pointer;
+    }
+    .btn-outline {
+      width: 100%; padding: 10px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.68); color: #3B3228; font: 600 11px inherit;
+      border: 1px solid rgba(140,118,88,0.42); text-decoration: none; display: inline-block;
+    }
+    .inp {
+      width: 100%; padding: 9px 12px; border-radius: 11px;
+      border: 1px solid rgba(140,118,88,0.38); background: rgba(255,255,255,0.78);
+      color: #2D2620; font: inherit; font-size: 12.5px; outline: none; margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body data-music-mood="a_thousand_years" data-music-src="../assets/audio/a-thousand-years.mp3" data-particles="petals">
+  <div class="bg-kenburns"></div>
+  <span class="petal" style="left:14%;animation-delay:0s;"></span>
+  <span class="petal" style="left:46%;animation-delay:3.2s;width:12px;height:16px;"></span>
+  <span class="petal" style="left:78%;animation-delay:6.4s;"></span>
+
+  <article class="floral-glass-arch" id="archCard">
+    <div class="floral-crown-overlay"></div>
+    <div class="glass-sheen"></div>
+
+    <div class="seal-gate" id="gate">
+      <div style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#6E5D49;">Botanical Frosted Vellum</div>
+      <div class="wax-crystal"><span class="serif" style="font-size:34px;color:#3B2E20;" data-monogram>Z &amp; M</span></div>
+      <div class="serif" style="font-size:30px;font-weight:600;color:#2D2620;" data-couple-title>Ziad &amp; Malak</div>
+      <div class="serif" style="font-style:italic;font-size:16px;color:#6E5D49;margin-top:3px;" data-event-date>Saturday · 04 December 2027</div>
+      <div style="margin-top:20px;padding:8px 20px;border-radius:999px;background:rgba(255,255,255,0.82);border:1px solid rgba(168,142,104,0.52);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#3B3228;">Tap Botanical Seal to Open</div>
+    </div>
+
+    <div class="card-body">
+      <div style="font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#6E5D49;">Together In Bloom</div>
+      <div data-guest-name data-guest-prefix="Dearest " style="display:none;margin-top:3px;font-size:13px;color:#7A6244;"></div>
+      <h1 class="serif" style="font-size:44px;line-height:1.05;font-weight:600;margin-top:5px;" data-couple-title>Ziad &amp; Malak</h1>
+      <p class="serif" style="font-style:italic;font-size:16.5px;color:#5C4E3E;margin-top:3px;">invite you to their sunlit garden wedding</p>
+
+      <div class="photo-arch"><img data-couple-photo src="../assets/images/katameya-heights-golf.jpg" alt="Garden Celebration" /></div>
+
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,0.68);border:1px solid rgba(168,142,104,0.38);">
+        <span style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;">Saturday</span>
+        <b class="serif" style="font-size:22px;padding:0 12px;border-left:1px solid rgba(140,118,88,0.3);border-right:1px solid rgba(140,118,88,0.3);" data-event-date>04 Dec 2027</b>
+        <span style="font-size:10px;letter-spacing:.14em;">5:30 PM</span>
+      </div>
+
+      <div style="margin:10px 0;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,0.64);border:1px solid rgba(168,142,104,0.34);">
+        <div class="serif" style="font-size:20px;font-weight:600;" data-venue-name>Katameya Heights Golf &amp; Resort</div>
+        <div style="font-size:11px;color:#6E5D49;" data-table-seat>Rose &amp; Olive Lawn · Garden Formal · Table 06</div>
+      </div>
+
+      <form data-rsvp-form data-couple="Ziad & Malak" data-lang="en" data-result-target="rsvp-res">
+        <input class="inp" name="guestName" required placeholder="Your Full Name for RSVP" />
+        <div style="display:grid;grid-template-columns:1.25fr 0.95fr;gap:8px;">
+          <button type="submit" class="btn-gold">Confirm RSVP</button>
+          <a class="btn-outline" href="https://maps.google.com/?q=Katameya+Heights+Golf+Resort+New+Cairo" target="_blank" rel="noopener">Location ↗</a>
+        </div>
+      </form>
+      <div id="rsvp-res" style="display:none;margin-top:10px;"></div>
+    </div>
+  </article>
+  <script src="../assets/shared.js"></script>
+  <script>
+    document.getElementById('gate').addEventListener('click', function () {
+      document.getElementById('archCard').classList.add('is-open');
+      try { WeddingSound.playWaxBreak(); WeddingSound.startMusic('a_thousand_years'); } catch (_) {}
+    });
+  </script>
+</body></html>
