@@ -303,6 +303,25 @@
         opacity: 0.75;
       }
 
+      /* Mobile Proportions & Compact Luxury Harmonizer (Phones & Preview Frames <= 480px) */
+      @media (max-width: 480px) {
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        html, body { max-width: 100vw; overflow-x: hidden !important; }
+        #wi-music-fab { width: 29px; height: 29px; bottom: 11px; right: 11px; }
+        html[dir="rtl"] #wi-music-fab { right: auto; left: 11px; }
+        #wi-injected-photo { margin: 10px auto; }
+        .wi-photo-frame { width: min(142px, 44vw); }
+        .wi-scratch-grid { gap: 8px; flex-wrap: nowrap; margin: 14px auto 8px; }
+        .wi-scratch-card { width: 80px; height: 80px; flex-shrink: 0; }
+        .wi-scratch-val { font-size: 18px; }
+        .wi-scratch-sub { font-size: 8.5px; letter-spacing: 0.06em; }
+        .wi-tear-cal { width: 152px; margin: 12px auto 16px; border-radius: 13px; }
+        .wi-tear-top { padding: 7px 10px; font-size: 11px; }
+        .wi-tear-body { padding: 10px 10px 12px; }
+        .wi-tear-day { font-size: 34px; }
+        .wi-tear-meta { font-size: 10.5px; }
+      }
+
       /* Scroll-down prompt */
       .wi-scroll-cue {
         display: inline-flex;

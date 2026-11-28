@@ -103,6 +103,159 @@
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 600px) { .slots { grid-template-columns: 1fr; } .henna-card { padding: 34px 18px; } }
   </style>
+  <style id="meem-mobile-fit">
+  @media (max-width: 480px) {
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    html, body { max-width: 100vw; overflow-x: hidden; }
+
+    /* Compact outer padding & card width so invitations breathe on mobile */
+    body:not(:has(.story-frame)):not(:has(.video-hero)):not(:has(.reel-box)):not(:has(.poster)) {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+    .page-wrap, .invitation-shell, .editorial-wrap, .container, .wrap, .shell, .main,
+    .watch-wrap, .card-wrap, .card-shell, .invite-shell, .stage, .accordion,
+    .flip-wrap, .below, .arch-wrap, .glass-shell, .gala, .tile-frame, .body {
+      max-width: min(346px, calc(100vw - 24px)) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .page-wrap, .invitation-shell, .editorial-wrap, .container, .wrap, .main, .gala {
+      padding-top: 18px !important;
+      padding-bottom: 44px !important;
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+    }
+    .shell, .arch-wrap {
+      margin-top: 16px !important;
+      margin-bottom: 44px !important;
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+    }
+
+    /* Inner cards, arches & sections: refined padding & height */
+    .arch-header, .watercolor-hero {
+      padding: 28px 16px 22px !important;
+      min-height: auto !important;
+    }
+    .section-block {
+      padding: 22px 15px !important;
+    }
+    .card, .glass, .glass-card, .details-card, .hero-card, .venue-card, .panel {
+      padding: 18px 15px !important;
+      border-radius: 18px !important;
+    }
+    .ogee-card, .couture-card {
+      padding: 28px 16px 22px !important;
+      border-radius: 130px 130px 22px 22px !important;
+    }
+    .couture-card { border-radius: 22px !important; }
+    .bifold-card .card-inner, .card-cover {
+      padding: 26px 18px !important;
+    }
+
+    /* Liquid Glass series (60-65) */
+    .glass-arch, .floral-glass-arch, .mihrab-card {
+      width: min(338px, calc(100vw - 24px)) !important;
+      min-height: 500px !important;
+      padding: 32px 16px 20px !important;
+      border-radius: 124px 124px 26px 26px !important;
+    }
+    .glass-arch::before, .floral-glass-arch::before, .mihrab-card::before {
+      inset: 6px !important;
+      border-radius: 118px 118px 20px 20px !important;
+    }
+    .kinetic-peony-card {
+      width: min(338px, calc(100vw - 24px)) !important;
+      padding: 24px 16px 20px !important;
+      border-radius: 32px !important;
+    }
+    .reel-frame, .cascade-frame {
+      width: min(344px, calc(100vw - 20px)) !important;
+      height: min(565px, calc(100dvh - 24px)) !important;
+      min-height: 500px !important;
+      padding: 14px 14px 16px !important;
+      border-radius: 28px !important;
+    }
+    .workflow-stage-glass { padding: 16px 14px !important; border-radius: 22px !important; }
+    .wf-card { padding: 10px 12px !important; margin-bottom: 8px !important; border-radius: 16px !important; }
+
+    /* Full-bleed Video & Reel Heroes (51, 52, 55) */
+    .story-frame { width: 100vw !important; height: 100vh !important; height: 100dvh !important; max-height: 100dvh !important; }
+    .s-slide { padding: 22px 16px 68px !important; }
+    .video-hero { height: 54vh !important; height: 54dvh !important; min-height: 310px !important; padding: 22px 14px !important; }
+    .reel-box { height: 50vh !important; height: 50dvh !important; min-height: 290px !important; }
+    .hero-wide { height: 220px !important; }
+    .g-item { height: 225px !important; }
+
+    /* Balanced Couple Titles & Headings on Mobile */
+    [data-couple-title], .couple-names, .couple-h1, .hero-names, .script-name, .names, .title {
+      font-size: clamp(26px, 7.6vw, 32px) !important;
+      line-height: 1.16 !important;
+    }
+    .gate-crest-wrap [data-couple-title], #cover-overlay [data-couple-title],
+    .seal-gate [data-couple-title], .mihrab-seal [data-couple-title],
+    .cover-names, .cover-title {
+      font-size: clamp(22px, 6.6vw, 27px) !important;
+    }
+    .sec-title, .quote-text {
+      font-size: clamp(19px, 5.5vw, 23px) !important;
+    }
+    .verse, .ayah, .month-poem {
+      font-size: 15px !important;
+      line-height: 1.75 !important;
+    }
+    .bronze-mono { font-size: 44px !important; }
+    .spaced-date, .date-spaced { letter-spacing: 0.18em !important; font-size: 12px !important; }
+
+    /* Proportioned Seals, Envelopes, Turntable, Watch Dial, Locket & Photos */
+    .royal-seal, .wax-seal, .medallion, .wax-crystal, .pearl-medallion {
+      width: 82px !important;
+      height: 82px !important;
+      margin-top: 12px !important;
+      margin-bottom: 14px !important;
+    }
+    .medallion span, .wax-crystal span, .pearl-medallion span { font-size: 26px !important; }
+    .cover-seal, .sculpt-mono {
+      width: 66px !important;
+      height: 66px !important;
+      line-height: 66px !important;
+      font-size: 22px !important;
+      margin-bottom: 12px !important;
+    }
+    .envelope-stage { width: min(306px, 86vw) !important; height: 210px !important; }
+    .envelope-letter { height: 176px !important; }
+    .lace-env { width: min(296px, 86vw) !important; height: 208px !important; }
+    .turntable { transform: scale(0.8); margin-bottom: 6px !important; }
+    .dial-bezel { width: 204px !important; height: 204px !important; margin-bottom: 16px !important; }
+    .locket-stage { transform: scale(0.82); margin: 0 auto 8px !important; }
+    .venue-hero, .arch-frame, .venue-pic, .hero, .arch-photo, .arch-pic {
+      height: 152px !important;
+    }
+    .arch-portrait { width: 134px !important; height: 166px !important; margin-bottom: 12px !important; }
+    .cameo-motion { width: 118px !important; height: 118px !important; margin: 8px auto !important; }
+    .couple-frame { width: 88px !important; height: 88px !important; margin-bottom: 10px !important; }
+    .photo-frame, .photo-arch { height: 118px !important; margin-top: 9px !important; }
+    .front-img { height: 205px !important; }
+
+    /* Compact Countdowns, Date Strips & Buttons */
+    .date-strip { gap: 10px !important; padding: 10px 14px !important; font-size: 16px !important; margin-top: 14px !important; }
+    .date-pill { margin: 9px 0 !important; padding: 7px 11px !important; }
+    .cd, .cd-grid, .countdown-grid, .cd-boxes, .cd-row {
+      gap: 6px !important;
+      max-width: 296px !important;
+      margin: 10px auto 12px !important;
+    }
+    .cd div, .cd-item, .cd-box { padding: 7px 3px !important; border-radius: 10px !important; }
+    .cd strong, .cd-num { font-size: 17px !important; }
+    .open-btn, .cover-btn, .spin-btn { padding: 10px 22px !important; font-size: 12px !important; }
+    .btn, .btn-pearl, .btn-glass, .btn-gold, .btn-outline, .btn-berry, .btn-pearl-ar, .btn-glass-ar, .tbtn {
+      padding: 9px 13px !important;
+      font-size: 11.5px !important;
+      min-width: 0 !important;
+    }
+  }
+</style>
 </head>
 <body class="wi-scroll-locked" data-particles="embers" data-music-mood="hakim_kolo_yorkos" data-venue-img="../assets/images/al-azhar-park.jpg" data-venue-label="فيلا دار الفنون • دجلة المعادي، القاهرة">
   <div id="lantern-cover" role="dialog" aria-label="أضيئي الفوانيس لفتح دعوة ليلة الحنة">
@@ -133,7 +286,7 @@
       </button>
     </div>
     <div class="kicker">ليلة للبنات وبس ✨</div>
-    <div class="ruqaa" style="font-size:48px; color:var(--saffron); line-height:1.2;" data-couple-title>ليلة حنة سارة</div>
+    <div class="ruqaa" style="font-size:clamp(28px,7.8vw,48px); color:var(--saffron); line-height:1.2;" data-couple-title>ليلة حنة سارة</div>
     <div id="lanternHint" style="font-size:15px; color:var(--cream); margin-top:10px;">
       اضغطي على الفوانيس الثلاثة لإضاءة ليلة الحنة 🏮
     </div>
