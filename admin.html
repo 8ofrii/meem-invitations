@@ -456,10 +456,10 @@
                 <div>
                   <label class="lbl">Reply Template</label>
                   <select class="sel" id="waTplMode">
-                    <option value="ar_full">Arabic — Full Menu (Base + Add-Ons)</option>
-                    <option value="ar_short">Arabic — Short Fast Reply (IG / Quick DM)</option>
-                    <option value="ar_quote">Arabic — Custom Quote Calculator (Exact Total)</option>
-                    <option value="en_full">English — Full Menu (Base + Add-Ons)</option>
+                    <option value="ar_short">Arabic — Short &amp; Clean Price Reply (Default)</option>
+                    <option value="ar_quote">Arabic — Short Custom Total + Details Request</option>
+                    <option value="en_full">English — Short &amp; Clean Price Reply</option>
+                    <option value="ar_full">Arabic — Detailed Version</option>
                   </select>
                 </div>
                 <div>
@@ -1624,22 +1624,22 @@
 
       const govHookAr = {
         all: '',
-        cairo: '\n📍 وميزتها في فنادق وقاعات القاهرة والتجمع إننا نقدر نعملكم نسخة عربي للأهل ونسخة إنجليزي للأصدقاء مع كاميرا الـ QR السرية على الطاولات.',
-        giza: '\n📍 متاح تفعيل باركود الدخول QR الخاص بكل ضيف لتنظيم البوابات في قاعات ونوادي الجيزة والشيخ زايد وأكتوبر بكل شياكة.',
-        qalyubia: `\n📍 بدل تكلفة طباعة الكروت الورقية، الرابط بيتبعت لعدد مفتوح من المعازيم في بنها والعبور والقليوبية مع لوكيشن القاعة المباشر بـ ${pBase} ج بس.`,
-        alex: '\n📍 منفذين تصميمات مخصوص لقاعات وفنادق إسكندرية والكورنيش مع باركود الدخول QR وفيديو الريلز جاهز للواتساب.'
+        cairo: '\n📍 متاح لينك عربي للأهل ولينك إنجليزي للأصدقاء مع كاميرا QR الطاولات.',
+        giza: '\n📍 متاح باركود دخول QR لكل ضيف لتنظيم بوابات القاعات والنوادي.',
+        qalyubia: `\n📍 أوفر من الكروت الورق وبعدد معازيم مفتوح بـ ${pBase} ج بس.`,
+        alex: '\n📍 متاح باركود دخول QR وفيديو الريلز لقاعات وفنادق إسكندرية.'
       }[gov] || '';
 
       const govHookEn = {
         all: '',
-        cairo: '\n📍 Popular across Cairo, Tagamoa, Nasr City & Maadi venues: separate Arabic & English links plus Table QR Guest Camera.',
-        giza: '\n📍 Ideal for Sheikh Zayed, October & Giza venues with individual VIP QR gate passes and live Google Maps pin.',
-        qalyubia: `\n📍 Smarter than paper cards in El Obour, Banha & Qalyubia — share with unlimited guests starting at ${pBase} EGP.`,
-        alex: '\n📍 Tailored for Alexandria Corniche, San Stefano & Smouha venues with QR entry passes and Reels video invites.'
+        cairo: '\n📍 Separate AR/EN links & Table QR Camera available for Cairo venues.',
+        giza: '\n📍 Individual VIP QR gate passes available for Zayed, October & Giza.',
+        qalyubia: `\n📍 Unlimited guests starting at ${pBase} EGP across El Obour, Banha & Qalyubia.`,
+        alex: '\n📍 QR gate passes & Reels video available for Alexandria venues.'
       }[gov] || '';
 
       if (mode === 'ar_short') {
-        return `أهلاً بيكم في *MEEM • ميم للدعوات الرقمية* 🤍 ألف مبروك مقدماً! ✨\n\nنظامنا بدون باقات إجبارية — بتختاروا الدعوة وبتضيفوا بس اللي محتاجينه *(بعدد معازيم مفتوح)*:\n\n💌 *الدعوة الرقمية التفاعلية الأساسية — ${pBase} ج.م*\nأي تصميم من 41 تصميم (Liquid Glass · أبواب ملكية · ختم شمع · ورود) + تخصيص الألوان والأغنية + عد تنازلي + لوكيشن Google Maps + تأكيد حضور.\n\n➕ *الإضافات الاختيارية (حسب الطلب):*\n• كاميرا الضيوف QR على Google Drive سري: *+${pQr} ج* *(أو ${pQrAlone} ج منفردة بدون دعوة)*\n• باركود دخول VIP ورقم الطاولة لكل ضيف: *+${pSeat} ج*\n• دفتر التهاني الصوتي والمكتوب: *+${pVoice} ج*\n• فيديو دعوة ريلز عمودي (15–30 ثانية): *+${pReels} ج*\n• نسخة إضافية للرابط (عربي + إنجليزي أو VIP): *+${pMulti} ج*\n• شيت حضور الضيوف Excel أو كروت Save the Date: *+${pRsvp} ج*${govHookAr}\n\n✨ الدفع *50% مقدم* (InstaPay / Vodafone Cash) والباقي *بعد تجربة الرابط الفعلي على موبايلكم*.\n🔗 شوفوا التصميمات وجربوها بأسمائكم: https://meem-invitations.onrender.com\n\nتحبوا نبدأ بأي تصميم وإيه الإضافات اللي محتاجينها؟ 🤍`;
+        return `أهلاً بيكم في *MEEM • ميم* 🤍 ألف مبروك مقدماً ✨\n\n💌 *الدعوة الرقمية التفاعلية — ${pBase} ج*\nأي تصميم من الموقع + ألوانكم وأغنيتكم + عد تنازلي + لوكيشن القاعة + تأكيد حضور *(بعدد معازيم مفتوح)*.\n\n➕ *إضافات حسب الطلب:*\n• كاميرا الضيوف QR على Google Drive سري: *+${pQr} ج* *(أو ${pQrAlone} ج لوحدها)*\n• باركود دخول VIP ورقم الطاولة: *+${pSeat} ج*\n• دفتر تهاني صوتي ومكتوب: *+${pVoice} ج*\n• فيديو ريلز عمودي للدعوة: *+${pReels} ج*\n• نسخة إضافية (عربي + إنجليزي / VIP): *+${pMulti} ج*\n• شيت حضور Excel أو كروت Save the Date: *+${pRsvp} ج*${govHookAr}\n\n💳 *الحجز:* 50% مقدم (InstaPay / Vodafone Cash) والباقي بعد تجربة اللينك على موبايلكم · تسليم 24–48 ساعة.\n\n🔗 *شوفوا التصميمات وجربوها بأسمائكم:*\nhttps://meem-invitations.onrender.com\n\nتحبوا نبدأ بأي تصميم؟ 🤍`;
       }
 
       if (mode === 'ar_quote') {
@@ -1650,7 +1650,7 @@
         const lines = [];
         if (hasBase) {
           rawTotal += pBase;
-          lines.push(`• الدعوة الرقمية التفاعلية (تخصيص الألوان + الأغنية + اللوكيشن + العد التنازلي): *${pBase} ج.م*`);
+          lines.push(`• الدعوة الرقمية التفاعلية: *${pBase} ج*`);
         }
         addons.forEach(cb => {
           const id = cb.value;
@@ -1658,20 +1658,19 @@
           if (!a) return;
           const pr = (!hasBase && id === 'qrcam') ? pQrAlone : Number(a.price);
           rawTotal += pr;
-          lines.push(`• ${a.ar || a.label}: *${pr} ج.م*`);
+          lines.push(`• ${a.ar || a.label}: *${pr} ج*`);
         });
         if (!lines.length) {
           rawTotal = pBase;
-          lines.push(`• الدعوة الرقمية التفاعلية الأساسية: *${pBase} ج.م*`);
+          lines.push(`• الدعوة الرقمية التفاعلية: *${pBase} ج*`);
         }
         const capped = (hasBase && addons.length >= 6 && rawTotal > pCap) ? pCap : rawTotal;
         const dep = Math.round(capped / 2);
-        const rem = capped - dep;
-        return `أهلاً بيكم في *MEEM • ميم للدعوات الرقمية* 🤍 ألف مبروك مقدماً! ✨\n\n📋 *ملخص طلبكم المخصص (بعدد ضيوف مفتوح):*\n${lines.join('\n')}${capped < rawTotal ? `\n🎁 *خصم التجربة الكاملة:* بدلاً من ${rawTotal} ج.م` : ''}\n\n💰 *الإجمالي:* *${capped.toLocaleString('en-US')} ج.م*\n💳 *طريقة الدفع:* *${dep.toLocaleString('en-US')} ج.م* مقدم (InstaPay أو Vodafone Cash) لتأكيد الحجز والبدء، و*${rem.toLocaleString('en-US')} ج.م* بعد معاينة واستلام الرابط شغال على موبايلكم.\n⏱ *التسليم:* خلال 24 – 48 ساعة شامل تعديلين مجانيين.${govHookAr}\n\nلو جاهزين نبدأ، ابعتولنا *(أسماء العروسين + التاريخ + اسم القاعة + الأغنية المفضلة)* وهنبدأ فوراً 🤍`;
+        return `أهلاً بيكم في *MEEM • ميم* 🤍✨\n\n📋 *ملخص طلبكم:*\n${lines.join('\n')}\n\n💰 *الإجمالي:* *${capped.toLocaleString('en-US')} ج* (المقدم *${dep.toLocaleString('en-US')} ج* عبر InstaPay أو Vodafone Cash والباقي بعد معاينة اللينك).\n\nابعتولنا البيانات دي عشان نبدأ فوراً:\n1. أسماء العروسين\n2. تاريخ وموعد المناسبة\n3. اسم القاعة + لينك اللوكيشن\n4. الأغنية والألوان المفضلة 🤍`;
       }
 
       if (mode === 'en_full') {
-        return `Welcome to *MEEM • ميم Digital Invitations* 🤍✨\nCongratulations on your upcoming celebration!\n\nWe have *no rigid packages* — start with any interactive invitation (with *unlimited guests*) and customize only the add-ons you want:\n\n💌 *Interactive Digital Invitation — ${pBase} EGP*\n• Any of our *41 curated designs* (Liquid Glass, 3D Doors, Wax Seal, Floral, Video & Silent)\n• Custom colors, your chosen Arabic/English song, live countdown, Google Maps & WhatsApp RSVP\n• Ready in 24–48h · 2 free revisions · Link active 3 months after event\n\n➕ *Optional Add-Ons (Pick Only What You Need):*\n• *Live QR Guest Camera → Private Google Drive:* +${pQr} EGP *(or ${pQrAlone} EGP standalone without invite)*\n• *VIP QR Entry Passes & Table Seating Number:* +${pSeat} EGP\n• *Voice & Written Wishes Digital Guestbook:* +${pVoice} EGP\n• *15–30s Vertical Reels Video Invite:* +${pReels} EGP\n• *Extra Link Version (Bilingual AR+EN or VIP):* +${pMulti} EGP\n• *Live RSVP & Guest Management Sheet (Excel):* +${pRsvp} EGP\n• *Save the Date + Thank You Cards:* +${pSuite} EGP\n• *Express 12–24h Delivery:* +${pRush} EGP\n*(Full Custom Suite Cap — Invitation + All Add-Ons: ${pCap.toLocaleString('en-US')} EGP)*${govHookEn}\n\n💳 *How Booking Works:*\n50% deposit via *InstaPay or Vodafone Cash*, and the remaining 50% only after you test and approve your live link on your phone.\n\n🌐 *Preview all 41 designs with your names:*\nhttps://meem-invitations.onrender.com\n\nShare your *occasion, date, venue & chosen add-ons* and we'll get started right away 🤍`;
+        return `Welcome to *MEEM • ميم* 🤍 Congratulations! ✨\n\n💌 *Interactive Digital Invitation — ${pBase} EGP*\nAny design + your colors & song + live countdown + Google Maps + RSVP *(unlimited guests)*.\n\n➕ *Optional Add-Ons:*\n• QR Guest Camera (Private Google Drive): *+${pQr} EGP* *(${pQrAlone} EGP standalone)*\n• VIP QR Pass & Table Number: *+${pSeat} EGP*\n• Voice & Written Guestbook: *+${pVoice} EGP*\n• Vertical Reels Video: *+${pReels} EGP*\n• Extra Link (AR + EN / VIP): *+${pMulti} EGP*\n• RSVP Excel Sheet / Save the Date: *+${pRsvp} EGP*${govHookEn}\n\n💳 *Booking:* 50% deposit (InstaPay / Vodafone Cash) & 50% after testing your live link · Ready in 24–48h.\n\n🔗 *Try all designs with your names:*\nhttps://meem-invitations.onrender.com\n\nWhich design would you like to start with? 🤍`;
       }
 
       return `أهلاً بيكم في *MEEM • ميم للدعوات الرقمية* 🤍✨\nألف مبروك مقدماً، ويسعدنا نكون جزء من فرحتكم!\n\nنظامنا في ميم *بدون باقات مقفولة* — بتختاروا الدعوة التفاعلية أو أي إضافة محتاجينها فقط *(بعدد معازيم مفتوح بدون حد أقصى)* في *(القاهرة · الجيزة · القليوبية · الإسكندرية وجميع المحافظات)*:\n\n💌 *الدعوة الرقمية التفاعلية الأساسية — ${pBase} ج.م*\n• اختيار أي تصميم من *41 تصميم تفاعلي* (Liquid Glass، أبواب ملكية، ختم شمع، ورود، فيديو أو كروت صامتة)\n• تخصيص الألوان + أغنيتكم المفضلة + عد تنازلي + لوكيشن Google Maps + تأكيد حضور واتساب\n• شاملة تعديلين مجانيين + الرابط يظل فعالاً 3 شهور بعد الفرح.\n\n➕ *خصّص دعوتك بالإضافات اللي تحبها فقط (Add-Ons):*\n• 📸 *كاميرا الضيوف QR السرية (Google Drive خاص بيكم بدون تطبيق):* +${pQr} ج.م *(أو ${pQrAlone} ج.م منفردة بدون دعوة)*\n• 🎫 *باركود دخول VIP ورقم الطاولة على موبايل كل ضيف:* +${pSeat} ج.م\n• 🎙️ *دفتر التهاني الصوتي والمكتوب (يُحفظ للأبد):* +${pVoice} ج.م\n• 🎬 *فيديو دعوة ريلز عمودي (15–30 ثانية للواتساب والإنستجرام):* +${pReels} ج.م\n• 🌐 *نسخة إضافية من الرابط (عربي للأهل + إنجليزي أو مواعيد VIP):* +${pMulti} ج.م\n• 📊 *شيت تنظيم وإدارة تأكيد حضور الضيوف (Excel):* +${pRsvp} ج.م\n• 💌 *كارت Save the Date + كارت شكر بعد الفرح بنفس الثيم:* +${pSuite} ج.م\n• ⚡ *تسليم مستعجل خلال 12–24 ساعة:* +${pRush} ج.م\n*(🎁 سقف التجربة الكاملة — الدعوة + كل الإضافات معاً بـ ${pCap.toLocaleString('en-US')} ج.م فقط)*${govHookAr}\n\n💳 *طريقة الحجز والدفع:*\n• التنفيذ خلال *24 – 48 ساعة*.\n• يتم دفع *50% مقدم* عبر *(InstaPay أو Vodafone Cash)* والـ *50% الباقية بعد معاينة وتجربة رابط الدعوة الفعلي على موبايلكم*.\n\n🌐 جربوا كل الـ 41 تصميم بأسمائكم الآن وتختاروا الإضافات من موقعنا:\nhttps://meem-invitations.onrender.com\n\nقولولنا *(نوع المناسبة + التاريخ + القاعة + الإضافات اللي عجبتكم)* وهنبدأ معكم فوراً 🤍`;
