@@ -7,14 +7,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      min-height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #070B12; display: flex; align-items: center; justify-content: center; padding: 18px 12px 58px;
+      min-height: 100dvh; font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #070B12; display: flex; align-items: center; justify-content: center; padding: 12px 10px 40px;
     }
     .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
     .cascade-frame {
-      position: relative; width: min(378px, 100%); min-height: 656px; border-radius: 36px;
-      overflow: hidden; border: 1.5px solid rgba(255,255,255,0.48);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.75); color: #F8FAFC; padding: 20px 18px; cursor: pointer;
+      position: relative; width: min(372px, 100%); min-height: min(600px, calc(100dvh - 30px)); border-radius: 34px;
+      overflow: hidden; border: 1.5px solid rgba(255,255,255,0.62);
+      box-shadow: inset 0 2px 3px rgba(255,255,255,0.45), 0 30px 76px rgba(0,0,0,0.72); color: #F8FAFC; padding: 16px 16px; cursor: pointer;
     }
     .cascade-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
     .cascade-frame::after {

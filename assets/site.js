@@ -130,22 +130,24 @@
       <div class="modal-layout">
         <div class="phone-frame"><iframe id="previewFrame" title="Live preview"></iframe></div>
         <div class="modal-side">
-          <div id="modalCollection" class="pill-tag" style="align-self:flex-start;margin:0;background:rgba(197,160,89,0.22);color:#F4E5C2;border-color:rgba(197,160,89,0.5);"></div>
-          <h3 id="modalTitle" class="serif gold" style="font-size:28px;line-height:1.15"></h3>
-          <p id="modalDesc" style="font-size:13px;color:rgba(255,255,255,0.86);line-height:1.55"></p>
+          <div id="modalCollection" class="pill-tag" style="align-self:flex-start;margin:0;padding:3px 10px;font-size:10px;background:rgba(13,59,46,0.08);color:#0D3B2E;border-color:rgba(197,155,78,0.5);"></div>
+          <h3 id="modalTitle" class="serif" style="font-size:clamp(20px,2vw,24px);line-height:1.14;color:#0D3B2E;font-weight:600;margin:0;"></h3>
+          <p id="modalDesc" style="font-size:12px;color:#5D554B;line-height:1.45;margin:0;"></p>
           <div class="moodboard-card" id="modalMoodboard">
             <div class="mb-head">Design Story &amp; Wedding Moodboard</div>
             <p class="mb-insp" id="mbInsp"></p>
             <div class="mb-row"><span>Mood</span><strong id="mbMood"></strong></div>
-            <div class="mb-row"><span>Color Palette</span><div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="mb-swatches" id="mbSwatches"></div><small id="mbPalNames" style="font-size:10px;color:#6E7872;text-align:right"></small></div></div>
+            <div class="mb-row"><span>Color Palette</span><div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><div class="mb-swatches" id="mbSwatches"></div><small id="mbPalNames" style="font-size:9.5px;color:#6E7872;text-align:right"></small></div></div>
             <div class="mb-row"><span>Typography</span><strong id="mbTypo"></strong></div>
             <div class="mb-row"><span>Floral &amp; Details</span><strong id="mbFloral"></strong></div>
             <div class="mb-row"><span>Soundtrack</span><strong id="mbSound"></strong></div>
             <div class="mb-row"><span>Customisation</span><strong id="mbCustom"></strong></div>
           </div>
-          <a id="modalFull" class="btn btn-ghost" target="_blank">Open full screen ↗</a>
-          <button type="button" id="modalAddonsBtn" class="btn btn-ghost" style="border-color:rgba(197,160,89,0.65);color:#F4E5C2;">✦ Pick Add-Ons with This Design ↓</button>
-          <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design</a>
+          <div class="modal-btn-row">
+            <a id="modalFull" class="btn btn-ghost" target="_blank">Full screen ↗</a>
+            <button type="button" id="modalAddonsBtn" class="btn btn-ghost">✦ Pick Add-Ons ↓</button>
+          </div>
+          <a id="modalWa" class="btn btn-gold" target="_blank" rel="noopener">Order this design →</a>
         </div>
       </div>`;
     document.body.appendChild(modal);
