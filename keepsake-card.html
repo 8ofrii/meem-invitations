@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEEM • ميم — Save the Date &amp; Thank You Card</title>
+  <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --emerald: #0D3B2E;
+      --emerald-2: #195643;
+      --gold: #C5A059;
+      --gold-dark: #96722E;
+      --ivory: #FFFDF9;
+      --ink: #1E2521;
+      --muted: #66706B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100dvh;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 245, 220, 0.85), transparent 45%),
+        radial-gradient(circle at 80% 85%, rgba(197, 160, 89, 0.22), transparent 50%),
+        linear-gradient(160deg, #FBF8F1 0%, #EFE5D4 100%);
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 15px 44px;
+    }
+    .arch-card {
+      width: min(430px, 100%);
+      background: rgba(255, 253, 249, 0.86);
+      backdrop-filter: blur(26px) saturate(175%);
+      -webkit-backdrop-filter: blur(26px) saturate(175%);
+      border: 2px solid rgba(197, 160, 89, 0.65);
+      border-radius: 220px 220px 30px 30px;
+      padding: 46px 24px 30px;
+      text-align: center;
+      box-shadow: 0 28px 65px rgba(48, 36, 20, 0.13), inset 0 2px 4px #FFFFFF, inset 0 0 0 8px rgba(255,253,249,0.7);
+      position: relative;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+    }
+    .couple {
+      font-family: 'Amiri', 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 8vw, 46px);
+      color: var(--emerald);
+      line-height: 1.18;
+      margin-bottom: 10px;
+    }
+    .portrait {
+      width: 156px;
+      height: 196px;
+      margin: 12px auto 16px;
+      border-radius: 90px 90px 18px 18px;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      box-shadow: 0 12px 28px rgba(13, 59, 46, 0.14);
+      display: none;
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .msg {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 340px;
+      margin: 0 auto 16px;
+    }
+    .date-pill {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(13, 59, 46, 0.06);
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      color: var(--emerald);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .venue-line { font-size: 13px; color: var(--gold-dark); font-weight: 600; margin-bottom: 16px; }
+    .cd-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+    .cd-box {
+      background: #FFFFFF;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      border-radius: 14px;
+      padding: 9px 4px;
+    }
+    .cd-box b { display: block; font-size: 20px; color: var(--emerald); font-family: 'Plus Jakarta Sans', sans-serif; }
+    .cd-box span { font-size: 10.5px; color: var(--muted); }
+    .cta-stack { display: flex; flex-direction: column; gap: 9px; margin-top: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 18px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
+      color: #FFFFFF; border: 1px solid var(--gold);
+      font: 700 13px inherit; text-decoration: none; cursor: pointer;
+    }
+    .btn-ghost {
+      background: #FFFFFF; color: var(--emerald); border: 1px solid rgba(197,160,89,0.5);
+    }
+    .story-export {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--gold-dark);
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(197,160,89,0.45);
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <article class="arch-card">
+    <div class="eyebrow" id="elEyebrow">SAVE THE DATE • احفظوا التاريخ</div>
+    <h1 class="couple" id="elCouple">كريم و نور</h1>
+
+    <div class="portrait" id="portraitWrap">
+      <img id="portraitImg" alt="Couple Portrait" crossOrigin="anonymous" />
+    </div>
+
+    <p class="msg" id="elMsg"></p>
+    <div class="date-pill" id="elDate"></div>
+    <div class="venue-line" id="elVenue"></div>
+
+    <div class="cd-row" id="cdRow">
+      <div class="cd-box"><b id="cdD">00</b><span id="lblD">يوم</span></div>
+      <div class="cd-box"><b id="cdH">00</b><span id="lblH">ساعة</span></div>
+      <div class="cd-box"><b id="cdM">00</b><span id="lblM">دقيقة</span></div>
+      <div class="cd-box"><b id="cdS">00</b><span id="lblS">ثانية</span></div>
+    </div>
+
+    <div class="cta-stack" id="ctaStack"></div>
+  </article>
+
+  <button type="button" class="story-export" id="exportStoryBtn">⬇ حفظ كصورة ستوري (Instagram / WhatsApp Story PNG)</button>
+
+  <script>
+    const q = new URLSearchParams(location.search);
+    const mode = q.get('mode') === 'thanks' ? 'thanks' : 'std'; // 'std' | 'thanks'
+    const isEn = q.get('lang') === 'en';
+    const couple = q.get('couple') || (isEn ? 'Karim & Nour' : 'كريم و نور');
+    const dateIso = q.get('date') || '2027-09-18';
+    const dateText = q.get('dateText') || dateIso;
+    const venue = q.get('venue') || '';
+    const customMsg = q.get('msg') || '';
+    const photo = q.get('photo') || '';
+    const qrUrl = q.get('qrUrl') || '';
+    const voiceUrl = q.get('voiceUrl') || '';
+    const inviteUrl = q.get('inviteUrl') || '';
+
+    document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+    document.documentElement.lang = isEn ? 'en' : 'ar';
+
+    if (photo) {
+      document.getElementById('portraitImg').src = photo;
+      document.getElementById('portraitWrap').style.display = 'block';
+    }
+
+    document.getElementById('elCouple').textContent = couple;
+    document.getElementById('elDate').textContent = dateText;
+    document.getElementById('elDate').style.display = dateText ? 'inline-block' : 'none';
+    document.getElementById('elVenue').textContent = venue;
+    document.getElementById('elVenue').style.display = venue ? 'block' : 'none';
+
+    const stack = document.getElementById('ctaStack');
+
+    if (mode === 'thanks') {
+      document.title = `${couple} — Thank You | شكراً لحضوركم`;
+      document.getElementById('elEyebrow').textContent = isEn ? 'WITH ALL OUR LOVE • THANK YOU' : 'شكراً من القلب • THANK YOU';
+      document.getElementById('elMsg').textContent = customMsg || (isEn
+        ? 'Thank you for sharing our joy, your warm blessings, and making our wedding night truly unforgettable.'
+        : 'شكراً من القلب لحضوركم ومشاركتنا أجمل ليلة في عمرنا — وجودكم ودعواتكم الطيبة كملت فرحتنا 🤍');
+      document.getElementById('cdRow').style.display = 'none';
+
+      if (qrUrl) {
+        const a = document.createElement('a');
+        a.className = 'btn'; a.href = qrUrl;
+        a.textContent = isEn ? '📸 Share Photos & Videos With Us' : '📸 شاركونا صور وفيديوهات الفرح';
+        stack.appendChild(a);
+      }
+      if (voiceUrl) {
+        const a = document.createElement('a');
+        a.className = 'btn btn-ghost'; a.href = voiceUrl;
+        a.textContent = isEn ? '🎙️ Leave a Keepsake Voice Wish' : '🎙️ اتركوا لنا رسالة صوتية للذكرى';
+        stack.appendChild(a);
+      }
+    } else {
+      document.title = `${couple} — Save the Date | احفظوا التاريخ`;
+      document.getElementById('elEyebrow').textContent = isEn ? 'SAVE THE DATE' : 'احفظوا التاريخ • SAVE THE DATE';
+      document.getElementById('elMsg').textContent = customMsg || (isEn
+        ? 'Save the date for our celebration — formal invitation & full details to follow soon.'
+        : 'احفظوا هذا التاريخ لمشاركتنا فرحة العمر — الدعوة التفصيلية قريباً بإذن الله 🤍');
+      if (isEn) {
+        document.getElementById('lblD').textContent = 'Days';
+        document.getElementById('lblH').textContent = 'Hours';
+        document.getElementById('lblM').textContent = 'Mins';
+        document.getElementById('lblS').textContent = 'Secs';
+      }
+      const startIso = (/^\d{4}-\d{2}-\d{2}$/.test(dateIso) ? `${dateIso}T19:00:00` : '2027-09-18T19:00:00');
+      const gcalStart = new Date(startIso).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const gcalEnd = new Date(new Date(startIso).getTime() + 4 * 3600000).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(couple + ' Wedding')}&dates=${gcalStart}/${gcalEnd}&location=${encodeURIComponent(venue)}`;
+      const calBtn = document.createElement('a');
+      calBtn.className = 'btn'; calBtn.href = gcal; calBtn.target = '_blank'; calBtn.rel = 'noopener';
+      calBtn.textContent = isEn ? '📅 Add to Google Calendar' : '📅 حفظ الموعد في تقويم الموبايل';
+      stack.appendChild(calBtn);
+
+      if (inviteUrl) {
+        const invBtn = document.createElement('a');
+        invBtn.className = 'btn btn-ghost'; invBtn.href = inviteUrl;
+        invBtn.textContent = isEn ? 'Open Full Invitation ↗' : 'فتح الدعوة الكاملة ↗';
+        stack.appendChild(invBtn);
+      }
+
+      function tick() {
+        const diff = Math.max(0, new Date(startIso).getTime() - Date.now());
+        const pad = n => String(n).padStart(2, '0');
+        document.getElementById('cdD').textContent = pad(Math.floor(diff / 86400000));
+        document.getElementById('cdH').textContent = pad(Math.floor((diff / 3600000) % 24));
+        document.getElementById('cdM').textContent = pad(Math.floor((diff / 60000) % 60));
+        document.getElementById('cdS').textContent = pad(Math.floor((diff / 1000) % 60));
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    document.getElementById('exportStoryBtn').textContent = isEn
+      ? '⬇ Download 9:16 Story Image (PNG)'
+      : '⬇ تحميل كصورة ستوري جاهزة للنشر (PNG)';
+
+    document.getElementById('exportStoryBtn').addEventListener('click', () => {
+      const cv = document.createElement('canvas');
+      cv.width = 1080; cv.height = 1920;
+      const ctx = cv.getContext('2d');
+      const g = ctx.createLinearGradient(0, 0, 0, 1920);
+      g.addColorStop(0, '#FFFDF9'); g.addColorStop(0.55, '#F7EFE1'); g.addColorStop(1, '#EADBC3');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, 1080, 1920);
+
+      // Crystal arch outline
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(110, 1740);
+      ctx.lineTo(110, 620);
+      ctx.arc(540, 620, 430, Math.PI, 0, false);
+      ctx.lineTo(970, 1740);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(255,253,249,0.88)';
+      ctx.fill();
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = '#C5A059';
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#96722E';
+      ctx.font = '700 28px sans-serif';
+      ctx.fillText(mode === 'thanks' ? 'THANK YOU • شكراً لحضوركم' : 'SAVE THE DATE • احفظوا التاريخ', 540, 520);
+
+      ctx.fillStyle = '#0D3B2E';
+      ctx.font = '700 94px serif';
+      ctx.fillText(couple, 540, 680);
+
+      ctx.strokeStyle = 'rgba(197,160,89,0.55)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(300, 745); ctx.lineTo(780, 745); ctx.stroke();
+
+      ctx.fillStyle = '#55605A';
+      ctx.font = '500 36px sans-serif';
+      const text = document.getElementById('elMsg').textContent;
+      const words = text.split(' ');
+      let line = '', y = 850;
+      for (const w of words) {
+        const test = line ? line + ' ' + w : w;
+        if (ctx.measureText(test).width > 680) {
+          ctx.fillText(line, 540, y); line = w; y += 56;
+        } else line = test;
+      }
+      if (line) ctx.fillText(line, 540, y);
+
+      if (dateText) {
+        ctx.fillStyle = '#0D3B2E';
+        ctx.font = '700 46px sans-serif';
+        ctx.fillText(dateText, 540, y + 130);
+      }
+      if (venue) {
+        ctx.fillStyle = '#96722E';
+        ctx.font = '600 34px sans-serif';
+        ctx.fillText(venue, 540, y + 205);
+      }
+
+      ctx.fillStyle = '#96722E';
+      ctx.font = '600 24px sans-serif';
+      ctx.fillText('MEEM • ميم DIGITAL INVITATIONS', 540, 1665);
+
+      const a = document.createElement('a');
+      a.href = cv.toDataURL('image/png');
+      a.download = `${mode}-${couple.replace(/\s+/g, '-')}-story.png`;
+      a.click();
+    });
+  </script>
+</body>
+</html>

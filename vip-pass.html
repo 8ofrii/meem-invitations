@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEEM • ميم — بطاقة دخول VIP | Digital VIP Entry Pass</title>
+  <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --emerald: #0D3B2E;
+      --emerald-2: #185442;
+      --gold: #C5A059;
+      --gold-dark: #96722E;
+      --ivory: #FFFDF9;
+      --pearl: #F6EFE2;
+      --ink: #1C2420;
+      --muted: #646E68;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100dvh;
+      background: radial-gradient(circle at 50% 0%, #FFFDF9 0%, #F4ECDD 55%, #E7DBC6 100%);
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px 40px;
+    }
+    .top-tools {
+      width: min(420px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .lang-pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(197, 160, 89, 0.45);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--emerald);
+      font: 700 12px inherit;
+      cursor: pointer;
+    }
+    .pass-card {
+      width: min(420px, 100%);
+      background: linear-gradient(165deg, rgba(255,255,255,0.96) 0%, rgba(250,244,232,0.95) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 30px;
+      padding: 28px 22px 24px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(13, 59, 46, 0.14), inset 0 0 0 7px #FFFDF9, inset 0 0 0 8.5px rgba(197, 160, 89, 0.38);
+      position: relative;
+      overflow: hidden;
+    }
+    .verify-banner {
+      display: none;
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #FFFFFF;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(5, 150, 105, 0.28);
+    }
+    body.is-verify .verify-banner { display: block; }
+    .logo { width: 50px; height: 50px; object-fit: contain; margin: 0 auto 6px; display: block; }
+    .eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+    .couple-name {
+      font-family: 'Amiri', 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 7vw, 38px);
+      color: var(--emerald);
+      line-height: 1.2;
+      margin: 4px 0 12px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(197,160,89,0.65), transparent);
+      margin: 12px 0;
+    }
+    .guest-box {
+      background: rgba(13, 59, 46, 0.05);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      border-radius: 18px;
+      padding: 14px 14px;
+      margin-bottom: 14px;
+    }
+    .guest-lbl { font-size: 11px; color: var(--muted); font-weight: 600; }
+    .guest-val { font-size: 21px; font-weight: 700; color: var(--emerald); margin-top: 2px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-tile {
+      background: #FFFFFF;
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      border-radius: 14px;
+      padding: 10px 8px;
+    }
+    .meta-tile span { display: block; font-size: 10.5px; color: var(--muted); }
+    .meta-tile strong { display: block; font-size: 14.5px; color: var(--emerald); margin-top: 2px; }
+    .qr-wrap {
+      width: 196px;
+      height: 196px;
+      margin: 8px auto 10px;
+      padding: 11px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--gold);
+      border-radius: 20px;
+      box-shadow: 0 10px 26px rgba(13, 59, 46, 0.08);
+    }
+    .qr-wrap img { width: 100%; height: 100%; display: block; object-fit: contain; }
+    .pass-code {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--emerald);
+      color: #F4E5C2;
+      font-family: 'Plus Jakarta Sans', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .event-meta { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .actions {
+      width: min(420px, 100%);
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--gold);
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
+      color: #FFFFFF;
+      font: 700 12.5px inherit;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn.secondary {
+      background: #FFFFFF;
+      color: var(--emerald);
+    }
+    @media print {
+      .top-tools, .actions { display: none !important; }
+      body { background: #FFF; padding: 0; }
+      .pass-card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-tools">
+    <span style="font-size:11.5px;color:var(--gold-dark);font-weight:700;">MEEM • ميم VIP</span>
+    <button type="button" class="lang-pill" id="langBtn">English</button>
+  </div>
+
+  <article class="pass-card" id="passCard">
+    <div class="verify-banner" id="verifyBanner">✓ بطاقة دخول معتمدة — يُسمح بالدخول</div>
+    <img class="logo" src="assets/logos/meem-logo-320.png?v=2" alt="MEEM" />
+    <div class="eyebrow" id="lblEyebrow">VIP PERSONAL ENTRY PASS</div>
+    <h1 class="couple-name" id="elCouple">كريم و نور</h1>
+
+    <div class="guest-box">
+      <div class="guest-lbl" id="lblGuest">الضيف الكريم • Honored Guest</div>
+      <div class="guest-val" id="elGuest">ضيف الشرف</div>
+    </div>
+
+    <div class="meta-grid">
+      <div class="meta-tile">
+        <span id="lblTable">رقم الطاولة • Table</span>
+        <strong id="elTable">VIP</strong>
+      </div>
+      <div class="meta-tile">
+        <span id="lblCount">عدد الأفراد • Admit</span>
+        <strong id="elCount">1</strong>
+      </div>
+    </div>
+
+    <div class="qr-wrap">
+      <img id="qrImg" alt="VIP Entry QR Code" crossOrigin="anonymous" />
+    </div>
+    <div class="pass-code" id="elCode">VIP-MEEM</div>
+    <div class="divider"></div>
+    <div class="event-meta" id="elEventMeta">يرجى إبراز هذه البطاقة عند بوابة القاعة للاستقبال</div>
+  </article>
+
+  <div class="actions">
+    <button type="button" class="btn" id="savePngBtn">حفظ البطاقة كصورة (PNG)</button>
+    <button type="button" class="btn secondary" onclick="window.print()">طباعة / PDF</button>
+  </div>
+
+  <script>
+    const q = new URLSearchParams(location.search);
+    const couple = q.get('couple') || 'كريم و نور';
+    const guest = q.get('guest') || 'ضيف الشرف';
+    const table = q.get('table') || 'VIP';
+    const count = q.get('count') || '1';
+    const date = q.get('date') || '';
+    const venue = q.get('venue') || '';
+    const isVerify = q.get('verify') === '1';
+    let isEn = q.get('lang') === 'en';
+
+    const autoCode = 'VIP-' + Math.abs(Array.from(couple + '|' + guest + '|' + table).reduce((a, c) => ((a * 31) + c.charCodeAt(0)) | 0, 19)).toString(36).toUpperCase().slice(0, 6);
+    const code = q.get('code') || autoCode;
+
+    if (isVerify) document.body.classList.add('is-verify');
+
+    const verifyUrlObj = new URL(location.href);
+    verifyUrlObj.searchParams.set('couple', couple);
+    verifyUrlObj.searchParams.set('guest', guest);
+    verifyUrlObj.searchParams.set('table', table);
+    verifyUrlObj.searchParams.set('count', count);
+    verifyUrlObj.searchParams.set('code', code);
+    if (date) verifyUrlObj.searchParams.set('date', date);
+    if (venue) verifyUrlObj.searchParams.set('venue', venue);
+    verifyUrlObj.searchParams.set('verify', '1');
+
+    document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&color=0D3B2E&bgcolor=FFFFFF&data=${encodeURIComponent(verifyUrlObj.toString())}`;
+
+    function renderText() {
+      document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+      document.documentElement.lang = isEn ? 'en' : 'ar';
+      document.getElementById('langBtn').textContent = isEn ? 'العربية' : 'English';
+      document.getElementById('elCouple').textContent = couple;
+      document.getElementById('elGuest').textContent = guest;
+      document.getElementById('elTable').textContent = table;
+      document.getElementById('elCount').textContent = isEn ? `${count} Guest(s)` : `${count} ${Number(count) === 1 ? 'شخص' : 'أفراد'}`;
+      document.getElementById('elCode').textContent = code;
+      document.getElementById('verifyBanner').textContent = isEn
+        ? `✓ VERIFIED VIP PASS — ADMIT ${count} GUEST(S)`
+        : `✓ بطاقة دخول معتمدة — يُسمح بدخول (${count})`;
+      document.getElementById('lblGuest').textContent = isEn ? 'Honored Guest' : 'الضيف الكريم';
+      document.getElementById('lblTable').textContent = isEn ? 'Assigned Table' : 'رقم الطاولة';
+      document.getElementById('lblCount').textContent = isEn ? 'Admit Count' : 'عدد الأفراد';
+      document.getElementById('savePngBtn').textContent = isEn ? 'Save Pass to Phone (PNG)' : 'حفظ البطاقة على الموبايل (PNG)';
+
+      const details = [date, venue].filter(Boolean).join(' • ');
+      document.getElementById('elEventMeta').textContent = details || (isEn
+        ? 'Please present this QR pass at the venue reception gate.'
+        : 'يرجى إبراز هذه البطاقة على الموبايل عند بوابة القاعة للاستقبال.');
+    }
+    document.getElementById('langBtn').addEventListener('click', () => { isEn = !isEn; renderText(); });
+    renderText();
+
+    // High-Res Canvas Export so guests can save their VIP pass offline
+    document.getElementById('savePngBtn').addEventListener('click', async () => {
+      const cv = document.createElement('canvas');
+      cv.width = 1080; cv.height = 1520;
+      const ctx = cv.getContext('2d');
+      const grad = ctx.createLinearGradient(0, 0, 0, cv.height);
+      grad.addColorStop(0, '#FFFDF9'); grad.addColorStop(1, '#F3E9D7');
+      ctx.fillStyle = grad; ctx.fillRect(0, 0, cv.width, cv.height);
+
+      ctx.strokeStyle = '#C5A059'; ctx.lineWidth = 8;
+      ctx.strokeRect(48, 48, cv.width - 96, cv.height - 96);
+      ctx.strokeStyle = 'rgba(197,160,89,0.4)'; ctx.lineWidth = 2;
+      ctx.strokeRect(68, 68, cv.width - 136, cv.height - 136);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#96722E'; ctx.font = '700 26px sans-serif';
+      ctx.fillText('MEEM • VIP ENTRY PASS', cv.width / 2, 165);
+
+      ctx.fillStyle = '#0D3B2E'; ctx.font = '700 76px serif';
+      ctx.fillText(couple, cv.width / 2, 275);
+
+      ctx.fillStyle = 'rgba(13,59,46,0.06)';
+      ctx.fillRect(120, 340, cv.width - 240, 175);
+      ctx.fillStyle = '#646E68'; ctx.font = '600 28px sans-serif';
+      ctx.fillText(isEn ? 'Honored Guest' : 'الضيف الكريم', cv.width / 2, 395);
+      ctx.fillStyle = '#0D3B2E'; ctx.font = '700 48px sans-serif';
+      ctx.fillText(guest, cv.width / 2, 468);
+
+      ctx.fillStyle = '#96722E'; ctx.font = '700 34px sans-serif';
+      ctx.fillText(`${isEn ? 'Table' : 'طاولة'}: ${table}   •   ${isEn ? 'Admit' : 'عدد الأفراد'}: ${count}`, cv.width / 2, 595);
+
+      try {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = document.getElementById('qrImg').src; });
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(cv.width / 2 - 240, 650, 480, 480);
+        ctx.strokeStyle = '#C5A059'; ctx.lineWidth = 4;
+        ctx.strokeRect(cv.width / 2 - 240, 650, 480, 480);
+        ctx.drawImage(img, cv.width / 2 - 210, 680, 420, 420);
+      } catch (_) {}
+
+      ctx.fillStyle = '#0D3B2E'; ctx.font = '700 34px monospace';
+      ctx.fillText(code, cv.width / 2, 1210);
+
+      if (date || venue) {
+        ctx.fillStyle = '#646E68'; ctx.font = '600 30px sans-serif';
+        ctx.fillText([date, venue].filter(Boolean).join(' • '), cv.width / 2, 1295);
+      }
+      ctx.fillStyle = '#96722E'; ctx.font = '600 26px sans-serif';
+      ctx.fillText(isEn ? 'Present this QR code at the reception gate' : 'يرجى إبراز هذا الكود عند بوابة القاعة', cv.width / 2, 1385);
+
+      const a = document.createElement('a');
+      a.href = cv.toDataURL('image/png');
+      a.download = `${code}-${guest.replace(/\s+/g, '-')}.png`;
+      a.click();
+    });
+  </script>
+</body>
+</html>

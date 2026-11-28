@@ -125,18 +125,31 @@ function setupPrivateWeddingFolder() {
   const mediaFolder = rootFolder.createFolder('Photos & Videos');
   const wishesFolder = rootFolder.createFolder('Voice & Written Wishes');
 
+  const ss = SpreadsheetApp.create(WEDDING_NAME + ' — RSVP & Guest Sheet');
+  const sheet = ss.getActiveSheet();
+  sheet.setName('RSVPs');
+  sheet.appendRow(['Timestamp', 'Guest Name', 'Attendance', 'Guests Count', 'Assigned Table', 'VIP Pass Code', 'Wish / Note']);
+  sheet.getRange('A1:G1').setFontWeight('bold').setBackground('#0D3B2E').setFontColor('#FAF6EE');
+  sheet.setFrozenRows(1);
+  const ssFile = DriveApp.getFileById(ss.getId());
+  rootFolder.addFile(ssFile);
+  DriveApp.getRootFolder().removeFile(ssFile);
+
   COUPLE_EMAILS.forEach(function(email) {
     if (email && email.indexOf('@') > 0) {
       rootFolder.addEditor(email.trim());
+      ssFile.addEditor(email.trim());
     }
   });
 
   props.setProperty('ROOT_FOLDER_ID', rootFolder.getId());
   props.setProperty('MEDIA_FOLDER_ID', mediaFolder.getId());
   props.setProperty('WISHES_FOLDER_ID', wishesFolder.getId());
+  props.setProperty('RSVP_SHEET_ID', ss.getId());
 
   Logger.log('SUCCESS! Private Folder Created & Shared ONLY with: ' + COUPLE_EMAILS.join(', '));
   Logger.log('Couple Google Drive Link: ' + rootFolder.getUrl());
+  Logger.log('Live RSVP Google Sheet Link: ' + ss.getUrl());
 }
 
 function doPost(e) {
@@ -150,6 +163,15 @@ function doPost(e) {
     }
 
     const props = PropertiesService.getScriptProperties();
+    if (data.action === 'rsvp') {
+      const sheetId = props.getProperty('RSVP_SHEET_ID');
+      if (!sheetId) return jsonOut({ ok: false, error: 'Run setupPrivateWeddingFolder() first' });
+      const ss = SpreadsheetApp.openById(sheetId);
+      const sheet = ss.getSheetByName('RSVPs') || ss.getActiveSheet();
+      const stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm:ss');
+      sheet.appendRow([stamp, data.guestName || 'Guest', data.attendance || 'Attending', Number(data.guestsCount || 1), data.table || 'VIP', data.passCode || '', data.note || '']);
+      return jsonOut({ ok: true, mode: 'rsvp' });
+    }
     const mimeType = data.mimeType || 'image/jpeg';
     const isAudioOrText = mimeType.indexOf('audio') >= 0 || mimeType.indexOf('text') >= 0;
     const targetId = isAudioOrText

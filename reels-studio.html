@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEEM • ميم — 9:16 Vertical Reels Video Studio</title>
+  <link rel="icon" type="image/png" href="assets/logos/meem-logo-128.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100dvh;
+      background: #0B1512;
+      color: #FAF6EE;
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 0;
+    }
+    .sidebar {
+      background: #10211B;
+      border-right: 1px solid rgba(197, 160, 89, 0.28);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+    .sidebar h1 { font-size: 18px; color: #F4E5C2; }
+    .sidebar p { font-size: 12px; color: rgba(250,246,238,0.72); line-height: 1.55; }
+    .lbl { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #C5A059; font-weight: 700; display: block; margin-bottom: 4px; }
+    .inp, .sel {
+      width: 100%; padding: 9px 11px; border-radius: 10px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(197,160,89,0.35);
+      color: #FFF; font: inherit; font-size: 12.5px;
+    }
+    .sel option { background: #10211B; color: #FFF; }
+    .btn {
+      width: 100%; padding: 11px 14px; border-radius: 999px; border: 1px solid #C5A059;
+      background: linear-gradient(135deg, #E3C17B, #C5A059); color: #0D3B2E;
+      font: 700 12.5px inherit; cursor: pointer; text-align: center;
+    }
+    .btn-out {
+      background: rgba(255,255,255,0.08); color: #FAF6EE; border-color: rgba(197,160,89,0.4);
+    }
+    .btn.is-rec { background: #DC2626; color: #FFF; border-color: #FCA5A5; }
+    .stage {
+      display: flex; align-items: center; justify-content: center;
+      padding: 18px; position: relative;
+      background: radial-gradient(circle at 50% 50%, #19382D 0%, #09110E 75%);
+    }
+    .reels-frame {
+      width: 396px;
+      height: 704px;
+      aspect-ratio: 9 / 16;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 2px solid rgba(197, 160, 89, 0.55);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.6);
+      background: #000;
+      position: relative;
+    }
+    .reels-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .status { font-size: 11.5px; color: #F4E5C2; background: rgba(197,160,89,0.14); padding: 9px 11px; border-radius: 10px; line-height: 1.5; }
+    body.clean-stage { grid-template-columns: 1fr; background: #000; }
+    body.clean-stage .sidebar { display: none; }
+    body.clean-stage .stage { padding: 0; background: #000; }
+    body.clean-stage .reels-frame { width: min(100vw, 56.25dvh); height: 100dvh; border-radius: 0; border: 0; }
+    @media (max-width: 860px) {
+      body { grid-template-columns: 1fr; }
+      .sidebar { border-right: 0; border-bottom: 1px solid rgba(197,160,89,0.28); }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <h1>🎬 9:16 Vertical Reels Studio</h1>
+    <p>Auto-plays any client invitation (unlocks seal/doors, plays music, and smoothly scrolls 9:16 vertical) to export a crisp 15–30s WhatsApp &amp; Instagram Reels video.</p>
+
+    <div>
+      <label class="lbl">Client URL or Template</label>
+      <input class="inp" id="urlInput" placeholder="clients/karim-nour/index.html" />
+    </div>
+    <div>
+      <label class="lbl">Or Pick Sample Template</label>
+      <select class="sel" id="sampleSel"></select>
+    </div>
+    <div>
+      <label class="lbl">Reels Duration (Seconds)</label>
+      <select class="sel" id="durSel">
+        <option value="18">18 Seconds (Fast WhatsApp Status)</option>
+        <option value="24" selected>24 Seconds (Recommended IG Reels)</option>
+        <option value="30">30 Seconds (Full Walkthrough)</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn" id="playSeqBtn">▶ Auto-Play Opening &amp; Smooth Scroll</button>
+    <button type="button" class="btn btn-out" id="recordBtn">⏺ Record Tab Video + Audio</button>
+    <button type="button" class="btn btn-out" id="cleanBtn">⛶ Clean Fullscreen 9:16 (Press Esc to Exit)</button>
+
+    <div class="status" id="statusTxt">Ready — load your client URL and click Auto-Play or Record.</div>
+  </aside>
+
+  <main class="stage">
+    <div class="reels-frame" id="reelsBox">
+      <iframe id="reelsFrame" allow="autoplay"></iframe>
+    </div>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const frame = document.getElementById('reelsFrame');
+    const urlInp = document.getElementById('urlInput');
+    const sampleSel = document.getElementById('sampleSel');
+    const statusTxt = document.getElementById('statusTxt');
+
+    const samples = (window.SITE && window.SITE.SAMPLES) ? window.SITE.SAMPLES : [];
+    sampleSel.innerHTML = `<option value="">— Select a catalog template —</option>` +
+      samples.map(s => `<option value="${s.file}?clean=1">#${s.num} — ${s.title}</option>`).join('');
+
+    const initSrc = q.get('src') || (samples[0] ? `${samples[0].file}?clean=1` : '');
+    urlInp.value = initSrc;
+    if (initSrc) frame.src = initSrc;
+
+    urlInp.addEventListener('change', () => {
+      let v = urlInp.value.trim();
+      if (v && !v.includes('clean=1') && v.includes('samples/')) v += (v.includes('?') ? '&' : '?') + 'clean=1';
+      frame.src = v;
+    });
+    sampleSel.addEventListener('change', () => {
+      if (!sampleSel.value) return;
+      urlInp.value = sampleSel.value;
+      frame.src = sampleSel.value;
+    });
+
+    function triggerOpeningAndScroll() {
+      const dur = Number(document.getElementById('durSel').value || 24) * 1000;
+      const win = frame.contentWindow;
+      const doc = frame.contentDocument || (win && win.document);
+      if (!doc) {
+        statusTxt.textContent = 'Frame still loading — wait 1 second and try again.';
+        return;
+      }
+      statusTxt.textContent = '▶ Opening seal/doors & starting music...';
+      win.scrollTo(0, 0);
+
+      // Trigger common interactive openers across all 58 MEEM templates
+      const openerSelectors = [
+        '#sealBtn', '.wax-seal', '.seal-btn', '.crystal-seal', '[data-open-invite]',
+        '#openBtn', '.open-btn', '.gate-overlay', '.envelope-stage', '.door-stage',
+        '.curtain-stage', '#coverOverlay', '.cover-overlay', '.intro-gate', 'button'
+      ];
+      setTimeout(() => {
+        for (const sel of openerSelectors) {
+          const el = doc.querySelector(sel);
+          if (el && el.id !== 'wi-music-fab') {
+            el.click();
+            break;
+          }
+        }
+      }, 900);
+
+      // Smooth cinematic scroll after opening animation (starts at 3.4s)
+      setTimeout(() => {
+        const scrollDur = Math.max(6000, dur - 4200);
+        const maxScroll = Math.max(0, doc.documentElement.scrollHeight - win.innerHeight);
+        const t0 = performance.now();
+        statusTxt.textContent = '🎬 Gliding smoothly through invitation...';
+        function step(now) {
+          const p = Math.min(1, (now - t0) / scrollDur);
+          const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+          win.scrollTo(0, maxScroll * ease);
+          if (p < 1) requestAnimationFrame(step);
+          else statusTxt.textContent = '✓ Reels walkthrough finished!';
+        }
+        requestAnimationFrame(step);
+      }, 3400);
+    }
+
+    document.getElementById('playSeqBtn').addEventListener('click', () => {
+      frame.src = urlInp.value.trim();
+      frame.onload = () => setTimeout(triggerOpeningAndScroll, 500);
+    });
+
+    document.getElementById('cleanBtn').addEventListener('click', () => {
+      document.body.classList.add('clean-stage');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.body.classList.remove('clean-stage');
+    });
+
+    let recorder = null, recStream = null, recChunks = [];
+    document.getElementById('recordBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('recordBtn');
+      if (recorder && recorder.state === 'recording') {
+        recorder.stop();
+        return;
+      }
+      try {
+        recStream = await navigator.mediaDevices.getDisplayMedia({
+          video: { frameRate: 30 },
+          audio: true,
+          preferCurrentTab: true
+        });
+        recChunks = [];
+        const mime = MediaRecorder.isTypeSupported('video/mp4') ? 'video/mp4' : 'video/webm;codecs=vp9,opus';
+        recorder = new MediaRecorder(recStream, MediaRecorder.isTypeSupported(mime) ? { mimeType: mime } : {});
+        recorder.ondataavailable = e => { if (e.data && e.data.size) recChunks.push(e.data); };
+        recorder.onstop = () => {
+          recStream.getTracks().forEach(t => t.stop());
+          btn.classList.remove('is-rec');
+          btn.textContent = '⏺ Record Tab Video + Audio';
+          document.body.classList.remove('clean-stage');
+          const blob = new Blob(recChunks, { type: recorder.mimeType || 'video/webm' });
+          const ext = (recorder.mimeType || '').includes('mp4') ? 'mp4' : 'webm';
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = `meem-reels-invite.${ext}`;
+          a.click();
+          statusTxt.textContent = `✓ Downloaded meem-reels-invite.${ext}!`;
+        };
+        document.body.classList.add('clean-stage');
+        btn.classList.add('is-rec');
+        btn.textContent = '⏹ Stop Recording';
+        recorder.start();
+        triggerOpeningAndScroll();
+        const durMs = (Number(document.getElementById('durSel').value || 24) + 1.5) * 1000;
+        setTimeout(() => { if (recorder && recorder.state === 'recording') recorder.stop(); }, durMs);
+      } catch (_) {
+        statusTxt.textContent = 'Screen recording cancelled — or click Clean Fullscreen 9:16 to record on your phone.';
+      }
+    });
+  </script>
+</body>
+</html>

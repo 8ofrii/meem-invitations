@@ -290,7 +290,7 @@ http.createServer(async (req, res) => {
         if (body.files && typeof body.files === 'object') {
           for (const [relPath, entry] of Object.entries(body.files)) {
             const cleanRel = String(relPath).replace(/^\/+/, '');
-            if (!/^(assets\/images\/|assets\/audio\/|samples\/)[a-zA-Z0-9._-]+$/.test(cleanRel)) continue;
+            if (!/^(assets\/images\/[a-zA-Z0-9._-]+|assets\/audio\/[a-zA-Z0-9._-]+|samples\/[a-zA-Z0-9._-]+|clients\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9._-]+)$/.test(cleanRel)) continue;
             const abs = path.join(ROOT, cleanRel);
             fs.mkdirSync(path.dirname(abs), { recursive: true });
             if (entry && entry.base64) {

@@ -1771,7 +1771,7 @@
     if (isEn) {
       document.querySelectorAll('[data-monogram]').forEach((el) => {
         if (el.textContent.includes('م') || el.textContent.includes('ع')) {
-          el.textContent = 'O & S';
+          el.textContent = 'K & N';
         }
       });
       // Convert tear-off calendar day and other date elements to Latin numbers
@@ -1973,61 +1973,85 @@
   }
 
   function initRSVPForms() {
+    const tableParam = readParam(['table', 'tb', 'seat']);
     document.querySelectorAll('form[data-rsvp-form]').forEach((form) => {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         playSparkle();
         const isRTL = document.documentElement.dir === 'rtl' || form.getAttribute('data-lang') === 'ar';
         const data = new FormData(form);
-        const name = (data.get('guestName') || '').toString().trim() || (isRTL ? 'ضيف كريم' : 'Honored Guest');
+        const name = (data.get('guestName') || guestName || '').toString().trim() || (isRTL ? 'ضيف كريم' : 'Honored Guest');
         const status = (data.get('attendance') || 'yes').toString();
         const count = (data.get('guestsCount') || '1').toString();
         const note = (data.get('note') || '').toString().trim();
-        const couple = form.getAttribute('data-couple') || 'Wedding Celebration';
-        const phone = form.getAttribute('data-whatsapp') || STUDIO_CONFIG.defaultWhatsapp;
+        const couple = customCouple || form.getAttribute('data-couple') || 'Wedding Celebration';
+        const phone = form.getAttribute('data-whatsapp') || (document.body && document.body.dataset.whatsapp) || STUDIO_CONFIG.defaultWhatsapp;
+        const sheetEndpoint = form.getAttribute('data-rsvp-endpoint') || (document.body && document.body.dataset.rsvpEndpoint) || '';
+        const sheetToken = form.getAttribute('data-rsvp-token') || (document.body && document.body.dataset.rsvpToken) || '';
+        const assignedTable = tableParam || (document.body && document.body.dataset.defaultTable) || 'VIP';
 
         const attending = status === 'yes';
+        const passCode = `VIP-${Math.abs(
+          Array.from(name + couple + assignedTable).reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) | 0, 7)
+        ).toString(36).toUpperCase().slice(0, 6)}`;
+
+        // 1. Live Google Sheet RSVP Logging (if client RSVP Sheet add-on is enabled)
+        if (sheetEndpoint) {
+          fetch(sheetEndpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'rsvp',
+              token: sheetToken,
+              couple,
+              guestName: name,
+              attendance: attending ? 'Attending' : 'Declined',
+              guestsCount: attending ? Number(count) : 0,
+              table: assignedTable,
+              note,
+              passCode
+            })
+          }).catch(() => {});
+        }
+
         const waText = isRTL
-          ? `مرحباً، تأكيد حضور لحفل زفاف ${couple}\nالاسم: ${name}\nالحالة: ${attending ? 'سأحضر بكل سرور' : 'أعتذر عن الحضور'}\nعدد الضيوف: ${attending ? count : '0'}${note ? `\nتهنئة/ملاحظة: ${note}` : ''}`
-          : `Hello! RSVP for ${couple}\nName: ${name}\nStatus: ${attending ? 'Joyfully Accepts' : 'Regretfully Declines'}\nGuests: ${attending ? count : '0'}${note ? `\nNote: ${note}` : ''}`;
+          ? `مرحباً، تأكيد حضور لحفل ${couple}\nالاسم: ${name}\nالحالة: ${attending ? 'سأحضر بكل سرور' : 'أعتذر عن الحضور'}\nعدد الضيوف: ${attending ? count : '0'}${assignedTable ? `\nالطاولة: ${assignedTable}` : ''}${note ? `\nتهنئة/ملاحظة: ${note}` : ''}`
+          : `Hello! RSVP for ${couple}\nName: ${name}\nStatus: ${attending ? 'Joyfully Accepts' : 'Regretfully Declines'}\nGuests: ${attending ? count : '0'}${assignedTable ? `\nTable: ${assignedTable}` : ''}${note ? `\nNote: ${note}` : ''}`;
 
         const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
-        const passCode = `VIP-${Math.abs(
-          Array.from(name + couple).reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) | 0, 7)
-        )
-          .toString(36)
-          .toUpperCase()
-          .slice(0, 6)}`;
+        const rootPrefix = location.pathname.includes('/clients/') ? '../../' : '../';
+        const vipPassRel = `${rootPrefix}vip-pass.html?couple=${encodeURIComponent(couple)}&guest=${encodeURIComponent(name)}&table=${encodeURIComponent(assignedTable)}&count=${encodeURIComponent(count)}&code=${encodeURIComponent(passCode)}${isRTL ? '' : '&lang=en'}`;
+        const verifyAbs = new URL(vipPassRel + '&verify=1', location.href).href;
+        const realQrImgSrc = `https://api.qrserver.com/v1/create-qr-code/?size=280x280&color=0D3B2E&bgcolor=FFFFFF&data=${encodeURIComponent(verifyAbs)}`;
 
         const resultId = form.getAttribute('data-result-target');
         const resultEl = resultId ? document.getElementById(resultId) : null;
         if (resultEl) {
           const qrBg = form.getAttribute('data-qr-bg') || '#ffffff';
-          const qrFg = form.getAttribute('data-qr-fg') || '#1a1a1a';
-          const qrMarkup = attending ? generateQRSVG(`${couple}|${name}|${passCode}`, qrFg, qrBg) : '';
-
           resultEl.innerHTML = `
             <div style="text-align:center; padding: 24px 18px; border: 1px solid currentColor; border-radius: 16px; margin-top: 18px;">
               <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.78; margin-bottom: 6px;">
-                ${isRTL ? (attending ? 'بطاقة دخول رقمية مؤكدة' : 'تم استلام ردكم') : (attending ? 'CONFIRMED DIGITAL ENTRY PASS' : 'RESPONSE RECEIVED')}
+                ${isRTL ? (attending ? 'بطاقة دخول VIP رقمية مؤكدة' : 'تم استلام ردكم') : (attending ? 'CONFIRMED VIP ENTRY PASS' : 'RESPONSE RECEIVED')}
               </div>
               <div style="font-size: 20px; font-weight: 600; margin-bottom: 4px;">${escapeHtml(name)}</div>
-              <div style="font-size: 13px; opacity: 0.82; margin-bottom: 16px;">
+              <div style="font-size: 13px; opacity: 0.86; margin-bottom: 14px;">
                 ${
                   attending
                     ? isRTL
-                      ? `عدد الضيوف: ${escapeHtml(count)} • رمز الدعوة: ${passCode}`
-                      : `Admit ${escapeHtml(count)} Guest${count === '1' ? '' : 's'} • Pass ${passCode}`
+                      ? `الطاولة: ${escapeHtml(assignedTable)} • الأفراد: ${escapeHtml(count)} • الرمز: ${passCode}`
+                      : `Table: ${escapeHtml(assignedTable)} • Admit ${escapeHtml(count)} • ${passCode}`
                     : isRTL
                       ? 'شكراً لمشاركتنا ردكم ونتمنى لكم كل الخير'
                       : 'Thank you for letting us know. You will be missed!'
                 }
               </div>
-              ${attending ? `<div style="display:inline-block; padding:10px; background:${qrBg}; border-radius:12px; margin-bottom:16px; box-shadow:0 8px 20px rgba(0,0,0,0.14);">${qrMarkup}</div>` : ''}
-              <div>
+              ${attending ? `<div style="display:inline-block; padding:10px; background:${qrBg}; border-radius:14px; margin-bottom:14px; box-shadow:0 8px 20px rgba(0,0,0,0.14);"><img src="${realQrImgSrc}" alt="VIP QR Pass" width="132" height="132" style="display:block;border-radius:8px;" /></div>` : ''}
+              <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                ${attending ? `<a href="${vipPassRel}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:999px; background:#0D3B2E; color:#F4E5C2; border:1px solid #C5A059; text-decoration:none; font-size:12.5px; font-weight:700; font-family:system-ui,sans-serif;">${isRTL ? 'فتح وحفظ كارت الدخول VIP ↗' : 'Open & Save VIP Pass ↗'}</a>` : ''}
                 <a href="${waUrl}" target="_blank" rel="noopener noreferrer"
-                   style="display:inline-flex; align-items:center; gap:8px; padding:11px 22px; border-radius:999px; background:#25D366; color:#fff; text-decoration:none; font-size:13px; font-weight:700; font-family:system-ui,sans-serif;">
-                  ${isRTL ? 'إرسال التأكيد عبر واتساب' : 'Send Confirmation via WhatsApp'}
+                   style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:999px; background:#25D366; color:#fff; text-decoration:none; font-size:12.5px; font-weight:700; font-family:system-ui,sans-serif;">
+                  ${isRTL ? 'تأكيد عبر واتساب' : 'Confirm via WhatsApp'}
                 </a>
               </div>
             </div>
@@ -2035,9 +2059,76 @@
           resultEl.style.display = 'block';
           resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-        showToast(isRTL ? 'تم تجهيز بطاقة التأكيد بنجاح ✨' : 'Your RSVP & VIP pass are ready! ✨');
+        showToast(isRTL ? 'تم تسجيل تأكيد الحضور وتجهيز بطاقة الدخول ✨' : 'RSVP recorded & VIP pass ready! ✨');
       });
     });
+  }
+
+  function injectClientAddonsHub() {
+    if (!document.body) return;
+    const qrCamUrl = document.body.dataset.qrCamUrl || '';
+    const voiceBookUrl = document.body.dataset.voiceBookUrl || '';
+    const guestTable = readParam(['table', 'tb', 'seat']);
+    const guestParam = readParam(['guest', 'name', 'to']);
+
+    if ((guestParam || guestTable) && !document.getElementById('meem-vip-floating-pill')) {
+      const isRTL = document.documentElement.dir === 'rtl';
+      const couple = customCouple || document.title.split('—')[0].trim() || 'MEEM';
+      const rootPrefix = location.pathname.includes('/clients/') ? '../../' : '../';
+      const passHref = `${rootPrefix}vip-pass.html?couple=${encodeURIComponent(couple)}&guest=${encodeURIComponent(guestParam || (isRTL ? 'ضيف الشرف' : 'VIP Guest'))}&table=${encodeURIComponent(guestTable || 'VIP')}${isRTL ? '' : '&lang=en'}`;
+      const bar = document.createElement('a');
+      bar.id = 'meem-vip-floating-pill';
+      bar.href = passHref;
+      bar.target = '_blank';
+      bar.rel = 'noopener';
+      bar.textContent = isRTL
+        ? `🎫 بطاقة دخولك VIP${guestTable ? ' • ' + guestTable : ''}`
+        : `🎫 Your VIP Pass${guestTable ? ' • ' + guestTable : ''}`;
+      Object.assign(bar.style, {
+        position: 'fixed', bottom: '18px', left: '18px', zIndex: '9997',
+        padding: '8px 15px', borderRadius: '999px',
+        background: 'rgba(13, 59, 46, 0.92)', color: '#F4E5C2',
+        border: '1px solid rgba(197, 160, 89, 0.72)',
+        boxShadow: '0 8px 22px rgba(0,0,0,0.28)', backdropFilter: 'blur(10px)',
+        fontSize: '12px', fontWeight: '700', textDecoration: 'none',
+        fontFamily: 'system-ui, -apple-system, sans-serif'
+      });
+      document.body.appendChild(bar);
+    }
+
+    if (!qrCamUrl && !voiceBookUrl) return;
+    if (document.getElementById('meem-client-addons-hub')) return;
+    const isRTL = document.documentElement.dir === 'rtl';
+    const sec = document.createElement('section');
+    sec.id = 'meem-client-addons-hub';
+    Object.assign(sec.style, {
+      maxWidth: '520px', margin: '26px auto 34px', padding: '22px 18px',
+      borderRadius: '22px', textAlign: 'center',
+      background: 'rgba(255, 253, 249, 0.9)',
+      border: '1.5px solid rgba(197, 160, 89, 0.55)',
+      boxShadow: '0 16px 38px rgba(0,0,0,0.12)',
+      color: '#1C2420', fontFamily: 'system-ui, -apple-system, sans-serif'
+    });
+    sec.innerHTML = `
+      <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#96722E;font-weight:700;margin-bottom:6px;">
+        ${isRTL ? 'ذكريات وتهاني الفرح • WEDDING MEMORIES' : 'WEDDING MEMORIES & WISHES'}
+      </div>
+      <p style="font-size:13px;color:#58635D;line-height:1.6;margin-bottom:14px;">
+        ${isRTL ? 'شاركونا أجمل الصور والفيديوهات والرسائل الصوتية لتُحفظ في ألبومنا الخاص للأبد' : 'Share your candid photos, videos, and voice blessings privately in our keepsake album'}
+      </p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        ${qrCamUrl ? `<a href="${qrCamUrl}" target="_blank" rel="noopener" style="padding:10px 18px;border-radius:999px;background:#0D3B2E;color:#FFFDF9;border:1px solid #C5A059;text-decoration:none;font-size:12.5px;font-weight:700;">${isRTL ? '📸 كاميرا الضيوف ورفع الصور' : '📸 Guest QR Camera'}</a>` : ''}
+        ${voiceBookUrl ? `<a href="${voiceBookUrl}" target="_blank" rel="noopener" style="padding:10px 18px;border-radius:999px;background:#FFFFFF;color:#0D3B2E;border:1.5px solid #C5A059;text-decoration:none;font-size:12.5px;font-weight:700;">${isRTL ? '🎙️ سجّل تهنئة صوتية للعروسين' : '🎙️ Record Voice Wish'}</a>` : ''}
+      </div>
+    `;
+    const anchor = document.querySelector('footer') || document.querySelector('main');
+    if (anchor && anchor.tagName === 'FOOTER' && anchor.parentNode) {
+      anchor.parentNode.insertBefore(sec, anchor);
+    } else if (anchor) {
+      anchor.appendChild(sec);
+    } else {
+      document.body.appendChild(sec);
+    }
   }
 
   function initCopyButtons() {
@@ -2200,6 +2291,7 @@
     initVenuePhoto();
     initCountdowns();
     initRSVPForms();
+    injectClientAddonsHub();
     initCopyButtons();
     injectFloatingControls();
     initScrollReveal();

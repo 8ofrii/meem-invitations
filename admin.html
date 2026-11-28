@@ -391,9 +391,10 @@
 
       <nav class="tabs" id="adminTabs">
         <button type="button" class="tab-btn active" data-tab="invites">Invitations</button>
+        <button type="button" class="tab-btn" data-tab="clients">Create Client &amp; Add-Ons ✨</button>
+        <button type="button" class="tab-btn" data-tab="whatsapp">WhatsApp &amp; Pricing</button>
         <button type="button" class="tab-btn" data-tab="songs">Songs &amp; Music</button>
         <button type="button" class="tab-btn" data-tab="images">Images &amp; Covers</button>
-        <button type="button" class="tab-btn" data-tab="whatsapp">WhatsApp &amp; Pricing</button>
         <button type="button" class="tab-btn" data-tab="settings">Site Options &amp; Categories</button>
       </nav>
 
@@ -510,6 +511,180 @@
               <button type="button" class="btn btn-em" id="savePricingBtn" style="margin-top:8px;">Save Prices</button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- TAB: CREATE CLIENT SUITE & ALL ADD-ONS DIRECTLY -->
+      <section class="tab-panel" id="tab-clients">
+        <div class="settings-grid" style="align-items:start;">
+          <!-- LEFT: 1-CLICK CLIENT & ADD-ONS BUILDER -->
+          <div class="set-card">
+            <h3>✨ Create Client Order &amp; Build Selected Add-Ons</h3>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.55;">
+              Fill in the couple's details, tick the exact add-ons they ordered, and click <strong>Build Client Suite</strong> — generates all pages under <code>/clients/&lt;slug&gt;/</code> ready to push live to GitHub in 1 click!
+            </p>
+            <form id="clientBuilderForm" class="form-grid" style="gap:10px;">
+              <div><label class="lbl">Client URL Slug (English, e.g. karim-nour)</label><input class="inp" id="cbSlug" placeholder="karim-nour" required /></div>
+              <div>
+                <label class="lbl">Occasion</label>
+                <select class="sel" id="cbOccasion">
+                  <option value="wedding">Wedding · حفل زفاف</option>
+                  <option value="katb">Katb Ketab · عقد قران</option>
+                  <option value="engagement">Engagement · حفل خطوبة</option>
+                  <option value="henna">Henna Night · ليلة حنة</option>
+                  <option value="std">Save the Date · احفظوا التاريخ</option>
+                </select>
+              </div>
+
+              <div><label class="lbl">Groom Name (اسم العريس)</label><input class="inp" id="cbGroom" placeholder="كريم / Karim" required /></div>
+              <div><label class="lbl">Bride Name (اسم العروسة)</label><input class="inp" id="cbBride" placeholder="نور / Nour" required /></div>
+
+              <div><label class="lbl">Event Date (للعد التنازلي)</label><input class="inp" type="date" id="cbDate" /></div>
+              <div><label class="lbl">Display Date Text (النص الظاهر)</label><input class="inp" id="cbDateText" placeholder="الجمعة 18 سبتمبر 2027 · 8:00 م" /></div>
+
+              <div><label class="lbl">Venue Name (اسم القاعة / الفندق)</label><input class="inp" id="cbVenue" placeholder="قاعة الماسة الملكية، مدينة نصر" /></div>
+              <div><label class="lbl">Google Maps Link</label><input class="inp" id="cbMapUrl" placeholder="https://maps.google.com/..." /></div>
+
+              <div><label class="lbl">RSVP WhatsApp Phone (رقم استلام التأكيد)</label><input class="inp" id="cbWhatsapp" placeholder="201024190741" /></div>
+              <div><label class="lbl">Couple Gmail(s) (لقفل فولدر Drive وشيت الحضور)</label><input class="inp" id="cbEmails" placeholder="groom@gmail.com, bride@gmail.com" /></div>
+
+              <!-- BASE INVITATION SETTINGS -->
+              <div class="full" style="background:#FAF7F2;border:1px solid var(--line);border-radius:14px;padding:12px;">
+                <label style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;color:var(--emerald);cursor:pointer;margin-bottom:8px;">
+                  <input type="checkbox" id="cbIncludeInvite" checked />
+                  <span>Include Interactive Digital Invitation (إلغِ التحديد لو العميل طالب إضافة منفردة فقط)</span>
+                </label>
+                <div class="form-grid" id="cbInviteFields" style="gap:9px;">
+                  <div><label class="lbl">Design Template</label><select class="sel" id="cbTemplate"></select></div>
+                  <div>
+                    <label class="lbl">Language Mode</label>
+                    <select class="sel" id="cbLang">
+                      <option value="">Template Default</option>
+                      <option value="ar">100% Arabic (عربي)</option>
+                      <option value="en">100% English</option>
+                      <option value="bi">Bilingual (عربي + English)</option>
+                    </select>
+                  </div>
+                  <div><label class="lbl">Wedding Song</label><select class="sel" id="cbSong"></select></div>
+                  <div>
+                    <label class="lbl">Color Palette Override</label>
+                    <select class="sel" id="cbTheme">
+                      <option value="">Original Design Palette</option>
+                      <option value="gold">Royal Champagne Gold</option>
+                      <option value="chromium">Liquid Chromium &amp; Platinum</option>
+                      <option value="emerald">Emerald Palace Green</option>
+                      <option value="rose">Dusty Rose &amp; Pearl</option>
+                      <option value="sapphire">Mediterranean Sapphire</option>
+                    </select>
+                  </div>
+                  <div class="full" style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+                    <div>
+                      <label class="lbl" style="margin:0;">Optional Couple / Venue Portrait</label>
+                      <small id="cbPhotoStatus" style="font-size:11px;color:var(--muted);">No photo selected</small>
+                    </div>
+                    <label class="btn btn-out btn-sm" style="cursor:pointer;">
+                      Upload Couple/Venue Photo
+                      <input type="file" id="cbPhotoInput" accept="image/*" style="display:none;" />
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ALL 7 ADD-ONS CHECKLIST -->
+              <div class="full" style="background:#FAF7F2;border:1px solid var(--line);border-radius:14px;padding:12px;">
+                <label class="lbl" style="margin-bottom:8px;">Select Add-Ons to Build Automatically (اختر الإضافات المطلوبة)</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;">
+                    <input type="checkbox" id="adQrCam" />
+                    <span><b>📸 QR Guest Camera + Table QR Card</b><br><small style="color:var(--muted)">Creates qr-camera.html + table-qr-card.html</small></span>
+                  </label>
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;">
+                    <input type="checkbox" id="adVipSeat" />
+                    <span><b>🎫 VIP QR Passes &amp; Table Seating</b><br><small style="color:var(--muted)">Scannable gate QR + bulk guest links</small></span>
+                  </label>
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;">
+                    <input type="checkbox" id="adVoice" />
+                    <span><b>🎙️ Voice &amp; Written Guestbook</b><br><small style="color:var(--muted)">Creates voice-guestbook.html</small></span>
+                  </label>
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;">
+                    <input type="checkbox" id="adReels" />
+                    <span><b>🎬 9:16 Vertical Reels Studio</b><br><small style="color:var(--muted)">Opens auto-scrolling Reels recorder</small></span>
+                  </label>
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;">
+                    <input type="checkbox" id="adMulti" />
+                    <span><b>🌐 Extra Bilingual / VIP Links</b><br><small style="color:var(--muted)">Creates -en and -vip links automatically</small></span>
+                  </label>
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;">
+                    <input type="checkbox" id="adRsvpSheet" />
+                    <span><b>📊 Live Google Sheet RSVP Tracker</b><br><small style="color:var(--muted)">Auto-logs RSVPs into couple's Sheet</small></span>
+                  </label>
+                  <label style="display:flex;gap:7px;align-items:flex-start;cursor:pointer;grid-column:1/-1;">
+                    <input type="checkbox" id="adKeepsakes" />
+                    <span><b>💌 Save the Date + Post-Wedding Thank You Cards</b> — Creates <code>save-the-date.html</code> &amp; <code>thank-you.html</code> (+ 9:16 Story PNG download)</span>
+                  </label>
+                </div>
+
+                <!-- Extra options for Multi-Version Links -->
+                <div id="cbMultiExtra" style="display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);" class="form-grid">
+                  <div><label class="lbl">English Couple Names (for -en link)</label><input class="inp" id="cbEnCouple" placeholder="Karim & Nour" /></div>
+                  <div><label class="lbl">English Venue Name (for -en link)</label><input class="inp" id="cbEnVenue" placeholder="Royal Al-Masa Ballroom, Cairo" /></div>
+                  <div class="full"><label class="lbl">VIP Link Date/Time Text (Optional — creates -vip link if filled)</label><input class="inp" id="cbVipDateText" placeholder="استقبال خاص لكبار الزوار الساعة 7:00 مساءً" /></div>
+                </div>
+
+                <!-- Google Apps Script Web App Endpoint (for QR Cam / Voice / RSVP Sheet) -->
+                <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);">
+                  <label class="lbl">Google Apps Script Web App URL (Optional now — paste after 30s script deploy)</label>
+                  <input class="inp" id="cbEndpoint" placeholder="https://script.google.com/macros/s/.../exec" />
+                </div>
+              </div>
+
+              <div class="full" style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button type="submit" class="btn btn-em" id="buildClientBtn" style="flex:1;">✨ Build Client Suite &amp; Stage for GitHub</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- RIGHT: GENERATED DELIVERY HUB + BULK VIP GUEST GENERATOR -->
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="set-card" id="clientResultCard">
+              <h3>📦 Generated Client Links, Google Script &amp; Delivery Message</h3>
+              <div id="clientResultBody" style="font-size:12.5px;color:var(--muted);line-height:1.6;">
+                Build a client order on the left (or click any saved client below) to view all live links, copy the 1-click Google Drive/Sheet script, copy the client's WhatsApp delivery message, and click <strong>Publish Live to Site</strong>!
+              </div>
+            </div>
+
+            <!-- VIP GUEST LIST & TABLE SEATING BULK GENERATOR -->
+            <div class="set-card">
+              <h3>🎫 VIP Guest List &amp; Table Seating Link Generator</h3>
+              <p style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5;">
+                Paste guests (one per line: <code>Guest Name, Table, Count</code>) to instantly generate personal invitation links + scannable VIP Gate QR Passes &amp; Excel CSV!
+              </p>
+              <div class="set-fields">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                  <div><label class="lbl">Couple Name (on VIP Pass)</label><input class="inp" id="vipCoupleInp" placeholder="كريم و نور" /></div>
+                  <div><label class="lbl">Client Invitation URL</label><input class="inp" id="vipBaseUrlInp" placeholder="https://meem-invitations.onrender.com/clients/karim-nour/" /></div>
+                </div>
+                <div>
+                  <label class="lbl">Guest List (One per line: Name, Table, Admit Count)</label>
+                  <textarea class="txt" id="vipGuestLines" rows="4" placeholder="أحمد محمود وعائلته, طاولة 4, 3&#10;م. سارة الشريف, طاولة VIP 1, 2&#10;Dr. Youssef Adel, Table 07, 2"></textarea>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button type="button" class="btn btn-gold btn-sm" id="genVipListBtn">Generate VIP Links &amp; QR Passes</button>
+                  <button type="button" class="btn btn-out btn-sm" id="dlVipCsvBtn" style="display:none;">⬇ Download Excel (CSV)</button>
+                </div>
+                <div id="vipGeneratedOut" style="max-height:240px;overflow:auto;display:grid;gap:6px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAVED CLIENTS DIRECTORY -->
+        <div class="set-card" style="margin-top:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <h3 style="margin:0;">🗂️ Created Client Weddings &amp; Add-Ons Directory</h3>
+            <a class="btn btn-out btn-sm" href="reels-studio.html" target="_blank">🎬 Open Standalone 9:16 Reels Studio ↗</a>
+          </div>
+          <div id="savedClientsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;"></div>
         </div>
       </section>
 
@@ -1020,6 +1195,7 @@
 
       updateDraftBanner();
       renderInvitesTab();
+      renderClientsTab();
       renderSongsTab();
       renderImagesTab();
       renderWhatsappPricingTab();
@@ -1578,6 +1754,674 @@
       const src = tile.dataset.pickSrc;
       $('imagePickerModal').classList.remove('open');
       if (imagePickerCallback) imagePickerCallback(src);
+    });
+
+    /* ===== TAB: CREATE CLIENT SUITE & ALL ADD-ONS DIRECTLY ===== */
+    const PUBLIC_ORIGIN = 'https://meem-invitations.onrender.com';
+    let cbUploadedPhoto = null; // { base64, dataUrl }
+    let activeClientRecord = null;
+    let lastVipRows = [];
+
+    const THEME_CSS_VARS = {
+      gold: '--gold:#C9A24D;--accent:#C9A24D;',
+      chromium: '--gold:#BCC6CC;--accent:#9AA5B1;',
+      emerald: '--gold:#C5A059;--emerald:#0D3B2E;',
+      rose: '--gold:#C98B8B;--accent:#C98B8B;',
+      sapphire: '--gold:#9BB5D6;--accent:#234B7A;'
+    };
+
+    function slugifyClient(str) {
+      return String(str || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+
+    ['cbGroom', 'cbBride'].forEach(id => {
+      $(id).addEventListener('input', () => {
+        if ($('cbSlug').dataset.touched === '1') return;
+        const g = slugifyClient($('cbGroom').value);
+        const b = slugifyClient($('cbBride').value);
+        if (g || b) $('cbSlug').value = [g, b].filter(Boolean).join('-');
+      });
+    });
+    $('cbSlug').addEventListener('input', () => { $('cbSlug').dataset.touched = '1'; });
+    $('cbIncludeInvite').addEventListener('change', () => {
+      $('cbInviteFields').style.display = $('cbIncludeInvite').checked ? 'grid' : 'none';
+    });
+    $('adMulti').addEventListener('change', () => {
+      $('cbMultiExtra').style.display = $('adMulti').checked ? 'grid' : 'none';
+    });
+
+    $('cbPhotoInput').addEventListener('change', async e => {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      cbUploadedPhoto = await compressImageFile(f, 1100, 0.85);
+      $('cbPhotoStatus').textContent = `✓ Ready (${f.name})`;
+      e.target.value = '';
+    });
+
+    function buildUnifiedGoogleAppsScript(rec) {
+      return `/**
+ * MEEM Private Wedding Cloud Suite — ${rec.couple} (${rec.slug})
+ * ================================================================
+ * Powers: (1) QR Guest Camera, (2) Voice & Written Guestbook, (3) Live Google Sheet RSVP
+ *
+ * 30-SECOND SETUP:
+ * 1. Open https://script.google.com -> New Project -> paste this entire code.
+ * 2. Select "setupPrivateWeddingSuite" in the top bar and click RUN ONCE.
+ *    -> Automatically creates Private Drive Folder + "Photos & Videos" + "Voice & Written Wishes" + "RSVP Google Sheet"
+ *       and locks sharing ONLY to: ${rec.emails.length ? rec.emails.join(', ') : '(Add emails in COUPLE_EMAILS)'}
+ * 3. Click Deploy -> New deployment -> Web app (Execute as: Me | Who has access: Anyone).
+ * 4. Copy the Web App URL -> click "Edit / Update Endpoint" on this client in MEEM Admin -> Publish Live!
+ */
+
+const WEDDING_NAME = ${JSON.stringify('MEEM — ' + rec.couple)};
+const COUPLE_EMAILS = ${JSON.stringify(rec.emails || [])};
+const SECRET_TOKEN = ${JSON.stringify(rec.secretToken)};
+const ACCEPTING_UPLOADS = true;
+const EXPIRES_AT = ${JSON.stringify(rec.expiresAt)};
+
+function setupPrivateWeddingSuite() {
+  const props = PropertiesService.getScriptProperties();
+  const rootFolder = DriveApp.createFolder(WEDDING_NAME);
+  rootFolder.setSharing(DriveApp.Access.PRIVATE, DriveApp.Permission.NONE);
+
+  const mediaFolder = rootFolder.createFolder('Photos & Videos');
+  const wishesFolder = rootFolder.createFolder('Voice & Written Wishes');
+
+  const ss = SpreadsheetApp.create(WEDDING_NAME + ' — RSVP & Guest Sheet');
+  const sheet = ss.getActiveSheet();
+  sheet.setName('RSVPs');
+  sheet.appendRow(['Timestamp', 'Guest Name', 'Attendance', 'Guests Count', 'Assigned Table', 'VIP Pass Code', 'Wish / Note']);
+  sheet.getRange('A1:G1').setFontWeight('bold').setBackground('#0D3B2E').setFontColor('#FAF6EE');
+  sheet.setFrozenRows(1);
+
+  const ssFile = DriveApp.getFileById(ss.getId());
+  rootFolder.addFile(ssFile);
+  DriveApp.getRootFolder().removeFile(ssFile);
+
+  COUPLE_EMAILS.forEach(function(email) {
+    if (email && email.indexOf('@') > 0) {
+      rootFolder.addEditor(email.trim());
+      ssFile.addEditor(email.trim());
+    }
+  });
+
+  props.setProperty('ROOT_FOLDER_ID', rootFolder.getId());
+  props.setProperty('MEDIA_FOLDER_ID', mediaFolder.getId());
+  props.setProperty('WISHES_FOLDER_ID', wishesFolder.getId());
+  props.setProperty('RSVP_SHEET_ID', ss.getId());
+
+  Logger.log('Private Drive Folder URL: ' + rootFolder.getUrl());
+  Logger.log('Live RSVP Google Sheet URL: ' + ss.getUrl());
+}
+
+function doPost(e) {
+  try {
+    if (!ACCEPTING_UPLOADS || (EXPIRES_AT && new Date() > new Date(EXPIRES_AT))) {
+      return jsonOut({ ok: false, error: 'Window closed' });
+    }
+    const data = JSON.parse(e.postData.contents || '{}');
+    if (SECRET_TOKEN && data.token !== SECRET_TOKEN) {
+      return jsonOut({ ok: false, error: 'Unauthorized wedding token' });
+    }
+    const props = PropertiesService.getScriptProperties();
+
+    if (data.action === 'rsvp') {
+      const sheetId = props.getProperty('RSVP_SHEET_ID');
+      if (!sheetId) return jsonOut({ ok: false, error: 'Run setupPrivateWeddingSuite() first' });
+      const ss = SpreadsheetApp.openById(sheetId);
+      const sheet = ss.getSheetByName('RSVPs') || ss.getActiveSheet();
+      const stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm:ss');
+      sheet.appendRow([stamp, data.guestName || 'Guest', data.attendance || 'Attending', Number(data.guestsCount || 1), data.table || 'VIP', data.passCode || '', data.note || '']);
+      return jsonOut({ ok: true, mode: 'rsvp' });
+    }
+
+    const mimeType = data.mimeType || 'image/jpeg';
+    const isAudioOrText = mimeType.indexOf('audio') >= 0 || mimeType.indexOf('text') >= 0;
+    const targetId = isAudioOrText
+      ? (props.getProperty('WISHES_FOLDER_ID') || props.getProperty('ROOT_FOLDER_ID'))
+      : (props.getProperty('MEDIA_FOLDER_ID') || props.getProperty('ROOT_FOLDER_ID'));
+    if (!targetId) return jsonOut({ ok: false, error: 'Run setupPrivateWeddingSuite() first' });
+
+    const folder = DriveApp.getFolderById(targetId);
+    const rawBase64 = (data.base64 || '').replace(/^data:[^;]+;base64,/, '');
+    const ext = mimeType.indexOf('video') >= 0 ? (mimeType.indexOf('mp4') >= 0 ? 'mp4' : 'webm')
+      : mimeType.indexOf('audio') >= 0 ? (mimeType.indexOf('mp4') >= 0 ? 'm4a' : 'webm')
+      : mimeType.indexOf('text') >= 0 ? 'txt' : (mimeType.indexOf('png') >= 0 ? 'png' : 'jpg');
+
+    const safeGuest = (data.guestName || 'Guest').replace(/[^a-zA-Z0-9\\u0600-\\u06FF _-]/g, '').trim() || 'Guest';
+    const stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyyMMdd_HHmmss');
+    const fileName = stamp + '_' + safeGuest + '.' + ext;
+    const file = folder.createFile(Utilities.newBlob(Utilities.base64Decode(rawBase64), mimeType, fileName));
+    if (data.note) file.setDescription('Guest: ' + safeGuest + '\\nMessage: ' + data.note);
+    return jsonOut({ ok: true, name: fileName });
+  } catch (err) {
+    return jsonOut({ ok: false, error: String(err) });
+  }
+}
+
+function doGet() { return jsonOut({ status: 'MEEM Private Suite Active', couple: WEDDING_NAME }); }
+function jsonOut(obj) { return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON); }
+`;
+    }
+
+    function customizeInviteHtml(baseHtml, sample, opts) {
+      let html = baseHtml
+        .replace(/\.\.\/assets\//g, '../../assets/')
+        .replace(/href="assets\//g, 'href="../../assets/')
+        .replace(/src="assets\//g, 'src="../../assets/');
+
+      const couple = opts.couple;
+      const ogImg = `${PUBLIC_ORIGIN}/${sample.img || 'assets/images/classic-ivory-gold-crest.jpg'}`;
+      const ogDesc = `${opts.dateText ? opts.dateText + ' • ' : ''}${opts.venue || 'You are warmly invited to celebrate with us.'}`;
+      const ogTags = `\n  <meta property="og:type" content="website" />\n  <meta property="og:title" content="${esc(couple)}" />\n  <meta property="og:description" content="${esc(ogDesc)}" />\n  <meta property="og:image" content="${ogImg}" />\n  <meta name="twitter:card" content="summary_large_image" />`;
+
+      html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(couple)} — MEEM Digital Invitation</title>${ogTags}`);
+      html = html.replace(/(data-couple-title[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${couple}$3`);
+      html = html.replace(/data-couple="[^"]*"/gi, `data-couple="${esc(couple)}"`);
+
+      if (opts.groom && opts.bride) {
+        const mono = `${opts.groom.trim()[0]} &amp; ${opts.bride.trim()[0]}`;
+        html = html.replace(/(data-monogram[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${mono}$3`);
+      }
+      if (opts.dateText) {
+        html = html.replace(/(data-event-date[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${opts.dateText}$3`);
+      }
+      if (opts.date && /^\d{4}-\d{2}-\d{2}$/.test(opts.date)) {
+        html = html.replace(/data-countdown="[^"]*"/gi, `data-countdown="${opts.date}T19:00:00+02:00"`);
+      }
+      if (opts.venue) {
+        html = html.replace(/(data-venue-name[^>]*>)([\s\S]*?)(<\/[a-z0-9]+>)/gi, `$1${opts.venue}$3`);
+      }
+      if (opts.mapUrl) {
+        html = html.replace(/href="https:\/\/maps\.google\.com[^"]*"/gi, `href="${opts.mapUrl}"`);
+        html = html.replace(/href="https:\/\/goo\.gl\/maps[^"]*"/gi, `href="${opts.mapUrl}"`);
+      }
+      if (opts.whatsapp) {
+        html = html.replace(/<form([^>]*data-rsvp-form[^>]*)>/gi, `<form$1 data-whatsapp="${opts.whatsapp}">`);
+      }
+
+      if (opts.song) {
+        if (opts.song === 'silent') {
+          html = html.replace(/\s*data-music-mood="[^"]*"/gi, '');
+          html = html.replace(/<body([^>]*)>/i, '<body$1 data-no-music="true">');
+          html = html.replace(/WeddingSound\.startMusic\([^)]*\)/g, 'void 0');
+        } else {
+          html = html.replace(/\s*data-no-music="true"/gi, '');
+          if (/data-music-mood="[^"]*"/i.test(html)) {
+            html = html.replace(/data-music-mood="[^"]*"/i, `data-music-mood="${opts.song}"`);
+          } else {
+            html = html.replace(/<body([^>]*)>/i, `<body$1 data-music-mood="${opts.song}">`);
+          }
+          html = html.replace(/WeddingSound\.startMusic\(\s*['"][^'"]+['"]\s*\)/g, `WeddingSound.startMusic('${opts.song}')`);
+        }
+      }
+
+      if (opts.theme && THEME_CSS_VARS[opts.theme]) {
+        html = html.replace(/<\/style>/i, `\n:root { ${THEME_CSS_VARS[opts.theme]} }\n</style>`);
+      }
+
+      if (opts.photoFile) {
+        if (/data-couple-photo/i.test(html)) {
+          html = html.replace(/(<img[^>]*data-couple-photo[^>]*src=")[^"]*(")/gi, `$1${opts.photoFile}$2`);
+        } else {
+          html = html.replace(/<\/body>/i, `<script>window.addEventListener('DOMContentLoaded',function(){window.postMessage({type:'meem_photo',dataUrl:${JSON.stringify(opts.photoFile)}},'*');});<\/script></body>`);
+        }
+      }
+
+      // Inject language override script if requested (e.g. for -en version)
+      if (opts.lang) {
+        html = html.replace(/<head>/i, `<head><script>if(!location.search.includes('lang=')){history.replaceState(null,'',location.pathname+(location.search?location.search+'&':'?')+'lang=${opts.lang}');}<\/script>`);
+      }
+
+      // Wire client add-on data attributes onto <body>
+      let bodyAttrs = ' data-client-site="true"';
+      if (opts.whatsapp) bodyAttrs += ` data-whatsapp="${esc(opts.whatsapp)}"`;
+      if (opts.rsvpSheet && opts.endpoint) {
+        bodyAttrs += ` data-rsvp-endpoint="${esc(opts.endpoint)}" data-rsvp-token="${esc(opts.secretToken)}"`;
+      }
+      if (opts.qrCamRel) bodyAttrs += ` data-qr-cam-url="${esc(opts.qrCamRel)}"`;
+      if (opts.voiceBookRel) bodyAttrs += ` data-voice-book-url="${esc(opts.voiceBookRel)}"`;
+      html = html.replace(/<body([^>]*)>/i, `<body$1${bodyAttrs}>`);
+
+      return html;
+    }
+
+    function buildTableQrCardHtml(couple, targetUrl) {
+      return `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table QR Card — ${esc(couple)}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #FAF7F2; font-family: 'Cairo', sans-serif; display: grid; place-items: center; min-height: 100vh; padding: 24px; }
+    .card {
+      width: min(420px, 100%); background: linear-gradient(165deg, #FFFDF9, #F6EFE2);
+      border: 2.5px solid #C5A059; border-radius: 28px; padding: 38px 26px; text-align: center;
+      box-shadow: 0 24px 60px rgba(13, 59, 46, 0.14), inset 0 0 0 9px #FFFDF9, inset 0 0 0 11px rgba(197, 160, 89, 0.45);
+    }
+    .amiri { font-family: 'Amiri', serif; }
+    .qr-box { width: 220px; height: 220px; margin: 18px auto; padding: 12px; background: #FFF; border: 1.5px solid #C5A059; border-radius: 18px; }
+    .qr-box img { width: 100%; height: 100%; display: block; }
+    .print-btn { margin-top: 18px; padding: 10px 24px; border-radius: 999px; border: 1px solid #C5A059; background: #0D3B2E; color: #FFF; font: 700 13px inherit; cursor: pointer; }
+    @media print { .print-btn { display: none; } body { background: #FFF; padding: 0; } .card { box-shadow: none; } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="../../assets/logos/meem-logo-320.png?v=2" alt="MEEM" style="width:50px;height:50px;object-fit:contain;margin:0 auto 8px;display:block;" />
+    <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#9B7837;font-weight:700;">CAPTURE OUR MEMORIES</div>
+    <h1 class="amiri" style="font-size:38px;color:#0D3B2E;margin:6px 0;">${esc(couple)}</h1>
+    <p style="font-size:13px;color:#5D6862;line-height:1.7;">امسح الكود بكاميرا موبايلك وشاركنا أجمل صور وفيديوهات الليلة — تُحفظ فوراً وبسرية في ألبومنا الخاص</p>
+    <div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&color=0D3B2E&bgcolor=FFFFFF&data=${encodeURIComponent(targetUrl)}" alt="Wedding QR Code" />
+    </div>
+    <div style="font-size:12px;color:#0D3B2E;font-weight:700;">Scan With Camera • بدون تحميل أي تطبيق</div>
+    <button type="button" class="print-btn" onclick="window.print()">طباعة / حفظ كارت الطاولة PDF</button>
+  </div>
+</body>
+</html>`;
+    }
+
+    function buildClientDeliveryWhatsapp(rec) {
+      const base = `${PUBLIC_ORIGIN}/clients/${rec.slug}`;
+      const lines = [`ألف مبروك يا *${rec.couple}* وربنا يتمملكم على خير يارب 🤍✨`, `تم تجهيز كل روابط فرحكم الخاصة من *MEEM • ميم*:`];
+      if (rec.includeInvite) lines.push(`\n💌 *رابط الدعوة الرقمية التفاعلية:*\n${base}/`);
+      if (rec.addons.multi) {
+        lines.push(`🌐 *النسخة الإنجليزية (English Link):*\n${PUBLIC_ORIGIN}/clients/${rec.slug}-en/`);
+        if (rec.vipDateText) lines.push(`👑 *نسخة كبار الزوار (VIP Link):*\n${PUBLIC_ORIGIN}/clients/${rec.slug}-vip/`);
+      }
+      if (rec.addons.qrCam) {
+        lines.push(`\n📸 *كاميرا الضيوف السرية (ترفع مباشرة لفولدر Google Drive الخاص بكم):*\n${base}/qr-camera.html`);
+        lines.push(`🪧 *كارت الطاولات الجاهز للطباعة (Table QR Card):*\n${base}/table-qr-card.html`);
+      }
+      if (rec.addons.voice) {
+        lines.push(`\n🎙️ *دفتر التهاني الصوتي والمكتوب:*\n${base}/voice-guestbook.html`);
+      }
+      if (rec.addons.keepsakes) {
+        lines.push(`\n📅 *كارت احفظوا التاريخ (Save the Date):*\n${base}/save-the-date.html`);
+        lines.push(`🤍 *كارت الشكر لبعد الفرح (Thank You Card):*\n${base}/thank-you.html`);
+      }
+      lines.push(`\nنتمنى لكم ليلة عمر لا تُنسى 🤍✨`);
+      return lines.join('\n');
+    }
+
+    function renderClientResultPanel(rec) {
+      activeClientRecord = rec;
+      if (!rec) return;
+      const base = `${PUBLIC_ORIGIN}/clients/${rec.slug}`;
+      $('vipCoupleInp').value = rec.couple;
+      $('vipBaseUrlInp').value = `${base}/`;
+
+      const linkRows = [];
+      if (rec.includeInvite) linkRows.push(['💌 Main Invitation', `${base}/`]);
+      if (rec.addons.multi) {
+        linkRows.push(['🌐 English Invitation', `${PUBLIC_ORIGIN}/clients/${rec.slug}-en/`]);
+        if (rec.vipDateText) linkRows.push(['👑 VIP Invitation', `${PUBLIC_ORIGIN}/clients/${rec.slug}-vip/`]);
+      }
+      if (rec.addons.qrCam) {
+        linkRows.push(['📸 Guest QR Camera', `${base}/qr-camera.html`]);
+        linkRows.push(['🪧 Printable Table QR Card', `${base}/table-qr-card.html`]);
+      }
+      if (rec.addons.voice) linkRows.push(['🎙️ Voice Guestbook', `${base}/voice-guestbook.html`]);
+      if (rec.addons.keepsakes) {
+        linkRows.push(['📅 Save the Date Card', `${base}/save-the-date.html`]);
+        linkRows.push(['🤍 Thank You Card', `${base}/thank-you.html`]);
+      }
+      if (rec.includeInvite) {
+        linkRows.push(['🎬 9:16 Reels Recorder', `reels-studio.html?src=${encodeURIComponent(`clients/${rec.slug}/index.html`)}`]);
+      }
+
+      const needsCloudScript = rec.addons.qrCam || rec.addons.voice || rec.addons.rsvpSheet;
+
+      $('clientResultBody').innerHTML = `
+        <div style="background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;padding:10px 12px;border-radius:12px;margin-bottom:10px;font-weight:600;">
+          ✓ Suite ready for <strong>${esc(rec.couple)}</strong> (<code>/clients/${esc(rec.slug)}/</code>) — Click <strong>Publish Live to Site</strong> at the top to upload to GitHub!
+        </div>
+        <div style="display:grid;gap:6px;margin-bottom:12px;">
+          ${linkRows.map(([lbl, u]) => `
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 10px;background:#FAF7F2;border:1px solid var(--line);border-radius:10px;">
+              <span style="font-weight:700;color:var(--emerald);">${lbl}</span>
+              <a href="${esc(u)}" target="_blank" style="font-size:11.5px;color:var(--gold-2);font-weight:700;text-decoration:none;">Open ↗</a>
+            </div>`).join('')}
+        </div>
+        ${needsCloudScript ? `
+          <div style="background:#FAF7F2;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;">
+            <strong style="color:var(--emerald);display:block;margin-bottom:4px;">🔒 Private Google Drive &amp; Live RSVP Sheet Script</strong>
+            <small style="display:block;color:var(--muted);margin-bottom:8px;">
+              1. Click <b>Copy Google Script</b> → paste at <a href="https://script.google.com" target="_blank">script.google.com</a> → Run <code>setupPrivateWeddingSuite</code> once.<br>
+              2. Deploy as Web App → paste the Web App URL into the form on the left and click Build again!
+            </small>
+            <button type="button" class="btn btn-out btn-sm" id="copyGsBtn">📋 Copy Google Apps Script</button>
+          </div>
+        ` : ''}
+        <div>
+          <label class="lbl">Client Delivery WhatsApp Message</label>
+          <textarea class="txt" id="clientWaHandoffTxt" rows="6" dir="rtl" style="font-size:12px;margin-bottom:8px;">${esc(buildClientDeliveryWhatsapp(rec))}</textarea>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button type="button" class="btn btn-gold btn-sm" id="copyClientHandoffBtn">Copy Delivery Message</button>
+            <button type="button" class="btn btn-em btn-sm" id="quickPublishClientBtn">🚀 Publish Live to GitHub Now</button>
+          </div>
+        </div>
+      `;
+
+      if ($('copyGsBtn')) {
+        $('copyGsBtn').addEventListener('click', async () => {
+          await navigator.clipboard.writeText(buildUnifiedGoogleAppsScript(rec));
+          showToast('✓ Copied Unified Google Drive + RSVP Sheet Script!');
+        });
+      }
+      $('copyClientHandoffBtn').addEventListener('click', async () => {
+        await navigator.clipboard.writeText($('clientWaHandoffTxt').value);
+        showToast('✓ Client delivery WhatsApp message copied!');
+      });
+      $('quickPublishClientBtn').addEventListener('click', publishAllLive);
+    }
+
+    $('clientBuilderForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = $('buildClientBtn');
+      btn.disabled = true;
+      btn.textContent = 'Building Client Suite...';
+      try {
+        const slug = slugifyClient($('cbSlug').value) || ('wedding-' + Date.now().toString(36));
+        const groom = $('cbGroom').value.trim();
+        const bride = $('cbBride').value.trim();
+        const hasAr = /[\u0600-\u06FF]/.test(groom + bride);
+        const couple = hasAr ? `${groom} و ${bride}` : `${groom} & ${bride}`;
+        const date = $('cbDate').value;
+        const dateText = $('cbDateText').value.trim() || date;
+        const venue = $('cbVenue').value.trim();
+        const mapUrl = $('cbMapUrl').value.trim();
+        const whatsapp = $('cbWhatsapp').value.trim().replace(/[^0-9]/g, '') || siteData.WHATSAPP || '201024190741';
+        const emails = $('cbEmails').value.split(/[,;\s]+/).map(s => s.trim()).filter(s => s.includes('@'));
+        const endpoint = $('cbEndpoint').value.trim();
+        const includeInvite = $('cbIncludeInvite').checked;
+        const tplNum = $('cbTemplate').value;
+        const lang = $('cbLang').value;
+        const song = $('cbSong').value;
+        const theme = $('cbTheme').value;
+
+        const addons = {
+          qrCam: $('adQrCam').checked,
+          vipSeat: $('adVipSeat').checked,
+          voice: $('adVoice').checked,
+          reels: $('adReels').checked,
+          multi: $('adMulti').checked,
+          rsvpSheet: $('adRsvpSheet').checked,
+          keepsakes: $('adKeepsakes').checked
+        };
+
+        siteData.CLIENTS = siteData.CLIENTS || [];
+        const existing = siteData.CLIENTS.find(c => c.slug === slug);
+        const randHex = Array.from(crypto.getRandomValues(new Uint8Array(10))).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+        const secretToken = existing ? existing.secretToken : ('MEEM_' + randHex);
+        let expiresAt = '2028-12-31T23:59:59+02:00';
+        if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+          const d = new Date(date + 'T23:59:59+02:00');
+          d.setDate(d.getDate() + 7);
+          expiresAt = d.toISOString();
+        }
+
+        let photoRelInClient = '';
+        if (cbUploadedPhoto) {
+          pendingFiles[`clients/${slug}/couple.jpg`] = { base64: cbUploadedPhoto.base64, previewUrl: cbUploadedPhoto.dataUrl };
+          photoRelInClient = 'couple.jpg';
+        }
+
+        // 1. Build QR Guest Camera + Printable Table QR Card
+        if (addons.qrCam) {
+          let qrHtml = await fetch('qr-memories.html').then(r => r.text());
+          qrHtml = qrHtml.replace(/href="assets\//g, 'href="../../assets/').replace(/src="assets\//g, 'src="../../assets/');
+          qrHtml = qrHtml.replace("const COUPLE = params.get('couple') || 'كريم و نور';", `const COUPLE = params.get('couple') || ${JSON.stringify(couple)};`);
+          qrHtml = qrHtml.replace("const DRIVE_ENDPOINT = params.get('endpoint') || '';", `const DRIVE_ENDPOINT = params.get('endpoint') || ${JSON.stringify(endpoint)};`);
+          qrHtml = qrHtml.replace("const DRIVE_TOKEN = params.get('token') || '';", `const DRIVE_TOKEN = params.get('token') || ${JSON.stringify(secretToken)};`);
+          qrHtml = qrHtml.replace("const GUEST_ONLY = params.get('guestOnly') === '1';", "const GUEST_ONLY = params.get('guestOnly') !== '0';");
+          pendingFiles[`clients/${slug}/qr-camera.html`] = { text: qrHtml };
+          pendingFiles[`clients/${slug}/table-qr-card.html`] = {
+            text: buildTableQrCardHtml(couple, `${PUBLIC_ORIGIN}/clients/${slug}/qr-camera.html`)
+          };
+        }
+
+        // 2. Build Voice & Written Wishes Guestbook
+        if (addons.voice) {
+          let vbHtml = await fetch('voice-guestbook.html').then(r => r.text());
+          vbHtml = vbHtml.replace(/href="assets\//g, 'href="../../assets/').replace(/src="assets\//g, 'src="../../assets/');
+          vbHtml = vbHtml.replace("const COUPLE = params.get('couple') || 'كريم و نور';", `const COUPLE = params.get('couple') || ${JSON.stringify(couple)};`);
+          vbHtml = vbHtml.replace("const ENDPOINT = params.get('endpoint') || '';", `const ENDPOINT = params.get('endpoint') || ${JSON.stringify(endpoint)};`);
+          vbHtml = vbHtml.replace("const TOKEN = params.get('token') || '';", `const TOKEN = params.get('token') || ${JSON.stringify(secretToken)};`);
+          pendingFiles[`clients/${slug}/voice-guestbook.html`] = { text: vbHtml };
+          if (!addons.qrCam) {
+            pendingFiles[`clients/${slug}/table-qr-card.html`] = {
+              text: buildTableQrCardHtml(couple, `${PUBLIC_ORIGIN}/clients/${slug}/voice-guestbook.html`)
+            };
+          }
+        }
+
+        // 3. Build Save the Date + Thank You Digital Cards
+        if (addons.keepsakes) {
+          const ksRaw = await fetch('keepsake-card.html').then(r => r.text());
+          const ksPatched = ksRaw.replace(/href="assets\//g, 'href="../../assets/').replace(/src="assets\//g, 'src="../../assets/');
+          const stdParams = {
+            mode: 'std', couple, date, dateText, venue,
+            photo: photoRelInClient || '',
+            inviteUrl: includeInvite ? 'index.html' : ''
+          };
+          const thxParams = {
+            mode: 'thanks', couple, dateText, venue,
+            photo: photoRelInClient || '',
+            qrUrl: addons.qrCam ? 'qr-camera.html' : '',
+            voiceUrl: addons.voice ? 'voice-guestbook.html' : ''
+          };
+          const injectKsDefaults = (tpl, obj) => tpl.replace(
+            'const q = new URLSearchParams(location.search);',
+            `const _DEF = ${JSON.stringify(obj)}; const _rawQ = new URLSearchParams(location.search); for (const [k,v] of Object.entries(_DEF)) { if (v && !_rawQ.has(k)) _rawQ.set(k, v); } const q = _rawQ;`
+          );
+          pendingFiles[`clients/${slug}/save-the-date.html`] = { text: injectKsDefaults(ksPatched, stdParams) };
+          pendingFiles[`clients/${slug}/thank-you.html`] = { text: injectKsDefaults(ksPatched, thxParams) };
+        }
+
+        // 4. Build Main Invitation (+ Optional English & VIP Versions)
+        const enCouple = $('cbEnCouple').value.trim() || `${slugifyClient(groom) || 'Groom'} & ${slugifyClient(bride) || 'Bride'}`;
+        const enVenue = $('cbEnVenue').value.trim() || venue;
+        const vipDateText = $('cbVipDateText').value.trim();
+
+        if (includeInvite) {
+          const sample = siteData.SAMPLES.find(s => s.num === tplNum) || siteData.SAMPLES[0];
+          const baseHtml = await fetch(sample.file).then(r => r.text());
+          const commonOpts = {
+            groom, bride, couple, date, dateText, venue, mapUrl, whatsapp,
+            song, theme, lang, endpoint, secretToken,
+            rsvpSheet: addons.rsvpSheet,
+            photoFile: photoRelInClient,
+            qrCamRel: addons.qrCam ? 'qr-camera.html' : '',
+            voiceBookRel: addons.voice ? 'voice-guestbook.html' : ''
+          };
+          pendingFiles[`clients/${slug}/index.html`] = { text: customizeInviteHtml(baseHtml, sample, commonOpts) };
+
+          if (addons.multi) {
+            if (cbUploadedPhoto) pendingFiles[`clients/${slug}-en/couple.jpg`] = { base64: cbUploadedPhoto.base64, previewUrl: cbUploadedPhoto.dataUrl };
+            pendingFiles[`clients/${slug}-en/index.html`] = {
+              text: customizeInviteHtml(baseHtml, sample, {
+                ...commonOpts,
+                couple: enCouple,
+                venue: enVenue,
+                lang: 'en',
+                qrCamRel: addons.qrCam ? `../${slug}/qr-camera.html` : '',
+                voiceBookRel: addons.voice ? `../${slug}/voice-guestbook.html` : ''
+              })
+            };
+            if (vipDateText) {
+              if (cbUploadedPhoto) pendingFiles[`clients/${slug}-vip/couple.jpg`] = { base64: cbUploadedPhoto.base64, previewUrl: cbUploadedPhoto.dataUrl };
+              pendingFiles[`clients/${slug}-vip/index.html`] = {
+                text: customizeInviteHtml(baseHtml, sample, {
+                  ...commonOpts,
+                  dateText: vipDateText,
+                  qrCamRel: addons.qrCam ? `../${slug}/qr-camera.html` : '',
+                  voiceBookRel: addons.voice ? `../${slug}/voice-guestbook.html` : ''
+                })
+              };
+            }
+          }
+        }
+
+        // Save Google Script inside client folder for safekeeping too
+        const rec = {
+          slug, groom, bride, couple, occasion: $('cbOccasion').value,
+          date, dateText, venue, mapUrl, whatsapp, emails, endpoint,
+          includeInvite, tplNum, lang, song, theme,
+          enCouple, enVenue, vipDateText,
+          addons, secretToken, expiresAt, updatedAt: new Date().toISOString()
+        };
+        if (addons.qrCam || addons.voice || addons.rsvpSheet) {
+          pendingFiles[`clients/${slug}/drive-apps-script.gs`] = { text: buildUnifiedGoogleAppsScript(rec) };
+        }
+
+        const idx = siteData.CLIENTS.findIndex(c => c.slug === slug);
+        if (idx >= 0) siteData.CLIENTS[idx] = rec;
+        else siteData.CLIENTS.unshift(rec);
+
+        persistDraft();
+        renderClientsTab();
+        renderClientResultPanel(rec);
+        showToast(`✨ Built "${couple}" (${Object.keys(pendingFiles).length} files staged) — Click Publish Live!`, 4500);
+      } catch (err) {
+        showToast('Build error: ' + err.message, 4500);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '✨ Build Client Suite & Stage for GitHub';
+      }
+    });
+
+    /* VIP Guest List & Table Seating Bulk Generator */
+    $('genVipListBtn').addEventListener('click', () => {
+      const couple = $('vipCoupleInp').value.trim() || 'كريم و نور';
+      let baseInvite = $('vipBaseUrlInp').value.trim() || `${PUBLIC_ORIGIN}/`;
+      const rawLines = $('vipGuestLines').value.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      if (!rawLines.length) {
+        showToast('Paste at least 1 guest line first.');
+        return;
+      }
+      lastVipRows = rawLines.map(line => {
+        const parts = line.split(/[,،|\t]+/).map(s => s.trim());
+        const guest = parts[0] || 'VIP Guest';
+        const table = parts[1] || 'VIP';
+        const count = parts[2] || '1';
+        const sep = baseInvite.includes('?') ? '&' : '?';
+        const inviteUrl = `${baseInvite}${sep}guest=${encodeURIComponent(guest)}&table=${encodeURIComponent(table)}`;
+        const passUrl = `${PUBLIC_ORIGIN}/vip-pass.html?couple=${encodeURIComponent(couple)}&guest=${encodeURIComponent(guest)}&table=${encodeURIComponent(table)}&count=${encodeURIComponent(count)}`;
+        return { guest, table, count, inviteUrl, passUrl };
+      });
+
+      $('dlVipCsvBtn').style.display = 'inline-flex';
+      $('vipGeneratedOut').innerHTML = lastVipRows.map((r, i) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 10px;background:#FAF7F2;border:1px solid var(--line);border-radius:10px;font-size:12px;">
+          <div><b>${esc(r.guest)}</b> <span style="color:var(--muted)">· ${esc(r.table)} (${esc(r.count)})</span></div>
+          <div style="display:flex;gap:5px;">
+            <button type="button" class="btn btn-out btn-sm" data-copy-vip-inv="${i}">Copy Invite</button>
+            <a class="btn btn-gold btn-sm" href="${esc(r.passUrl)}" target="_blank">VIP Pass ↗</a>
+          </div>
+        </div>`).join('');
+    });
+
+    $('vipGeneratedOut').addEventListener('click', async e => {
+      const b = e.target.closest('button[data-copy-vip-inv]');
+      if (!b) return;
+      const row = lastVipRows[Number(b.dataset.copyVipInv)];
+      if (!row) return;
+      await navigator.clipboard.writeText(row.inviteUrl);
+      showToast(`✓ Copied personal link for ${row.guest}!`);
+    });
+
+    $('dlVipCsvBtn').addEventListener('click', () => {
+      if (!lastVipRows.length) return;
+      const csv = '\uFEFFGuest Name,Table,Admit Count,Personal Invitation Link,Direct VIP QR Pass Link\n' +
+        lastVipRows.map(r => [r.guest, r.table, r.count, r.inviteUrl, r.passUrl].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+      downloadTextFile('meem-vip-guest-links.csv', csv, 'text/csv');
+    });
+
+    function renderClientsTab() {
+      $('cbTemplate').innerHTML = siteData.SAMPLES.map(s => `<option value="${s.num}">#${s.num} — ${esc(s.title)}</option>`).join('');
+      $('cbSong').innerHTML = `<option value="">Keep Template Default Song</option>` +
+        (siteData.SONGS || []).map(x => `<option value="${esc(x.key)}">${esc(x.label)}</option>`).join('');
+
+      const list = siteData.CLIENTS || [];
+      if (!list.length) {
+        $('savedClientsGrid').innerHTML = `<div style="font-size:12.5px;color:var(--muted);padding:10px 0;">No client suites created yet — use the builder above to create your first couple order in seconds!</div>`;
+        return;
+      }
+      $('savedClientsGrid').innerHTML = list.map(c => {
+        const badges = Object.entries(c.addons || {}).filter(([, v]) => v).map(([k]) => k).join(' · ') || 'Base Invitation';
+        return `
+        <div style="background:#FAF7F2;border:1px solid var(--line);border-radius:14px;padding:13px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="color:var(--emerald);font-size:15px;">${esc(c.couple)}</strong>
+            <code style="font-size:11px;background:#EFE7D8;padding:2px 7px;border-radius:6px;">/${esc(c.slug)}</code>
+          </div>
+          <div style="font-size:11.5px;color:var(--muted);">${esc(c.dateText || c.date || '—')} · ${esc(c.venue || '—')}</div>
+          <div style="font-size:11px;color:var(--gold-2);font-weight:700;">Add-Ons: ${esc(badges)}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+            <button type="button" class="btn btn-em btn-sm" data-open-client-rec="${esc(c.slug)}">Links &amp; Script</button>
+            <button type="button" class="btn btn-out btn-sm" data-edit-client-rec="${esc(c.slug)}">Load in Builder</button>
+            <a class="btn btn-out btn-sm" href="${PUBLIC_ORIGIN}/clients/${esc(c.slug)}/" target="_blank">Live ↗</a>
+            <button type="button" class="btn btn-danger btn-sm" data-del-client-rec="${esc(c.slug)}">✕</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    $('savedClientsGrid').addEventListener('click', e => {
+      const openBtn = e.target.closest('button[data-open-client-rec]');
+      if (openBtn) {
+        const rec = (siteData.CLIENTS || []).find(x => x.slug === openBtn.dataset.openClientRec);
+        if (rec) renderClientResultPanel(rec);
+        return;
+      }
+      const editBtn = e.target.closest('button[data-edit-client-rec]');
+      if (editBtn) {
+        const rec = (siteData.CLIENTS || []).find(x => x.slug === editBtn.dataset.editClientRec);
+        if (!rec) return;
+        $('cbSlug').value = rec.slug; $('cbSlug').dataset.touched = '1';
+        $('cbOccasion').value = rec.occasion || 'wedding';
+        $('cbGroom').value = rec.groom || '';
+        $('cbBride').value = rec.bride || '';
+        $('cbDate').value = rec.date || '';
+        $('cbDateText').value = rec.dateText || '';
+        $('cbVenue').value = rec.venue || '';
+        $('cbMapUrl').value = rec.mapUrl || '';
+        $('cbWhatsapp').value = rec.whatsapp || '';
+        $('cbEmails').value = (rec.emails || []).join(', ');
+        $('cbEndpoint').value = rec.endpoint || '';
+        $('cbIncludeInvite').checked = rec.includeInvite !== false;
+        $('cbInviteFields').style.display = $('cbIncludeInvite').checked ? 'grid' : 'none';
+        if (rec.tplNum) $('cbTemplate').value = rec.tplNum;
+        $('cbLang').value = rec.lang || '';
+        $('cbSong').value = rec.song || '';
+        $('cbTheme').value = rec.theme || '';
+        $('adQrCam').checked = Boolean(rec.addons?.qrCam);
+        $('adVipSeat').checked = Boolean(rec.addons?.vipSeat);
+        $('adVoice').checked = Boolean(rec.addons?.voice);
+        $('adReels').checked = Boolean(rec.addons?.reels);
+        $('adMulti').checked = Boolean(rec.addons?.multi);
+        $('adRsvpSheet').checked = Boolean(rec.addons?.rsvpSheet);
+        $('adKeepsakes').checked = Boolean(rec.addons?.keepsakes);
+        $('cbMultiExtra').style.display = $('adMulti').checked ? 'grid' : 'none';
+        $('cbEnCouple').value = rec.enCouple || '';
+        $('cbEnVenue').value = rec.enVenue || '';
+        $('cbVipDateText').value = rec.vipDateText || '';
+        renderClientResultPanel(rec);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        showToast(`Loaded "${rec.couple}" into Builder!`);
+        return;
+      }
+      const delBtn = e.target.closest('button[data-del-client-rec]');
+      if (delBtn) {
+        siteData.CLIENTS = (siteData.CLIENTS || []).filter(x => x.slug !== delBtn.dataset.delClientRec);
+        persistDraft();
+        renderClientsTab();
+        showToast('Removed client entry from directory.');
+      }
     });
 
     /* ===== TAB 4: WHATSAPP REPLIES & EGP PRICING ===== */
